@@ -1,7 +1,9 @@
+import { Game } from "./game.js";
+
+const game = new Game();
+
 const newGameBtn = document.getElementById("newGameBtn");
 
-newGameBtn.addEventListener("click", function () {
-
-    alert("欢迎来到斗罗大陆！");
-
+newGameBtn.addEventListener("click", () => {
+    game.startNewGame();
 });
