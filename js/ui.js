@@ -19,4 +19,17 @@ export class UI {
         eventTitle.textContent = event.title;
         eventText.textContent = event.text;
     }
+
+    renderHistory(history) {
+        const historyList = document.getElementById("historyList");
+
+        historyList.innerHTML = "";
+
+        history.forEach(record => {
+            const historyItem = document.createElement("li");
+            historyItem.textContent = `${record.age}岁：${record.event.title}`;
+
+            historyList.appendChild(historyItem);
+        });
+    }
 }

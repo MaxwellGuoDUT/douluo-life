@@ -13,6 +13,7 @@ newGameBtn.addEventListener("click", () => {
     ui.showGameArea();
     ui.renderPlayer(game.player);
     ui.renderEvent(event);
+    ui.renderHistory(game.player.history);
 });
 
 nextYearBtn.addEventListener("click", () => {
@@ -20,4 +21,5 @@ nextYearBtn.addEventListener("click", () => {
 
     ui.renderPlayer(game.player);
     ui.renderEvent(event);
+    ui.renderHistory(game.player.history);
 });

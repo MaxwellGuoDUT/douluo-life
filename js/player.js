@@ -13,5 +13,7 @@ export class Player {
         this.agility = 10;
         this.intelligence = 10;
         this.luck = 10;
+
+        this.history = [];
     }
 }

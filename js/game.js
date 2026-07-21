@@ -13,16 +13,27 @@ export class Game {
         console.log("新的斗罗人生开始！");
         console.log(this.player);
 
-        return this.getCurrentEvent();
+        return this.triggerCurrentEvent();
     }
 
     nextYear() {
         this.player.age += 1;
 
-        return this.getCurrentEvent();
+        return this.triggerCurrentEvent();
     }
 
     getCurrentEvent() {
         return this.eventManager.getEventByAge(this.player.age);
+    }
+
+    triggerCurrentEvent() {
+        const event = this.getCurrentEvent();
+
+        this.player.history.push({
+            age: this.player.age,
+            event
+        });
+
+        return event;
     }
 }
