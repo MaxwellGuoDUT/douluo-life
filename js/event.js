@@ -1,25 +1,40 @@
+import birthEvent from "../data/events/birth.json" with { type: "json" };
+
 export class EventManager {
     constructor() {
         this.events = [
+            birthEvent,
             {
-                age: 0,
-                title: "降临斗罗大陆",
-                text: "你在斗罗大陆出生了，新的人生即将开始。"
-            },
-            {
-                age: 1,
+                id: "growth_001",
                 title: "初次成长",
-                text: "在家人的照顾下，你平安地度过了人生中的第一年。"
+                text: "在家人的照顾下，你平安地度过了人生中的第一年。",
+                trigger: {
+                    age: 1
+                },
+                tags: [
+                    "growth"
+                ],
+                effects: {},
+                weight: 100,
+                next: []
             }
         ];
 
         this.defaultEvent = {
+            id: "default_001",
             title: "平静的一年",
-            text: "这一年没有发生特别的事情，你仍在慢慢成长。"
+            text: "这一年没有发生特别的事情，你仍在慢慢成长。",
+            trigger: {},
+            tags: [
+                "default"
+            ],
+            effects: {},
+            weight: 0,
+            next: []
         };
     }
 
     getEventByAge(age) {
-        return this.events.find(event => event.age === age) || this.defaultEvent;
+        return this.events.find(event => event.trigger.age === age) || this.defaultEvent;
     }
 }

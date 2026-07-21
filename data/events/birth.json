@@ -1,0 +1,15 @@
+{
+    "id": "birth_001",
+    "title": "降临斗罗大陆",
+    "text": "你在斗罗大陆出生了，新的人生即将开始。",
+    "trigger": {
+        "age": 0
+    },
+    "tags": [
+        "birth",
+        "milestone"
+    ],
+    "effects": {},
+    "weight": 100,
+    "next": []
+}
