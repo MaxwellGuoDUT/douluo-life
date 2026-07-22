@@ -9,7 +9,7 @@ export class Player {
 
         this.hp = 100;
 
-        this.power = 10;
+        this.power = 5;
         this.agility = 10;
         this.intelligence = 10;
         this.luck = 10;

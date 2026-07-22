@@ -68,6 +68,26 @@ button:disabled{
 
 }
 
+.player-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(2, minmax(120px, 1fr));
+
+    gap:8px 20px;
+
+    margin:10px 0 24px;
+
+}
+
+.player-stat{
+
+    margin:0;
+
+    color:#eeeeee;
+
+}
+
 footer{
 
     margin-top:60px;

@@ -14,7 +14,9 @@ export class EventManager {
                 tags: [
                     "growth"
                 ],
-                effects: {},
+                effects: {
+                    power: 2
+                },
                 weight: 100,
                 next: []
             }
