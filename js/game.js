@@ -28,12 +28,39 @@ export class Game {
 
     triggerCurrentEvent() {
         const event = this.getCurrentEvent();
+        const eventAge = this.player.age;
+
+        this.applyEffects(event);
 
         this.player.history.push({
-            age: this.player.age,
+            age: eventAge,
             event
         });
 
         return event;
+    }
+
+    applyEffects(event) {
+        const effects = event.effects;
+
+        if (!effects || typeof effects !== "object" || Array.isArray(effects)) {
+            throw new TypeError(`Event "${event.id}" effects must be an object.`);
+        }
+
+        Object.entries(effects).forEach(([key, value]) => {
+            if (!Object.prototype.hasOwnProperty.call(this.player, key)) {
+                throw new TypeError(`Event "${event.id}" effect key "${key}" is not a Player property.`);
+            }
+
+            if (typeof value !== "number" || Number.isNaN(value)) {
+                throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number.`);
+            }
+
+            if (typeof this.player[key] !== "number") {
+                throw new TypeError(`Event "${event.id}" effect key "${key}" must target a numeric Player property.`);
+            }
+
+            this.player[key] += value;
+        });
     }
 }

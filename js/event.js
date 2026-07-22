@@ -32,9 +32,23 @@ export class EventManager {
             weight: 0,
             next: []
         };
+
+        this.validateEvents();
     }
 
     getEventByAge(age) {
         return this.events.find(event => event.trigger.age === age) || this.defaultEvent;
+    }
+
+    validateEvents() {
+        [...this.events, this.defaultEvent].forEach(event => {
+            if (!Object.prototype.hasOwnProperty.call(event, "effects")) {
+                throw new TypeError(`Event "${event.id}" must include effects.`);
+            }
+
+            if (!event.effects || typeof event.effects !== "object" || Array.isArray(event.effects)) {
+                throw new TypeError(`Event "${event.id}" effects must be an object.`);
+            }
+        });
     }
 }
