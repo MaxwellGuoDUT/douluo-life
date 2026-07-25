@@ -23,7 +23,7 @@ export class Game {
     }
 
     getCurrentEvent() {
-        return this.eventManager.getEventByAge(this.player.age);
+        return this.eventManager.getEvent(this.player);
     }
 
     triggerCurrentEvent() {

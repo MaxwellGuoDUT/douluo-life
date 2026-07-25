@@ -90,6 +90,79 @@ luck
 
 暂不支持 `name`、`spirit`、装备、背包、金币、魂环、NPC、Buff / Debuff、概率效果、自定义脚本等复杂效果。
 
+## Trigger 规范
+
+`trigger` 统一采用对象格式，用来判断事件是否可以发生。
+
+```json
+{
+    "trigger": {
+        "minAge": 1,
+        "maxAge": 3,
+        "attributes": {
+            "luck": {
+                "min": 15
+            }
+        },
+        "hasEvent": [
+            "birth_001"
+        ],
+        "hasTag": [
+            "birth"
+        ]
+    }
+}
+```
+
+### 当前支持字段
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| age | number | 玩家年龄必须等于该值 |
+| minAge | number | 玩家年龄必须大于或等于该值 |
+| maxAge | number | 玩家年龄必须小于或等于该值 |
+| attributes | object | 玩家数值属性条件 |
+| hasEvent | array | 玩家历史中必须发生过指定事件 id |
+| hasTag | array | 玩家历史中必须发生过指定标签事件 |
+
+### attributes 写法
+
+精确匹配：
+
+```json
+{
+    "attributes": {
+        "power": 10
+    }
+}
+```
+
+范围匹配：
+
+```json
+{
+    "attributes": {
+        "luck": {
+            "min": 15,
+            "max": 30
+        },
+        "level": {
+            "equals": 1
+        }
+    }
+}
+```
+
+### 规则
+
+1. `trigger` 必须存在，且必须是 object。
+2. 多个 trigger 条件同时存在时，必须全部满足才允许事件触发。
+3. `age` 适合固定年龄事件，例如出生、武魂觉醒。
+4. `minAge` / `maxAge` 适合一段年龄内可发生的随机事件。
+5. `attributes` v1.0 仅支持 Player 数值属性。
+6. `hasEvent` 与 `hasTag` 必须写成数组。
+7. `EventManager` 会先筛选全部可触发事件，再根据 `weight` 随机选择一个事件。
+
 ## ID 规范
 
 格式：
