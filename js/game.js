@@ -53,15 +53,7 @@ export class Game {
             }
 
             if (typeof value === "number") {
-                if (Number.isNaN(value)) {
-                    throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number.`);
-                }
-
-                if (typeof this.player[key] !== "number") {
-                    throw new TypeError(`Event "${event.id}" effect key "${key}" must target a numeric Player property.`);
-                }
-
-                this.player[key] += value;
+                this.applyNumberEffect(event, key, value);
                 return;
             }
 
@@ -70,7 +62,59 @@ export class Game {
                 return;
             }
 
-            throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number or set operation.`);
+            if (value && typeof value === "object" && !Array.isArray(value) && Object.prototype.hasOwnProperty.call(value, "add")) {
+                this.applyAddEffect(event, key, value.add);
+                return;
+            }
+
+            if (value && typeof value === "object" && !Array.isArray(value) && Object.prototype.hasOwnProperty.call(value, "setKey")) {
+                this.applySetKeyEffect(event, key, value.setKey);
+                return;
+            }
+
+            throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number, set, add, or setKey operation.`);
         });
+    }
+
+    applyNumberEffect(event, key, value) {
+        if (Number.isNaN(value)) {
+            throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number.`);
+        }
+
+        if (typeof this.player[key] !== "number") {
+            throw new TypeError(`Event "${event.id}" effect key "${key}" must target a numeric Player property.`);
+        }
+
+        this.player[key] += value;
+    }
+
+    applyAddEffect(event, key, value) {
+        if (!Array.isArray(this.player[key])) {
+            throw new TypeError(`Event "${event.id}" effect key "${key}" must target an array Player property.`);
+        }
+
+        this.player[key].push(value);
+    }
+
+    applySetKeyEffect(event, key, operation) {
+        if (!operation || typeof operation !== "object" || Array.isArray(operation)) {
+            throw new TypeError(`Event "${event.id}" effect setKey for "${key}" must be an object.`);
+        }
+
+        const { key: targetKey, value } = operation;
+
+        if (typeof targetKey !== "string") {
+            throw new TypeError(`Event "${event.id}" effect setKey for "${key}" must include a string key.`);
+        }
+
+        if (!this.player[key] || typeof this.player[key] !== "object" || Array.isArray(this.player[key])) {
+            throw new TypeError(`Event "${event.id}" effect key "${key}" must target an object Player property.`);
+        }
+
+        if (!Object.prototype.hasOwnProperty.call(this.player[key], targetKey)) {
+            throw new TypeError(`Event "${event.id}" effect setKey target "${targetKey}" is not a valid key on "${key}".`);
+        }
+
+        this.player[key][targetKey] = value;
     }
 }

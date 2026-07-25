@@ -21,9 +21,7 @@
             "academy": {
                 "set": "诺丁初级魂师学院"
             },
-            "intelligence": 2,
             "level": 1,
-            "soulPower": 1,
             "reputation": 1
         },
         "weight": 70,
@@ -52,8 +50,6 @@
             "academy": {
                 "set": "诺丁初级魂师学院"
             },
-            "intelligence": 1,
-            "luck": 1,
             "money": 10,
             "reputation": 1
         },
@@ -87,9 +83,6 @@
             "academy": {
                 "set": "推荐入学"
             },
-            "intelligence": 2,
-            "power": 1,
-            "soulPower": 2,
             "reputation": 3
         },
         "weight": 100,

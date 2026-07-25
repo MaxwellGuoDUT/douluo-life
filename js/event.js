@@ -1,5 +1,6 @@
 import academyEvents from "../data/events/academy.json" with { type: "json" };
 import birthEvent from "../data/events/birth.json" with { type: "json" };
+import cultivationEvents from "../data/events/cultivation.json" with { type: "json" };
 import defaultEvent from "../data/events/default.json" with { type: "json" };
 import growthEvents from "../data/events/growth.json" with { type: "json" };
 import spiritEvents from "../data/events/spirit.json" with { type: "json" };
@@ -10,7 +11,8 @@ export class EventManager {
             ...this.normalizeEvents(birthEvent),
             ...this.normalizeEvents(growthEvents),
             ...this.normalizeEvents(spiritEvents),
-            ...this.normalizeEvents(academyEvents)
+            ...this.normalizeEvents(academyEvents),
+            ...this.normalizeEvents(cultivationEvents)
         ];
 
         this.defaultEvent = defaultEvent;
@@ -56,6 +58,10 @@ export class EventManager {
         }
 
         if (!this.matchStateTriggers(trigger.state, player)) {
+            return false;
+        }
+
+        if (!this.matchNestedStateTriggers(trigger.nestedState, player)) {
             return false;
         }
 
@@ -142,6 +148,22 @@ export class EventManager {
         });
     }
 
+    matchNestedStateTriggers(nestedState, player) {
+        if (!nestedState) {
+            return true;
+        }
+
+        return Object.entries(nestedState).every(([key, conditions]) => {
+            if (!player[key] || typeof player[key] !== "object") {
+                return false;
+            }
+
+            return Object.entries(conditions).every(([nestedKey, value]) => {
+                return player[key][nestedKey] === value;
+            });
+        });
+    }
+
     matchHistoryIds(requiredIds, player) {
         return requiredIds.every(id => player.history.some(record => record.event.id === id));
     }
@@ -192,6 +214,10 @@ export class EventManager {
 
             if (event.trigger.state && (typeof event.trigger.state !== "object" || Array.isArray(event.trigger.state))) {
                 throw new TypeError(`Event "${event.id}" trigger.state must be an object.`);
+            }
+
+            if (event.trigger.nestedState && (typeof event.trigger.nestedState !== "object" || Array.isArray(event.trigger.nestedState))) {
+                throw new TypeError(`Event "${event.id}" trigger.nestedState must be an object.`);
             }
 
             if (!Object.prototype.hasOwnProperty.call(event, "effects")) {

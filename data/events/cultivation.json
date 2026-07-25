@@ -1,0 +1,96 @@
+[
+    {
+        "id": "cultivation_first_soul_ring",
+        "title": "获得第一魂环",
+        "text": "在师长的帮助下，你获得了人生中的第一枚魂环。淡黄色光环缓缓落下，你正式迈入魂师之路。",
+        "trigger": {
+            "age": 10,
+            "state": {
+                "rank": "魂士"
+            },
+            "hasTag": [
+                "academy"
+            ]
+        },
+        "tags": [
+            "cultivation",
+            "soul_ring",
+            "milestone"
+        ],
+        "effects": {
+            "soulRings": {
+                "add": {
+                    "age": 120,
+                    "tier": "百年"
+                }
+            },
+            "rank": {
+                "set": "魂师"
+            },
+            "title": {
+                "set": "魂师"
+            },
+            "level": 8,
+            "reputation": 5
+        },
+        "weight": 100,
+        "next": []
+    },
+    {
+        "id": "cultivation_academy_training",
+        "title": "学院修炼",
+        "text": "这一年你在学院继续修炼，学习如何更稳定地控制自己的武魂。",
+        "trigger": {
+            "age": 12,
+            "hasTag": [
+                "soul_ring"
+            ]
+        },
+        "tags": [
+            "cultivation",
+            "academy"
+        ],
+        "effects": {
+            "level": 1,
+            "reputation": 1
+        },
+        "weight": 95,
+        "next": []
+    },
+    {
+        "id": "cultivation_external_soul_bone",
+        "title": "外附魂骨",
+        "text": "一次意外的魂兽遭遇后，你得到了一块极其罕见的外附魂骨。命运的转盘似乎真的偏向了你。",
+        "trigger": {
+            "age": 12,
+            "hasTag": [
+                "soul_ring"
+            ],
+            "nestedState": {
+                "soulBones": {
+                    "external": null
+                }
+            }
+        },
+        "tags": [
+            "cultivation",
+            "soul_bone",
+            "rare"
+        ],
+        "effects": {
+            "soulBones": {
+                "setKey": {
+                    "key": "external",
+                    "value": {
+                        "age": 1000,
+                        "tier": "千年",
+                        "name": "外附魂骨"
+                    }
+                }
+            },
+            "reputation": 10
+        },
+        "weight": 5,
+        "next": []
+    }
+]

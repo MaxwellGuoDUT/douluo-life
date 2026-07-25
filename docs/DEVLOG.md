@@ -482,24 +482,26 @@ Day 9 建议开始学院学习阶段：加入 8-12 岁的课程、修炼、同�
 
 ### 目标
 
-暂停继续堆事件，先完善玩家状态容器，让后续事件只需要通过 Trigger 读取状态、通过 Effects 修改状态。
+暂停继续堆事件，先完善玩家状态容器，让后续事件只需要通过 Trigger 读取状态、通过 Effects 修改状态。同时根据转盘游戏定位，移除传统 RPG 四维属性，把复杂度放回斗罗体系本身。
 
 ### 完成内容
 
-- 扩展 `Player` 基础状态。
-- 新增 `soulPower`，用于记录魂力。
-- 新增 `soulRingCount`，用于记录魂环数量。
-- 新增 `rank`，用于记录境界。
-- 新增 `title`，用于记录身份称号。
-- 新增 `faction`，用于记录所属势力。
-- 新增 `money`，用于记录金钱。
-- 新增 `reputation`，用于记录声望。
-- UI 新增以上状态展示。
+- 移除 `hp`、`power`、`agility`、`intelligence`、`luck` 等传统 RPG 属性。
+- 移除 `soulPower` 经验进度，避免每年转盘节奏被经验条拖慢。
+- 移除独立的 `soulRingCount`，改为由 `soulRings.length` 自然得出。
+- 新增 `soulRings` 数组，用于记录每个魂环的具体年限和大等阶。
+- 新增 `soulBones` 七部位对象：头部、躯干、四肢、外附魂骨。
+- 保留 `level`、`rank`、`spirit`、`academy`、`faction`、`title`、`money`、`reputation` 作为转盘叙事状态。
+- Effects 新增 `add` 操作，用于向 `soulRings` 追加魂环。
+- Effects 新增 `setKey` 操作，用于设置 `soulBones` 的具体部位。
+- Trigger 新增 `nestedState`，用于判断魂骨部位等一层嵌套状态。
 - Trigger `attributes` 新增 `gt` / `gte` / `lt` / `lte` / `eq` 比较语法。
 - 保留旧的 `min` / `max` / `equals` 写法，避免破坏已有事件。
-- 将现有事件中的部分属性条件更新为推荐的新比较语法。
-- 更新 `EVENT_SCHEMA.md`，补充 Player State v1.0 和 Trigger 比较规则。
-- 更新 `AI_CONTEXT.md`，让 Codex 后续优先理解 Player 是状态容器。
+- 将现有事件中的旧属性依赖改为等级、声望、金钱、身份等履历状态。
+- 新增 `data/events/cultivation.json`，放入第一魂环与外附魂骨示例事件。
+- 更新 UI，显示魂环列表和魂骨概况。
+- 重写 `EVENT_SCHEMA.md`，补充斗罗履历状态、魂环、魂骨、Effects 操作和 Trigger 规则。
+- 更新 `AI_CONTEXT.md`，明确项目不做传统 RPG 四维属性。
 
 ### Player State v1.0
 
@@ -507,20 +509,16 @@ Day 9 建议开始学院学习阶段：加入 8-12 岁的课程、修炼、同�
 
 ```text
 age
-hp
-power
-agility
-intelligence
-luck
-spirit
-academy
-soulPower
-soulRingCount
+level
 rank
-title
+spirit
+soulRings
+soulBones
+academy
 faction
 money
 reputation
+title
 ```
 
 这些字段让事件可以自然表达后续玩法：
@@ -566,7 +564,7 @@ Player State
 
 ### 下一步
 
-Day 10 建议开始学院学习阶段：加入 8-12 岁的课程、修炼、同学互动和基础战斗事件，让 `soulPower`、`money`、`reputation` 等新状态真正参与游戏循环。
+Day 10 建议开始转盘事件池阶段：加入 8-12 岁学院生活、10 岁第一魂环、同学互动、金钱和声望事件，让新的履历状态真正参与每年一次的转盘循环。
 
 ## 阶段总结
 

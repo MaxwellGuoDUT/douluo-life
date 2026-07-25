@@ -10,12 +10,7 @@
             },
             "hasTag": [
                 "birth"
-            ],
-            "attributes": {
-                "luck": {
-                    "lte": 18
-                }
-            }
+            ]
         },
         "tags": [
             "spirit",
@@ -28,9 +23,7 @@
             },
             "rank": {
                 "set": "魂士"
-            },
-            "agility": 1,
-            "intelligence": 1
+            }
         },
         "weight": 60,
         "next": []
@@ -46,15 +39,7 @@
             },
             "hasTag": [
                 "birth"
-            ],
-            "attributes": {
-                "agility": {
-                    "gte": 10
-                },
-                "luck": {
-                    "gte": 15
-                }
-            }
+            ]
         },
         "tags": [
             "spirit",
@@ -67,8 +52,7 @@
             },
             "rank": {
                 "set": "魂士"
-            },
-            "agility": 4
+            }
         },
         "weight": 30,
         "next": []
@@ -84,15 +68,7 @@
             },
             "hasTag": [
                 "birth"
-            ],
-            "attributes": {
-                "power": {
-                    "gte": 7
-                },
-                "luck": {
-                    "gte": 16
-                }
-            }
+            ]
         },
         "tags": [
             "spirit",
@@ -107,7 +83,6 @@
             "rank": {
                 "set": "魂士"
             },
-            "power": 5,
             "level": 2
         },
         "weight": 10,

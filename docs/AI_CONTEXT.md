@@ -11,6 +11,7 @@ HTML CSS JavaScript
 1. 数据驱动
 2. 模块分离
 3. 不允许事件硬编码
+4. 角色状态偏斗罗履历，不做传统 RPG 四维属性
 
 # 当前架构
 
@@ -31,17 +32,13 @@ Effects:
 当前 Player 包含：
 
 age
-hp
-power
-agility
-intelligence
-luck
-spirit
-academy
-soulPower
-soulRingCount
+level
 rank
-title
+spirit
+soulRings
+soulBones
+academy
 faction
 money
 reputation
+title

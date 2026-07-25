@@ -8,16 +8,16 @@ export class Player {
         this.spirit = null;
         this.academy = null;
         this.faction = null;
-
-        this.hp = 100;
-
-        this.power = 5;
-        this.agility = 10;
-        this.intelligence = 10;
-        this.luck = 10;
-
-        this.soulPower = 0;
-        this.soulRingCount = 0;
+        this.soulRings = [];
+        this.soulBones = {
+            head: null,
+            torso: null,
+            leftArm: null,
+            rightArm: null,
+            leftLeg: null,
+            rightLeg: null,
+            external: null
+        };
         this.rank = "未觉醒";
         this.title = "平民";
         this.money = 0;

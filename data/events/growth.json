@@ -10,33 +10,27 @@
             "growth"
         ],
         "effects": {
-            "power": 2
+            "money": 5
         },
         "weight": 100,
         "next": []
     },
     {
-        "id": "growth_lucky_001",
-        "title": "天生灵慧",
-        "text": "你的眼神比同龄孩子更灵动，家人都觉得你天生带着几分福缘。",
+        "id": "growth_family_story_001",
+        "title": "家族故事",
+        "text": "家人常给你讲斗罗大陆上的魂师传说，你第一次对外面的世界产生了向往。",
         "trigger": {
             "age": 2,
-            "attributes": {
-                "luck": {
-                    "gte": 15
-                }
-            },
             "hasEvent": [
                 "birth_001"
             ]
         },
         "tags": [
             "growth",
-            "talent"
+            "story"
         ],
         "effects": {
-            "intelligence": 1,
-            "luck": 1
+            "reputation": 1
         },
         "weight": 30,
         "next": []
@@ -56,7 +50,9 @@
             "memory"
         ],
         "effects": {
-            "intelligence": 2
+            "title": {
+                "set": "村里的孩子"
+            }
         },
         "weight": 40,
         "next": []

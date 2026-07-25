@@ -9,9 +9,7 @@
         "birth",
         "milestone"
     ],
-    "effects": {
-        "luck": 5
-    },
+    "effects": {},
     "weight": 100,
     "next": []
 }

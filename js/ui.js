@@ -14,20 +14,15 @@ export class UI {
 
         const stats = [
             ["等级", player.level],
+            ["境界", player.rank],
             ["武魂", player.spirit || "未觉醒"],
+            ["魂环", this.formatSoulRings(player.soulRings)],
+            ["魂骨", this.formatSoulBones(player.soulBones)],
             ["学院", player.academy || "未入学"],
             ["势力", player.faction || "无"],
-            ["魂力", player.soulPower],
-            ["魂环", player.soulRingCount],
-            ["境界", player.rank],
             ["身份", player.title],
             ["金钱", player.money],
-            ["声望", player.reputation],
-            ["HP", player.hp],
-            ["力量", player.power],
-            ["敏捷", player.agility],
-            ["智力", player.intelligence],
-            ["幸运", player.luck]
+            ["声望", player.reputation]
         ];
 
         playerStats.innerHTML = "";
@@ -39,6 +34,36 @@ export class UI {
 
             playerStats.appendChild(statItem);
         });
+    }
+
+    formatSoulRings(soulRings) {
+        if (soulRings.length === 0) {
+            return "无";
+        }
+
+        return soulRings.map(ring => `${ring.tier}${ring.age}年`).join("、");
+    }
+
+    formatSoulBones(soulBones) {
+        const ownedBones = Object.entries(soulBones)
+            .filter(([, bone]) => bone)
+            .map(([part, bone]) => `${this.getSoulBonePartName(part)}:${bone.tier}${bone.age}年`);
+
+        return ownedBones.length > 0 ? ownedBones.join("、") : "无";
+    }
+
+    getSoulBonePartName(part) {
+        const names = {
+            head: "头部",
+            torso: "躯干",
+            leftArm: "左臂",
+            rightArm: "右臂",
+            leftLeg: "左腿",
+            rightLeg: "右腿",
+            external: "外附"
+        };
+
+        return names[part] || part;
     }
 
     renderEvent(event) {
