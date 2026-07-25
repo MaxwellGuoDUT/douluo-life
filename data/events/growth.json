@@ -23,7 +23,7 @@
             "age": 2,
             "attributes": {
                 "luck": {
-                    "min": 15
+                    "gte": 15
                 }
             },
             "hasEvent": [

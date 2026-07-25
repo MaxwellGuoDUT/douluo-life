@@ -2,7 +2,7 @@
 
 项目：斗罗人生模拟器  
 记录范围：2026-07-19 至 2026-07-25  
-当前阶段：文字人生模拟 MVP，已具备玩家、事件、历史记录、数值效果、条件触发、武魂觉醒和学院入学事件链。
+当前阶段：文字人生模拟 MVP，已具备玩家状态系统、事件、历史记录、数值效果、条件触发、武魂觉醒和学院入学事件链。
 
 ## 项目总览
 
@@ -12,6 +12,7 @@
 
 - 基础页面与 GitHub Pages 部署。
 - 玩家数据模型 `Player`。
+- Player State System v1.0，玩家拥有魂力、魂环、境界、身份、势力、金钱和声望等长期状态。
 - 游戏管理器 `Game`。
 - 事件系统 `EventManager`。
 - 事件数据规范 `Event Schema v1.0`。
@@ -477,9 +478,99 @@ EventManager
 
 Day 9 建议开始学院学习阶段：加入 8-12 岁的课程、修炼、同学互动和基础战斗事件，为后续战斗系统做铺垫。
 
+## Day 9 - 2026-07-25 - Player State System v1.0
+
+### 目标
+
+暂停继续堆事件，先完善玩家状态容器，让后续事件只需要通过 Trigger 读取状态、通过 Effects 修改状态。
+
+### 完成内容
+
+- 扩展 `Player` 基础状态。
+- 新增 `soulPower`，用于记录魂力。
+- 新增 `soulRingCount`，用于记录魂环数量。
+- 新增 `rank`，用于记录境界。
+- 新增 `title`，用于记录身份称号。
+- 新增 `faction`，用于记录所属势力。
+- 新增 `money`，用于记录金钱。
+- 新增 `reputation`，用于记录声望。
+- UI 新增以上状态展示。
+- Trigger `attributes` 新增 `gt` / `gte` / `lt` / `lte` / `eq` 比较语法。
+- 保留旧的 `min` / `max` / `equals` 写法，避免破坏已有事件。
+- 将现有事件中的部分属性条件更新为推荐的新比较语法。
+- 更新 `EVENT_SCHEMA.md`，补充 Player State v1.0 和 Trigger 比较规则。
+- 更新 `AI_CONTEXT.md`，让 Codex 后续优先理解 Player 是状态容器。
+
+### Player State v1.0
+
+当前 Player 状态扩展为：
+
+```text
+age
+hp
+power
+agility
+intelligence
+luck
+spirit
+academy
+soulPower
+soulRingCount
+rank
+title
+faction
+money
+reputation
+```
+
+这些字段让事件可以自然表达后续玩法：
+
+```json
+{
+  "effects": {
+    "money": 50,
+    "reputation": 10,
+    "faction": {
+      "set": "武魂殿"
+    }
+  }
+}
+```
+
+也可以自然表达触发条件：
+
+```json
+{
+  "trigger": {
+    "attributes": {
+      "money": {
+        "gte": 100
+      }
+    }
+  }
+}
+```
+
+### 架构变化
+
+Day 9 的重点是让系统从“事件推动流程”继续升级为“状态驱动模拟”：
+
+```text
+Player State
+  -> Trigger 读取状态
+  -> Event 发生
+  -> Effects 修改状态
+  -> UI 展示状态
+  -> History 记录经历
+```
+
+### 下一步
+
+Day 10 建议开始学院学习阶段：加入 8-12 岁的课程、修炼、同学互动和基础战斗事件，让 `soulPower`、`money`、`reputation` 等新状态真正参与游戏循环。
+
 ## 阶段总结
 
-前 8 天的开发可以概括为六次升级：
+前 9 天的开发可以概括为七次升级：
 
 1. 从静态页面到可运行 MVP。
 2. 从玩家对象到人生推进流程。
@@ -487,5 +578,6 @@ Day 9 建议开始学院学习阶段：加入 8-12 岁的课程、修炼、同�
 4. 从固定年龄触发到条件驱动触发系统。
 5. 从基础人生事件到第一个正式玩法阶段：武魂觉醒。
 6. 从武魂觉醒进入学院入学路线。
+7. 从少量状态字段升级为完整 Player State 容器。
 
 当前项目最重要的设计方向已经明确：用统一的数据规范描述事件，用 `Game` 执行规则，用 `Player` 保存状态，用 `UI` 展示结果。接下来应优先完善触发条件、事件库、存档和更丰富的玩家属性系统。

@@ -90,6 +90,10 @@ power
 agility
 intelligence
 luck
+soulPower
+soulRingCount
+money
+reputation
 ```
 
 当前可用于 set 操作的 Player 属性包括：
@@ -97,6 +101,9 @@ luck
 ```text
 spirit
 academy
+rank
+title
+faction
 ```
 
 暂不支持装备、背包、金币、魂环、NPC、Buff / Debuff、概率效果、自定义脚本等复杂效果。
@@ -112,7 +119,7 @@ academy
         "maxAge": 3,
         "attributes": {
             "luck": {
-                "min": 15
+                "gte": 15
             }
         },
         "state": {
@@ -158,15 +165,39 @@ academy
 {
     "attributes": {
         "luck": {
-            "min": 15,
-            "max": 30
+            "gte": 15,
+            "lte": 30
         },
         "level": {
-            "equals": 1
+            "eq": 1
         }
     }
 }
 ```
+
+兼容旧写法：
+
+```json
+{
+    "attributes": {
+        "luck": {
+            "min": 15,
+            "max": 30,
+            "equals": 20
+        }
+    }
+}
+```
+
+推荐新写法：
+
+| 字段 | 含义 |
+| --- | --- |
+| gt | 大于 |
+| gte | 大于或等于 |
+| lt | 小于 |
+| lte | 小于或等于 |
+| eq | 等于 |
 
 ### 规则
 
@@ -178,6 +209,58 @@ academy
 6. `state` 支持严格相等判断，可用于 `spirit: null` 这类非数值状态。
 7. `hasEvent` 与 `hasTag` 必须写成数组。
 8. `EventManager` 会先筛选全部可触发事件，再根据 `weight` 随机选择一个事件。
+
+## Player State v1.0
+
+Player 是人生模拟的状态容器。事件只负责通过 `trigger` 读取状态，通过 `effects` 修改状态。
+
+当前 Player 状态：
+
+```js
+{
+    name: "主角",
+    age: 0,
+    level: 1,
+    spirit: null,
+    academy: null,
+    faction: null,
+    hp: 100,
+    power: 5,
+    agility: 10,
+    intelligence: 10,
+    luck: 10,
+    soulPower: 0,
+    soulRingCount: 0,
+    rank: "未觉醒",
+    title: "平民",
+    money: 0,
+    reputation: 0,
+    history: []
+}
+```
+
+### 状态职责
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| name | string | 玩家姓名 |
+| age | number | 年龄 |
+| level | number | 当前等级 |
+| spirit | string / null | 武魂 |
+| academy | string / null | 学院 |
+| faction | string / null | 所属势力 |
+| hp | number | 生命值 |
+| power | number | 力量 |
+| agility | number | 敏捷 |
+| intelligence | number | 智力 |
+| luck | number | 幸运 |
+| soulPower | number | 魂力 |
+| soulRingCount | number | 魂环数量 |
+| rank | string | 境界 |
+| title | string | 身份称号 |
+| money | number | 金钱 |
+| reputation | number | 声望 |
+| history | array | 人生事件记录 |
 
 ## ID 规范
 

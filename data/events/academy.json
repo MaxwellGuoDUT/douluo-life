@@ -22,7 +22,9 @@
                 "set": "诺丁初级魂师学院"
             },
             "intelligence": 2,
-            "level": 1
+            "level": 1,
+            "soulPower": 1,
+            "reputation": 1
         },
         "weight": 70,
         "next": []
@@ -51,7 +53,9 @@
                 "set": "诺丁初级魂师学院"
             },
             "intelligence": 1,
-            "luck": 1
+            "luck": 1,
+            "money": 10,
+            "reputation": 1
         },
         "weight": 50,
         "next": []
@@ -70,7 +74,7 @@
             ],
             "attributes": {
                 "level": {
-                    "min": 3
+                    "gte": 3
                 }
             }
         },
@@ -84,7 +88,9 @@
                 "set": "推荐入学"
             },
             "intelligence": 2,
-            "power": 1
+            "power": 1,
+            "soulPower": 2,
+            "reputation": 3
         },
         "weight": 100,
         "next": []

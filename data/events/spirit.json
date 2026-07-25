@@ -13,7 +13,7 @@
             ],
             "attributes": {
                 "luck": {
-                    "max": 18
+                    "lte": 18
                 }
             }
         },
@@ -25,6 +25,9 @@
         "effects": {
             "spirit": {
                 "set": "蓝银草"
+            },
+            "rank": {
+                "set": "魂士"
             },
             "agility": 1,
             "intelligence": 1
@@ -46,10 +49,10 @@
             ],
             "attributes": {
                 "agility": {
-                    "min": 10
+                    "gte": 10
                 },
                 "luck": {
-                    "min": 15
+                    "gte": 15
                 }
             }
         },
@@ -61,6 +64,9 @@
         "effects": {
             "spirit": {
                 "set": "柔骨兔"
+            },
+            "rank": {
+                "set": "魂士"
             },
             "agility": 4
         },
@@ -81,10 +87,10 @@
             ],
             "attributes": {
                 "power": {
-                    "min": 7
+                    "gte": 7
                 },
                 "luck": {
-                    "min": 16
+                    "gte": 16
                 }
             }
         },
@@ -97,6 +103,9 @@
         "effects": {
             "spirit": {
                 "set": "昊天锤"
+            },
+            "rank": {
+                "set": "魂士"
             },
             "power": 5,
             "level": 2

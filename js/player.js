@@ -7,6 +7,7 @@ export class Player {
 
         this.spirit = null;
         this.academy = null;
+        this.faction = null;
 
         this.hp = 100;
 
@@ -14,6 +15,13 @@ export class Player {
         this.agility = 10;
         this.intelligence = 10;
         this.luck = 10;
+
+        this.soulPower = 0;
+        this.soulRingCount = 0;
+        this.rank = "未觉醒";
+        this.title = "平民";
+        this.money = 0;
+        this.reputation = 0;
 
         this.history = [];
     }

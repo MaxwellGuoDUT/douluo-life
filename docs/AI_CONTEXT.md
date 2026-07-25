@@ -15,7 +15,7 @@ HTML CSS JavaScript
 # 当前架构
 
 Player:
-负责状态
+负责状态，是人生模拟的状态容器
 
 Game:
 负责流程
@@ -25,3 +25,23 @@ EventManager:
 
 Effects:
 负责修改状态
+
+# Player State v1.0
+
+当前 Player 包含：
+
+age
+hp
+power
+agility
+intelligence
+luck
+spirit
+academy
+soulPower
+soulRingCount
+rank
+title
+faction
+money
+reputation

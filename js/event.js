@@ -80,28 +80,52 @@ export class EventManager {
                 return false;
             }
 
-            if (typeof condition === "number") {
-                return player[key] === condition;
-            }
-
-            if (!condition || typeof condition !== "object" || Array.isArray(condition)) {
-                return false;
-            }
-
-            if (typeof condition.min === "number" && player[key] < condition.min) {
-                return false;
-            }
-
-            if (typeof condition.max === "number" && player[key] > condition.max) {
-                return false;
-            }
-
-            if (typeof condition.equals === "number" && player[key] !== condition.equals) {
-                return false;
-            }
-
-            return true;
+            return this.matchNumberCondition(player[key], condition);
         });
+    }
+
+    matchNumberCondition(value, condition) {
+        if (typeof condition === "number") {
+            return value === condition;
+        }
+
+        if (!condition || typeof condition !== "object" || Array.isArray(condition)) {
+            return false;
+        }
+
+        if (typeof condition.min === "number" && value < condition.min) {
+            return false;
+        }
+
+        if (typeof condition.max === "number" && value > condition.max) {
+            return false;
+        }
+
+        if (typeof condition.equals === "number" && value !== condition.equals) {
+            return false;
+        }
+
+        if (typeof condition.gt === "number" && value <= condition.gt) {
+            return false;
+        }
+
+        if (typeof condition.gte === "number" && value < condition.gte) {
+            return false;
+        }
+
+        if (typeof condition.lt === "number" && value >= condition.lt) {
+            return false;
+        }
+
+        if (typeof condition.lte === "number" && value > condition.lte) {
+            return false;
+        }
+
+        if (typeof condition.eq === "number" && value !== condition.eq) {
+            return false;
+        }
+
+        return true;
     }
 
     matchStateTriggers(state, player) {
