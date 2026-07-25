@@ -96,6 +96,7 @@ luck
 
 ```text
 spirit
+academy
 ```
 
 暂不支持装备、背包、金币、魂环、NPC、Buff / Debuff、概率效果、自定义脚本等复杂效果。

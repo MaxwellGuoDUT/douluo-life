@@ -15,6 +15,7 @@ export class UI {
         const stats = [
             ["等级", player.level],
             ["武魂", player.spirit || "未觉醒"],
+            ["学院", player.academy || "未入学"],
             ["HP", player.hp],
             ["力量", player.power],
             ["敏捷", player.agility],

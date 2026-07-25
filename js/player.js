@@ -6,6 +6,7 @@ export class Player {
         this.level = 1;
 
         this.spirit = null;
+        this.academy = null;
 
         this.hp = 100;
 

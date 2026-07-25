@@ -1,0 +1,92 @@
+[
+    {
+        "id": "academy_enter_nuoding",
+        "title": "进入诺丁初级魂师学院",
+        "text": "觉醒武魂后的第二年，你带着推荐名额来到诺丁初级魂师学院，正式开始学习魂师基础。",
+        "trigger": {
+            "age": 7,
+            "state": {
+                "academy": null
+            },
+            "hasTag": [
+                "awakening"
+            ]
+        },
+        "tags": [
+            "academy",
+            "study",
+            "milestone"
+        ],
+        "effects": {
+            "academy": {
+                "set": "诺丁初级魂师学院"
+            },
+            "intelligence": 2,
+            "level": 1
+        },
+        "weight": 70,
+        "next": []
+    },
+    {
+        "id": "academy_work_study_student",
+        "title": "工读生名额",
+        "text": "你的武魂并不耀眼，但村里仍为你争取到一个工读生名额。你背起行囊，走向学院。",
+        "trigger": {
+            "age": 7,
+            "state": {
+                "spirit": "蓝银草",
+                "academy": null
+            },
+            "hasTag": [
+                "awakening"
+            ]
+        },
+        "tags": [
+            "academy",
+            "study",
+            "work_study"
+        ],
+        "effects": {
+            "academy": {
+                "set": "诺丁初级魂师学院"
+            },
+            "intelligence": 1,
+            "luck": 1
+        },
+        "weight": 50,
+        "next": []
+    },
+    {
+        "id": "academy_elite_recommendation",
+        "title": "特别推荐",
+        "text": "你的武魂和天赋引起了长辈注意。你获得了一封特别推荐信，入学之路比旁人顺利许多。",
+        "trigger": {
+            "age": 7,
+            "state": {
+                "academy": null
+            },
+            "hasTag": [
+                "rare"
+            ],
+            "attributes": {
+                "level": {
+                    "min": 3
+                }
+            }
+        },
+        "tags": [
+            "academy",
+            "study",
+            "elite"
+        ],
+        "effects": {
+            "academy": {
+                "set": "推荐入学"
+            },
+            "intelligence": 2,
+            "power": 1
+        },
+        "weight": 100,
+        "next": []
+    }
+]

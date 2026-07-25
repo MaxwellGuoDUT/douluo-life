@@ -1,3 +1,4 @@
+import academyEvents from "../data/events/academy.json" with { type: "json" };
 import birthEvent from "../data/events/birth.json" with { type: "json" };
 import defaultEvent from "../data/events/default.json" with { type: "json" };
 import growthEvents from "../data/events/growth.json" with { type: "json" };
@@ -8,7 +9,8 @@ export class EventManager {
         this.events = [
             ...this.normalizeEvents(birthEvent),
             ...this.normalizeEvents(growthEvents),
-            ...this.normalizeEvents(spiritEvents)
+            ...this.normalizeEvents(spiritEvents),
+            ...this.normalizeEvents(academyEvents)
         ];
 
         this.defaultEvent = defaultEvent;
