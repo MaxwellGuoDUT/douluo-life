@@ -1,0 +1,12 @@
+{
+    "id": "default_001",
+    "title": "平静的一年",
+    "text": "这一年没有发生特别的事情，你仍在慢慢成长。",
+    "trigger": {},
+    "tags": [
+        "default"
+    ],
+    "effects": {},
+    "weight": 0,
+    "next": []
+}

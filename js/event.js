@@ -1,87 +1,23 @@
 import birthEvent from "../data/events/birth.json" with { type: "json" };
+import defaultEvent from "../data/events/default.json" with { type: "json" };
+import growthEvents from "../data/events/growth.json" with { type: "json" };
+import spiritEvents from "../data/events/spirit.json" with { type: "json" };
 
 export class EventManager {
     constructor() {
         this.events = [
-            birthEvent,
-            {
-                id: "growth_001",
-                title: "初次成长",
-                text: "在家人的照顾下，你平安地度过了人生中的第一年。",
-                trigger: {
-                    age: 1
-                },
-                tags: [
-                    "growth"
-                ],
-                effects: {
-                    power: 2
-                },
-                weight: 100,
-                next: []
-            },
-            {
-                id: "growth_lucky_001",
-                title: "天生灵慧",
-                text: "你的眼神比同龄孩子更灵动，家人都觉得你天生带着几分福缘。",
-                trigger: {
-                    age: 2,
-                    attributes: {
-                        luck: {
-                            min: 15
-                        }
-                    },
-                    hasEvent: [
-                        "birth_001"
-                    ]
-                },
-                tags: [
-                    "growth",
-                    "talent"
-                ],
-                effects: {
-                    intelligence: 1,
-                    luck: 1
-                },
-                weight: 30,
-                next: []
-            },
-            {
-                id: "growth_memory_001",
-                title: "最初的记忆",
-                text: "你开始记得这个世界的声音、气味，以及家人讲述的斗罗大陆传说。",
-                trigger: {
-                    age: 3,
-                    hasTag: [
-                        "birth"
-                    ]
-                },
-                tags: [
-                    "growth",
-                    "memory"
-                ],
-                effects: {
-                    intelligence: 2
-                },
-                weight: 40,
-                next: []
-            }
+            ...this.normalizeEvents(birthEvent),
+            ...this.normalizeEvents(growthEvents),
+            ...this.normalizeEvents(spiritEvents)
         ];
 
-        this.defaultEvent = {
-            id: "default_001",
-            title: "平静的一年",
-            text: "这一年没有发生特别的事情，你仍在慢慢成长。",
-            trigger: {},
-            tags: [
-                "default"
-            ],
-            effects: {},
-            weight: 0,
-            next: []
-        };
+        this.defaultEvent = defaultEvent;
 
         this.validateEvents();
+    }
+
+    normalizeEvents(events) {
+        return Array.isArray(events) ? events : [events];
     }
 
     getEvent(player) {
@@ -114,6 +50,10 @@ export class EventManager {
         }
 
         if (!this.matchAttributeTriggers(trigger.attributes, player)) {
+            return false;
+        }
+
+        if (!this.matchStateTriggers(trigger.state, player)) {
             return false;
         }
 
@@ -159,6 +99,20 @@ export class EventManager {
             }
 
             return true;
+        });
+    }
+
+    matchStateTriggers(state, player) {
+        if (!state) {
+            return true;
+        }
+
+        return Object.entries(state).every(([key, value]) => {
+            if (!Object.prototype.hasOwnProperty.call(player, key)) {
+                return false;
+            }
+
+            return player[key] === value;
         });
     }
 
@@ -208,6 +162,10 @@ export class EventManager {
 
             if (event.trigger.hasTag && !Array.isArray(event.trigger.hasTag)) {
                 throw new TypeError(`Event "${event.id}" trigger.hasTag must be an array.`);
+            }
+
+            if (event.trigger.state && (typeof event.trigger.state !== "object" || Array.isArray(event.trigger.state))) {
+                throw new TypeError(`Event "${event.id}" trigger.state must be an object.`);
             }
 
             if (!Object.prototype.hasOwnProperty.call(event, "effects")) {

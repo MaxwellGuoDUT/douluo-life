@@ -1,0 +1,20 @@
+[
+    {
+        "id": "blue_silver_grass",
+        "name": "蓝银草",
+        "rarity": "common",
+        "type": "plant"
+    },
+    {
+        "id": "soft_bone_rabbit",
+        "name": "柔骨兔",
+        "rarity": "uncommon",
+        "type": "beast"
+    },
+    {
+        "id": "clear_sky_hammer",
+        "name": "昊天锤",
+        "rarity": "rare",
+        "type": "tool"
+    }
+]

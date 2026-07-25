@@ -2,7 +2,7 @@
 
 项目：斗罗人生模拟器  
 记录范围：2026-07-19 至 2026-07-25  
-当前阶段：文字人生模拟 MVP，已具备玩家、事件、历史记录、数值效果和条件触发系统。
+当前阶段：文字人生模拟 MVP，已具备玩家、事件、历史记录、数值效果、条件触发和武魂觉醒事件链。
 
 ## 项目总览
 
@@ -19,6 +19,7 @@
 - 玩家人生历史 `history`。
 - Effects System v1.0，事件可以修改玩家数值。
 - Trigger System v1.0，事件可以根据年龄、属性和历史动态触发。
+- 武魂觉醒事件链，6 岁可根据属性和权重觉醒武魂。
 - UI 与游戏状态联动刷新。
 
 当前主要架构：
@@ -367,13 +368,68 @@ EventManager
 
 优先开始扩展事件库，让空的 `academy.json`、`battle.json`、`ending.json` 逐步接入真实事件数据。建议 Day 7 先实现武魂觉醒事件与基础武魂数据。
 
+## Day 7 - 2026-07-25 - 武魂觉醒事件链
+
+### 目标
+
+利用 Trigger、Effects 和 History 系统完成第一个正式玩法阶段：6 岁武魂觉醒。
+
+### 完成内容
+
+- 新增 `data/events/growth.json`，将成长测试事件从 JS 迁移到数据文件。
+- 新增 `data/events/default.json`，将默认兜底事件迁移到数据文件。
+- 新增 `data/events/spirit.json`，建立 6 岁武魂觉醒事件链。
+- 新增 `data/entities/martial_souls.json`，记录基础武魂数据。
+- `EventManager` 改为统一加载出生、成长、武魂事件数据。
+- 保留事件文件兼容性：单个事件对象和事件数组都可以加载。
+- Trigger 新增 `state` 条件，用于判断 `spirit: null` 等非数值状态。
+- Effects 扩展支持 `{ "set": value }` 操作，用于设置 `spirit`。
+- UI 新增武魂显示，未觉醒时显示“未觉醒”。
+- 更新 `EVENT_SCHEMA.md`，补充 set 操作规范。
+
+### 当前武魂事件
+
+- `spirit_awaken_blue_silver_grass`：蓝银草。
+- `spirit_awaken_soft_bone_rabbit`：柔骨兔。
+- `spirit_awaken_clear_sky_hammer`：昊天锤。
+
+这些事件都由数据驱动，通过 `age: 6`、`spirit: null`、历史标签、属性条件和 `weight` 共同决定是否进入候选池以及最终触发结果。
+
+### 架构变化
+
+事件数据来源从代码内置进一步迁移到数据文件：
+
+```text
+EventManager
+  -> data/events/birth.json
+  -> data/events/default.json
+  -> data/events/growth.json
+  -> data/events/spirit.json
+```
+
+武魂觉醒执行链路：
+
+```text
+玩家 6 岁
+  -> Trigger 筛选可觉醒事件
+  -> weight 随机选择武魂
+  -> Effects set player.spirit
+  -> History 记录觉醒事件
+  -> UI 显示武魂
+```
+
+### 下一步
+
+Day 8 建议进入学院阶段：根据是否已经觉醒武魂、武魂类型和玩家属性，触发初级魂师学院入学或普通成长路线。
+
 ## 阶段总结
 
-前 6 天的开发可以概括为四次升级：
+前 7 天的开发可以概括为五次升级：
 
 1. 从静态页面到可运行 MVP。
 2. 从玩家对象到人生推进流程。
 3. 从写死事件到数据驱动事件系统。
 4. 从固定年龄触发到条件驱动触发系统。
+5. 从基础人生事件到第一个正式玩法阶段：武魂觉醒。
 
 当前项目最重要的设计方向已经明确：用统一的数据规范描述事件，用 `Game` 执行规则，用 `Player` 保存状态，用 `UI` 展示结果。接下来应优先完善触发条件、事件库、存档和更丰富的玩家属性系统。

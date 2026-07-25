@@ -1,0 +1,107 @@
+[
+    {
+        "id": "spirit_awaken_blue_silver_grass",
+        "title": "武魂觉醒：蓝银草",
+        "text": "六岁的你来到武魂殿。光芒散去，一株蓝银草在掌心轻轻摇曳。",
+        "trigger": {
+            "age": 6,
+            "state": {
+                "spirit": null
+            },
+            "hasTag": [
+                "birth"
+            ],
+            "attributes": {
+                "luck": {
+                    "max": 18
+                }
+            }
+        },
+        "tags": [
+            "spirit",
+            "awakening",
+            "milestone"
+        ],
+        "effects": {
+            "spirit": {
+                "set": "蓝银草"
+            },
+            "agility": 1,
+            "intelligence": 1
+        },
+        "weight": 60,
+        "next": []
+    },
+    {
+        "id": "spirit_awaken_soft_bone_rabbit",
+        "title": "武魂觉醒：柔骨兔",
+        "text": "觉醒阵中浮现出轻盈的虚影，你感到身体变得更加灵活。",
+        "trigger": {
+            "age": 6,
+            "state": {
+                "spirit": null
+            },
+            "hasTag": [
+                "birth"
+            ],
+            "attributes": {
+                "agility": {
+                    "min": 10
+                },
+                "luck": {
+                    "min": 15
+                }
+            }
+        },
+        "tags": [
+            "spirit",
+            "awakening",
+            "milestone"
+        ],
+        "effects": {
+            "spirit": {
+                "set": "柔骨兔"
+            },
+            "agility": 4
+        },
+        "weight": 30,
+        "next": []
+    },
+    {
+        "id": "spirit_awaken_clear_sky_hammer",
+        "title": "武魂觉醒：昊天锤",
+        "text": "沉重的锤影在你手中凝聚，觉醒台周围的人群忽然安静下来。",
+        "trigger": {
+            "age": 6,
+            "state": {
+                "spirit": null
+            },
+            "hasTag": [
+                "birth"
+            ],
+            "attributes": {
+                "power": {
+                    "min": 7
+                },
+                "luck": {
+                    "min": 16
+                }
+            }
+        },
+        "tags": [
+            "spirit",
+            "awakening",
+            "milestone",
+            "rare"
+        ],
+        "effects": {
+            "spirit": {
+                "set": "昊天锤"
+            },
+            "power": 5,
+            "level": 2
+        },
+        "weight": 10,
+        "next": []
+    }
+]

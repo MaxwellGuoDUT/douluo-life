@@ -52,15 +52,25 @@ export class Game {
                 throw new TypeError(`Event "${event.id}" effect key "${key}" is not a Player property.`);
             }
 
-            if (typeof value !== "number" || Number.isNaN(value)) {
-                throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number.`);
+            if (typeof value === "number") {
+                if (Number.isNaN(value)) {
+                    throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number.`);
+                }
+
+                if (typeof this.player[key] !== "number") {
+                    throw new TypeError(`Event "${event.id}" effect key "${key}" must target a numeric Player property.`);
+                }
+
+                this.player[key] += value;
+                return;
             }
 
-            if (typeof this.player[key] !== "number") {
-                throw new TypeError(`Event "${event.id}" effect key "${key}" must target a numeric Player property.`);
+            if (value && typeof value === "object" && !Array.isArray(value) && Object.prototype.hasOwnProperty.call(value, "set")) {
+                this.player[key] = value.set;
+                return;
             }
 
-            this.player[key] += value;
+            throw new TypeError(`Event "${event.id}" effect value for "${key}" must be a number or set operation.`);
         });
     }
 }

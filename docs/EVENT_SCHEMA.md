@@ -52,7 +52,10 @@
     "effects": {
         "luck": 5,
         "power": 2,
-        "hp": -10
+        "hp": -10,
+        "spirit": {
+            "set": "蓝银草"
+        }
     }
 }
 ```
@@ -63,6 +66,7 @@
 player.luck += 5;
 player.power += 2;
 player.hp -= 10;
+player.spirit = "蓝银草";
 ```
 
 ### 规则
@@ -70,9 +74,9 @@ player.hp -= 10;
 1. `effects` 必须存在，且必须是 object。
 2. 没有效果时写作 `"effects": {}`，禁止省略字段。
 3. key 必须与 `Player` 已有属性完全一致，大小写敏感。
-4. v1.0 仅支持数值属性修改。目标 Player 属性必须是 number。
-5. value 必须是 number，允许正数、负数和 0。
-6. 正数表示增加，负数表示减少。
+4. value 为 number 时表示数值增减，目标 Player 属性必须是 number。
+5. number 允许正数、负数和 0。正数表示增加，负数表示减少。
+6. value 为 `{ "set": any }` 时表示直接设置属性值，可用于 `spirit` 等非数值属性。
 7. 一个事件允许同时修改多个属性。
 8. Game 必须用统一遍历方式执行 effects，不为单个属性编写专门逻辑。
 
@@ -88,7 +92,13 @@ intelligence
 luck
 ```
 
-暂不支持 `name`、`spirit`、装备、背包、金币、魂环、NPC、Buff / Debuff、概率效果、自定义脚本等复杂效果。
+当前可用于 set 操作的 Player 属性包括：
+
+```text
+spirit
+```
+
+暂不支持装备、背包、金币、魂环、NPC、Buff / Debuff、概率效果、自定义脚本等复杂效果。
 
 ## Trigger 规范
 
@@ -103,6 +113,9 @@ luck
             "luck": {
                 "min": 15
             }
+        },
+        "state": {
+            "spirit": null
         },
         "hasEvent": [
             "birth_001"
@@ -122,6 +135,7 @@ luck
 | minAge | number | 玩家年龄必须大于或等于该值 |
 | maxAge | number | 玩家年龄必须小于或等于该值 |
 | attributes | object | 玩家数值属性条件 |
+| state | object | 玩家状态必须等于指定值 |
 | hasEvent | array | 玩家历史中必须发生过指定事件 id |
 | hasTag | array | 玩家历史中必须发生过指定标签事件 |
 
@@ -160,8 +174,9 @@ luck
 3. `age` 适合固定年龄事件，例如出生、武魂觉醒。
 4. `minAge` / `maxAge` 适合一段年龄内可发生的随机事件。
 5. `attributes` v1.0 仅支持 Player 数值属性。
-6. `hasEvent` 与 `hasTag` 必须写成数组。
-7. `EventManager` 会先筛选全部可触发事件，再根据 `weight` 随机选择一个事件。
+6. `state` 支持严格相等判断，可用于 `spirit: null` 这类非数值状态。
+7. `hasEvent` 与 `hasTag` 必须写成数组。
+8. `EventManager` 会先筛选全部可触发事件，再根据 `weight` 随机选择一个事件。
 
 ## ID 规范
 
