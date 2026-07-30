@@ -251,6 +251,19 @@ v1 兼容 allowlist 继续包含 `spirit`、全局 `soulRings` 与 `soulBones`�
 - `routeFlags`、`annualFlags` 与会话临时值通过有作用域的流程操作写入，不把 v1 `setKey` 样例直接当作跨年状态协议。
 - v1 兼容代码暂不删除；v2 验证器与适配层应和旧运行路径并存。
 
+### 静态验证解释
+
+当前对象映射协议中，验证器按以下方式解释作用域、路径与操作：
+
+- trigger 根键是作用域，例如 `age`、`attributes`、`state`、`nestedState`、`annualFlags`；
+- trigger 对象内的字段名是待检查路径，比较键是 `gt | gte | lt | lte | eq`；
+- effects 根键是 Player 字段路径，数字值等价于数值 `add`，对象值仅允许单一 `set | add | setKey` 操作；
+- 空字段名等价于空路径，直接拒绝；
+- Player v2 已知根路径进行静态类型检查；
+- `martialSouls.*`、`routeStates.*` 等动态实体路径在没有稳定实例定位协议时产生 warning，且正式写入仍不放行。
+
+这里不引入第二套 condition/effect wire format。后续如采用显式 `{ scope, path, op }` 描述符，必须另行版本化，不能让验证器猜测两套语法。
+
 ## 7. Flow
 
 ```json
@@ -527,30 +540,34 @@ branch
 
 默认 `block`。`replace`/`branch` 必须由已确认剧情显式声明。
 
-建议的 Player v2 路线状态：
+Player v2 路线状态以四个 bucket 为唯一真源：
 
 ```json
 {
-  "activeRoutes": {
-    "main": null,
-    "faction": [],
-    "npc": [],
-    "deity": [],
-    "personal": [],
-    "temporary": []
-  },
   "routeStates": {
-    "route_id": {
-      "nodeId": "next_node",
-      "flags": {},
-      "status": "active",
-      "lastAdvancedYear": 12
-    }
+    "active": [
+      {
+        "routeId": "route_id",
+        "lane": "faction",
+        "nodeId": "next_node",
+        "startedAge": 8,
+        "lastAdvancedAge": 12,
+        "status": "active",
+        "data": {},
+        "flags": {},
+        "visitCounts": {}
+      }
+    ],
+    "completed": [],
+    "failed": [],
+    "blocked": []
   },
   "annualFlags": {},
   "spinHistory": []
 }
 ```
+
+禁止再保存第二份 `activeRoutes` 镜像。路线完成、失败或阻塞时，将同一个状态对象原子移动到对应 bucket，并同步 `status`。
 
 ### 路线操作
 
@@ -578,7 +595,7 @@ branch
 1. 检查 route trigger 和 canonLevel；
 2. 检查 `main` 唯一性；
 3. 检查所有 mutexGroups；
-4. 按显式 `block`、`replace` 或 `branch` 策略更新 activeRoutes/routeStates；
+4. 按显式 `block`、`replace` 或 `branch` 策略更新 `routeStates`；
 5. 失败时不留下半激活状态。
 
 `block` 不能覆盖旧路线；`replace` 必须保存被替换路线的结束原因；`branch` 必须保存父路线关系。
