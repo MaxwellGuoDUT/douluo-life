@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "combat-power-config/1.0",
+  "rulesVersion": "combat-power/1.0",
+  "status": "provisional",
+  "combatBase": {
+    "defaultMode": "level",
+    "supportedModes": [
+      "level",
+      "soul_beast_cultivation",
+      "hybrid"
+    ],
+    "implementedModes": [
+      "level"
+    ]
+  },
+  "level": {
+    "minLevel": 1,
+    "maxLevel": 169,
+    "continuousCurve": {
+      "mode": "increment_by_decade",
+      "status": "confirmed"
+    },
+    "breakthroughBonuses": [],
+    "cumulativeBonusAnchors": [],
+    "specialLevelBonuses": [
+      {
+        "id": "level_100_special_node",
+        "level": 100,
+        "bonus": 490,
+        "status": "provisional",
+        "reason": "使100级从连续曲线和既有奖励跃升至1260；仍依赖未分配的累计220点突破奖励"
+      }
+    ],
+    "validationAnchors": [
+      {
+        "kind": "continuous",
+        "level": 10,
+        "expectedPower": 10,
+        "status": "confirmed"
+      },
+      {
+        "kind": "continuous",
+        "level": 20,
+        "expectedPower": 30,
+        "status": "confirmed"
+      },
+      {
+        "kind": "continuous",
+        "level": 30,
+        "expectedPower": 60,
+        "status": "confirmed"
+      },
+      {
+        "kind": "total",
+        "level": 99,
+        "expectedPower": 760,
+        "unresolvedBonus": 220,
+        "status": "provisional",
+        "reason": "累计额外220点的具体突破节点分配尚未确认"
+      },
+      {
+        "kind": "total",
+        "level": 100,
+        "expectedPower": 1260,
+        "unresolvedBonus": 220,
+        "status": "provisional",
+        "reason": "100级特殊节点490已配置，但仍依赖未分配的累计220点"
+      },
+      {
+        "kind": "continuous",
+        "level": 169,
+        "expectedPower": 1513,
+        "status": "confirmed"
+      }
+    ]
+  },
+  "martialSoulQuality": {
+    "gradeField": "qualityGrade",
+    "coefficients": {
+      "top": 0.25,
+      "extreme": 0.3
+    },
+    "stacking": {
+      "mode": "sum",
+      "coefficientCap": 1
+    }
+  },
+  "martialSoulAvatar": {
+    "mode": "active_only",
+    "unlockLevel": 70,
+    "gradeField": "avatarGrade",
+    "fallbackGradeField": "qualityGrade",
+    "coefficients": {
+      "top": 0.25,
+      "extreme": 0.3
+    }
+  },
+  "soulRings": {
+    "yearsField": "years",
+    "legacyYearsField": "age",
+    "minimumLegalYears": 10,
+    "ageBrackets": [
+      {
+        "minYears": 10,
+        "maxYears": 99,
+        "basePower": 1
+      },
+      {
+        "minYears": 100,
+        "maxYears": 499,
+        "basePower": 3
+      },
+      {
+        "minYears": 500,
+        "maxYears": 999,
+        "basePower": 5
+      },
+      {
+        "minYears": 1000,
+        "maxYears": 4999,
+        "basePower": 8
+      },
+      {
+        "minYears": 5000,
+        "maxYears": 9999,
+        "basePower": 11
+      },
+      {
+        "minYears": 10000,
+        "maxYears": 49999,
+        "basePower": 16
+      },
+      {
+        "minYears": 50000,
+        "maxYears": 99999,
+        "basePower": 21
+      },
+      {
+        "minYears": 100000,
+        "maxYears": 199999,
+        "basePower": 30
+      },
+      {
+        "minYears": 200000,
+        "maxYears": 299999,
+        "basePower": 40
+      },
+      {
+        "minYears": 300000,
+        "maxYears": 399999,
+        "basePower": 50
+      },
+      {
+        "minYears": 400000,
+        "maxYears": 499999,
+        "basePower": 60
+      },
+      {
+        "minYears": 500000,
+        "maxYears": 599999,
+        "basePower": 70
+      },
+      {
+        "minYears": 600000,
+        "maxYears": 699999,
+        "basePower": 80
+      },
+      {
+        "minYears": 700000,
+        "maxYears": 799999,
+        "basePower": 90
+      },
+      {
+        "minYears": 800000,
+        "maxYears": 899999,
+        "basePower": 100
+      },
+      {
+        "minYears": 900000,
+        "maxYears": 999999,
+        "basePower": 110
+      },
+      {
+        "minYears": 1000000,
+        "maxYears": null,
+        "basePower": 200,
+        "ringType": "non_divine"
+      }
+    ],
+    "bloodlineMultipliers": {
+      "low": 0.1,
+      "ordinary": 1,
+      "top": 2,
+      "sub_dragon": 2,
+      "earth_dragon": 2,
+      "pure_dragon": 3
+    },
+    "divineGold": {
+      "ringType": "divine_gold",
+      "fixedPower": 1000,
+      "ignoreBloodlineMultiplier": true
+    },
+    "godBestowed": {
+      "sourceType": "god_bestowed",
+      "qualityMultiplierField": "qualityMultiplier",
+      "requiresBloodlineGrade": false
+    }
+  },
+  "soulBones": {
+    "yearsField": "years",
+    "legacyYearsField": "age",
+    "reuseSoulRingAgeBrackets": true,
+    "reuseBloodlineMultipliers": true,
+    "minimumItemPower": 1
+  },
+  "divineArmor": {
+    "equipmentState": "divine_armor",
+    "defaultMultiplier": 3,
+    "replacesSoulBonePower": true,
+    "status": "provisional",
+    "reason": "第一阶段沿用100级验收案例的300%倍率，等待完整神装平衡表",
+    "setBonuses": {}
+  },
+  "coefficientModules": {
+    "domains": {
+      "playerField": "domains",
+      "coefficientField": "coefficient",
+      "stacking": "sum",
+      "definitions": {},
+      "status": "provisional"
+    },
+    "attributes": {
+      "playerField": "combatAttributes",
+      "coefficientField": "coefficient",
+      "stacking": "sum",
+      "definitions": {},
+      "status": "provisional"
+    }
+  },
+  "entityContributionModules": {
+    "soulCore": {
+      "playerField": "soulCores",
+      "definitions": {},
+      "status": "provisional"
+    },
+    "deity": {
+      "playerField": "deities",
+      "definitions": {},
+      "status": "provisional"
+    },
+    "artifacts": {
+      "playerField": "artifacts",
+      "definitions": {},
+      "status": "provisional"
+    },
+    "titles": {
+      "playerField": "combatTitles",
+      "definitions": {},
+      "status": "provisional"
+    },
+    "other": {
+      "playerField": "otherCombatSources",
+      "definitions": {},
+      "status": "provisional"
+    }
+  },
+  "rounding": {
+    "mode": "math_round",
+    "roundEachSoulRing": true,
+    "roundEachSoulBone": true,
+    "combineCoefficientsBeforeRounding": true,
+    "minimumOrdinaryItemPower": 1,
+    "minimumTotalPower": 0
+  }
+}
