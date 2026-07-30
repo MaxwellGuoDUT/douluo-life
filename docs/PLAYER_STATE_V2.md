@@ -147,6 +147,7 @@ effectiveCombatPower
 - 没有武魂但有魂环时建立未解析占位实例，并产生 warning。
 - 孤立魂环占位实例不自动成为激活武魂，`activeMartialSoulInstanceId` 保持 `null`。
 - 旧魂骨 `age` 改为 `years`；未知血脉、来源和定义保持未解析。
+- 七个标准槽位之外的旧魂骨扩展槽位保存在 `flags.legacyUnrecognizedSoulBoneSlots` 并逐项 warning，不静默丢弃。
 - 同时存在且冲突的 `age`、`years` 优先保留 `years`，原值证据写入实体迁移 flags 并产生 warning。
 - 未知旧字段深复制到 `flags.legacyUnrecognizedFields`，并逐项产生 warning。
 - 旧派生战力字段只产生丢弃 warning，不进入 Player v2 或迁移 metadata。

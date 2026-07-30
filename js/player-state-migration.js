@@ -335,6 +335,28 @@ export function migratePlayerV1ToV2(playerV1) {
         );
     });
 
+    const unrecognizedSoulBoneSlots = Object.fromEntries(
+        Object.entries(legacySoulBones)
+            .filter(([slot]) => !SOUL_BONE_SLOTS.includes(slot))
+            .map(([slot, value]) => {
+                return [slot, clonePlayerStateValue(value)];
+            })
+    );
+
+    if (Object.keys(unrecognizedSoulBoneSlots).length > 0) {
+        player.flags.legacyUnrecognizedSoulBoneSlots =
+            unrecognizedSoulBoneSlots;
+
+        Object.keys(unrecognizedSoulBoneSlots).forEach(slot => {
+            addWarning(
+                warnings,
+                "UNRECOGNIZED_LEGACY_SOUL_BONE_SLOT_PRESERVED",
+                `Unrecognized legacy soul bone slot "${slot}" was preserved in migration metadata.`,
+                `soulBones.${slot}`
+            );
+        });
+    }
+
     if (Object.prototype.hasOwnProperty.call(playerV1, "soulBones")
         && !isPlainObject(playerV1.soulBones)) {
         player.flags.legacyInvalidSoulBones = clonePlayerStateValue(

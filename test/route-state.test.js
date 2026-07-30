@@ -247,6 +247,33 @@ test("missing active route definitions never masquerade as no conflict", () => {
     assert.equal(decision.code, "MISSING_ACTIVE_ROUTE_DEFINITION");
 });
 
+test("active route state must match its registered definition", () => {
+    const existing = routeDefinition({
+        id: "route_existing"
+    });
+    const incoming = routeDefinition({
+        id: "route_incoming"
+    });
+    const mismatchedDefinition = routeDefinition({
+        id: "wrong_definition",
+        lane: "main"
+    });
+    const routeStates = createPlayerV2().routeStates;
+
+    routeStates.active.push(activeRoute(existing));
+
+    assertRouteError(() => canEnterRoute(
+        routeStates,
+        incoming,
+        {
+            routeDefinitionsById: {
+                [existing.id]: mismatchedDefinition,
+                [incoming.id]: incoming
+            }
+        }
+    ), "ACTIVE_ROUTE_DEFINITION_MISMATCH");
+});
+
 test("enterRoute creates a new active state atomically", () => {
     const routeStates = createPlayerV2().routeStates;
     const definition = routeDefinition();

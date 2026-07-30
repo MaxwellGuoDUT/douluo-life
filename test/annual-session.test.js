@@ -259,5 +259,11 @@ test("invalid commits and invalid node keys leave input unchanged", () => {
         {},
         limits
     ), "INVALID_ANNUAL_NODE_KEY");
+    assertSessionError(() => assertCanExecuteNode(
+        session,
+        ":node_only",
+        {},
+        limits
+    ), "INVALID_ANNUAL_NODE_KEY");
     assert.equal(JSON.stringify(session), before);
 });

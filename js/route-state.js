@@ -463,6 +463,20 @@ export function canEnterRoute(
 
         assertRouteDefinition(activeDefinition);
 
+        if (activeDefinition.id !== activeRoute.routeId
+            || activeDefinition.lane !== activeRoute.lane) {
+            fail(
+                "ACTIVE_ROUTE_DEFINITION_MISMATCH",
+                `Active route "${activeRoute.routeId}" does not match its registered definition.`,
+                {
+                    routeId: activeRoute.routeId,
+                    stateLane: activeRoute.lane,
+                    definitionId: activeDefinition.id,
+                    definitionLane: activeDefinition.lane
+                }
+            );
+        }
+
         const mainConflict = routeDefinition.lane === "main"
             && activeRoute.lane === "main";
         const sharedMutexGroups = activeDefinition.mutexGroups.filter(

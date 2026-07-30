@@ -196,6 +196,30 @@ test("legacy soul bone age migrates to years with unresolved metadata warnings",
     ));
 });
 
+test("unrecognized legacy soul bone slots are preserved with warnings", () => {
+    const legacyExtension = {
+        name: "自定义翼骨",
+        age: 12000
+    };
+    const result = migratePlayerV1ToV2({
+        soulBones: {
+            wings: legacyExtension
+        }
+    });
+
+    assert.deepEqual(
+        result.player.flags.legacyUnrecognizedSoulBoneSlots.wings,
+        legacyExtension
+    );
+    assert.notStrictEqual(
+        result.player.flags.legacyUnrecognizedSoulBoneSlots.wings,
+        legacyExtension
+    );
+    assert.ok(warningCodes(result).includes(
+        "UNRECOGNIZED_LEGACY_SOUL_BONE_SLOT_PRESERVED"
+    ));
+});
+
 test("ensurePlayerV2 deep-copies v2 input without repeating migration", () => {
     const player = createPlayerV2();
     const first = ensurePlayerV2(player);

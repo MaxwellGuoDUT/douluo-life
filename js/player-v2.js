@@ -69,8 +69,17 @@ function isPlainObject(value) {
 export function clonePlayerStateValue(value) {
     if (value === null
         || typeof value === "string"
-        || typeof value === "number"
         || typeof value === "boolean") {
+        return value;
+    }
+
+    if (typeof value === "number") {
+        if (!Number.isFinite(value)) {
+            throw new TypeError(
+                "Player state numbers must be finite for JSON compatibility."
+            );
+        }
+
         return value;
     }
 

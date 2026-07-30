@@ -3,6 +3,7 @@ import test from "node:test";
 
 import { Game } from "../js/game.js";
 import {
+    clonePlayerStateValue,
     createPlayerV2,
     validatePlayerV2
 } from "../js/player-v2.js";
@@ -64,6 +65,19 @@ test("createPlayerV2 returns independent JSON-compatible state without derived c
         errors: [],
         warnings: []
     });
+});
+
+test("Player state cloning rejects non-finite numbers that cannot round-trip through JSON", () => {
+    assert.throws(
+        () => clonePlayerStateValue({
+            value: Number.POSITIVE_INFINITY
+        }),
+        /must be finite/
+    );
+    assert.throws(
+        () => clonePlayerStateValue(Number.NaN),
+        /must be finite/
+    );
 });
 
 test("Player v2 validator rejects duplicate martial soul identities and slots", () => {

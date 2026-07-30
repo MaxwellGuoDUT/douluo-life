@@ -49,7 +49,13 @@ function assertLimits(limits) {
 }
 
 function assertNodeKey(nodeKey) {
-    if (!isNonEmptyString(nodeKey) || !nodeKey.includes(":")) {
+    const separatorIndex = typeof nodeKey === "string"
+        ? nodeKey.indexOf(":")
+        : -1;
+
+    if (!isNonEmptyString(nodeKey)
+        || separatorIndex <= 0
+        || separatorIndex >= nodeKey.length - 1) {
         fail(
             "INVALID_ANNUAL_NODE_KEY",
             "nodeKey must include a flow ID and node ID separated by a colon."
