@@ -146,6 +146,19 @@ test("soul ring brackets, bloodline multipliers, and divine gold fixed power mat
         ringType: "divine_gold",
         soulBeastBloodlineGrade: "unknown"
     }, baseRules), 1000);
+    const normalMillionYearPower = calculateSoulRingPower({
+        years: 1000000,
+        ringType: "normal",
+        soulBeastBloodlineGrade: "top"
+    }, baseRules);
+    const nonDivineMillionYearPower = calculateSoulRingPower({
+        years: 1000000,
+        ringType: "non_divine",
+        soulBeastBloodlineGrade: "top"
+    }, baseRules);
+
+    assert.equal(normalMillionYearPower, 400);
+    assert.equal(normalMillionYearPower, nonDivineMillionYearPower);
 });
 
 test("invalid 1-9 year rings and unknown bloodline grades are reported and skipped", () => {

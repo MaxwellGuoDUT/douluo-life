@@ -694,12 +694,32 @@ function collectMartialSouls(player, warnings) {
     player.martialSouls.forEach((soul, index) => {
         const path = `martialSouls[${index}]`;
 
-        if (!isPlainObject(soul) || typeof soul.definitionId !== "string" || soul.definitionId.length === 0) {
+        if (!isPlainObject(soul)) {
             addWarning(
                 warnings,
                 "MISSING_MARTIAL_SOUL_ENTITY",
-                "Martial soul entries require a stable definitionId.",
+                "Martial soul entries must be objects.",
                 path
+            );
+            return;
+        }
+
+        const hasDefinitionId = typeof soul.definitionId === "string"
+            && soul.definitionId.length > 0;
+
+        if (soul.definitionId === null) {
+            addWarning(
+                warnings,
+                "UNRESOLVED_MARTIAL_SOUL_DEFINITION",
+                "Martial soul definitionId is unresolved; definition-driven contributions were skipped.",
+                `${path}.definitionId`
+            );
+        } else if (!hasDefinitionId) {
+            addWarning(
+                warnings,
+                "MISSING_MARTIAL_SOUL_ENTITY",
+                "Martial soul definitionId must be a non-empty string or null.",
+                `${path}.definitionId`
             );
             return;
         }
@@ -721,7 +741,7 @@ function collectMartialSouls(player, warnings) {
             return;
         }
 
-        if (definitionIds.has(soul.definitionId)) {
+        if (hasDefinitionId && definitionIds.has(soul.definitionId)) {
             addWarning(
                 warnings,
                 "DUPLICATE_MARTIAL_SOUL",
@@ -757,7 +777,9 @@ function collectMartialSouls(player, warnings) {
             instanceIds.add(soul.instanceId);
         }
 
-        definitionIds.add(soul.definitionId);
+        if (hasDefinitionId) {
+            definitionIds.add(soul.definitionId);
+        }
 
         if (typeof soul.evolutionFamilyId === "string"
             && soul.evolutionFamilyId.length > 0) {
@@ -989,7 +1011,9 @@ function calculateAgeBasedItemPower(
         return 0;
     }
 
-    const itemType = entity.ringType || "non_divine";
+    const itemType = entity.ringType === "normal"
+        ? "non_divine"
+        : entity.ringType || "non_divine";
     const bracket = findAgeBracket(years, soulRingRules, itemType);
 
     if (!bracket) {
