@@ -356,6 +356,16 @@ terminal
 - 只有明确的 `effects` 与 allowlist 可以写 Player 履历状态。
 - 流程节点若写入非默认作用域，必须显式声明 `targetScope: "annual"` 或 `targetScope: "route"`；不得用任意 `saveAs` 路径修改 Player。
 
+当前最小 `AnnualSession` 尚未加入 `sessionContext`，因此首版引擎遇到非空 `saveAs`、`countFrom` 或 `source` 时必须显式报告未支持，不能静默丢弃。待临时上下文协议单独确认后再扩展会话结构。
+
+`annualFlags` 的运行时边界：
+
+- 创建年度会话时，由调用方把 Player 的当年 flags 深复制进 `AnnualSession.annualFlags`；
+- 会话运行期间以 `AnnualSession.annualFlags` 为唯一真源，不同时修改 Player 镜像；
+- 年度结束后的提交与下一年清理由 Game 层后续显式完成，本阶段引擎不隐式同步。
+
+`flow.sessionLimits.maxSpins` 是单 flow 的数据声明，`maxSpinsPerYear` 是整个 AnnualSession 的运行时上限。二者同时存在时后续引擎应执行更严格的限制；二者名称不同是因为作用域不同，不应互相覆盖。
+
 ## 8. roll 与 gate
 
 ```json
