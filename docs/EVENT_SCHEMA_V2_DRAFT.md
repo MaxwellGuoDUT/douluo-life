@@ -366,6 +366,15 @@ terminal
 
 `flow.sessionLimits.maxSpins` 是单 flow 的数据声明，`maxSpinsPerYear` 是整个 AnnualSession 的运行时上限。二者同时存在时后续引擎应执行更严格的限制；二者名称不同是因为作用域不同，不应互相覆盖。
 
+Day 11 最小运行时状态：
+
+| 类别 | 已实现 | 明确未实现 |
+| --- | --- | --- |
+| flow op | `roll`、`end` | `gate`、`repeatWheel`、`dispatchWheel`、`setRoute`、`yieldYear`、`terminal` |
+| advance | `same_year`、`end` | `next_year`、`terminal` |
+
+已知但未实现的操作抛出稳定的 `UNSUPPORTED_FLOW_OP` 或 `UNSUPPORTED_ADVANCE`；未知拼写使用独立错误码，不静默跳过。运行时默认防循环上限 `50 / 5 / 20 / 10` 整组标记为 `provisional`，是开发期安全阀，不构成平衡决定。
+
 ## 8. roll 与 gate
 
 ```json
