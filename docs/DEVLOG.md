@@ -579,3 +579,77 @@ Day 10 建议开始转盘事件池阶段：加入 8-12 岁学院生活、10 岁�
 7. 从少量状态字段升级为完整 Player State 容器。
 
 当前项目最重要的设计方向已经明确：用统一的数据规范描述事件，用 `Game` 执行规则，用 `Player` 保存状态，用 `UI` 展示结果。接下来应优先完善触发条件、事件库、存档和更丰富的玩家属性系统。
+
+## Day 10 - 2026-07-31 - Event Schema v2 与战力基础设施
+
+### 目标
+
+暂停批量扩写旧剧情，先建立 v2 阶段需要的设计边界和战力计算基础设施。重点是让路线、事件和战力系统有清晰的规则入口，而不是把公式或跳转逻辑写死进旧运行时。
+
+### 完成内容
+
+- 新增 `docs/DECISION_RECORD_V2.md`，记录 Event Schema v2、路线系统和战力系统的阶段性决策。
+- 新增 `docs/EVENT_SCHEMA_V2_DRAFT.md`，整理 Event Schema v2 草案和兼容边界。
+- 新增 `docs/COMBAT_POWER_SYSTEM.md`，说明战力是派生值，不是 Player 上可被 effects 永久加减的属性。
+- 新增 `data/config/combat-power.json`，将等级、魂环、血脉倍率等战力参数放入数据配置。
+- 新增 `js/combat-power.js`，提供纯函数战力计算模块。
+- 为等级、魂环、血脉倍率、99 级极限斗罗和 100 级海神唐三样例建立开发期验证。
+- 对未确认数值保留 `provisional` 标记，没有把 99 级累计额外 220 点拆分写成隐藏常数。
+
+### 设计边界
+
+- 不批量改写 510 个旧转盘。
+- 不根据 WheelID 顺序自动生成正式剧情跳转。
+- 不把叙事里的“你选择”“你决定”解释成玩家主动选择。
+- 不让 effects 直接修改派生战力。
+- 不在 `Game`、`EventManager` 或 UI 中硬编码战力公式。
+- 不擅自补完整套神位、神器、称号战力。
+
+### 下一步
+
+Day 11 进入 Player State v2 和流程基础设施：先做 v1 到 v2 的纯迁移适配器和兼容选择器，再继续建立 Event Schema v2 验证器、路线状态、AnnualSession 和 WheelFlowEngine 最小骨架。
+
+## Day 11 - 2026-07-31 - Player v2 与 Wheel Flow Foundation
+
+### 目标
+
+在不切换现有 `Game.newGame()` 和 Player v1 运行路径的前提下，建立 Player State v2、迁移适配器、兼容选择器、事件验证器和最小流程引擎，为后续路线系统和年度转盘流程做基础设施准备。
+
+### 完成内容
+
+- 新增 Player State v2 基础结构。
+- 新增 Player v1 到 v2 的纯迁移适配器。
+- 新增兼容选择器，让新系统可以只读访问 v2 结构，同时不破坏 v1 当前运行。
+- 新增 Event Schema v2 静态验证器和示例覆盖。
+- 新增路线状态系统与 AnnualSession 模型。
+- 新增 WheelFlowEngine 最小骨架，当前覆盖 `roll`、`same_year`、`end` 等基础流程操作。
+- 增加战力兼容和只读展示入口，继续保持战力为派生值。
+- 追加修复以保护 v2 状态不变量。
+
+### 本地提交
+
+- `9b69616 feat: add player state v2 and migration adapter`
+- `4fc850a feat: add event schema v2 validator`
+- `ba1f82b feat: add route state and annual session models`
+- `8f50950 feat: add minimal wheel flow engine`
+- `9e76d35 fix: preserve v2 state invariants`
+
+### 验证结果
+
+- `node --test` 通过。
+- 共 66 项测试通过。
+- 语法检查通过。
+- JSON / 文档块检查通过。
+- EventManager 加载检查通过。
+- Player v1 new-game smoke test 通过。
+
+### 当前边界
+
+- Player v1 仍是现有运行路径，尚未切换到 Player v2。
+- WheelFlowEngine 仍是最小骨架，`next_year`、`repeat`、`dispatch`、`terminal` 等复杂流程能力留待后续阶段。
+- 路线状态和 AnnualSession 已建立基础模型，但尚未大规模接入旧转盘数据。
+- 负责人输入材料仍保持未暂存状态，不混入功能提交。
+
+### 收尾状态
+
+Day 11 本地阶段可以告一段落。下一步是将当前分支 `codex/day10-v2-combat-foundation` 推送到远端并创建 Draft PR，交给网页端 review Player v2、Event Schema v2 validator、RouteState、AnnualSession、WheelFlowEngine 的边界与命名。
