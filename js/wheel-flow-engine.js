@@ -28,6 +28,7 @@ const SUPPORTED_FLOW_OPS = new Set([
 
 const SUPPORTED_ADVANCES = new Set([
     "same_year",
+    "next_year",
     "end"
 ]);
 
@@ -650,6 +651,22 @@ function resolveAdvance(item, node, flow) {
         return next;
     }
 
+    if (next.advance === "next_year") {
+        if (next.target?.kind !== "route_node"
+            || !isNonEmptyString(next.target.routeId)
+            || !isNonEmptyString(next.target.nodeId)) {
+            fail(
+                "INVALID_NEXT_YEAR_TARGET",
+                "next_year advances must target a persistent route_node.",
+                {
+                    targetKind: next.target?.kind ?? null
+                }
+            );
+        }
+
+        return next;
+    }
+
     if (next.target?.kind !== "flow_node") {
         fail(
             "UNSUPPORTED_TARGET_KIND",
@@ -887,7 +904,7 @@ export function executeFlowNode({
         );
     }
 
-    const endsSession = next.advance === "end";
+    const endsSession = ["end", "next_year"].includes(next.advance);
     const nextSession = commitAnnualStep(
         session,
         {
@@ -898,11 +915,16 @@ export function executeFlowNode({
                 ? {
                     status: "completed",
                     result: {
-                        advance: "end",
+                        advance: next.advance,
                         flowId: flow.id,
                         nodeId: node.id,
                         wheelId: wheel.id,
-                        itemId: item.id
+                        itemId: item.id,
+                        ...(next.target
+                            ? {
+                                target: clonePlayerStateValue(next.target)
+                            }
+                            : {})
                     }
                 }
                 : {})
@@ -960,7 +982,7 @@ export function runFlow({
         currentPlayer = step.player;
         currentSession = step.session;
 
-        if (step.next.advance === "end") {
+        if (["end", "next_year"].includes(step.next.advance)) {
             return {
                 player: currentPlayer,
                 session: currentSession,

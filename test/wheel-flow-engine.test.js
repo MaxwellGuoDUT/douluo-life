@@ -553,8 +553,40 @@ test("known unsupported ops and unknown ops have distinct error codes", () => {
     }), "UNKNOWN_FLOW_OP");
 });
 
-test("next_year and terminal advances are explicit unsupported interfaces", () => {
-    ["next_year", "terminal"].forEach(advance => {
+test("next_year completes the annual session while terminal remains unsupported", () => {
+    const nextYearWheel = wheel("wheel_next_year", [
+        item("only", 1, {
+            next: {
+                advance: "next_year",
+                target: {
+                    kind: "route_node",
+                    routeId: "route_test",
+                    nodeId: "roll"
+                }
+            }
+        })
+    ]);
+    const nextYearFlow = flow([
+        {
+            id: "roll",
+            op: "roll",
+            wheelId: nextYearWheel.id
+        }
+    ]);
+    const nextYearResult = executeFlowNode({
+        player: createPlayer(),
+        session: createSession(),
+        flow: nextYearFlow,
+        nodeId: "roll",
+        wheelsById: [nextYearWheel],
+        rng: sequenceRng([0])
+    });
+
+    assert.equal(nextYearResult.next.advance, "next_year");
+    assert.equal(nextYearResult.session.status, "completed");
+    assert.equal(nextYearResult.session.result.advance, "next_year");
+
+    ["terminal"].forEach(advance => {
         const testWheel = wheel(`wheel_${advance}`, [
             item("only", 1, {
                 next: {

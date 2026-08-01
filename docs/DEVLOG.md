@@ -653,3 +653,42 @@ Day 11 进入 Player State v2 和流程基础设施：先做 v1 到 v2 的纯迁
 ### 收尾状态
 
 Day 11 本地阶段可以告一段落。下一步是将当前分支 `codex/day10-v2-combat-foundation` 推送到远端并创建 Draft PR，交给网页端 review Player v2、Event Schema v2 validator、RouteState、AnnualSession、WheelFlowEngine 的边界与命名。
+
+## Day 12 - 2026-08-02 - V2 年度流程端到端垂直切片
+
+### 目标
+
+在不改变 V1 主入口的前提下，把 Player v2、AnnualSession 和 WheelFlowEngine 串成一条可连续执行的 V2 年度流程，并提供独立浏览器 demo。
+
+### 完成内容
+
+- 新增 `V2SessionRunner`，统一编排 Player v2、年度会话、wheel、flow、effects、spin 和年度记录提交。
+- 为 `WheelFlowEngine` 增加最小 `next_year` 运行时语义。
+- 明确 `same_year`、`end` 和 `next_year` 的年度边界；`next_year` 只推进年龄一次，不自动执行下一年度 flow。
+- 新增通过 Event Schema v2 校验的最小垂直切片数据。
+- 新增独立 `v2-demo.html`、V2 app/UI 入口，支持连续推进多个年度。
+- 增加失败原子性、重复提交保护、确定性 RNG、派生战力只读和连续三年度集成测试。
+- 新增 [Day12 独立工作日志](CODEX_DAY12_V2_VERTICAL_SLICE_LOG.md)。
+
+### 验证结果
+
+- bundled Node.js v24.14.0 执行 `node --test`：71 tests，71 pass，0 fail，0 skipped。
+- 全部 `js/*.js` 通过语法检查。
+- `git diff --check` 通过。
+- 自动化测试覆盖连续三个年度、年龄推进、spin/history 累积和确定性 RNG。
+- V1 主入口和 V1 运行路径未修改。
+
+### 浏览器验证状态
+
+V2 demo 的实时浏览器点击、DOM 状态读取和控制台检查尚未完成。当前 Codex 会话缺少专用 Node REPL 控制端点，暂时无法执行以下手工验收：连续推进三年，以及检查年龄、spin、history、战力和控制台错误。因此本阶段只能确认代码与自动化测试完成，不能将浏览器手工验证记为通过。
+
+### 当前边界
+
+- Player v2 不持久化派生战力，战力仍由计算器实时派生。
+- `inferred` 和 `provisional` 内容未自动升级为 `confirmed`。
+- `gate`、完整路线接入、save/load、battle、terminal、旧数据正式迁移和完整 UI 重写仍未实现。
+- 负责人未提交材料保持未暂存，不混入 Day12 功能提交。
+
+### 收尾状态
+
+Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具备 Node REPL 的会话补做。提交前应继续保持 V1 可运行，并只提交 Day12 实际文件与本日志。
