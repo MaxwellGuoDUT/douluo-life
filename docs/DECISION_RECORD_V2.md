@@ -113,24 +113,27 @@ parody
 
 过滤发生在候选池建立阶段；不允许先抽中再作废。
 
-## DR-007：年龄只由 Game 在年度会话前推进
+## DR-007：年度成功后原子推进年龄
 
-年度顺序：
+状态：`superseded by Day 12 runtime semantics, confirmed in Day 13`
+
+Day 10 采用的“年度会话开始前由 Game 预增年龄”方案已被后续实现取代。正式年度顺序为：
 
 ```text
-Game.advanceYear()
-→ age + 1
-→ 清理 annualFlags
-→ 创建年度随机种子
-→ 调度跨年路线
-→ EventManager 抽取年度入口
-→ WheelFlowEngine 执行本年流程
-→ 保存年度历史
+基于当前 player.age 创建 AnnualSession
+→ WheelFlowEngine 执行当前年龄的完整年度 flow
+→ V2SessionRunner 确认年度全部成功
+→ 原子提交 effects / spin / history / route 状态
+→ advance = next_year 时 player.age += 1
 ```
 
-- `WheelFlowEngine` 不得修改年龄。
+- `Player.age` 表示玩家当前正在经历的年龄。
+- `same_year` 保持当前年龄并继续本年度流程。
+- `next_year` 成功结束当前年度，由 `V2SessionRunner` 在提交时只增加一次年龄。
+- `end` 只结束当前 flow，不隐式增加年龄。
+- 年度执行失败时，Player、年龄、history、spin 和 route 等持久状态不得留下半提交结果。
+- `WheelFlowEngine` 不直接修改年龄，只返回结构化推进意图。
 - Event Schema v2 的 `effects` 不得修改 `age`。
-- `next_year` 只保存流程/路线状态并结束本年，不代表由流程引擎执行 `age + 1`。
 
 ## DR-008：战力是派生评分
 

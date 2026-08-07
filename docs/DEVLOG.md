@@ -692,3 +692,38 @@ V2 demo 的实时浏览器点击、DOM 状态读取和控制台检查尚未完�
 ### 收尾状态
 
 Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具备 Node REPL 的会话补做。提交前应继续保持 V1 可运行，并只提交 Day12 实际文件与本日志。
+
+## Day 13 - 2026-08-07 - 第一条正式 V2 内容：6 岁武魂觉醒
+
+### 目标
+
+停止横向扩建 V2 基础设施，用现有年度运行时承载第一条 production 游戏内容，并保持 V1 独立可运行。
+
+### 完成内容
+
+- 新增 `data/v2/content/age-6-awakening.json`，与 examples 和 legacy reference 明确分离。
+- 只使用 V1 已确认的三种觉醒结果、文本和权重：蓝银草 60、柔骨兔 30、昊天锤 10。
+- 保留 V1 已确认的等级结果：蓝银草与柔骨兔保持初始 1 级，昊天锤增加 2 级后为 3 级；未采用 legacy reference 中未确认的独立先天魂力轮盘。
+- 新增最小 annual flow registry/resolver，只负责将 6 岁映射到 confirmed 觉醒 flow。
+- 为正式觉醒内容开放 `martialSouls` 根集合 `add` 和 `activeMartialSoulInstanceId` `set`；动态嵌套路径仍然禁止。
+- 使用现有单个 `roll` 与 `next_year` 完成年度流程，没有新增 WheelFlowEngine op。
+- 更新 DR-007，正式采用年度成功后由 V2SessionRunner 原子推进年龄的语义。
+- 更新 README、AI_CONTEXT、Event Schema v2 effects 说明，并标记旧状态/设计文档为 historical input。
+
+### 验证结果
+
+- bundled Node.js 执行 `node --test`：77 tests，77 pass，0 fail，0 skipped。
+- 覆盖 production schema、年龄 registry、确定性 RNG、具体武魂与等级 effects、spin、history、6 → 7 岁、无候选和中途失败回滚。
+- 修改及新增 JavaScript 通过 `node --check`。
+- production JSON 解析、`git diff --check` 和新文件空白检查通过。
+- V1 new-game smoke test 继续通过。
+
+### 浏览器验证状态
+
+当前任务未取得应用内浏览器控制接口，无法执行真实点击、DOM 和 console 验收。浏览器 smoke 保持待补，未使用 HTTP 访问结果代替。
+
+### 当前边界
+
+- V2 仍未切换为主入口。
+- 本轮没有实现 gate、dispatchWheel、repeatWheel、terminal、完整 RouteState runtime、save/load、battle 或 ending。
+- legacy reference 仍保持 reference 身份，inferred/provisional 没有升级为 confirmed。

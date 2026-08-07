@@ -237,15 +237,15 @@ v2 延续 v1 的通用状态操作：
 支持：
 
 - number：对 allowlist 中的数值状态增减；第一阶段为 `level`、`money`、`reputation`；
-- `{ "set": value }`：设置状态；
-- `{ "add": value }`：向 schema 注册的数组集合追加实体；
-- `{ "setKey": { "key": string, "value": any } }`：设置 schema 注册的对象键。
+- `{ "set": value }`：设置 schema 注册的状态；当前包含 `academy`、`faction`、`rank`、`title` 与 `activeMartialSoulInstanceId`；
+- `{ "add": value }`：向 schema 注册的数组集合追加实体；Day13 为 confirmed 武魂觉醒内容开放了 `martialSouls` 根集合追加；
+- `{ "setKey": { "key": string, "value": any } }`：保留为已知语法，但 Player v2 嵌套写入协议定稿前不作为 authoritative runtime 操作。
 
 v1 兼容 allowlist 继续包含 `spirit`、全局 `soulRings` 与 `soulBones`；它们不是 v2 多武魂数据的长期真源。Player v2 的嵌套实体写入协议确认前，正式 v2 数据不得用任意对象路径绕过 allowlist。
 
 保护规则：
 
-- `effects.age` 在 v2 禁止；年龄只由 `Game.advanceYear()` 修改。
+- `effects.age` 在 v2 禁止；年龄只由 `V2SessionRunner` 在年度全部成功且 `advance = next_year` 时原子推进一次。
 - `effects.combatPower`、`effects.staticCombatPower`、`effects.effectiveCombatPower` 禁止；战力是派生值。
 - 路线激活/替换不由普通 effects 暗中完成，应使用显式 route 操作并执行互斥检查。
 - `routeFlags`、`annualFlags` 与会话临时值通过有作用域的流程操作写入，不把 v1 `setKey` 样例直接当作跨年状态协议。
@@ -260,7 +260,7 @@ v1 兼容 allowlist 继续包含 `spirit`、全局 `soulRings` 与 `soulBones`�
 - effects 根键是 Player 字段路径，数字值等价于数值 `add`，对象值仅允许单一 `set | add | setKey` 操作；
 - 空字段名等价于空路径，直接拒绝；
 - Player v2 已知根路径进行静态类型检查；
-- `martialSouls.*`、`routeStates.*` 等动态实体路径在没有稳定实例定位协议时产生 warning，且正式写入仍不放行。
+- `martialSouls.*`、`routeStates.*` 等动态嵌套路径在没有稳定实例定位协议时产生 warning，且正式写入仍不放行；`martialSouls` 根集合只允许通过已注册的 `add` 追加完整实例。
 
 这里不引入第二套 condition/effect wire format。后续如采用显式 `{ scope, path, op }` 描述符，必须另行版本化，不能让验证器猜测两套语法。
 
