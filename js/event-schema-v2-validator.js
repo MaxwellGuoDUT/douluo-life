@@ -105,12 +105,14 @@ const NUMERIC_EFFECT_PATHS = new Set([
 
 const SET_EFFECT_PATHS = new Set([
     "academy",
+    "activeMartialSoulInstanceId",
     "faction",
     "rank",
     "title"
 ]);
 
 const ADD_EFFECT_PATHS = new Set([
+    "martialSouls",
     "domains",
     "combatAttributes",
     "soulCores",
@@ -436,6 +438,15 @@ function validateEffectOperation(
                 `Effect path "${playerPath}" does not allow set.`,
                 path
             );
+        } else if (playerPath === "activeMartialSoulInstanceId") {
+            if (!isNonEmptyString(operationValue)) {
+                addIssue(
+                    errors,
+                    "INVALID_EFFECT_VALUE",
+                    "activeMartialSoulInstanceId set requires a non-empty string.",
+                    path
+                );
+            }
         } else {
             const allowsNull = playerPath === "academy"
                 || playerPath === "faction";
@@ -460,6 +471,14 @@ function validateEffectOperation(
                 errors,
                 "EFFECT_PATH_NOT_ALLOWED_FOR_OP",
                 `Effect path "${playerPath}" does not allow add.`,
+                path
+            );
+        } else if (playerPath === "martialSouls"
+            && !isPlainObject(operationValue)) {
+            addIssue(
+                errors,
+                "INVALID_EFFECT_VALUE",
+                "martialSouls add requires a plain martial soul object.",
                 path
             );
         }

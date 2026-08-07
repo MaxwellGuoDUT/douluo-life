@@ -331,6 +331,14 @@ test("effects allow only registered Player v2 path/operation pairs", () => {
         faction: {
             set: "武魂殿"
         },
+        activeMartialSoulInstanceId: {
+            set: "martial_soul_slot_1"
+        },
+        martialSouls: {
+            add: {
+                instanceId: "martial_soul_slot_1"
+            }
+        },
         domains: {
             add: {
                 definitionId: "domain_test"
@@ -348,6 +356,12 @@ test("effects allow only registered Player v2 path/operation pairs", () => {
         title: {
             set: "称号",
             add: "冲突"
+        },
+        activeMartialSoulInstanceId: {
+            set: ""
+        },
+        martialSouls: {
+            add: []
         }
     });
 
@@ -365,4 +379,5 @@ test("effects allow only registered Player v2 path/operation pairs", () => {
     assert.ok(errorCodes(invalid).includes(
         "CONFLICTING_EFFECT_OPERATIONS"
     ));
+    assert.ok(errorCodes(invalid).includes("INVALID_EFFECT_VALUE"));
 });
