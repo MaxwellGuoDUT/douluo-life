@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "schemaVersion": "legacy-wheel-conversion/1.0",
+    "sourceFile": "0.1初版汇总.xlsx",
+    "sourceSha256": "f83ec1e9afb9ca4069413cf1de1715ad6e9c5766579c98c36e1706499ee96609",
+    "sourceSheet": "AllItems",
+    "sourceRange": "A1:E2754",
+    "header": [
+      "WheelID",
+      "Title",
+      "ItemIndex",
+      "Text",
+      "Weight"
+    ],
+    "interpretation": "每个WheelID是一个必须通过随机转盘解析的节点；Title中的“选择”不表示玩家手动选择。"
+  },
+  "counts": {
+    "sourceRows": 2753,
+    "wheels": 510,
+    "uniqueTitles": 433,
+    "itemsAfterGrouping": 2753,
+    "routes": 20,
+    "inferredCompoundFlows": 6
+  },
+  "weightProfiles": {
+    "all_explicit": 50,
+    "mixed": 71,
+    "all_implicit": 389
+  },
+  "zeroWeightItems": 133,
+  "duplicateItemsWithinWheel": [
+    {
+      "wheelId": 46,
+      "title": "兽武魂",
+      "text": "人面魔蛛",
+      "count": 2,
+      "indexes": [
+        46,
+        83
+      ]
+    },
+    {
+      "wheelId": 69,
+      "title": "第三魂环",
+      "text": "3000～3500年",
+      "count": 2,
+      "indexes": [
+        10,
+        15
+      ]
+    },
+    {
+      "wheelId": 69,
+      "title": "第三魂环",
+      "text": "3500～4000年",
+      "count": 2,
+      "indexes": [
+        11,
+        16
+      ]
+    },
+    {
+      "wheelId": 84,
+      "title": "第六魂环",
+      "text": "两万～三万年（）",
+      "count": 2,
+      "indexes": [
+        6,
+        11
+      ]
+    },
+    {
+      "wheelId": 84,
+      "title": "第六魂环",
+      "text": "六万～七万年（翡翠龙）",
+      "count": 2,
+      "indexes": [
+        8,
+        10
+      ]
+    },
+    {
+      "wheelId": 120,
+      "title": "你突破了百级大关，决定自创神位",
+      "text": "幻神",
+      "count": 2,
+      "indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "wheelId": 136,
+      "title": "你发现猎者小队给的水晶里有东西",
+      "text": "一块木头",
+      "count": 2,
+      "indexes": [
+        1,
+        5
+      ]
+    },
+    {
+      "wheelId": 147,
+      "title": "第七魂环",
+      "text": "神赐魂环，十万年之上",
+      "count": 2,
+      "indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "wheelId": 257,
+      "title": "6年后，你顺利长大",
+      "text": "进行武魂觉醒",
+      "count": 2,
+      "indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "wheelId": 355,
+      "title": "魂兽修为",
+      "text": "八万年",
+      "count": 2,
+      "indexes": [
+        10,
+        23
+      ]
+    },
+    {
+      "wheelId": 607,
+      "title": "吸收完这些魂环，你的魂力提升了",
+      "text": "5",
+      "count": 2,
+      "indexes": [
+        2,
+        3
+      ]
+    }
+  ],
+  "reusedTitles": {
+    "武魂种类": [
+      43,
+      153
+    ],
+    "出生地": [
+      54,
+      123
+    ],
+    "先天魂力": [
+      56,
+      451
+    ],
+    "3年后": [
+      64,
+      635
+    ],
+    "第二魂环": [
+      68,
+      554
+    ],
+    "第三魂环": [
+      69,
+      95,
+      533,
+      698
+    ],
+    "第六魂环": [
+      84,
+      85,
+      94
+    ],
+    "一年后": [
+      91,
+      309
+    ],
+    "第七魂环": [
+      92,
+      147,
+      353,
+      413,
+      416,
+      433
+    ],
+    "第九魂环": [
+      93,
+      417
+    ],
+    "神考完成，你选择": [
+      99,
+      149
+    ],
+    "接下来你决定": [
+      143,
+      592,
+      616,
+      729
+    ],
+    "结局": [
+      151,
+      277,
+      294,
+      319,
+      342,
+      396,
+      432,
+      549,
+      580,
+      605,
+      652,
+      696,
+      732
+    ],
+    "第二武魂第九魂环": [
+      270,
+      641
+    ],
+    "你自创神位": [
+      274,
+      647,
+      691,
+      731
+    ],
+    "第四武魂": [
+      284,
+      287
+    ],
+    "吸收了这些魂环，你的魂力提升了": [
+      288,
+      298,
+      436
+    ],
+    "你选择自创神位": [
+      290,
+      354
+    ],
+    "战斗结果": [
+      292,
+      306,
+      336,
+      724,
+      728
+    ],
+    "献祭的魂兽种类": [
+      300,
+      397
+    ],
+    "魂兽种类": [
+      320,
+      617
+    ],
+    "年份": [
+      321,
+      449
+    ],
+    "接下来你选择": [
+      322,
+      643,
+      644,
+      648,
+      675
+    ],
+    "你选择": [
+      332,
+      352,
+      369,
+      551,
+      557,
+      660,
+      665
+    ],
+    "你决定": [
+      337,
+      591,
+      597,
+      662,
+      690,
+      694,
+      712
+    ],
+    "吸收完这些魂环，你的魂力提升了": [
+      346,
+      607
+    ],
+    "是否成功": [
+      357,
+      437
+    ],
+    "第四魂环": [
+      399,
+      532,
+      536,
+      609,
+      669
+    ],
+    "你发现了": [
+      409,
+      659
+    ],
+    "1年后": [
+      534,
+      573,
+      726
+    ],
+    "你接下来选择": [
+      566,
+      658,
+      683
+    ],
+    "在你的帮助下": [
+      572,
+      715
+    ],
+    "神考是否成功": [
+      606,
+      697
+    ]
+  },
+  "unassignedRouteWheelIds": [],
+  "validation": {
+    "sourceAndGroupedItemCountsMatch": true,
+    "allItemIndexesContinuous": true,
+    "allWheelTitlesConsistent": true,
+    "allWheelsAssignedToRouteHint": true,
+    "resolvedProbabilitySumsEqualOne": true,
+    "allRouteWheelReferencesExist": true,
+    "routeCoverageIsExactlyOnce": true,
+    "allFlowWheelReferencesExist": true,
+    "allFlowNodeReferencesExist": true
+  }
+}

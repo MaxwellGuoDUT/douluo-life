@@ -1,0 +1,251 @@
+{
+  "metadata": {
+    "schemaVersion": "legacy-wheel-conversion/1.0",
+    "sourceFile": "0.1初版汇总.xlsx",
+    "sourceSha256": "f83ec1e9afb9ca4069413cf1de1715ad6e9c5766579c98c36e1706499ee96609",
+    "sourceSheet": "AllItems",
+    "sourceRange": "A1:E2754",
+    "header": [
+      "WheelID",
+      "Title",
+      "ItemIndex",
+      "Text",
+      "Weight"
+    ],
+    "interpretation": "每个WheelID是一个必须通过随机转盘解析的节点；Title中的“选择”不表示玩家手动选择。",
+    "runtimeModel": "一次年度活动可以连续执行多个roll、gate、repeat、dispatch节点，直到end。",
+    "warning": "仅包含可以从标题和相邻轮盘较可靠推断的复合流程。"
+  },
+  "flows": [
+    {
+      "id": "martial_soul_generation",
+      "title": "武魂数量、类别与具体武魂",
+      "confidence": "medium",
+      "evidence": "Wheel 44给出数量，Wheel 43给出类别，Wheel 45-53分别是类别目录。",
+      "notes": [
+        "原表把类别轮盘排在数量轮盘之前，但没有保存多武魂时的真实调用顺序。",
+        "此流程采用更可执行的“先数量、再重复类别与目录”的整理方式。"
+      ],
+      "entryNode": "spirit_count",
+      "nodes": [
+        {
+          "id": "spirit_count",
+          "op": "roll",
+          "wheelId": 44,
+          "saveAs": "martialSoulCount",
+          "next": "repeat_spirit"
+        },
+        {
+          "id": "repeat_spirit",
+          "op": "repeatSubflow",
+          "countFrom": "martialSoulCount",
+          "subflowEntry": "spirit_type",
+          "appendTo": "martialSouls",
+          "next": "end"
+        },
+        {
+          "id": "spirit_type",
+          "op": "roll",
+          "wheelId": 43,
+          "saveAs": "currentMartialSoulType",
+          "next": "spirit_catalog"
+        },
+        {
+          "id": "spirit_catalog",
+          "op": "dispatchWheel",
+          "source": "currentMartialSoulType",
+          "wheelByResult": {
+            "器武魂": 45,
+            "兽武魂": 46,
+            "植物武魂": 47,
+            "本体武魂": 48,
+            "神级武魂": 49,
+            "食物武魂": 50,
+            "邪灵武魂": 51,
+            "极致武魂": 52,
+            "变异武魂": 53
+          },
+          "saveAs": "currentMartialSoul",
+          "next": "return"
+        },
+        {
+          "id": "return",
+          "op": "return"
+        },
+        {
+          "id": "end",
+          "op": "end"
+        }
+      ]
+    },
+    {
+      "id": "special_talent_acquisition",
+      "title": "特殊天赋获取",
+      "confidence": "high",
+      "evidence": "是否有特殊天赋、特殊天赋数量、特殊天赋三个连续命名轮盘。",
+      "entryNode": "talent_gate",
+      "nodes": [
+        {
+          "id": "talent_gate",
+          "op": "roll",
+          "wheelId": 57,
+          "saveAs": "hasSpecialTalent",
+          "nextByResult": {
+            "是": "talent_count",
+            "否": "end"
+          }
+        },
+        {
+          "id": "talent_count",
+          "op": "roll",
+          "wheelId": 58,
+          "saveAs": "specialTalentCount",
+          "next": "talent_repeat"
+        },
+        {
+          "id": "talent_repeat",
+          "op": "repeatWheel",
+          "wheelId": 59,
+          "countFrom": "specialTalentCount",
+          "unique": true,
+          "appendTo": "specialTalents",
+          "next": "end"
+        },
+        {
+          "id": "end",
+          "op": "end"
+        }
+      ]
+    },
+    {
+      "id": "special_experience_acquisition",
+      "title": "特殊经历获取",
+      "confidence": "medium",
+      "evidence": "Wheel 65决定次数，Wheel 66与71分别提供通用和15岁以上经历。",
+      "entryNode": "experience_count",
+      "nodes": [
+        {
+          "id": "experience_count",
+          "op": "roll",
+          "wheelId": 65,
+          "saveAs": "specialExperienceCount",
+          "next": "experience_repeat"
+        },
+        {
+          "id": "experience_repeat",
+          "op": "repeatWheelByCondition",
+          "countFrom": "specialExperienceCount",
+          "cases": [
+            {
+              "when": {
+                "age": {
+                  "gte": 15
+                }
+              },
+              "wheelId": 71
+            },
+            {
+              "when": {},
+              "wheelId": 66
+            }
+          ],
+          "appendTo": "specialExperiences",
+          "next": "end"
+        },
+        {
+          "id": "end",
+          "op": "end"
+        }
+      ]
+    },
+    {
+      "id": "canon_interference_acquisition",
+      "title": "原著剧情干预次数与内容",
+      "confidence": "high",
+      "evidence": "Wheel 73决定干预次数，Wheel 72列出干预的剧情。",
+      "entryNode": "interference_count",
+      "nodes": [
+        {
+          "id": "interference_count",
+          "op": "roll",
+          "wheelId": 73,
+          "saveAs": "interferenceCount",
+          "next": "interference_repeat"
+        },
+        {
+          "id": "interference_repeat",
+          "op": "repeatWheel",
+          "wheelId": 72,
+          "countFrom": "interferenceCount",
+          "unique": true,
+          "appendTo": "canonInterferences",
+          "next": "end"
+        },
+        {
+          "id": "end",
+          "op": "end"
+        }
+      ]
+    },
+    {
+      "id": "elite_tournament_gate",
+      "title": "魂师精英大赛门槛与结果",
+      "confidence": "high",
+      "evidence": "Wheel 74为是否参加，Wheel 75为大赛结果。",
+      "entryNode": "tournament_gate",
+      "nodes": [
+        {
+          "id": "tournament_gate",
+          "op": "roll",
+          "wheelId": 74,
+          "saveAs": "joinEliteTournament",
+          "nextByResult": {
+            "是": "tournament_result",
+            "否": "end"
+          }
+        },
+        {
+          "id": "tournament_result",
+          "op": "roll",
+          "wheelId": 75,
+          "saveAs": "eliteTournamentResult",
+          "next": "end"
+        },
+        {
+          "id": "end",
+          "op": "end"
+        }
+      ]
+    },
+    {
+      "id": "slaughter_city_gate",
+      "title": "杀戮之都门槛与结果",
+      "confidence": "high",
+      "evidence": "Wheel 76为是否进入，Wheel 77为杀戮之行结果。",
+      "entryNode": "slaughter_city_gate",
+      "nodes": [
+        {
+          "id": "slaughter_city_gate",
+          "op": "roll",
+          "wheelId": 76,
+          "saveAs": "enterSlaughterCity",
+          "nextByResult": {
+            "是": "slaughter_city_result",
+            "否": "end"
+          }
+        },
+        {
+          "id": "slaughter_city_result",
+          "op": "roll",
+          "wheelId": 77,
+          "saveAs": "slaughterCityResult",
+          "next": "end"
+        },
+        {
+          "id": "end",
+          "op": "end"
+        }
+      ]
+    }
+  ]
+}
