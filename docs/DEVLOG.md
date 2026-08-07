@@ -727,3 +727,41 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - V2 仍未切换为主入口。
 - 本轮没有实现 gate、dispatchWheel、repeatWheel、terminal、完整 RouteState runtime、save/load、battle 或 ending。
 - legacy reference 仍保持 reference 身份，inferred/provisional 没有升级为 confirmed。
+
+## Day 13 / Day 13.5 - 2026-08-08 - Production 里程碑与仓库收口
+
+### Day 13
+
+- V2 正式进入 production 内容承载阶段，新增第一条 production 内容“6 岁武魂觉醒”。
+- 新增最小 annual flow resolver，使用现有 `roll + next_year` 完成 6 → 7 岁年度闭环；没有新增 `gate`、`dispatchWheel`、`repeatWheel`、`setRoute`、`terminal` 等 WheelFlowEngine op。
+- confirmed 内容只采用现有 V1 已确认的武魂数据；legacy 独立先天魂力轮盘未达到 confirmed，因此没有进入 production。
+- 正式武魂 effects 增加 `martialSouls` 根集合 `add` 和 `activeMartialSoulInstanceId` `set`。
+- 年龄语义正式确定为：基于当前 age 创建年度 session；年度全部成功后由 `V2SessionRunner` 原子提交；`next_year` 成功后 age + 1；失败不推进年龄，也不留下 effects、history 或 spin 半提交状态。
+- production data 与 examples、legacy reference 保持分离。
+- 最终测试为 77 tests，77 pass，0 fail，0 skipped。
+
+相关提交：
+
+- `8fb6dcbba1ec4d749f59099a260abc3a056d64d6 docs: align v2 age semantics and project context`
+- `a2dc7e04eeb1e65f80ca77ec6ea0d5ccc7e388d5 feat: add production age-6 awakening flow`
+
+### Day 13.5
+
+- 完成 Repository Housekeeping，将此前 untracked 的负责人任务书、历史状态资料、legacy wheel reference 和转换工具正式纳入 Git。
+- 明确维持 `reference ≠ production`、`inferred ≠ confirmed`，没有修改 Day 13 production 代码。
+- legacy 数据检查确认 2753 条原始记录、510 个 normalized wheels、20 条 inferred routes、6 条 inferred flows，conversion report validation 全部通过。
+- 转换工具 Python 语法检查通过。
+- 再次运行完整测试，结果仍为 77 tests，77 pass，0 fail，0 skipped；收口后 working tree clean。
+
+相关提交：
+
+- `a9ffbc46267e609a0e51a22fd19e520af5ab2306 docs: preserve v2 planning and historical project records`
+- `92ac5a2f7cb6ee49d3b9c85b575e05750adf69a1 chore: add legacy wheel reference data and conversion tooling`
+
+### 今日结束时项目状态
+
+- V1 仍保持独立可运行。
+- V2 已从技术样机正式进入 production 内容阶段，当前第一条 production V2 内容为“6 岁武魂觉醒”。
+- 当前稳定测试基线为 77/77。
+- 真实浏览器点击验收尚未完成。
+- 尚未开始 Day 14，下一阶段方向尚未正式执行。
