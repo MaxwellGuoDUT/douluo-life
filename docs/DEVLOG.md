@@ -807,4 +807,12 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 没有新增 engine op、学院、0～5 岁、第一魂环、save/load、battle、ending 或通用内容发现基础设施。
 - production、examples 和 legacy reference 继续分离；没有自动升级 inferred/provisional。
 - 刷新页面后回到 6 岁 playtest 起点是当前明确设计边界，不代表存档恢复。
-- 本轮仅按明确文件列表 staging 并创建本地 commit；未 push 或创建 PR；Day 14 任务书继续作为 untracked 负责人输入材料保留。
+- Day 14 实现仅按明确文件列表 staging，并创建提交 `220ada5647714e72cf5f6c081f4ecef4a5dffe91`；Day 14 任务书继续作为 untracked 负责人输入材料保留。
+
+### 发布收尾（2026-08-09）
+
+- V2 基础工作通过 [PR #1](https://github.com/MaxwellGuoDUT/douluo-life/pull/1) 使用 merge commit 合并到 `main`，merge commit 为 `4d564d89ae4147db3ff30a335cdfa00c24ff74a2`。
+- Day 14 production playtest 通过 [PR #2](https://github.com/MaxwellGuoDUT/douluo-life/pull/2) 使用 merge commit 合并到 `main`，merge commit 为 `3c031a3ad4cd52efc4afd16d081fa1e70284f6d9`。
+- PR #2 合并时仍只包含 Day 14 提交 `220ada5647714e72cf5f6c081f4ecef4a5dffe91` 和约定的 8 个文件；Day 14 任务书未进入提交或 PR。
+- `main` 已包含 Day 14 的实现、自动化验证记录和负责人手工浏览器验收记录；两个开发分支均按负责人要求保留。
+- 本次发布收尾仅修订 `docs/DEVLOG.md`，不修改功能、测试、架构或 production 数据边界。
