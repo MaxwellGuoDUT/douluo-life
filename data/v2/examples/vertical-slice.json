@@ -1,0 +1,79 @@
+{
+  "wheels": [
+    {
+      "schemaVersion": "event-schema/2.0-draft",
+      "kind": "wheel",
+      "id": "wheel_vertical_slice",
+      "title": "V2 年度成长结果",
+      "role": "result",
+      "resolution": "random_weighted",
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "trigger": {},
+      "items": [
+        {
+          "id": "annual_reputation_gain",
+          "text": "获得一份年度履历",
+          "weight": 1,
+          "canonLevel": "canon",
+          "reviewStatus": "confirmed",
+          "enabled": true,
+          "trigger": {},
+          "effects": {
+            "reputation": 1
+          }
+        }
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "schemaVersion": "event-schema/2.0-draft",
+      "kind": "flow",
+      "id": "flow_vertical_slice",
+      "title": "V2 年度垂直切片",
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "trigger": {},
+      "entryNodeId": "roll_once",
+      "sessionLimits": {
+        "maxSpins": 1,
+        "status": "provisional"
+      },
+      "nodes": [
+        {
+          "id": "roll_once",
+          "op": "roll",
+          "wheelId": "wheel_vertical_slice",
+          "next": {
+            "advance": "next_year",
+            "target": {
+              "kind": "route_node",
+              "routeId": "route_vertical_slice",
+              "nodeId": "roll_once"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "schemaVersion": "event-schema/2.0-draft",
+      "kind": "route",
+      "id": "route_vertical_slice",
+      "title": "V2 垂直切片示例路线",
+      "lane": "temporary",
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "trigger": {},
+      "entry": {
+        "flowId": "flow_vertical_slice",
+        "nodeId": "roll_once"
+      },
+      "mutexGroups": [],
+      "conflictPolicy": "block"
+    }
+  ]
+}

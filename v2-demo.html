@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斗罗人生模拟器 - V2 年度垂直切片</title>
+    <style>
+        :root { font-family: system-ui, sans-serif; color: #24211d; background: #f4f1ea; }
+        body { margin: 0; padding: 2rem 1rem; }
+        main { max-width: 760px; margin: auto; padding: 1.5rem; background: #fffdf8; border: 1px solid #d9d0c3; border-radius: 12px; }
+        .subtitle { color: #6f655b; }
+        .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; margin: 1.5rem 0; }
+        .status-card { padding: .85rem; background: #f7f3ec; border: 1px solid #e3dace; border-radius: 8px; }
+        .status-card strong { display: block; margin-bottom: .25rem; color: #776b60; font-size: .85rem; }
+        button { padding: .7rem 1rem; border: 0; border-radius: 7px; background: #7c4d2a; color: #fff; cursor: pointer; font: inherit; }
+        button:disabled { cursor: wait; opacity: .55; }
+        pre { max-height: 220px; overflow: auto; padding: .85rem; background: #211f1c; color: #f5eee3; border-radius: 8px; white-space: pre-wrap; word-break: break-word; }
+        .error { color: #a12828; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>V2 年度垂直切片</h1>
+        <p class="subtitle">开发验证入口：每次点击执行一个完整年度转盘，不提供传统 RPG 选项。</p>
+        <button id="advanceV2Btn" type="button" disabled>正在加载 V2 数据…</button>
+        <div class="status-grid" aria-live="polite">
+            <div class="status-card"><strong>年龄</strong><span id="ageValue">-</span></div>
+            <div class="status-card"><strong>等级 / 境界</strong><span id="levelValue">-</span></div>
+            <div class="status-card"><strong>当前激活武魂</strong><span id="martialSoulValue">-</span></div>
+            <div class="status-card"><strong>Flow / 最近节点</strong><span id="flowValue">-</span></div>
+            <div class="status-card"><strong>最近转盘结果</strong><span id="itemValue">-</span></div>
+            <div class="status-card"><strong>本年度 Spin 数量</strong><span id="spinCountValue">-</span></div>
+            <div class="status-card"><strong>派生战力总值</strong><span id="combatPowerValue">-</span></div>
+            <div class="status-card"><strong>战力规则版本</strong><span id="rulesVersionValue">-</span></div>
+            <div class="status-card"><strong>最近年度记录</strong><span id="annualRecordValue">-</span></div>
+        </div>
+        <h2>Warnings</h2>
+        <pre id="warningsValue">无</pre>
+        <h2>错误信息</h2>
+        <pre id="errorValue" class="error">无</pre>
+    </main>
+    <script type="module" src="js/app-v2-demo.js"></script>
+</body>
+</html>

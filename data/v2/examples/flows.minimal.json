@@ -1,0 +1,35 @@
+[
+  {
+    "schemaVersion": "event-schema/2.0-draft",
+    "kind": "flow",
+    "id": "flow_minimal",
+    "title": "最小年度流程",
+    "canonLevel": "canon",
+    "reviewStatus": "confirmed",
+    "trigger": {},
+    "entryNodeId": "roll_once",
+    "sessionLimits": {
+      "maxSpins": 50,
+      "status": "provisional"
+    },
+    "nodes": [
+      {
+        "id": "roll_once",
+        "op": "roll",
+        "wheelId": "wheel_minimal",
+        "next": {
+          "advance": "same_year",
+          "target": {
+            "kind": "flow_node",
+            "flowId": "flow_minimal",
+            "nodeId": "end"
+          }
+        }
+      },
+      {
+        "id": "end",
+        "op": "end"
+      }
+    ]
+  }
+]

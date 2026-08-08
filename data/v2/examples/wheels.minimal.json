@@ -1,0 +1,26 @@
+[
+  {
+    "schemaVersion": "event-schema/2.0-draft",
+    "kind": "wheel",
+    "id": "wheel_minimal",
+    "title": "最小结果转盘",
+    "role": "result",
+    "resolution": "random_weighted",
+    "canonLevel": "canon",
+    "reviewStatus": "confirmed",
+    "enabled": true,
+    "trigger": {},
+    "items": [
+      {
+        "id": "only",
+        "text": "结果",
+        "weight": 1,
+        "canonLevel": "canon",
+        "reviewStatus": "confirmed",
+        "enabled": true,
+        "trigger": {},
+        "effects": {}
+      }
+    ]
+  }
+]

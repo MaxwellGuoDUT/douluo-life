@@ -1,0 +1,18 @@
+[
+  {
+    "schemaVersion": "event-schema/2.0-draft",
+    "kind": "route",
+    "id": "route_minimal",
+    "title": "最小路线",
+    "lane": "faction",
+    "canonLevel": "canon",
+    "reviewStatus": "confirmed",
+    "trigger": {},
+    "entry": {
+      "flowId": "flow_minimal",
+      "nodeId": "roll_once"
+    },
+    "mutexGroups": [],
+    "conflictPolicy": "block"
+  }
+]

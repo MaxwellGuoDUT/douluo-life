@@ -579,3 +579,189 @@ Day 10 建议开始转盘事件池阶段：加入 8-12 岁学院生活、10 岁�
 7. 从少量状态字段升级为完整 Player State 容器。
 
 当前项目最重要的设计方向已经明确：用统一的数据规范描述事件，用 `Game` 执行规则，用 `Player` 保存状态，用 `UI` 展示结果。接下来应优先完善触发条件、事件库、存档和更丰富的玩家属性系统。
+
+## Day 10 - 2026-07-31 - Event Schema v2 与战力基础设施
+
+### 目标
+
+暂停批量扩写旧剧情，先建立 v2 阶段需要的设计边界和战力计算基础设施。重点是让路线、事件和战力系统有清晰的规则入口，而不是把公式或跳转逻辑写死进旧运行时。
+
+### 完成内容
+
+- 新增 `docs/DECISION_RECORD_V2.md`，记录 Event Schema v2、路线系统和战力系统的阶段性决策。
+- 新增 `docs/EVENT_SCHEMA_V2_DRAFT.md`，整理 Event Schema v2 草案和兼容边界。
+- 新增 `docs/COMBAT_POWER_SYSTEM.md`，说明战力是派生值，不是 Player 上可被 effects 永久加减的属性。
+- 新增 `data/config/combat-power.json`，将等级、魂环、血脉倍率等战力参数放入数据配置。
+- 新增 `js/combat-power.js`，提供纯函数战力计算模块。
+- 为等级、魂环、血脉倍率、99 级极限斗罗和 100 级海神唐三样例建立开发期验证。
+- 对未确认数值保留 `provisional` 标记，没有把 99 级累计额外 220 点拆分写成隐藏常数。
+
+### 设计边界
+
+- 不批量改写 510 个旧转盘。
+- 不根据 WheelID 顺序自动生成正式剧情跳转。
+- 不把叙事里的“你选择”“你决定”解释成玩家主动选择。
+- 不让 effects 直接修改派生战力。
+- 不在 `Game`、`EventManager` 或 UI 中硬编码战力公式。
+- 不擅自补完整套神位、神器、称号战力。
+
+### 下一步
+
+Day 11 进入 Player State v2 和流程基础设施：先做 v1 到 v2 的纯迁移适配器和兼容选择器，再继续建立 Event Schema v2 验证器、路线状态、AnnualSession 和 WheelFlowEngine 最小骨架。
+
+## Day 11 - 2026-07-31 - Player v2 与 Wheel Flow Foundation
+
+### 目标
+
+在不切换现有 `Game.newGame()` 和 Player v1 运行路径的前提下，建立 Player State v2、迁移适配器、兼容选择器、事件验证器和最小流程引擎，为后续路线系统和年度转盘流程做基础设施准备。
+
+### 完成内容
+
+- 新增 Player State v2 基础结构。
+- 新增 Player v1 到 v2 的纯迁移适配器。
+- 新增兼容选择器，让新系统可以只读访问 v2 结构，同时不破坏 v1 当前运行。
+- 新增 Event Schema v2 静态验证器和示例覆盖。
+- 新增路线状态系统与 AnnualSession 模型。
+- 新增 WheelFlowEngine 最小骨架，当前覆盖 `roll`、`same_year`、`end` 等基础流程操作。
+- 增加战力兼容和只读展示入口，继续保持战力为派生值。
+- 追加修复以保护 v2 状态不变量。
+
+### 本地提交
+
+- `9b69616 feat: add player state v2 and migration adapter`
+- `4fc850a feat: add event schema v2 validator`
+- `ba1f82b feat: add route state and annual session models`
+- `8f50950 feat: add minimal wheel flow engine`
+- `9e76d35 fix: preserve v2 state invariants`
+
+### 验证结果
+
+- `node --test` 通过。
+- 共 66 项测试通过。
+- 语法检查通过。
+- JSON / 文档块检查通过。
+- EventManager 加载检查通过。
+- Player v1 new-game smoke test 通过。
+
+### 当前边界
+
+- Player v1 仍是现有运行路径，尚未切换到 Player v2。
+- WheelFlowEngine 仍是最小骨架，`next_year`、`repeat`、`dispatch`、`terminal` 等复杂流程能力留待后续阶段。
+- 路线状态和 AnnualSession 已建立基础模型，但尚未大规模接入旧转盘数据。
+- 负责人输入材料仍保持未暂存状态，不混入功能提交。
+
+### 收尾状态
+
+Day 11 本地阶段可以告一段落。下一步是将当前分支 `codex/day10-v2-combat-foundation` 推送到远端并创建 Draft PR，交给网页端 review Player v2、Event Schema v2 validator、RouteState、AnnualSession、WheelFlowEngine 的边界与命名。
+
+## Day 12 - 2026-08-02 - V2 年度流程端到端垂直切片
+
+### 目标
+
+在不改变 V1 主入口的前提下，把 Player v2、AnnualSession 和 WheelFlowEngine 串成一条可连续执行的 V2 年度流程，并提供独立浏览器 demo。
+
+### 完成内容
+
+- 新增 `V2SessionRunner`，统一编排 Player v2、年度会话、wheel、flow、effects、spin 和年度记录提交。
+- 为 `WheelFlowEngine` 增加最小 `next_year` 运行时语义。
+- 明确 `same_year`、`end` 和 `next_year` 的年度边界；`next_year` 只推进年龄一次，不自动执行下一年度 flow。
+- 新增通过 Event Schema v2 校验的最小垂直切片数据。
+- 新增独立 `v2-demo.html`、V2 app/UI 入口，支持连续推进多个年度。
+- 增加失败原子性、重复提交保护、确定性 RNG、派生战力只读和连续三年度集成测试。
+- 新增 [Day12 独立工作日志](CODEX_DAY12_V2_VERTICAL_SLICE_LOG.md)。
+
+### 验证结果
+
+- bundled Node.js v24.14.0 执行 `node --test`：71 tests，71 pass，0 fail，0 skipped。
+- 全部 `js/*.js` 通过语法检查。
+- `git diff --check` 通过。
+- 自动化测试覆盖连续三个年度、年龄推进、spin/history 累积和确定性 RNG。
+- V1 主入口和 V1 运行路径未修改。
+
+### 浏览器验证状态
+
+V2 demo 的实时浏览器点击、DOM 状态读取和控制台检查尚未完成。当前 Codex 会话缺少专用 Node REPL 控制端点，暂时无法执行以下手工验收：连续推进三年，以及检查年龄、spin、history、战力和控制台错误。因此本阶段只能确认代码与自动化测试完成，不能将浏览器手工验证记为通过。
+
+### 当前边界
+
+- Player v2 不持久化派生战力，战力仍由计算器实时派生。
+- `inferred` 和 `provisional` 内容未自动升级为 `confirmed`。
+- `gate`、完整路线接入、save/load、battle、terminal、旧数据正式迁移和完整 UI 重写仍未实现。
+- 负责人未提交材料保持未暂存，不混入 Day12 功能提交。
+
+### 收尾状态
+
+Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具备 Node REPL 的会话补做。提交前应继续保持 V1 可运行，并只提交 Day12 实际文件与本日志。
+
+## Day 13 - 2026-08-07 - 第一条正式 V2 内容：6 岁武魂觉醒
+
+### 目标
+
+停止横向扩建 V2 基础设施，用现有年度运行时承载第一条 production 游戏内容，并保持 V1 独立可运行。
+
+### 完成内容
+
+- 新增 `data/v2/content/age-6-awakening.json`，与 examples 和 legacy reference 明确分离。
+- 只使用 V1 已确认的三种觉醒结果、文本和权重：蓝银草 60、柔骨兔 30、昊天锤 10。
+- 保留 V1 已确认的等级结果：蓝银草与柔骨兔保持初始 1 级，昊天锤增加 2 级后为 3 级；未采用 legacy reference 中未确认的独立先天魂力轮盘。
+- 新增最小 annual flow registry/resolver，只负责将 6 岁映射到 confirmed 觉醒 flow。
+- 为正式觉醒内容开放 `martialSouls` 根集合 `add` 和 `activeMartialSoulInstanceId` `set`；动态嵌套路径仍然禁止。
+- 使用现有单个 `roll` 与 `next_year` 完成年度流程，没有新增 WheelFlowEngine op。
+- 更新 DR-007，正式采用年度成功后由 V2SessionRunner 原子推进年龄的语义。
+- 更新 README、AI_CONTEXT、Event Schema v2 effects 说明，并标记旧状态/设计文档为 historical input。
+
+### 验证结果
+
+- bundled Node.js 执行 `node --test`：77 tests，77 pass，0 fail，0 skipped。
+- 覆盖 production schema、年龄 registry、确定性 RNG、具体武魂与等级 effects、spin、history、6 → 7 岁、无候选和中途失败回滚。
+- 修改及新增 JavaScript 通过 `node --check`。
+- production JSON 解析、`git diff --check` 和新文件空白检查通过。
+- V1 new-game smoke test 继续通过。
+
+### 浏览器验证状态
+
+当前任务未取得应用内浏览器控制接口，无法执行真实点击、DOM 和 console 验收。浏览器 smoke 保持待补，未使用 HTTP 访问结果代替。
+
+### 当前边界
+
+- V2 仍未切换为主入口。
+- 本轮没有实现 gate、dispatchWheel、repeatWheel、terminal、完整 RouteState runtime、save/load、battle 或 ending。
+- legacy reference 仍保持 reference 身份，inferred/provisional 没有升级为 confirmed。
+
+## Day 13 / Day 13.5 - 2026-08-08 - Production 里程碑与仓库收口
+
+### Day 13
+
+- V2 正式进入 production 内容承载阶段，新增第一条 production 内容“6 岁武魂觉醒”。
+- 新增最小 annual flow resolver，使用现有 `roll + next_year` 完成 6 → 7 岁年度闭环；没有新增 `gate`、`dispatchWheel`、`repeatWheel`、`setRoute`、`terminal` 等 WheelFlowEngine op。
+- confirmed 内容只采用现有 V1 已确认的武魂数据；legacy 独立先天魂力轮盘未达到 confirmed，因此没有进入 production。
+- 正式武魂 effects 增加 `martialSouls` 根集合 `add` 和 `activeMartialSoulInstanceId` `set`。
+- 年龄语义正式确定为：基于当前 age 创建年度 session；年度全部成功后由 `V2SessionRunner` 原子提交；`next_year` 成功后 age + 1；失败不推进年龄，也不留下 effects、history 或 spin 半提交状态。
+- production data 与 examples、legacy reference 保持分离。
+- 最终测试为 77 tests，77 pass，0 fail，0 skipped。
+
+相关提交：
+
+- `8fb6dcbba1ec4d749f59099a260abc3a056d64d6 docs: align v2 age semantics and project context`
+- `a2dc7e04eeb1e65f80ca77ec6ea0d5ccc7e388d5 feat: add production age-6 awakening flow`
+
+### Day 13.5
+
+- 完成 Repository Housekeeping，将此前 untracked 的负责人任务书、历史状态资料、legacy wheel reference 和转换工具正式纳入 Git。
+- 明确维持 `reference ≠ production`、`inferred ≠ confirmed`，没有修改 Day 13 production 代码。
+- legacy 数据检查确认 2753 条原始记录、510 个 normalized wheels、20 条 inferred routes、6 条 inferred flows，conversion report validation 全部通过。
+- 转换工具 Python 语法检查通过。
+- 再次运行完整测试，结果仍为 77 tests，77 pass，0 fail，0 skipped；收口后 working tree clean。
+
+相关提交：
+
+- `a9ffbc46267e609a0e51a22fd19e520af5ab2306 docs: preserve v2 planning and historical project records`
+- `92ac5a2f7cb6ee49d3b9c85b575e05750adf69a1 chore: add legacy wheel reference data and conversion tooling`
+
+### 今日结束时项目状态
+
+- V1 仍保持独立可运行。
+- V2 已从技术样机正式进入 production 内容阶段，当前第一条 production V2 内容为“6 岁武魂觉醒”。
+- 当前稳定测试基线为 77/77。
+- 真实浏览器点击验收尚未完成。
+- 尚未开始 Day 14，下一阶段方向尚未正式执行。
