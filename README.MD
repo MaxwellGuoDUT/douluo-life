@@ -5,8 +5,9 @@
 ## 当前阶段
 
 - V1 是默认可运行入口，提供早期年度事件玩法。
-- V2 是独立开发入口，已经具备 Player v2、年度会话、最小 WheelFlowEngine 和原子年度提交。
-- V2 已承载第一条正式游戏内容“6 岁武魂觉醒”，能够在成功提交后从 6 岁推进到 7 岁。
+- V2 是独立的 production playtest 入口，已经具备 Player v2、年度会话、最小 WheelFlowEngine 和原子年度提交。
+- V2 页面当前只承载第一条正式游戏内容“6 岁武魂觉醒”：从明确的 6 岁场景起点执行一个年度，成功后推进到 7 岁内容边界。
+- 该 playtest 不伪造 0～5 岁履历；刷新页面会重置到 6 岁场景起点，当前没有 save/load。
 - V2 尚未替代 V1，也尚未实现 save/load、battle 或 ending。
 
 ## 运行
@@ -20,7 +21,7 @@ python -m http.server 8000
 然后打开：
 
 - V1：`http://localhost:8000/index.html`
-- V2 demo：`http://localhost:8000/v2-demo.html`
+- V2 production playtest：`http://localhost:8000/v2-demo.html`
 
 ## 测试
 
@@ -37,6 +38,8 @@ npm test
 ## 项目边界
 
 - V1 与 V2 当前保持独立。
+- V2 页面按当前 Player.age 调用 Annual Flow Resolver，不通过数组下标固定 flow。
+- 当前没有 confirmed 的 7 岁 production annual flow；页面到达 7 岁后显示内容边界并停止推进。
 - `data/v2/examples/` 是技术样例，不是正式游戏内容。
 - `data/reference/legacy-wheel/` 是旧数据参考档案，不是 production 数据。
 - `inferred` / `provisional` 不得自动升级为 `confirmed`。
