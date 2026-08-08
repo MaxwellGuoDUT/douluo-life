@@ -765,3 +765,46 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 当前稳定测试基线为 77/77。
 - 真实浏览器点击验收尚未完成。
 - 尚未开始 Day 14，下一阶段方向尚未正式执行。
+
+## Day 14 - 2026-08-08 - V2 Production Playtest 与年度编排收口
+
+### 目标
+
+把现有独立 V2 技术 demo 升级为当前唯一 production 内容“6 岁武魂觉醒”的真实页面入口，并在 7 岁没有 confirmed annual flow 时诚实停在内容边界。
+
+### 完成内容
+
+- 新增 DOM 无关的薄编排层 `V2ProductionPlaytest`，显式创建 6 岁 Player，不伪造 0～5 岁 history 或 spinHistory。
+- 页面和编排层在每次年度执行前按当前 Player.age 调用 Annual Flow Resolver，不再通过 `dataset.flows[0]` 固定 flow。
+- 编排层拒绝 examples、非 production、unconfirmed 和非 canon 年度内容，并继续使用 `allowedCanonLevels: ["canon"]`。
+- 使用现有 V2SessionRunner 完成 6 → 7 岁 effects、spin、history 和年龄的原子提交；失败时 playtest state 保持不变。
+- 只有成功完成 6 岁年度且 Player 已到 7 岁时，才将 `NO_ANNUAL_FLOW_FOR_AGE` 映射为 `CONTENT_BOUNDARY_REACHED`；其他 resolver errors 保持真实错误。
+- V2 页面现在加载 `data/v2/content/age-6-awakening.json`，不再把 examples vertical slice 作为运行数据。
+- 页面明确标注 production playtest、6 岁场景起点和“不包含 0～5 岁履历”，并展示真实 itemId、叙事文本、武魂、等级/境界、spin/history、年度记录、派生战力、warnings、errors 和 7 岁内容边界。
+- 到达内容边界后按钮保持禁用，不创建 7 岁 AnnualSession，不增加第二条 spin/history，也不消费额外的内容 RNG。
+
+### 自动化与静态验证
+
+- Day 14 定向测试：15 tests，15 pass，0 fail，0 cancelled，0 skipped。
+- 完整 bundled Node.js 测试：92 tests，92 pass，0 fail，0 cancelled，0 skipped。
+- V1 `existing new-game smoke continues to create Player v1` 独立执行：1 test，1 pass。
+- 新增或修改的三个 JavaScript 文件全部通过 `node --check`。
+- `git diff --check` 通过。
+- app 源码中没有 `data/v2/examples` 或 `dataset.flows[0]` 运行时引用。
+- Player 仍不持久化 `combatPower`、`staticCombatPower` 或 `effectiveCombatPower`。
+
+### 浏览器验收状态
+
+- 本地 HTTP 服务能够返回 V2 页面、app、production JSON 和 V1 页面，均为 HTTP 200；该结果只作为静态服务层检查。
+- 当前 Codex 任务没有挂载可控制应用内浏览器的端点，因此 Codex 没有把 HTTP 结果冒充为自动点击或 DOM 验收。
+- 2026-08-08，负责人在真实页面完成手工验收：V2 初始 6 岁状态、单次觉醒点击、7 岁 DOM 结果、itemId 与叙事文本、spin/history、content boundary、按钮禁用、Network 加载 production 且不加载 examples、console 无异常、刷新重置，以及 V1 开始人生和推进回归。
+- 负责人报告以上手工浏览器验收项目全部通过；该结论明确记录为负责人手工验收，不表述为 Codex 自动浏览器控制结果。
+
+### 当前边界
+
+- V1 仍是默认入口，未修改 `index.html`、`js/app.js` 或 `js/game.js`。
+- 没有修改 Player v2 schema、Event Schema validator、Annual Flow Resolver、V2SessionRunner 或 WheelFlowEngine。
+- 没有新增 engine op、学院、0～5 岁、第一魂环、save/load、battle、ending 或通用内容发现基础设施。
+- production、examples 和 legacy reference 继续分离；没有自动升级 inferred/provisional。
+- 刷新页面后回到 6 岁 playtest 起点是当前明确设计边界，不代表存档恢复。
+- 本轮仅按明确文件列表 staging 并创建本地 commit；未 push 或创建 PR；Day 14 任务书继续作为 untracked 负责人输入材料保留。

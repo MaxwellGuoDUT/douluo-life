@@ -39,8 +39,8 @@ V2 当前已有：
 - WheelFlowEngine 最小 runtime；
 - V2SessionRunner 年度原子提交；
 - 配置驱动的只读派生战力；
-- 独立 `v2-demo.html`；
-- 连续年度技术垂直切片；
+- 独立 `v2-demo.html` production playtest；
+- 按当前 Player.age 调用 Annual Flow Resolver 的页面编排层；
 - 第一条 production 游戏内容“6 岁武魂觉醒”。
 
 年度语义采用事务式提交：基于当前年龄执行年度 flow；只有全部成功且 `advance = next_year` 时，V2SessionRunner 才原子提交并将年龄增加一次。失败不留下半提交状态。
@@ -49,6 +49,12 @@ V2 尚未切换主入口，也尚未形成完整正式内容库或实现 save/lo
 
 # 当前开发阶段
 
-V2 已从纯技术样机进入正式内容承载阶段。6 岁武魂觉醒能够通过 confirmed production data、确定性 RNG 和现有年度运行时完成 effects、spin、history 与 6 → 7 岁原子提交。
+V2 已从纯技术样机进入正式内容承载阶段。独立页面只加载 confirmed production data，从明确的 6 岁 playtest 场景开始，按当前 Player.age 解析年度 flow，并通过现有运行时完成 effects、spin、history 与 6 → 7 岁原子提交。
+
+当前没有 confirmed 的 7 岁 production annual flow。页面把成功完成 6 岁年度后的 `NO_ANNUAL_FLOW_FOR_AGE` 窄映射为 content boundary，展示真实觉醒结果后停止；ambiguous、unconfirmed 和 invalid reference 等 resolver 错误仍作为真实错误处理。刷新页面重置到 6 岁场景起点，当前没有 save/load。
+
+Day 14 自动化测试已验证 production 页面编排路径。当前 Codex 任务没有挂载真实浏览器控制端点，因此没有把 HTTP 200 记作自动浏览器验收。
+
+2026-08-08，负责人在真实页面手工完成 V2 初始状态、单次觉醒点击、DOM 更新、Network 数据来源、console、刷新重置和 V1 点击回归验收，以上项目均通过。这是负责人手工验收结果，不是 Codex 自动控制浏览器所得结果。
 
 新增 V2 基础设施必须由当前 confirmed 正式内容的真实阻塞证明；不得为了未来可能需要而提前扩展。

@@ -1,10 +1,11 @@
-import { validateEventSchemaV2 } from "./event-schema-v2-validator.js";
-import { createPlayerV2 } from "./player-v2.js";
-import { V2SessionRunner } from "./v2-session-runner.js";
 import { V2DemoUI } from "./ui-v2-demo.js";
+import {
+    V2ProductionPlaytest,
+    V2_PRODUCTION_PLAYTEST_STATUS
+} from "./v2-production-playtest.js";
 
 const ui = new V2DemoUI();
-const state = { player: null, runner: null, busy: false };
+const state = { playtest: null, busy: false };
 
 async function fetchJson(path) {
     const response = await fetch(path);
@@ -16,53 +17,77 @@ async function fetchJson(path) {
 
 async function initialize() {
     const [dataset, combatPowerRules] = await Promise.all([
-        fetchJson("data/v2/examples/vertical-slice.json"),
+        fetchJson("data/v2/content/age-6-awakening.json"),
         fetchJson("data/config/combat-power.json")
     ]);
-    const validation = validateEventSchemaV2(dataset);
-    if (!validation.valid) {
-        const error = new Error("V2 demo dataset failed static validation.");
-        error.code = "INVALID_V2_DEMO_DATASET";
-        error.details = validation;
-        throw error;
-    }
-
-    state.player = createPlayerV2();
-    state.runner = new V2SessionRunner({
-        flow: dataset.flows[0],
-        wheelsById: dataset.wheels,
-        combatPowerRules
+    state.playtest = new V2ProductionPlaytest({
+        dataset,
+        combatPowerRules,
+        rng: Math.random
     });
-    ui.renderPlayer(state.player);
-    ui.setButton("开始 V2 人生", false);
+    ui.renderInitial(state.playtest.getState());
+    ui.setButton("开始 6 岁武魂觉醒", false);
+}
+
+function createExecutionIdentity(player) {
+    const nonce = globalThis.crypto?.randomUUID?.()
+        ?? `${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+    return {
+        sessionId: `v2_production_age_${String(player.age).padStart(3, "0")}_${nonce}`,
+        seed: `v2_production_seed_${nonce}`
+    };
+}
+
+function waitForNextFrame() {
+    return new Promise(resolve => requestAnimationFrame(() => resolve()));
 }
 
 async function advanceYear() {
-    if (state.busy || !state.player || !state.runner) return;
+    if (state.busy || !state.playtest) return;
+
+    const before = state.playtest.getState();
+    if (before.status === V2_PRODUCTION_PLAYTEST_STATUS.CONTENT_BOUNDARY) {
+        ui.renderResult(before);
+        ui.setButton("当前 production 内容已结束", true);
+        return;
+    }
+
     state.busy = true;
+    let failed = false;
+    ui.renderBusy();
     ui.setButton("年度执行中…", true);
+
     try {
-        const sequence = state.player.history.length + 1;
-        const result = state.runner.run({
-            player: state.player,
-            sessionId: `v2_demo_${String(state.player.age).padStart(3, "0")}_${sequence}`,
-            seed: `v2_demo_seed_${sequence}`,
+        await waitForNextFrame();
+        const identity = createExecutionIdentity(before.player);
+        const result = state.playtest.runYear({
+            ...identity,
             rng: Math.random
         });
-        state.player = result.player;
         ui.renderResult(result);
     } catch (error) {
-        console.error("V2 annual execution failed", error);
+        failed = true;
+        console.error("V2 production annual execution failed", error);
+        ui.renderPlayer(state.playtest.getState().player);
         ui.renderError(error);
     } finally {
         state.busy = false;
-        ui.setButton("推进 V2 年度", false);
+        const current = state.playtest.getState();
+
+        if (current.status === V2_PRODUCTION_PLAYTEST_STATUS.CONTENT_BOUNDARY) {
+            ui.setButton("当前 production 内容已结束", true);
+        } else if (failed) {
+            ui.setButton("重试 6 岁武魂觉醒", false);
+        } else {
+            ui.setButton("推进 production 年度", false);
+        }
     }
 }
 
 ui.button.addEventListener("click", advanceYear);
 initialize().catch(error => {
-    console.error("V2 demo initialization failed", error);
+    console.error("V2 production playtest initialization failed", error);
     ui.renderError(error);
-    ui.setButton("V2 数据加载失败", true);
+    ui.setButton("Production 数据加载失败", true);
 });
