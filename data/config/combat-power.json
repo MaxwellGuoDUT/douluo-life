@@ -14,7 +14,7 @@
     ]
   },
   "level": {
-    "minLevel": 1,
+    "minLevel": 0,
     "maxLevel": 169,
     "continuousCurve": {
       "mode": "increment_by_decade",
@@ -77,6 +77,8 @@
   "martialSoulQuality": {
     "gradeField": "qualityGrade",
     "coefficients": {
+      "low": 0,
+      "ordinary": 0.1,
       "top": 0.25,
       "extreme": 0.3
     },

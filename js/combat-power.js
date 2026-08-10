@@ -139,6 +139,10 @@ export function calculateContinuousLevelPower(level, levelRules) {
         throw new TypeError(`Unsupported level curve mode "${String(levelRules.continuousCurve?.mode)}".`);
     }
 
+    if (level === 0) {
+        return 0;
+    }
+
     const decade = Math.floor((level - 1) / 10);
     const remainder = level - decade * 10;
 
@@ -619,7 +623,7 @@ export function validateRules(rules) {
     validateNamedCoefficients(
         rules.martialSoulQuality?.coefficients,
         "martialSoulQuality.coefficients",
-        ["top", "extreme"],
+        ["low", "ordinary", "top", "extreme"],
         errors
     );
     validateNamedCoefficients(

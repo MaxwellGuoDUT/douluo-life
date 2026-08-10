@@ -170,7 +170,8 @@ export function runV2AnnualSession({
     startNodeId,
     triggerMatcher,
     allowedCanonLevels,
-    combatPowerRules
+    combatPowerRules,
+    awakeningRuntime
 } = {}) {
     assertInputs({ player, flow, wheelsById, rng, limits });
 
@@ -194,7 +195,8 @@ export function runV2AnnualSession({
         rng,
         limits,
         ...(triggerMatcher ? { triggerMatcher } : {}),
-        ...(allowedCanonLevels ? { allowedCanonLevels } : {})
+        ...(allowedCanonLevels ? { allowedCanonLevels } : {}),
+        ...(awakeningRuntime ? { awakeningRuntime } : {})
     });
 
     const advance = flowResult.result?.advance;
@@ -261,7 +263,8 @@ export class V2SessionRunner {
         limits = DEFAULT_WHEEL_FLOW_LIMITS,
         triggerMatcher,
         allowedCanonLevels,
-        combatPowerRules
+        combatPowerRules,
+        awakeningRuntime
     } = {}) {
         this.flow = flow;
         this.wheelsById = wheelsById;
@@ -269,6 +272,7 @@ export class V2SessionRunner {
         this.triggerMatcher = triggerMatcher;
         this.allowedCanonLevels = allowedCanonLevels;
         this.combatPowerRules = combatPowerRules;
+        this.awakeningRuntime = awakeningRuntime;
     }
 
     run(options = {}) {
@@ -279,7 +283,8 @@ export class V2SessionRunner {
             limits: options.limits ?? this.limits,
             triggerMatcher: options.triggerMatcher ?? this.triggerMatcher,
             allowedCanonLevels: options.allowedCanonLevels ?? this.allowedCanonLevels,
-            combatPowerRules: options.combatPowerRules ?? this.combatPowerRules
+            combatPowerRules: options.combatPowerRules ?? this.combatPowerRules,
+            awakeningRuntime: options.awakeningRuntime ?? this.awakeningRuntime
         });
     }
 }

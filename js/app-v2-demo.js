@@ -16,12 +16,16 @@ async function fetchJson(path) {
 }
 
 async function initialize() {
-    const [dataset, combatPowerRules] = await Promise.all([
+    const [dataset, catalog, probabilityConfig, combatPowerRules] = await Promise.all([
         fetchJson("data/v2/content/age-6-awakening.json"),
+        fetchJson("data/v2/catalogs/martial-souls.json"),
+        fetchJson("data/v2/config/awakening-probabilities.json"),
         fetchJson("data/config/combat-power.json")
     ]);
     state.playtest = new V2ProductionPlaytest({
         dataset,
+        catalog,
+        probabilityConfig,
         combatPowerRules,
         rng: Math.random
     });

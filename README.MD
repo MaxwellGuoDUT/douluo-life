@@ -6,7 +6,9 @@
 
 - V1 是默认可运行入口，提供早期年度事件玩法。
 - V2 是独立的 production playtest 入口，已经具备 Player v2、年度会话、最小 WheelFlowEngine 和原子年度提交。
-- V2 页面当前只承载第一条正式游戏内容“6 岁武魂觉醒”：从明确的 6 岁场景起点执行一个年度，成功后推进到 7 岁内容边界。
+- V2 页面当前承载第一条完整 production 游戏内容“6 岁武魂觉醒”：依次抽取先天魂力、1～4 个武魂数量、一次共享品质、每槽独立基础形态和 271 项正式目录中的具体武魂，成功后原子推进到 7 岁内容边界。
+- 271 项主模式目录包含 233 项 `canon` 和 38 项 `expanded`，同一玩家本次觉醒按定义 ID 无放回抽取。
+- 先天 0 级合法且保持 `level = 0` 与魂力成长锁定；品质战力系数为 0% / 10% / 25% / 30%，多武魂叠加上限 100%。
 - 该 playtest 不伪造 0～5 岁履历；刷新页面会重置到 6 岁场景起点，当前没有 save/load。
 - V2 尚未替代 V1，也尚未实现 save/load、battle 或 ending。
 
@@ -44,5 +46,6 @@ npm test
 - `data/reference/legacy-wheel/` 是旧数据参考档案，不是 production 数据。
 - `inferred` / `provisional` 不得自动升级为 `confirmed`。
 - Player 不持久化派生战力，战力由独立计算器即时计算。
+- 特殊天赋、0～5 岁、学院、魂环、战斗和存档仍未实现。
 
 当前架构决策见 `docs/DECISION_RECORD_V2.md`，开发进度见 `docs/DEVLOG.md`。

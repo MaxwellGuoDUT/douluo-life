@@ -12,6 +12,13 @@ import {
     assertValidPlayerV2,
     clonePlayerStateValue
 } from "./player-v2.js";
+import {
+    executeAwakeningDispatchNode,
+    executeAwakeningGateNode,
+    executeAwakeningProbabilityRollNode,
+    executeAwakeningRepeatNode,
+    saveSessionContextValue
+} from "./production-awakening.js";
 
 export const DEFAULT_WHEEL_FLOW_LIMITS = Object.freeze({
     maxSpinsPerYear: 50,
@@ -23,6 +30,9 @@ export const DEFAULT_WHEEL_FLOW_LIMITS = Object.freeze({
 
 const SUPPORTED_FLOW_OPS = new Set([
     "roll",
+    "gate",
+    "repeatWheel",
+    "dispatchWheel",
     "end"
 ]);
 
@@ -700,7 +710,8 @@ function createSpin({
     wheel,
     item,
     totalWeight,
-    randomValue
+    randomValue,
+    eligibleCount
 }) {
     return {
         sessionId: session.sessionId,
@@ -711,9 +722,14 @@ function createSpin({
         nodeId: node.id,
         wheelId: wheel.id,
         itemId: item.id,
+        itemText: item.text ?? item.id,
         itemWeight: item.weight,
         totalWeight,
-        randomValue
+        randomValue,
+        selectionKind: "wheel_item",
+        slot: null,
+        eligibleCount,
+        details: {}
     };
 }
 
@@ -811,7 +827,8 @@ export function executeFlowNode({
     rng,
     limits = DEFAULT_WHEEL_FLOW_LIMITS,
     triggerMatcher = matchesEventTriggerV2,
-    allowedCanonLevels = EVENT_CANON_LEVELS
+    allowedCanonLevels = EVENT_CANON_LEVELS,
+    awakeningRuntime
 } = {}) {
     assertRuntimeLimits(limits);
     assertEngineInputs(player, session, flow);
@@ -819,16 +836,51 @@ export function executeFlowNode({
 
     assertSupportedNode(node);
 
-    if (node.saveAs !== undefined
-        || node.countFrom !== undefined
-        || node.source !== undefined) {
-        fail(
-            "UNSUPPORTED_SESSION_CONTEXT_WRITE",
-            "The minimal AnnualSession does not yet support sessionContext operations.",
-            {
-                nodeId: node.id
-            }
-        );
+    if (node.op === "roll" && node.probabilitySource !== undefined) {
+        return executeAwakeningProbabilityRollNode({
+            player,
+            session,
+            flow,
+            node,
+            rng,
+            limits,
+            awakeningRuntime
+        });
+    }
+
+    if (node.op === "gate") {
+        return executeAwakeningGateNode({
+            player,
+            session,
+            flow,
+            node,
+            limits,
+            awakeningRuntime
+        });
+    }
+
+    if (node.op === "dispatchWheel") {
+        return executeAwakeningDispatchNode({
+            player,
+            session,
+            flow,
+            node,
+            rng,
+            limits,
+            awakeningRuntime
+        });
+    }
+
+    if (node.op === "repeatWheel") {
+        return executeAwakeningRepeatNode({
+            player,
+            session,
+            flow,
+            node,
+            rng,
+            limits,
+            awakeningRuntime
+        });
     }
 
     if (node.op === "end") {
@@ -883,7 +935,8 @@ export function executeFlowNode({
         wheel,
         item,
         totalWeight,
-        randomValue
+        randomValue,
+        eligibleCount: candidates.length
     });
     const nextPlayer = applyEffects(player, item.effects);
 
@@ -905,8 +958,17 @@ export function executeFlowNode({
     }
 
     const endsSession = ["end", "next_year"].includes(next.advance);
+    const sessionWithContext = node.saveAs === undefined
+        ? session
+        : saveSessionContextValue(
+            session,
+            node.saveAs,
+            Object.prototype.hasOwnProperty.call(item, "value")
+                ? item.value
+                : item.id
+        );
     const nextSession = commitAnnualStep(
-        session,
+        sessionWithContext,
         {
             nodeKey,
             spin,

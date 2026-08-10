@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "martial-soul-review-decisions/1.0",
+  "reviewId": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10",
+  "status": "approved",
+  "decision": "all_accepted",
+  "approvedBy": "project-owner",
+  "approvedDate": "2026-08-10",
+  "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+  "sourceWorkbookSha256": "78BDC7F2FFEFD3529B690265490855EC641F8AF7F841EF1D057034D4EE4426FA",
+  "expectedDecisionCount": 14,
+  "decisions": [
+    {
+      "definitionId": "ms_legacy_48_013",
+      "priorForm": "body",
+      "priorQualityGrade": "top",
+      "confirmedForm": "body",
+      "confirmedQualityGrade": "low"
+    },
+    {
+      "definitionId": "ms_legacy_48_011",
+      "priorForm": "body",
+      "priorQualityGrade": "top",
+      "confirmedForm": "body",
+      "confirmedQualityGrade": "low"
+    },
+    {
+      "definitionId": "ms_legacy_48_010",
+      "priorForm": "body",
+      "priorQualityGrade": "top",
+      "confirmedForm": "body",
+      "confirmedQualityGrade": "low"
+    },
+    {
+      "definitionId": "ms_legacy_48_007",
+      "priorForm": "body",
+      "priorQualityGrade": "top",
+      "confirmedForm": "body",
+      "confirmedQualityGrade": "ordinary"
+    },
+    {
+      "definitionId": "ms_legacy_48_009",
+      "priorForm": "body",
+      "priorQualityGrade": "top",
+      "confirmedForm": "body",
+      "confirmedQualityGrade": "ordinary"
+    },
+    {
+      "definitionId": "ms_legacy_48_008",
+      "priorForm": "body",
+      "priorQualityGrade": "top",
+      "confirmedForm": "body",
+      "confirmedQualityGrade": "ordinary"
+    },
+    {
+      "definitionId": "ms_legacy_47_054",
+      "priorForm": "plant",
+      "priorQualityGrade": "low",
+      "confirmedForm": "food",
+      "confirmedQualityGrade": "low"
+    },
+    {
+      "definitionId": "ms_legacy_47_049",
+      "priorForm": "plant",
+      "priorQualityGrade": "low",
+      "confirmedForm": "food",
+      "confirmedQualityGrade": "low"
+    },
+    {
+      "definitionId": "ms_legacy_47_047",
+      "priorForm": "plant",
+      "priorQualityGrade": "low",
+      "confirmedForm": "food",
+      "confirmedQualityGrade": "low"
+    },
+    {
+      "definitionId": "ms_legacy_50_002",
+      "priorForm": "food",
+      "priorQualityGrade": "ordinary",
+      "confirmedForm": "food",
+      "confirmedQualityGrade": "extreme"
+    },
+    {
+      "definitionId": "ms_legacy_50_001",
+      "priorForm": "food",
+      "priorQualityGrade": "top",
+      "confirmedForm": "food",
+      "confirmedQualityGrade": "extreme"
+    },
+    {
+      "definitionId": "ms_legacy_50_004",
+      "priorForm": "food",
+      "priorQualityGrade": "top",
+      "confirmedForm": "food",
+      "confirmedQualityGrade": "extreme"
+    },
+    {
+      "definitionId": "ms_legacy_46_148",
+      "priorForm": "beast",
+      "priorQualityGrade": "ordinary",
+      "confirmedForm": "beast",
+      "confirmedQualityGrade": "low"
+    },
+    {
+      "definitionId": "ms_legacy_47_052",
+      "priorForm": "plant",
+      "priorQualityGrade": "low",
+      "confirmedForm": "plant",
+      "confirmedQualityGrade": "ordinary"
+    }
+  ]
+}

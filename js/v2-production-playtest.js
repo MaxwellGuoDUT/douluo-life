@@ -8,6 +8,10 @@ import {
     resolveAnnualFlowForPlayer
 } from "./v2-annual-flow-resolver.js";
 import { V2SessionRunner } from "./v2-session-runner.js";
+import {
+    assertValidAwakeningProbabilityConfig,
+    assertValidMartialSoulCatalog
+} from "./production-awakening.js";
 
 export const V2_PRODUCTION_PLAYTEST_STATUS = Object.freeze({
     READY: "ready",
@@ -86,37 +90,53 @@ function resolveProductionFlow(player, dataset) {
     }));
 }
 
-function resolveSelectedItem(dataset, result) {
-    const spin = result.spins.at(-1);
-    const wheels = dataset.wheels.filter(wheel => wheel?.id === spin?.wheelId);
-    const items = wheels.length === 1
-        ? wheels[0].items.filter(item => item?.id === spin?.itemId)
-        : [];
-
-    if (items.length !== 1) {
+function validateRuntimeDependencies(dataset, catalog, probabilityConfig) {
+    const dependencies = dataset.runtimeDependencies;
+    if (!isPlainObject(dependencies)
+        || dependencies.catalogVersion !== catalog.catalogVersion
+        || dependencies.probabilityVersion
+            !== probabilityConfig.probabilityVersion
+        || dependencies.catalogId !== "martial-souls"
+        || dependencies.materializerId !== "martial-soul/1.0") {
         fail(
-            "PRODUCTION_RESULT_ITEM_NOT_FOUND",
-            "The committed production spin must resolve to exactly one item.",
+            "PRODUCTION_RUNTIME_VERSION_MISMATCH",
+            "Age-6 content dependencies do not match the loaded production runtime data.",
             {
-                wheelId: spin?.wheelId ?? null,
-                itemId: spin?.itemId ?? null,
-                matches: items.length
+                dependencies: dependencies ?? null,
+                catalogVersion: catalog.catalogVersion,
+                probabilityVersion: probabilityConfig.probabilityVersion
             }
         );
     }
+}
 
-    if (items[0].reviewStatus !== "confirmed") {
-        fail(
-            "PRODUCTION_RESULT_ITEM_NOT_CONFIRMED",
-            "V2 production playtest only displays confirmed result items.",
-            {
-                itemId: items[0].id,
-                reviewStatus: items[0].reviewStatus ?? null
-            }
-        );
-    }
-
-    return clonePlayerStateValue(items[0]);
+function materializeDisplayResults(result, catalog, combatPowerRules) {
+    const definitionsById = new Map(
+        catalog.definitions.map(definition => [definition.id, definition])
+    );
+    const coefficientRules = combatPowerRules?.martialSoulQuality?.coefficients;
+    return result.player.martialSouls.map(instance => {
+        const definition = definitionsById.get(instance.definitionId);
+        const coefficient = coefficientRules?.[instance.qualityGrade];
+        if (!definition || !Number.isFinite(coefficient)) {
+            fail(
+                "PRODUCTION_RESULT_DEFINITION_NOT_FOUND",
+                "Committed martial soul must resolve to a catalog definition and combat coefficient.",
+                {
+                    definitionId: instance.definitionId,
+                    qualityGrade: instance.qualityGrade
+                }
+            );
+        }
+        return {
+            ...clonePlayerStateValue(instance),
+            name: definition.name,
+            form: definition.form,
+            attributes: clonePlayerStateValue(definition.attributes),
+            canonLevel: definition.canonLevel,
+            qualityCombatCoefficient: coefficient
+        };
+    });
 }
 
 function isCurrentContentBoundary(error, beforePlayer, result) {
@@ -147,17 +167,26 @@ export function createAgeSixProductionPlayer() {
 export class V2ProductionPlaytest {
     constructor({
         dataset,
+        catalog,
+        probabilityConfig,
         combatPowerRules,
-        rng = Math.random
+        rng = Math.random,
+        failureInjector
     } = {}) {
         if (typeof rng !== "function") {
             fail("INVALID_RNG", "V2 production playtest requires an RNG function.");
         }
 
         this.dataset = validateProductionDataset(dataset);
+        assertValidMartialSoulCatalog(catalog);
+        assertValidAwakeningProbabilityConfig(probabilityConfig);
+        validateRuntimeDependencies(this.dataset, catalog, probabilityConfig);
+        this.catalog = clonePlayerStateValue(catalog);
+        this.probabilityConfig = clonePlayerStateValue(probabilityConfig);
         this.combatPowerRules = combatPowerRules === undefined
             ? undefined
             : clonePlayerStateValue(combatPowerRules);
+        this.failureInjector = failureInjector;
         this.rng = rng;
         this.player = createAgeSixProductionPlayer();
         this.status = V2_PRODUCTION_PLAYTEST_STATUS.READY;
@@ -177,7 +206,9 @@ export class V2ProductionPlaytest {
             currentFlowId: this.currentFlowId,
             executionCount: this.executionCount,
             lastResult: this.lastResult,
-            boundary: this.boundary
+            boundary: this.boundary,
+            catalogVersion: this.catalog.catalogVersion,
+            probabilityVersion: this.probabilityConfig.probabilityVersion
         });
     }
 
@@ -202,8 +233,16 @@ export class V2ProductionPlaytest {
         const runner = new V2SessionRunner({
             flow,
             wheelsById: this.dataset.wheels,
-            allowedCanonLevels: ["canon"],
-            combatPowerRules: this.combatPowerRules
+            allowedCanonLevels: ["canon", "expanded"],
+            combatPowerRules: this.combatPowerRules,
+            awakeningRuntime: {
+                catalog: this.catalog,
+                probabilityConfig: this.probabilityConfig,
+                rulesVersion: this.combatPowerRules?.rulesVersion ?? null,
+                ...(this.failureInjector
+                    ? { failureInjector: this.failureInjector }
+                    : {})
+            }
         });
         const result = runner.run({
             player: beforePlayer,
@@ -211,7 +250,11 @@ export class V2ProductionPlaytest {
             seed: resolvedSeed,
             rng
         });
-        const selectedItem = resolveSelectedItem(this.dataset, result);
+        const martialSoulResults = materializeDisplayResults(
+            result,
+            this.catalog,
+            this.combatPowerRules
+        );
         let nextStatus = V2_PRODUCTION_PLAYTEST_STATUS.READY;
         let nextFlowId;
         let boundary = null;
@@ -238,7 +281,7 @@ export class V2ProductionPlaytest {
         this.executionCount = nextSequence;
         this.lastResult = {
             ...clonePlayerStateValue(result),
-            selectedItem
+            martialSoulResults
         };
         this.boundary = boundary;
 

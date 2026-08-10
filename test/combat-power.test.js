@@ -8,6 +8,7 @@ import {
     calculate,
     calculateContinuousLevelPower,
     calculateLevelPower,
+    calculateMartialSoulQualityPower,
     calculateSoulBonePower,
     calculateSoulBonesPower,
     calculateSoulRingPower,
@@ -73,6 +74,55 @@ function topSoulBone(years, extra = {}) {
         ...extra
     };
 }
+
+test("level 0 and all four quality combat coefficients remain explicit", () => {
+    const playerWith = qualities => ({
+        martialSouls: qualities.map((qualityGrade, index) => ({
+            instanceId: `soul_${index + 1}`,
+            definitionId: `definition_${index + 1}`,
+            evolutionFamilyId: `family_${index + 1}`,
+            qualityGrade
+        }))
+    });
+
+    assert.equal(calculateLevelPower(0, baseRules), 0);
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["low"]), 100, baseRules),
+        0
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["ordinary"]), 100, baseRules),
+        10
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["top"]), 100, baseRules),
+        25
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["extreme"]), 100, baseRules),
+        30
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(
+            playerWith(["top", "top", "extreme"]),
+            100,
+            baseRules
+        ),
+        80
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(
+            playerWith(["extreme", "extreme", "extreme", "extreme"]),
+            100,
+            baseRules
+        ),
+        100
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["extreme"]), 0, baseRules),
+        0
+    );
+});
 
 test("continuous level curve keeps all confirmed mathematical anchors", () => {
     const levelRules = baseRules.level;

@@ -7,7 +7,7 @@
     <style>
         :root { font-family: system-ui, sans-serif; color: #24211d; background: #f4f1ea; }
         body { margin: 0; padding: 2rem 1rem; }
-        main { max-width: 760px; margin: auto; padding: 1.5rem; background: #fffdf8; border: 1px solid #d9d0c3; border-radius: 12px; }
+        main { max-width: 980px; margin: auto; padding: 1.5rem; background: #fffdf8; border: 1px solid #d9d0c3; border-radius: 12px; }
         .subtitle { color: #6f655b; }
         .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; margin: 1.5rem 0; }
         .status-card { padding: .85rem; background: #f7f3ec; border: 1px solid #e3dace; border-radius: 8px; }
@@ -20,13 +20,16 @@
         .run-state { margin: 1rem 0; padding: .75rem; border: 1px solid #d9d0c3; border-radius: 8px; }
         .run-state strong { margin-right: .5rem; }
         .boundary { margin-top: 1.25rem; padding: 1rem; border: 1px solid #ba7b3f; border-radius: 8px; background: #fff3df; }
+        .martial-soul-list { display: grid; gap: .75rem; padding: 0; list-style: none; }
+        .martial-soul-list li { display: grid; gap: .35rem; padding: .9rem; border: 1px solid #d9d0c3; border-radius: 8px; background: #fbf7f0; }
+        .martial-soul-list span { color: #514940; line-height: 1.5; }
         [hidden] { display: none; }
     </style>
 </head>
 <body>
     <main id="v2Playtest" data-status="loading">
         <h1>6 岁武魂觉醒 · V2 Production Playtest</h1>
-        <p class="subtitle">当前唯一 production 场景的真实页面验收入口；点击后执行一个完整年度转盘。</p>
+        <p class="subtitle">点击后执行先天魂力、1～4 武魂数量、一次共享品质、每槽基础形态和 271 项主模式目录抽取。</p>
         <p class="scope-note">这是从 6 岁开始的场景测试，不包含 0～5 岁履历。</p>
         <div class="run-state" aria-live="polite">
             <strong>页面状态</strong><span id="pageStatusValue">正在加载 production 数据…</span>
@@ -35,18 +38,30 @@
         <div class="status-grid" aria-live="polite">
             <div class="status-card"><strong>场景</strong><span id="sceneValue">6 岁武魂觉醒</span></div>
             <div class="status-card"><strong>年龄</strong><span id="ageValue">-</span></div>
+            <div class="status-card"><strong>先天魂力</strong><span id="innateSoulPowerValue">未觉醒</span></div>
+            <div class="status-card"><strong>天赋等级</strong><span id="talentGradeValue">未觉醒</span></div>
             <div class="status-card"><strong>等级 / 境界</strong><span id="levelValue">-</span></div>
+            <div class="status-card"><strong>魂力成长锁定</strong><span id="growthLockValue">未觉醒</span></div>
+            <div class="status-card"><strong>武魂数量</strong><span id="martialSoulCountValue">未觉醒</span></div>
             <div class="status-card"><strong>当前激活武魂</strong><span id="martialSoulValue">-</span></div>
             <div class="status-card"><strong>Flow / 最近节点</strong><span id="flowValue">-</span></div>
-            <div class="status-card"><strong>抽中 Item ID</strong><span id="itemValue">-</span></div>
-            <div class="status-card"><strong>实际叙事文本</strong><span id="itemTextValue">尚未执行</span></div>
             <div class="status-card"><strong>本年度 Spin 数量</strong><span id="spinCountValue">-</span></div>
             <div class="status-card"><strong>Player SpinHistory 总数</strong><span id="spinHistoryCountValue">-</span></div>
             <div class="status-card"><strong>Player Annual History 总数</strong><span id="historyCountValue">-</span></div>
             <div class="status-card"><strong>派生战力总值</strong><span id="combatPowerValue">-</span></div>
             <div class="status-card"><strong>战力规则版本</strong><span id="rulesVersionValue">-</span></div>
+            <div class="status-card"><strong>武魂目录版本</strong><span id="catalogVersionValue">-</span></div>
+            <div class="status-card"><strong>觉醒概率版本</strong><span id="probabilityVersionValue">-</span></div>
             <div class="status-card"><strong>最近年度记录</strong><span id="annualRecordValue">-</span></div>
         </div>
+        <h2>本次觉醒的全部武魂</h2>
+        <ol id="martialSoulList" class="martial-soul-list" aria-live="polite">
+            <li>尚未觉醒</li>
+        </ol>
+        <h2>派生战力明细</h2>
+        <pre id="combatBreakdownValue">尚未计算</pre>
+        <h2>本年度随机审计记录</h2>
+        <pre id="spinsValue">尚无随机记录</pre>
         <section id="boundarySection" class="boundary" aria-live="polite" hidden>
             <h2>当前 Production 内容边界</h2>
             <p id="boundaryValue"></p>

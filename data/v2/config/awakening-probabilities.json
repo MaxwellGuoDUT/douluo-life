@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "awakening-probability-config/1.0",
+  "probabilityVersion": "awakening-probabilities/1.2",
+  "status": "production",
+  "integerWeightsOnly": true,
+  "innateSoulPowerRoll": {
+    "totalWeight": 1000,
+    "items": [
+      { "id": "innate_soul_power_0", "innateSoulPower": 0, "talentGrade": "F", "weight": 50, "text": "先天魂力 0 级 / F" },
+      { "id": "innate_soul_power_1", "innateSoulPower": 1, "talentGrade": "E", "weight": 100, "text": "先天魂力 1 级 / E" },
+      { "id": "innate_soul_power_2", "innateSoulPower": 2, "talentGrade": "D", "weight": 120, "text": "先天魂力 2 级 / D" },
+      { "id": "innate_soul_power_3", "innateSoulPower": 3, "talentGrade": "D", "weight": 130, "text": "先天魂力 3 级 / D" },
+      { "id": "innate_soul_power_4", "innateSoulPower": 4, "talentGrade": "C", "weight": 130, "text": "先天魂力 4 级 / C" },
+      { "id": "innate_soul_power_5", "innateSoulPower": 5, "talentGrade": "C", "weight": 120, "text": "先天魂力 5 级 / C" },
+      { "id": "innate_soul_power_6", "innateSoulPower": 6, "talentGrade": "B", "weight": 110, "text": "先天魂力 6 级 / B" },
+      { "id": "innate_soul_power_7", "innateSoulPower": 7, "talentGrade": "B", "weight": 90, "text": "先天魂力 7 级 / B" },
+      { "id": "innate_soul_power_8", "innateSoulPower": 8, "talentGrade": "A", "weight": 70, "text": "先天魂力 8 级 / A" },
+      { "id": "innate_soul_power_9", "innateSoulPower": 9, "talentGrade": "A", "weight": 40, "text": "先天魂力 9 级 / A" },
+      { "id": "innate_soul_power_10", "innateSoulPower": 10, "talentGrade": "S", "weight": 35, "text": "先天魂力 10 级 / S" },
+      { "id": "innate_soul_power_20", "innateSoulPower": 20, "talentGrade": "神级天赋", "weight": 5, "text": "先天魂力 20 级 / 神级天赋" }
+    ]
+  },
+  "martialSoulCountRolls": {
+    "totalWeight": 10000,
+    "minimum": 1,
+    "maximum": 4,
+    "byInnateSoulPower": {
+      "0": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 9950, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 45, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 4, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 1, "text": "觉醒 4 个武魂" }
+      ],
+      "1": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 9800, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 180, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 18, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 2, "text": "觉醒 4 个武魂" }
+      ],
+      "2": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 9600, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 350, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 45, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 5, "text": "觉醒 4 个武魂" }
+      ],
+      "3": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 9300, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 600, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 85, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 15, "text": "觉醒 4 个武魂" }
+      ],
+      "4": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 8800, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 950, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 200, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 50, "text": "觉醒 4 个武魂" }
+      ],
+      "5": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 8200, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 1350, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 350, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 100, "text": "觉醒 4 个武魂" }
+      ],
+      "6": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 7400, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 1800, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 600, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 200, "text": "觉醒 4 个武魂" }
+      ],
+      "7": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 6400, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 2400, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 900, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 300, "text": "觉醒 4 个武魂" }
+      ],
+      "8": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 5200, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 3100, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 1200, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 500, "text": "觉醒 4 个武魂" }
+      ],
+      "9": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 4000, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 3600, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 1700, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 700, "text": "觉醒 4 个武魂" }
+      ],
+      "10": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 2500, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 4000, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 2500, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 1000, "text": "觉醒 4 个武魂" }
+      ],
+      "20": [
+        { "id": "martial_soul_count_1", "count": 1, "weight": 500, "text": "觉醒 1 个武魂" },
+        { "id": "martial_soul_count_2", "count": 2, "weight": 2000, "text": "觉醒 2 个武魂" },
+        { "id": "martial_soul_count_3", "count": 3, "weight": 4000, "text": "觉醒 3 个武魂" },
+        { "id": "martial_soul_count_4", "count": 4, "weight": 3500, "text": "觉醒 4 个武魂" }
+      ]
+    }
+  },
+  "qualityRolls": {
+    "totalWeight": 10000,
+    "slotPolicy": {
+      "mode": "shared_quality_per_awakening",
+      "drawCount": 1,
+      "hiddenDecay": false
+    },
+    "byInnateSoulPower": {
+      "0": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 9000, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 950, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 45, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 5, "text": "极致品质" }
+      ],
+      "1": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 8000, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 1850, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 135, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 15, "text": "极致品质" }
+      ],
+      "2": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 7000, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 2700, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 270, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 30, "text": "极致品质" }
+      ],
+      "3": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 6000, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 3500, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 450, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 50, "text": "极致品质" }
+      ],
+      "4": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 5000, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 4200, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 700, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 100, "text": "极致品质" }
+      ],
+      "5": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 4000, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 4700, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 1100, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 200, "text": "极致品质" }
+      ],
+      "6": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 3000, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 5000, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 1700, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 300, "text": "极致品质" }
+      ],
+      "7": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 2200, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 5000, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 2300, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 500, "text": "极致品质" }
+      ],
+      "8": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 1400, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 4600, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 3200, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 800, "text": "极致品质" }
+      ],
+      "9": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 800, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 3900, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 3900, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 1400, "text": "极致品质" }
+      ],
+      "10": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 300, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 2700, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 4800, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 2200, "text": "极致品质" }
+      ],
+      "20": [
+        { "id": "quality_low", "qualityGrade": "low", "weight": 50, "text": "低等品质" },
+        { "id": "quality_ordinary", "qualityGrade": "ordinary", "weight": 550, "text": "普通品质" },
+        { "id": "quality_top", "qualityGrade": "top", "weight": 4400, "text": "顶级品质" },
+        { "id": "quality_extreme", "qualityGrade": "extreme", "weight": 5000, "text": "极致品质" }
+      ]
+    }
+  },
+  "formRoll": {
+    "totalWeight": 1000,
+    "dependsOnInnateSoulPower": false,
+    "items": [
+      { "id": "form_tool", "form": "tool", "weight": 340, "text": "器形态" },
+      { "id": "form_beast", "form": "beast", "weight": 360, "text": "兽形态" },
+      { "id": "form_plant", "form": "plant", "weight": 200, "text": "植物形态" },
+      { "id": "form_food", "form": "food", "weight": 60, "text": "食物形态" },
+      { "id": "form_body", "form": "body", "weight": 40, "text": "本体形态" }
+    ]
+  }
+}

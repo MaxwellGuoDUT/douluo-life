@@ -510,11 +510,8 @@ test("runFlow executes multiple same-year rolls and an end node", () => {
     ]);
 });
 
-test("known unsupported ops and unknown ops have distinct error codes", () => {
+test("remaining unsupported ops and unknown ops have distinct error codes", () => {
     [
-        "gate",
-        "repeatWheel",
-        "dispatchWheel",
         "setRoute",
         "yieldYear",
         "terminal"
@@ -671,7 +668,7 @@ test("annual and per-flow limits stop execution before RNG", () => {
     assert.equal(flowRng.calls(), 0);
 });
 
-test("age mismatch and unsupported session context fail before RNG", () => {
+test("age mismatch fails before RNG and saveAs writes stable context", () => {
     const testWheel = wheel("wheel_preflight", [
         item("only", 1)
     ]);
@@ -700,13 +697,14 @@ test("age mismatch and unsupported session context fail before RNG", () => {
     assert.equal(rng.calls(), 0);
 
     testFlow.nodes[0].saveAs = "result";
-    assertEngineError(() => executeFlowNode({
+    const result = executeFlowNode({
         player: createPlayer(),
         session: createSession(),
         flow: testFlow,
         nodeId: "roll",
         wheelsById: [testWheel],
         rng
-    }), "UNSUPPORTED_SESSION_CONTEXT_WRITE");
-    assert.equal(rng.calls(), 0);
+    });
+    assert.equal(result.session.sessionContext.result, "only");
+    assert.equal(rng.calls(), 1);
 });

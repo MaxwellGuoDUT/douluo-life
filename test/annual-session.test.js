@@ -63,7 +63,8 @@ test("createAnnualSession returns isolated deterministic JSON data", () => {
     first.annualFlags.nested.value = 9;
     assert.equal(inputFlags.nested.value, 1);
     assert.equal(second.annualFlags.nested.value, 1);
-    assert.equal(Object.hasOwn(first, "sessionContext"), false);
+    assert.equal(Object.hasOwn(first, "sessionContext"), true);
+    assert.deepEqual(first.sessionContext, {});
 });
 
 test("commitAnnualStep atomically records visits and spins", () => {
