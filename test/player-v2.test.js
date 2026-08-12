@@ -46,6 +46,7 @@ test("Player v2 accepts an awakened level-0 player only with the growth lock", (
     player.talentGrade = "F";
     player.soulPowerGrowthLocked = true;
     player.rank = "无魂力";
+    player.combatBase.mode = "civilian_observer";
     player.martialSouls = [createMartialSoul({
         qualityGrade: "low"
     })];
@@ -63,6 +64,12 @@ test("Player v2 accepts an awakened level-0 player only with the growth lock", (
     clamped.level = 1;
     assert.ok(errorCodes(validatePlayerV2(clamped)).includes(
         "INVALID_ZERO_SOUL_POWER_STATE"
+    ));
+
+    const wrongRoute = clonePlayerStateValue(player);
+    wrongRoute.combatBase.mode = "level";
+    assert.ok(errorCodes(validatePlayerV2(wrongRoute)).includes(
+        "LEVEL_ZERO_REQUIRES_CIVILIAN_OBSERVER_ROUTE"
     ));
 });
 

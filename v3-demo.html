@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V3 最简人生 Demo · Provisional</title>
+    <style>
+        :root {
+            color: #25231f;
+            background: #e9eef3;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+
+        body { margin: 0; padding: 1rem; }
+        main {
+            width: min(820px, calc(100% - 390px));
+            min-height: calc(100vh - 2rem);
+            margin: auto 390px auto auto;
+            padding: 1.5rem;
+            background: #fff;
+            border: 1px solid #c9d4df;
+            border-radius: 14px;
+        }
+        h1, h2 { color: #213f5b; }
+        h1 { margin-top: 0; }
+        .notice {
+            padding: .8rem 1rem;
+            border-left: 5px solid #47759b;
+            background: #edf6fd;
+            line-height: 1.6;
+        }
+        .section { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #d8e1e8; }
+        .primary-flow { display: grid; gap: 1rem; }
+        .spin-stage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            min-height: 180px;
+            padding: 1.2rem;
+            border: 1px dashed #aebfce;
+            border-radius: 12px;
+            background: #f7fbfe;
+        }
+        .spin-wheel {
+            display: grid;
+            place-items: center;
+            width: 118px;
+            height: 118px;
+            flex: 0 0 118px;
+            border: 8px solid #47759b;
+            border-radius: 50%;
+            color: #315f83;
+            background: #e8f3fb;
+            font-weight: 750;
+            box-shadow: 0 0 0 8px #dcecf7, 0 8px 20px #b8cbd9;
+        }
+        .spin-wheel.spinning { animation: wheelSpin var(--spin-duration, .45s) cubic-bezier(.2,.8,.3,1); }
+        @keyframes wheelSpin { from { transform: rotate(0deg); } to { transform: rotate(1080deg); } }
+        .spin-label { color: #647587; }
+        button, input, select {
+            box-sizing: border-box;
+            width: 100%;
+            padding: .72rem .8rem;
+            border-radius: 7px;
+            border: 1px solid #b8c7d4;
+            font: inherit;
+        }
+        button {
+            cursor: pointer;
+            color: #fff;
+            background: #315f83;
+            border-color: #315f83;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        button:disabled { opacity: .45; cursor: not-allowed; }
+        .event-card {
+            padding: 1rem;
+            border: 1px solid #d1dce5;
+            border-radius: 10px;
+            background: #f7fafc;
+        }
+        .event-title { color: #213f5b; font-size: 1.15rem; font-weight: 750; }
+        .event-text { margin-bottom: 0; line-height: 1.75; }
+        .details-panel {
+            position: fixed;
+            z-index: 10;
+            top: 1rem;
+            right: 1rem;
+            width: 350px;
+            max-height: calc(100vh - 2rem);
+            overflow: auto;
+            box-sizing: border-box;
+            background: #fff;
+            border: 1px solid #aebfce;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgb(32 58 78 / 18%);
+        }
+        .details-panel > summary {
+            cursor: pointer;
+            padding: .9rem 1rem;
+            color: #213f5b;
+            font-weight: 750;
+            background: #edf6fd;
+        }
+        .details-content { padding: 0 1rem 1rem; }
+        .details-content .section { margin-top: 1rem; }
+        .details-content h2 { font-size: 1.05rem; }
+        .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+        .field { display: grid; gap: .35rem; }
+        label { font-weight: 650; }
+        .status { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+        .card { padding: .65rem; border: 1px solid #d1dce5; border-radius: 8px; background: #f7fafc; overflow-wrap: anywhere; }
+        .card strong { display: block; color: #647587; font-size: .78rem; margin-bottom: .2rem; }
+        .pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+        .pill { padding: .4rem .55rem; border: 1px solid #c5d3df; border-radius: 999px; background: #f5f9fc; font-size: .86rem; }
+        pre {
+            max-height: 280px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            padding: .75rem;
+            color: #edf5fb;
+            background: #1f2933;
+            border-radius: 8px;
+            font-size: .78rem;
+        }
+        .terminal { margin-top: 1rem; padding: 1rem; border-radius: 8px; font-size: 1.1rem; font-weight: 700; }
+        .terminal.success { color: #1e5c40; background: #e3f3e9; border: 1px solid #a8d6ba; }
+        .terminal.failure { color: #7d2c25; background: #f9e4e1; border: 1px solid #e0aaa4; }
+        .terminal.ignored { color: #68542d; background: #f8efd8; border: 1px solid #dfc78d; }
+        .muted { color: #647587; }
+        [hidden] { display: none; }
+        @media (max-width: 900px) {
+            body { padding: .6rem; }
+            main { width: auto; min-height: auto; margin: 0; }
+            .details-panel { position: static; width: auto; max-height: none; margin-top: .75rem; }
+        }
+        @media (max-width: 520px) {
+            .spin-stage { flex-direction: column; text-align: center; }
+            .grid, .status { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<main id="v3Demo" data-status="loading">
+    <h1>V3 最简人生 Demo</h1>
+
+    <section class="section primary-flow">
+        <div id="spinStage" class="spin-stage" aria-live="polite">
+            <div id="spinWheel" class="spin-wheel">转盘</div>
+            <span id="spinLabel" class="spin-label">等待加载资料…</span>
+        </div>
+        <button id="advanceButton" type="button" disabled>加载资料…</button>
+    </section>
+
+    <section class="section">
+        <h2>当前事件</h2>
+        <div class="event-card" aria-live="polite">
+            <div id="currentEventTitle" class="event-title">等待开始</div>
+            <p id="currentEventText" class="event-text">点击抽取键开始0岁身份抽取。</p>
+        </div>
+        <div id="terminalBox" class="terminal" hidden></div>
+    </section>
+</main>
+
+<details id="detailsPanel" class="details-panel">
+    <summary>打开详细侧栏 · 状态 / 武魂 / 魂环魂骨 / 规则审计</summary>
+    <div class="details-content">
+        <section class="section">
+            <h2>流程测试输入</h2>
+            <div class="field">
+                <label for="talentInput">6岁先天魂力</label>
+                <select id="talentInput">
+                    <option value="10">10（默认测试值）</option>
+                    <option value="random">随机等权（含0）</option>
+                    <option value="1">1 · E</option>
+                    <option value="2">2 · D</option>
+                    <option value="4">4 · C</option>
+                    <option value="6">6 · B</option>
+                    <option value="8">8 · A</option>
+                    <option value="20">20 · god-level</option>
+                    <option value="0">0 · F / 旁观路线</option>
+                </select>
+                <span class="muted">仅用于 Demo 测试；正式武魂目录和觉醒运行时在6岁接入。</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>当前状态</h2>
+            <div class="status" aria-live="polite">
+                <div class="card"><strong>流程状态</strong><span id="statusValue">加载中</span></div>
+                <div class="card"><strong>年龄</strong><span id="ageValue">0岁</span></div>
+                <div class="card"><strong>等级</strong><span id="levelValue">0级</span></div>
+                <div class="card"><strong>身份</strong><span id="identityValue">未抽取</span></div>
+                <div class="card"><strong>天赋</strong><span id="talentValue">未抽取</span></div>
+                <div class="card"><strong>武魂觉醒</strong><span id="awakeningValue">尚未觉醒</span></div>
+                <div class="card"><strong>魂环数</strong><span id="ringCountValue">0</span></div>
+                <div class="card"><strong>魂骨数</strong><span id="boneCountValue">0</span></div>
+                <div class="card"><strong>静态战力</strong><span id="powerValue">0</span></div>
+                <div class="card"><strong>游戏结束</strong><span id="gameOverValue">否</span></div>
+            </div>
+            <p id="messageValue" class="muted"></p>
+        </section>
+
+        <section class="section">
+            <h2>武魂</h2>
+            <div id="soulsValue" class="pills"><span class="muted">尚未觉醒</span></div>
+        </section>
+
+        <section class="section">
+            <h2>魂环与魂骨</h2>
+            <strong>魂环</strong>
+            <div id="ringsValue" class="pills"><span class="muted">暂无</span></div>
+            <strong style="display:block; margin-top: .8rem;">魂骨</strong>
+            <div id="bonesValue" class="pills"><span class="muted">暂无</span></div>
+        </section>
+
+        <section class="section">
+            <h2>终局战斗</h2>
+            <pre id="battleValue">尚未到达100级。</pre>
+        </section>
+
+        <section class="section">
+            <h2>规则与审计记录</h2>
+            <strong>当前事件详情</strong>
+            <pre id="currentEventDetails">{}</pre>
+            <strong>规则来源与版本边界</strong>
+            <pre id="rulesValue">{}</pre>
+            <strong>过场与抽取历史</strong>
+            <pre id="historyValue">[]</pre>
+            <strong>运行警告</strong>
+            <pre id="warningsValue">[]</pre>
+            <strong>战力审计</strong>
+            <pre id="combatValue">尚未计算</pre>
+            <strong>错误</strong>
+            <pre id="errorValue">无</pre>
+        </section>
+    </div>
+</details>
+<script type="module" src="js/v3-demo-app.js"></script>
+</body>
+</html>

@@ -168,6 +168,7 @@ test("deterministic level-0 awakening commits five audited spins and stays level
     assert.equal(result.player.talentGrade, "F");
     assert.equal(result.player.level, 0);
     assert.equal(result.player.rank, "无魂力");
+    assert.equal(result.player.combatBase.mode, "civilian_observer");
     assert.equal(result.player.soulPowerGrowthLocked, true);
     assert.equal(result.player.martialSouls.length, 1);
     assert.equal(result.player.martialSouls[0].slot, 1);
@@ -190,6 +191,8 @@ test("deterministic level-0 awakening commits five audited spins and stays level
     assert.equal(result.annualRecord.result.innateSoulPower, 0);
     assert.equal(result.annualRecord.result.martialSoulCount, 1);
     assert.equal(result.combatPower.total, 0);
+    assert.equal(result.combatPower.staticCombatPower, 0);
+    assert.equal(result.combatPower.combatParticipation, "none");
     assert.equal(result.combatPower.breakdown.level, 0);
     assert.equal(result.combatPower.breakdown.martialSoulQuality, 0);
     assert.equal(Object.hasOwn(result.player, "combatPower"), false);

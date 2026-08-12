@@ -153,7 +153,9 @@ export class V2DemoUI {
             ? `${record.flowId} / ${lastStep?.nodeId ?? "-"}`
             : state.currentFlowId ?? "-";
         this.fields.spinCount.textContent = String(result?.spins.length ?? 0);
-        this.fields.combatPower.textContent = power ? String(power.total) : "未计算";
+        this.fields.combatPower.textContent = power
+            ? String(power.staticCombatPower ?? power.total)
+            : "未计算";
         this.fields.combatBreakdown.textContent = power
             ? stringify(power.breakdown)
             : "未计算";

@@ -43,6 +43,14 @@ function toNaturalNumber(value) {
     return Math.max(0, Math.round(value));
 }
 
+function toRoundedNumber(value) {
+    if (!Number.isFinite(value)) {
+        return 0;
+    }
+
+    return Math.round(value);
+}
+
 function assertValidLevel(level, levelRules) {
     const minLevel = levelRules?.minLevel;
     const maxLevel = levelRules?.maxLevel;
@@ -135,6 +143,14 @@ function getApplicableCumulativeBonus(level, anchors, warnings) {
 export function calculateContinuousLevelPower(level, levelRules) {
     assertValidLevel(level, levelRules);
 
+    const explicitEntry = getLevelPowerEntry(level, levelRules);
+
+    if (explicitEntry
+        && explicitEntry.valueMode !== "final"
+        && Number.isFinite(explicitEntry.power)) {
+        return toNaturalNumber(explicitEntry.power);
+    }
+
     if (levelRules.continuousCurve?.mode !== "increment_by_decade") {
         throw new TypeError(`Unsupported level curve mode "${String(levelRules.continuousCurve?.mode)}".`);
     }
@@ -156,7 +172,32 @@ export function calculateLevelPower(level, rules, warnings) {
         throw new TypeError("Combat power rules must include a level object.");
     }
 
+    const explicitEntry = getLevelPowerEntry(level, levelRules);
+
+    if (explicitEntry?.valueMode === "final"
+        && Number.isFinite(explicitEntry.power)) {
+        return toNaturalNumber(explicitEntry.power);
+    }
+
     const continuousPower = calculateContinuousLevelPower(level, levelRules);
+
+    if (Number.isInteger(levelRules.confirmedThroughLevel)
+        && level > levelRules.confirmedThroughLevel
+        && !(explicitEntry?.status === "confirmed"
+            && Number.isFinite(explicitEntry.power))
+        && Array.isArray(warnings)) {
+        addWarning(
+            warnings,
+            "LEVEL_RULE_ABOVE_TABLE_UNRESOLVED",
+            `Level ${level} is above the confirmed table range through level ${levelRules.confirmedThroughLevel}; the configured compatibility curve was used.`,
+            "level.continuousCurve",
+            {
+                confirmedThroughLevel: levelRules.confirmedThroughLevel,
+                status: "unresolved"
+            }
+        );
+    }
+
     const breakthroughPower = getApplicableBonusTotal(
         level,
         levelRules.breakthroughBonuses,
@@ -181,6 +222,12 @@ export function calculateLevelPower(level, rules, warnings) {
         + cumulativeAnchorPower
         + specialLevelPower
     );
+}
+
+function getLevelPowerEntry(level, levelRules) {
+    return Array.isArray(levelRules?.powerEntries)
+        ? levelRules.powerEntries.find(entry => entry?.level === level)
+        : null;
 }
 
 function validateBonusEntries(entries, path, levelRules, errors) {
@@ -394,6 +441,14 @@ function validateBloodlineMultipliers(soulRingRules, errors) {
             });
         }
     });
+
+    if (soulRingRules?.bloodlineDistributionRequiredTotal !== 100) {
+        errors.push({
+            code: "INVALID_BLOODLINE_DISTRIBUTION_TOTAL",
+            message: "Mixed soul beast bloodline percentages must require a total of 100.",
+            path: "soulRings.bloodlineDistributionRequiredTotal"
+        });
+    }
 }
 
 function validateNamedCoefficients(definitions, path, requiredNames, errors) {
@@ -420,17 +475,23 @@ function validateNamedCoefficients(definitions, path, requiredNames, errors) {
 function validateFixedFirstPhaseStrategies(rules, errors) {
     const supportedBaseModes = rules.combatBase?.supportedModes;
     const implementedBaseModes = rules.combatBase?.implementedModes;
-    const requiredBaseModes = ["level", "soul_beast_cultivation", "hybrid"];
+    const requiredBaseModes = [
+        "level",
+        "civilian_observer",
+        "soul_beast_cultivation",
+        "hybrid"
+    ];
 
     if (rules.combatBase?.defaultMode !== "level"
         || !Array.isArray(supportedBaseModes)
         || !requiredBaseModes.every(mode => supportedBaseModes.includes(mode))
         || !Array.isArray(implementedBaseModes)
-        || implementedBaseModes.length !== 1
-        || implementedBaseModes[0] !== "level") {
+        || implementedBaseModes.length !== 2
+        || !implementedBaseModes.includes("level")
+        || !implementedBaseModes.includes("civilian_observer")) {
         errors.push({
             code: "UNSUPPORTED_COMBAT_BASE_STRATEGY",
-            message: "First phase must default to level, declare all three modes, and implement level only.",
+            message: "First phase must default to level, declare all four modes, and implement level plus civilian_observer.",
             path: "combatBase"
         });
     }
@@ -489,6 +550,41 @@ function validateFixedFirstPhaseStrategies(rules, errors) {
                 code: "UNSUPPORTED_COEFFICIENT_MODULE_STRATEGY",
                 message: `First-phase ${moduleName} must use definition-driven sum stacking.`,
                 path: `coefficientModules.${moduleName}`
+            });
+        }
+    });
+}
+
+function validateDivineArmorEfficiencyRules(divineArmorRules, errors) {
+    const efficiencyRules = divineArmorRules?.efficiencyByDivinePositionCount;
+    const requiredCoefficients = new Map([
+        [1, 1],
+        [2, 0.8],
+        [3, 0.6],
+        [4, 0.4]
+    ]);
+
+    if (!Array.isArray(efficiencyRules)) {
+        errors.push({
+            code: "INVALID_DIVINE_ARMOR_POSITION_EFFICIENCY",
+            message: "Divine armor must define efficiency rules for one through four divine positions.",
+            path: "divineArmor.efficiencyByDivinePositionCount"
+        });
+        return;
+    }
+
+    requiredCoefficients.forEach((expectedCoefficient, divinePositionCount) => {
+        const rule = efficiencyRules.find(entry => {
+            return entry?.divinePositionCount === divinePositionCount;
+        });
+
+        if (!rule
+            || !Number.isFinite(rule.coefficient)
+            || rule.coefficient !== expectedCoefficient) {
+            errors.push({
+                code: "INVALID_DIVINE_ARMOR_POSITION_EFFICIENCY",
+                message: `Divine armor efficiency for ${divinePositionCount} divine positions must be ${expectedCoefficient}.`,
+                path: `divineArmor.efficiencyByDivinePositionCount.${divinePositionCount}`
             });
         }
     });
@@ -664,6 +760,8 @@ export function validateRules(rules) {
             path: "divineArmor"
         });
     }
+
+    validateDivineArmorEfficiencyRules(rules.divineArmor, errors);
 
     if (errors.length === 0) {
         validateLevelAnchors(rules, errors, warnings);
@@ -960,7 +1058,10 @@ function findAgeBracket(years, soulRingRules, itemType) {
 function resolveBloodlineMultiplier(entity, soulRingRules, warnings, path) {
     if (entity.sourceType === soulRingRules.godBestowed?.sourceType) {
         const multiplierField = soulRingRules.godBestowed.qualityMultiplierField;
-        const multiplier = entity[multiplierField];
+        const hasExplicitMultiplier = entity[multiplierField] !== undefined;
+        const multiplier = hasExplicitMultiplier
+            ? entity[multiplierField]
+            : soulRingRules.godBestowed.defaultQualityMultiplier;
 
         if (!Number.isFinite(multiplier) || multiplier <= 0) {
             addWarning(
@@ -972,11 +1073,98 @@ function resolveBloodlineMultiplier(entity, soulRingRules, warnings, path) {
             return null;
         }
 
+        if (!hasExplicitMultiplier && Array.isArray(warnings)) {
+            addWarning(
+                warnings,
+                "DEFAULT_GOD_BESTOWED_MULTIPLIER",
+                `God-bestowed item used the configured default ${multiplierField}.`,
+                `${path}.${multiplierField}`,
+                {
+                    status: "confirmed"
+                }
+            );
+        }
+
         return multiplier;
     }
 
-    const grade = entity.soulBeastBloodlineGrade;
     const multipliers = soulRingRules.bloodlineMultipliers;
+
+    const distributionField = soulRingRules.bloodlineDistributionField
+        || "soulBeastBloodlineDistribution";
+    const gradeField = soulRingRules.bloodlineDistributionGradeField || "grade";
+    const percentageField = soulRingRules.bloodlineDistributionPercentageField || "percentage";
+    const requiredTotal = soulRingRules.bloodlineDistributionRequiredTotal ?? 100;
+    const distribution = entity[distributionField];
+
+    if (distribution !== undefined) {
+
+        if (!Array.isArray(distribution) || distribution.length === 0) {
+            addWarning(
+                warnings,
+                "INVALID_SOUL_BEAST_BLOODLINE_DISTRIBUTION",
+                `${distributionField} must be a non-empty array.`,
+                `${path}.${distributionField}`
+            );
+            return null;
+        }
+
+        let percentageTotal = 0;
+        let weightedMultiplier = 0;
+        let invalid = false;
+
+        distribution.forEach((entry, index) => {
+            const entryPath = `${path}.${distributionField}[${index}]`;
+            const grade = entry?.[gradeField] ?? entry?.soulBeastBloodlineGrade;
+            const percentage = entry?.[percentageField];
+
+            if (typeof grade !== "string"
+                || !Object.prototype.hasOwnProperty.call(multipliers, grade)) {
+                addWarning(
+                    warnings,
+                    "UNKNOWN_SOUL_BEAST_BLOODLINE_GRADE",
+                    `Unknown or missing mixed soulBeastBloodline grade "${String(grade)}".`,
+                    `${entryPath}.${gradeField}`
+                );
+                invalid = true;
+                return;
+            }
+
+            if (!Number.isFinite(percentage) || percentage < 0) {
+                addWarning(
+                    warnings,
+                    "INVALID_SOUL_BEAST_BLOODLINE_PERCENTAGE",
+                    "Mixed soulBeastBloodline percentages must be non-negative finite numbers.",
+                    `${entryPath}.${percentageField}`
+                );
+                invalid = true;
+                return;
+            }
+
+            percentageTotal += percentage;
+            weightedMultiplier += (percentage / 100) * multipliers[grade];
+        });
+
+        if (invalid || Math.abs(percentageTotal - requiredTotal) > 1e-9) {
+            if (!invalid) {
+                addWarning(
+                    warnings,
+                    "SOUL_BEAST_BLOODLINE_PERCENTAGE_TOTAL_MISMATCH",
+                    `Mixed soulBeastBloodline percentages must total ${requiredTotal}; received ${percentageTotal}.`,
+                    `${path}.${distributionField}`,
+                    {
+                        percentageTotal,
+                        requiredTotal
+                    }
+                );
+            }
+            return null;
+        }
+
+        return weightedMultiplier;
+    }
+
+    const grade = entity.soulBeastBloodlineGrade;
 
     if (typeof grade !== "string" || !Object.prototype.hasOwnProperty.call(multipliers, grade)) {
         addWarning(
@@ -1046,7 +1234,13 @@ function calculateAgeBasedItemPower(
     return Math.max(minimumPower, toNaturalNumber(bracket.basePower * multiplier));
 }
 
-export function calculateSoulRingPower(ring, rules, warnings = [], path = "soulRings[0]") {
+export function calculateSoulRingPower(
+    ring,
+    rules,
+    warnings = [],
+    path = "soulRings[0]",
+    baseMode = "level"
+) {
     if (!isPlainObject(ring)) {
         addWarning(
             warnings,
@@ -1058,6 +1252,21 @@ export function calculateSoulRingPower(ring, rules, warnings = [], path = "soulR
     }
 
     const soulRingRules = rules.soulRings;
+
+    const fixedSlotRule = baseMode === "level"
+        && Array.isArray(soulRingRules.fixedSlotPower)
+        ? soulRingRules.fixedSlotPower.find(rule => {
+            return Number.isInteger(ring.slot)
+                && Number.isInteger(rule.minSlot)
+                && Number.isInteger(rule.maxSlot)
+                && ring.slot >= rule.minSlot
+                && ring.slot <= rule.maxSlot;
+        })
+        : null;
+
+    if (fixedSlotRule) {
+        return toNaturalNumber(fixedSlotRule.fixedPower);
+    }
 
     if (ring.ringType === soulRingRules.divineGold.ringType) {
         return toNaturalNumber(soulRingRules.divineGold.fixedPower);
@@ -1111,8 +1320,17 @@ function collectSoulRings(player, souls, warnings) {
 }
 
 function calculateSoulRingsFromSouls(player, souls, rules, warnings) {
+    const baseMode = player.combatBase?.mode
+        ?? rules.combatBase?.defaultMode;
+
     return collectSoulRings(player, souls, warnings).reduce((sum, entry) => {
-        return sum + calculateSoulRingPower(entry.ring, rules, warnings, entry.path);
+        return sum + calculateSoulRingPower(
+            entry.ring,
+            rules,
+            warnings,
+            entry.path,
+            baseMode
+        );
     }, 0);
 }
 
@@ -1174,6 +1392,52 @@ function getDefinitionId(reference) {
     return null;
 }
 
+function countUniqueDefinitionReferences(entries) {
+    if (!Array.isArray(entries)) {
+        return 0;
+    }
+
+    const ids = new Set();
+
+    entries.forEach(reference => {
+        const definitionId = getDefinitionId(reference);
+
+        if (definitionId) {
+            ids.add(definitionId);
+        }
+    });
+
+    return ids.size;
+}
+
+function resolveDivineArmorEfficiency(player, rules, warnings) {
+    const divineArmorRules = rules.divineArmor || {};
+    const countField = divineArmorRules.divinePositionCountField || "deities";
+    const divinePositionCount = countUniqueDefinitionReferences(player[countField]) || 1;
+    const efficiencyRule = Array.isArray(divineArmorRules.efficiencyByDivinePositionCount)
+        ? divineArmorRules.efficiencyByDivinePositionCount.find(rule => {
+            return rule?.divinePositionCount === divinePositionCount;
+        })
+        : null;
+
+    if (efficiencyRule && Number.isFinite(efficiencyRule.coefficient)) {
+        return efficiencyRule.coefficient;
+    }
+
+    addWarning(
+        warnings,
+        "UNRESOLVED_DIVINE_ARMOR_POSITION_EFFICIENCY",
+        `No divine armor efficiency rule exists for ${divinePositionCount} divine positions; full merged divine armor power was retained.`,
+        `divineArmor.efficiencyByDivinePositionCount`,
+        {
+            divinePositionCount,
+            status: "unresolved"
+        }
+    );
+
+    return 1;
+}
+
 function calculateDefinitionPower(definition, levelPower, warnings, path) {
     if (definition.status === "provisional") {
         addWarning(
@@ -1200,17 +1464,17 @@ function calculateDefinitionPower(definition, levelPower, warnings, path) {
     }
 
     if (definition.mode === "level_coefficient") {
-        if (!Number.isFinite(definition.coefficient) || definition.coefficient < 0) {
+        if (!Number.isFinite(definition.coefficient)) {
             addWarning(
                 warnings,
                 "INVALID_LEVEL_COEFFICIENT",
-                "Level coefficient contribution requires a non-negative coefficient.",
+                "Level coefficient contribution requires a finite coefficient.",
                 path
             );
             return 0;
         }
 
-        return toNaturalNumber(levelPower * definition.coefficient);
+        return toRoundedNumber(levelPower * definition.coefficient);
     }
 
     addWarning(
@@ -1331,6 +1595,10 @@ export function calculateSoulBonesPower(player, levelPower, rules, warnings = []
         "divineArmorSets"
     );
 
+    divineArmor = toNaturalNumber(
+        divineArmor * resolveDivineArmorEfficiency(player, rules, warnings)
+    );
+
     return {
         soulBones: toNaturalNumber(soulBones),
         divineArmor: toNaturalNumber(divineArmor)
@@ -1393,7 +1661,7 @@ export function calculateCoefficientModulePower(
         const definition = moduleRules.definitions?.[definitionId];
         const coefficient = definition?.[moduleRules.coefficientField];
 
-        if (!Number.isFinite(coefficient) || coefficient < 0) {
+        if (!Number.isFinite(coefficient)) {
             addWarning(
                 warnings,
                 "MISSING_ENTITY_DEFINITION",
@@ -1416,7 +1684,7 @@ export function calculateCoefficientModulePower(
         coefficientSum += coefficient;
     });
 
-    return toNaturalNumber(levelPower * coefficientSum);
+    return toRoundedNumber(levelPower * coefficientSum);
 }
 
 export function calculateEntityContributionModulePower(
@@ -1438,7 +1706,7 @@ export function calculateEntityContributionModulePower(
         return 0;
     }
 
-    return toNaturalNumber(calculateDefinitionReferences(
+    return toRoundedNumber(calculateDefinitionReferences(
         player[moduleRules.playerField],
         moduleRules.definitions,
         levelPower,
@@ -1449,6 +1717,10 @@ export function calculateEntityContributionModulePower(
 
 function calculateLevelBase(player, rules, warnings) {
     const mode = player.combatBase?.mode ?? rules.combatBase?.defaultMode;
+
+    if (mode === "civilian_observer") {
+        return 0;
+    }
 
     if (mode !== "level") {
         addWarning(
@@ -1479,6 +1751,23 @@ export function calculate(player, rules) {
     }
 
     const warnings = [...rulesValidation.warnings];
+    const combatBaseMode = player.combatBase?.mode
+        ?? rules.combatBase?.defaultMode;
+
+    if (combatBaseMode === "civilian_observer") {
+        return {
+            total: 0,
+            staticCombatPower: 0,
+            breakdown: {
+                ...DEFAULT_BREAKDOWN
+            },
+            warnings,
+            rulesVersion: rules.rulesVersion,
+            combatBaseMode,
+            combatParticipation: "none"
+        };
+    }
+
     const levelPower = calculateLevelBase(player, rules, warnings);
     const martialSouls = collectMartialSouls(player, warnings);
     const soulBonePower = calculateSoulBonesPower(
@@ -1570,9 +1859,12 @@ export function calculate(player, rules) {
 
     return {
         total,
+        staticCombatPower: total,
         breakdown,
         warnings,
-        rulesVersion: rules.rulesVersion
+        rulesVersion: rules.rulesVersion,
+        combatBaseMode,
+        combatParticipation: "static_and_effective"
     };
 }
 

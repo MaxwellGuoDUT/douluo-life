@@ -1116,6 +1116,9 @@ export function executeAwakeningRepeatNode({
     nextPlayer.innateSoulPower = innateSoulPower;
     nextPlayer.talentGrade = talentGrade;
     nextPlayer.level = innateSoulPower;
+    nextPlayer.combatBase.mode = innateSoulPower === 0
+        ? "civilian_observer"
+        : "level";
     nextPlayer.soulPowerGrowthLocked = innateSoulPower === 0;
     nextPlayer.rank = innateSoulPower === 0 ? "无魂力" : "魂士";
     nextPlayer.martialSouls = clonePlayerStateValue(pendingInstances);

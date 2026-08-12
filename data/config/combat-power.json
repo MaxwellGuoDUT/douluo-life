@@ -1,36 +1,71 @@
 {
-  "schemaVersion": "combat-power-config/1.0",
-  "rulesVersion": "combat-power/1.0",
+  "schemaVersion": "combat-power-config/2.0",
+  "rulesVersion": "combat-power/2.0",
   "status": "provisional",
+  "ruleCatalog": {
+    "file": "data/rules/combat.json",
+    "catalogVersion": "combat-rule-catalog/2026-08-12",
+    "source": "battle_power_template.xlsx",
+    "supplementalSources": [
+      "powerv01.docx"
+    ]
+  },
   "combatBase": {
     "defaultMode": "level",
     "supportedModes": [
       "level",
+      "civilian_observer",
       "soul_beast_cultivation",
       "hybrid"
     ],
     "implementedModes": [
-      "level"
+      "level",
+      "civilian_observer"
+    ],
+    "nonCombatModes": [
+      "civilian_observer"
     ]
   },
   "level": {
     "minLevel": 0,
     "maxLevel": 169,
+    "confirmedThroughLevel": 10,
+    "powerEntries": [
+      { "level": 0, "power": 0, "status": "confirmed" },
+      { "level": 1, "power": 1, "status": "confirmed" },
+      { "level": 2, "power": 2, "status": "confirmed" },
+      { "level": 3, "power": 3, "status": "confirmed" },
+      { "level": 4, "power": 4, "status": "confirmed" },
+      { "level": 5, "power": 5, "status": "confirmed" },
+      { "level": 6, "power": 6, "status": "confirmed" },
+      { "level": 7, "power": 7, "status": "confirmed" },
+      { "level": 8, "power": 8, "status": "confirmed" },
+      { "level": 9, "power": 9, "status": "confirmed" },
+      { "level": 10, "power": 10, "status": "confirmed" },
+      { "level": 11, "power": 12, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 21, "power": 33, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 29, "power": 57, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 31, "power": 61, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 41, "power": 105, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 51, "power": 156, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 61, "power": 217, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 71, "power": 288, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 81, "power": 370, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 91, "power": 480, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 96, "power": 610, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 98, "power": 710, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 99, "power": 760, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+      { "level": 100, "power": 1260, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" }
+    ],
     "continuousCurve": {
       "mode": "increment_by_decade",
-      "status": "confirmed"
+      "status": "provisional_above_table",
+      "confirmedThroughLevel": 10,
+      "reason": "工作簿确认1～10级，powerv01.docx补充了选定等级锚点；未列出的等级仍使用兼容性回退，不视为已确认。"
     },
     "breakthroughBonuses": [],
     "cumulativeBonusAnchors": [],
-    "specialLevelBonuses": [
-      {
-        "id": "level_100_special_node",
-        "level": 100,
-        "bonus": 490,
-        "status": "provisional",
-        "reason": "使100级从连续曲线和既有奖励跃升至1260；仍依赖未分配的累计220点突破奖励"
-      }
-    ],
+    "specialLevelBonuses": [],
     "validationAnchors": [
       {
         "kind": "continuous",
@@ -42,35 +77,36 @@
         "kind": "continuous",
         "level": 20,
         "expectedPower": 30,
-        "status": "confirmed"
+        "status": "provisional",
+        "reason": "工作簿未覆盖10级以上；保留旧连续曲线作为兼容锚点。"
       },
       {
         "kind": "continuous",
         "level": 30,
         "expectedPower": 60,
-        "status": "confirmed"
+        "status": "provisional",
+        "reason": "工作簿未覆盖10级以上；保留旧连续曲线作为兼容锚点。"
       },
       {
         "kind": "total",
         "level": 99,
         "expectedPower": 760,
-        "unresolvedBonus": 220,
-        "status": "provisional",
-        "reason": "累计额外220点的具体突破节点分配尚未确认"
+        "status": "confirmed",
+        "reason": "powerv01.docx示例，经用户确认并纳入正式等级锚点"
       },
       {
         "kind": "total",
         "level": 100,
         "expectedPower": 1260,
-        "unresolvedBonus": 220,
-        "status": "provisional",
-        "reason": "100级特殊节点490已配置，但仍依赖未分配的累计220点"
+        "status": "confirmed",
+        "reason": "powerv01.docx示例，经用户确认并纳入正式等级锚点"
       },
       {
         "kind": "continuous",
         "level": 169,
         "expectedPower": 1513,
-        "status": "confirmed"
+        "status": "provisional",
+        "reason": "该等级未列入powerv01.docx选定锚点，保留旧连续曲线作为兼容锚点。"
       }
     ]
   },
@@ -115,7 +151,7 @@
       {
         "minYears": 500,
         "maxYears": 999,
-        "basePower": 5
+        "basePower": 6
       },
       {
         "minYears": 1000,
@@ -186,7 +222,9 @@
         "minYears": 1000000,
         "maxYears": null,
         "basePower": 200,
-        "ringType": "non_divine"
+        "ringType": "non_divine",
+        "status": "provisional",
+        "reason": "工作簿未覆盖1000000年以上非神级魂环/魂骨；保留旧验收兼容值。"
       }
     ],
     "bloodlineMultipliers": {
@@ -197,6 +235,10 @@
       "earth_dragon": 2,
       "pure_dragon": 3
     },
+    "bloodlineDistributionField": "soulBeastBloodlineDistribution",
+    "bloodlineDistributionGradeField": "grade",
+    "bloodlineDistributionPercentageField": "percentage",
+    "bloodlineDistributionRequiredTotal": 100,
     "divineGold": {
       "ringType": "divine_gold",
       "fixedPower": 1000,
@@ -205,8 +247,18 @@
     "godBestowed": {
       "sourceType": "god_bestowed",
       "qualityMultiplierField": "qualityMultiplier",
+      "defaultQualityMultiplier": 2,
       "requiresBloodlineGrade": false
-    }
+    },
+    "fixedSlotPower": [
+      {
+        "minSlot": 10,
+        "maxSlot": 16,
+        "fixedPower": 1000,
+        "status": "confirmed",
+        "reason": "人类模板规定第10～16魂环固定1000点"
+      }
+    ]
   },
   "soulBones": {
     "yearsField": "years",
@@ -218,9 +270,18 @@
   "divineArmor": {
     "equipmentState": "divine_armor",
     "defaultMultiplier": 3,
+    "additionalPercent": 3,
+    "multiplierInterpretation": "total_multiplier_3x",
     "replacesSoulBonePower": true,
-    "status": "provisional",
-    "reason": "第一阶段沿用100级验收案例的300%倍率，等待完整神装平衡表",
+    "divinePositionCountField": "deities",
+    "efficiencyByDivinePositionCount": [
+      { "divinePositionCount": 1, "coefficient": 1, "status": "confirmed" },
+      { "divinePositionCount": 2, "coefficient": 0.8, "status": "confirmed" },
+      { "divinePositionCount": 3, "coefficient": 0.6, "status": "confirmed" },
+      { "divinePositionCount": 4, "coefficient": 0.4, "status": "confirmed" }
+    ],
+    "status": "confirmed",
+    "reason": "神装部件按魂骨战力乘3；多神位合并神装总战力后按神位数量应用整体效率",
     "setBonuses": {}
   },
   "coefficientModules": {
@@ -228,6 +289,7 @@
       "playerField": "domains",
       "coefficientField": "coefficient",
       "stacking": "sum",
+      "defaultCoefficient": 0.1,
       "definitions": {},
       "status": "provisional"
     },
@@ -235,6 +297,12 @@
       "playerField": "combatAttributes",
       "coefficientField": "coefficient",
       "stacking": "sum",
+      "defaultCoefficients": {
+        "single": 0.05,
+        "extreme": 0.12,
+        "law_prototype": 0.2,
+        "complete_law": 0.3
+      },
       "definitions": {},
       "status": "provisional"
     }

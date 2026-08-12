@@ -12,6 +12,7 @@ export const SOUL_BONE_SLOTS = Object.freeze([
 
 export const COMBAT_BASE_MODES = Object.freeze([
     "level",
+    "civilian_observer",
     "soul_beast_cultivation",
     "hybrid"
 ]);
@@ -1031,14 +1032,36 @@ export function validatePlayerV2(player) {
             "combatBase.mode"
         );
     } else if (player.combatBase.mode !== "level") {
+        if (player.combatBase.mode !== "civilian_observer") {
+            addIssue(
+                warnings,
+                "UNIMPLEMENTED_COMBAT_BASE_MODE",
+                `Combat base mode "${player.combatBase.mode}" is valid but not implemented.`,
+                "combatBase.mode",
+                {
+                    status: "provisional"
+                }
+            );
+        }
+    }
+
+    if (player.level === 0
+        && player.combatBase?.mode !== "civilian_observer") {
         addIssue(
-            warnings,
-            "UNIMPLEMENTED_COMBAT_BASE_MODE",
-            `Combat base mode "${player.combatBase.mode}" is valid but not implemented.`,
-            "combatBase.mode",
-            {
-                status: "provisional"
-            }
+            errors,
+            "LEVEL_ZERO_REQUIRES_CIVILIAN_OBSERVER_ROUTE",
+            "Level 0 must use the civilian_observer progression route and cannot enter combat.",
+            "combatBase.mode"
+        );
+    }
+
+    if (player.level !== 0
+        && player.combatBase?.mode === "civilian_observer") {
+        addIssue(
+            errors,
+            "CIVILIAN_OBSERVER_ROUTE_REQUIRES_LEVEL_ZERO",
+            "The civilian_observer progression route is reserved for level 0.",
+            "combatBase.mode"
         );
     }
 
