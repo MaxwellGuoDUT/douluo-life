@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "apk-canonical-package/1.0",
+  "packageVersion": "apk-canonical/2026-08-16",
+  "status": "owner_authorized_migration",
+  "sourceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
+  "sourceSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+  "generatedBy": "outputs/parallel-prep-2026-08-16/generate-apk-canonical-package.mjs",
+  "generatorSha256": "26EF9F8B8C5C3693B87F6E8897E4844D446CA6272CABCB9F14770CC5677F7CA2",
+  "availabilityPolicy": "preserve_apk_original_state",
+  "oldProductionPolicy": "archive_only",
+  "routeGraph": {
+    "path": "data/apk-canonical/catalogs/route-graph.json",
+    "status": "source_routes_recovered_dynamic_handlers_explicit",
+    "sizeBytes": 53227619,
+    "sha256": "7F2EBE7632FCDA3FB0159851A220C10B2CFB6F035000CB69B4C5B6E83F08A7E6"
+  },
+  "formalSpecialResultEvidence": {
+    "path": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
+    "status": "apk-formal-special-result-evidence/1.0",
+    "recordCount": 2710,
+    "sha256": "BFC70D2A324B5B25CF87F3C584ECF06039C5D004B84FAFD9A1CA5C7F5B997C00"
+  },
+  "humanSoulRingEvidence": {
+    "path": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+    "status": "apk-human-soul-ring-evidence/1.0",
+    "recordCount": 176,
+    "sha256": "BABB8C636D5761648FE0C222F9C7F459F3DBA6D10D0384ECED5A304ABB8E6E1B"
+  },
+  "humanSoulRingSpeciesEvidence": {
+    "path": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
+    "status": "apk-human-soul-ring-species-evidence/1.0",
+    "recordCount": 107,
+    "routeGraphMatchedRecordCount": 63,
+    "sizeBytes": 92833,
+    "sha256": "2E237594F912AC5F5883C1002930B9DE9B03BB7092FDA430749C0824F91C071D"
+  },
+  "martialSoulRuntimeEvidence": {
+    "path": "data/apk-canonical/catalogs/martial-soul-runtime-evidence.json",
+    "status": "apk-martial-soul-runtime-evidence/1.0",
+    "sizeBytes": 601853,
+    "sha256": "1780902D0B7CA499C686F077E46581EC42E60A3066EEB64BC05BCA620603E10B"
+  },
+  "combatPowerEvidence": {
+    "path": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+    "status": "apk-combat-power-evidence/1.0",
+    "sourceSha256": "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "sizeBytes": 17830,
+    "sha256": "CE15F74E4573886832C254CB90D05F7105C9AAAEF49E8FBA6BC2218B3E7462CE"
+  },
+  "counts": {
+    "datasets": 79,
+    "martial-souls": 584,
+    "soul-beasts-raw": 243,
+    "soul-beasts-structured": 107,
+    "pools": 4781,
+    "options": 41637,
+    "effects": 19126,
+    "requirements": 2848,
+    "story-timeline": 107,
+    "endings-and-deaths": 1580
+  },
+  "files": [
+    {
+      "path": "data/apk-canonical/catalogs/datasets.json",
+      "sizeBytes": 108644,
+      "sha256": "FCCB0FEFD0FD4A1F74C0DB4436490308418B13A35180F8D8C1C2D2CCDA20D1BB"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/martial-souls.json",
+      "sizeBytes": 902352,
+      "sha256": "7778BB9AEF34D1A51C95BDB8D646CEAD83A37B79EAAC2C7B865A1EAF17182DB8"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/soul-beasts-raw.json",
+      "sizeBytes": 388615,
+      "sha256": "70EC10BB213378386CCA68A6BE1D8AC09C69A345282ADA93EA44D2960C4C204D"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/soul-beasts-structured.json",
+      "sizeBytes": 214632,
+      "sha256": "FDB2D746A626D8B6D575BED610DA0E4942B38CC7FAFC4BD5B6EC706390B04FE7"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/pools.json",
+      "sizeBytes": 10856635,
+      "sha256": "1FD562A5987D71983ED3E6808966BF6E0F9157C09F219F53FE87A03D2602E111"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/options.json",
+      "sizeBytes": 98939019,
+      "sha256": "72A0B6FA07A98F130FB22350CFDA0A0670E7149F3BA04B67EB02925209D1EFAF"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/effects.json",
+      "sizeBytes": 25149626,
+      "sha256": "C83A3AE5A51EC5DF149FB43D84886846721B8B51E1B4C1598C338FC0F61D3C78"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/requirements.json",
+      "sizeBytes": 4021221,
+      "sha256": "4A4E985DF40A7C5D463B6CDD29A572D16115DCBAEDD78CB7DF9D6B3D145FCF53"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/story-timeline.json",
+      "sizeBytes": 286466,
+      "sha256": "0BB4ACFEFD3CC5AE2FFF02757B728F05DECFA38A077B3F0B3EC4B3B18E690CB9"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/endings-and-deaths.json",
+      "sizeBytes": 3415359,
+      "sha256": "3412D52B9E7F54F1BE6895C02FE23BE4E1E16DAF2E6C91309AFF402DE8588583"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/route-graph.json",
+      "sizeBytes": 53227619,
+      "sha256": "7F2EBE7632FCDA3FB0159851A220C10B2CFB6F035000CB69B4C5B6E83F08A7E6"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/martial-soul-runtime-evidence.json",
+      "sizeBytes": 601853,
+      "sha256": "1780902D0B7CA499C686F077E46581EC42E60A3066EEB64BC05BCA620603E10B"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
+      "sizeBytes": 1367754,
+      "sha256": "BFC70D2A324B5B25CF87F3C584ECF06039C5D004B84FAFD9A1CA5C7F5B997C00"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+      "sizeBytes": 74081,
+      "sha256": "BABB8C636D5761648FE0C222F9C7F459F3DBA6D10D0384ECED5A304ABB8E6E1B"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
+      "sizeBytes": 92833,
+      "sha256": "2E237594F912AC5F5883C1002930B9DE9B03BB7092FDA430749C0824F91C071D"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+      "sizeBytes": 17830,
+      "sha256": "CE15F74E4573886832C254CB90D05F7105C9AAAEF49E8FBA6BC2218B3E7462CE"
+    },
+    {
+      "path": "data/apk-canonical/meta/package-policy.json",
+      "sizeBytes": 720,
+      "sha256": "43FD5A4A859E4FEE0751971B77D5C043B5DA82A9DCD6E07C9BE21B4DFD02595C"
+    }
+  ]
+}

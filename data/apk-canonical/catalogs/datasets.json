@@ -1,0 +1,3082 @@
+{
+  "schemaVersion": "apk-canonical-catalog/1.0",
+  "packageVersion": "apk-canonical/2026-08-16",
+  "sourceFile": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+  "sourceSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+  "ownerAuthorization": "confirmed",
+  "availabilityPolicy": "preserve_apk_original_state",
+  "recordCount": 79,
+  "records": [
+    {
+      "id": "apk_dataset_0001",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-2"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00039342-p.json",
+        "sha256": "e58b73ca6b088fb88a7e7bf5c62db3acb91c10eb27652c84f4c4ea365b9822de",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "12",
+        "pool_count": "0",
+        "first_keys": "douluo2:identity.child-of-fortune,douluo2:identity.child-of-god,douluo2:identity.commoner,douluo2:identity.free-soul-master,douluo2:identity.god-reincarnation,douluo2:identity.have-nothing,douluo2:identity.knight,douluo2:identity.noble,douluo2:identity.reborn,douluo2:identity.royal,douluo2:identity.sect-disciple,douluo2:identity.traveler"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00039342-p.json",
+        "sha256": "e58b73ca6b088fb88a7e7bf5c62db3acb91c10eb27652c84f4c4ea365b9822de",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 12,
+        "poolCount": 0,
+        "firstKeys": [
+          "douluo2:identity.child-of-fortune",
+          "douluo2:identity.child-of-god",
+          "douluo2:identity.commoner",
+          "douluo2:identity.free-soul-master",
+          "douluo2:identity.god-reincarnation",
+          "douluo2:identity.have-nothing",
+          "douluo2:identity.knight",
+          "douluo2:identity.noble",
+          "douluo2:identity.reborn",
+          "douluo2:identity.royal",
+          "douluo2:identity.sect-disciple",
+          "douluo2:identity.traveler"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0002",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-3"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00082065-ra.json",
+        "sha256": "b0af2cbdc12ed5fb68ed19e01bb6c9285d79ce2edd18e39f13a7638d8fe3daf3",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "7",
+        "pool_count": "0",
+        "first_keys": "external,head,leftArm,leftLeg,rightArm,rightLeg,torso"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00082065-ra.json",
+        "sha256": "b0af2cbdc12ed5fb68ed19e01bb6c9285d79ce2edd18e39f13a7638d8fe3daf3",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 7,
+        "poolCount": 0,
+        "firstKeys": [
+          "external",
+          "head",
+          "leftArm",
+          "leftLeg",
+          "rightArm",
+          "rightLeg",
+          "torso"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0003",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-4"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00144848-va.json",
+        "sha256": "4d4b9531234a110037641d4e3cd8ea7ab7186cb7cc9dfd3e2e6e2511059d7228",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "8",
+        "pool_count": "0",
+        "first_keys": "optionId,text"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00144848-va.json",
+        "sha256": "4d4b9531234a110037641d4e3cd8ea7ab7186cb7cc9dfd3e2e6e2511059d7228",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 8,
+        "poolCount": 0,
+        "firstKeys": [
+          "optionId",
+          "text"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0004",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-5"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00214370-th.json",
+        "sha256": "cff1d8c496c86b7d400d204579ff3baa716e85b1d9d5de473281896a3616079c",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "2",
+        "pool_count": "2",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00214370-th.json",
+        "sha256": "cff1d8c496c86b7d400d204579ff3baa716e85b1d9d5de473281896a3616079c",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 2,
+        "poolCount": 2,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0005",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-6"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00215689-za.json",
+        "sha256": "dbc41b640f325e1a25154dfa1bba4d9e955a7c4a440a7683032626357b3df55c",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "2",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00215689-za.json",
+        "sha256": "dbc41b640f325e1a25154dfa1bba4d9e955a7c4a440a7683032626357b3df55c",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 2,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0006",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-7"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00238256-sh.json",
+        "sha256": "c8aa48a2c5ec2af4739b52f336e621cec9d0a9c6a144d04206b59561b22ef631",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "3",
+        "pool_count": "0",
+        "first_keys": "beast,human,transformed"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/App-qyLEl8t4/00238256-sh.json",
+        "sha256": "c8aa48a2c5ec2af4739b52f336e621cec9d0a9c6a144d04206b59561b22ef631",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 3,
+        "poolCount": 0,
+        "firstKeys": [
+          "beast",
+          "human",
+          "transformed"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0007",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-8"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00000989-hr.json",
+        "sha256": "8dd0c3e6252605b3db407420130c9bb75078292035423e45db21ac778f294978",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "14",
+        "pool_count": "0",
+        "first_keys": "08c42cec-f04d-49bc-8896-4239e1973726,16e885e9-96bf-4629-9baa-c57e1cbdf571,24eda03c-beae-40f2-a7db-20b6318cd1c7,2cc51e7d-9a0a-43c8-bf4e-e12bf30ef6e6,49e3abc8-1361-4348-94aa-b23c68a53720,8001d4e9-2ead-484c-86ab-550686c6ce0d,8c589787-e43d-4064-8546-8b5b7b403fe2,917a611f-c50b-4c67-9b27-da19f136e5c5,96be4279-1aa6-49b3-bf4c-e164871129cf,c3c10f01-29f6-4278-afdd-a7c9136ba98d,c898523e-82f4-45d4-9dc8-ee6845e2b74d,cb2dce39-17c0-4b0b-9cca-94778d215d7f,ce8c59c8-cd87-487a-b782-4e6587685f63,f1afa805-95b7-4d54-aea2-d3de15e54c5a"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00000989-hr.json",
+        "sha256": "8dd0c3e6252605b3db407420130c9bb75078292035423e45db21ac778f294978",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 14,
+        "poolCount": 0,
+        "firstKeys": [
+          "08c42cec-f04d-49bc-8896-4239e1973726",
+          "16e885e9-96bf-4629-9baa-c57e1cbdf571",
+          "24eda03c-beae-40f2-a7db-20b6318cd1c7",
+          "2cc51e7d-9a0a-43c8-bf4e-e12bf30ef6e6",
+          "49e3abc8-1361-4348-94aa-b23c68a53720",
+          "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+          "8c589787-e43d-4064-8546-8b5b7b403fe2",
+          "917a611f-c50b-4c67-9b27-da19f136e5c5",
+          "96be4279-1aa6-49b3-bf4c-e164871129cf",
+          "c3c10f01-29f6-4278-afdd-a7c9136ba98d",
+          "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+          "cb2dce39-17c0-4b0b-9cca-94778d215d7f",
+          "ce8c59c8-cd87-487a-b782-4e6587685f63",
+          "f1afa805-95b7-4d54-aea2-d3de15e54c5a"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0008",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-9"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00010631-qr.json",
+        "sha256": "54fd8bacfb3747523b8a91699843fcc29f09f64a9abb5aac6af953f1a0636d16",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "3",
+        "pool_count": "0",
+        "first_keys": "optionId,owner,poolId,reason"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00010631-qr.json",
+        "sha256": "54fd8bacfb3747523b8a91699843fcc29f09f64a9abb5aac6af953f1a0636d16",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 3,
+        "poolCount": 0,
+        "firstKeys": [
+          "optionId",
+          "owner",
+          "poolId",
+          "reason"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0009",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-10"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00011220-Br.json",
+        "sha256": "ad110cbd1f3e823c16eb1c1d0d54d94ed01e73047740ae47a995eed42db1135d",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "276",
+        "pool_count": "276",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00011220-Br.json",
+        "sha256": "ad110cbd1f3e823c16eb1c1d0d54d94ed01e73047740ae47a995eed42db1135d",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 276,
+        "poolCount": 276,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0010",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-11"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00261683-Sr.json",
+        "sha256": "83960af6babd63fdb4deb4569f48fe83bcdc069681cfb7acae45c79cf670d399",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "3",
+        "pool_count": "276",
+        "first_keys": "pools,source,statistics"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00261683-Sr.json",
+        "sha256": "83960af6babd63fdb4deb4569f48fe83bcdc069681cfb7acae45c79cf670d399",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 3,
+        "poolCount": 276,
+        "firstKeys": [
+          "pools",
+          "source",
+          "statistics"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0011",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-12"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00277442-Rr.json",
+        "sha256": "87da4d70c68fd361303adda147a337aa5d005f349076dc47f32285c335d9a64e",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "281",
+        "pool_count": "281",
+        "first_keys": "id,name,options,rank,requirements,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00277442-Rr.json",
+        "sha256": "87da4d70c68fd361303adda147a337aa5d005f349076dc47f32285c335d9a64e",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 281,
+        "poolCount": 281,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "requirements",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0012",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-13"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json",
+        "sha256": "9e1b2b6e9c2c58295c73336a036e69ce982ddf2afe32fc16bd09c4fb03c8362e",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "5",
+        "pool_count": "281",
+        "first_keys": "generator,groups,pools,statistics,unstructuredMeaningfulOptions"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json",
+        "sha256": "9e1b2b6e9c2c58295c73336a036e69ce982ddf2afe32fc16bd09c4fb03c8362e",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 5,
+        "poolCount": 281,
+        "firstKeys": [
+          "generator",
+          "groups",
+          "pools",
+          "statistics",
+          "unstructuredMeaningfulOptions"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0013",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-14"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00855832-Hr.json",
+        "sha256": "8bba762340234f14ed99e26c82adc24ea95308af33b184d4d8e16698f0023ffe",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "92",
+        "pool_count": "92",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00855832-Hr.json",
+        "sha256": "8bba762340234f14ed99e26c82adc24ea95308af33b184d4d8e16698f0023ffe",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 92,
+        "poolCount": 92,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0014",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-15"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00906314-_r.json",
+        "sha256": "b874e6d85f78e89a4157a38b08f0b83871057479638f61969d40b45828085d23",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "92",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00906314-_r.json",
+        "sha256": "b874e6d85f78e89a4157a38b08f0b83871057479638f61969d40b45828085d23",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 92,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0015",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-16"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00906328-Mr.json",
+        "sha256": "2efc4dff003895af9348fa3ff8059490c6857d5542e2cc61f0df8b0bc5bcc55a",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "8",
+        "pool_count": "8",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00906328-Mr.json",
+        "sha256": "2efc4dff003895af9348fa3ff8059490c6857d5542e2cc61f0df8b0bc5bcc55a",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 8,
+        "poolCount": 8,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0016",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-17"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00910770-Wa.json",
+        "sha256": "6609d0db961f6ace8e2fc8ed4c75c9483335d947bdae9ed2769dc2532df6112f",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "8",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00910770-Wa.json",
+        "sha256": "6609d0db961f6ace8e2fc8ed4c75c9483335d947bdae9ed2769dc2532df6112f",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 8,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0017",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-18"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00910784-tt.json",
+        "sha256": "9e1b2b6e9c2c58295c73336a036e69ce982ddf2afe32fc16bd09c4fb03c8362e",
+        "duplicate_of": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json",
+        "type": "object",
+        "item_count": "5",
+        "pool_count": "281",
+        "first_keys": "generator,groups,pools,statistics,unstructuredMeaningfulOptions"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00910784-tt.json",
+        "sha256": "9e1b2b6e9c2c58295c73336a036e69ce982ddf2afe32fc16bd09c4fb03c8362e",
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json",
+        "type": "object",
+        "itemCount": 5,
+        "poolCount": 281,
+        "firstKeys": [
+          "generator",
+          "groups",
+          "pools",
+          "statistics",
+          "unstructuredMeaningfulOptions"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0018",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-19"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00916254-Xr.json",
+        "sha256": "329e2e283fcddcadd39bdd746c13d63f2da6197fe93495d438afd9e69af9d1ca",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "9",
+        "pool_count": "0",
+        "first_keys": "08c42cec-f04d-49bc-8896-4239e1973726,24eda03c-beae-40f2-a7db-20b6318cd1c7,2cc51e7d-9a0a-43c8-bf4e-e12bf30ef6e6,49e3abc8-1361-4348-94aa-b23c68a53720,8c589787-e43d-4064-8546-8b5b7b403fe2,96be4279-1aa6-49b3-bf4c-e164871129cf,c3c10f01-29f6-4278-afdd-a7c9136ba98d,cb2dce39-17c0-4b0b-9cca-94778d215d7f,f1afa805-95b7-4d54-aea2-d3de15e54c5a"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00916254-Xr.json",
+        "sha256": "329e2e283fcddcadd39bdd746c13d63f2da6197fe93495d438afd9e69af9d1ca",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 9,
+        "poolCount": 0,
+        "firstKeys": [
+          "08c42cec-f04d-49bc-8896-4239e1973726",
+          "24eda03c-beae-40f2-a7db-20b6318cd1c7",
+          "2cc51e7d-9a0a-43c8-bf4e-e12bf30ef6e6",
+          "49e3abc8-1361-4348-94aa-b23c68a53720",
+          "8c589787-e43d-4064-8546-8b5b7b403fe2",
+          "96be4279-1aa6-49b3-bf4c-e164871129cf",
+          "c3c10f01-29f6-4278-afdd-a7c9136ba98d",
+          "cb2dce39-17c0-4b0b-9cca-94778d215d7f",
+          "f1afa805-95b7-4d54-aea2-d3de15e54c5a"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0019",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-20"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00924960-ee.json",
+        "sha256": "9e1b2b6e9c2c58295c73336a036e69ce982ddf2afe32fc16bd09c4fb03c8362e",
+        "duplicate_of": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json",
+        "type": "object",
+        "item_count": "5",
+        "pool_count": "281",
+        "first_keys": "generator,groups,pools,statistics,unstructuredMeaningfulOptions"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00924960-ee.json",
+        "sha256": "9e1b2b6e9c2c58295c73336a036e69ce982ddf2afe32fc16bd09c4fb03c8362e",
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/00855748-_e.json",
+        "type": "object",
+        "itemCount": 5,
+        "poolCount": 281,
+        "firstKeys": [
+          "generator",
+          "groups",
+          "pools",
+          "statistics",
+          "unstructuredMeaningfulOptions"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0020",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-21"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00960090-qn.json",
+        "sha256": "40b7c5fbae27174425f536e0314bfcf3edc993b63243a45b2c6a1eb427e93ae0",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "38",
+        "pool_count": "38",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00960090-qn.json",
+        "sha256": "40b7c5fbae27174425f536e0314bfcf3edc993b63243a45b2c6a1eb427e93ae0",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 38,
+        "poolCount": 38,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0021",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-22"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00997040-Wn.json",
+        "sha256": "9087787fdb92e205c788457e23c6211970311284857b9bda60e0d9570cadf2d7",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "38",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00997040-Wn.json",
+        "sha256": "9087787fdb92e205c788457e23c6211970311284857b9bda60e0d9570cadf2d7",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 38,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0022",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-23"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/00997040-Wn.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00997122-kn.json",
+        "sha256": "9087787fdb92e205c788457e23c6211970311284857b9bda60e0d9570cadf2d7",
+        "duplicate_of": "derived/static-data/douluo1-pack-C6xEgEus/00997040-Wn.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "38",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/00997122-kn.json",
+        "sha256": "9087787fdb92e205c788457e23c6211970311284857b9bda60e0d9570cadf2d7",
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/00997040-Wn.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 38,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0023",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-24"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01008695-_n.json",
+        "sha256": "2a8dc490e0bdc11282d3dc09ef7e44682f491961e3695ba1efc2991c65a0ba4f",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "70",
+        "pool_count": "70",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01008695-_n.json",
+        "sha256": "2a8dc490e0bdc11282d3dc09ef7e44682f491961e3695ba1efc2991c65a0ba4f",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 70,
+        "poolCount": 70,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0024",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-25"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json",
+        "sha256": "f6ae2f0407083fa2ab3cb33737b96b631190581fc58d2cbfd49b63b08aa088d8",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "70",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json",
+        "sha256": "f6ae2f0407083fa2ab3cb33737b96b631190581fc58d2cbfd49b63b08aa088d8",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 70,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0025",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-26"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01053299-Mn.json",
+        "sha256": "f6ae2f0407083fa2ab3cb33737b96b631190581fc58d2cbfd49b63b08aa088d8",
+        "duplicate_of": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "70",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01053299-Mn.json",
+        "sha256": "f6ae2f0407083fa2ab3cb33737b96b631190581fc58d2cbfd49b63b08aa088d8",
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 70,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0026",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-27"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01060331-Xn.json",
+        "sha256": "f6ae2f0407083fa2ab3cb33737b96b631190581fc58d2cbfd49b63b08aa088d8",
+        "duplicate_of": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "70",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01060331-Xn.json",
+        "sha256": "f6ae2f0407083fa2ab3cb33737b96b631190581fc58d2cbfd49b63b08aa088d8",
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01053285-lf.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 70,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0027",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-28"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01080878-uc.json",
+        "sha256": "301ed1a85cdb8a20a8f5bffd2a96a6d449aa1043e64f63a0dc54a2fa6d0a1b15",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "31",
+        "pool_count": "31",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01080878-uc.json",
+        "sha256": "301ed1a85cdb8a20a8f5bffd2a96a6d449aa1043e64f63a0dc54a2fa6d0a1b15",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 31,
+        "poolCount": 31,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0028",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-29"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01101524-oc.json",
+        "sha256": "06c809f7778ceb48e4c9d490e84bc5dc6725a7422bbc840bd73a1434c4c242b8",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "31",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01101524-oc.json",
+        "sha256": "06c809f7778ceb48e4c9d490e84bc5dc6725a7422bbc840bd73a1434c4c242b8",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 31,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0029",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-30"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01101524-oc.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01101538-hc.json",
+        "sha256": "06c809f7778ceb48e4c9d490e84bc5dc6725a7422bbc840bd73a1434c4c242b8",
+        "duplicate_of": "derived/static-data/douluo1-pack-C6xEgEus/01101524-oc.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "31",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01101538-hc.json",
+        "sha256": "06c809f7778ceb48e4c9d490e84bc5dc6725a7422bbc840bd73a1434c4c242b8",
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01101524-oc.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 31,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0030",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-31"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01113939-kc.json",
+        "sha256": "fdd39c60335a8b5e746cae74daa7e0c1c5c16645a6cffb0be55a8b1b4d4a5c43",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "17",
+        "pool_count": "17",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01113939-kc.json",
+        "sha256": "fdd39c60335a8b5e746cae74daa7e0c1c5c16645a6cffb0be55a8b1b4d4a5c43",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 17,
+        "poolCount": 17,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0031",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-32"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01131717-Bc.json",
+        "sha256": "3aaddea90941245d4735f4978ebf2cc1319a21ff3a2a5ae073db7bb2b2ed8417",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "17",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01131717-Bc.json",
+        "sha256": "3aaddea90941245d4735f4978ebf2cc1319a21ff3a2a5ae073db7bb2b2ed8417",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 17,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0032",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-33"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01131717-Bc.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01131731-Sc.json",
+        "sha256": "3aaddea90941245d4735f4978ebf2cc1319a21ff3a2a5ae073db7bb2b2ed8417",
+        "duplicate_of": "derived/static-data/douluo1-pack-C6xEgEus/01131717-Bc.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "17",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01131731-Sc.json",
+        "sha256": "3aaddea90941245d4735f4978ebf2cc1319a21ff3a2a5ae073db7bb2b2ed8417",
+        "duplicateOf": "derived/static-data/douluo1-pack-C6xEgEus/01131717-Bc.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 17,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0033",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-34"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01142260-Xc.json",
+        "sha256": "8b294c602a0031ed222ee6994f7aeaa075c565dd6c924f8d370b42ac3510d1b0",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "6",
+        "pool_count": "0",
+        "first_keys": "355723,3c3169,7a09c3,84217e,8d7e08,d8103a"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01142260-Xc.json",
+        "sha256": "8b294c602a0031ed222ee6994f7aeaa075c565dd6c924f8d370b42ac3510d1b0",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 6,
+        "poolCount": 0,
+        "firstKeys": [
+          "355723",
+          "3c3169",
+          "7a09c3",
+          "84217e",
+          "8d7e08",
+          "d8103a"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0034",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-35"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01147790-Nd.json",
+        "sha256": "1f136c979af4d687d3814cb433748b5ba8be56eb46ec4bafae50e380c74f3d11",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "7",
+        "pool_count": "0",
+        "first_keys": "category,poolId,stepId"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo1-pack-C6xEgEus/01147790-Nd.json",
+        "sha256": "1f136c979af4d687d3814cb433748b5ba8be56eb46ec4bafae50e380c74f3d11",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 7,
+        "poolCount": 0,
+        "firstKeys": [
+          "category",
+          "poolId",
+          "stepId"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0035",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-36"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00000623-va.json",
+        "sha256": "507c82d01c8c87ab7d4c75fcdefdc5576373f85d33d1d2fbbc78a36c1dd5015b",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "31",
+        "pool_count": "31",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00000623-va.json",
+        "sha256": "507c82d01c8c87ab7d4c75fcdefdc5576373f85d33d1d2fbbc78a36c1dd5015b",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 31,
+        "poolCount": 31,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0036",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-37"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00042387-Fa.json",
+        "sha256": "0a82aba4f748b219c5a0316ec2109876bb352fdda2c13d994f26476ae270dd62",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "31",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00042387-Fa.json",
+        "sha256": "0a82aba4f748b219c5a0316ec2109876bb352fdda2c13d994f26476ae270dd62",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 31,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0037",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-38"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00044406-za.json",
+        "sha256": "413773ec07e77227ea710cc287a1b92f6cd652a27e07cb457aef632cb3c5bc9f",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "4",
+        "pool_count": "0",
+        "first_keys": "8001d4e9-2ead-484c-86ab-550686c6ce0d,917a611f-c50b-4c67-9b27-da19f136e5c5,c898523e-82f4-45d4-9dc8-ee6845e2b74d,f1afa805-95b7-4d54-aea2-d3de15e54c5a"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00044406-za.json",
+        "sha256": "413773ec07e77227ea710cc287a1b92f6cd652a27e07cb457aef632cb3c5bc9f",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 4,
+        "poolCount": 0,
+        "firstKeys": [
+          "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+          "917a611f-c50b-4c67-9b27-da19f136e5c5",
+          "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+          "f1afa805-95b7-4d54-aea2-d3de15e54c5a"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0038",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-39"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00051786-Ua.json",
+        "sha256": "b237c087a05fb473debb2235609f5729d2aa22fd0b48e1cc9aa516681ae5a1d4",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "53",
+        "pool_count": "53",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00051786-Ua.json",
+        "sha256": "b237c087a05fb473debb2235609f5729d2aa22fd0b48e1cc9aa516681ae5a1d4",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 53,
+        "poolCount": 53,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0039",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-40"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00080749-xe.json",
+        "sha256": "fbfdf7db92411c739f567b7c63d1ff528375261e6d9c851190e9a309f393f071",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "53",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00080749-xe.json",
+        "sha256": "fbfdf7db92411c739f567b7c63d1ff528375261e6d9c851190e9a309f393f071",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 53,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0040",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-41"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00089391-Za.json",
+        "sha256": "8ac9fe1d34ee735d71e26ba35cb256a366c9d952bc0f50f3895d23d356a92a5b",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "198",
+        "pool_count": "198",
+        "first_keys": "id,name,options,rank,requirements,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00089391-Za.json",
+        "sha256": "8ac9fe1d34ee735d71e26ba35cb256a366c9d952bc0f50f3895d23d356a92a5b",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 198,
+        "poolCount": 198,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "requirements",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0041",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-42"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "5",
+        "pool_count": "198",
+        "first_keys": "generator,groups,pools,statistics,unstructuredMeaningfulOptions"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 5,
+        "poolCount": 198,
+        "firstKeys": [
+          "generator",
+          "groups",
+          "pools",
+          "statistics",
+          "unstructuredMeaningfulOptions"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0042",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-43"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00542868-eo.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicate_of": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "type": "object",
+        "item_count": "5",
+        "pool_count": "198",
+        "first_keys": "generator,groups,pools,statistics,unstructuredMeaningfulOptions"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00542868-eo.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicateOf": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "type": "object",
+        "itemCount": 5,
+        "poolCount": 198,
+        "firstKeys": [
+          "generator",
+          "groups",
+          "pools",
+          "statistics",
+          "unstructuredMeaningfulOptions"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0043",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-44"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00550511-j.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicate_of": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "type": "object",
+        "item_count": "5",
+        "pool_count": "198",
+        "first_keys": "generator,groups,pools,statistics,unstructuredMeaningfulOptions"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00550511-j.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicateOf": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "type": "object",
+        "itemCount": 5,
+        "poolCount": 198,
+        "firstKeys": [
+          "generator",
+          "groups",
+          "pools",
+          "statistics",
+          "unstructuredMeaningfulOptions"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0044",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-45"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00587716-bn.json",
+        "sha256": "e6e9ee0f7610cd09f49b7fd59b163dfe16b0312700e0b6a1e44be5b18b19a761",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "5",
+        "pool_count": "5",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00587716-bn.json",
+        "sha256": "e6e9ee0f7610cd09f49b7fd59b163dfe16b0312700e0b6a1e44be5b18b19a761",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 5,
+        "poolCount": 5,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0045",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-46"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00590016-Nt.json",
+        "sha256": "c2b3bf7914c695ecb82e242d0a1a5488fc58524e47481ceb83aa63d75c079d76",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "5",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00590016-Nt.json",
+        "sha256": "c2b3bf7914c695ecb82e242d0a1a5488fc58524e47481ceb83aa63d75c079d76",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 5,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0046",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-47"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00590030-ue.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicate_of": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "type": "object",
+        "item_count": "5",
+        "pool_count": "198",
+        "first_keys": "generator,groups,pools,statistics,unstructuredMeaningfulOptions"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00590030-ue.json",
+        "sha256": "83acc07b9d136cdd7d1ae416708bc178829e7b7247d963e474de56fbbb4f8c43",
+        "duplicateOf": "derived/static-data/douluo2-pack-BsEUb2l9/00542785-U.json",
+        "type": "object",
+        "itemCount": 5,
+        "poolCount": 198,
+        "firstKeys": [
+          "generator",
+          "groups",
+          "pools",
+          "statistics",
+          "unstructuredMeaningfulOptions"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0047",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-48"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00593281-In.json",
+        "sha256": "20f18653def5e7c7e772a5616067991ab441dcfc43c61fb66761ec0e34198d59",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "125",
+        "pool_count": "125",
+        "first_keys": "canonicalPoolId,defaultNextFlowId,name,options,poolKind,sourcePoolId,stageId,status"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00593281-In.json",
+        "sha256": "20f18653def5e7c7e772a5616067991ab441dcfc43c61fb66761ec0e34198d59",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 125,
+        "poolCount": 125,
+        "firstKeys": [
+          "canonicalPoolId",
+          "defaultNextFlowId",
+          "name",
+          "options",
+          "poolKind",
+          "sourcePoolId",
+          "stageId",
+          "status"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0048",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-49"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00897507-wn.json",
+        "sha256": "d59f3baec271a298e1e82c1cacd2bd7187e6dacccf0678f4e93bbebaf172802a",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "125",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/douluo2-pack-BsEUb2l9/00897507-wn.json",
+        "sha256": "d59f3baec271a298e1e82c1cacd2bd7187e6dacccf0678f4e93bbebaf172802a",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 125,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0049",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-50"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json",
+        "sha256": "044e0105c541f85a99498432607924d43e3f4d63c96b8fbe2cd0a663fa5d01a1",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "107",
+        "pool_count": "0",
+        "first_keys": "attributes,bloodlineTier,displayName,fusionStacks,fusionWording,optionId,poolId,poolName,schemaGaps,sourceText"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json",
+        "sha256": "044e0105c541f85a99498432607924d43e3f4d63c96b8fbe2cd0a663fa5d01a1",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 107,
+        "poolCount": 0,
+        "firstKeys": [
+          "attributes",
+          "bloodlineTier",
+          "displayName",
+          "fusionStacks",
+          "fusionWording",
+          "optionId",
+          "poolId",
+          "poolName",
+          "schemaGaps",
+          "sourceText"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0050",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-51"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032186-Ha.json",
+        "sha256": "9927bbcbff1d1af689af3eec628eea3ee999bc173ecb9c1d5716f872dc6a0052",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "0",
+        "first_keys": "rules"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032186-Ha.json",
+        "sha256": "9927bbcbff1d1af689af3eec628eea3ee999bc173ecb9c1d5716f872dc6a0052",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 0,
+        "firstKeys": [
+          "rules"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0051",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-52"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032200-mt.json",
+        "sha256": "044e0105c541f85a99498432607924d43e3f4d63c96b8fbe2cd0a663fa5d01a1",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json",
+        "type": "array",
+        "item_count": "107",
+        "pool_count": "0",
+        "first_keys": "attributes,bloodlineTier,displayName,fusionStacks,fusionWording,optionId,poolId,poolName,schemaGaps,sourceText"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032200-mt.json",
+        "sha256": "044e0105c541f85a99498432607924d43e3f4d63c96b8fbe2cd0a663fa5d01a1",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json",
+        "type": "array",
+        "itemCount": 107,
+        "poolCount": 0,
+        "firstKeys": [
+          "attributes",
+          "bloodlineTier",
+          "displayName",
+          "fusionStacks",
+          "fusionWording",
+          "optionId",
+          "poolId",
+          "poolName",
+          "schemaGaps",
+          "sourceText"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0052",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-53"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032471-Ua.json",
+        "sha256": "044e0105c541f85a99498432607924d43e3f4d63c96b8fbe2cd0a663fa5d01a1",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json",
+        "type": "array",
+        "item_count": "107",
+        "pool_count": "0",
+        "first_keys": "attributes,bloodlineTier,displayName,fusionStacks,fusionWording,optionId,poolId,poolName,schemaGaps,sourceText"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032471-Ua.json",
+        "sha256": "044e0105c541f85a99498432607924d43e3f4d63c96b8fbe2cd0a663fa5d01a1",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00000236-_a.json",
+        "type": "array",
+        "itemCount": 107,
+        "poolCount": 0,
+        "firstKeys": [
+          "attributes",
+          "bloodlineTier",
+          "displayName",
+          "fusionStacks",
+          "fusionWording",
+          "optionId",
+          "poolId",
+          "poolName",
+          "schemaGaps",
+          "sourceText"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0053",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-54"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032477-Ma.json",
+        "sha256": "622d55f817d53216719510b33f08fc6777016090edb5a33339e2daa07e3a9e17",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "58",
+        "pool_count": "58",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00032477-Ma.json",
+        "sha256": "622d55f817d53216719510b33f08fc6777016090edb5a33339e2daa07e3a9e17",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 58,
+        "poolCount": 58,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0054",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-55"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00104107-_a.json",
+        "sha256": "6568b0ec61f0138cd72e4da65bb3e7ad6c5d0132c37724fa7778eba5021e7760",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "58",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00104107-_a.json",
+        "sha256": "6568b0ec61f0138cd72e4da65bb3e7ad6c5d0132c37724fa7778eba5021e7760",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 58,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0055",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-56"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00104121-Xa.json",
+        "sha256": "4cc926e6e0e5e02094ac3dd54175ccac5eebf2506e3ecbfc7852fedb52189c78",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "186",
+        "pool_count": "186",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00104121-Xa.json",
+        "sha256": "4cc926e6e0e5e02094ac3dd54175ccac5eebf2506e3ecbfc7852fedb52189c78",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 186,
+        "poolCount": 186,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0056",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-57"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00268619-Ja.json",
+        "sha256": "0105540123bafd9cc7220cd56669e72c71e628d299e365e603b31e7b4db80bf1",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "186",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00268619-Ja.json",
+        "sha256": "0105540123bafd9cc7220cd56669e72c71e628d299e365e603b31e7b4db80bf1",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 186,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0057",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-58"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00104107-_a.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00268633-Va.json",
+        "sha256": "6568b0ec61f0138cd72e4da65bb3e7ad6c5d0132c37724fa7778eba5021e7760",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00104107-_a.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "58",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00268633-Va.json",
+        "sha256": "6568b0ec61f0138cd72e4da65bb3e7ad6c5d0132c37724fa7778eba5021e7760",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00104107-_a.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 58,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0058",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-59"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00268619-Ja.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00268677-Za.json",
+        "sha256": "0105540123bafd9cc7220cd56669e72c71e628d299e365e603b31e7b4db80bf1",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00268619-Ja.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "186",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00268677-Za.json",
+        "sha256": "0105540123bafd9cc7220cd56669e72c71e628d299e365e603b31e7b4db80bf1",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00268619-Ja.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 186,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0059",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-60"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+        "sha256": "2a04e7f2713154754abe862aa5e51834c2b5e1a68fbd77bb7e12dce214360652",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "81",
+        "pool_count": "81",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+        "sha256": "2a04e7f2713154754abe862aa5e51834c2b5e1a68fbd77bb7e12dce214360652",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 81,
+        "poolCount": 81,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0060",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-61"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json",
+        "sha256": "959160b4a19438558142f6990e84e7fa1f45352925e5f47760218eee00b80ad0",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "81",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json",
+        "sha256": "959160b4a19438558142f6990e84e7fa1f45352925e5f47760218eee00b80ad0",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 81,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0061",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-62"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00447834-Sd.json",
+        "sha256": "959160b4a19438558142f6990e84e7fa1f45352925e5f47760218eee00b80ad0",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "81",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00447834-Sd.json",
+        "sha256": "959160b4a19438558142f6990e84e7fa1f45352925e5f47760218eee00b80ad0",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 81,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0062",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-63"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00491939-Jd.json",
+        "sha256": "445f484b5689c94c4132031721afccd84847906acf2767226662a11646097bd5",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "0",
+        "first_keys": "cb2dce39-17c0-4b0b-9cca-94778d215d7f:ade915"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00491939-Jd.json",
+        "sha256": "445f484b5689c94c4132031721afccd84847906acf2767226662a11646097bd5",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 0,
+        "firstKeys": [
+          "cb2dce39-17c0-4b0b-9cca-94778d215d7f:ade915"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0063",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-64"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00492158-Zd.json",
+        "sha256": "19eea0fc841109e9193a72f21eab51fa322f8242df942016a7528fff1b529509",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "1",
+        "pool_count": "1",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00492158-Zd.json",
+        "sha256": "19eea0fc841109e9193a72f21eab51fa322f8242df942016a7528fff1b529509",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 1,
+        "poolCount": 1,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0064",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-65"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493549-ei.json",
+        "sha256": "8c8e7f43015482c1ebe12c463d42b7baaea975522cb880a8f121237cba2bf40d",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "1",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493549-ei.json",
+        "sha256": "8c8e7f43015482c1ebe12c463d42b7baaea975522cb880a8f121237cba2bf40d",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 1,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0065",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-66"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493563-ti.json",
+        "sha256": "348e03325ca86091d6829ce482f50e8bbdbf594f9044472ed48da2a03ae11718",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "1",
+        "pool_count": "1",
+        "first_keys": "options,sourcePoolId,sourcePoolName,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493563-ti.json",
+        "sha256": "348e03325ca86091d6829ce482f50e8bbdbf594f9044472ed48da2a03ae11718",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 1,
+        "poolCount": 1,
+        "firstKeys": [
+          "options",
+          "sourcePoolId",
+          "sourcePoolName",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0066",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-67"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493852-ai.json",
+        "sha256": "f2ad44ad932f5dbeee3b9725b8462a77b04d55bc27f419530a2260ce5bc76517",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "0",
+        "first_keys": "overlays"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493852-ai.json",
+        "sha256": "f2ad44ad932f5dbeee3b9725b8462a77b04d55bc27f419530a2260ce5bc76517",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 0,
+        "firstKeys": [
+          "overlays"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0067",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-68"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00493549-ei.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493869-di.json",
+        "sha256": "8c8e7f43015482c1ebe12c463d42b7baaea975522cb880a8f121237cba2bf40d",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00493549-ei.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "1",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493869-di.json",
+        "sha256": "8c8e7f43015482c1ebe12c463d42b7baaea975522cb880a8f121237cba2bf40d",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00493549-ei.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 1,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0068",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-69"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00492158-Zd.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493875-da.json",
+        "sha256": "19eea0fc841109e9193a72f21eab51fa322f8242df942016a7528fff1b529509",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00492158-Zd.json",
+        "type": "array",
+        "item_count": "1",
+        "pool_count": "1",
+        "first_keys": "id,name,options,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00493875-da.json",
+        "sha256": "19eea0fc841109e9193a72f21eab51fa322f8242df942016a7528fff1b529509",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00492158-Zd.json",
+        "type": "array",
+        "itemCount": 1,
+        "poolCount": 1,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0069",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-70"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00560082-mi.json",
+        "sha256": "573c3a732b3eacfe725e43fe47e9af4b01b94a363fc5f0c275773c0c179a1ae6",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "469",
+        "pool_count": "469",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00560082-mi.json",
+        "sha256": "573c3a732b3eacfe725e43fe47e9af4b01b94a363fc5f0c275773c0c179a1ae6",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 469,
+        "poolCount": 469,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0070",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-71"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00967622-In.json",
+        "sha256": "77f4981f4d1c120e11eccca61ffe70fbd8bac8aa51dcda49af04f38ce72a836d",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "469",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00967622-In.json",
+        "sha256": "77f4981f4d1c120e11eccca61ffe70fbd8bac8aa51dcda49af04f38ce72a836d",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 469,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0071",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-72"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00971351-pi.json",
+        "sha256": "c14a3ac798e395e8fb70965f3298fe21f4f9edb314e2aa489ab150fc74bd1949",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "56",
+        "pool_count": "0",
+        "first_keys": "groupTag,name,poolId,tier"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00971351-pi.json",
+        "sha256": "c14a3ac798e395e8fb70965f3298fe21f4f9edb314e2aa489ab150fc74bd1949",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 56,
+        "poolCount": 0,
+        "firstKeys": [
+          "groupTag",
+          "name",
+          "poolId",
+          "tier"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0072",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-73"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00980183-xi.json",
+        "sha256": "50210a88c2b89e3e4003c08ce15e324e2257bcbe6a20d18f3731133b0df660f1",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "1",
+        "pool_count": "0",
+        "first_keys": "name,poolId,reason"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00980183-xi.json",
+        "sha256": "50210a88c2b89e3e4003c08ce15e324e2257bcbe6a20d18f3731133b0df660f1",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 1,
+        "poolCount": 0,
+        "firstKeys": [
+          "name",
+          "poolId",
+          "reason"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0073",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-74"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00980322-yi.json",
+        "sha256": "8c567de915c286eeb5df68d805650b8b676a1be8fe7ebf50a21787af479b12b1",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "362",
+        "pool_count": "362",
+        "first_keys": "groupTag,id,name,options,poolKind,rank,tags,tier,top"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/00980322-yi.json",
+        "sha256": "8c567de915c286eeb5df68d805650b8b676a1be8fe7ebf50a21787af479b12b1",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 362,
+        "poolCount": 362,
+        "firstKeys": [
+          "groupTag",
+          "id",
+          "name",
+          "options",
+          "poolKind",
+          "rank",
+          "tags",
+          "tier",
+          "top"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0074",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-75"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01804234-qn.json",
+        "sha256": "25d0805560190ce3775d11b0a255727192159618e985e6d4b0e1706da2ee5244",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "4",
+        "pool_count": "362",
+        "first_keys": "groupTags,pools,topPools,unreachablePools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01804234-qn.json",
+        "sha256": "25d0805560190ce3775d11b0a255727192159618e985e6d4b0e1706da2ee5244",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 4,
+        "poolCount": 362,
+        "firstKeys": [
+          "groupTags",
+          "pools",
+          "topPools",
+          "unreachablePools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0075",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-76"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01821439-Ti.json",
+        "sha256": "a9b6439cd123ac18dfad77286ecec8bf5807d660002105e197bf1c5251d3e630",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "12",
+        "pool_count": "0",
+        "first_keys": "0b8c5e6f-6826-402b-8777-9563a1908bae,3bf25ff1-e1bd-4780-8bfe-02495ba72c55,4eefb02b-fa8c-4b78-b7fb-651646302f7f,5d6a4b01-90a2-49fa-ad43-bf97cde910b9,62dbfb65-2be7-4bdb-a3c0-5c9d824856a7,6c1a3339-fa05-4c18-a605-75592d896c76,b15041c6-3c1a-4ae9-8cb2-7b4b8d5b0882,bb975981-b43f-4c4e-ac00-1d8cf220f733,c5f6bddc-5b72-40cb-a21f-5c9163c3d475,e0e790d9-3912-48c5-9173-ec29aa3c352d,e9486144-1525-40a1-882e-b347b60418d7,ea3b42d1-e74b-4f54-9037-81ee4da24afb"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01821439-Ti.json",
+        "sha256": "a9b6439cd123ac18dfad77286ecec8bf5807d660002105e197bf1c5251d3e630",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 12,
+        "poolCount": 0,
+        "firstKeys": [
+          "0b8c5e6f-6826-402b-8777-9563a1908bae",
+          "3bf25ff1-e1bd-4780-8bfe-02495ba72c55",
+          "4eefb02b-fa8c-4b78-b7fb-651646302f7f",
+          "5d6a4b01-90a2-49fa-ad43-bf97cde910b9",
+          "62dbfb65-2be7-4bdb-a3c0-5c9d824856a7",
+          "6c1a3339-fa05-4c18-a605-75592d896c76",
+          "b15041c6-3c1a-4ae9-8cb2-7b4b8d5b0882",
+          "bb975981-b43f-4c4e-ac00-1d8cf220f733",
+          "c5f6bddc-5b72-40cb-a21f-5c9163c3d475",
+          "e0e790d9-3912-48c5-9173-ec29aa3c352d",
+          "e9486144-1525-40a1-882e-b347b60418d7",
+          "ea3b42d1-e74b-4f54-9037-81ee4da24afb"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0076",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-77"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json"
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01841846-Ni.json",
+        "sha256": "959160b4a19438558142f6990e84e7fa1f45352925e5f47760218eee00b80ad0",
+        "duplicate_of": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "81",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01841846-Ni.json",
+        "sha256": "959160b4a19438558142f6990e84e7fa1f45352925e5f47760218eee00b80ad0",
+        "duplicateOf": "derived/static-data/human-foundation-CduvzjjO/00447820-Pt.json",
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 81,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0077",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-78"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01842931-M.json",
+        "sha256": "a7976eed5987b1c72d8cc129008887eb6fc943311a07de29b59f8849fbd4017f",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "7",
+        "pool_count": "0",
+        "first_keys": "18adfc,1a8a97,36b3a7,6f2ee4,935047,d43de5,e486cf"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/human-foundation-CduvzjjO/01842931-M.json",
+        "sha256": "a7976eed5987b1c72d8cc129008887eb6fc943311a07de29b59f8849fbd4017f",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 7,
+        "poolCount": 0,
+        "firstKeys": [
+          "18adfc",
+          "1a8a97",
+          "36b3a7",
+          "6f2ee4",
+          "935047",
+          "d43de5",
+          "e486cf"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0078",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-79"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/index-CfLpLgGT/00000137-s.json",
+        "sha256": "953b544fb116dc87db8bb763c949680ed04931e1db505e1ddfbc59d5794d865e",
+        "duplicate_of": "",
+        "type": "array",
+        "item_count": "6",
+        "pool_count": "6",
+        "first_keys": "id,name,options,rank,tags"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/index-CfLpLgGT/00000137-s.json",
+        "sha256": "953b544fb116dc87db8bb763c949680ed04931e1db505e1ddfbc59d5794d865e",
+        "duplicateOf": null,
+        "type": "array",
+        "itemCount": 6,
+        "poolCount": 6,
+        "firstKeys": [
+          "id",
+          "name",
+          "options",
+          "rank",
+          "tags"
+        ]
+      }
+    },
+    {
+      "id": "apk_dataset_0079",
+      "kind": "dataset",
+      "ownerAuthorization": "confirmed",
+      "sourceRef": {
+        "type": "apk_static_extract",
+        "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sourceId": "apk:E4FB340E:datasets.csv:row-80"
+      },
+      "availability": {
+        "policy": "preserve_apk_original_state",
+        "enabled": true,
+        "duplicateOf": null
+      },
+      "raw": {
+        "dataset": "derived/static-data/index-CfLpLgGT/00003993-c.json",
+        "sha256": "b273bc0044cd181555457d0e4f3faec18fdc5da0ec87f30ee5eeddb054cbd0cb",
+        "duplicate_of": "",
+        "type": "object",
+        "item_count": "1",
+        "pool_count": "6",
+        "first_keys": "pools"
+      },
+      "normalized": {
+        "dataset": "derived/static-data/index-CfLpLgGT/00003993-c.json",
+        "sha256": "b273bc0044cd181555457d0e4f3faec18fdc5da0ec87f30ee5eeddb054cbd0cb",
+        "duplicateOf": null,
+        "type": "object",
+        "itemCount": 1,
+        "poolCount": 6,
+        "firstKeys": [
+          "pools"
+        ]
+      }
+    }
+  ]
+}

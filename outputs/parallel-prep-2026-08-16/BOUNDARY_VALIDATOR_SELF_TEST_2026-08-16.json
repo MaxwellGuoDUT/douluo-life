@@ -1,0 +1,25 @@
+{
+  "date": "2026-08-16",
+  "command": "node validate-content-boundary.mjs --self-test",
+  "status": "pass",
+  "validFixture": {
+    "recordCount": 1,
+    "uniqueIdCount": 1,
+    "errorCount": 0,
+    "warningCount": 0
+  },
+  "invalidFixture": {
+    "recordCount": 2,
+    "uniqueIdCount": 1,
+    "errorCount": 5,
+    "detectedCodes": [
+      "SOURCE_REFS_MISSING",
+      "UNCONFIRMED_PRODUCTION_RECORD",
+      "NON_PRODUCTION_CANON_RECORD",
+      "RECORD_ID_DUPLICATE",
+      "SOURCE_REF_HASH_INVALID"
+    ]
+  },
+  "scope": "candidate_admission_only",
+  "productionFilesModified": false
+}

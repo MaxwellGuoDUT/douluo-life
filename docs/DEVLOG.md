@@ -964,3 +964,35 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 日常修炼已接入 `talent.docx` 的 E/D/C/B/A/S/god-level 全部42条文案；0岁身份和6岁武魂抽取均有当前事件叙述；比比东固定战力为1500，转盘动画为450ms。
 - 最终验证：161 tests、161 pass、0 fail、0 skipped；42个 JavaScript 文件通过 `node --check`；未自动修改源文件、任务书或 `outputs/`。
 - 后续仍未决但不阻塞本 Demo 收尾：正式魂环抽取规则、特殊/机会/遭遇型成长池、91级后魂核成长池、0级特别剧情，以及 V3 是否升级为正式生产链。
+
+## 2026-08-17 - APK 正式路线运行时批次与发布准备
+
+### 今日目标
+
+- 在保留 APK 原始可用性、动态边界和来源证据的前提下，继续推进正式路线 Demo 的 typed route runtime。
+- 将上一轮人工验收发现的正式特殊成长战力边界接入 APK 来源计算，并用自动化测试锁定成功、失败和阈值边界。
+- 整理今日实现、证据、测试和人工验收状态，准备进入版本发布流程。
+
+### 今日完成
+
+- 完成 APK 正式特殊成长结果的战力总值审计：确认来源处理器调用 APK `combatPower.total`，并保留 `>=`、`>` 两种比较语义、失败效果、死亡阈值和战斗失败标记。
+- 新增 APK 战力来源证据包 `data/apk-canonical/catalogs/combat-power-runtime-evidence.json`，记录等级、魂环、武魂、属性、领域、魂核、魂骨、神装、道具、状态和舍入相关来源常量；证据仅来自静态源映射，未执行 APK 游戏逻辑。
+- 新增 `js/apk-combat-power-runtime.js`，并接入 `js/apk-route-runtime.js`、`js/production-content-loader.js`、`js/apk-route-demo-app.js` 和 `data/production-entry.json`。
+- 补充正式特殊成长战力的精确阈值成功、低于阈值失败、失败铜灵币封顶和缺少证据包硬边界测试。
+- 延续并整理 APK 路线图、scheduler、特殊成长、人类魂环年限/类型/物种和正式武魂 handler 的来源证据、typed runtime 与审计报告。
+- 保持“当前边界不静默补全”策略：scheduler 已完成人工验收；本轮浏览器继续推进后，明确停在 `humanRingSpecies4` 的 APK 共享 handler 分支。
+
+### 当前人工验收边界
+
+- 固定 seed `apk-route-demo-seed` 已推进到 21 岁、32 级、`humanRingSpecies4`，选项 `bddfef`（土龙）。
+- APK 原始 `applyHumanMartialSoul` 并非只负责追加武魂；它在 `humanRingSpecies3/4/5` 中负责完成魂环物种选择、写入魂环并应用物种属性效果。
+- 当前 typed runtime 已覆盖正式武魂追加分支，但尚未把这个共享 handler 按 flow 分派到魂环物种收束分支，因此正确停在 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED`，没有静默增加武魂或魂环。
+- 本次停点游标从 83 到 84，而已提交结果仍为 83，说明本次选项尚未提交；下一批应复用现有魂环物种证据和 `finalizeSoulRingSpecies` 语义，补充共享 handler 分派与回归测试。
+
+### 自动化验证与交付状态
+
+- bundled Node.js 全量测试：218 tests、218 pass、0 fail、0 cancelled。
+- 战力证据包、APK canonical package index、production entry 和生成器之间的来源哈希已重新生成并校验。
+- 本日新增的战力适配器已完成自动化验证；浏览器验收继续保留真实边界，未将当前 `humanRingSpecies4` 停点误报为通过。
+- 审计报告：`outputs/parallel-prep-2026-08-16/APK_SPECIAL_RESULT_COMBAT_POWER_AUDIT_2026-08-17.md`。
+- 本条记录只描述已完成实现、自动化验证和当前未决边界；不将 APK 静态候选或未接入分支升级为生产规则。
