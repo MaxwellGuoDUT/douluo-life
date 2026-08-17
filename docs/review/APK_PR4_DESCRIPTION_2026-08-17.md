@@ -1,6 +1,6 @@
-# PR #4 description（2026-08-17，待远端同步）
+# PR #4 description（2026-08-17，已同步）
 
-> 这是 PR #4 的收窄版 body 草稿。GitHub connector 更新请求因 `403 Resource not accessible by integration` 被拒绝，本地 `gh` token 也已失效；该文件不是远端 PR 状态的替代证明。
+> 这是 PR #4 当前收窄版 body，已通过已认证的 GitHub CLI 同步到远端。
 
 ## Summary
 
