@@ -3,12 +3,15 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import {
+    APK_ANALYSIS_ROOT,
+    APK_SHA256
+} from "./apk-provenance.mjs";
 
 const ROOT = process.cwd();
 const SOURCE_PATH = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "static-data",
     "human-foundation-CduvzjjO",
@@ -21,7 +24,6 @@ const TARGET_PATH = path.join(
     "catalogs",
     "formal-special-result-runtime-evidence.json"
 );
-const APK_SHA256 = "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
 
 function sha256File(filePath) {
     return crypto
@@ -69,10 +71,10 @@ function main() {
         schemaVersion: "apk-formal-special-result-evidence/1.0",
         source: {
             apkSha256: APK_SHA256,
-            dataset: "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/01804234-qn.json",
+        dataset: `${APK_ANALYSIS_ROOT}/derived/static-data/human-foundation-CduvzjjO/01804234-qn.json`,
             datasetSha256: sha256File(SOURCE_PATH),
-            module: "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
-            foundationModule: "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+        module: `${APK_ANALYSIS_ROOT}/derived/pretty/douluo1-pack-C6xEgEus.js`,
+        foundationModule: `${APK_ANALYSIS_ROOT}/derived/pretty/human-foundation-CduvzjjO.js`,
             customHandler: "douluo1:handler.formal-special-result",
             afterResultAction: "douluo1:action.after-formal-special-result",
             sourceFunctions: ["fn", "Xi[Ua]", "an", "tn"]

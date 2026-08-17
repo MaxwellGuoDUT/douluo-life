@@ -4,7 +4,7 @@
   "ownerAuthorization": "confirmed",
   "availabilityPolicy": "preserve_apk_original_state",
   "source": {
-    "apkSha256": "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
     "extractionMode": "static_source_mapping_only",
     "gameplayExecuted": false,
     "modules": [
@@ -774,7 +774,28 @@
       "soul-bone base/quality and god-armor contribution are derived from source bone parts",
       "domains, artifacts, attributes, soul cores, items, special skills and other source components are accumulated",
       "status modifiers are applied after component accumulation"
-    ]
+    ],
+    "coverage": {
+      "status": "source-verified-with-typed-guards",
+      "noApproximateTotal": true,
+      "verifiedComponents": [
+        "human.base",
+        "beast.base",
+        "martialSoulQuality",
+        "martialSoulTrueBody",
+        "soulRing",
+        "soulBone",
+        "godArmor.levelGate",
+        "godhood",
+        "artifacts.humanSubHundredDivisor",
+        "artifacts.beastNoSubHundredDivisor",
+        "attributes",
+        "beastBloodline.singleAndFusion",
+        "beastTitles.scaledByBase",
+        "status"
+      ],
+      "typedGuardCode": "APK_COMBAT_POWER_UNCOVERED_STATE"
+    }
   },
   "fieldMapping": {
     "level": "character.level",

@@ -1,11 +1,19 @@
 {
   "schemaVersion": "apk-scheduler-runtime-evidence/1.0",
   "source": {
-    "apkSha256": "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
     "module": "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
     "schedulerFlow": "douluo1:flow.formal-human.scheduler",
     "schedulerAction": "douluo1:action.formal-human.schedule",
-    "sourceFunctions": ["zl", "Ii", "Ze", "Pa", "Hi", "Qe", "$i"]
+    "sourceFunctions": [
+      "zl",
+      "Ii",
+      "Ze",
+      "Pa",
+      "Hi",
+      "Qe",
+      "$i"
+    ]
   },
   "extraction": {
     "mode": "static_source_mapping_only",
@@ -14,8 +22,14 @@
     "domainCount": 28,
     "storyPrerequisiteCount": 45,
     "storyCombatGates": [
-      { "poolId": "90f222ec-5eeb-43d4-a3c6-802832241b35", "requiresWinInPool": "45611dcd-bf4f-4090-bb28-988cf943caa6" },
-      { "poolId": "d2dd6165-1307-4760-abdc-6c4aec9a78a8", "requiresWinInPool": "7944f1f3-01e5-4380-8593-6e4aa6ab7736" }
+      {
+        "poolId": "90f222ec-5eeb-43d4-a3c6-802832241b35",
+        "requiresWinInPool": "45611dcd-bf4f-4090-bb28-988cf943caa6"
+      },
+      {
+        "poolId": "d2dd6165-1307-4760-abdc-6c4aec9a78a8",
+        "requiresWinInPool": "7944f1f3-01e5-4380-8593-6e4aa6ab7736"
+      }
     ]
   },
   "priority": [
@@ -52,8 +66,93 @@
     "pendingSoulBone": "humanPrepareSoulBonePart"
   },
   "storyBranches": {
-    "1": { "sourceGroup": "d1Plot1", "poolCount": 43, "minimumTimelineAge": [6, 6, 12, 12, 12, 12, 13, 14, 14, 14, 14, 14, 14, 16, 16, 16, 16, 16, 16, 19, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 24, 24, 24, 24, 24, 24, 24, 24, 24, 25, 25, 25, 25] },
-    "2": { "sourceGroup": "d1Plot2", "poolCount": 32, "minimumTimelineAge": [14, 14, 14, 16, 16, 16, 16, 16, 16, 19, 19, 20, 20, 20, 20, 20, 20, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25] }
+    "1": {
+      "sourceGroup": "d1Plot1",
+      "poolCount": 43,
+      "minimumTimelineAge": [
+        6,
+        6,
+        12,
+        12,
+        12,
+        12,
+        13,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        19,
+        19,
+        19,
+        19,
+        19,
+        19,
+        20,
+        20,
+        20,
+        20,
+        20,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    "2": {
+      "sourceGroup": "d1Plot2",
+      "poolCount": 32,
+      "minimumTimelineAge": [
+        14,
+        14,
+        14,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        19,
+        19,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        25,
+        25,
+        25,
+        25,
+        25
+      ]
+    }
   },
   "implementedRuntime": "js/apk-scheduler-runtime.js",
   "routeBridge": "js/apk-route-runtime.js",

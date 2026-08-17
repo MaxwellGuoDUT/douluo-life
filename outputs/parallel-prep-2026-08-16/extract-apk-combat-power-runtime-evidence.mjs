@@ -3,28 +3,29 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import {
+    APK_ANALYSIS_ROOT,
+    APK_SHA256
+} from "./apk-provenance.mjs";
 
 const ROOT = process.cwd();
 const SOURCE_MODULE = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "pretty",
     "App-qyLEl8t4.js"
 );
 const PACK_MODULE = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "pretty",
     "douluo1-pack-C6xEgEus.js"
 );
 const FOUNDATION_MODULE = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "pretty",
     "human-foundation-CduvzjjO.js"
@@ -36,8 +37,6 @@ const TARGET_PATH = path.join(
     "catalogs",
     "combat-power-runtime-evidence.json"
 );
-const APK_SHA256 = "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
-
 function sha256File(filePath) {
     return crypto
         .createHash("sha256")
@@ -211,17 +210,17 @@ function main() {
             gameplayExecuted: false,
             modules: [
                 {
-                    path: "apk-analysis/E4FB340E/derived/pretty/App-qyLEl8t4.js",
+        path: `${APK_ANALYSIS_ROOT}/derived/pretty/App-qyLEl8t4.js`,
                     sha256: sha256File(SOURCE_MODULE),
                     roles: ["combat-power-engine", "source-static-constants"]
                 },
                 {
-                    path: "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+        path: `${APK_ANALYSIS_ROOT}/derived/pretty/douluo1-pack-C6xEgEus.js`,
                     sha256: sha256File(PACK_MODULE),
                     roles: ["formal-special-result-handler", "threshold-comparison"]
                 },
                 {
-                    path: "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+        path: `${APK_ANALYSIS_ROOT}/derived/pretty/human-foundation-CduvzjjO.js`,
                     sha256: sha256File(FOUNDATION_MODULE),
                     roles: ["formal-special-result-source-options"]
                 }
@@ -230,7 +229,7 @@ function main() {
                 combatCalculator: formulaLines,
                 formalSpecialResultHandler: {
                     name: "fn",
-                    module: "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+            module: `${APK_ANALYSIS_ROOT}/derived/pretty/douluo1-pack-C6xEgEus.js`,
                     line: lineNumber(
                         fs.readFileSync(PACK_MODULE, "utf8"),
                         fs.readFileSync(PACK_MODULE, "utf8").indexOf("const fn =")
@@ -291,7 +290,28 @@ function main() {
                 "soul-bone base/quality and god-armor contribution are derived from source bone parts",
                 "domains, artifacts, attributes, soul cores, items, special skills and other source components are accumulated",
                 "status modifiers are applied after component accumulation"
-            ]
+            ],
+            coverage: {
+                status: "source-verified-with-typed-guards",
+                noApproximateTotal: true,
+                verifiedComponents: [
+                    "human.base",
+                    "beast.base",
+                    "martialSoulQuality",
+                    "martialSoulTrueBody",
+                    "soulRing",
+                    "soulBone",
+                    "godArmor.levelGate",
+                    "godhood",
+                    "artifacts.humanSubHundredDivisor",
+                    "artifacts.beastNoSubHundredDivisor",
+                    "attributes",
+                    "beastBloodline.singleAndFusion",
+                    "beastTitles.scaledByBase",
+                    "status"
+                ],
+                typedGuardCode: "APK_COMBAT_POWER_UNCOVERED_STATE"
+            }
         },
         fieldMapping: {
             level: "character.level",
@@ -316,7 +336,7 @@ function main() {
                 sourceText: "战力低于于47点判定战斗失败，战败将失去1枚银灵币"
             },
             formalSpecialHandler: {
-                module: "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+            module: `${APK_ANALYSIS_ROOT}/derived/pretty/douluo1-pack-C6xEgEus.js`,
                 sourceSemantics: "ut.total(character) >= threshold or > threshold"
             }
         }

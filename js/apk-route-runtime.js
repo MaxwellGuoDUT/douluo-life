@@ -26,6 +26,8 @@ export const APK_ROUTE_GRAPH_SCHEMA_VERSION = "apk-route-graph/1.0";
 const AVAILABILITY_POLICY = "preserve_apk_original_state";
 const FORMAL_SPECIAL_RESULT_HANDLER = "douluo1:handler.formal-special-result";
 const FORMAL_SPECIAL_RESULT_ACTION = "douluo1:action.after-formal-special-result";
+const OFFICIAL_BEAST_ELEMENT_HANDLER = "douluo1:handler.official-beast.element";
+const OFFICIAL_BEAST_ELEMENT_FLOW_PREFIX = "douluo1:flow.official-beast.pool.";
 const FORMAL_SPECIAL_RESULT_NEXT_FLOW_FLAG = "formal:d1-special-growth-next-flow";
 const FORMAL_OPPORTUNITY_COUNTER = "formal:opportunity-draws";
 const FORMAL_SCHEDULER_FLOW = "douluo1:flow.formal-human.scheduler";
@@ -742,6 +744,47 @@ function soulRingSelection(optionId, option) {
     };
 }
 
+function soulRingBatchStatus(session, pendingRing, context) {
+    const batch = session.character?.additionalSoulRingBatch;
+    if (batch === null || batch === undefined) {
+        return {
+            mode: "primary-or-unbatched",
+            indices: [],
+            pendingSoulIndex: Number(pendingRing.soulIndex)
+        };
+    }
+    if (!Array.isArray(batch)
+        || batch.some(index => !Number.isInteger(Number(index)) || Number(index) < 1)) {
+        fail(
+            "APK_ROUTE_SOUL_RING_BATCH_CONTEXT_INVALID",
+            "副武魂补环批次必须是正整数武魂槽位数组。",
+            {
+                ...context,
+                additionalSoulRingBatch: clone(batch)
+            }
+        );
+    }
+    const indices = [...new Set(batch.map(index => Number(index)))];
+    const pendingSoulIndex = Number(pendingRing.soulIndex);
+    if (indices.length > 0 && !indices.includes(pendingSoulIndex)) {
+        fail(
+            "APK_ROUTE_SOUL_RING_BATCH_CONTEXT_MISMATCH",
+            "待处理副武魂不在当前补环批次中。",
+            {
+                ...context,
+                additionalSoulRingBatch: clone(indices),
+                pendingSoulIndex
+            }
+        );
+    }
+    return {
+        mode: indices.length > 0 ? "secondary-batch" : "empty-batch",
+        indices,
+        pendingSoulIndex,
+        pendingBatchPosition: indices.indexOf(pendingSoulIndex)
+    };
+}
+
 function requirePendingRing(session, handlerId) {
     const pendingRing = session.character?.pendingRing;
     if (!isPlainObject(pendingRing)
@@ -841,7 +884,8 @@ function applyFinalizeSoulRingSpeciesHandler({
     session,
     spin,
     routeOption,
-    optionId
+    optionId,
+    operationId = "humanSoulRingSpeciesClosure"
 }) {
     const pendingRing = requirePendingRing(session, "finalizeSoulRingSpecies");
     if (!isPlainObject(pendingRing.source)
@@ -873,6 +917,23 @@ function applyFinalizeSoulRingSpeciesHandler({
         spin.poolId,
         optionId
     );
+    if (!speciesEvidence) {
+        fail(
+            "APK_ROUTE_SOUL_RING_SPECIES_EVIDENCE_MISSING",
+            `魂环物种选项 "${optionId}" 缺少 APK 属性来源证据。`,
+            {
+                flowId: spin.flowId,
+                poolId: spin.poolId,
+                optionId,
+                handlerId: "finalizeSoulRingSpecies"
+            }
+        );
+    }
+    const batchStatus = soulRingBatchStatus(session, pendingRing, {
+        flowId: spin.flowId,
+        poolId: spin.poolId,
+        optionId
+    });
     const speciesSelection = soulRingSelection(optionId, routeOption);
     pendingRing.speciesSelection = speciesSelection;
     const effects = [{
@@ -901,7 +962,7 @@ function applyFinalizeSoulRingSpeciesHandler({
         session,
         effects,
         handlerId: "finalizeSoulRingSpecies",
-        operation: "finalizeSoulRingSpecies",
+        operation: operationId,
         referenceId: `${spin.poolId}:${optionId}:finalizeSoulRingSpecies`
     });
     const history = session.dynamicHistory.at(-1);
@@ -910,7 +971,8 @@ function applyFinalizeSoulRingSpeciesHandler({
         poolId: spin.poolId,
         optionId,
         speciesSelection: clone(speciesSelection),
-        speciesEvidence: clone(speciesEvidence ?? null)
+        speciesEvidence: clone(speciesEvidence),
+        soulRingBatchStatus: clone(batchStatus)
     });
     return result;
 }
@@ -1052,6 +1114,187 @@ function applyPrepareEarlyBonusSoulBoneHandler({
         controls: clone(result.controls)
     });
     return result;
+}
+
+function unresolvedRouteOperation({
+    operation,
+    customHandler,
+    spin,
+    optionId
+}) {
+    fail(
+        "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
+        `APK option "${optionId}" requires unresolved operation "${operation.operationId}".`,
+        {
+            flowId: spin.flowId,
+            poolId: spin.poolId,
+            optionId,
+            customHandler,
+            operationId: operation.operationId,
+            operationStatus: operation.status
+        }
+    );
+}
+
+const ROUTE_OPERATION_REGISTRY = Object.freeze([
+    Object.freeze({
+        operationId: "formal-human.martial.addMartialSoul",
+        handlerId: "applyHumanMartialSoul",
+        context: "douluo1:flow.formal-human.martial.*",
+        status: "connected",
+        matches: ({ packId, flowId, customHandler }) => (
+            packId === "douluo1"
+            && customHandler === "applyHumanMartialSoul"
+            && isFormalMartialSoulFlow(flowId, packId)
+        ),
+        execute: applyFormalMartialSoulHandler
+    }),
+    Object.freeze({
+        operationId: "human.soulRing.species.sharedClosure",
+        handlerId: "applyHumanMartialSoul",
+        context: "humanRingSpecies3|humanRingSpecies4|humanRingSpecies5",
+        status: "connected",
+        matches: ({ packId, flowId, customHandler }) => (
+            packId === "douluo1"
+            && customHandler === "applyHumanMartialSoul"
+            && /^humanRingSpecies[345]$/u.test(flowId)
+        ),
+        execute: args => applyFinalizeSoulRingSpeciesHandler({
+            ...args,
+            operationId: "human.soulRing.species.sharedClosure"
+        })
+    }),
+    Object.freeze({
+        operationId: "human.soulRing.species.finalize",
+        handlerId: "finalizeSoulRingSpecies",
+        context: "humanRingSpecies[1-15]",
+        status: "connected",
+        matches: ({ packId, flowId, customHandler }) => (
+            packId === "douluo1"
+            && customHandler === "finalizeSoulRingSpecies"
+            && /^humanRingSpecies\d+$/u.test(flowId)
+        ),
+        execute: args => applyFinalizeSoulRingSpeciesHandler({
+            ...args,
+            operationId: "human.soulRing.species.finalize"
+        })
+    }),
+    Object.freeze({
+        operationId: "human.soulRing.prepare",
+        handlerId: "prepareSoulRing",
+        context: "handler:prepareSoulRing",
+        status: "connected",
+        matches: ({ packId, customHandler }) => (
+            packId === "douluo1" && customHandler === "prepareSoulRing"
+        ),
+        execute: applyPrepareSoulRingHandler
+    }),
+    Object.freeze({
+        operationId: "human.soulRing.selectType",
+        handlerId: "selectSoulRingType",
+        context: "handler:selectSoulRingType",
+        status: "connected",
+        matches: ({ packId, customHandler }) => (
+            packId === "douluo1" && customHandler === "selectSoulRingType"
+        ),
+        execute: applySelectSoulRingTypeHandler
+    }),
+    Object.freeze({
+        operationId: "human.soulBone.resolveChance",
+        handlerId: "resolveSoulBoneChance",
+        context: "handler:resolveSoulBoneChance",
+        status: "connected",
+        matches: ({ packId, customHandler }) => (
+            packId === "douluo1" && customHandler === "resolveSoulBoneChance"
+        ),
+        execute: applyResolveSoulBoneChanceHandler
+    }),
+    Object.freeze({
+        operationId: "human.soulBone.addPending",
+        handlerId: "addPendingSoulBone",
+        context: "handler:addPendingSoulBone",
+        status: "connected",
+        matches: ({ packId, customHandler }) => (
+            packId === "douluo1" && customHandler === "addPendingSoulBone"
+        ),
+        execute: applyAddPendingSoulBoneHandler
+    }),
+    Object.freeze({
+        operationId: "human.soulBone.prepareEarlyBonus",
+        handlerId: "prepareEarlyBonusSoulBone",
+        context: "handler:prepareEarlyBonusSoulBone",
+        status: "connected",
+        matches: ({ packId, customHandler }) => (
+            packId === "douluo1" && customHandler === "prepareEarlyBonusSoulBone"
+        ),
+        execute: applyPrepareEarlyBonusSoulBoneHandler
+    }),
+    Object.freeze({
+        operationId: "formal.specialResult",
+        handlerId: FORMAL_SPECIAL_RESULT_HANDLER,
+        context: "douluo1:handler.formal-special-result",
+        status: "connected",
+        matches: ({ packId, customHandler }) => (
+            packId === "douluo1" && customHandler === FORMAL_SPECIAL_RESULT_HANDLER
+        ),
+        execute: applyFormalSpecialResultHandler
+    }),
+    Object.freeze({
+        operationId: "human.awakening.unresolved",
+        handlerId: "applyHumanMartialSoul",
+        context: "humanAwaken*|humanExtraMartial*",
+        status: "unresolved",
+        matches: ({ customHandler, flowId }) => (
+            customHandler === "applyHumanMartialSoul"
+            && /^(?:humanAwaken|humanExtraMartial)/u.test(flowId)
+        ),
+        execute: unresolvedRouteOperation
+    }),
+    Object.freeze({
+        operationId: "human.replacement.unresolved",
+        handlerId: "applyHumanMartialSoul",
+        context: "*replace*|*replacement*|*mutation*",
+        status: "unresolved",
+        matches: ({ customHandler, flowId }) => (
+            customHandler === "applyHumanMartialSoul"
+            && /replace|replacement|mutation/iu.test(flowId)
+        ),
+        execute: unresolvedRouteOperation
+    }),
+    Object.freeze({
+        operationId: "beast.element.unresolved",
+        handlerId: OFFICIAL_BEAST_ELEMENT_HANDLER,
+        context: "douluo1:flow.official-beast.pool.*",
+        status: "unresolved",
+        matches: ({ packId, flowId, customHandler }) => (
+            packId === "douluo1"
+            && customHandler === OFFICIAL_BEAST_ELEMENT_HANDLER
+            && typeof flowId === "string"
+            && flowId.startsWith(OFFICIAL_BEAST_ELEMENT_FLOW_PREFIX)
+        ),
+        execute: unresolvedRouteOperation
+    }),
+    Object.freeze({
+        operationId: "beast.martial.unresolved",
+        handlerId: "applyHumanMartialSoul",
+        context: "*beast*|*special-martial*",
+        status: "unresolved",
+        matches: ({ customHandler, flowId }) => (
+            customHandler === "applyHumanMartialSoul"
+            && /beast|special-martial/iu.test(flowId)
+        ),
+        execute: unresolvedRouteOperation
+    })
+]);
+
+export const APK_ROUTE_OPERATION_REGISTRY = Object.freeze(
+    ROUTE_OPERATION_REGISTRY.map(({ matches, execute, ...metadata }) => (
+        Object.freeze(metadata)
+    ))
+);
+
+function resolveRouteOperation(context) {
+    return ROUTE_OPERATION_REGISTRY.find(operation => operation.matches(context)) ?? null;
 }
 
 function soulBoneChanceFlow(years) {
@@ -2003,27 +2246,33 @@ export function commitApkRouteOption({
         );
     }
     const customHandler = routeOptionCustomHandler(routeOption);
-    const formalMartialSoulHandler = customHandler === "applyHumanMartialSoul"
-        && isFormalMartialSoulFlow(spin.flowId, contentIndex.packId);
-    const formalSpecialResultHandler = customHandler === FORMAL_SPECIAL_RESULT_HANDLER
-        && contentIndex.packId === "douluo1";
-    const humanSoulRingHandler = new Set([
-        "prepareSoulRing",
-        "selectSoulRingType",
-        "finalizeSoulRingSpecies",
-        "resolveSoulBoneChance",
-        "addPendingSoulBone",
-        "prepareEarlyBonusSoulBone"
-    ]).has(customHandler);
-    if (customHandler
-        && !formalMartialSoulHandler
-        && !formalSpecialResultHandler
-        && !humanSoulRingHandler) {
+    const operationContext = {
+        contentIndex,
+        packId: contentIndex.packId,
+        session,
+        spin,
+        flowId: spin.flowId,
+        poolId: spin.poolId,
+        routeOption,
+        customHandler,
+        optionId
+    };
+    const operation = customHandler
+        ? resolveRouteOperation(operationContext)
+        : null;
+    if (customHandler && !operation) {
         fail(
             "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
             `APK option "${optionId}" requires customHandler "${customHandler}".`,
             { poolId: spin.poolId, optionId, customHandler }
         );
+    }
+    if (operation?.status === "unresolved") {
+        operation.execute({
+            ...operationContext,
+            operation,
+            customHandler
+        });
     }
     const snapshot = clone(session);
     try {
@@ -2033,67 +2282,12 @@ export function commitApkRouteOption({
             option,
             poolId: spin.poolId,
             reason: "apk-route-option",
-            effectsOverride: formalSpecialResultHandler ? [] : null
+            effectsOverride: operation?.operationId === "formal.specialResult"
+                ? []
+                : null
         });
-        const customEffectResult = formalMartialSoulHandler
-            ? applyFormalMartialSoulHandler({
-                contentIndex,
-                session,
-                spin,
-                routeOption,
-                optionId
-            })
-            : formalSpecialResultHandler
-                ? applyFormalSpecialResultHandler({
-                    contentIndex,
-                    session,
-                    spin,
-                    optionId
-                })
-            : humanSoulRingHandler
-                ? customHandler === "prepareSoulRing"
-                    ? applyPrepareSoulRingHandler({
-                        contentIndex,
-                        session,
-                        spin,
-                        routeOption,
-                        optionId
-                    })
-                    : customHandler === "selectSoulRingType"
-                        ? applySelectSoulRingTypeHandler({
-                            contentIndex,
-                            session,
-                            spin,
-                            routeOption,
-                            optionId
-                        })
-                        : customHandler === "finalizeSoulRingSpecies"
-                            ? applyFinalizeSoulRingSpeciesHandler({
-                                contentIndex,
-                                session,
-                                spin,
-                                routeOption,
-                                optionId
-                            })
-                            : customHandler === "resolveSoulBoneChance"
-                                ? applyResolveSoulBoneChanceHandler({
-                                    session,
-                                    spin,
-                                    optionId
-                                })
-                                : customHandler === "addPendingSoulBone"
-                                    ? applyAddPendingSoulBoneHandler({
-                                        session,
-                                        routeOption,
-                                        spin,
-                                        optionId
-                                    })
-                                    : applyPrepareEarlyBonusSoulBoneHandler({
-                                        session,
-                                        spin,
-                                        routeOption,
-                                        optionId
-                                    })
+        const customEffectResult = operation
+            ? operation.execute(operationContext)
             : null;
         const flow = contentIndex.getFlow(spin.flowId);
         let next = routeOptionNext(routeOption)
@@ -2252,6 +2446,7 @@ export default Object.freeze({
     APK_ROUTE_GRAPH_SCHEMA_VERSION,
     APK_ROUTE_RUNTIME_VERSION,
     APK_ROUTE_SESSION_SCHEMA_VERSION,
+    APK_ROUTE_OPERATION_REGISTRY,
     ApkRouteRuntimeError,
     commitApkRouteOption,
     createApkRouteContentIndex,

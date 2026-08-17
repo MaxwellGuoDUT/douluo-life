@@ -65,7 +65,7 @@ test("APK route graph carries compact source-proven martial soul handler evidenc
     });
 });
 
-test("APK first soul-ring species evidence keeps source attributes separate from route options", () => {
+test("APK first soul-ring species evidence maps explicit and empty source attributes", () => {
     const evidence = JSON.parse(fs.readFileSync(new URL(
         "../data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
         import.meta.url
@@ -73,8 +73,8 @@ test("APK first soul-ring species evidence keeps source attributes separate from
     assert.equal(evidence.schemaVersion, "apk-human-soul-ring-species-evidence/1.0");
     assert.equal(evidence.source.apkSha256.length, 64);
     assert.equal(evidence.extraction.gameplayExecuted, false);
-    assert.equal(evidence.extraction.recordCount, 107);
-    assert.equal(evidence.extraction.routeGraphMatchedRecordCount, 63);
+    assert.equal(evidence.extraction.recordCount, 231);
+    assert.equal(evidence.extraction.routeGraphMatchedRecordCount, 171);
     const titan = evidence.records.find(record => record.optionId === "a28a72");
     assert.deepEqual(titan.effects, [{
         type: "ensureHumanElementLevel",

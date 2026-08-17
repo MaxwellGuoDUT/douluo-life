@@ -3,12 +3,17 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import {
+    APK_ANALYSIS_ROOT,
+    APK_SHA256,
+    APK_SHA_PREFIX,
+    requireApkSha256
+} from "./apk-provenance.mjs";
 
 const ROOT = process.cwd();
 const SOURCE_ROOT = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "catalogs"
 );
@@ -21,6 +26,7 @@ const SOURCE_MANIFEST_PATH = path.join(
 const TARGET_ROOT = path.join(ROOT, "data", "apk-canonical");
 const TARGET_CATALOG_ROOT = path.join(TARGET_ROOT, "catalogs");
 const TARGET_META_ROOT = path.join(TARGET_ROOT, "meta");
+const RUNTIME_EVIDENCE_SUFFIX = "-runtime-evidence.json";
 const ROUTE_GRAPH_PATH = path.join(TARGET_CATALOG_ROOT, "route-graph.json");
 const MARTIAL_SOUL_RUNTIME_EVIDENCE_PATH = path.join(
     TARGET_CATALOG_ROOT,
@@ -217,9 +223,9 @@ function normalizeFields(raw, jsonFields = [], integerFields = [], booleanFields
 function sourceRef(fileName, rowNumber, sourceManifest) {
     return {
         type: "apk_static_extract",
-        sha256: sourceManifest.source.sha256,
-        path: "apk-analysis/E4FB340E/derived/catalogs/" + fileName,
-        sourceId: "apk:E4FB340E:" + fileName + ":row-" + String(rowNumber)
+        sha256: requireApkSha256(sourceManifest.source.sha256),
+        path: `${APK_ANALYSIS_ROOT}/derived/catalogs/${fileName}`,
+        sourceId: `apk:${APK_SHA_PREFIX}:${fileName}:row-${String(rowNumber)}`
     };
 }
 
@@ -532,13 +538,53 @@ function writeJson(filePath, value) {
     );
 }
 
+function normalizeRuntimeEvidenceSource(value) {
+    if (Array.isArray(value)) {
+        return value.map(item => normalizeRuntimeEvidenceSource(item));
+    }
+    if (value && typeof value === "object") {
+        return Object.fromEntries(
+            Object.entries(value).map(([key, entry]) => [
+                key,
+                normalizeRuntimeEvidenceSource(entry)
+            ])
+        );
+    }
+    if (typeof value === "string" && value.startsWith("apk-analysis/")) {
+        return value.replace(/^apk-analysis\/[^/]+/u, APK_ANALYSIS_ROOT);
+    }
+    return value;
+}
+
+function regenerateRuntimeEvidenceProvenance(sourceManifest) {
+    const evidencePaths = fs.readdirSync(TARGET_CATALOG_ROOT)
+        .filter(fileName => fileName.endsWith(RUNTIME_EVIDENCE_SUFFIX))
+        .sort()
+        .map(fileName => path.join(TARGET_CATALOG_ROOT, fileName));
+    for (const filePath of evidencePaths) {
+        const evidence = JSON.parse(fs.readFileSync(filePath, "utf8"));
+        if (!evidence.source || typeof evidence.source !== "object") {
+            fail("Runtime evidence is missing a source object: " + relativePath(filePath));
+        }
+        const normalized = normalizeRuntimeEvidenceSource(evidence);
+        normalized.source.apkSha256 = requireApkSha256(sourceManifest.source.sha256);
+        writeJson(filePath, normalized);
+    }
+    return evidencePaths;
+}
+
 function main() {
     const sourceManifest = JSON.parse(
         fs.readFileSync(SOURCE_MANIFEST_PATH, "utf8")
     );
+    requireApkSha256(
+        sourceManifest?.source?.sha256,
+        "provenance manifest source SHA-256"
+    );
 
     fs.mkdirSync(TARGET_CATALOG_ROOT, { recursive: true });
     fs.mkdirSync(TARGET_META_ROOT, { recursive: true });
+    const runtimeEvidencePaths = regenerateRuntimeEvidenceProvenance(sourceManifest);
 
     const packageFiles = [];
     const counts = {};
@@ -550,8 +596,8 @@ function main() {
         writeJson(outputPath, {
             schemaVersion: "apk-canonical-catalog/1.0",
             packageVersion: "apk-canonical/2026-08-16",
-            sourceFile: "apk-analysis/E4FB340E/derived/catalogs/" + fileName,
-            sourceSha256: sourceManifest.source.sha256,
+        sourceFile: `${APK_ANALYSIS_ROOT}/derived/catalogs/${fileName}`,
+        sourceSha256: requireApkSha256(sourceManifest.source.sha256),
             ownerAuthorization: "confirmed",
             availabilityPolicy: "preserve_apk_original_state",
             recordCount: records.length,
@@ -564,21 +610,7 @@ function main() {
     if (fs.existsSync(ROUTE_GRAPH_PATH)) {
         packageFiles.push(ROUTE_GRAPH_PATH);
     }
-    if (fs.existsSync(MARTIAL_SOUL_RUNTIME_EVIDENCE_PATH)) {
-        packageFiles.push(MARTIAL_SOUL_RUNTIME_EVIDENCE_PATH);
-    }
-    if (fs.existsSync(FORMAL_SPECIAL_RESULT_EVIDENCE_PATH)) {
-        packageFiles.push(FORMAL_SPECIAL_RESULT_EVIDENCE_PATH);
-    }
-    if (fs.existsSync(HUMAN_SOUL_RING_EVIDENCE_PATH)) {
-        packageFiles.push(HUMAN_SOUL_RING_EVIDENCE_PATH);
-    }
-    if (fs.existsSync(HUMAN_SOUL_RING_SPECIES_EVIDENCE_PATH)) {
-        packageFiles.push(HUMAN_SOUL_RING_SPECIES_EVIDENCE_PATH);
-    }
-    if (fs.existsSync(COMBAT_POWER_EVIDENCE_PATH)) {
-        packageFiles.push(COMBAT_POWER_EVIDENCE_PATH);
-    }
+    packageFiles.push(...runtimeEvidencePaths);
 
     const policyPath = path.join(TARGET_META_ROOT, "package-policy.json");
     writeJson(policyPath, {
@@ -586,7 +618,7 @@ function main() {
         packageVersion: "apk-canonical/2026-08-16",
         ownerAuthorization: "confirmed",
         sourceManifest: "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
-        sourceSha256: sourceManifest.source.sha256,
+        sourceSha256: requireApkSha256(sourceManifest.source.sha256),
         availabilityPolicy: "preserve_apk_original_state",
         oldProductionPolicy: "archive_only",
         runtimePolicy: "typed_adapter_required_for_unmapped_effects_and_requirements",
@@ -622,7 +654,7 @@ function main() {
         packageVersion: "apk-canonical/2026-08-16",
         status: "owner_authorized_migration",
         sourceManifest: "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
-        sourceSha256: sourceManifest.source.sha256,
+        sourceSha256: requireApkSha256(sourceManifest.source.sha256),
         generatedBy: relativePath(generatorPath),
         generatorSha256: sha256File(generatorPath),
         availabilityPolicy: "preserve_apk_original_state",
@@ -717,7 +749,7 @@ function main() {
     console.log(JSON.stringify({
         status: "pass",
         targetRoot: relativePath(TARGET_ROOT),
-        sourceSha256: sourceManifest.source.sha256,
+        sourceSha256: requireApkSha256(sourceManifest.source.sha256),
         counts,
         fileCount: fileEntries.length + 1
     }, null, 2));

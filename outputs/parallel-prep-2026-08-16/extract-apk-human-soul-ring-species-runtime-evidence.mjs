@@ -4,12 +4,15 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import {
+    APK_ANALYSIS_ROOT,
+    APK_SHA256
+} from "./apk-provenance.mjs";
 
 const ROOT = process.cwd();
 const SOURCE_PATH = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "pretty",
     "human-foundation-CduvzjjO.js"
@@ -28,7 +31,6 @@ const TARGET_PATH = path.join(
     "catalogs",
     "human-soul-ring-species-runtime-evidence.json"
 );
-const APK_SHA256 = "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
 
 function sha256File(filePath) {
     return crypto
@@ -109,6 +111,41 @@ function sourceEffects(record) {
     }));
 }
 
+function makeEvidenceRecord({ rule, pool, option, routeKeys }) {
+    const source = option?.source ?? option ?? {};
+    const record = rule ?? {
+        poolId: pool.id,
+        poolName: pool.name,
+        optionId: option.id,
+        displayName: source.text ?? option.id,
+        sourceText: source.text ?? option.id,
+        bloodlineTier: null,
+        attributes: [],
+        fusionStacks: null,
+        fusionWording: null,
+        schemaGaps: []
+    };
+    return {
+        ...record,
+        effects: sourceEffects(record),
+        attributeRuleStatus: rule
+            ? "source-verified-attribute-rule"
+            : "source-verified-no-explicit-attribute-effect",
+        ...(rule
+            ? {}
+            : {
+                sourceOption: {
+                    id: source.id ?? option.id,
+                    text: source.text ?? option.id,
+                    weight: source.weight,
+                    enabled: source.enabled,
+                    customHandler: source.customHandler ?? null
+                }
+            }),
+        routeGraphMatch: routeKeys.has(`${record.poolId}:${record.optionId}`)
+    };
+}
+
 function main() {
     const sourceText = fs.readFileSync(SOURCE_PATH, "utf8");
     const rules = evaluate(extractExpression(sourceText, "const $a =", "["));
@@ -123,16 +160,45 @@ function main() {
             }
         }
     }
-    const records = rules.map(rule => ({
-        ...rule,
-        effects: sourceEffects(rule),
-        routeGraphMatch: routeKeys.has(`${rule.poolId}:${rule.optionId}`)
+    const records = rules.map(rule => makeEvidenceRecord({
+        rule,
+        pool: { id: rule.poolId, name: rule.poolName },
+        option: { id: rule.optionId },
+        routeKeys
     }));
+    const knownRuleKeys = new Set(
+        rules.map(rule => `${rule.poolId}:${rule.optionId}`)
+    );
+    const speciesFlows = pack.flows.filter(flow => (
+        /^humanRingSpecies\d+$/u.test(flow.id)
+        && typeof flow.source?.poolId === "string"
+    ));
+    const speciesPoolIds = new Set(
+        speciesFlows.map(flow => flow.source.poolId)
+    );
+    for (const pool of pack.pools.filter(candidate => speciesPoolIds.has(candidate.id))) {
+        for (const option of pool.options ?? []) {
+            const key = `${pool.id}:${option.id}`;
+            if (knownRuleKeys.has(key)) continue;
+            records.push(makeEvidenceRecord({
+                rule: null,
+                pool,
+                option,
+                routeKeys
+            }));
+        }
+    }
+    const explicitAttributeRecordCount = records.filter(record => (
+        record.attributeRuleStatus === "source-verified-attribute-rule"
+    )).length;
+    const noExplicitAttributeEffectRecordCount = records.filter(record => (
+        record.attributeRuleStatus === "source-verified-no-explicit-attribute-effect"
+    )).length;
     const evidence = {
         schemaVersion: "apk-human-soul-ring-species-evidence/1.0",
         source: {
             apkSha256: APK_SHA256,
-            module: "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+            module: `${APK_ANALYSIS_ROOT}/derived/pretty/human-foundation-CduvzjjO.js`,
             moduleSha256: sha256File(SOURCE_PATH),
             staticExpression: "const $a",
             sourceFunctions: ["wt", "pt", "de", "finalizeSoulRingSpecies"]
@@ -143,9 +209,12 @@ function main() {
             packId: "douluo1",
             customHandler: "finalizeSoulRingSpecies",
             recordCount: records.length,
+            explicitAttributeRecordCount,
+            noExplicitAttributeEffectRecordCount,
             routeGraphMatchedRecordCount: records.filter(record => record.routeGraphMatch).length,
             routeGraphUnmatchedRecordCount: records.filter(record => !record.routeGraphMatch).length,
-            scope: "APK shared soul-ring species attribute rules and typed effects"
+            scope: "APK shared soul-ring species source rules, including explicit empty attribute effects",
+            noExplicitAttributeEffectSemantics: "pt(wt(poolId, optionId)) returns [] when the APK attribute rule lookup is absent"
         },
         records
     };

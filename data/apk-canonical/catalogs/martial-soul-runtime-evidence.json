@@ -4,7 +4,7 @@
   "ownerAuthorization": "confirmed",
   "availabilityPolicy": "preserve_apk_original_state",
   "source": {
-    "apkSha256": "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
     "extractionMode": "static_source_mapping_only",
     "gameplayExecuted": false,
     "handlerId": "applyHumanMartialSoul",

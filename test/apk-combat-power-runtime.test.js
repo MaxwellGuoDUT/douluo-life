@@ -149,3 +149,181 @@ test("formal special-result handler keeps the combat source boundary explicit wh
     );
     assert.deepEqual(session, before);
 });
+
+const COMBAT_POWER_DIFFERENTIAL_CASES = [
+    {
+        name: "human base",
+        build: () => {
+            const character = createApkCharacterState("human");
+            character.level = 24;
+            return character;
+        },
+        total: 42,
+        components: {}
+    },
+    {
+        name: "beast cultivation base",
+        build: () => {
+            const character = createApkCharacterState("beast");
+            character.beastYears = 1000;
+            return character;
+        },
+        total: 100,
+        components: {}
+    },
+    {
+        name: "beast title scales from base",
+        build: () => {
+            const character = createApkCharacterState("beast");
+            character.beastYears = 1000;
+            character.beast.nameSuffixes = ["王"];
+            return character;
+        },
+        total: 110,
+        components: { beastTitles: 10 }
+    },
+    {
+        name: "single pure-dragon bloodline",
+        build: () => {
+            const character = createApkCharacterState("beast");
+            character.beastYears = 1000;
+            character.beast.bloodlines = [{
+                selection: { optionId: "bloodline-pure" },
+                typeOptionId: "fc8f55",
+                percentage: 100
+            }];
+            return character;
+        },
+        total: 150,
+        components: { beastBloodline: 50 }
+    },
+    {
+        name: "mixed pure and low bloodline",
+        build: () => {
+            const character = createApkCharacterState("beast");
+            character.beastYears = 1000;
+            character.beast.bloodlines = [
+                {
+                    selection: { optionId: "bloodline-pure" },
+                    typeOptionId: "fc8f55",
+                    percentage: 50
+                },
+                {
+                    selection: { optionId: "83cab9" },
+                    percentage: 50
+                }
+            ];
+            return character;
+        },
+        total: 100,
+        components: { bloodlineFusion: 0 }
+    },
+    {
+        name: "severely injured status",
+        build: () => {
+            const character = createApkCharacterState("human");
+            character.level = 24;
+            character.flags["combat:status-multiplier-basis-points"] = 5000;
+            character.flags["combat:status-modifier"] = 10;
+            return character;
+        },
+        total: 26,
+        components: { status: -16 }
+    },
+    {
+        name: "divine soul ring quality",
+        build: () => {
+            const character = createApkCharacterState("human");
+            character.level = 24;
+            character.martialSouls = [{
+                id: "divine-ring-soul",
+                rings: [{ years: 50, quality: "divine" }],
+                tags: [],
+                passives: []
+            }];
+            return character;
+        },
+        total: 48,
+        components: { soulRingBase: 1, soulRingQuality: 1 }
+    },
+    {
+        name: "human god armor below level 100",
+        build: () => {
+            const character = createApkCharacterState("human");
+            character.level = 99;
+            character.flags.godTrialArmor = true;
+            character.godhood = { tier: "三级" };
+            character.soulBones = [{ id: "head", years: 1000, quality: "ordinary" }];
+            return character;
+        },
+        total: 768,
+        components: { soulBoneBase: 8, godArmor: 0 }
+    },
+    {
+        name: "human god armor at level 100",
+        build: () => {
+            const character = createApkCharacterState("human");
+            character.level = 100;
+            character.flags.godTrialArmor = true;
+            character.godhood = { tier: "三级" };
+            character.soulBones = [{ id: "head", years: 1000, quality: "ordinary" }];
+            return character;
+        },
+        total: 1884,
+        components: { godArmor: 324, godhood: 300, soulBoneBase: 0 }
+    },
+    {
+        name: "human artifact is divided below level 100",
+        build: () => {
+            const character = createApkCharacterState("human");
+            character.level = 99;
+            character.godhood = { tier: "三级" };
+            character.artifacts = [{ id: "artifact", stage: "complete" }];
+            return character;
+        },
+        total: 790,
+        components: { artifacts: 30 }
+    },
+    {
+        name: "beast artifact keeps full god-tier value",
+        build: () => {
+            const character = createApkCharacterState("beast");
+            character.beastYears = 100;
+            character.godhood = { tier: "三级" };
+            character.artifacts = [{ id: "artifact", stage: "complete" }];
+            return character;
+        },
+        total: 330,
+        components: { artifacts: 300 }
+    }
+];
+
+for (const differentialCase of COMBAT_POWER_DIFFERENTIAL_CASES) {
+    test(`APK combat differential table: ${differentialCase.name}`, () => {
+        const result = calculateApkCombatPower(differentialCase.build(), loadEvidence());
+        assert.equal(result.total, differentialCase.total);
+        for (const [component, expected] of Object.entries(differentialCase.components)) {
+            assert.equal(result.components[component], expected, component);
+        }
+    });
+}
+
+test("APK combat power returns a typed guard for an unknown status multiplier", () => {
+    const character = createApkCharacterState("human");
+    character.flags["combat:status-multiplier-basis-points"] = 12500;
+    assert.throws(
+        () => calculateApkCombatPower(character, loadEvidence()),
+        error => error.code === "APK_COMBAT_POWER_UNCOVERED_STATE"
+            && error.details.area === "status"
+    );
+});
+
+test("APK combat power returns a typed guard instead of approximating an uncovered state", () => {
+    const character = createApkCharacterState("beast");
+    character.uncoveredCombatPowerStates = ["future-bloodline-rule"];
+    assert.throws(
+        () => calculateApkCombatPower(character, loadEvidence()),
+        error => error.code === "APK_COMBAT_POWER_UNCOVERED_STATE"
+            && error.details.area === "character.uncoveredCombatPowerStates"
+    );
+});

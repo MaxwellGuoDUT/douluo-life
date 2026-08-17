@@ -92,11 +92,20 @@ function evidenceFormula(evidence) {
         "lowRingSpecies",
         "topRingSpecies"
     ].filter(key => !Array.isArray(sets?.[key]));
-    if (missingDefinitions.length > 0 || missingSets.length > 0) {
+    const coverage = formula.coverage;
+    if (missingDefinitions.length > 0
+        || missingSets.length > 0
+        || coverage?.status !== "source-verified-with-typed-guards"
+        || coverage?.noApproximateTotal !== true) {
         fail(
             "APK_COMBAT_POWER_EVIDENCE_INVALID",
             "APK 战力来源证据包缺少计算器定义。",
-            { missingDefinitions, missingSets }
+            {
+                missingDefinitions,
+                missingSets,
+                coverageStatus: coverage?.status ?? null,
+                noApproximateTotal: coverage?.noApproximateTotal ?? null
+            }
         );
     }
     return formula;
@@ -112,6 +121,14 @@ function lookupQuality(map, key) {
         );
     }
     return Number(value);
+}
+
+function uncoveredState(area, message, details = {}) {
+    fail(
+        "APK_COMBAT_POWER_UNCOVERED_STATE",
+        message,
+        { area, ...details }
+    );
 }
 
 function findLevelPower(level, entries, maximumLevel) {
@@ -274,13 +291,30 @@ function godhoodKind(character, formula) {
     return map[sourceTier] ?? sourceTier ?? null;
 }
 
-function sourceSoulBoneBreakdown(character, godKind, formula) {
+function godhoodKinds(character, formula) {
+    const godhoods = Array.isArray(character?.godhoods) && character.godhoods.length > 0
+        ? character.godhoods
+        : [character?.godhood ?? character?.godTrial].filter(Boolean);
+    return godhoods
+        .map(entry => {
+            if (typeof entry === "string") return entry;
+            if (!isPlainObject(entry)) {
+                uncoveredState(
+                    "godhood",
+                    "神位条目必须是字符串或包含 tier 的对象。",
+                    { entry: clone(entry) }
+                );
+            }
+            return godhoodKind({ godhood: entry }, formula);
+        })
+        .filter(kind => kind !== null && kind !== undefined);
+}
+
+function sourceSoulBoneBreakdown(character, godArmorSets, formula) {
     let base = 0;
     let quality = 0;
     let godArmor = 0;
-    const armorSets = character?.flags?.godTrialArmor === true && godKind
-        ? [godKind]
-        : [];
+    const armorSets = Array.isArray(godArmorSets) ? godArmorSets : [];
     const bones = Array.isArray(character.soulBones) ? character.soulBones : [];
     for (const bone of bones) {
         const yearsPower = agePower(bone?.years, formula.agePower);
@@ -368,15 +402,151 @@ function attributePower(base, character, formula) {
     )));
 }
 
-function titlePower(character, formula) {
+function titlePower(base, character, formula) {
     const names = new Set([
         ...(Array.isArray(character?.beast?.nameSuffixes) ? character.beast.nameSuffixes : []),
         ...(Array.isArray(character?.titles) ? character.titles : [])
     ]);
-    return sum([...names]
+    const unknownTitles = [...names].filter(title => !formula.titleKinds?.[title]);
+    if (unknownTitles.length > 0) {
+        uncoveredState(
+            "beastTitles",
+            "魂兽称号存在未登记的来源映射，拒绝返回近似总战力。",
+            { unknownTitles }
+        );
+    }
+    const titleBasisPoints = sum([...names]
         .map(title => formula.titleKinds?.[title])
         .filter(Boolean)
         .map(kind => lookupQuality(formula.titlePower, kind)));
+    const titleBonuses = character?.beastTitleBonuses;
+    if (titleBonuses !== undefined && !Array.isArray(titleBonuses)) {
+        uncoveredState(
+            "beastTitleBonuses",
+            "魂兽称号额外战力必须是来源数组。",
+            { value: clone(titleBonuses) }
+        );
+    }
+    return (titleBasisPoints === 0 ? 0 : scaled(base, titleBasisPoints))
+        + sum((titleBonuses ?? []).map(value => apkRound(value)));
+}
+
+function sourceBeastBloodlineQuality(character, entry, primary, formula) {
+    if (!isPlainObject(entry) || !isPlainObject(entry.selection)
+        || typeof entry.selection.optionId !== "string") {
+        uncoveredState(
+            "beastBloodline",
+            "魂兽血脉条目缺少来源 selection.optionId。",
+            { entry: clone(entry) }
+        );
+    }
+    const selectionId = entry.selection.optionId;
+    if (primary
+        && (character?.flags?.["formal:beast-supreme-bloodline"] === true
+            || character?.beast?.nameSuffixes?.includes("主宰"))) {
+        return "supreme";
+    }
+    if (setHas(formula.staticOptionSets.lowRingSpecies, selectionId)) return "low";
+    if (entry.typeOptionId === "fc8f55") return "pure-dragon";
+    if (entry.typeOptionId === "5ee629") return "earth-dragon";
+    if (entry.typeOptionId === "f7fb5e") return "sub-dragon";
+    if (setHas(formula.staticOptionSets.topRingSpecies, selectionId)) return "top";
+    return "ordinary";
+}
+
+function sourceBeastBloodlineComposition(character, formula) {
+    const beast = character?.beast;
+    const bloodlines = beast?.bloodlines ?? [];
+    const components = beast?.bloodlineComponents ?? [];
+    if (!Array.isArray(bloodlines) || !Array.isArray(components)) {
+        uncoveredState(
+            "beastBloodline",
+            "魂兽血脉与血脉融合批次必须是数组。",
+            { bloodlines: clone(bloodlines), components: clone(components) }
+        );
+    }
+    if (components.length > 0) {
+        return components.map((component, index) => {
+            if (!isPlainObject(component)
+                || !Number.isFinite(Number(component.ratioBasisPoints))
+                || Number(component.ratioBasisPoints) < 0) {
+                uncoveredState(
+                    "beastBloodlineComposition",
+                    "魂兽血脉融合批次缺少有效 ratioBasisPoints。",
+                    { index, component: clone(component) }
+                );
+            }
+            const selected = bloodlines.find(entry => (
+                entry?.selection?.optionId === component.bloodlineId
+            )) ?? bloodlines[index];
+            return {
+                quality: selected
+                    ? sourceBeastBloodlineQuality(
+                        character,
+                        selected,
+                        component.role === "primary",
+                        formula
+                    )
+                    : "ordinary",
+                ratioBasisPoints: Number(component.ratioBasisPoints)
+            };
+        });
+    }
+    const composition = bloodlines.map((entry, index) => {
+        if (!Number.isFinite(Number(entry?.percentage))) {
+            uncoveredState(
+                "beastBloodline",
+                "魂兽血脉条目缺少有效 percentage。",
+                { index, entry: clone(entry) }
+            );
+        }
+        return {
+            quality: sourceBeastBloodlineQuality(character, entry, index === 0, formula),
+            ratioBasisPoints: Math.max(0, Math.round(Number(entry.percentage) * 100))
+        };
+    });
+    if (composition.length > 0) {
+        composition[composition.length - 1].ratioBasisPoints += (
+            10000 - sum(composition.map(entry => entry.ratioBasisPoints))
+        );
+    }
+    return composition;
+}
+
+function sourceBeastBloodlineBreakdown(base, character, formula) {
+    const composition = sourceBeastBloodlineComposition(character, formula);
+    if (composition.length > 1) {
+        return {
+            composition,
+            beastBloodline: 0,
+            bloodlineFusion: sum(composition.map(entry => (
+                scaled(
+                    base,
+                    lookupQuality(formula.bloodlineQuality, entry.quality)
+                        * entry.ratioBasisPoints
+                        / 10000,
+                    false
+                )
+            ))) + apkRound(character.bloodlineFusionBonus ?? 0)
+        };
+    }
+    const fallbackQuality = composition[0]?.quality
+        ?? character.beastBloodlineQuality
+        ?? ({
+            0: "ordinary",
+            1: "low",
+            2: "top",
+            3: "sub-dragon",
+            4: "earth-dragon",
+            5: "pure-dragon"
+        }[character.beastBloodlineLevel]);
+    return {
+        composition,
+        beastBloodline: fallbackQuality
+            ? scaled(base, lookupQuality(formula.bloodlineQuality, fallbackQuality), false)
+            : 0,
+        bloodlineFusion: apkRound(character.bloodlineFusionBonus ?? 0)
+    };
 }
 
 function itemPower(base, items, formula) {
@@ -412,19 +582,29 @@ function levelPercentBonus(character, category, base) {
         }, 0);
 }
 
-function artifactInputs(character, godKind, level, formula) {
+function artifactInputs(character, godKind, route, level, formula) {
     const artifacts = Array.isArray(character?.artifacts) ? character.artifacts : [];
     const complete = artifacts.filter(artifact => artifact?.stage === "complete");
     const fixed = sum(complete.map(artifact => artifact?.combatPower ?? 0));
     const fallback = complete
         .filter(artifact => artifact?.combatPower === undefined)
-        .flatMap(() => godKind ? [godKind] : []);
+        .flatMap(artifact => {
+            if (!godKind) {
+                uncoveredState(
+                    "artifacts",
+                    "完整神器缺少固定战力和神装档位来源，拒绝返回近似总战力。",
+                    { artifact: clone(artifact) }
+                );
+            }
+            return [godKind];
+        });
     const fallbackPower = fallback.map(kind => lookupQuality(formula.godArmorPower, kind));
+    const subHundredHuman = route === "human" && level < 100;
     return sum([
-        ...(level < 100
+        ...(subHundredHuman
             ? fallbackPower.map(value => apkRound(value / formula.constants.subHundredArtifactDivisor))
             : fallbackPower),
-        level < 100
+        subHundredHuman
             ? apkRound(fixed / formula.constants.subHundredArtifactDivisor)
             : fixed
     ]);
@@ -461,6 +641,14 @@ export function calculateApkCombatPower(character, evidence) {
         fail("APK_COMBAT_POWER_CHARACTER_INVALID", "APK 战力计算需要角色状态对象。");
     }
     const formula = evidenceFormula(evidence);
+    if (Array.isArray(character.uncoveredCombatPowerStates)
+        && character.uncoveredCombatPowerStates.length > 0) {
+        uncoveredState(
+            "character.uncoveredCombatPowerStates",
+            "角色明确标记了尚未覆盖的战力状态，拒绝返回近似总战力。",
+            { states: clone(character.uncoveredCombatPowerStates) }
+        );
+    }
     const route = character.route === "beast" ? "beast" : "human";
     const level = Math.min(169, Math.max(1, Math.floor(finite(character.level ?? 1, "等级"))));
     const base = route === "beast"
@@ -494,32 +682,41 @@ export function calculateApkCombatPower(character, evidence) {
         components.soulRingQuality = rings.quality;
     }
 
-    const godKind = godhoodKind(character, formula);
-    const godArmorSets = character.flags?.godTrialArmor === true && godKind
+    const passedMillionYearTribulation = character.beast?.tribulationsPassed?.includes(1000000) === true;
+    const divineEligible = route === "human"
+        ? level >= 100
+        : passedMillionYearTribulation;
+    const godhoodKindsList = godhoodKinds(character, formula);
+    const godKind = godhoodKindsList[0] ?? null;
+    const godArmorSets = divineEligible
+        && character.flags?.godTrialArmor === true
+        && godKind
         ? [godKind]
         : [];
-    if (route === "human") {
-        const bones = sourceSoulBoneBreakdown(character, godKind, formula);
-        components.soulBoneBase = bones.base;
-        components.soulBoneQuality = bones.quality;
-        components.godArmor = bones.godArmor;
-        if (level >= 100) {
-            components.godhood = godKind
-                ? lookupQuality(formula.godArmorPower, godKind)
-                : 0;
-        }
+    const bones = sourceSoulBoneBreakdown(character, godArmorSets, formula);
+    components.soulBoneBase = bones.base;
+    components.soulBoneQuality = bones.quality;
+    components.godArmor = bones.godArmor;
+    if (divineEligible) {
+        components.godhood = sum(
+            godhoodKindsList.map(kind => lookupQuality(formula.godArmorPower, kind))
+        );
     }
 
     const domainCount = nonNegativeInteger(character.domains?.length ?? 0, "领域数量");
     components.domains = domainCount > 0
         ? scaled(base, formula.constants.domainBasisPoints * domainCount)
         : 0;
-    const artifactPower = artifactInputs(character, godKind, level, formula);
+    const artifactPower = artifactInputs(character, godKind, route, level, formula);
     components.artifacts = artifactPower;
     components.attributes = attributePower(base, character, formula);
     if (route === "beast") {
-        components.bloodlineFusion = apkRound(character.bloodlineFusionBonus ?? 0);
-        components.beastTitles = titlePower(character, formula);
+        const bloodline = sourceBeastBloodlineBreakdown(base, character, formula);
+        if (bloodline.composition.length <= 1) {
+            components.beastBloodline = bloodline.beastBloodline;
+        }
+        components.bloodlineFusion = bloodline.bloodlineFusion;
+        components.beastTitles = titlePower(base, character, formula);
     }
     components.plotCharacterTemplate = apkRound(character.plotCharacterTemplate ?? 0);
 
@@ -539,10 +736,26 @@ export function calculateApkCombatPower(character, evidence) {
     components.special = sum((Array.isArray(character.bonuses) ? character.bonuses : []).map(value => apkRound(value)));
 
     const statusModifier = finite(character.flags?.["combat:status-modifier"] ?? 0, "战力状态修正");
+    const hasStatusBasis = Object.prototype.hasOwnProperty.call(
+        character.flags ?? {},
+        "combat:status-multiplier-basis-points"
+    );
     const statusBasis = Number(
         character.flags?.["combat:status-multiplier-basis-points"]
             ?? formula.constants.defaultStatusBasisPoints
     );
+    if (hasStatusBasis
+        && ![
+            formula.constants.defaultStatusBasisPoints,
+            formula.constants.severelyInjuredStatusBasisPoints,
+            formula.constants.desperateStatusBasisPoints
+        ].includes(statusBasis)) {
+        uncoveredState(
+            "status",
+            "战力状态倍率未登记，拒绝返回近似总战力。",
+            { statusBasis }
+        );
+    }
     const statusEffects = statusBasis === formula.constants.severelyInjuredStatusBasisPoints
         ? ["severely-injured"]
         : statusBasis === formula.constants.desperateStatusBasisPoints
@@ -565,7 +778,12 @@ export function calculateApkCombatPower(character, evidence) {
             route,
             level,
             godhoodKind: godKind,
-            statusEffects
+            godhoodKinds: godhoodKindsList,
+            divineEligible,
+            statusEffects,
+            beastBloodlineComposition: route === "beast"
+                ? sourceBeastBloodlineComposition(character, formula)
+                : []
         }
     };
 }

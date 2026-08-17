@@ -996,3 +996,32 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 本日新增的战力适配器已完成自动化验证；浏览器验收继续保留真实边界，未将当前 `humanRingSpecies4` 停点误报为通过。
 - 审计报告：`outputs/parallel-prep-2026-08-16/APK_SPECIAL_RESULT_COMBAT_POWER_AUDIT_2026-08-17.md`。
 - 本条记录只描述已完成实现、自动化验证和当前未决边界；不将 APK 静态候选或未接入分支升级为生产规则。
+
+### 2026-08-17 收束更新：来源、战力、共享 handler 与验收边界
+
+#### 本地自动验证
+
+- 所有 APK 提取器和 canonical package generator 共用固定来源 SHA：`E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C`；manifest、policy、package index、route graph 和全部 runtime evidence 已由生成器重新生成，并由一致性测试逐项校验。
+- `applyHumanMartialSoul` 已改为显式 operation registry：`formal-human.martial.*` 进入 `addMartialSoul`；`humanRingSpecies3/4/5` 进入共享魂环物种收束 primitive；awakening、replacement、beast 分支继续返回明确的 unresolved typed boundary。另将 `douluo1:handler.official-beast.element` 按官方魂兽 flow 单独登记为 `beast.element.unresolved`，不再落入未分类 handler 错误。
+- 共享收束 primitive 已覆盖 `setSoulRing`、物种属性 effects、海魂环 water 特殊效果和副武魂补环批次状态；新增第四魂环、主/副武魂补环、缺 pendingRing、缺 species evidence、未知 flow 的参数化和原子回滚测试均通过。
+- 重新调查固定 seed 后，物种证据生成器补齐了 APK `pt(wt(...))` 明确返回空 effects 的正式选项：总记录从 107 条变为 231 条，其中 124 条标记为 `source-verified-no-explicit-attribute-effect`；没有手写属性或跳过路线。
+- 本地固定 seed 回放已验证第 1--83 项摘要保持不变：第 83 项为 `humanRingType3/838519`，第 84 项为 `humanRingSpecies4/bddfef`；第 84 项提交后为 21 岁、32 级、cursor/history=84、第三环 2000 年、土属性=2、武魂数仍为 1。
+- 本地继续推进第 84 项之后，第 85 项 `b52e1b` 正常回到 `humanPlan`；下一 typed boundary 出现在抽取第 219 项：`douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577 / f16385`，错误为 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED`，并带 `operationId=beast.element.unresolved`、`operationStatus=unresolved`；当时 cursor=219、已提交=218、58 岁/91 级。APK 源码虽提供元素映射和 `after-element` resolver，但本轮按 beast 分支范围保持未接入。
+- 战力差分表覆盖人类/魂兽、神装 100 级门槛、血脉、称号、状态、魂环、魂骨和神器；已修复魂兽称号倍率与人类 100 级神装门槛。覆盖范围外的状态由 `APK_COMBAT_POWER_UNCOVERED_STATE` 阻断，不返回近似总值。差分表见 [`docs/review/APK_COMBAT_POWER_DIFFERENTIAL_TABLE_2026-08-17.md`](review/APK_COMBAT_POWER_DIFFERENTIAL_TABLE_2026-08-17.md)。
+- bundled Node.js 全量测试：`245 passed, 0 failed, 0 cancelled, 0 skipped`；满足本轮不少于 218 项的验收线。PR #4 仍为 open Draft，未合并、未切换 Ready、未 force-push。
+
+#### 浏览器验证
+
+- 先前真实页面回放发生在证据包重新生成前：clean seed 在第 19 项抽取到 `humanRingSpecies6 / 86a2d7`，页面为 `drawn`、2 岁/10 级、cursor=19、已提交=18，并正确停在 `APK_ROUTE_SOUL_RING_SPECIES_EVIDENCE_MISSING`。该结果保留为旧包边界记录，不代表当前修正后的浏览器结果。
+- 证据包重新生成后，负责人从 `file:///D:/0CODE/douluo-life/apk-route-demo.html` 的真实页面完成第 84 项验收：页面状态 `ready`，当前 flow 为 `humanAfterSoulRing`，年龄/等级 `21 / 32`，铜灵币 `30180`，cursor/history 均为 `84`；页面显示土龙选项已抽取完成，下一 flow 为 `humanAfterSoulRing`。
+- 负责人继续从同一浏览器会话重放到下一处真实边界：页面状态 `drawn`，当前 flow/pool 为 `douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577 / f2abac93-6b26-4e3e-aa92-a168db671577`，年龄/等级 `58 / 91`，铜灵币 `72640`，cursor `219`，已提交 `218`；页面明确显示 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED`，option `f16385`，customHandler `douluo1:handler.official-beast.element`。本次只记录页面实际显示的路线状态；魂环详细 JSON、土属性计数和武魂数量仍以本地自动化断言为准。
+- 上述第 219 项浏览器回放发生在本次 registry 诊断增强前；增强只改变 unresolved 错误的结构化细节，不改变已到达的 flow、pool、cursor 或提交计数，因此没有把新增 `operationId`/`operationStatus` 伪记为浏览器证据。
+- 负责人随后刷新页面并重新回放到第 219 项，取得新增字段的真实浏览器证据：页面仍为 `drawn`，flow/pool、年龄/等级 `58 / 91`、铜灵币 `72640`、cursor `219`、已提交 `218` 均一致；错误消息为 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED`，details 实际显示 `operationId=beast.element.unresolved`、`operationStatus=unresolved`，并保留 `customHandler=douluo1:handler.official-beast.element`。
+
+#### 未决与排除
+
+- 当前代码与生成包已修正第 19 项的“源中明确空 effects 被误判为缺证据”问题；第 84 项和下一处第 219 项边界已经取得浏览器证据。`official-beast.element` 现在有明确 registry unresolved 条目，但仍不得静默补全。
+- 术语边界：当前 APK scheduler 在 32 级按 `floor(level / 10)` 目标为第 3 槽，因此 `humanRingSpecies4` 表示“第 4 类魂兽物种 flow”，本地第 84 项实际写入第三魂环。若验收必须是第四魂环槽，需要另有 checkpoint 或单独确认 scheduler 语义；本轮没有强行改成第四槽。
+- PR #4 body 的收窄版文案已准备在 [`docs/review/APK_PR4_DESCRIPTION_2026-08-17.md`](review/APK_PR4_DESCRIPTION_2026-08-17.md)，本次授权发布步骤将同步到现有 PR；PR 状态保持 open Draft。
+- packaging decision 已单独记录于 [`docs/review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md`](review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md)：先保留 generator 产出的 canonical JSON，再以 pack-level route shard 作为后续 release 方向；当前不生成或发布 Release artifact。
+- APK、`apk-analysis/`、任务书、Word/Excel、archive、负责人生成输出和无关 `index.html` 不进入本次提交；仅纳入 canonical package 生成器/provenance、运行时、测试、生成后的审计 JSON 与收尾文档。本次授权范围包含显式 staging、commit、push 和 PR body 同步；不 merge、不 force-push、不重写分支。

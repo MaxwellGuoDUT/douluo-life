@@ -3,6 +3,7 @@ import fs from "node:fs";
 import test from "node:test";
 
 import {
+    APK_ROUTE_OPERATION_REGISTRY,
     commitApkRouteOption,
     createApkRouteContentIndex,
     createApkRouteDynamicHandlers,
@@ -56,6 +57,68 @@ function loadRealHumanSoulRingSpeciesEvidence() {
         "utf8"
     ));
     return realHumanSoulRingSpeciesEvidence;
+}
+
+function realSoulRingContentIndex({ includeSpeciesEvidence = true } = {}) {
+    return createApkRouteContentIndex({
+        routeGraph: loadRealRouteGraph(),
+        packId: "douluo1",
+        humanSoulRingEvidence: loadRealHumanSoulRingEvidence(),
+        ...(includeSpeciesEvidence
+            ? { humanSoulRingSpeciesEvidence: loadRealHumanSoulRingSpeciesEvidence() }
+            : {})
+    });
+}
+
+function soulRingClosureFixture({
+    flowId,
+    poolId,
+    optionId,
+    soulIndex = 0,
+    ringIndex = 4,
+    additionalSoulRingBatch = null,
+    includeSpeciesEvidence = true
+}) {
+    const routeGraph = loadRealRouteGraph();
+    const contentIndex = realSoulRingContentIndex({ includeSpeciesEvidence });
+    const session = createApkRouteSession({
+        routeGraph,
+        packId: "douluo1",
+        seed: `soul-ring-species-${flowId}-${optionId}-${soulIndex}`
+    });
+    session.currentFlowId = flowId;
+    session.character.martialSouls = [
+        {
+            id: "primary-soul",
+            name: "主武魂",
+            rings: soulIndex === 0 ? [{ years: 10, name: "已有魂环" }, { years: 50, name: "已有魂环" }, { years: 100, name: "已有魂环" }] : [],
+            tags: [],
+            passives: []
+        },
+        ...(soulIndex === 1
+            ? [{
+                id: "secondary-soul",
+                name: "副武魂",
+                rings: [],
+                tags: [],
+                passives: []
+            }]
+            : [])
+    ];
+    session.character.pendingRing = {
+        soulIndex,
+        ringIndex,
+        years: 500,
+        source: { optionId: "ring-age", text: "500年魂环" },
+        typeSelection: { optionId: "ring-type", text: "龙类" },
+        speciesSelection: null,
+        grantsSoulBone: false,
+        levelBefore: session.character.level
+    };
+    session.character.additionalSoulRingBatch = additionalSoulRingBatch;
+    const option = contentIndex.getRouteOption(poolId, optionId);
+    assert.ok(option, `missing route option ${poolId}:${optionId}`);
+    return { contentIndex, session, option };
 }
 
 function exact(value, targetKinds = ["flow"]) {
@@ -543,6 +606,199 @@ test("APK route custom bridge keeps awakening contexts explicitly unresolved", (
     );
     assert.deepEqual(session, before);
 });
+
+test("APK route operation registry dispatches by context and keeps unresolved branches explicit", () => {
+    assert.deepEqual(
+        APK_ROUTE_OPERATION_REGISTRY
+            .filter(entry => entry.handlerId === "applyHumanMartialSoul")
+            .map(entry => [entry.operationId, entry.context, entry.status]),
+        [
+            [
+                "formal-human.martial.addMartialSoul",
+                "douluo1:flow.formal-human.martial.*",
+                "connected"
+            ],
+            [
+                "human.soulRing.species.sharedClosure",
+                "humanRingSpecies3|humanRingSpecies4|humanRingSpecies5",
+                "connected"
+            ],
+            ["human.awakening.unresolved", "humanAwaken*|humanExtraMartial*", "unresolved"],
+            ["human.replacement.unresolved", "*replace*|*replacement*|*mutation*", "unresolved"],
+            ["beast.martial.unresolved", "*beast*|*special-martial*", "unresolved"]
+        ]
+    );
+    assert.deepEqual(
+        APK_ROUTE_OPERATION_REGISTRY
+            .filter(entry => entry.handlerId === "douluo1:handler.official-beast.element")
+            .map(entry => [entry.operationId, entry.context, entry.status]),
+        [[
+            "beast.element.unresolved",
+            "douluo1:flow.official-beast.pool.*",
+            "unresolved"
+        ]]
+    );
+});
+
+test("APK official beast element handler remains explicitly unresolved and atomic", () => {
+    const routeGraph = loadRealRouteGraph();
+    const contentIndex = createApkRouteContentIndex({ routeGraph, packId: "douluo1" });
+    const session = createApkRouteSession({
+        routeGraph,
+        packId: "douluo1",
+        seed: "official-beast-element-boundary"
+    });
+    const flowId = "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577";
+    const poolId = "f2abac93-6b26-4e3e-aa92-a168db671577";
+    const optionId = "f16385";
+    session.currentFlowId = flowId;
+    const before = JSON.parse(JSON.stringify(session));
+
+    assert.throws(
+        () => commitApkRouteOption({
+            contentIndex,
+            session,
+            spin: { flowId, poolId, optionId }
+        }),
+        error => error.code === "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED"
+            && error.details.customHandler === "douluo1:handler.official-beast.element"
+            && error.details.operationId === "beast.element.unresolved"
+            && error.details.operationStatus === "unresolved"
+    );
+    assert.deepEqual(session, before);
+});
+
+for (const scenario of [
+    {
+        name: "humanRingSpecies3",
+        flowId: "humanRingSpecies3",
+        poolId: "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+        optionId: "3e4f40",
+        expectedElement: ["wind", 1]
+    },
+    {
+        name: "humanRingSpecies4 / bddfef",
+        flowId: "humanRingSpecies4",
+        poolId: "917a611f-c50b-4c67-9b27-da19f136e5c5",
+        optionId: "bddfef",
+        expectedElement: ["earth", 2]
+    },
+    {
+        name: "humanRingSpecies5",
+        flowId: "humanRingSpecies5",
+        poolId: "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+        optionId: "ea0b14",
+        expectedElement: ["strength", 2]
+    }
+]) {
+    test(`APK shared soul-ring species closure handles ${scenario.name}`, () => {
+        const { contentIndex, session, option } = soulRingClosureFixture(scenario);
+        const beforeSoulIds = session.character.martialSouls.map(soul => soul.id);
+        const committed = commitApkRouteOption({
+            contentIndex,
+            session,
+            spin: {
+                flowId: scenario.flowId,
+                poolId: scenario.poolId,
+                optionId: scenario.optionId,
+                option
+            }
+        });
+
+        assert.equal(committed.nextFlowId, "humanAfterSoulRing");
+        assert.deepEqual(
+            session.character.martialSouls.map(soul => soul.id),
+            beforeSoulIds,
+            "species selection must not add a martial soul"
+        );
+        assert.equal(session.character.martialSouls[0].rings.length, 4);
+        assert.equal(session.character.martialSouls[0].rings[3].years, 500);
+        assert.equal(
+            session.character.elementProgress[scenario.expectedElement[0]],
+            scenario.expectedElement[1]
+        );
+        assert.equal(
+            session.dynamicHistory.at(-1).operation,
+            "human.soulRing.species.sharedClosure"
+        );
+        assert.equal(
+            session.dynamicHistory.at(-1).soulRingBatchStatus.mode,
+            "primary-or-unbatched"
+        );
+    });
+}
+
+test("APK shared soul-ring species primitive fills a secondary martial soul and preserves its batch", () => {
+    const scenario = {
+        flowId: "humanRingSpecies4",
+        poolId: "917a611f-c50b-4c67-9b27-da19f136e5c5",
+        optionId: "bddfef",
+        soulIndex: 1,
+        ringIndex: 1,
+        additionalSoulRingBatch: [1, 2]
+    };
+    const { contentIndex, session, option } = soulRingClosureFixture(scenario);
+    const beforeSoulIds = session.character.martialSouls.map(soul => soul.id);
+    const committed = commitApkRouteOption({
+        contentIndex,
+        session,
+        spin: { ...scenario, option }
+    });
+
+    assert.equal(committed.nextFlowId, "humanAfterSoulRing");
+    assert.deepEqual(session.character.martialSouls.map(soul => soul.id), beforeSoulIds);
+    assert.equal(session.character.martialSouls[1].rings.length, 1);
+    assert.equal(session.character.martialSouls[1].rings[0].years, 500);
+    assert.deepEqual(session.character.additionalSoulRingBatch, [1, 2]);
+    assert.deepEqual(session.dynamicHistory.at(-1).soulRingBatchStatus, {
+        mode: "secondary-batch",
+        indices: [1, 2],
+        pendingSoulIndex: 1,
+        pendingBatchPosition: 0
+    });
+    assert.equal(session.character.elementProgress.earth, 2);
+});
+
+for (const failure of [
+    {
+        name: "missing pendingRing",
+        fixture: { flowId: "humanRingSpecies4", poolId: "917a611f-c50b-4c67-9b27-da19f136e5c5", optionId: "bddfef" },
+        mutate: session => { session.character.pendingRing = null; },
+        code: "APK_ROUTE_SOUL_RING_CONTEXT_MISSING"
+    },
+    {
+        name: "missing species evidence",
+        fixture: { flowId: "humanRingSpecies4", poolId: "917a611f-c50b-4c67-9b27-da19f136e5c5", optionId: "bddfef", includeSpeciesEvidence: false },
+        mutate: () => {},
+        code: "APK_ROUTE_SOUL_RING_SPECIES_EVIDENCE_MISSING"
+    },
+    {
+        name: "unknown flow",
+        fixture: { flowId: "humanRingSpecies4-unknown", poolId: "917a611f-c50b-4c67-9b27-da19f136e5c5", optionId: "bddfef" },
+        mutate: () => {},
+        code: "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED"
+    }
+]) {
+    test(`APK shared soul-ring species closure atomically rejects ${failure.name}`, () => {
+        const { contentIndex, session, option } = soulRingClosureFixture(failure.fixture);
+        failure.mutate(session);
+        const before = JSON.parse(JSON.stringify(session));
+        assert.throws(
+            () => commitApkRouteOption({
+                contentIndex,
+                session,
+                spin: {
+                    flowId: failure.fixture.flowId,
+                    poolId: failure.fixture.poolId,
+                    optionId: failure.fixture.optionId,
+                    option
+                }
+            }),
+            error => error.code === failure.code
+        );
+        assert.deepEqual(session, before);
+    });
+}
 
 test("APK scheduler action selects the source annual pool after its priority heads", () => {
     const routeGraph = loadRealRouteGraph();

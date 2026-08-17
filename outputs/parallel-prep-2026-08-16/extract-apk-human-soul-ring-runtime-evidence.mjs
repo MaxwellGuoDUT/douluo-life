@@ -3,12 +3,15 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import {
+    APK_ANALYSIS_ROOT,
+    APK_SHA256
+} from "./apk-provenance.mjs";
 
 const ROOT = process.cwd();
 const SOURCE_PATH = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "static-data",
     "human-foundation-CduvzjjO",
@@ -21,7 +24,6 @@ const TARGET_PATH = path.join(
     "catalogs",
     "human-soul-ring-runtime-evidence.json"
 );
-const APK_SHA256 = "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
 const RING_POOL_IDS = [
     "24ab4336-6902-498e-a1fa-e65b616d7154",
     "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
@@ -91,9 +93,9 @@ function main() {
         schemaVersion: "apk-human-soul-ring-evidence/1.0",
         source: {
             apkSha256: APK_SHA256,
-            dataset: "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+        dataset: `${APK_ANALYSIS_ROOT}/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json`,
             datasetSha256: sha256File(SOURCE_PATH),
-            module: "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+        module: `${APK_ANALYSIS_ROOT}/derived/pretty/human-foundation-CduvzjjO.js`,
             customHandler: "prepareSoulRing",
             nextResolver: "selectRingTypeStep",
             sourceFunctions: ["Rt", "de", "Jt", "sn", "$e"]

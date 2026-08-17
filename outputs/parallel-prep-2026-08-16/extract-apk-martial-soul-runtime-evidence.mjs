@@ -4,12 +4,15 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import {
+    APK_ANALYSIS_ROOT,
+    APK_SHA256
+} from "./apk-provenance.mjs";
 
 const ROOT = process.cwd();
 const SOURCE_ROOT = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "pretty"
 );
@@ -35,7 +38,7 @@ const TARGET_PATH = path.join(
     "catalogs",
     "martial-soul-runtime-evidence.json"
 );
-const SOURCE_SHA256 = "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
+const SOURCE_SHA256 = APK_SHA256;
 const BODY_EVOLUTION_POOL_ID = "f2abac93-6b26-4e3e-aa92-a168db671577";
 
 function fail(message) {

@@ -4,12 +4,15 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import {
+    APK_ANALYSIS_ROOT,
+    APK_SHA256
+} from "./apk-provenance.mjs";
 
 const ROOT = process.cwd();
 const SOURCE_ROOT = path.join(
     ROOT,
-    "apk-analysis",
-    "E4FB340E",
+    APK_ANALYSIS_ROOT,
     "derived",
     "pretty"
 );
@@ -34,7 +37,7 @@ const TARGET_PATH = path.join(
     "catalogs",
     "route-graph.json"
 );
-const SOURCE_SHA256 = "E4FB340E0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
+const SOURCE_SHA256 = APK_SHA256;
 const PACKS = [
     {
         id: "douluo1",
