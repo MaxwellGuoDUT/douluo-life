@@ -69,7 +69,7 @@ test("vertical slice data validates and commits one next-year session", () => {
     assert.equal(result.session.result.advance, "next_year");
     assert.equal(result.annualRecord.nextAge, 7);
     assert.equal(result.flowResult.steps[0].itemId, "annual_reputation_gain");
-    assert.equal(result.combatPower.rulesVersion, "combat-power/1.0");
+    assert.equal(result.combatPower.rulesVersion, "combat-power/2.0");
     assert.equal(Object.hasOwn(result.player, "combatPower"), false);
     assert.equal(JSON.stringify(player), before);
 });

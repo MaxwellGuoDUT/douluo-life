@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "talent-config/1.0",
+  "rulesVersion": "talent/1.0",
+  "status": "provisional",
+  "ruleCatalog": {
+    "file": "data/rules/talent.json",
+    "catalogVersion": "talent-rule-catalog/2026-08-12",
+    "source": "talent.docx"
+  },
+  "innateSoulPower": {
+    "mapping": [
+      { "min": 0, "max": 0, "talentGrade": "F", "levelCap": 0 },
+      { "min": 1, "max": 1, "talentGrade": "E", "levelCap": null },
+      { "min": 2, "max": 3, "talentGrade": "D", "levelCap": null },
+      { "min": 4, "max": 5, "talentGrade": "C", "levelCap": null },
+      { "min": 6, "max": 7, "talentGrade": "B", "levelCap": null },
+      { "min": 8, "max": 9, "talentGrade": "A", "levelCap": null },
+      { "min": 10, "max": 10, "talentGrade": "S", "levelCap": null },
+      { "min": 20, "max": 20, "talentGrade": "god-level", "levelCap": null }
+    ],
+    "supportedValues": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20],
+    "status": "confirmed"
+  },
+  "levelConstraints": {
+    "globalMinimumLevel": 1,
+    "majorLevelWidth": 10,
+    "majorLevelFirstMinimum": 1,
+    "negativeDeltaLowerBound": "floor((currentLevel - 1) / 10) * 10 + 1",
+    "positiveDeltaPolicy": "currentLevel + delta",
+    "status": "confirmed"
+  },
+  "ordinaryGrowth": {
+    "currentLevelRange": {
+      "min": 1,
+      "max": 90,
+      "maxInclusive": true,
+      "boundaryNote": "90级仍属于81-90级魂斗罗大等级，91级起进入空置魂核池"
+    },
+    "probabilityMode": "equal",
+    "status": "provisional",
+    "pools": {
+      "E": {
+        "totalWeight": 6,
+        "items": [
+          { "id": "e_minus_5", "name": "E_-5", "delta": -5, "weight": 1, "narrative": "等级-5，心魔反噬，你的实力受到了重创，可降到当前大等级的最低级" },
+          { "id": "e_minus_2", "name": "E_-2", "delta": -2, "weight": 1, "narrative": "等级-2，心魔经常在纠缠你，你的修为不进反退，可降到当前大等级的最低级" },
+          { "id": "e_minus_1", "name": "E_-1", "delta": -1, "weight": 1, "narrative": "等级-1，你陷入了走火入魔，修为倒退1级，可降到当前大等级的最低级" },
+          { "id": "e_zero", "name": "E_+0", "delta": 0, "weight": 1, "narrative": "等级+0，1修炼对你来说毫无意义，你的天赋已经决定了你的命运" },
+          { "id": "e_plus_1", "name": "E_+1", "delta": 1, "weight": 1, "narrative": "等级+1，你陷入了顿悟，突破了眼前的瓶颈" },
+          { "id": "e_plus_2", "name": "E_+2", "delta": 2, "weight": 1, "narrative": "等级+2，你不服命运的安排，你要向世人证明E级天赋也能成为强者" }
+        ]
+      },
+      "D": {
+        "totalWeight": 6,
+        "items": [
+          { "id": "d_minus_2", "name": "D_-2", "delta": -2, "weight": 1, "narrative": "等级-2，心魔经常在纠缠你，你的修为不进反退，可降到当前大等级的最低级" },
+          { "id": "d_minus_1", "name": "D_-1", "delta": -1, "weight": 1, "narrative": "等级-1，你陷入了走火入魔，修为倒退1级，可降到当前大等级的最低级" },
+          { "id": "d_zero", "name": "D_+0", "delta": 0, "weight": 1, "narrative": "等级+0，你的天赋在拖后腿，这一年你没有任何提升" },
+          { "id": "d_plus_1", "name": "D_+1", "delta": 1, "weight": 1, "narrative": "等级+1，这已经是你拼尽全力才能做到的地步了" },
+          { "id": "d_plus_2", "name": "D_+2", "delta": 2, "weight": 1, "narrative": "等级+2，成长迅速，一年提升2级可是C级天赋才有的成长速度" },
+          { "id": "d_plus_3", "name": "D_+3", "delta": 3, "weight": 1, "narrative": "等级+3，这一年你陷入了顿悟" }
+        ]
+      },
+      "C": {
+        "totalWeight": 6,
+        "items": [
+          { "id": "c_minus_1", "name": "C_-1", "delta": -1, "weight": 1, "narrative": "等级-1，你陷入了走火入腐，修为倒退1级，可降到当前大等级的最低级" },
+          { "id": "c_zero", "name": "C_+0", "delta": 0, "weight": 1, "narrative": "等级+0，虽然你的天赋平平无奇，但一年没有任何提升只能说明你不够努力" },
+          { "id": "c_plus_1", "name": "C_+1", "delta": 1, "weight": 1, "narrative": "等级+1，提升缓慢，但总比被卡瓶颈好。" },
+          { "id": "c_plus_2", "name": "C_+2", "delta": 2, "weight": 1, "narrative": "等级+2，稳步提升，根基扎实" },
+          { "id": "c_plus_3", "name": "C_+3", "delta": 3, "weight": 1, "narrative": "等级+3，成长迅速，一年提升3级可是B级天赋才有的成长速度" },
+          { "id": "c_plus_4", "name": "C_+4", "delta": 4, "weight": 1, "narrative": "等级+4，这一年你陷入了顿悟" }
+        ]
+      },
+      "B": {
+        "totalWeight": 6,
+        "items": [
+          { "id": "b_zero", "name": "B_+0", "delta": 0, "weight": 1, "narrative": "等级+0，你玩了一整年，没有进行修炼" },
+          { "id": "b_plus_1", "name": "B_+1", "delta": 1, "weight": 1, "narrative": "等级+1，这不符合你的修炼速度，你在偷懒" },
+          { "id": "b_plus_2", "name": "B_+2", "delta": 2, "weight": 1, "narrative": "等级+2，以你的天赋本可以修炼的更快一点，可惜你还不够努力。" },
+          { "id": "b_plus_3", "name": "B_+3", "delta": 3, "weight": 1, "narrative": "等级+3，稳步提升，根基扎实，这才是你该有修炼速度" },
+          { "id": "b_plus_4", "name": "B_+4", "delta": 4, "weight": 1, "narrative": "等级+4，成长迅速，一年提升4级可是A级天赋才有的成长速度" },
+          { "id": "b_plus_5", "name": "B_+5", "delta": 5, "weight": 1, "narrative": "等级+5，这一年你陷入了顿悟。" }
+        ]
+      },
+      "A": {
+        "totalWeight": 6,
+        "items": [
+          { "id": "a_plus_1", "name": "A_+1", "delta": 1, "weight": 1, "narrative": "等级+1，即使你摆烂了一整年，以你的天赋依旧还是提升了1级" },
+          { "id": "a_plus_2", "name": "A_+2", "delta": 2, "weight": 1, "narrative": "等级+2，吃喝玩乐一整年，你就偶尔抽时间修炼修炼" },
+          { "id": "a_plus_3", "name": "A_+3", "delta": 3, "weight": 1, "narrative": "等级+3，你对修炼比较厌倦，像是上课完成作业一样，并没有全身心的投入进去" },
+          { "id": "a_plus_4", "name": "A_+4", "delta": 4, "weight": 1, "narrative": "等级+4，心无旁骛，你专注于修炼，得到了符合你这个天才名头的提升" },
+          { "id": "a_plus_5", "name": "A_+5", "delta": 5, "weight": 1, "narrative": "等级+5，有所领悟，成长迅速，一年提升5级可是s级天赋才有的成长速度" },
+          { "id": "a_plus_6", "name": "A_+6", "delta": 6, "weight": 1, "narrative": "等级+6，这一年你陷入了顿悟" }
+        ]
+      },
+      "S": {
+        "totalWeight": 6,
+        "items": [
+          { "id": "s_plus_2", "name": "S_+2", "delta": 2, "weight": 1, "narrative": "等级+2，这一年你就随便玩玩，便得到了其他人拼命一整年都没有的提升。" },
+          { "id": "s_plus_3", "name": "S_+3", "delta": 3, "weight": 1, "narrative": "等级+3，你一个月最多抽半天稍微修炼一下，但即使如此，你的提升依旧是他人望其项背的。" },
+          { "id": "s_plus_4", "name": "S_+4", "delta": 4, "weight": 1, "narrative": "等级+4，即使你这一年并不算很努力，但架不住老天喂饭吃" },
+          { "id": "s_plus_5", "name": "S_+5", "delta": 5, "weight": 1, "narrative": "等级+5，何为s级天赋，s级天赋就是只要你肯修炼，就能做到这一步" },
+          { "id": "s_plus_6", "name": "S_+6", "delta": 6, "weight": 1, "narrative": "等级+6，有所领悟，成长迅速，一年提升6级可是神级天赋才有的成长速度" },
+          { "id": "s_plus_7", "name": "S_+7", "delta": 7, "weight": 1, "narrative": "等级+7，这一年你陷入了顿悟。" }
+        ]
+      },
+      "god-level": {
+        "totalWeight": 6,
+        "items": [
+          { "id": "god_plus_3", "name": "god-level_+3", "delta": 3, "weight": 1, "narrative": "等级+3，只是呼吸，便提升了3级" },
+          { "id": "god_plus_4", "name": "god-level_+4", "delta": 4, "weight": 1, "narrative": "等级+4，修炼毫无意义，实力的提升对你来说，就只是一部分力量的回归。" },
+          { "id": "god_plus_5", "name": "god-level_+5", "delta": 5, "weight": 1, "narrative": "等级+5，你梦见了前世的自己，你与他下了一盘棋，梦醒之后你便提升了5级" },
+          { "id": "god_plus_6", "name": "god-level_+6", "delta": 6, "weight": 1, "narrative": "等级+6，天道不会回应你，但你的神力会" },
+          { "id": "god_plus_7", "name": "god-level_+7", "delta": 7, "weight": 1, "narrative": "等级+7，你本就是神界的一员，任何瓶颈对你来说都是纸片，老伙伴们在神界等你的归来" },
+          { "id": "god_plus_8", "name": "god-level_+8", "delta": 8, "weight": 1, "narrative": "等级+8，力量、归宿、理想，你做到了前世也无法得到的提升，你已经超越了他!\"" }
+        ]
+      }
+    }
+  },
+  "birthIdentityRoll": {
+    "mode": "weighted_equal_eligible",
+    "status": "provisional",
+    "items": [
+      {
+        "id": "rural_commoner",
+        "name": "乡下平民",
+        "narrative": "乡下的平民(先天魂力-1级，最低可降至0级，但可以避免任何走火入魔与心魔入侵的等级惩罚)",
+        "weight": 1,
+        "innateSoulPowerDelta": -1,
+        "innateSoulPowerMinimum": 0,
+        "removeNegativeGrowth": true
+      },
+      {
+        "id": "soul_master_child",
+        "name": "魂师的孩子",
+        "narrative": "魂师的孩子(先天魂力+1级，最高可达到10级，但无法抽取极致武魂池)",
+        "weight": 1,
+        "innateSoulPowerDelta": 1,
+        "innateSoulPowerMaximum": 10,
+        "martialSoulPolicy": "no_extreme"
+      },
+      {
+        "id": "royal_knight_commander_child",
+        "name": "皇家骑士团团长的孩子",
+        "narrative": "皇家骑士团团长的孩子(成长+1，每次时间跳跃可额外获得等级+1，但无法抽取特殊天赋池)",
+        "weight": 1,
+        "annualGrowthBonuses": [1, 1],
+        "specialTalentPolicy": "forbidden"
+      },
+      {
+        "id": "noble_child",
+        "name": "贵族子女",
+        "narrative": "贵族的子女(每年可额外获得100铜魂币)",
+        "weight": 1,
+        "annualMoneyDelta": 100
+      },
+      {
+        "id": "imperial",
+        "name": "皇室",
+        "narrative": "皇室(必定持有特殊天赋，可直接前往特殊天赋池进行抽取，无需抽取是否拥有特殊天赋池)",
+        "weight": 1,
+        "specialTalentPolicy": "guaranteed_pool"
+      },
+      {
+        "id": "nothing_owned",
+        "name": "一无所有的人",
+        "narrative": "一无所有之人(先天魂力必定为5级)",
+        "weight": 1,
+        "fixedInnateSoulPower": 5
+      },
+      {
+        "id": "sect_child",
+        "name": "宗门子女",
+        "narrative": "宗门子弟(12岁前不会遇到遭遇类的特殊成长)",
+        "weight": 1,
+        "encounterRestriction": {
+          "maxAgeExclusive": 12,
+          "replacementPool": "ordinary",
+          "sameName": true
+        }
+      },
+      {
+        "id": "divine_child",
+        "name": "神之子",
+        "narrative": "神之子(必定先天满魂力，武魂只能抽取极致武魂池)",
+        "weight": 1,
+        "fixedInnateSoulPower": 10,
+        "martialSoulPolicy": "extreme_only"
+      },
+      {
+        "id": "divine_reincarnated",
+        "name": "神明转世",
+        "narrative": "神明转世(必定先天20级魂力，武魂只能抽取极致武魂池，特殊天赋固定为【神明转世】，无法抽取其他特殊天赋)",
+        "weight": 1,
+        "fixedInnateSoulPower": 20,
+        "martialSoulPolicy": "extreme_only",
+        "specialTalentPolicy": "fixed",
+        "specialTalentId": "divine_reincarnation"
+      },
+      {
+        "id": "reincarnator",
+        "name": "重生者",
+        "narrative": "重生者(常规状态不可选，只有【第二世】状态可选，继承前世的身份特性和天赋以及获得的【属性】、【领域】、【技能】)",
+        "weight": 1,
+        "minimumLifeNumber": 2,
+        "inheritance": {
+          "identityTraits": true,
+          "talent": true,
+          "postnatalAttributes": true,
+          "domains": true,
+          "skills": true,
+          "regenerateSameNameEntities": true
+        }
+      },
+      {
+        "id": "traverser",
+        "name": "穿越者",
+        "narrative": "穿越者(不能抽取特殊天赋池，必定拥有双生武魂)",
+        "weight": 1,
+        "specialTalentPolicy": "forbidden",
+        "guaranteedTwinMartialSouls": true
+      },
+      {
+        "id": "luck_child",
+        "name": "气运之子",
+        "narrative": "气运之子(每次经过时间跳跃，都可额外抽取一次机遇抽取池)",
+        "weight": 1,
+        "extraOpportunityDraws": 1
+      }
+    ]
+  },
+  "pools": {
+    "specialTalents": {
+      "status": "unresolved",
+      "entries": []
+    },
+    "opportunity": {
+      "status": "unresolved",
+      "entries": []
+    },
+    "encounterGrowth": {
+      "status": "unresolved",
+      "entries": []
+    },
+    "soulCoreGrowth": {
+      "status": "unresolved",
+      "activationMinCurrentLevel": 91,
+      "entries": []
+    }
+  }
+}

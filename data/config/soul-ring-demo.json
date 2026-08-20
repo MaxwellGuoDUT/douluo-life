@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "soul-ring-demo-config/1.0",
+  "demoVersion": "soul-ring-demo/0.1",
+  "status": "provisional",
+  "source": {
+    "kind": "legacy_reference_data",
+    "wheelsFile": "data/reference/legacy-wheel/wheels.normalized.json",
+    "metadataFile": "data/reference/legacy-wheel/conversion_report.json",
+    "sourceStatus": "REFERENCE DATA ONLY",
+    "productionEligible": false,
+    "status": "provisional"
+  },
+  "interaction": {
+    "mode": "manual_trigger_and_selection",
+    "manualCandidateSelectionAllowed": true,
+    "status": "provisional"
+  },
+  "trigger": {
+    "mode": "manual_demo_start",
+    "minimumLevel": 10,
+    "status": "provisional",
+    "note": "旧版资料没有恢复正式触发图；Demo用10级作为临时触发门槛。"
+  },
+  "slotRules": {
+    "minimumSlot": 1,
+    "maximumSlot": 9,
+    "titleBySlot": {
+      "1": "第一魂环",
+      "2": "第二魂环",
+      "3": "第三魂环",
+      "4": "第四魂环",
+      "5": "第五魂环",
+      "6": "第六魂环",
+      "7": "第七魂环",
+      "8": "第八魂环",
+      "9": "第九魂环"
+    },
+    "excludeTitlesContaining": ["第二武魂"],
+    "status": "provisional",
+    "note": "同一魂环标题存在多条旧版路线时，Demo要求玩家手动选择来源轮盘。"
+  },
+  "legacyWeightPolicy": {
+    "positiveWeightsEligibleForWeightedRoll": true,
+    "zeroWeightItems": "not_selectable",
+    "nullWeightItems": "manual_selection_only",
+    "mixedWeightWheel": "manual_selection_only",
+    "status": "provisional"
+  },
+  "yearResolution": {
+    "mode": "manual_input_with_legacy_candidate_range",
+    "minimumLegalYears": 10,
+    "testOnlyFixedYears": 18000,
+    "testOnlyFixedYearsEnabledInBrowser": false,
+    "status": "provisional"
+  },
+  "absorption": {
+    "mode": "manual_outcome",
+    "successOutcome": "success",
+    "failureOutcome": "failure",
+    "terminalAfterEitherOutcome": true,
+    "status": "provisional",
+    "note": "旧版资料没有恢复吸收成功率/失败公式；Demo由玩家手动触发两种终态。"
+  },
+  "levelZero": {
+    "mode": "ignore_and_end",
+    "terminalStatus": "ignored",
+    "status": "provisional"
+  },
+  "transitionHistory": {
+    "recordNarrativeTransitions": true,
+    "status": "provisional"
+  }
+}

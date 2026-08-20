@@ -8,6 +8,7 @@ import {
     calculate,
     calculateContinuousLevelPower,
     calculateLevelPower,
+    calculateMartialSoulQualityPower,
     calculateSoulBonePower,
     calculateSoulBonesPower,
     calculateSoulRingPower,
@@ -34,22 +35,7 @@ function deepFreeze(value) {
 }
 
 function createAcceptanceRules() {
-    const rules = clone(baseRules);
-
-    rules.level.cumulativeBonusAnchors = [
-        {
-            id: "fixture_unallocated_breakthrough_total_through_99",
-            mode: "cumulative_total_anchor",
-            anchorLevel: 99,
-            cumulativeBonus: 220,
-            allocationStatus: "unallocated",
-            fixtureOnly: true,
-            status: "provisional",
-            reason: "仅表示截至99级累计额外战力，不决定各突破等级的分配"
-        }
-    ];
-
-    return rules;
+    return clone(baseRules);
 }
 
 function topRing(years) {
@@ -74,7 +60,56 @@ function topSoulBone(years, extra = {}) {
     };
 }
 
-test("continuous level curve keeps all confirmed mathematical anchors", () => {
+test("level 0 and all four quality combat coefficients remain explicit", () => {
+    const playerWith = qualities => ({
+        martialSouls: qualities.map((qualityGrade, index) => ({
+            instanceId: `soul_${index + 1}`,
+            definitionId: `definition_${index + 1}`,
+            evolutionFamilyId: `family_${index + 1}`,
+            qualityGrade
+        }))
+    });
+
+    assert.equal(calculateLevelPower(0, baseRules), 0);
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["low"]), 100, baseRules),
+        0
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["ordinary"]), 100, baseRules),
+        10
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["top"]), 100, baseRules),
+        25
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["extreme"]), 100, baseRules),
+        30
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(
+            playerWith(["top", "top", "extreme"]),
+            100,
+            baseRules
+        ),
+        80
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(
+            playerWith(["extreme", "extreme", "extreme", "extreme"]),
+            100,
+            baseRules
+        ),
+        100
+    );
+    assert.equal(
+        calculateMartialSoulQualityPower(playerWith(["extreme"]), 0, baseRules),
+        0
+    );
+});
+
+test("level examples override the compatibility curve at confirmed anchors", () => {
     const levelRules = baseRules.level;
 
     assert.equal(calculateContinuousLevelPower(10, levelRules), 10);
@@ -83,22 +118,23 @@ test("continuous level curve keeps all confirmed mathematical anchors", () => {
     assert.equal(calculateContinuousLevelPower(99, levelRules), 540);
     assert.equal(calculateContinuousLevelPower(100, levelRules), 550);
     assert.equal(calculateContinuousLevelPower(169, levelRules), 1513);
+    assert.equal(calculateLevelPower(91, baseRules), 480);
+    assert.equal(calculateLevelPower(96, baseRules), 610);
+    assert.equal(calculateLevelPower(98, baseRules), 710);
+    assert.equal(calculateLevelPower(99, baseRules), 760);
+    assert.equal(calculateLevelPower(100, baseRules), 1260);
 });
 
-test("base rules expose unresolved 99 and 100 total anchors instead of hiding 220 points", () => {
+test("base rules validate the confirmed human level examples", () => {
     const validation = validateRules(baseRules);
-    const unresolvedLevels = validation.warnings
-        .filter(warning => warning.code === "LEVEL_ANCHOR_UNRESOLVED")
-        .map(warning => warning.path)
-        .sort();
 
     assert.equal(validation.valid, true);
-    assert.deepEqual(unresolvedLevels, [
-        "level.validationAnchors[3]",
-        "level.validationAnchors[4]"
-    ]);
-    assert.equal(calculateLevelPower(99, baseRules), 540);
-    assert.equal(calculateLevelPower(100, baseRules), 1040);
+    assert.equal(
+        validation.warnings.some(warning => warning.code === "LEVEL_ANCHOR_UNRESOLVED"),
+        false
+    );
+    assert.equal(calculateLevelPower(99, baseRules), 760);
+    assert.equal(calculateLevelPower(100, baseRules), 1260);
 });
 
 test("rules validator rejects unsupported first-phase strategy changes", () => {
@@ -116,7 +152,83 @@ test("rules validator rejects unsupported first-phase strategy changes", () => {
     }));
 });
 
+test("civilian observer route is explicitly non-combat and always returns zero power", () => {
+    const result = calculate({
+        level: 0,
+        combatBase: {
+            mode: "civilian_observer"
+        },
+        martialSouls: [{
+            instanceId: "observer_soul",
+            definitionId: "observer_definition",
+            evolutionFamilyId: "observer_family",
+            qualityGrade: "extreme"
+        }]
+    }, baseRules);
+
+    assert.equal(result.total, 0);
+    assert.equal(result.staticCombatPower, 0);
+    assert.equal(result.combatBaseMode, "civilian_observer");
+    assert.equal(result.combatParticipation, "none");
+    assert.deepEqual(result.breakdown, {
+        level: 0,
+        martialSoulQuality: 0,
+        martialSoulAvatar: 0,
+        soulRings: 0,
+        soulBones: 0,
+        divineArmor: 0,
+        domains: 0,
+        attributes: 0,
+        soulCore: 0,
+        deity: 0,
+        artifacts: 0,
+        titles: 0,
+        other: 0
+    });
+});
+
+test("table-defined positive modifiers are summed before the subtotal is rounded", () => {
+    const rules = clone(baseRules);
+    rules.coefficientModules.domains.definitions.domain_fixture = {
+        coefficient: 0.1,
+        status: "confirmed"
+    };
+    rules.coefficientModules.attributes.definitions.attribute_fixture = {
+        coefficient: 0.05,
+        status: "confirmed"
+    };
+    rules.entityContributionModules.soulCore.definitions.core_fixture = {
+        mode: "level_coefficient",
+        coefficient: 0.5,
+        status: "confirmed"
+    };
+
+    const result = calculate({
+        level: 20,
+        combatBase: {
+            mode: "level"
+        },
+        domains: [{ definitionId: "domain_fixture" }],
+        combatAttributes: [{ definitionId: "attribute_fixture" }],
+        soulCores: [{ definitionId: "core_fixture" }]
+    }, rules);
+
+    assert.equal(result.breakdown.level, 30);
+    assert.equal(result.breakdown.domains, 3);
+    assert.equal(result.breakdown.attributes, 2);
+    assert.equal(result.breakdown.soulCore, 15);
+    assert.equal(result.total, 50);
+});
+
 test("soul ring brackets, bloodline multipliers, and divine gold fixed power match anchors", () => {
+    assert.equal(calculateSoulRingPower({
+        years: 764,
+        soulBeastBloodlineGrade: "ordinary"
+    }, baseRules), 6);
+    assert.equal(calculateSoulRingPower({
+        years: 500,
+        soulBeastBloodlineGrade: "ordinary"
+    }, baseRules), 6);
     assert.equal(calculateSoulRingPower({
         years: 5000,
         soulBeastBloodlineGrade: "ordinary"
@@ -146,6 +258,12 @@ test("soul ring brackets, bloodline multipliers, and divine gold fixed power mat
         ringType: "divine_gold",
         soulBeastBloodlineGrade: "unknown"
     }, baseRules), 1000);
+    assert.equal(calculateSoulRingPower({
+        slot: 10,
+        years: 100,
+        ringType: "normal",
+        soulBeastBloodlineGrade: "low"
+    }, baseRules), 1000);
     const normalMillionYearPower = calculateSoulRingPower({
         years: 1000000,
         ringType: "normal",
@@ -159,6 +277,28 @@ test("soul ring brackets, bloodline multipliers, and divine gold fixed power mat
 
     assert.equal(normalMillionYearPower, 400);
     assert.equal(normalMillionYearPower, nonDivineMillionYearPower);
+});
+
+test("mixed bloodline percentages must total 100 and use a weighted multiplier", () => {
+    assert.equal(calculateSoulRingPower({
+        years: 5000,
+        soulBeastBloodlineDistribution: [
+            { grade: "top", percentage: 50 },
+            { grade: "ordinary", percentage: 50 }
+        ]
+    }, baseRules), 17);
+
+    const warnings = [];
+    assert.equal(calculateSoulRingPower({
+        years: 5000,
+        soulBeastBloodlineDistribution: [
+            { grade: "top", percentage: 40 },
+            { grade: "ordinary", percentage: 50 }
+        ]
+    }, baseRules, warnings, "mixedBloodline"), 0);
+    assert.ok(warnings.some(warning => {
+        return warning.code === "SOUL_BEAST_BLOODLINE_PERCENTAGE_TOTAL_MISMATCH";
+    }));
 });
 
 test("invalid 1-9 year rings and unknown bloodline grades are reported and skipped", () => {
@@ -239,7 +379,7 @@ test("99-level acceptance fixture reproduces ring, bone, and total anchors witho
     const beforePlayer = JSON.stringify(frozenPlayer);
     const beforeRules = JSON.stringify(frozenRules);
 
-    assert.equal(calculateSoulRingsPower(frozenPlayer, frozenRules), 262);
+    assert.equal(calculateSoulRingsPower(frozenPlayer, frozenRules), 264);
     assert.equal(calculateSoulBonePower(
         frozenPlayer.soulBones.head,
         frozenRules
@@ -259,7 +399,7 @@ test("99-level acceptance fixture reproduces ring, bone, and total anchors witho
         level: 760,
         martialSoulQuality: 228,
         martialSoulAvatar: 228,
-        soulRings: 262,
+        soulRings: 264,
         soulBones: 270,
         divineArmor: 0,
         domains: 152,
@@ -270,16 +410,14 @@ test("99-level acceptance fixture reproduces ring, bone, and total anchors witho
         titles: 0,
         other: 0
     });
-    assert.equal(result.total, 2067);
-    assert.equal(result.rulesVersion, "combat-power/1.0");
-    assert.ok(result.warnings.some(warning => {
-        return warning.code === "PROVISIONAL_CUMULATIVE_LEVEL_ANCHOR";
-    }));
+    assert.equal(result.total, 2069);
+    assert.equal(result.staticCombatPower, 2069);
+    assert.equal(result.rulesVersion, "combat-power/2.0");
     assert.equal(JSON.stringify(frozenPlayer), beforePlayer);
     assert.equal(JSON.stringify(frozenRules), beforeRules);
 });
 
-test("100-level Seagod acceptance reconstruction reaches 14288 with explicit provisional rules", () => {
+test("100-level Seagod acceptance reconstruction reaches the corrected 14318 anchor", () => {
     const rules = createAcceptanceRules();
 
     rules.coefficientModules.domains.definitions.sea_domain_fixture = {
@@ -291,7 +429,7 @@ test("100-level Seagod acceptance reconstruction reaches 14288 with explicit pro
         status: "provisional"
     };
     rules.coefficientModules.attributes.definitions.attribute_fixture_100 = {
-        coefficient: 0.6865,
+        coefficient: 0.71,
         status: "provisional"
     };
     rules.divineArmor.setBonuses.divine_armor_set_fixture = {
@@ -413,21 +551,54 @@ test("100-level Seagod acceptance reconstruction reaches 14288 with explicit pro
         soulBones: 0,
         divineArmor: 3200,
         domains: 378,
-        attributes: 865,
+        attributes: 895,
         soulCore: 0,
         deity: 2520,
         artifacts: 800,
         titles: 0,
         other: 800
     });
-    assert.equal(result.total, 14288);
-    assert.ok(result.warnings.some(warning => {
-        return warning.code === "PROVISIONAL_CUMULATIVE_LEVEL_ANCHOR";
-    }));
+    assert.equal(result.total, 14318);
     assert.ok(result.warnings.some(warning => {
         return warning.code === "PROVISIONAL_RULE_APPLIED";
     }));
-    assert.ok(result.warnings.some(warning => {
-        return warning.code === "PROVISIONAL_DIVINE_ARMOR_RULE_APPLIED";
-    }));
+});
+
+test("merged divine armor applies the confirmed multi-divine-position efficiency", () => {
+    const efficiencyByCount = [
+        [1, 1],
+        [2, 0.8],
+        [3, 0.6],
+        [4, 0.4]
+    ];
+
+    efficiencyByCount.forEach(([count, coefficient]) => {
+        const rules = clone(baseRules);
+        rules.divineArmor.setBonuses = Object.fromEntries(
+            Array.from({ length: count }, (_, index) => {
+                return [`divine_set_${index + 1}`, {
+                    mode: "fixed",
+                    power: 1000,
+                    status: "confirmed"
+                }];
+            })
+        );
+
+        const player = {
+            divineArmorSets: Array.from({ length: count }, (_, index) => ({
+                definitionId: `divine_set_${index + 1}`
+            })),
+            deities: Array.from({ length: count }, (_, index) => ({
+                definitionId: `deity_${index + 1}`
+            }))
+        };
+
+        assert.deepEqual(
+            calculateSoulBonesPower(player, 100, rules),
+            {
+                soulBones: 0,
+                divineArmor: Math.round(count * 1000 * coefficient)
+            }
+        );
+    });
 });

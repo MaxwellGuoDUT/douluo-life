@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "v3-demo-config/1.0",
+  "demoVersion": "v3-demo/0.1",
+  "status": "provisional",
+  "source": {
+    "kind": "legacy_wheel_reference",
+    "wheelsFile": "data/reference/legacy-wheel/wheels.normalized.json",
+    "sourceStatus": "REFERENCE DATA ONLY",
+    "productionEligible": false,
+    "status": "provisional"
+  },
+  "ageFlow": {
+    "birthAge": 0,
+    "talentDrawAge": 6,
+    "annualCultivationStartsAt": 6,
+    "narrativeTransitionYears": true,
+    "status": "provisional"
+  },
+  "awakening": {
+    "mode": "production_runtime_isolated",
+    "contentFile": "data/v2/content/age-6-awakening.json",
+    "catalogFile": "data/v2/catalogs/martial-souls.json",
+    "probabilityFile": "data/v2/config/awakening-probabilities.json",
+    "status": "provisional",
+    "note": "6岁读取已确认生产武魂觉醒运行时和目录；V3仅临时接线，不改变正式生产链。"
+  },
+  "talentDraw": {
+    "mode": "equal_supported_innate_soul_power",
+    "supportedValues": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20],
+    "startingLevelForNonZero": 1,
+    "levelZeroOutcome": "ignored_and_end",
+    "status": "provisional",
+    "note": "正式先天魂力自身概率未确认；V3 临时按天赋系统已支持值等权抽取。"
+  },
+  "cultivation": {
+    "mode": "one_year_per_action",
+    "ordinaryGrowthMaximumLevel": 90,
+    "post90Mode": "v3_fixture_plus_one_per_year",
+    "post90Delta": 1,
+    "finalLevel": 100,
+    "clampAtFinalLevel": true,
+    "status": "provisional",
+    "note": "不填充正式魂核成长池；91级后只用 V3 Demo 过场夹具走到100级。"
+  },
+  "animation": {
+    "durationMs": 450,
+    "turns": 3,
+    "status": "provisional",
+    "note": "临时 Demo 转盘动画加速为450毫秒；只影响展示，不改变抽取结果。"
+  },
+  "breakthroughs": {
+    "levels": [10, 20, 30, 40, 50, 60, 70, 80, 90],
+    "ringSlotByLevel": {
+      "10": 1,
+      "20": 2,
+      "30": 3,
+      "40": 4,
+      "50": 5,
+      "60": 6,
+      "70": 7,
+      "80": 8,
+      "90": 9
+    },
+    "status": "provisional"
+  },
+  "soulRings": {
+    "sourceMode": "canonical_legacy_wheel_by_slot",
+    "wheelBySlot": {
+      "1": { "legacyWheelId": 67, "selection": "weighted_positive", "status": "provisional" },
+      "2": { "legacyWheelId": 68, "selection": "weighted_positive", "status": "provisional" },
+      "3": { "legacyWheelId": 95, "selection": "weighted_positive", "status": "provisional" },
+      "4": { "legacyWheelId": 399, "selection": "weighted_positive", "status": "provisional" },
+      "5": { "legacyWheelId": 79, "selection": "weighted_positive", "status": "provisional" },
+      "6": { "legacyWheelId": 84, "selection": "weighted_positive", "status": "provisional" },
+      "7": { "legacyWheelId": 92, "selection": "weighted_positive", "status": "provisional" },
+      "8": {
+        "legacyWheelId": 632,
+        "selection": "fixed_reference_item",
+        "itemIndex": 1,
+        "status": "provisional",
+        "note": "旧版没有普通第八魂环轮盘；仅临时引用唯一可识别的第二武魂第八魂环资料。"
+      },
+      "9": { "legacyWheelId": 93, "selection": "weighted_positive", "status": "provisional" }
+    },
+    "yearResolution": {
+      "mode": "minimum_of_legacy_range",
+      "unresolvedTextMode": "configured_fallback_or_warning",
+      "fallbackYearsByWheelItem": {
+        "632:1": 990000
+      },
+      "status": "provisional"
+    },
+    "status": "provisional"
+  },
+  "soulBones": {
+    "event": "breakthrough_probability",
+    "probability": 0.05,
+    "sourceWheelLegacyId": 71,
+    "eligibleItemIndexes": [4, 5, 16, 18],
+    "selection": "weighted_positive",
+    "yearResolution": {
+      "explicitTextYears": {
+        "十万年": 100000,
+        "五万年": 50000,
+        "万年": 10000
+      },
+      "currentRingYearsForAbsorptionLimitOrExternal": true,
+      "unresolvedFallbackYears": 1000,
+      "status": "provisional"
+    },
+    "slots": ["head", "torso", "leftArm", "rightArm", "leftLeg", "rightLeg", "external"],
+    "status": "provisional",
+    "note": "5% 是临时 Demo 概率；魂骨奖励文本和年限解释沿用旧轮盘的最小可玩解释。"
+  },
+  "battle": {
+    "opponentName": "比比东",
+    "opponentCombatPower": 1500,
+    "comparison": "player_static_combat_power_gte",
+    "terminalAfterBattle": true,
+    "status": "provisional"
+  }
+}

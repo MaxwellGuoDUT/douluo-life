@@ -38,6 +38,41 @@ function errorCodes(validation) {
     return validation.errors.map(error => error.code);
 }
 
+test("Player v2 accepts an awakened level-0 player only with the growth lock", () => {
+    const player = createPlayerV2();
+    player.age = 6;
+    player.level = 0;
+    player.innateSoulPower = 0;
+    player.talentGrade = "F";
+    player.soulPowerGrowthLocked = true;
+    player.rank = "无魂力";
+    player.combatBase.mode = "civilian_observer";
+    player.martialSouls = [createMartialSoul({
+        qualityGrade: "low"
+    })];
+    player.activeMartialSoulInstanceId = "ms_001";
+
+    assert.equal(validatePlayerV2(player).valid, true);
+
+    const unlocked = clonePlayerStateValue(player);
+    unlocked.soulPowerGrowthLocked = false;
+    assert.ok(errorCodes(validatePlayerV2(unlocked)).includes(
+        "LEVEL_ZERO_REQUIRES_GROWTH_LOCK"
+    ));
+
+    const clamped = clonePlayerStateValue(player);
+    clamped.level = 1;
+    assert.ok(errorCodes(validatePlayerV2(clamped)).includes(
+        "INVALID_ZERO_SOUL_POWER_STATE"
+    ));
+
+    const wrongRoute = clonePlayerStateValue(player);
+    wrongRoute.combatBase.mode = "level";
+    assert.ok(errorCodes(validatePlayerV2(wrongRoute)).includes(
+        "LEVEL_ZERO_REQUIRES_CIVILIAN_OBSERVER_ROUTE"
+    ));
+});
+
 test("createPlayerV2 returns independent JSON-compatible state without derived combat power", () => {
     const first = createPlayerV2();
     const second = createPlayerV2();

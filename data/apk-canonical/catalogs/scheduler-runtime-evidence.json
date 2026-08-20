@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "apk-scheduler-runtime-evidence/1.0",
+  "source": {
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "module": "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+    "schedulerFlow": "douluo1:flow.formal-human.scheduler",
+    "schedulerAction": "douluo1:action.formal-human.schedule",
+    "sourceFunctions": [
+      "zl",
+      "Ii",
+      "Ze",
+      "Pa",
+      "Hi",
+      "Qe",
+      "$i"
+    ]
+  },
+  "extraction": {
+    "mode": "static_source_mapping_only",
+    "gameplayExecuted": false,
+    "humanLifespan": 150,
+    "domainCount": 28,
+    "storyPrerequisiteCount": 45,
+    "storyCombatGates": [
+      {
+        "poolId": "90f222ec-5eeb-43d4-a3c6-802832241b35",
+        "requiresWinInPool": "45611dcd-bf4f-4090-bb28-988cf943caa6"
+      },
+      {
+        "poolId": "d2dd6165-1307-4760-abdc-6c4aec9a78a8",
+        "requiresWinInPool": "7944f1f3-01e5-4380-8593-6e4aa6ab7736"
+      }
+    ]
+  },
+  "priority": [
+    "human-lifespan",
+    "pending-soul-bone",
+    "element-draw",
+    "domain-draw",
+    "god-trial-draw-and-archive",
+    "soul-ring-planner",
+    "domain-prototype",
+    "annual-story-or-growth",
+    "scheduler-mode-godTrial-or-seaTrial",
+    "unknown-mode-complete"
+  ],
+  "annualSourcePools": {
+    "F": "5fc640cc-8030-4f30-8e77-ed41c3bf6ab0",
+    "E": "5fc640cc-8030-4f30-8e77-ed41c3bf6ab0",
+    "D": "63b90f87-37fc-4c1d-b87b-0d75f1553f6a",
+    "C": "c9944ade-310d-41eb-b8ea-01723cab952c",
+    "B": "91f2c399-9035-4f38-9e94-f29e9e5e0892",
+    "A": "8dbe8ae4-d962-4361-95a2-12c51192886a",
+    "S": "1c229edc-e0c7-4279-8ad5-ccbb918a6449",
+    "divine": "3a00b61e-7668-4eb7-97b7-5a6f5c098cff",
+    "level90": "190cf048-8c66-436a-8fb3-08b34e003059",
+    "level100": "2d5370b6-167b-45ea-8c94-da653a0e837c"
+  },
+  "exactTargets": {
+    "officialElementFlow": "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577",
+    "domainPool": "13e60019-9d99-411a-8739-65d3d1eb13bd",
+    "firstSeaTrialPool": "e7e646c0-8c53-4f95-b978-5bb661d57fa5",
+    "specialGrowthFlow": "douluo1:flow.formal-special-growth",
+    "completeFlow": "douluo1:flow.formal-human.complete",
+    "godTrialTier": "humanGodTrialTier",
+    "pendingSoulBone": "humanPrepareSoulBonePart"
+  },
+  "storyBranches": {
+    "1": {
+      "sourceGroup": "d1Plot1",
+      "poolCount": 43,
+      "minimumTimelineAge": [
+        6,
+        6,
+        12,
+        12,
+        12,
+        12,
+        13,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        19,
+        19,
+        19,
+        19,
+        19,
+        19,
+        20,
+        20,
+        20,
+        20,
+        20,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    "2": {
+      "sourceGroup": "d1Plot2",
+      "poolCount": 32,
+      "minimumTimelineAge": [
+        14,
+        14,
+        14,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        19,
+        19,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        25,
+        25,
+        25,
+        25,
+        25
+      ]
+    }
+  },
+  "implementedRuntime": "js/apk-scheduler-runtime.js",
+  "routeBridge": "js/apk-route-runtime.js",
+  "unimplementedDynamicBoundaries": [
+    "humanPrimaryRingAge* downstream ring resolver/custom handlers",
+    "formal story result custom handler",
+    "formal-human.complete action",
+    "humanPrepareSoulBonePart downstream action"
+  ]
+}

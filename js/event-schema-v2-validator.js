@@ -73,6 +73,9 @@ const PLAYER_ROOT_PATHS = new Set([
     "name",
     "age",
     "level",
+    "innateSoulPower",
+    "talentGrade",
+    "soulPowerGrowthLocked",
     "rank",
     "combatBase",
     "martialSouls",
@@ -1471,6 +1474,115 @@ function validateDispatchNode(
     );
 }
 
+function validateProbabilityRollNode(node, path, registries, errors) {
+    if (!isNonEmptyString(node.probabilitySource)) {
+        addIssue(
+            errors,
+            "INVALID_PROBABILITY_SOURCE",
+            "Probability roll requires a non-empty probabilitySource.",
+            `${path}.probabilitySource`
+        );
+    }
+    if (!isNonEmptyString(node.saveAs)) {
+        addIssue(
+            errors,
+            "INVALID_SESSION_CONTEXT_PATH",
+            "Probability roll requires a non-empty saveAs key.",
+            `${path}.saveAs`
+        );
+    }
+    validateAdvance(node.next, `${path}.next`, registries, errors);
+}
+
+function validateContextGateNode(node, path, registries, errors) {
+    if (!isNonEmptyString(node.source)) {
+        addIssue(
+            errors,
+            "INVALID_GATE_SOURCE",
+            "Context gate requires a non-empty source key.",
+            `${path}.source`
+        );
+    }
+    if (!isPlainObject(node.nextByValue)
+        || Object.keys(node.nextByValue).length === 0) {
+        addIssue(
+            errors,
+            "INVALID_GATE_VALUE_MAPPING",
+            "Context gate requires a non-empty nextByValue mapping.",
+            `${path}.nextByValue`
+        );
+    } else {
+        Object.entries(node.nextByValue).forEach(([value, next]) => {
+            validateAdvance(
+                next,
+                `${path}.nextByValue.${value}`,
+                registries,
+                errors
+            );
+        });
+    }
+    if (node.fallback !== undefined) {
+        validateAdvance(
+            node.fallback,
+            `${path}.fallback`,
+            registries,
+            errors
+        );
+    }
+}
+
+function validateProbabilityDispatchNode(node, path, registries, errors) {
+    if (!isNonEmptyString(node.source)
+        || !isNonEmptyString(node.probabilitySource)
+        || !isNonEmptyString(node.saveAs)) {
+        addIssue(
+            errors,
+            "INVALID_PROBABILITY_DISPATCH",
+            "Probability dispatch requires source, probabilitySource, and saveAs.",
+            path
+        );
+    }
+    validateAdvance(node.next, `${path}.next`, registries, errors);
+}
+
+function validateAwakeningRepeatNode(node, path, registries, errors) {
+    if (!isNonEmptyString(node.countFrom)) {
+        addIssue(
+            errors,
+            "INVALID_REPEAT_COUNT_SOURCE",
+            "Awakening repeat requires a countFrom session key.",
+            `${path}.countFrom`
+        );
+    }
+    const pipeline = node.pipeline;
+    if (!isPlainObject(pipeline)) {
+        addIssue(
+            errors,
+            "INVALID_AWAKENING_SLOT_PIPELINE",
+            "Awakening repeat requires a pipeline object.",
+            `${path}.pipeline`
+        );
+    } else {
+        [
+            "innateSoulPowerFrom",
+            "qualityProbabilitySource",
+            "formProbabilitySource",
+            "catalogId",
+            "materializerId"
+        ].forEach(field => {
+            if (!isNonEmptyString(pipeline[field])) {
+                addIssue(
+                    errors,
+                    "INVALID_AWAKENING_SLOT_PIPELINE",
+                    `${field} must be a non-empty string.`,
+                    `${path}.pipeline.${field}`
+                );
+            }
+        });
+    }
+    validateAdvance(node.next, `${path}.next`, registries, errors);
+}
+
 function validateNode(
     node,
     path,
@@ -1505,6 +1617,47 @@ function validateNode(
             "targetScope must be annual or route when present.",
             `${path}.targetScope`
         );
+    }
+
+    if (node.op === "roll" && node.probabilitySource !== undefined) {
+        validateProbabilityRollNode(
+            node,
+            path,
+            registries,
+            errors
+        );
+        return;
+    }
+
+    if (node.op === "gate" && node.source !== undefined) {
+        validateContextGateNode(
+            node,
+            path,
+            registries,
+            errors
+        );
+        return;
+    }
+
+    if (node.op === "dispatchWheel"
+        && node.probabilitySource !== undefined) {
+        validateProbabilityDispatchNode(
+            node,
+            path,
+            registries,
+            errors
+        );
+        return;
+    }
+
+    if (node.op === "repeatWheel" && node.pipeline !== undefined) {
+        validateAwakeningRepeatNode(
+            node,
+            path,
+            registries,
+            errors
+        );
+        return;
     }
 
     if (node.op === "roll" || node.op === "gate") {
@@ -1714,6 +1867,16 @@ function validateFlow(
     );
 
     nodes.forEach(nodeRecord => {
+        const node = nodeRecord.entity;
+        const sourceRoot = isNonEmptyString(node.source)
+            ? node.source.split(".")[0]
+            : null;
+        const innateSourceRoot = isNonEmptyString(
+            node.pipeline?.innateSoulPowerFrom
+        )
+            ? node.pipeline.innateSoulPowerFrom.split(".")[0]
+            : null;
+
         if (nodeRecord.entity.op === "repeatWheel"
             && isNonEmptyString(nodeRecord.entity.countFrom)
             && !savedSessionKeys.has(nodeRecord.entity.countFrom)) {
@@ -1722,6 +1885,29 @@ function validateFlow(
                 "UNKNOWN_REPEAT_COUNT_SOURCE",
                 `repeatWheel countFrom "${nodeRecord.entity.countFrom}" is not produced by this flow.`,
                 `${nodeRecord.path}.countFrom`
+            );
+        }
+
+        if (["gate", "dispatchWheel"].includes(node.op)
+            && sourceRoot
+            && !savedSessionKeys.has(sourceRoot)) {
+            addIssue(
+                errors,
+                "UNKNOWN_SESSION_CONTEXT_SOURCE",
+                `${node.op} source "${node.source}" is not produced by this flow.`,
+                `${nodeRecord.path}.source`
+            );
+        }
+
+        if (node.op === "repeatWheel"
+            && node.pipeline !== undefined
+            && innateSourceRoot
+            && !savedSessionKeys.has(innateSourceRoot)) {
+            addIssue(
+                errors,
+                "UNKNOWN_SESSION_CONTEXT_SOURCE",
+                `repeatWheel source "${node.pipeline.innateSoulPowerFrom}" is not produced by this flow.`,
+                `${nodeRecord.path}.pipeline.innateSoulPowerFrom`
             );
         }
 
@@ -1823,6 +2009,13 @@ function validateRoute(
 }
 
 function collectNodeAdvances(node, wheel) {
+    if (node.op === "gate" && isPlainObject(node.nextByValue)) {
+        return [
+            ...Object.values(node.nextByValue),
+            ...(node.fallback === undefined ? [] : [node.fallback])
+        ];
+    }
+
     if (node.op === "gate" && isPlainObject(node.nextByItemId)) {
         return Object.values(node.nextByItemId);
     }

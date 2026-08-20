@@ -1,7 +1,8 @@
-# 战力系统 v1.0 草案
+# 战力系统 v2.0（Day16 规则目录版）
 
-状态：第一阶段基础设施
+状态：Day16 规则目录已建立；部分表格范围仍待补全
 规则配置：`data/config/combat-power.json`
+规则目录：`data/rules/combat.json`
 纯函数实现：`js/combat-power.js`
 
 ## 1. 定位与职责
@@ -16,12 +17,13 @@ const result = CombatPowerCalculator.calculate(player, rules);
 
 ```json
 {
-  "total": 2067,
+  "total": 2069,
+  "staticCombatPower": 2069,
   "breakdown": {
     "level": 760,
     "martialSoulQuality": 228,
     "martialSoulAvatar": 228,
-    "soulRings": 262,
+    "soulRings": 264,
     "soulBones": 270,
     "divineArmor": 0,
     "domains": 152,
@@ -33,7 +35,9 @@ const result = CombatPowerCalculator.calculate(player, rules);
     "other": 0
   },
   "warnings": [],
-  "rulesVersion": "combat-power/1.0"
+  "rulesVersion": "combat-power/2.0",
+  "combatBaseMode": "level",
+  "combatParticipation": "static_and_effective"
 }
 ```
 
@@ -51,15 +55,31 @@ const result = CombatPowerCalculator.calculate(player, rules);
 
 合法模式：
 
-- `level`：普通人类魂师，本阶段已实现。
-- `soul_beast_cultivation`：未化形魂兽，预留。
-- `hybrid`：化形魂兽或半人半魂兽，必须有专用规则，预留。
+- `level`：普通人类魂师；工作簿确认1～10级，`powerv01.docx`补充并确认了若干等级锚点，未列出的等级仍使用兼容性回退并产生 unresolved warning。
+- `civilian_observer`：0级特供平民旁观路线，静态战力固定为0，不参与战斗。
+- `soul_beast_cultivation`：未化形魂兽；规则目录已记录表格中的修为锚点，完整运行时仍待接入。
+- `hybrid`：化形魂兽或半人半魂兽；目录已记录前7个魂环按本体血脉计算，完整运行时仍待接入。
 
-不能默认把人类等级和魂兽修为年限相加。第一阶段遇到后两种未配置模式时应报告 warning，而不是猜测公式。
+不能默认把人类等级和魂兽修为年限相加。不能把0级旁观者当作低战力战斗单位。
+
+魂兽修为战力采用表格锚点的分段线性推导：相邻锚点之间按线性公式计算，并使用 `Math.round`；10～30000年范围内必须精确命中表格锚点，30000年以上仍未覆盖。该公式已进入规则目录，但 `soul_beast_cultivation` 完整战斗基座尚未接入运行时。
+
+魂环、魂骨支持混合血脉：`soulBeastBloodlineDistribution` 中各血脉使用百分比表示，总和必须为100%，最终倍率为各血脉倍率按百分比加权后的和。
 
 ## 3. 等级战力
 
-等级范围为 1 至 169。连续曲线：
+配置可容纳等级 0 至 169。0～10级来自正式表格；以下选定等级来自 `powerv01.docx` 示例并按本轮对齐纳入正式锚点：
+
+```text
+0级 = 0（旁观路线，不参与战斗）
+1级 = 1，2级 = 2，…，10级 = 10
+11级 = 12，21级 = 33，29级 = 57，31级 = 61
+41级 = 105，51级 = 156，61级 = 217，71级 = 288
+81级 = 370，91级 = 480，96级 = 610，98级 = 710
+99级 = 760，100级 = 1260
+```
+
+未列出的等级仍使用现有连续曲线作为兼容性回退：
 
 ```js
 const decade = Math.floor((level - 1) / 10);
@@ -76,7 +96,7 @@ const continuousPower =
 + 特殊等级节点奖励
 ```
 
-连续曲线锚点：
+兼容性回退锚点（仅适用于未被显式等级示例覆盖的等级）：
 
 | 等级 | 连续曲线 |
 | ---: | ---: |
@@ -87,9 +107,9 @@ const continuousPower =
 | 100 | 550 |
 | 169 | 1513 |
 
-剧情锚点为 99 级 `760`、100 级 `1260`。两者共同依赖尚未分配的累计额外 `220` 点。正式配置不会把这 220 点藏入公式，而是让验证器报告 `LEVEL_ANCHOR_UNRESOLVED`。
+`confirmedThroughLevel: 10` 仍表示连续区间只覆盖到10级，不代表这些离散锚点不存在。显式等级锚点直接作为最终等级战力，不再额外叠加旧版的100级 `490` 或99级累计 `220` 兼容奖励。
 
-100 级额外 `490` 点作为达到该节点后累计生效的显式 `specialLevelBonuses` 配置，状态为 `provisional`。验收夹具会在独立的 `cumulativeBonusAnchors` 中注入 `220` 点临时累计锚点，字段同时标记 `fixtureOnly`、`allocationStatus: "unallocated"` 和 `provisional`；它只表示截至 99 级的累计差额，不表示 220 点在 99 级一次发放。
+示例总战力的算术核对也同步采用正式表格：764年魂环按 `6` 点；98级魂骨中的10万年魂骨按 `30 × 200% = 60` 点。因此对应案例修正为：91级 `831`、96级 `1241`、98级 `1662`；100级海神案例的属性修正为 `895`，总战力为 `14318`。
 
 ## 4. 武魂品质与武魂真身
 
@@ -125,7 +145,7 @@ extreme = 0.30
 | --- | ---: |
 | 10–99 | 1 |
 | 100–499 | 3 |
-| 500–999 | 5 |
+| 500–999 | 6 |
 | 1,000–4,999 | 8 |
 | 5,000–9,999 | 11 |
 | 10,000–49,999 | 16 |
@@ -139,7 +159,7 @@ extreme = 0.30
 | 700,000–799,999 | 90 |
 | 800,000–899,999 | 100 |
 | 900,000–999,999 | 110 |
-| 1,000,000+（非神级金色） | 200 |
+| 1,000,000+（非神级金色） | 200（旧兼容，provisional） |
 
 魂兽血脉字段统一为 `soulBeastBloodlineGrade`：
 
@@ -160,7 +180,7 @@ Math.max(1, Math.round(basePower * bloodlineMultiplier))
 
 `top`、`sub_dragon`、`earth_dragon` 即使当前倍率相同也保留不同枚举。1 至 9 年魂环当前非法，报告 warning 并跳过，不自动改成年限 10。
 
-神级金色魂环固定为 `1000`，忽略血脉倍率。神赐魂环使用 `sourceType: "god_bestowed"` 与显式 `qualityMultiplier`，不伪造天然魂兽血脉。
+神级金色魂环固定为 `1000`，忽略血脉倍率。人类第10～16魂环按表格固定为 `1000`。神赐魂环使用 `sourceType: "god_bestowed"`，表格目录记录品质倍率 `200%`；若实体没有显式倍率，运行时使用目录默认值并产生审计 warning。
 
 ## 6. 魂骨与神装
 
@@ -176,7 +196,18 @@ Math.max(1, Math.round(basePower * bloodlineMultiplier))
 神装部件战力 = round(原魂骨战力 × divineMultiplier)
 ```
 
-当前案例倍率 `3` 标记为 `provisional`。`equipmentState: "divine_armor"` 的部件只进入 `divineArmor` 小计，不再进入 `soulBones`。套装奖励由显式套装定义独立加入神装小计；不会在代码里隐藏补差。
+神装部件采用总倍率 `3`：`神装部件战力 = round(原魂骨战力 × 3)`。`equipmentState: "divine_armor"` 的部件只进入 `divineArmor` 小计，不再进入 `soulBones`。套装奖励由显式套装定义独立加入神装小计；不会在代码里隐藏补差。
+
+多神位时，先合并全部神装部件与套装奖励，再按神位数量应用整体效率：
+
+| 神位数量 | 神装合计效率 |
+| ---: | ---: |
+| 1 | 100% |
+| 2 | 80% |
+| 3 | 60% |
+| 4 | 40% |
+
+该效率只作用于合并后的 `divineArmor` 小计；神位、神器等独立模块仍分别计算并叠加。运行时默认从 `Player.deities` 的去重实体引用计数神位数量。
 
 外附魂骨/神装继续作为第七部位。
 
@@ -189,7 +220,7 @@ Math.max(1, Math.round(basePower * bloodlineMultiplier))
 属性 = round(等级战力 × 所有属性系数之和)
 ```
 
-所有百分比模块都只以等级战力为基准，禁止链式复利。
+人类领域和属性按表格使用正向修正：每个领域 `+10%`，属性分别为单属性 `+5%`、极致 `+12%`、法则雏形 `+20%`、完整法则 `+30%`。魂核为 `+50%`；技能和道具以等级战力为基数并可按加法叠加。这些系数先合并再舍入，不允许链式复利。魂核“年限战力”与等级战力的具体取值仍保留为待补充基数问题。
 
 魂核、神位、神器、称号和其他明确来源使用“Player 保存实体引用、规则配置保存贡献公式”的通用接口。基础配置不擅自提供完整实体表；验收案例所需条目只在测试夹具中显式注入，并标记为 `provisional`。
 
@@ -197,7 +228,7 @@ Math.max(1, Math.round(basePower * bloodlineMultiplier))
 
 - JavaScript `Math.round` 逐件计算魂环、魂骨和神装。
 - 武魂品质、领域、属性先合并系数，再舍入小计。
-- 每项小计与总战力均为不小于 0 的自然数。
+- 普通物品小计不小于0；领域、属性、魂核等正向模块产生正向小计；总战力最终不低于0。
 - 非法等级属于无法继续计算的输入错误。
 - 非法魂环/魂骨年限、未知血脉、未知品质、缺失实体定义会产生结构化 warning；对应无效项不参与小计。
 - 配置验证器检查年限区间、枚举倍率、规则版本以及等级锚点。
@@ -206,12 +237,12 @@ Math.max(1, Math.round(basePower * bloodlineMultiplier))
 
 ### 99 级常规极限斗罗
 
-验收夹具显式注入未分配的 `+220 provisional`，得到等级战力 `760`。
+示例等级锚点直接给出等级战力 `760`，不再注入未分配的 `+220 provisional`。
 
 ```text
-魂环：6 + 10 + 16 + 22 + 32 + 32 + 42 + 42 + 60 = 262
+魂环：6 + 12 + 16 + 22 + 32 + 32 + 42 + 42 + 60 = 264
 魂骨：42 + 42 + 42 + 42 + 60 + 42 = 270
-总和：760 + 228 + 228 + 262 + 270 + 152 + 167 = 2067
+总和：760 + 228 + 228 + 264 + 270 + 152 + 167 = 2069
 ```
 
 ### 100 级海神唐三验收锚点
@@ -225,12 +256,12 @@ martialSoulAvatar      315
 soulRings             3520
 divineArmor           3200
 domains                378
-attributes             865
+attributes             895
 soulCore                 0
 deity                 2520
 artifacts              800
 other                  800
-total                14288
+total                14318
 ```
 
 任务书没有提供上述魂环与神装小计唯一对应的逐件履历。测试使用以下最小重建，并整体标记为 `provisional fixture reconstruction`：
@@ -248,7 +279,7 @@ total                14288
 神装总计：3200
 ```
 
-其中 `40 × 200% = 80`。领域夹具系数合计 `0.30`；属性夹具为尚未拆分的聚合系数 `0.6865`；神位、神器和 other 分别使用 `等级战力 × 2`、固定 `800`、固定 `800` 的具名测试规则。完整神位、神器、神装和属性目录仍未建立，这些案例规则不是正式人物履历或平衡表。
+其中 `40 × 200% = 80`。领域夹具系数合计 `0.30`；属性夹具聚合系数为 `0.71`；神位、神器和 other 分别使用 `等级战力 × 2`、固定 `800`、固定 `800` 的具名测试规则。完整神位、神器、神装和属性目录仍未建立，这些案例规则不是正式人物履历或平衡表。
 
 ## 10. 战斗接口边界
 
@@ -260,10 +291,23 @@ total                14288
 → 转盘决定战斗结果
 ```
 
-第一阶段只计算 `staticCombatPower`。有效战力和权重映射留到后续版本。
+计算结果同时保留兼容字段 `total` 和明确字段 `staticCombatPower`；二者当前相等。有效战力和权重映射留到后续版本。`civilian_observer` 路线的 `combatParticipation` 为 `none`，不会进入战斗。
 
 ## 11. UI 决策
 
 当前 Player v1 只有单个字符串 `spirit`，魂环/魂骨也缺少血脉、来源和实体 ID。直接在页面显示一个看似精确的总战力会产生误导，因此本轮不修改现有页面布局。
 
-最小展示接口是 `CombatPowerCalculator.calculate(player, rules)` 的返回值；待 Player v2 能表达计算所需状态后，UI 只渲染该结果，不复制公式。
+最小展示接口是 `CombatPowerCalculator.calculate(player, rules)` 的返回值；UI 应优先展示 `staticCombatPower`、`combatParticipation` 和 breakdown，不复制公式。
+
+## 12. 表格规则目录
+
+`data/rules/combat.json` 是本轮根据 `battle_power_template.xlsx` 与补充示例 `powerv01.docx` 建立的审计目录，包含：
+
+- 人类等级0～10级已确认条目、示例提供的离散等级锚点及未列等级的 unresolved 边界；
+- 魂兽修为战力锚点及分段线性推导、混合血脉修正、属性/领域/魂核/称号规则；
+- 武魂品质、魂环/魂骨年限表、血脉倍率、神级魂环和第10～16魂环规则；
+- 神位、神器、神装套装档位；
+- 0级 `civilian_observer` 非战斗成长路线；
+- 魂核具体基数以及魂兽30000年以上修为范围尚未确定的问题。
+
+目录中的 `confirmed`、`partial`、`provisional`、`unresolved` 状态必须保留，不能因为运行时已有兼容回退就自动升级为正式规则。

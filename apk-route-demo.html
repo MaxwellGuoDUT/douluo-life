@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK Route Demo · 斗罗人生</title>
+    <style>
+        :root {
+            color: #28231e;
+            background: #f0ece5;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+        body { margin: 0; padding: 1rem; }
+        main {
+            width: min(1040px, calc(100% - 2rem));
+            margin: auto;
+            padding: 1.4rem;
+            background: #fffdf8;
+            border: 1px solid #d5cbbd;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgb(76 56 36 / 8%);
+        }
+        h1, h2 { color: #5e3b22; }
+        h1 { margin-top: 0; }
+        .muted { color: #766b60; }
+        .notice {
+            padding: .85rem 1rem;
+            border-left: 5px solid #a9825b;
+            background: #f7f0e6;
+            line-height: 1.65;
+        }
+        .controls, .status { display: grid; gap: .7rem; }
+        .controls { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; }
+        .status { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 1rem; }
+        .field { display: grid; gap: .35rem; }
+        label { font-weight: 700; }
+        input, select, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: .7rem .75rem;
+            border: 1px solid #c8b9a8;
+            border-radius: 7px;
+            font: inherit;
+        }
+        button { cursor: pointer; color: #fff; background: #76502e; border-color: #76502e; font-weight: 700; }
+        button.secondary { color: #76502e; background: #fffaf3; }
+        button:disabled { cursor: not-allowed; opacity: .5; }
+        .card {
+            min-height: 3.1rem;
+            padding: .7rem;
+            border: 1px solid #dfd4c7;
+            border-radius: 8px;
+            background: #fbf7f0;
+            overflow-wrap: anywhere;
+        }
+        .card strong { display: block; margin-bottom: .25rem; color: #766b60; font-size: .8rem; }
+        .event {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid #d8c4ac;
+            border-radius: 10px;
+            background: #fff8eb;
+        }
+        .event-title { font-size: 1.15rem; font-weight: 750; color: #5e3b22; }
+        .event-text { margin-bottom: 0; line-height: 1.65; }
+        pre {
+            max-height: 330px;
+            overflow: auto;
+            padding: .8rem;
+            color: #f6eee4;
+            background: #25211d;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: .78rem;
+        }
+        .error { color: #8b2d25; }
+        .boundary { border-color: #bc7b3c; background: #fff1dd; }
+        .terminal { border-color: #59835b; background: #edf7ec; }
+        .actions { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-top: .8rem; }
+        [hidden] { display: none; }
+        @media (max-width: 760px) {
+            .controls, .status { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            main { width: auto; }
+            .controls, .status, .actions { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<main id="apkRouteDemo" data-status="loading">
+    <h1>APK 正式路线 Demo</h1>
+    <p class="notice">
+        本页只加载 APK route graph，并按 source pack 的明确 flow → pool → option → next 边运行。
+        已接入有原始 handler 证据的动态 action、斗一正式初始武魂的基础 addMartialSoul handler，以及 APK 战力总值驱动的正式特殊成长判定；遇到未登记动态 action/resolver、其他 customHandler 或未解析分支会明确停在边界，不会自行补线。
+    </p>
+
+    <section class="controls" aria-label="路线设置">
+        <div class="field">
+            <label for="packSelect">内容包</label>
+            <select id="packSelect" disabled></select>
+        </div>
+        <div class="field">
+            <label for="seedInput">固定 seed</label>
+            <input id="seedInput" value="apk-route-demo-seed" autocomplete="off">
+        </div>
+        <div class="actions">
+            <button id="startButton" type="button" disabled>加载路线…</button>
+            <button id="stepButton" class="secondary" type="button" disabled>抽取并提交一步</button>
+        </div>
+    </section>
+
+    <section class="status" aria-live="polite">
+        <div class="card"><strong>页面状态</strong><span id="pageStatus">加载中</span></div>
+        <div class="card"><strong>路线状态</strong><span id="routeStatus">-</span></div>
+        <div class="card"><strong>当前 flow</strong><span id="flowValue">-</span></div>
+        <div class="card"><strong>当前 pool</strong><span id="poolValue">-</span></div>
+        <div class="card"><strong>年龄 / 等级</strong><span id="characterValue">-</span></div>
+        <div class="card"><strong>铜灵币</strong><span id="currencyValue">-</span></div>
+        <div class="card"><strong>随机 cursor</strong><span id="cursorValue">-</span></div>
+        <div class="card"><strong>已提交结果</strong><span id="historyValue">-</span></div>
+    </section>
+
+    <section id="eventBox" class="event" aria-live="polite">
+        <div id="eventTitle" class="event-title">等待加载</div>
+        <p id="eventText" class="event-text">正在加载 APK route graph。</p>
+    </section>
+
+    <section id="boundaryBox" class="event boundary" hidden>
+        <div class="event-title">已到达明确兼容边界</div>
+        <p id="boundaryText" class="event-text"></p>
+    </section>
+
+    <section>
+        <h2>当前抽取</h2>
+        <pre id="spinValue">尚未抽取</pre>
+    </section>
+
+    <section>
+        <h2>角色摘要</h2>
+        <pre id="characterJson">尚未开始</pre>
+    </section>
+
+    <section>
+        <h2>路线审计</h2>
+        <pre id="routeJson">尚未开始</pre>
+    </section>
+
+    <section>
+        <h2>错误</h2>
+        <pre id="errorValue" class="error">无</pre>
+    </section>
+</main>
+<script type="module" src="js/apk-route-demo-app.js"></script>
+</body>
+</html>

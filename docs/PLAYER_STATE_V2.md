@@ -52,6 +52,13 @@ Player v2 与现有 `js/player.js` 并行存在。现有 Game、EventManager、E
 }
 ```
 
+0级角色使用独立的 `combatBase.mode = "civilian_observer"` 路线：
+
+- `level = 0`、`soulPowerGrowthLocked = true`；
+- 可以继续作为特供平民旁观故事推进；
+- 不参与静态战力或现场有效战力计算；
+- 不能把0级当作可进入战斗的低战力单位。
+
 Player v2 禁止保存：
 
 ```text

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "apk-canonical-policy/1.0",
+  "packageVersion": "apk-canonical/2026-08-16",
+  "ownerAuthorization": "confirmed",
+  "sourceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
+  "sourceSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+  "availabilityPolicy": "preserve_apk_original_state",
+  "oldProductionPolicy": "archive_only",
+  "runtimePolicy": "typed_adapter_required_for_unmapped_effects_and_requirements",
+  "releaseScopePolicy": "preview_typed_boundary_allowed_complete_route_claim_forbidden",
+  "publicPreviewPackIds": [
+    "douluo1"
+  ],
+  "experimentalUnverifiedPackIds": [
+    "douluo2"
+  ],
+  "routeGraphPackagingPolicy": "compact_pack_shards_lazy_monolith_compatibility_fallback",
+  "pagesSourcePolicy": "stable_source_required_draft_branch_excluded",
+  "domains": [
+    "martial_souls",
+    "soul_beasts",
+    "awakening_probability",
+    "forms_and_quality",
+    "pools",
+    "options",
+    "effects",
+    "requirements",
+    "story_timeline",
+    "endings_and_deaths"
+  ]
+}

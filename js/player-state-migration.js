@@ -257,6 +257,17 @@ export function migratePlayerV1ToV2(playerV1) {
         }
     });
 
+    if (player.level === 0) {
+        player.combatBase.mode = "civilian_observer";
+        player.soulPowerGrowthLocked = true;
+        if (player.innateSoulPower === null) {
+            player.innateSoulPower = 0;
+        }
+        if (player.rank === "未觉醒") {
+            player.rank = "无魂力";
+        }
+    }
+
     const legacyRings = Array.isArray(playerV1.soulRings)
         ? playerV1.soulRings.map((ring, index) => {
             return migrateLegacyRing(ring, index, warnings);

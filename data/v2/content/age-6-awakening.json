@@ -1,149 +1,33 @@
 {
-  "contentVersion": "age-6-awakening/1.0",
+  "contentVersion": "age-6-awakening/2.2",
   "contentStatus": "production",
   "sourceEvidence": [
-    "data/events/spirit.json",
-    "data/entities/martial_souls.json"
+    "data/v2/catalogs/martial-souls.json",
+    "data/v2/config/awakening-probabilities.json"
   ],
+  "runtimeDependencies": {
+    "catalogId": "martial-souls",
+    "catalogVersion": "martial-souls/1.1",
+    "probabilityVersion": "awakening-probabilities/1.2",
+    "materializerId": "martial-soul/1.0"
+  },
   "annualFlowRegistry": {
     "schemaVersion": "annual-flow-registry/1.0",
     "entries": [
       {
         "age": 6,
-        "flowId": "flow_age_6_martial_soul_awakening",
+        "flowId": "flow_age_6_production_martial_soul_awakening",
         "reviewStatus": "confirmed"
       }
     ]
   },
-  "wheels": [
-    {
-      "schemaVersion": "event-schema/2.0-draft",
-      "kind": "wheel",
-      "id": "wheel_age_6_martial_soul_awakening",
-      "title": "6 岁武魂觉醒",
-      "role": "result",
-      "resolution": "random_weighted",
-      "canonLevel": "canon",
-      "reviewStatus": "confirmed",
-      "enabled": true,
-      "trigger": {
-        "age": {
-          "eq": 6
-        }
-      },
-      "items": [
-        {
-          "id": "awaken_blue_silver_grass",
-          "text": "六岁的你来到武魂殿。光芒散去，一株蓝银草在掌心轻轻摇曳。",
-          "weight": 60,
-          "canonLevel": "canon",
-          "reviewStatus": "confirmed",
-          "enabled": true,
-          "trigger": {},
-          "effects": {
-            "martialSouls": {
-              "add": {
-                "instanceId": "martial_soul_age_6_slot_1",
-                "definitionId": "blue_silver_grass",
-                "evolutionFamilyId": null,
-                "legacyName": "蓝银草",
-                "slot": 1,
-                "awakenedAge": 6,
-                "status": "active",
-                "sealed": false,
-                "soulRings": [],
-                "mutations": [],
-                "evolutionHistory": [],
-                "flags": {},
-                "routeHooksActivated": []
-              }
-            },
-            "activeMartialSoulInstanceId": {
-              "set": "martial_soul_age_6_slot_1"
-            },
-            "rank": {
-              "set": "魂士"
-            }
-          }
-        },
-        {
-          "id": "awaken_soft_bone_rabbit",
-          "text": "觉醒阵中浮现出轻盈的虚影，你感到身体变得更加灵活。",
-          "weight": 30,
-          "canonLevel": "canon",
-          "reviewStatus": "confirmed",
-          "enabled": true,
-          "trigger": {},
-          "effects": {
-            "martialSouls": {
-              "add": {
-                "instanceId": "martial_soul_age_6_slot_1",
-                "definitionId": "soft_bone_rabbit",
-                "evolutionFamilyId": null,
-                "legacyName": "柔骨兔",
-                "slot": 1,
-                "awakenedAge": 6,
-                "status": "active",
-                "sealed": false,
-                "soulRings": [],
-                "mutations": [],
-                "evolutionHistory": [],
-                "flags": {},
-                "routeHooksActivated": []
-              }
-            },
-            "activeMartialSoulInstanceId": {
-              "set": "martial_soul_age_6_slot_1"
-            },
-            "rank": {
-              "set": "魂士"
-            }
-          }
-        },
-        {
-          "id": "awaken_clear_sky_hammer",
-          "text": "沉重的锤影在你手中凝聚，觉醒台周围的人群忽然安静下来。",
-          "weight": 10,
-          "canonLevel": "canon",
-          "reviewStatus": "confirmed",
-          "enabled": true,
-          "trigger": {},
-          "effects": {
-            "martialSouls": {
-              "add": {
-                "instanceId": "martial_soul_age_6_slot_1",
-                "definitionId": "clear_sky_hammer",
-                "evolutionFamilyId": "hammer_clear_sky_family",
-                "legacyName": "昊天锤",
-                "slot": 1,
-                "awakenedAge": 6,
-                "status": "active",
-                "sealed": false,
-                "soulRings": [],
-                "mutations": [],
-                "evolutionHistory": [],
-                "flags": {},
-                "routeHooksActivated": []
-              }
-            },
-            "activeMartialSoulInstanceId": {
-              "set": "martial_soul_age_6_slot_1"
-            },
-            "rank": {
-              "set": "魂士"
-            },
-            "level": 2
-          }
-        }
-      ]
-    }
-  ],
+  "wheels": [],
   "flows": [
     {
       "schemaVersion": "event-schema/2.0-draft",
       "kind": "flow",
-      "id": "flow_age_6_martial_soul_awakening",
-      "title": "6 岁武魂觉醒年度流程",
+      "id": "flow_age_6_production_martial_soul_awakening",
+      "title": "6 岁 production 正式武魂觉醒年度流程",
       "canonLevel": "canon",
       "reviewStatus": "confirmed",
       "trigger": {
@@ -151,22 +35,97 @@
           "eq": 6
         }
       },
-      "entryNodeId": "roll_martial_soul_awakening",
+      "entryNodeId": "roll_innate_soul_power",
       "sessionLimits": {
-        "maxSpins": 1,
+        "maxSpins": 11,
         "status": "confirmed"
       },
       "nodes": [
         {
-          "id": "roll_martial_soul_awakening",
+          "id": "roll_innate_soul_power",
           "op": "roll",
-          "wheelId": "wheel_age_6_martial_soul_awakening",
+          "probabilitySource": "innateSoulPowerRoll",
+          "saveAs": "innateSoulPowerResult",
+          "next": {
+            "advance": "same_year",
+            "target": {
+              "kind": "flow_node",
+              "flowId": "flow_age_6_production_martial_soul_awakening",
+              "nodeId": "dispatch_martial_soul_count"
+            }
+          }
+        },
+        {
+          "id": "dispatch_martial_soul_count",
+          "op": "dispatchWheel",
+          "source": "innateSoulPowerResult.innateSoulPower",
+          "probabilitySource": "martialSoulCountRolls.byInnateSoulPower",
+          "saveAs": "martialSoulCount",
+          "next": {
+            "advance": "same_year",
+            "target": {
+              "kind": "flow_node",
+              "flowId": "flow_age_6_production_martial_soul_awakening",
+              "nodeId": "gate_valid_martial_soul_count"
+            }
+          }
+        },
+        {
+          "id": "gate_valid_martial_soul_count",
+          "op": "gate",
+          "source": "martialSoulCount",
+          "nextByValue": {
+            "1": {
+              "advance": "same_year",
+              "target": {
+                "kind": "flow_node",
+                "flowId": "flow_age_6_production_martial_soul_awakening",
+                "nodeId": "repeat_martial_soul_slots"
+              }
+            },
+            "2": {
+              "advance": "same_year",
+              "target": {
+                "kind": "flow_node",
+                "flowId": "flow_age_6_production_martial_soul_awakening",
+                "nodeId": "repeat_martial_soul_slots"
+              }
+            },
+            "3": {
+              "advance": "same_year",
+              "target": {
+                "kind": "flow_node",
+                "flowId": "flow_age_6_production_martial_soul_awakening",
+                "nodeId": "repeat_martial_soul_slots"
+              }
+            },
+            "4": {
+              "advance": "same_year",
+              "target": {
+                "kind": "flow_node",
+                "flowId": "flow_age_6_production_martial_soul_awakening",
+                "nodeId": "repeat_martial_soul_slots"
+              }
+            }
+          }
+        },
+        {
+          "id": "repeat_martial_soul_slots",
+          "op": "repeatWheel",
+          "countFrom": "martialSoulCount",
+          "pipeline": {
+            "innateSoulPowerFrom": "innateSoulPowerResult",
+            "qualityProbabilitySource": "qualityRolls.byInnateSoulPower",
+            "formProbabilitySource": "formRoll",
+            "catalogId": "martial-souls",
+            "materializerId": "martial-soul/1.0"
+          },
           "next": {
             "advance": "next_year",
             "target": {
               "kind": "route_node",
-              "routeId": "route_age_6_martial_soul_awakening",
-              "nodeId": "roll_martial_soul_awakening"
+              "routeId": "route_age_6_production_martial_soul_awakening",
+              "nodeId": "repeat_martial_soul_slots"
             }
           }
         }
@@ -177,8 +136,8 @@
     {
       "schemaVersion": "event-schema/2.0-draft",
       "kind": "route",
-      "id": "route_age_6_martial_soul_awakening",
-      "title": "6 岁武魂觉醒年度入口",
+      "id": "route_age_6_production_martial_soul_awakening",
+      "title": "6 岁 production 正式武魂觉醒年度入口",
       "lane": "temporary",
       "canonLevel": "canon",
       "reviewStatus": "confirmed",
@@ -188,8 +147,8 @@
         }
       },
       "entry": {
-        "flowId": "flow_age_6_martial_soul_awakening",
-        "nodeId": "roll_martial_soul_awakening"
+        "flowId": "flow_age_6_production_martial_soul_awakening",
+        "nodeId": "roll_innate_soul_power"
       },
       "mutexGroups": [],
       "conflictPolicy": "block"

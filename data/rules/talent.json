@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "talent-rule-catalog/1.0",
+  "catalogVersion": "talent-rule-catalog/2026-08-12",
+  "status": "provisional",
+  "source": {
+    "kind": "user_provided_docx",
+    "file": "talent.docx",
+    "structuredTextRead": true,
+    "visualLayoutVerified": false
+  },
+  "interpretationPolicy": [
+    "天赋等级与战力系统独立，不把F/E/D/C/B/A/S/god-level直接当作战力系数。",
+    "用户已确认的规则标记为confirmed；等概率成长和身份等权仍标记为provisional。",
+    "特殊天赋池、机会池、遭遇型成长池和90级后的魂核成长池分别维护，空池不自动补写内容。"
+  ],
+  "innateSoulPowerToTalentGrade": [
+    { "innateSoulPower": 0, "talentGrade": "F", "levelCap": 0, "status": "confirmed" },
+    { "innateSoulPower": 1, "talentGrade": "E", "status": "confirmed" },
+    { "innateSoulPower": 2, "talentGrade": "D", "status": "confirmed" },
+    { "innateSoulPower": 3, "talentGrade": "D", "status": "confirmed" },
+    { "innateSoulPower": 4, "talentGrade": "C", "status": "confirmed" },
+    { "innateSoulPower": 5, "talentGrade": "C", "status": "confirmed" },
+    { "innateSoulPower": 6, "talentGrade": "B", "status": "confirmed" },
+    { "innateSoulPower": 7, "talentGrade": "B", "status": "confirmed" },
+    { "innateSoulPower": 8, "talentGrade": "A", "status": "confirmed" },
+    { "innateSoulPower": 9, "talentGrade": "A", "status": "confirmed" },
+    { "innateSoulPower": 10, "talentGrade": "S", "status": "confirmed" },
+    { "innateSoulPower": 20, "talentGrade": "god-level", "status": "confirmed" }
+  ],
+  "ordinaryGrowthPools": {
+    "status": "provisional",
+    "probabilityMode": "equal",
+    "currentLevelMin": 1,
+    "currentLevelMax": 90,
+    "level90Boundary": "90级仍属于81-90级魂斗罗大等级；91级起魂核成长池空置",
+      "deltasByTalentGrade": {
+        "E": [-5, -2, -1, 0, 1, 2],
+        "D": [-2, -1, 0, 1, 2, 3],
+        "C": [-1, 0, 1, 2, 3, 4],
+        "B": [0, 1, 2, 3, 4, 5],
+        "A": [1, 2, 3, 4, 5, 6],
+        "S": [2, 3, 4, 5, 6, 7],
+        "god-level": [3, 4, 5, 6, 7, 8]
+      },
+      "narrativesByTalentGrade": {
+        "E": [
+          "等级-5，心魔反噬，你的实力受到了重创，可降到当前大等级的最低级",
+          "等级-2，心魔经常在纠缠你，你的修为不进反退，可降到当前大等级的最低级",
+          "等级-1，你陷入了走火入魔，修为倒退1级，可降到当前大等级的最低级",
+          "等级+0，1修炼对你来说毫无意义，你的天赋已经决定了你的命运",
+          "等级+1，你陷入了顿悟，突破了眼前的瓶颈",
+          "等级+2，你不服命运的安排，你要向世人证明E级天赋也能成为强者"
+        ],
+        "D": [
+          "等级-2，心魔经常在纠缠你，你的修为不进反退，可降到当前大等级的最低级",
+          "等级-1，你陷入了走火入魔，修为倒退1级，可降到当前大等级的最低级",
+          "等级+0，你的天赋在拖后腿，这一年你没有任何提升",
+          "等级+1，这已经是你拼尽全力才能做到的地步了",
+          "等级+2，成长迅速，一年提升2级可是C级天赋才有的成长速度",
+          "等级+3，这一年你陷入了顿悟"
+        ],
+        "C": [
+          "等级-1，你陷入了走火入腐，修为倒退1级，可降到当前大等级的最低级",
+          "等级+0，虽然你的天赋平平无奇，但一年没有任何提升只能说明你不够努力",
+          "等级+1，提升缓慢，但总比被卡瓶颈好。",
+          "等级+2，稳步提升，根基扎实",
+          "等级+3，成长迅速，一年提升3级可是B级天赋才有的成长速度",
+          "等级+4，这一年你陷入了顿悟"
+        ],
+        "B": [
+          "等级+0，你玩了一整年，没有进行修炼",
+          "等级+1，这不符合你的修炼速度，你在偷懒",
+          "等级+2，以你的天赋本可以修炼的更快一点，可惜你还不够努力。",
+          "等级+3，稳步提升，根基扎实，这才是你该有修炼速度",
+          "等级+4，成长迅速，一年提升4级可是A级天赋才有的成长速度",
+          "等级+5，这一年你陷入了顿悟。"
+        ],
+        "A": [
+          "等级+1，即使你摆烂了一整年，以你的天赋依旧还是提升了1级",
+          "等级+2，吃喝玩乐一整年，你就偶尔抽时间修炼修炼",
+          "等级+3，你对修炼比较厌倦，像是上课完成作业一样，并没有全身心的投入进去",
+          "等级+4，心无旁骛，你专注于修炼，得到了符合你这个天才名头的提升",
+          "等级+5，有所领悟，成长迅速，一年提升5级可是s级天赋才有的成长速度",
+          "等级+6，这一年你陷入了顿悟"
+        ],
+        "S": [
+          "等级+2，这一年你就随便玩玩，便得到了其他人拼命一整年都没有的提升。",
+          "等级+3，你一个月最多抽半天稍微修炼一下，但即使如此，你的提升依旧是他人望其项背的。",
+          "等级+4，即使你这一年并不算很努力，但架不住老天喂饭吃",
+          "等级+5，何为s级天赋，s级天赋就是只要你肯修炼，就能做到这一步",
+          "等级+6，有所领悟，成长迅速，一年提升6级可是神级天赋才有的成长速度",
+          "等级+7，这一年你陷入了顿悟。"
+        ],
+        "god-level": [
+          "等级+3，只是呼吸，便提升了3级",
+          "等级+4，修炼毫无意义，实力的提升对你来说，就只是一部分力量的回归。",
+          "等级+5，你梦见了前世的自己，你与他下了一盘棋，梦醒之后你便提升了5级",
+          "等级+6，天道不会回应你，但你的神力会",
+          "等级+7，你本就是神界的一员，任何瓶颈对你来说都是纸片，老伙伴们在神界等你的归来",
+          "等级+8，力量、归宿、理想，你做到了前世也无法得到的提升，你已经超越了他!\""
+        ]
+      }
+  },
+  "levelDecreaseBoundary": {
+    "globalMinimum": 1,
+    "majorLevelWidth": 10,
+    "minimumFormula": "floor((currentLevel - 1) / 10) * 10 + 1",
+    "examples": [
+      { "currentLevel": 21, "delta": -5, "nextLevel": 21 },
+      { "currentLevel": 31, "delta": -5, "nextLevel": 31 },
+      { "currentLevel": 41, "delta": -5, "nextLevel": 41 },
+      { "currentLevel": 20, "belongsToPreviousMajorLevel": true },
+      { "currentLevel": 30, "belongsToPreviousMajorLevel": true }
+    ],
+    "status": "confirmed"
+  },
+  "birthIdentities": {
+    "selectionMode": "equal_weight_among_eligible_entries",
+    "status": "provisional",
+    "entries": [
+      { "id": "rural_commoner", "name": "乡下平民", "narrative": "乡下的平民(先天魂力-1级，最低可降至0级，但可以避免任何走火入魔与心魔入侵的等级惩罚)" },
+      { "id": "soul_master_child", "name": "魂师的孩子", "narrative": "魂师的孩子(先天魂力+1级，最高可达到10级，但无法抽取极致武魂池)" },
+      { "id": "royal_knight_commander_child", "name": "皇家骑士团团长的孩子", "narrative": "皇家骑士团团长的孩子(成长+1，每次时间跳跃可额外获得等级+1，但无法抽取特殊天赋池)" },
+      { "id": "noble_child", "name": "贵族子女", "narrative": "贵族的子女(每年可额外获得100铜魂币)" },
+      { "id": "imperial", "name": "皇室", "narrative": "皇室(必定持有特殊天赋，可直接前往特殊天赋池进行抽取，无需抽取是否拥有特殊天赋池)" },
+      { "id": "nothing_owned", "name": "一无所有的人", "narrative": "一无所有之人(先天魂力必定为5级)" },
+      { "id": "sect_child", "name": "宗门子女", "narrative": "宗门子弟(12岁前不会遇到遭遇类的特殊成长)" },
+      { "id": "divine_child", "name": "神之子", "narrative": "神之子(必定先天满魂力，武魂只能抽取极致武魂池)" },
+      { "id": "divine_reincarnated", "name": "神明转世", "narrative": "神明转世(必定先天20级魂力，武魂只能抽取极致武魂池，特殊天赋固定为【神明转世】，无法抽取其他特殊天赋)" },
+      { "id": "reincarnator", "name": "重生者", "narrative": "重生者(常规状态不可选，只有【第二世】状态可选，继承前世的身份特性和天赋以及获得的【属性】、【领域】、【技能】)" },
+      { "id": "traverser", "name": "穿越者", "narrative": "穿越者(不能抽取特殊天赋池，必定拥有双生武魂)" },
+      { "id": "luck_child", "name": "气运之子", "narrative": "气运之子(每次经过时间跳跃，都可额外抽取一次机遇抽取池)" }
+    ]
+  },
+  "separatePools": {
+    "specialTalents": { "status": "unresolved", "entries": [] },
+    "opportunity": { "status": "unresolved", "entries": [] },
+    "encounterGrowth": { "status": "unresolved", "entries": [] },
+    "soulCoreGrowth": { "status": "unresolved", "entries": [] }
+  },
+  "openQuestions": [
+    {
+      "id": "special_pool_contents",
+      "status": "unresolved",
+      "question": "特殊天赋池、机会池和遭遇型成长池的具体条目与权重尚未提供。"
+    },
+    {
+      "id": "soul_core_growth_pool",
+      "status": "unresolved",
+      "question": "91级起魂核成长池保持空置，不在本版本设计。"
+    }
+  ]
+}

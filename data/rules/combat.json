@@ -1,0 +1,339 @@
+{
+  "schemaVersion": "combat-rule-catalog/1.0",
+  "catalogVersion": "combat-rule-catalog/2026-08-12",
+  "status": "provisional",
+  "source": {
+    "kind": "user_provided_workbook",
+    "file": "battle_power_template.xlsx",
+    "sheet": "战力模板",
+    "range": "A1:N21",
+    "formulasPresent": false,
+    "importedOn": "2026-08-12",
+    "supplementalSources": [
+      {
+        "kind": "user_provided_docx",
+        "file": "powerv01.docx",
+        "role": "human_level_examples_and_corrected_acceptance_arithmetic"
+      }
+    ]
+  },
+  "interpretationPolicy": [
+    "表格明确写出的数值进入 confirmed 规则；表格未覆盖的范围保持 unresolved 或 provisional。",
+    "0级旁观路线是故事成长路线，不是可参与战斗的低战力角色。",
+    "静态战力与现场有效战力分离；本目录只定义静态战力来源。"
+  ],
+  "progressionRoutes": {
+    "combatant": {
+      "id": "combatant",
+      "combatBaseMode": "level",
+      "combatParticipation": "static_and_effective",
+      "status": "confirmed"
+    },
+    "civilian_observer": {
+      "id": "civilian_observer",
+      "combatBaseMode": "civilian_observer",
+      "startingLevel": 0,
+      "combatParticipation": "none",
+      "staticCombatPower": 0,
+      "storyRole": "特供平民旁观路线，继续经历故事但不进入战斗计算",
+      "status": "confirmed"
+    }
+  },
+  "baseModes": {
+    "level": {
+      "mode": "level",
+      "basis": "human.level",
+      "status": "partial",
+      "confirmedThroughLevel": 10,
+      "powerEntries": [
+        { "level": 0, "power": 0, "status": "confirmed", "reason": "0级旁观路线不参与战斗" },
+        { "level": 1, "power": 1, "status": "confirmed" },
+        { "level": 2, "power": 2, "status": "confirmed" },
+        { "level": 3, "power": 3, "status": "confirmed" },
+        { "level": 4, "power": 4, "status": "confirmed" },
+        { "level": 5, "power": 5, "status": "confirmed" },
+        { "level": 6, "power": 6, "status": "confirmed" },
+        { "level": 7, "power": 7, "status": "confirmed" },
+        { "level": 8, "power": 8, "status": "confirmed" },
+        { "level": 9, "power": 9, "status": "confirmed" },
+        { "level": 10, "power": 10, "status": "confirmed" },
+        { "level": 11, "power": 12, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 21, "power": 33, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 29, "power": 57, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 31, "power": 61, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 41, "power": 105, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 51, "power": 156, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 61, "power": 217, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 71, "power": 288, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 81, "power": 370, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 91, "power": 480, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 96, "power": 610, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 98, "power": 710, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 99, "power": 760, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" },
+        { "level": 100, "power": 1260, "valueMode": "final", "status": "confirmed", "source": "powerv01.docx" }
+      ],
+      "aboveLevel10": {
+        "status": "unresolved",
+        "reason": "工作簿确认1～10级，powerv01.docx补充了选定等级锚点；未列出的等级不得从模板空白处推导。"
+      }
+    },
+    "soul_beast_cultivation": {
+      "mode": "soul_beast_cultivation",
+      "basis": "soulBeast.cultivationYears",
+      "status": "partial",
+      "powerEntries": [
+        { "years": 10, "power": 2, "status": "confirmed" },
+        { "years": 20, "power": 4, "status": "confirmed" },
+        { "years": 30, "power": 6, "status": "confirmed" },
+        { "years": 40, "power": 8, "status": "confirmed" },
+        { "years": 50, "power": 10, "status": "confirmed" },
+        { "years": 60, "power": 12, "status": "confirmed" },
+        { "years": 70, "power": 14, "status": "confirmed" },
+        { "years": 80, "power": 16, "status": "confirmed" },
+        { "years": 90, "power": 18, "status": "confirmed" },
+        { "years": 100, "power": 30, "status": "confirmed" },
+        { "years": 200, "power": 35, "status": "confirmed" },
+        { "years": 300, "power": 40, "status": "confirmed" },
+        { "years": 400, "power": 45, "status": "confirmed" },
+        { "years": 500, "power": 50, "status": "confirmed" },
+        { "years": 600, "power": 55, "status": "confirmed" },
+        { "years": 700, "power": 60, "status": "confirmed" },
+        { "years": 800, "power": 65, "status": "confirmed" },
+        { "years": 900, "power": 70, "status": "confirmed" },
+        { "years": 1000, "power": 100, "status": "confirmed" },
+        { "years": 2000, "power": 115, "status": "confirmed" },
+        { "years": 3000, "power": 130, "status": "confirmed" },
+        { "years": 4000, "power": 145, "status": "confirmed" },
+        { "years": 5000, "power": 160, "status": "confirmed" },
+        { "years": 6000, "power": 175, "status": "confirmed" },
+        { "years": 7000, "power": 190, "status": "confirmed" },
+        { "years": 8000, "power": 205, "status": "confirmed" },
+        { "years": 9000, "power": 220, "status": "confirmed" },
+        { "years": 10000, "power": 300, "status": "confirmed" },
+        { "years": 20000, "power": 350, "status": "confirmed" },
+        { "years": 30000, "power": 400, "status": "confirmed" }
+      ],
+      "derivedFormula": {
+        "mode": "piecewise_linear_between_anchors",
+        "input": "soulBeast.cultivationYears",
+        "output": "cultivationPower",
+        "anchorSource": "powerEntries",
+        "rounding": "math_round",
+        "coverage": {
+          "minYears": 10,
+          "maxYears": 30000
+        },
+        "beyondCoverageStatus": "unresolved",
+        "status": "confirmed",
+        "reason": "按表格离散锚点逐段推导，锚点之间使用线性公式并保持所有锚点精确命中。"
+      },
+      "unlistedYears": {
+        "status": "confirmed_by_derived_formula",
+        "reason": "未列年限使用derivedFormula在相邻已确认锚点之间推导；30000年以上仍未覆盖。"
+      }
+    },
+    "hybrid": {
+      "mode": "hybrid",
+      "status": "partial",
+      "firstSevenSoulRingsBloodlineSource": "original_body_bloodline",
+      "firstSevenSoulRingsBloodlineSourceStatus": "confirmed",
+      "runtimeStatus": "not_implemented"
+    }
+  },
+  "human": {
+    "martialSoulQuality": {
+      "basis": "levelPower",
+      "stacking": "sum_with_cap_1",
+      "coefficients": {
+        "low": 0,
+        "ordinary": 0.1,
+        "top": 0.25,
+        "extreme": 0.3
+      },
+      "status": "confirmed"
+    },
+    "martialSoulAvatar": {
+      "status": "unresolved",
+      "reason": "工作簿只列出武魂真身总战力栏，没有给出独立的等级、品质或激活规则。"
+    },
+    "domains": {
+      "basis": "levelPower",
+      "perDomainCoefficient": 0.1,
+      "stacking": "sum",
+      "status": "confirmed"
+    },
+    "attributes": {
+      "basis": "levelPower",
+      "coefficients": {
+        "single": 0.05,
+        "extreme": 0.12,
+        "law_prototype": 0.2,
+        "complete_law": 0.3
+      },
+      "stacking": "sum",
+      "status": "confirmed"
+    },
+    "soulCore": {
+      "perCoreCoefficient": 0.5,
+      "basis": "unresolved",
+      "basisNote": "人类栏仍写作年限战力，未明确是否应改为等级战力。",
+      "status": "partial"
+    },
+    "skills": {
+      "divineSkillCoefficient": 1,
+      "otherSelfCreatedSkillMaximumCoefficient": 0.1,
+      "basis": "levelPower",
+      "stacking": "sum",
+      "status": "confirmed"
+    },
+    "items": {
+      "defaultCoefficient": 0.1,
+      "basis": "levelPower",
+      "stacking": "sum",
+      "status": "confirmed"
+    },
+    "deityTiers": {
+      "god_king": 1000,
+      "first_class": 800,
+      "second_class": 500,
+      "third_class": 300,
+      "status": "confirmed"
+    },
+    "artifactTiers": {
+      "god_king": 1000,
+      "first_class": 800,
+      "second_class": 500,
+      "third_class": 300,
+      "status": "confirmed"
+    },
+    "divineArmorSetTiers": {
+      "god_king": 1000,
+      "first_class": 800,
+      "second_class": 500,
+      "third_class": 300,
+      "status": "confirmed"
+    },
+    "divineArmor": {
+      "componentMultiplier": 3,
+      "multiPositionEfficiency": {
+        "one": 1,
+        "two": 0.8,
+        "three": 0.6,
+        "four": 0.4
+      },
+      "efficiencyBasis": "merged_divine_armor_total",
+      "status": "confirmed"
+    }
+  },
+  "soulBeast": {
+    "bloodlineCoefficients": {
+      "supreme": 1,
+      "pure_dragon": 0.5,
+      "sub_dragon": 0.2,
+      "top_or_earth_dragon": 0.1,
+      "ordinary": 0,
+      "low": -0.5
+    },
+    "bloodlineCoefficientBasis": "cultivationPower",
+    "bloodlineCoefficientStatus": "confirmed",
+    "attributes": {
+      "single": 0.05,
+      "extreme": 0.12,
+      "law_prototype": 0.2,
+      "complete_law": 0.3
+    },
+    "domainCoefficient": 0.1,
+    "soulCoreCoefficient": 0.5,
+    "deityTiers": {
+      "god_king": 1000,
+      "first_class": 800,
+      "second_class": 500,
+      "third_class": 300
+    },
+    "artifactTiers": {
+      "god_king": 1000,
+      "first_class": 800,
+      "second_class": 500,
+      "third_class": 300
+    },
+    "skills": {
+      "divineSkillCoefficient": 1,
+      "otherSelfCreatedSkillMaximumCoefficient": 0.1
+    },
+    "titleCoefficients": {
+      "marquis": 0.05,
+      "king": 0.1,
+      "emperor": 0.15,
+      "di": 0.2,
+      "overlord": 0.3,
+      "beast_king": 0.3,
+      "dragon_king": 0.3
+    },
+    "titleBasis": "cultivationPower",
+    "status": "partial"
+  },
+  "soulItems": {
+    "minimumLegalYears": 10,
+    "ageBrackets": [
+      { "minYears": 10, "maxYears": 99, "basePower": 1 },
+      { "minYears": 100, "maxYears": 499, "basePower": 3 },
+      { "minYears": 500, "maxYears": 999, "basePower": 6 },
+      { "minYears": 1000, "maxYears": 4999, "basePower": 8 },
+      { "minYears": 5000, "maxYears": 9999, "basePower": 11 },
+      { "minYears": 10000, "maxYears": 49999, "basePower": 16 },
+      { "minYears": 50000, "maxYears": 99999, "basePower": 21 },
+      { "minYears": 100000, "maxYears": 199999, "basePower": 30 },
+      { "minYears": 200000, "maxYears": 299999, "basePower": 40 },
+      { "minYears": 300000, "maxYears": 399999, "basePower": 50 },
+      { "minYears": 400000, "maxYears": 499999, "basePower": 60 },
+      { "minYears": 500000, "maxYears": 599999, "basePower": 70 },
+      { "minYears": 600000, "maxYears": 699999, "basePower": 80 },
+      { "minYears": 700000, "maxYears": 799999, "basePower": 90 },
+      { "minYears": 800000, "maxYears": 899999, "basePower": 100 },
+      { "minYears": 900000, "maxYears": 999999, "basePower": 110 }
+    ],
+    "qualityMultipliers": {
+      "low": 0.1,
+      "ordinary": 1,
+      "top": 2,
+      "earth_dragon": 2,
+      "sub_dragon": 2,
+      "pure_dragon": 3,
+      "god_bestowed": 2
+    },
+    "bloodlineDistribution": {
+      "field": "soulBeastBloodlineDistribution",
+      "gradeField": "grade",
+      "percentageField": "percentage",
+      "requiredTotalPercentage": 100,
+      "mode": "weighted_sum",
+      "status": "confirmed"
+    },
+    "divineGold": {
+      "fixedPower": 1000,
+      "ignoreQuality": true,
+      "status": "confirmed"
+    },
+    "humanSoulRingSlots10To16": {
+      "fixedPower": 1000,
+      "status": "confirmed"
+    },
+    "divineArmorComponent": {
+      "additionalPercent": 3,
+      "wording": "魂骨公式后面加上+300%",
+      "runtimeInterpretation": "total_multiplier_3x",
+      "status": "confirmed"
+    },
+    "transformedBeastFirstSevenRings": {
+      "qualitySource": "original_body_bloodline",
+      "status": "confirmed"
+    }
+  },
+  "openQuestions": [
+    {
+      "id": "soul_core_basis",
+      "status": "unresolved",
+      "question": "魂核条目的“年限战力”在不同模式下具体取哪一个基数？"
+    }
+  ]
+}

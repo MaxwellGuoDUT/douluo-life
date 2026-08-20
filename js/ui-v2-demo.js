@@ -1,27 +1,52 @@
 import { getPrimaryMartialSoulName } from "./player-selectors.js";
 
 const stringify = value => JSON.stringify(value, null, 2);
+const FORM_LABELS = Object.freeze({
+    tool: "器",
+    beast: "兽",
+    plant: "植物",
+    food: "食物",
+    body: "本体"
+});
+const QUALITY_LABELS = Object.freeze({
+    low: "低等",
+    ordinary: "普通",
+    top: "顶级",
+    extreme: "极致"
+});
+
+function percentage(value) {
+    return `${Math.round(value * 100)}%`;
+}
 
 export class V2DemoUI {
     constructor(documentRef = document) {
+        this.document = documentRef;
         this.root = documentRef.getElementById("v2Playtest");
         this.button = documentRef.getElementById("advanceV2Btn");
         this.boundarySection = documentRef.getElementById("boundarySection");
+        this.martialSoulList = documentRef.getElementById("martialSoulList");
         this.fields = Object.fromEntries([
             ["pageStatus", "pageStatusValue"],
             ["scene", "sceneValue"],
             ["age", "ageValue"],
+            ["innateSoulPower", "innateSoulPowerValue"],
+            ["talentGrade", "talentGradeValue"],
             ["level", "levelValue"],
+            ["growthLock", "growthLockValue"],
+            ["martialSoulCount", "martialSoulCountValue"],
             ["martialSoul", "martialSoulValue"],
             ["flow", "flowValue"],
-            ["item", "itemValue"],
-            ["itemText", "itemTextValue"],
             ["spinCount", "spinCountValue"],
             ["spinHistoryCount", "spinHistoryCountValue"],
             ["historyCount", "historyCountValue"],
             ["combatPower", "combatPowerValue"],
+            ["combatBreakdown", "combatBreakdownValue"],
             ["rulesVersion", "rulesVersionValue"],
+            ["catalogVersion", "catalogVersionValue"],
+            ["probabilityVersion", "probabilityVersionValue"],
             ["annualRecord", "annualRecordValue"],
+            ["spins", "spinsValue"],
             ["boundary", "boundaryValue"],
             ["warnings", "warningsValue"],
             ["error", "errorValue"]
@@ -39,33 +64,80 @@ export class V2DemoUI {
     }
 
     renderPlayer(player) {
+        const awakened = player.innateSoulPower !== null;
         this.fields.age.textContent = `${player.age} 岁`;
-        this.fields.level.textContent = `${player.level} / ${player.rank}`;
-        this.fields.martialSoul.textContent = getPrimaryMartialSoulName(player) || "未觉醒";
+        this.fields.innateSoulPower.textContent = awakened
+            ? `${player.innateSoulPower} 级`
+            : "未觉醒";
+        this.fields.talentGrade.textContent = player.talentGrade ?? "未觉醒";
+        this.fields.level.textContent = awakened
+            ? `${player.level} / ${player.rank}`
+            : "未觉醒";
+        this.fields.growthLock.textContent = awakened
+            ? (player.soulPowerGrowthLocked ? "已锁定" : "未锁定")
+            : "未觉醒";
+        this.fields.martialSoulCount.textContent = awakened
+            ? String(player.martialSouls.length)
+            : "未觉醒";
+        this.fields.martialSoul.textContent = getPrimaryMartialSoulName(player)
+            || "未觉醒";
         this.fields.spinHistoryCount.textContent = String(player.spinHistory.length);
         this.fields.historyCount.textContent = String(player.history.length);
     }
 
+    renderMartialSouls(results = []) {
+        this.martialSoulList.replaceChildren();
+        if (results.length === 0) {
+            const empty = this.document.createElement("li");
+            empty.textContent = "尚未觉醒";
+            this.martialSoulList.append(empty);
+            return;
+        }
+
+        results.forEach(result => {
+            const item = this.document.createElement("li");
+            item.dataset.definitionId = result.definitionId;
+            const title = this.document.createElement("strong");
+            title.textContent = `槽位 ${result.slot} · ${result.name}`;
+            const details = this.document.createElement("span");
+            const attributes = result.attributes.length
+                ? result.attributes.join(" / ")
+                : "暂无已确认属性";
+            details.textContent = [
+                `${FORM_LABELS[result.form]}形态`,
+                `${QUALITY_LABELS[result.qualityGrade]}品质`,
+                `属性：${attributes}`,
+                `definitionId：${result.definitionId}`,
+                `品质战力加成：${percentage(result.qualityCombatCoefficient)}`
+            ].join(" · ");
+            item.append(title, details);
+            this.martialSoulList.append(item);
+        });
+    }
+
     renderInitial(state) {
         this.renderPlayer(state.player);
-        this.fields.scene.textContent = "6 岁武魂觉醒 production playtest";
+        this.renderMartialSouls();
+        this.fields.scene.textContent = "6 岁正式武魂觉醒 production playtest";
         this.fields.flow.textContent = state.currentFlowId;
-        this.fields.item.textContent = "-";
-        this.fields.itemText.textContent = "尚未执行";
         this.fields.spinCount.textContent = "0";
         this.fields.combatPower.textContent = "尚未计算";
+        this.fields.combatBreakdown.textContent = "尚未计算";
         this.fields.rulesVersion.textContent = "-";
+        this.fields.catalogVersion.textContent = state.catalogVersion;
+        this.fields.probabilityVersion.textContent = state.probabilityVersion;
         this.fields.annualRecord.textContent = "尚无年度记录";
+        this.fields.spins.textContent = "尚无随机记录";
         this.fields.warnings.textContent = "无";
         this.fields.error.textContent = "无";
         this.boundarySection.hidden = true;
         this.fields.boundary.textContent = "";
-        this.setStatus("ready", "Production 数据已加载并校验，等待执行 6 岁年度。");
+        this.setStatus("ready", "Production 目录、概率、年度内容和战力配置已加载并校验，等待执行。 ");
     }
 
     renderBusy() {
         this.fields.error.textContent = "无";
-        this.setStatus("running", "6 岁武魂觉醒年度执行中…");
+        this.setStatus("running", "正在执行先天魂力、数量、共享品质与每槽武魂生成链…");
     }
 
     renderResult(state) {
@@ -73,20 +145,31 @@ export class V2DemoUI {
         const lastStep = result?.flowResult.steps.at(-1);
         const power = result?.combatPower;
         const record = result?.annualRecord;
-        const item = result?.selectedItem;
+        const awakening = result?.session?.result;
 
         this.renderPlayer(state.player);
+        this.renderMartialSouls(result?.martialSoulResults ?? []);
         this.fields.flow.textContent = record
             ? `${record.flowId} / ${lastStep?.nodeId ?? "-"}`
             : state.currentFlowId ?? "-";
-        this.fields.item.textContent = item?.id ?? lastStep?.itemId ?? "-";
-        this.fields.itemText.textContent = item?.text ?? "-";
         this.fields.spinCount.textContent = String(result?.spins.length ?? 0);
-        this.fields.combatPower.textContent = power ? String(power.total) : "未计算";
+        this.fields.combatPower.textContent = power
+            ? String(power.staticCombatPower ?? power.total)
+            : "未计算";
+        this.fields.combatBreakdown.textContent = power
+            ? stringify(power.breakdown)
+            : "未计算";
         this.fields.rulesVersion.textContent = power?.rulesVersion ?? "-";
+        this.fields.catalogVersion.textContent = awakening?.catalogVersion
+            ?? state.catalogVersion;
+        this.fields.probabilityVersion.textContent = awakening?.probabilityVersion
+            ?? state.probabilityVersion;
         this.fields.annualRecord.textContent = record
             ? `${record.age} 岁 -> ${record.nextAge} 岁 / ${record.advance} / ${record.spinCount} spin`
             : "尚无年度记录";
+        this.fields.spins.textContent = result?.spins.length
+            ? stringify(result.spins)
+            : "尚无随机记录";
         this.fields.warnings.textContent = result?.warnings.length
             ? stringify(result.warnings)
             : "无";
@@ -95,7 +178,7 @@ export class V2DemoUI {
         if (state.boundary) {
             this.boundarySection.hidden = false;
             this.fields.boundary.textContent = `${state.boundary.message} 当前没有 confirmed 的 7 岁 production annual flow。`;
-            this.setStatus("content_boundary", "6 岁年度已成功完成；当前 production 内容到此为止。");
+            this.setStatus("content_boundary", "完整觉醒链已原子提交；当前 production 内容到达 7 岁边界。");
         } else {
             this.boundarySection.hidden = true;
             this.fields.boundary.textContent = "";

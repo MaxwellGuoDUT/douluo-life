@@ -167,6 +167,14 @@ function validateSessionShape(session) {
         );
     }
 
+    if (!isPlainObject(session.sessionContext)) {
+        add(
+            "INVALID_ANNUAL_SESSION_CONTEXT",
+            "sessionContext must be a plain object.",
+            "sessionContext"
+        );
+    }
+
     if (!Array.isArray(session.warnings)) {
         add(
             "INVALID_ANNUAL_WARNINGS",
@@ -191,7 +199,8 @@ export function createAnnualSession({
     sessionId,
     age,
     seed,
-    annualFlags = {}
+    annualFlags = {},
+    sessionContext = {}
 } = {}) {
     if (!isNonEmptyString(sessionId)) {
         fail(
@@ -221,6 +230,14 @@ export function createAnnualSession({
         );
     }
 
+
+    if (!isPlainObject(sessionContext)) {
+        fail(
+            "INVALID_ANNUAL_SESSION_CONTEXT",
+            "sessionContext must be a plain object."
+        );
+    }
+
     return {
         sessionId,
         age,
@@ -229,6 +246,7 @@ export function createAnnualSession({
         spinCount: 0,
         visitedNodes: {},
         annualFlags: clonePlayerStateValue(annualFlags),
+        sessionContext: clonePlayerStateValue(sessionContext),
         spins: [],
         warnings: [],
         result: null

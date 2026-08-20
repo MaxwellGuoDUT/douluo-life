@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-16",
+  "status": "read_only_inventory",
+  "sourceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
+  "decision": {
+    "sourceAuthority": "apk",
+    "replaceExistingMartialSoulSettings": true,
+    "replaceExistingSoulBeastSettings": true,
+    "replaceAwakeningProbabilityAndFormQuality": true,
+    "replaceEffects": true,
+    "replaceRequirements": true,
+    "replaceStoryTimelineAndEndings": true,
+    "retainAllRecords": true,
+    "preserveOriginalAvailabilityState": true
+  },
+  "domains": {
+    "martialSouls": {
+      "rows": 584,
+      "enabled": 584,
+      "disabled": 0,
+      "poolCount": 14,
+      "categoryCount": 14
+    },
+    "soulBeastRaw": {
+      "rows": 243,
+      "enabled": 243,
+      "disabled": 0,
+      "routeState": {
+        "current-base": 215,
+        "auxiliary-species-pool": 12,
+        "router-only-dormant": 16
+      },
+      "sourceLayer": {
+        "current-formal": 227,
+        "legacy-source-only": 16
+      },
+      "structuredSemantics": {
+        "true": 107,
+        "false": 136
+      },
+      "categoryCount": 16
+    },
+    "soulBeastStructured": {
+      "rows": 107,
+      "enabled": 107,
+      "disabled": 0,
+      "poolCount": 15,
+      "schemaGapsNonEmpty": 4
+    },
+    "pools": {
+      "rows": 4781,
+      "formalStatusRows": 250,
+      "statusMissingRows": 4531,
+      "poolsWithDisabledOptions": 156,
+      "poolsWithEndingOptions": 548,
+      "poolsWithDeathOptions": 790,
+      "poolKinds": 25
+    },
+    "options": {
+      "rows": 41637,
+      "enabled": 41241,
+      "disabled": 396,
+      "formalStatusRows": 2144,
+      "statusMissingRows": 39493,
+      "endingLike": 916,
+      "deathLike": 1418,
+      "customHandlerRows": 0
+    },
+    "effects": {
+      "rows": 19126,
+      "distinctTypes": 48
+    },
+    "requirements": {
+      "rows": 2848,
+      "distinctTypes": 18
+    },
+    "storyTimeline": {
+      "rows": 107,
+      "worlds": 2,
+      "branches": 4,
+      "minimumAgeValues": [
+        "6",
+        "11",
+        "12",
+        "13",
+        "14",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "23",
+        "24",
+        "25",
+        "文本条件"
+      ]
+    },
+    "endingsAndDeaths": {
+      "rows": 1580,
+      "endingLike": 916,
+      "deathLike": 1418
+    }
+  },
+  "runtimeCompatibility": {
+    "currentFlowEngineOps": [
+      "roll",
+      "gate",
+      "repeatWheel",
+      "dispatchWheel",
+      "end"
+    ],
+    "schemaRecognizesButEngineDoesNotImplement": [
+      "setRoute",
+      "yieldYear",
+      "terminal"
+    ],
+    "apkEffectTypesRequireAdapter": 48,
+    "apkRequirementTypesRequireAdapter": 18,
+    "currentAgeSixProductionCatalogCount": 271,
+    "currentAgeSixProbabilityVersion": "awakening-probabilities/1.2",
+    "compatibilityRule": "do not silently reinterpret an APK effect or requirement when no typed Player v2 mapping exists"
+  },
+  "productionChangeStatus": {
+    "productionFilesModified": false,
+    "oldCatalogDeleted": false,
+    "gitStageCommitPushPerformed": false
+  }
+}

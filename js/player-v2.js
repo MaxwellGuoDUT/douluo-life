@@ -12,6 +12,7 @@ export const SOUL_BONE_SLOTS = Object.freeze([
 
 export const COMBAT_BASE_MODES = Object.freeze([
     "level",
+    "civilian_observer",
     "soul_beast_cultivation",
     "hybrid"
 ]);
@@ -116,6 +117,9 @@ export function createPlayerV2() {
         name: "主角",
         age: 0,
         level: 1,
+        innateSoulPower: null,
+        talentGrade: null,
+        soulPowerGrowthLocked: false,
         rank: "未觉醒",
         combatBase: {
             mode: "level"
@@ -927,12 +931,62 @@ export function validatePlayerV2(player) {
         );
     }
 
-    if (!Number.isInteger(player.level) || player.level < 1) {
+    if (!Number.isInteger(player.level) || player.level < 0) {
         addIssue(
             errors,
             "INVALID_PLAYER_LEVEL",
-            "Player level must be a positive integer.",
+            "Player level must be a non-negative integer.",
             "level"
+        );
+    }
+
+    if (player.innateSoulPower !== null
+        && (!Number.isInteger(player.innateSoulPower)
+            || player.innateSoulPower < 0)) {
+        addIssue(
+            errors,
+            "INVALID_INNATE_SOUL_POWER",
+            "innateSoulPower must be a non-negative integer or null.",
+            "innateSoulPower"
+        );
+    }
+
+    if (player.talentGrade !== null
+        && (typeof player.talentGrade !== "string"
+            || player.talentGrade.length === 0)) {
+        addIssue(
+            errors,
+            "INVALID_TALENT_GRADE",
+            "talentGrade must be a non-empty string or null.",
+            "talentGrade"
+        );
+    }
+
+    if (typeof player.soulPowerGrowthLocked !== "boolean") {
+        addIssue(
+            errors,
+            "INVALID_SOUL_POWER_GROWTH_LOCK",
+            "soulPowerGrowthLocked must be a boolean.",
+            "soulPowerGrowthLocked"
+        );
+    }
+
+    if (player.level === 0 && player.soulPowerGrowthLocked !== true) {
+        addIssue(
+            errors,
+            "LEVEL_ZERO_REQUIRES_GROWTH_LOCK",
+            "Player level 0 requires soulPowerGrowthLocked = true.",
+            "soulPowerGrowthLocked"
+        );
+    }
+
+    if (player.innateSoulPower === 0
+        && (player.level !== 0 || player.soulPowerGrowthLocked !== true)) {
+        addIssue(
+            errors,
+            "INVALID_ZERO_SOUL_POWER_STATE",
+            "Innate soul power 0 requires level 0 and a permanent growth lock.",
+            "innateSoulPower"
         );
     }
 
@@ -978,14 +1032,36 @@ export function validatePlayerV2(player) {
             "combatBase.mode"
         );
     } else if (player.combatBase.mode !== "level") {
+        if (player.combatBase.mode !== "civilian_observer") {
+            addIssue(
+                warnings,
+                "UNIMPLEMENTED_COMBAT_BASE_MODE",
+                `Combat base mode "${player.combatBase.mode}" is valid but not implemented.`,
+                "combatBase.mode",
+                {
+                    status: "provisional"
+                }
+            );
+        }
+    }
+
+    if (player.level === 0
+        && player.combatBase?.mode !== "civilian_observer") {
         addIssue(
-            warnings,
-            "UNIMPLEMENTED_COMBAT_BASE_MODE",
-            `Combat base mode "${player.combatBase.mode}" is valid but not implemented.`,
-            "combatBase.mode",
-            {
-                status: "provisional"
-            }
+            errors,
+            "LEVEL_ZERO_REQUIRES_CIVILIAN_OBSERVER_ROUTE",
+            "Level 0 must use the civilian_observer progression route and cannot enter combat.",
+            "combatBase.mode"
+        );
+    }
+
+    if (player.level !== 0
+        && player.combatBase?.mode === "civilian_observer") {
+        addIssue(
+            errors,
+            "CIVILIAN_OBSERVER_ROUTE_REQUIRES_LEVEL_ZERO",
+            "The civilian_observer progression route is reserved for level 0.",
+            "combatBase.mode"
         );
     }
 
