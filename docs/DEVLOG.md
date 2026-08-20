@@ -1025,3 +1025,124 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - PR #4 body 的收窄版文案已准备在 [`docs/review/APK_PR4_DESCRIPTION_2026-08-17.md`](review/APK_PR4_DESCRIPTION_2026-08-17.md)，本次授权发布步骤将同步到现有 PR；PR 状态保持 open Draft。
 - packaging decision 已单独记录于 [`docs/review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md`](review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md)：先保留 generator 产出的 canonical JSON，再以 pack-level route shard 作为后续 release 方向；当前不生成或发布 Release artifact。
 - APK、`apk-analysis/`、任务书、Word/Excel、archive、负责人生成输出和无关 `index.html` 不进入本次提交；仅纳入 canonical package 生成器/provenance、运行时、测试、生成后的审计 JSON 与收尾文档。本次授权范围包含显式 staging、commit、push 和 PR body 同步；不 merge、不 force-push、不重写分支。
+
+### 2026-08-19：Preview 与 pack-shard 文件实现（A-FILE）
+
+- 负责人选择 `D1-A / D2-B / D3-A`：发布范围限定为允许 typed boundary 的 preview，禁止完整路线声明；route graph 改用 compact、按 `douluo1` / `douluo2` 分片并按 pack 懒加载；首次未来 push 前必须把 Pages source 移出 Draft 分支。
+- route graph extractor 同一次运行生成 compact monolith 与两个 `apk-route-graph-shard/1.0` pack shard。package generator 将 shard 的路径、入口 flow、字节数和 SHA-256 写入 package index，禁止运行时猜测 shard 路径。
+- production loader 优先读取 index 列出的 pack shard，并物化为既有 runtime 接口需要的单-pack graph；只有旧 package 没有 shard metadata 时才回退 monolith。未知 pack 返回 `PRODUCTION_ROUTE_PACK_NOT_FOUND`。
+- route Demo 首屏只加载 entry/index/policy；选择 pack 并开始时才加载该 shard及四类 runtime evidence。`catalogNames: []` 保持不请求 `options.json`。
+- fixed seed shard 回归必须继续锁定前 83 项摘要、第 84 项 `humanRingSpecies4/bddfef` 和第 219 项 `beast.element.unresolved`；分片不授权实现 official-beast 成功路径。
+- 本次生成结果：compact monolith `29,822,859` bytes；`douluo1` shard `14,268,485` bytes；`douluo2` shard `14,614,706` bytes。定向测试 `17 passed`；`npm.cmd test` 全量 `249 passed, 0 failed, 0 cancelled, 0 skipped`。
+- `D3-A` 只形成 `A-PAGES-SOURCE` 外部授权门。本轮没有修改 GitHub Pages、PR、Git、Release 或部署配置；在 source 迁移完成前 Draft 分支保持 push freeze。
+
+### 2026-08-20：浏览器 RC 范围收窄（A-FILE-RC）
+
+- 全新本地页面 Network 验证：首屏未请求 compact monolith、任一 shard 或 `options.json`；启动 `douluo1` 后只请求 `route-graph.douluo1.json` 与四类 runtime evidence，均 HTTP 200、无加载失败。
+- 浏览器固定 seed 重放再次确认第 84 项 `humanRingSpecies4/bddfef` 与第 219 项 `f16385 / beast.element.unresolved`；第 219 项 cursor=219、history=218，未把失败项写入提交历史。
+- `douluo2` shard 与入口 `douluo2:flow.start` 可加载，但固定 seed 首步 `cd9337` 到达 `douluo2:handler.human.country` typed boundary，cursor=1、history=0；这不构成路线可推进证据。
+- 负责人据此决定公开 preview 仅声明 `douluo1`；`douluo2` shard 保留为 `experimental / unverified`。production entry、package policy/index 与 Demo 必须共享该范围，两个 handler 均保持 unresolved，不实现成功路径。
+- 范围修正后的定向测试 `17 passed`，`npm.cmd test` 全量 `249 passed, 0 failed, 0 cancelled, 0 skipped`。浏览器 smoke 显示选择器为 `douluo1 · 公开 preview` / `douluo2 · 实验/未验证`；选择 douluo2 后页面明确提示入口与后续路线均未验证。
+- `A-FILE-RC` 不包含 Git、PR、Pages、Release 或部署动作；范围修正通过测试前不进入 `A-PAGES-SOURCE`。
+
+### 2026-08-20：Pages source 迁移与文件收尾（A-PAGES-SOURCE / A-FILE-CLOSEOUT）
+
+- `A-PAGES-SOURCE` 已独立完成：GitHub Pages source 从 `codex/day14-release-closeout / (root)` 迁移到 `main / (root)`；`pages build and deployment` run `32360588072` 从 `main` 的 `c7d2978ea8a3e9063f99e31cdcb1b4cf448f1137` 部署成功。
+- 新鲜公开页面 smoke 正常显示“斗罗人生模拟器 / v0.0.1 Alpha”。当前公开站点仍来自 `main`，不是本地尚未提交的 Preview RC。
+- Draft 分支后续 push 不再直接改变公开 Pages，先前的 push freeze 已解除；push、PR body 修改、Ready、merge、tag 和 Release 仍分别需要独立授权。
+- merge 到 `main` 会自动触发公开部署，因此未来 `A-MERGE` 必须明确包含这一外部影响。
+- package generator 的 Pages 字段由一次性待办改为稳定约束 `stable_source_required_draft_branch_excluded`；`package-policy.json` 与 `package-index.json` 必须由生成器重新生成，不手改产物。
+- PR #4 的待同步 body 草案更新为 249 项自动化测试、compact route shards、`douluo1` 公开 Preview、`douluo2` 实验/未验证、浏览器 RC 和 Pages source 完成状态；本次文件授权不包含远端 `A-PR-EDIT`。
+- 收尾生成器执行结果为 `status=pass`、`fileCount=22`；generator/policy/shard SHA 校验一致，18 个精确任务路径的 `git diff --check` 通过，`npm.cmd test` 全量 `249 passed, 0 failed, 0 cancelled, 0 skipped`。
+
+## Day 17 - 2026-08-20 - 项目拨乱反正与 V0.5 主线重建
+
+### 触发原因
+
+- Day 1～Day 16 一直使用“一个 Day、一个玩家可见目标、一个明确边界”的管理方式；Day16 后虽然技术工作继续推进，但没有正式建立 Day17。
+- 当前 `codex/day14-release-closeout` 已同时承载 Day15、Day16、APK canonical runtime、route graph、战力适配、分片、懒加载和发布准备，分支名、PR 范围和项目阶段不再一致。
+- 249 项自动化测试证明了大量技术子系统，但不能回答“玩家现在能完成哪一段正式人生”。
+- README、旧交接、DEVLOG、本地 PR body 草案和远端 PR 状态存在时间层级差异，项目缺少单一当前状态入口。
+
+### 只读检测结论
+
+- 公开 Pages 仍来自 `main@c7d2978`，默认入口是 V1 `v0.0.1 Alpha`，不是本地 Preview RC。
+- V2 的正式玩家内容仍以 6 岁 production 武魂觉醒和 7 岁内容边界为稳定切片。
+- V3 是可玩但全量 provisional 的较长人生 Demo。
+- APK Route Demo 已具备来源追溯、typed runtime、固定 seed 回放和明确 unresolved boundary，但尚未被收束成单一、易理解的版本目标。
+- PR #4 仍为 open Draft，head 为 `cd47941`，包含 5 commits、125 files 和约 501 万 additions；没有 reviews 或 review threads，connector 未发现 commit statuses 或 PR workflow runs。
+- PR head 的 `data/production-entry.json` 引用了未进入远端 Git 的 `data/v2/archive/apk-replaced-2026-08-16/manifest.json`；远端路径返回 404。该项不在 Day17 修改，但被登记为 Ready/merge 前阻塞。
+
+### 负责人最终决定
+
+负责人选择方案 B：
+
+- 以 APK canonical 资产、规则和路线为正式 V0.5 主线；
+- 尽快交付一版可玩的 Demo V0.5；
+- 项目管理恢复既有分 Day 模式；
+- V1、V2、V3、临时 Demo、旧规则目录、APK 原文件、archive、outputs 和其他 owner 材料全部保留；
+- 不为切换主线覆盖、删除或清理既有资产；
+- V0.5 使用独立入口，复用 canonical 数据，不复制第二份数据真源；
+- V0.5 唯一正式 pack 为 `douluo1`；
+- 25 岁作为 V0.5 明确终点；
+- `douluo2`、25 岁后路线和 `official-beast.element` 不阻塞 V0.5；
+- 默认固定 seed 必须稳定到达25岁，自定义 seed 未接逻辑继续 typed stop。
+
+### Day17 文档交付
+
+- 新增 `docs/CURRENT_PROJECT_STATUS_2026-08-20.md`，作为当前唯一状态入口。
+- 新增并收口 `docs/tasks/DAY17_PROJECT_REBASELINE_TASK.md`，记录方向选择、Stop/Go 和独立授权门。
+- 新增 `docs/tasks/DAY18_APK_V05_PLAYABLE_DEMO_TASK.md`，将下一玩家可见目标限定为 `douluo1` 从正式入口连续推进到25岁总结。
+- 旧目标草案和历史任务书保持原样，不覆盖、不删除；它们继续作为历史决策与备用资产。
+
+### 验证与授权边界
+
+- 本次拨乱反正只修改上述状态、Day17、Day18 和 DEVLOG 文档，没有修改功能代码、配置、数据、生成器或测试。
+- 立即此前的只读审计已重新执行 `npm.cmd test`，结果为 `249 passed, 0 failed, 0 cancelled, 0 skipped`；本条记录不把该本地结果描述为 CI 或 V0.5 验收。
+- PR #4 继续保持 Draft；本次没有 stage、commit、push、PR 修改、Ready、merge、tag、Release 或 Pages 操作。
+- Day18 实现前必须先执行 `A-DAY18-AUDIT`，定位默认 seed 的精确25岁 transcript、必经 handler 和文件范围；实现另需 `A-FILE-V05`。
+
+## Day 18 - 2026-08-20 - APK canonical `douluo1` V0.5 文件实现
+
+### A-DAY18-AUDIT
+
+- 使用 compact `douluo1` shard 和默认 `apk-route-demo-seed` 只读重放。真实入口为 package 声明的 `douluo1:flow.formal-human.identity`，不是任务书示意文字中的 `douluo1:flow.start`。
+- 第 100 项 `douluo1:flow.formal-source.c9944ade-310d-41eb-b8ea-01723cab952c / c9944ade-310d-41eb-b8ea-01723cab952c / fff9f5` 完整提交后，角色首次从24岁推进到精确25岁；等级41→42，cursor/history/routeHistory 均从99→100，下一 flow 为 `douluo1:flow.formal-special-growth`。
+- 前100项 transcript 的 SHA-256 为 `967347b48f6680be71b1f33d18c52f392519afd4c7afb5255beae20a74531391`；25岁前没有 typed unresolved。
+- 审计确认核心 runtime 在25岁后仍为 ready；若再 draw 会先把 cursor 从100消耗到101。因此25岁必须作为薄控制层的展示终点，在完整提交后判断，并在任何下一次 draw 前封锁。
+- `legacyArchive.manifest` 虽在 PR head 悬空，但 production loader 不读取该字段，不是 V0.5 运行依赖；它仍保留为 PR Ready/merge 前独立阻塞。
+
+### A-FILE-V05
+
+- 新增 `v05-demo.html`，建立不替换任何旧入口的 `douluo1 / V0.5 / 0～25岁` 玩家页面。
+- 新增 `js/v05-demo.js`，复用现有 APK route runtime，提供单步提交、按年龄受控连续推进、取消、重置、typed boundary、精确25岁完成锁和完成摘要；没有建立第二套 route engine。
+- 新增 `js/v05-demo-app.js`，首屏只读取 entry/index/policy，开始人生后固定请求 index 列出的 `douluo1` shard 与四类 runtime evidence；不请求 `douluo2`、`options.json` 或 monolith。
+- 新增 `test/v05-demo.test.js`，锁定默认 seed 第100项、transcript digest、完成后零额外 cursor/history、单步与连续推进同态、busy/cancel 防重入和单-pack 拒绝规则。
+- 自定义 seed `v05-custom-1` 在17岁第95次 draw 命中 `beast.element.unresolved`；cursor=95、history=94，失败项未提交，随后重复推进被 boundary 状态阻止。
+- 新增 `docs/V05_DEMO.md`，记录入口、产品范围、加载边界、自动化证据、浏览器未验证项和独立授权门。
+- V0.5 定向回归 `15 passed`；完整 `npm.cmd test` 为 `255 passed, 0 failed, 0 cancelled, 0 skipped`。精确7文件的 `git diff --check` 通过，仅报告既有 DEVLOG LF→CRLF 提示。
+
+### 当前边界
+
+- 本轮只修改 `A-FILE-V05` 确认的7个文件；未修改 canonical 数据、核心 runtime、loader、生成器、archive、owner 材料或旧入口。
+- 当前证据为本地文件实现与自动化，不是浏览器、GitHub CI、PR review 或 Pages 证据。
+- 本轮没有 stage、commit、push、PR 修改、Ready、merge、tag、Release、artifact 或 Pages 操作。
+- 下一授权门为 `A-BROWSER-V05-RC`。
+
+### A-BROWSER-V05-RC / A-FILE-V05-RC-LOG
+
+- 使用 Codex in-app Browser 从全新 `http://127.0.0.1:8080/v05-demo.html` 执行真实验收。页面明确显示 `斗罗人生 V0.5 / 斗罗大陆 I / 0～25岁`，默认 seed 为 `apk-route-demo-seed`。
+- 首屏 Network 只请求页面模块、`production-entry.json`、package index 和 package policy；开始人生后只新增 `route-graph.douluo1.json` 与四类 runtime evidence。全部响应 HTTP 200，没有 loadingFailed，也没有请求 monolith、`douluo2`、`options.json` 或 `legacyArchive.manifest`。
+- 单步点击后页面为0岁/1级、铜灵币500、cursor/history `1/1`，当前 flow 精确推进到 `douluo1:flow.formal-human.gender`，事件叙事和 history 第1项可见。
+- 重置后使用“推进至下一岁”逐岁点击，1～25岁检查点全部可见。25岁终点为42级、铜灵币29850、cursor/history `100/100`、currentFlow `douluo1:flow.formal-special-growth`；摘要显示铁角牛武魂及4个魂环。
+- completed 后单步和连续推进按钮均禁用；额外强制触发没有改变 cursor、history、currentFlow 或 completed 状态。刷新后页面回到“等待开始”、角色与进度为空，没有伪装 save/load。
+- V0.5 全程 console 没有 error 或 warning。390×844 窄屏下四个控制按钮按单列、等宽排列，开始人生和单步提交正常；测试后已恢复默认视口。
+- V1 `index.html`、V2 `v2-demo.html`、V3 `v3-demo.html`、`soul-ring-demo.html` 和 `apk-route-demo.html` 均可真实打开，标题与主要内容可见，console 没有 error/warning。
+- 临时本地静态服务、浏览器验收标签页和临时视口均已关闭或恢复；浏览器 RC 没有修改应用文件、Git、PR 或 Pages。
+
+### Day18 当前交付边界
+
+- V0.5 当前可准确描述为 `local implementation / automated-verified / browser-verified / not staged / not published`。
+- 浏览器 RC 不构成 GitHub CI、PR review、Ready、merge 或 Pages 证据；PR #4 与公开 Pages 状态没有变化。
+- 本次 `A-FILE-V05-RC-LOG` 只同步 `docs/V05_DEMO.md`、当前状态页和 DEVLOG，不修改功能、测试、canonical 数据、runtime、loader、生成器、archive 或 owner 材料。
+- 进入 Git 前必须先核对混合工作树和 compact packaging 前置资产的精确交付范围；stage、commit、push 继续分别授权。

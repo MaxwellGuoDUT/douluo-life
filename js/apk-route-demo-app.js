@@ -57,12 +57,52 @@ function clearError() {
     state.error = null;
 }
 
+function routePackReleaseStatus(loaded, packId) {
+    const descriptorStatus = loaded?.routeGraphShards?.[packId]?.releaseStatus;
+    if (descriptorStatus) return descriptorStatus;
+    const scope = loaded?.entry?.releaseScope ?? loaded?.index?.releaseScope ?? {};
+    if (scope.publicPreviewPackIds?.includes(packId)) return "public-preview";
+    if (scope.experimentalUnverifiedPackIds?.includes(packId)) {
+        return "experimental-unverified";
+    }
+    return "excluded-from-preview-claim";
+}
+
+function listedRoutePacks(loaded) {
+    if (loaded?.routeGraph?.packs?.length) {
+        return loaded.routeGraph.packs.map(pack => ({
+            id: pack.id,
+            title: pack.manifest?.title ?? pack.id,
+            entryFlowId: pack.entryFlowId,
+            summary: pack.summary,
+            releaseStatus: routePackReleaseStatus(loaded, pack.id)
+        }));
+    }
+    return Object.values(loaded?.routeGraphShards ?? {}).map(shard => ({
+        id: shard.packId,
+        title: shard.title ?? shard.packId,
+        entryFlowId: shard.entryFlowId,
+        summary: null,
+        releaseStatus: routePackReleaseStatus(loaded, shard.packId)
+    }));
+}
+
+function routePackLabel(pack) {
+    return pack.releaseStatus === "public-preview"
+        ? `${pack.id} · ${pack.title} · 公开 preview`
+        : pack.releaseStatus === "experimental-unverified"
+            ? `${pack.id} · ${pack.title} · 实验/未验证`
+            : `${pack.id} · ${pack.title} · 不在 preview 声明范围`;
+}
+
 function render() {
     const session = state.session;
     const loaded = state.loaded;
     fields.pageStatus.textContent = root.dataset.status === "error"
         ? "加载失败"
-        : session ? "已连接 APK route runtime" : loaded ? "路线资料已加载" : "加载中";
+        : root.dataset.status === "loading-pack"
+            ? `正在加载 ${selectedPack()} route shard`
+            : session ? "已连接 APK route runtime" : loaded ? "路线索引已加载" : "加载中";
     fields.routeStatus.textContent = session?.routeStatus ?? "-";
     fields.flow.textContent = session?.currentFlowId ?? "-";
     fields.pool.textContent = session?.currentPoolId ?? "-";
@@ -104,15 +144,14 @@ function render() {
         : loaded
             ? stringify({
                 routeGraph: loaded.routeGraphValidation,
-                packs: loaded.routeGraph.packs.map(pack => ({
-                    id: pack.id,
-                    entryFlowId: pack.entryFlowId,
-                    summary: pack.summary
-                }))
+                routeGraphMode: loaded.routeGraphMode,
+                routeGraphPath: loaded.routeGraphPath,
+                packs: listedRoutePacks(loaded)
             })
             : "尚未开始";
     fields.error.textContent = state.error ? stringify(state.error) : "无";
     fields.start.disabled = !state.loaded || state.busy;
+    fields.pack.disabled = !state.loaded || state.busy;
     fields.step.disabled = !state.session
         || state.busy
         || state.session.routeStatus === "terminal"
@@ -140,8 +179,8 @@ function selectedPack() {
     return fields.pack.value || "douluo1";
 }
 
-function startSession() {
-    if (!state.loaded?.routeGraph) return;
+async function startSession() {
+    if (!state.loaded || state.busy) return;
     const seed = fields.seed.value.trim();
     if (!seed) {
         setError({ code: "INVALID_APK_SEED", message: "seed 不能为空。" });
@@ -151,28 +190,58 @@ function startSession() {
     clearError();
     clearBoundary();
     const packId = selectedPack();
-    state.contentIndex = createApkRouteContentIndex({
-        routeGraph: state.loaded.routeGraph,
-        formalSpecialResultEvidence: state.loaded.formalSpecialResultEvidence,
-        humanSoulRingEvidence: state.loaded.humanSoulRingEvidence,
-        humanSoulRingSpeciesEvidence: state.loaded.humanSoulRingSpeciesEvidence,
-        combatPowerEvidence: state.loaded.combatPowerEvidence,
-        packId
-    });
-    state.dynamicHandlers = createApkRouteDynamicHandlers({
-        contentIndex: state.contentIndex
-    });
-    state.session = createApkRouteSession({
-        routeGraph: state.loaded.routeGraph,
-        packId,
-        seed
-    });
+    const controlPlane = state.loaded;
+    const releaseStatus = routePackReleaseStatus(controlPlane, packId);
+    state.busy = true;
+    state.contentIndex = null;
+    state.dynamicHandlers = null;
+    state.session = null;
     state.lastSpin = null;
-    renderEvent(
-        "路线已开始",
-        `入口 flow：${state.session.currentFlowId}。点击“抽取并提交一步”推进 source route。`
-    );
+    root.dataset.status = "loading-pack";
+    renderEvent("正在加载路线", `按需请求 ${packId} route shard 和运行时证据。`);
     render();
+    try {
+        const loaded = await loadProductionEntry({
+            catalogNames: [],
+            validate: false,
+            includeRouteGraph: true,
+            routePackId: packId
+        });
+        state.loaded = loaded;
+        state.contentIndex = createApkRouteContentIndex({
+            routeGraph: loaded.routeGraph,
+            formalSpecialResultEvidence: loaded.formalSpecialResultEvidence,
+            humanSoulRingEvidence: loaded.humanSoulRingEvidence,
+            humanSoulRingSpeciesEvidence: loaded.humanSoulRingSpeciesEvidence,
+            combatPowerEvidence: loaded.combatPowerEvidence,
+            packId
+        });
+        state.dynamicHandlers = createApkRouteDynamicHandlers({
+            contentIndex: state.contentIndex
+        });
+        state.session = createApkRouteSession({
+            routeGraph: loaded.routeGraph,
+            packId,
+            seed
+        });
+        root.dataset.status = "ready";
+        renderEvent(
+            releaseStatus === "experimental-unverified"
+                ? "实验/未验证路线已加载"
+                : "路线已开始",
+            releaseStatus === "experimental-unverified"
+                ? `已加载 ${loaded.routeGraphMode}；${packId} 不属于公开 preview 声明，入口与后续路线均未验证。入口 flow：${state.session.currentFlowId}。`
+                : `已加载 ${loaded.routeGraphMode}；入口 flow：${state.session.currentFlowId}。点击“抽取并提交一步”推进 source route。`
+        );
+    } catch (error) {
+        state.loaded = controlPlane;
+        root.dataset.status = "error";
+        setError(error);
+        renderEvent("加载失败", `${packId} route shard 或运行时证据无法加载。`);
+    } finally {
+        state.busy = false;
+        render();
+    }
 }
 
 async function runStep() {
@@ -213,29 +282,38 @@ async function runStep() {
     }
 }
 
-fields.start.addEventListener("click", startSession);
+fields.start.addEventListener("click", () => void startSession());
 fields.step.addEventListener("click", runStep);
-fields.pack.addEventListener("change", startSession);
+fields.pack.addEventListener("change", () => void startSession());
 
 loadProductionEntry({
     catalogNames: [],
-    validate: false,
-    includeRouteGraph: true
-}).then(loaded => {
+    validate: false
+}).then(async loaded => {
+    if (Object.keys(loaded.routeGraphShards ?? {}).length === 0) {
+        loaded = await loadProductionEntry({
+            catalogNames: [],
+            validate: false,
+            includeRouteGraph: true
+        });
+    }
     state.loaded = loaded;
-    if (!loaded.routeGraphValidation?.valid) {
+    if (loaded.routeGraphValidation && !loaded.routeGraphValidation.valid) {
         throw new Error("活动 APK route graph 校验失败。");
     }
     fields.pack.replaceChildren();
-    for (const pack of loaded.routeGraph.packs) {
+    for (const pack of listedRoutePacks(loaded)) {
         const option = document.createElement("option");
         option.value = pack.id;
-        option.textContent = `${pack.id} · ${pack.manifest?.title ?? pack.id}`;
+        option.textContent = routePackLabel(pack);
         fields.pack.append(option);
     }
     fields.pack.disabled = false;
     root.dataset.status = "ready";
-    renderEvent("资料已加载", "请选择内容包并点击开始路线。");
+    renderEvent(
+        "路线索引已加载",
+        "公开 preview 仅包含 douluo1；douluo2 保留为实验/未验证 shard。点击开始时才加载对应 route shard。"
+    );
     render();
 }).catch(error => {
     root.dataset.status = "error";

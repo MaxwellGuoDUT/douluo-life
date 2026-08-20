@@ -37,6 +37,7 @@ const TARGET_PATH = path.join(
     "catalogs",
     "route-graph.json"
 );
+const ROUTE_SHARD_SCHEMA_VERSION = "apk-route-graph-shard/1.0";
 const SOURCE_SHA256 = APK_SHA256;
 const PACKS = [
     {
@@ -67,6 +68,20 @@ function sha256File(filePath) {
 
 function relativePath(filePath) {
     return path.relative(ROOT, filePath).replaceAll(path.sep, "/");
+}
+
+function routeShardPath(packId) {
+    if (!/^[a-z0-9-]+$/u.test(packId)) {
+        fail(`Invalid route graph shard pack id: ${packId}`);
+    }
+    return path.join(
+        path.dirname(TARGET_PATH),
+        `route-graph.${packId}.json`
+    );
+}
+
+function writeCompactJson(filePath, value) {
+    fs.writeFileSync(filePath, JSON.stringify(value), "utf8");
 }
 
 function installBrowserStubs() {
@@ -745,11 +760,36 @@ async function main() {
     };
 
     fs.mkdirSync(path.dirname(TARGET_PATH), { recursive: true });
-    fs.writeFileSync(TARGET_PATH, `${JSON.stringify(graph, null, 2)}\n`, "utf8");
+    writeCompactJson(TARGET_PATH, graph);
+    const shards = packGraphs.map(pack => {
+        const shardPath = routeShardPath(pack.id);
+        const shard = {
+            schemaVersion: ROUTE_SHARD_SCHEMA_VERSION,
+            packageVersion: graph.packageVersion,
+            status: graph.status,
+            source: graph.source,
+            generatedBy: graph.generatedBy,
+            packId: pack.id,
+            pack,
+            diagnostics: {
+                missingExactReferences: graph.diagnostics.missingExactReferences
+                    .filter(reference => reference.packId === pack.id)
+            }
+        };
+        writeCompactJson(shardPath, shard);
+        return {
+            id: pack.id,
+            target: relativePath(shardPath),
+            targetSha256: sha256File(shardPath),
+            bytes: fs.statSync(shardPath).size
+        };
+    });
     const output = {
         target: relativePath(TARGET_PATH),
         targetSha256: sha256File(TARGET_PATH),
         bytes: fs.statSync(TARGET_PATH).size,
+        serialization: "compact-json",
+        shards,
         packs: packGraphs.map(pack => ({
             id: pack.id,
             entryFlowId: pack.entryFlowId,

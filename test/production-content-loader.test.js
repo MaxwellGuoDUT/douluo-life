@@ -144,3 +144,85 @@ test("production loader keeps the heavy APK route graph lazy but can validate it
     );
     assert.equal(loaded.routeGraphValidation.valid, true);
 });
+
+test("production loader selects one compact route shard without requesting the monolith", async () => {
+    const requested = [];
+    const files = {
+        "data/production-entry.json": {
+            schemaVersion: "production-entry/1.0",
+            status: "active",
+            source: "apk-canonical",
+            packageIndex: "data/apk-canonical/package-index.json",
+            policy: "data/apk-canonical/meta/package-policy.json",
+            routeGraph: "data/apk-canonical/catalogs/route-graph.json"
+        },
+        "data/apk-canonical/package-index.json": {
+            schemaVersion: "apk-canonical-package/1.0",
+            counts: {},
+            routeGraphShards: {
+                douluo1: {
+                    packId: "douluo1",
+                    path: "data/apk-canonical/catalogs/route-graph.douluo1.json"
+                }
+            }
+        },
+        "data/apk-canonical/meta/package-policy.json": {},
+        "data/apk-canonical/catalogs/route-graph.douluo1.json": {
+            schemaVersion: "apk-route-graph-shard/1.0",
+            packageVersion: "apk-canonical/test",
+            status: "test",
+            source: { gameplayExecuted: false },
+            packId: "douluo1",
+            pack: { id: "douluo1", entryFlowId: "entry", flows: [], pools: [] }
+        }
+    };
+    const fetchImpl = async path => {
+        requested.push(path);
+        return createMemoryFetch(files)(path);
+    };
+    const loaded = await loadProductionEntry({
+        fetchImpl,
+        catalogNames: [],
+        validate: false,
+        includeRouteGraph: true,
+        routePackId: "douluo1"
+    });
+    assert.equal(loaded.routeGraphMode, "pack-shard");
+    assert.equal(loaded.routeGraphPath, "data/apk-canonical/catalogs/route-graph.douluo1.json");
+    assert.deepEqual(loaded.routeGraph.packs.map(pack => pack.id), ["douluo1"]);
+    assert.equal(
+        requested.includes("data/apk-canonical/catalogs/route-graph.json"),
+        false
+    );
+});
+
+test("production loader rejects an unlisted route shard instead of guessing a path", async () => {
+    const files = {
+        "data/production-entry.json": {
+            schemaVersion: "production-entry/1.0",
+            status: "active",
+            source: "apk-canonical",
+            packageIndex: "data/apk-canonical/package-index.json",
+            policy: "data/apk-canonical/meta/package-policy.json"
+        },
+        "data/apk-canonical/package-index.json": {
+            schemaVersion: "apk-canonical-package/1.0",
+            counts: {},
+            routeGraphShards: {
+                douluo1: { packId: "douluo1", path: "route-graph.douluo1.json" }
+            }
+        },
+        "data/apk-canonical/meta/package-policy.json": {}
+    };
+    await assert.rejects(
+        () => loadProductionEntry({
+            fetchImpl: createMemoryFetch(files),
+            catalogNames: [],
+            validate: false,
+            includeRouteGraph: true,
+            routePackId: "douluo2"
+        }),
+        error => error.code === "PRODUCTION_ROUTE_PACK_NOT_FOUND"
+            && error.details.availablePackIds.includes("douluo1")
+    );
+});

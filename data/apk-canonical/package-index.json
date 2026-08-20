@@ -5,14 +5,53 @@
   "sourceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
   "sourceSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
   "generatedBy": "outputs/parallel-prep-2026-08-16/generate-apk-canonical-package.mjs",
-  "generatorSha256": "F4022195D2E8FF9CAC01E8717A21182C8531FCA2B2DDE0B53F65CDA7A3D22120",
+  "generatorSha256": "6B91B4D928C49442664B6D74FCB3747668EA5A7042AE007190F8E477A4564F6A",
   "availabilityPolicy": "preserve_apk_original_state",
   "oldProductionPolicy": "archive_only",
+  "releaseScope": {
+    "channel": "preview",
+    "publicPreviewPackIds": [
+      "douluo1"
+    ],
+    "experimentalUnverifiedPackIds": [
+      "douluo2"
+    ],
+    "completeRouteClaimAllowed": false
+  },
   "routeGraph": {
     "path": "data/apk-canonical/catalogs/route-graph.json",
     "status": "source_routes_recovered_dynamic_handlers_explicit",
-    "sizeBytes": 53227620,
-    "sha256": "5FF36353BF7F8294ACBCE8A673EDC0DAF59FDA1E7DC903006797FE53BBF5E8AB"
+    "serialization": "compact-json",
+    "role": "compatibility-fallback-and-audit",
+    "sizeBytes": 29822859,
+    "sha256": "A763C80B3AF985748E272B4E9DADEE8282C5C886660615ADF9EFD2181DF5D26C"
+  },
+  "routeGraphLoadingPolicy": "pack-shard-first-monolith-fallback",
+  "routeGraphShards": {
+    "douluo1": {
+      "path": "data/apk-canonical/catalogs/route-graph.douluo1.json",
+      "schemaVersion": "apk-route-graph-shard/1.0",
+      "status": "source_routes_recovered_dynamic_handlers_explicit",
+      "serialization": "compact-json",
+      "packId": "douluo1",
+      "title": "斗罗大陆 I",
+      "entryFlowId": "douluo1:flow.formal-human.identity",
+      "releaseStatus": "public-preview",
+      "sizeBytes": 14268485,
+      "sha256": "4542B167B5647E728FAA0A1B7E5328705204EB7B56602B86A6F0B1FF796F7F09"
+    },
+    "douluo2": {
+      "path": "data/apk-canonical/catalogs/route-graph.douluo2.json",
+      "schemaVersion": "apk-route-graph-shard/1.0",
+      "status": "source_routes_recovered_dynamic_handlers_explicit",
+      "serialization": "compact-json",
+      "packId": "douluo2",
+      "title": "绝世唐门",
+      "entryFlowId": "douluo2:flow.start",
+      "releaseStatus": "experimental-unverified",
+      "sizeBytes": 14614706,
+      "sha256": "BADC5D8C87E3B4357FFEFDE06677EF2D2929B5D041E6BFAB2A78E897BC2DE96C"
+    }
   },
   "formalSpecialResultEvidence": {
     "path": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
@@ -112,8 +151,18 @@
     },
     {
       "path": "data/apk-canonical/catalogs/route-graph.json",
-      "sizeBytes": 53227620,
-      "sha256": "5FF36353BF7F8294ACBCE8A673EDC0DAF59FDA1E7DC903006797FE53BBF5E8AB"
+      "sizeBytes": 29822859,
+      "sha256": "A763C80B3AF985748E272B4E9DADEE8282C5C886660615ADF9EFD2181DF5D26C"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/route-graph.douluo1.json",
+      "sizeBytes": 14268485,
+      "sha256": "4542B167B5647E728FAA0A1B7E5328705204EB7B56602B86A6F0B1FF796F7F09"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/route-graph.douluo2.json",
+      "sizeBytes": 14614706,
+      "sha256": "BADC5D8C87E3B4357FFEFDE06677EF2D2929B5D041E6BFAB2A78E897BC2DE96C"
     },
     {
       "path": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
@@ -152,8 +201,8 @@
     },
     {
       "path": "data/apk-canonical/meta/package-policy.json",
-      "sizeBytes": 720,
-      "sha256": "43FD5A4A859E4FEE0751971B77D5C043B5DA82A9DCD6E07C9BE21B4DFD02595C"
+      "sizeBytes": 1074,
+      "sha256": "5A6633E47C68F55248F67F9B33D3F13E8D482D0983E0DDD17365E1610374F970"
     }
   ]
 }

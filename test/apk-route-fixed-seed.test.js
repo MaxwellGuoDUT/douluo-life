@@ -185,3 +185,79 @@ test("fixed APK route seed continues to the next real unresolved boundary", () =
     assert.equal(session.currentFlowId, "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577");
     assert.equal(session.routeStatus, "drawn");
 });
+
+test("douluo1 compact route shard preserves the fixed-seed transcript and typed boundary", () => {
+    const shard = readCatalog("route-graph.douluo1.json");
+    const routeGraph = {
+        schemaVersion: "apk-route-graph/1.0",
+        packageVersion: shard.packageVersion,
+        status: shard.status,
+        source: shard.source,
+        generatedBy: shard.generatedBy,
+        packs: [shard.pack],
+        diagnostics: shard.diagnostics
+    };
+    const contentIndex = createApkRouteContentIndex({
+        routeGraph,
+        formalSpecialResultEvidence: readCatalog(
+            "formal-special-result-runtime-evidence.json"
+        ),
+        humanSoulRingEvidence: readCatalog(
+            "human-soul-ring-runtime-evidence.json"
+        ),
+        humanSoulRingSpeciesEvidence: readCatalog(
+            "human-soul-ring-species-runtime-evidence.json"
+        ),
+        combatPowerEvidence: readCatalog("combat-power-runtime-evidence.json"),
+        packId: "douluo1"
+    });
+    const session = createApkRouteSession({
+        routeGraph,
+        packId: "douluo1",
+        seed: "apk-route-demo-seed"
+    });
+    const handlers = createApkRouteDynamicHandlers({ contentIndex });
+    const transcript = [];
+    for (let step = 1; step <= 218; step += 1) {
+        const spin = drawApkRouteStep({ contentIndex, session, ...handlers });
+        transcript.push({
+            flowId: spin.flowId,
+            poolId: spin.poolId,
+            optionId: spin.optionId
+        });
+        commitApkRouteOption({ contentIndex, session, spin, ...handlers });
+    }
+    assert.equal(
+        crypto.createHash("sha256")
+            .update(JSON.stringify(transcript.slice(0, 83)))
+            .digest("hex"),
+        "5d06fefdc351e1e803ba260567bfc7fd5e35a20d6bc8f6cd1aba2ee0e9d0349c"
+    );
+    assert.deepEqual(transcript[83], {
+        flowId: "humanRingSpecies4",
+        poolId: "917a611f-c50b-4c67-9b27-da19f136e5c5",
+        optionId: "bddfef"
+    });
+    const boundary = drawApkRouteStep({ contentIndex, session, ...handlers });
+    assert.deepEqual({
+        flowId: boundary.flowId,
+        poolId: boundary.poolId,
+        optionId: boundary.optionId
+    }, {
+        flowId: "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577",
+        poolId: "f2abac93-6b26-4e3e-aa92-a168db671577",
+        optionId: "f16385"
+    });
+    assert.throws(
+        () => commitApkRouteOption({
+            contentIndex,
+            session,
+            spin: boundary,
+            ...handlers
+        }),
+        error => error.code === "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED"
+            && error.details.operationId === "beast.element.unresolved"
+    );
+    assert.equal(session.random.cursor, 219);
+    assert.equal(session.history.length, 218);
+});

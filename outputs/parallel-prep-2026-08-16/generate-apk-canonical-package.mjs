@@ -28,6 +28,7 @@ const TARGET_CATALOG_ROOT = path.join(TARGET_ROOT, "catalogs");
 const TARGET_META_ROOT = path.join(TARGET_ROOT, "meta");
 const RUNTIME_EVIDENCE_SUFFIX = "-runtime-evidence.json";
 const ROUTE_GRAPH_PATH = path.join(TARGET_CATALOG_ROOT, "route-graph.json");
+const ROUTE_GRAPH_SHARD_PATTERN = /^route-graph\.([a-z0-9-]+)\.json$/u;
 const MARTIAL_SOUL_RUNTIME_EVIDENCE_PATH = path.join(
     TARGET_CATALOG_ROOT,
     "martial-soul-runtime-evidence.json"
@@ -48,6 +49,16 @@ const COMBAT_POWER_EVIDENCE_PATH = path.join(
     TARGET_CATALOG_ROOT,
     "combat-power-runtime-evidence.json"
 );
+const PUBLIC_PREVIEW_PACK_IDS = ["douluo1"];
+const EXPERIMENTAL_UNVERIFIED_PACK_IDS = ["douluo2"];
+
+function routePackReleaseStatus(packId) {
+    if (PUBLIC_PREVIEW_PACK_IDS.includes(packId)) return "public-preview";
+    if (EXPERIMENTAL_UNVERIFIED_PACK_IDS.includes(packId)) {
+        return "experimental-unverified";
+    }
+    return "excluded-from-preview-claim";
+}
 
 const CATALOGS = [
     ["datasets.csv", "datasets", "dataset"],
@@ -76,6 +87,28 @@ function sha256File(filePath) {
 
 function relativePath(filePath) {
     return path.relative(ROOT, filePath).replaceAll(path.sep, "/");
+}
+
+function collectRouteGraphShards() {
+    if (!fs.existsSync(TARGET_CATALOG_ROOT)) return [];
+    return fs.readdirSync(TARGET_CATALOG_ROOT)
+        .map(fileName => ({
+            fileName,
+            match: ROUTE_GRAPH_SHARD_PATTERN.exec(fileName)
+        }))
+        .filter(entry => entry.match)
+        .map(entry => {
+            const filePath = path.join(TARGET_CATALOG_ROOT, entry.fileName);
+            const document = JSON.parse(fs.readFileSync(filePath, "utf8"));
+            const packId = entry.match[1];
+            if (document.schemaVersion !== "apk-route-graph-shard/1.0"
+                || document.packId !== packId
+                || document.pack?.id !== packId) {
+                fail(`Invalid route graph shard: ${relativePath(filePath)}`);
+            }
+            return { packId, filePath, document };
+        })
+        .sort((left, right) => left.packId.localeCompare(right.packId));
 }
 
 function idPart(value) {
@@ -610,6 +643,8 @@ function main() {
     if (fs.existsSync(ROUTE_GRAPH_PATH)) {
         packageFiles.push(ROUTE_GRAPH_PATH);
     }
+    const routeGraphShards = collectRouteGraphShards();
+    packageFiles.push(...routeGraphShards.map(shard => shard.filePath));
     packageFiles.push(...runtimeEvidencePaths);
 
     const policyPath = path.join(TARGET_META_ROOT, "package-policy.json");
@@ -622,6 +657,11 @@ function main() {
         availabilityPolicy: "preserve_apk_original_state",
         oldProductionPolicy: "archive_only",
         runtimePolicy: "typed_adapter_required_for_unmapped_effects_and_requirements",
+        releaseScopePolicy: "preview_typed_boundary_allowed_complete_route_claim_forbidden",
+        publicPreviewPackIds: PUBLIC_PREVIEW_PACK_IDS,
+        experimentalUnverifiedPackIds: EXPERIMENTAL_UNVERIFIED_PACK_IDS,
+        routeGraphPackagingPolicy: "compact_pack_shards_lazy_monolith_compatibility_fallback",
+        pagesSourcePolicy: "stable_source_required_draft_branch_excluded",
         domains: [
             "martial_souls",
             "soul_beasts",
@@ -659,14 +699,38 @@ function main() {
         generatorSha256: sha256File(generatorPath),
         availabilityPolicy: "preserve_apk_original_state",
         oldProductionPolicy: "archive_only",
+        releaseScope: {
+            channel: "preview",
+            publicPreviewPackIds: PUBLIC_PREVIEW_PACK_IDS,
+            experimentalUnverifiedPackIds: EXPERIMENTAL_UNVERIFIED_PACK_IDS,
+            completeRouteClaimAllowed: false
+        },
         routeGraph: fs.existsSync(ROUTE_GRAPH_PATH)
             ? {
                 path: relativePath(ROUTE_GRAPH_PATH),
                 status: JSON.parse(fs.readFileSync(ROUTE_GRAPH_PATH, "utf8")).status,
+                serialization: "compact-json",
+                role: "compatibility-fallback-and-audit",
                 sizeBytes: fs.statSync(ROUTE_GRAPH_PATH).size,
                 sha256: sha256File(ROUTE_GRAPH_PATH)
             }
             : null,
+        routeGraphLoadingPolicy: "pack-shard-first-monolith-fallback",
+        routeGraphShards: Object.fromEntries(routeGraphShards.map(shard => [
+            shard.packId,
+            {
+                path: relativePath(shard.filePath),
+                schemaVersion: shard.document.schemaVersion,
+                status: shard.document.status,
+                serialization: "compact-json",
+                packId: shard.packId,
+                title: shard.document.pack.manifest?.title ?? shard.packId,
+                entryFlowId: shard.document.pack.entryFlowId,
+                releaseStatus: routePackReleaseStatus(shard.packId),
+                sizeBytes: fs.statSync(shard.filePath).size,
+                sha256: sha256File(shard.filePath)
+            }
+        ])),
         formalSpecialResultEvidence: fs.existsSync(FORMAL_SPECIAL_RESULT_EVIDENCE_PATH)
             ? {
                 path: relativePath(FORMAL_SPECIAL_RESULT_EVIDENCE_PATH),

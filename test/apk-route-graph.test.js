@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import test from "node:test";
 
@@ -9,6 +10,10 @@ const ROUTE_GRAPH_PATH = new URL(
 
 function loadRouteGraph() {
     return JSON.parse(fs.readFileSync(ROUTE_GRAPH_PATH, "utf8"));
+}
+
+function sha256(value) {
+    return crypto.createHash("sha256").update(value).digest("hex").toUpperCase();
 }
 
 test("APK route graph records source flow, pool, option and dynamic boundaries", () => {
@@ -63,6 +68,30 @@ test("APK route graph carries compact source-proven martial soul handler evidenc
             amount: 1
         }]
     });
+});
+
+test("APK route graph compact pack shards preserve each generated pack exactly", () => {
+    const graph = loadRouteGraph();
+    const packageIndex = JSON.parse(fs.readFileSync(new URL(
+        "../data/apk-canonical/package-index.json",
+        import.meta.url
+    ), "utf8"));
+    assert.equal(packageIndex.routeGraphLoadingPolicy, "pack-shard-first-monolith-fallback");
+    assert.equal(fs.statSync(ROUTE_GRAPH_PATH).size < 50 * 1024 * 1024, true);
+    for (const pack of graph.packs) {
+        const descriptor = packageIndex.routeGraphShards[pack.id];
+        assert.ok(descriptor, pack.id);
+        const shardPath = new URL(`../${descriptor.path}`, import.meta.url);
+        const raw = fs.readFileSync(shardPath);
+        const shard = JSON.parse(raw.toString("utf8"));
+        assert.equal(shard.schemaVersion, "apk-route-graph-shard/1.0");
+        assert.equal(shard.packId, pack.id);
+        assert.deepEqual(shard.pack, pack);
+        assert.equal(shard.source.apkSha256, graph.source.apkSha256);
+        assert.equal(raw.length, descriptor.sizeBytes);
+        assert.equal(sha256(raw), descriptor.sha256);
+        assert.equal(raw.length < 20 * 1024 * 1024, true);
+    }
 });
 
 test("APK first soul-ring species evidence maps explicit and empty source attributes", () => {

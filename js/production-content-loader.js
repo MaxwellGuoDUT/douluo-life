@@ -45,12 +45,40 @@ function validateRouteGraph(routeGraph) {
     };
 }
 
+function materializeRouteGraphShard(shard, expectedPackId) {
+    const valid = shard?.schemaVersion === "apk-route-graph-shard/1.0"
+        && shard?.source?.gameplayExecuted === false
+        && shard?.packId === expectedPackId
+        && shard?.pack?.id === expectedPackId;
+    if (!valid) {
+        fail(
+            "INVALID_ACTIVE_APK_ROUTE_GRAPH_SHARD",
+            `Active APK route graph shard for "${String(expectedPackId)}" is invalid.`,
+            {
+                expectedPackId,
+                schemaVersion: shard?.schemaVersion ?? null,
+                packId: shard?.packId ?? null
+            }
+        );
+    }
+    return {
+        schemaVersion: "apk-route-graph/1.0",
+        packageVersion: shard.packageVersion,
+        status: shard.status,
+        source: shard.source,
+        generatedBy: shard.generatedBy,
+        packs: [shard.pack],
+        diagnostics: shard.diagnostics ?? { missingExactReferences: [] }
+    };
+}
+
 export async function loadProductionEntry({
     fetchImpl = globalThis.fetch,
     entryPath = DEFAULT_ENTRY_PATH,
     catalogNames = null,
     validate = true,
-    includeRouteGraph = false
+    includeRouteGraph = false,
+    routePackId = null
 } = {}) {
     if (typeof fetchImpl !== "function") {
         fail("PRODUCTION_CONTENT_FETCH_UNAVAILABLE", "A fetch implementation is required.");
@@ -69,9 +97,36 @@ export async function loadProductionEntry({
 
     const index = await fetchJson(fetchImpl, entry.packageIndex);
     const policy = await fetchJson(fetchImpl, entry.policy);
-    const routeGraphPath = entry.routeGraph
+    const monolithRouteGraphPath = entry.routeGraph
         ?? index.routeGraph?.path
         ?? null;
+    const routeGraphShards = entry.routeGraphShards
+        ?? index.routeGraphShards
+        ?? {};
+    let routeGraphPath = monolithRouteGraphPath;
+    let routeGraphMode = "monolith";
+    if (routePackId !== null) {
+        if (typeof routePackId !== "string" || !routePackId.trim()) {
+            fail(
+                "INVALID_PRODUCTION_ROUTE_PACK",
+                "routePackId must be a non-empty string when provided."
+            );
+        }
+        routePackId = routePackId.trim();
+        const shardDescriptor = routeGraphShards[routePackId];
+        if (shardDescriptor?.path) {
+            routeGraphPath = shardDescriptor.path;
+            routeGraphMode = "pack-shard";
+        } else if (Object.keys(routeGraphShards).length > 0) {
+            fail(
+                "PRODUCTION_ROUTE_PACK_NOT_FOUND",
+                `Route graph shard "${routePackId}" is not listed by the active package.`,
+                { routePackId, availablePackIds: Object.keys(routeGraphShards) }
+            );
+        } else {
+            routeGraphMode = "monolith-fallback";
+        }
+    }
     const formalSpecialResultEvidencePath = entry.formalSpecialResultEvidence
         ?? index.formalSpecialResultEvidence?.path
         ?? null;
@@ -84,9 +139,15 @@ export async function loadProductionEntry({
     const combatPowerEvidencePath = entry.combatPowerEvidence
         ?? index.combatPowerEvidence?.path
         ?? null;
-    const routeGraph = includeRouteGraph && routeGraphPath
+    const routeGraphDocument = includeRouteGraph && routeGraphPath
         ? await fetchJson(fetchImpl, routeGraphPath)
         : null;
+    const routeGraphShard = routeGraphMode === "pack-shard"
+        ? routeGraphDocument
+        : null;
+    const routeGraph = routeGraphShard
+        ? materializeRouteGraphShard(routeGraphShard, routePackId)
+        : routeGraphDocument;
     const formalSpecialResultEvidence = includeRouteGraph
         && formalSpecialResultEvidencePath
         ? await fetchJson(fetchImpl, formalSpecialResultEvidencePath)
@@ -136,7 +197,10 @@ export async function loadProductionEntry({
         index,
         policy,
         routeGraph,
+        routeGraphShard,
         routeGraphPath,
+        routeGraphMode,
+        routeGraphShards,
         formalSpecialResultEvidence,
         formalSpecialResultEvidencePath,
         humanSoulRingEvidence,

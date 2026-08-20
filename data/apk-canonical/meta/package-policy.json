@@ -7,6 +7,15 @@
   "availabilityPolicy": "preserve_apk_original_state",
   "oldProductionPolicy": "archive_only",
   "runtimePolicy": "typed_adapter_required_for_unmapped_effects_and_requirements",
+  "releaseScopePolicy": "preview_typed_boundary_allowed_complete_route_claim_forbidden",
+  "publicPreviewPackIds": [
+    "douluo1"
+  ],
+  "experimentalUnverifiedPackIds": [
+    "douluo2"
+  ],
+  "routeGraphPackagingPolicy": "compact_pack_shards_lazy_monolith_compatibility_fallback",
+  "pagesSourcePolicy": "stable_source_required_draft_branch_excluded",
   "domains": [
     "martial_souls",
     "soul_beasts",

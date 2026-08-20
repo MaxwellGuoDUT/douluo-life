@@ -5,6 +5,7 @@
   "packageIndex": "data/apk-canonical/package-index.json",
   "policy": "data/apk-canonical/meta/package-policy.json",
   "routeGraph": "data/apk-canonical/catalogs/route-graph.json",
+  "routeGraphLoadingPolicy": "pack-shard-first-monolith-fallback",
   "formalSpecialResultEvidence": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
   "humanSoulRingEvidence": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
   "humanSoulRingSpeciesEvidence": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
@@ -14,6 +15,38 @@
   "routeRuntime": "js/apk-route-runtime.js",
   "adapter": "js/apk-content-adapter.js",
   "availabilityPolicy": "preserve_apk_original_state",
+  "releaseScope": {
+    "channel": "preview",
+    "typedBoundaryAllowed": true,
+    "completeRouteClaimAllowed": false,
+    "publicPreviewPackIds": [
+      "douluo1"
+    ],
+    "experimentalUnverifiedPackIds": [
+      "douluo2"
+    ],
+    "knownBoundaries": [
+      {
+        "packId": "douluo1",
+        "flowId": "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577",
+        "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+        "optionId": "f16385",
+        "errorCode": "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
+        "customHandler": "douluo1:handler.official-beast.element",
+        "operationId": "beast.element.unresolved",
+        "verification": "browser-verified-fixed-seed"
+      },
+      {
+        "packId": "douluo2",
+        "flowId": "douluo2:flow.start",
+        "poolId": "aafdc8fc-ea88-46c1-9283-4683d27084b7",
+        "optionId": "cd9337",
+        "errorCode": "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
+        "customHandler": "douluo2:handler.human.country",
+        "verification": "browser-verified-entry-step"
+      }
+    ]
+  },
   "domains": [
     "martial-souls",
     "soul-beasts",

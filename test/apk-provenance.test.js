@@ -24,6 +24,31 @@ test("APK provenance manifest, policy, package index, route graph and runtime ev
     assert.equal(packageIndex.sourceSha256, EXPECTED_APK_SHA256);
     assert.equal(packageIndex.combatPowerEvidence.sourceSha256, EXPECTED_APK_SHA256);
     assert.equal(routeGraph.source.apkSha256, EXPECTED_APK_SHA256);
+    assert.equal(
+        policy.pagesSourcePolicy,
+        "stable_source_required_draft_branch_excluded"
+    );
+    assert.deepEqual(policy.publicPreviewPackIds, ["douluo1"]);
+    assert.deepEqual(policy.experimentalUnverifiedPackIds, ["douluo2"]);
+    assert.deepEqual(packageIndex.releaseScope, {
+        channel: "preview",
+        publicPreviewPackIds: ["douluo1"],
+        experimentalUnverifiedPackIds: ["douluo2"],
+        completeRouteClaimAllowed: false
+    });
+    assert.deepEqual(
+        Object.keys(packageIndex.routeGraphShards).sort(),
+        ["douluo1", "douluo2"]
+    );
+    for (const [packId, descriptor] of Object.entries(packageIndex.routeGraphShards)) {
+        const shard = readJson(descriptor.path);
+        assert.equal(shard.source.apkSha256, EXPECTED_APK_SHA256, packId);
+        assert.equal(shard.packId, packId);
+        assert.equal(
+            descriptor.releaseStatus,
+            packId === "douluo1" ? "public-preview" : "experimental-unverified"
+        );
+    }
 
     const catalogRoot = path.join(ROOT, "data", "apk-canonical", "catalogs");
     const runtimeEvidenceFiles = fs.readdirSync(catalogRoot)
