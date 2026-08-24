@@ -1,10 +1,10 @@
 # douluo-life 当前项目状态基线
 
-状态：`Day19 RC1 archive 2R implemented / focused 83 passed / full 175 passed / current-checkout browser RC passed / Git delivery not authorized`
+状态：`Day19 V0.5 RC1 / archive 2R / automated and browser verified / e98bf8a pushed / Draft PR #5 / Ready pre-audit Conditional Go`
 
 基线日期：2026-08-25（Asia/Shanghai；文件名保留历史日期）
 
-适用仓库：`D:\0CODE\douluo-life`
+适用工作树：`D:\0CODE\douluo-life-v05-rc1`（原 `D:\0CODE\douluo-life` 混合工作树保持独立）
 
 配套任务书：`docs/tasks/DAY17_PROJECT_REBASELINE_TASK.md`
 
@@ -40,9 +40,11 @@
 - RC package 入口迁移到 `data/v05-rc/production-entry.json`，只列出 `douluo1` shard 与四类 runtime evidence；`douluo2`、monolith 和大目录不在 focused runtime package 中。
 - archive 已由方案 2 调整为 2R。manifest 保留三个 `originalPath` 并新增对应 `archivePath`；e17ec72 原字节实体位于 `data/v2/archive/apk-replaced-2026-08-16/` 子目录，三个活跃路径恢复 `main@c7d2978` 状态。`archivedAt=2026-08-16` 和 replacement `reason` 语义不变，归档实体不属于 runtime 请求面。
 - 2026-08-25 已对当前 focused checkout 完成新鲜 HTTP 浏览器 RC：默认 seed 逐岁到25岁、Network 请求闭包、console、完成锁、刷新和390×844窄屏均通过。该结果是当前 checkout 的本地浏览器证据，不是 Pages、CI、review、Ready 或 merge 证据。
-- 本轮授权仅覆盖 47 个文件路径；没有 stage、commit、push、PR 创建/编辑、Ready、merge、tag、Release 或 Pages 操作。
+- 已按独立授权完成精确 47 路径 stage、commit 与普通 push；提交为 `e98bf8a`，本地与 `origin/codex/v05-rc1` 一致。Draft PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已创建，未转 Ready、未 merge，未操作 Pages、tag 或 Release。
 - 方案 2 的历史验证为 focused 83/83、完整 155/175；20 项旧 V2 失败促成 2R 调整。2R 重新验证为 focused 83/83、完整 175/175，generator write/check 均通过；路径映射在保留原字节的同时恢复了活跃 V2 基线兼容性。
 - 当前 focused browser RC 的全部响应为 HTTP 200、`loadingFailed=0`；未请求 monolith、`douluo2`、`options.json`、archive manifest 或 archive 实体。终点为25岁/42级、铜灵币29850、cursor/history `100/100`，完成按钮锁与刷新重置均通过，console error/warning 为0。
+- Ready 前审计重新执行 generator check、focused 83/83、full 175/175 与提交级 whitespace check，全部通过。PR #5 为 `CLEAN / MERGEABLE`；CI 为 `unavailable / not configured`，review 为 `unavailable`。Pages 仍发布 `main@c7d2978`。
+- focused checkout 只包含 V1、V2 与 V0.5 HTML 入口；V3、临时魂环 Demo 和 APK Route Demo 留在 PR #4/原混合工作树，属于 focused 拓扑排除，不作为 PR #5 当前 checkout 的浏览器通过项。
 
 ## 二、执行摘要
 
@@ -55,7 +57,7 @@
 - V3 可以演示较长人生，但整体是 provisional；现有 APK Route Demo 可以推进较远，但尚未收束成 V0.5 的明确可玩终点。
 - 负责人已选择方案 B：APK canonical 资产、规则和路线成为 V0.5 正式产品主线；V1、V2、V3、临时 Demo、旧规则和 owner 材料全部保留，不覆盖、不删除，作为备用与对照资产。
 - V0.5 唯一正式范围为 `douluo1`，目标终点为 25 岁；`douluo2` 与 25 岁后路线不阻塞 V0.5。
-- 项目当前准确节点是：`Day18 V0.5 implemented / automated verification passed / browser RC passed / Git delivery pending`。
+- 项目当前准确节点是：`Day19 V0.5 RC1 committed and pushed / Draft PR #5 / Ready pre-audit Conditional Go`。
 
 ## 三、四层状态快照
 
@@ -63,8 +65,9 @@
 |---|---|---|---|
 | 公开 Pages | `main@c7d2978`，V1 `v0.0.1 Alpha` | 公开 V1 页面可用 | 本地 Preview RC 已部署 |
 | 远端 PR #4 | open Draft，`head=cd47941`，5 commits，125 files | Day15、Day16 与 APK runtime 已进入 Draft 审阅分支 | 已 Ready、已合并或已通过完整 CI |
-| 本地工作树 | 分支与远端 head 同步；A-FILE/A-FILE-RC 与 V0.5 文件仍未提交 | 本地 255 项测试通过，V0.5 自动化与分片 RC 存在 | 这些本地修改已进入 PR 或 Pages |
-| 产品路线 | 方案 B 已确认；V0.5 本地独立入口与25岁完成锁已实现，旧入口完整保留 | `douluo1` 默认 seed 已通过自动化和真实浏览器0～25岁验收 | 已进入 Git/PR、已发布或旧入口已被替换 |
+| 远端 PR #5 | open Draft，`main@c7d2978 ← codex/v05-rc1@e98bf8a`，1 commit、47 files | focused RC 已进入远端 Draft，`CLEAN / MERGEABLE` | CI/review 已通过、已 Ready 或已合并 |
+| focused 工作树 | HEAD 与 upstream 同为 `e98bf8a`；功能提交后干净，当前仅有本轮四文档授权变更 | RC 功能已 commit/push，自动化和浏览器证据对应同一提交 | 当前文档变更已 stage/commit/push |
+| 产品路线 | 方案 B 已确认；V0.5 独立入口与25岁完成锁已进入 PR #5；旧资产按拓扑保留 | `douluo1` 默认 seed 已通过自动化和真实浏览器0～25岁验收 | V0.5 已发布或 focused PR 包含 V3/临时/APK Route Demo |
 
 ## 四、玩家可见产品面
 
@@ -111,10 +114,10 @@
 - V0.5 控制层在提交后检查年龄；进入 completed 后不会预抽第101项，也不会增加 RNG 或 history。
 - 单步推进、按年龄连续推进、取消、重置、typed boundary 和实验 seed 已有自动化覆盖。
 - 自定义 `v05-custom-1` 在17岁第95次 draw 命中 `beast.element.unresolved`，history 保持94，证明失败项未提交。
-- Codex in-app Browser 已从新鲜 HTTP 页面完成默认 seed 0～25岁、Network、console、完成锁、刷新、390×844窄屏和旧入口回归。
+- Codex in-app Browser 已在 focused checkout 从新鲜 HTTP 页面完成默认 seed 0～25岁、Network、console、完成锁、刷新与390×844窄屏；旧入口矩阵属于 Day18 原混合工作树历史证据，不扩展 focused PR #5 的文件拓扑。
 - 浏览器终点为25岁/42级、铜灵币29850、cursor/history `100/100`；完成后重复触发没有消费额外状态。
 
-状态：`local playable implementation / automated-verified / browser-verified / not staged`。
+状态：`focused RC implementation / automated-verified / browser-verified / committed / pushed / Draft PR #5 / not published`。
 
 ## 五、已经完成的稳定基础
 
@@ -150,28 +153,42 @@
 - `douluo2` 可推进路线；
 - 一条经过自动化和真实浏览器完整验收的 production 人生。
 
-## 七、本地 Git 状态
+## 七、focused Git 状态
 
-核验日期：2026-08-20。
+核验日期：2026-08-25。
 
-- 当前分支：`codex/day14-release-closeout`
-- HEAD：`cd479411a8e14d948f8ad2815dfdd1656e1ca9a3`
-- upstream：`origin/codex/day14-release-closeout`
+- 当前分支：`codex/v05-rc1`
+- HEAD / upstream：`e98bf8a9b9dfb91651a092f728388c835ac90ace`
+- upstream：`origin/codex/v05-rc1`
 - ahead / behind：`0 / 0`
-- `origin/main`：`c7d2978ea8a3e9063f99e31cdcb1b4cf448f1137`
-- 暂存区：空
-- tracked modified：17 个，其中 `index.html` 是明确排除的 owner/unrelated 修改
-- A-FILE 任务范围：16 个 tracked 修改加 2 个新 route shard，共 18 个路径
-- 工作树还包含 APK、`apk-analysis/`、任务书、Office 文件、archive、outputs 和 `.codex-tmp/` 等负责人材料
+- base：`main@c7d2978ea8a3e9063f99e31cdcb1b4cf448f1137`
+- RC 提交范围：精确 47 路径、1 commit，无第48路径
+- 功能提交后的 focused 工作树与暂存区均为空；本节同步后只允许出现本轮四文档差异
+- 原 `D:\0CODE\douluo-life` 混合工作树及其中 owner 材料不属于本轮操作目标
 
 保护要求：
 
 - 禁止 `git add .`、`git add -A` 或宽范围 glob；
 - 禁止清理、删除、移动或自动纳入负责人材料；
-- 未经新授权不得 stage、commit、push；
+- 未经新授权不得 stage、commit、push 当前四文档变更；
 - `A-RESET-DOC` 只授权本文和 Day17 任务书的文件创建。
 
-## 八、PR #4 与远端状态
+## 八、PR 与远端状态
+
+### 8.1 focused PR #5（当前 RC 候选）
+
+PR：<https://github.com/MaxwellGuoDUT/douluo-life/pull/5>
+
+- 状态：open Draft
+- base / head：`main@c7d2978 ← codex/v05-rc1@e98bf8a`
+- commits / changed files：`1 / 47`
+- additions / deletions：`103201 / 1`
+- merge：`CLEAN / MERGEABLE`
+- checks：无该提交 Actions run；CI 为 `unavailable / not configured`，不是 passed
+- reviews / comments / review requests：`0 / 0 / 0`，review 为 `unavailable`
+- Ready、merge、Pages、tag 与 Release 均未执行，继续使用独立授权门
+
+### 8.2 PR #4（历史集成分支快照）
 
 PR：<https://github.com/MaxwellGuoDUT/douluo-life/pull/4>
 
@@ -189,7 +206,7 @@ PR：<https://github.com/MaxwellGuoDUT/douluo-life/pull/4>
 - PR body 已于 2026-08-20 依据 `A-PR-EDIT` 同步
 - PR 未 Ready、未 merge
 
-PR #4 同时承载 Day15、Day16 和 APK runtime；它不是一个单一 Day 的小型交付单元。合并前必须先经过 Day17 的产品方向和 PR 处置决策。
+PR #4 同时承载 Day15、Day16 和 APK runtime；它不是 focused V0.5 RC 的交付 PR。其本节数值是历史快照，PR #5 的 Ready 决策不得借用 PR #4 的 checks 或 browser 证据。
 
 ## 九、Pages 与发布状态
 
@@ -203,24 +220,24 @@ PR #4 同时承载 Day15、Day16 和 APK runtime；它不是一个单一 Day 的
 
 ## 十、验证状态
 
-2026-08-20 重新执行：
+2026-08-25 对 `e98bf8a` Ready 前重新执行：
 
 ```text
 npm.cmd test
-255 passed
+175 passed
 0 failed
 0 cancelled
 0 skipped
 ```
 
-精确 A-FILE tracked 路径的 `git diff --check` 通过。以上是本地自动化证据，不是 GitHub CI、PR review 或生产 Pages 验收。
+RC generator `--check`、8 个 focused 测试文件 `83/83`、完整 `npm.cmd test` `175/175` 与 `main@c7d2978..e98bf8a` 提交级 whitespace check 均通过。以上是本地自动化证据，不是 GitHub CI、PR review 或生产 Pages 验收。
 
 已有浏览器证据包括：
 
 - V0.5 默认 seed 从0岁逐岁到25岁，终点42级、铜灵币29850、cursor/history `100/100`；
 - V0.5 首屏及启动后的 Network 全部 HTTP 200，未请求 monolith、`douluo2`、`options.json` 或 archive manifest；
 - V0.5 完成锁、刷新重置、390×844窄屏单步和 console 无 error/warning；
-- V1、V2、V3、临时魂环 Demo 与 APK Route Demo 均可打开且 console 无 error/warning；
+- Day18 原混合工作树曾验证 V1、V2、V3、临时魂环 Demo 与 APK Route Demo 均可打开；focused checkout 只包含 V1、V2 与 V0.5，其他入口属于拓扑排除；
 - V2 6 岁觉醒与 7 岁内容边界的负责人验收；
 - APK fixed seed 第 84 项成功与第 219 项 typed boundary；
 - 本地 route shard Network RC；
@@ -251,15 +268,15 @@ Day16 后没有正式 Day17 任务书，但产生了大规模 APK runtime 和发
 
 旧目标草案继续作为历史材料保留，不覆盖、不删除；其 `APK reference-only` 路线已被本次负责人决定取代。本轮选择保留该历史文件原样，不把新方向覆盖写入旧草案；如需增加 `superseded` 标记，应另行给出该文件的精确授权。V0.5 仍必须区分 source-confirmed、implemented、automated-verified、browser-verified 和 unresolved，不因主线确认而自动闭合未接语义。
 
-### 11.3 远端 archive manifest 悬空引用
+### 11.3 focused archive manifest 已闭合
 
-PR head 的 `data/production-entry.json` 引用：
+PR #4 历史 head 的 `data/production-entry.json` 曾引用：
 
 ```text
 data/v2/archive/apk-replaced-2026-08-16/manifest.json
 ```
 
-该文件本地存在于未跟踪 archive，但没有进入 PR head，远端路径返回 404。当前测试没有阻止这一引用漂移。此项是 PR Ready/merge 前必须处置的明确阻塞项，但处置方式尚未授权。
+focused PR #5 已采用 archive option 2R：manifest 与三个 `archivePath` 实体均进入精确47路径提交，实体与 `e17ec72` 原字节一致，活跃路径保持 `main@c7d2978` 状态，V0.5 runtime 不请求 manifest 或实体。该历史悬空引用不再是 PR #5 的 Ready blocker。
 
 ### 11.4 PR 规模与审阅风险
 
@@ -314,12 +331,10 @@ PR #4 的 125 个文件和约 501 万 additions 混合了正式 production、pro
 9. 默认固定 seed 必须从起点稳定到达 25 岁；自定义 seed 可以保留实验状态并在未接逻辑处 typed stop；
 10. 自动化、浏览器、CI、Pages 和发布状态继续分别记录。
 
-PR #4 继续保持 Draft，作为当前 APK 主线集成基线；是否拆分、追加 V0.5、Ready 或 merge 均等待独立审计和授权。
+PR #4 继续作为历史 APK 主线集成 Draft；focused V0.5 使用独立 Draft PR #5。PR #5 当前 Ready 前结论为 `Conditional Go`：代码候选通过，CI/review 如实记录为 unavailable，状态文档同步及其精确 Git 交付完成后才可进入独立 `A-READY`。
 
 ## 十四、下一节点
 
-当前节点仍是 `Day18 APK V0.5 0～25 岁可玩 Demo`，见：
+当前节点为 `Day19 V0.5 RC1 focused PR Ready 前收口`。`e98bf8a` 已 commit、普通 push 并创建 Draft PR #5；新鲜自动化与当前 checkout 浏览器 RC 均通过。CI 和 review 为 unavailable，Pages 仍为 `main@c7d2978`。
 
-`docs/tasks/DAY18_APK_V05_PLAYABLE_DEMO_TASK.md`
-
-`A-DAY18-AUDIT`、`A-FILE-V05`、`A-BROWSER-V05-RC` 与浏览器日志同步均已完成：V0.5 已具备本地自动化和真实浏览器证据。下一步不是继续扩大玩法，而是先核对混合工作树、compact shard/generator 前置资产与 V0.5 新文件的精确 Git 交付范围；在独立授权前不得 stage、commit、push、修改 PR、Ready、merge 或描述为 Pages 已发布。
+下一步仅处理本轮四文档差异的精确 stage、commit 与 push 授权；完成后重新核对 PR head，再由负责人单独决定是否执行 `A-READY`。Ready 不包含 merge 或 Pages 授权。

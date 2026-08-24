@@ -1,6 +1,6 @@
-# V0.5 RC1 focused PR description（本地草案）
+# V0.5 RC1 focused PR 状态记录
 
-> 目标基线：`main@c7d2978`。目标分支：`codex/v05-rc1`。本文件不表示 PR 已创建、远端 body 已更新或分支已 push。
+> Draft PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5)：`main@c7d2978 ← codex/v05-rc1@e98bf8a`。远端 body 已按当前证据创建；本文件继续记录 Ready 前状态，不授权修改 PR、转 Ready、merge 或 Pages。
 
 ## Summary
 
@@ -24,9 +24,12 @@
 
 - 方案 2 历史验证：generator check 与 focused 83/83 通过；完整回归 155/175，20 个旧 V2 失败。
 - 方案 2R 通过 archivePath 迁移消除对活跃 V2 原路径的覆盖；generator write/check 通过，focused tests 83/83，完整 `npm.cmd test` 175/175。
-- 变更路径仍须终审为 47/47，tracked `git diff --check` 必须通过。自动化全绿不替代当前 checkout 的浏览器、CI、review 或独立 Ready 授权。
-- 当前 checkout 的真实浏览器、GitHub CI、PR review 与 Pages 验收仍需独立执行，不能由 Day18 历史浏览器证据替代。
+- 变更路径终审为 47/47；`main@c7d2978..e98bf8a` 提交级 whitespace check 通过。
+- 当前 focused checkout 的真实浏览器 RC 已通过：默认 seed 到25岁、shard-only Network、console、完成锁、刷新与390×844窄屏均合格。
+- GitHub 没有 `e98bf8a` 的 Actions run，仓库没有提交级 CI workflow 或 required checks；CI 为 `unavailable / not configured`，不是 passed。
+- PR review 为 `unavailable`：0 reviews、0 comments、0 review requests。Pages 仍发布 `main@c7d2978`，V0.5 公开页面未部署或验收。
+- focused checkout 只包含 V1、V2 与 V0.5 HTML；V3、临时魂环 Demo 和 APK Route Demo 留在 PR #4/原混合工作树，属于 focused 拓扑排除。
 
 ## Delivery state
 
-当前仅完成授权文件范围内的本地实现；未 stage、commit、push、创建 PR、转 Ready、merge、tag、Release 或修改 Pages。
+精确47路径已提交为 `e98bf8a` 并普通 push；Draft PR #5 已创建，状态为 `CLEAN / MERGEABLE`。Ready 前审计结论为 `Conditional Go`：本轮四文档状态同步需另经 stage、commit、push 后复核 PR head。当前未转 Ready、未 merge，未修改 Pages、tag 或 Release。

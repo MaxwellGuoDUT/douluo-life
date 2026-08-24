@@ -1,8 +1,8 @@
 # 斗罗人生 V0.5 Demo
 
-状态：`V0.5 RC1 focused package / archive 2R / focused 83 passed / full 175 passed / current-checkout browser RC passed / not staged`
+状态：`V0.5 RC1 focused package / archive 2R / automated-verified / browser-verified / committed and pushed / Draft PR #5 / Ready pre-audit Conditional Go`
 
-日期：2026-08-25（Day19 focused browser RC 更新）
+日期：2026-08-25（Day19 focused PR Ready 前审计更新）
 
 对应任务：Day18 APK canonical `douluo1` 0～25 岁可玩 Demo
 
@@ -21,7 +21,7 @@ V0.5 使用独立入口，不替换 focused base 已有入口：
 - `index.html`
 - `v2-demo.html`
 
-V3、Soul Ring Demo 和 APK Route Demo 仍留在历史 PR #4/原混合工作树的审阅范围；它们不为 focused RC PR 从 `main@c7d2978` 额外引入。
+V3、Soul Ring Demo 和 APK Route Demo 仍留在历史 PR #4/原混合工作树的审阅范围；它们不为 focused RC PR 从 `main@c7d2978` 额外引入。当前 focused checkout 只包含 `index.html`、`v2-demo.html` 与 `v05-demo.html`；V3、Soul Ring Demo 与 APK Route Demo 属于已确认的 focused 拓扑排除，不得描述为本 checkout 已验证。
 
 ## 产品范围
 
@@ -130,18 +130,20 @@ digest      967347b48f6680be71b1f33d18c52f392519afd4c7afb5255beae20a74531391
 - 刷新后回到“等待开始”，没有保留或伪装 save/load；
 - 全程 console 没有 error 或 warning；
 - 390×844 窄屏下四个控制按钮按单列等宽排列，开始人生和单步提交正常；
-- V1、V2、V3、临时魂环 Demo 和 APK Route Demo 均可独立打开，且没有 console error/warning。
+- V1、V2、V3、临时魂环 Demo 和 APK Route Demo 曾在 Day18 原混合工作树中分别打开且没有 console error/warning；这条历史证据不表示 V3、临时魂环 Demo 或 APK Route Demo 已进入 focused PR #5。
 
-仍未验证：GitHub CI、PR review、远端部署与 Pages V0.5 页面。这些状态不得由本地浏览器 RC 推导。
+Ready 前审计确认：PR #5 没有该提交的 GitHub Actions run，仓库没有提交级 CI workflow、required checks、branch protection 或 ruleset，因此 CI 准确状态为 `unavailable / not configured`，不是 passed；PR review 为 `unavailable`（0 reviews、0 comments、0 review requests）。Pages 仍由 `main / (root)` 发布 `main@c7d2978`，V0.5 公开页面尚未部署或验收。这些状态不得由本地浏览器 RC 推导。
+
+当前 Git 交付为：`codex/v05-rc1@e98bf8a` 已普通 push，Draft PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 指向 `main@c7d2978`，47 files、1 commit，merge 状态为 `CLEAN / MERGEABLE`。PR 仍为 Draft；Ready、merge 与 Pages 各自保留独立授权门。
 
 ## 授权边界
 
-`A-FILE-V05`、`A-BROWSER-V05-RC` 与 `A-FILE-V05-RC-LOG` 只授权本地实现、浏览器验收和本页证据同步。它们不授权：
+此前的文件、浏览器、stage、commit、push 与 PR 创建均已在各自独立授权下完成。当前 `A-FILE-DAY19-RC-READY-LOG` 只授权同步四个 Ready 前状态文档；它不授权：
 
-- stage、commit、push；
-- PR body、Ready 或 merge；
+- stage、commit、push 当前文档变更；
+- 修改 PR body、转 Ready 或 merge；
 - Pages、tag、Release 或 artifact；
 - 实现 `official-beast.element` 成功语义；
 - 修改 canonical 数据、生成器、archive 或 owner 材料。
 
-下一阶段进入 Git 前必须先核对混合工作树和 compact packaging 前置资产的精确交付范围；stage、commit、push 继续分别授权。
+下一步仅可对本次四文档差异执行精确范围核验；stage、commit、push 与 `A-READY` 继续分别授权。

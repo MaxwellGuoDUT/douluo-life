@@ -1173,3 +1173,14 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 25岁终点为42级、铜灵币29850、cursor/history `100/100`、currentFlow `douluo1:flow.formal-special-growth`；摘要显示铁角牛武魂与4个魂环。完成后单步及连续推进按钮均禁用，第100项之后没有新的 draw。
 - 刷新后页面恢复“等待开始”，角色、进度与 history 清空；390×844 下四按钮单列等宽、无横向溢出，开始与单步正常；全程 console error/warning 为0。
 - 临时视口、标签页和 HTTP 服务已清理。本次日志授权只更新本状态页、`docs/V05_DEMO.md` 与 DEVLOG；未改功能、测试或其他路径，未 stage、commit、push、修改 PR 或 Pages。
+
+### A-FILE-DAY19-RC-READY-LOG - 2026-08-25
+
+- 精确47路径已在独立授权下提交为 `e98bf8a9b9dfb91651a092f728388c835ac90ace`（`feat: prepare V0.5 RC1 focused package`）并普通 push 到 `origin/codex/v05-rc1`；本地、upstream 与远端 PR head 一致，ahead/behind 为 `0/0`。
+- focused Draft PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已创建，base 为 `main@c7d2978`，head 为 `codex/v05-rc1@e98bf8a`，共1 commit、47 files，当前为 `CLEAN / MERGEABLE`；PR #4 未被本轮修改。
+- Ready 前重新运行 RC generator `--check`、8个 focused 测试文件与完整 `npm.cmd test`，结果分别为 pass、`83/83` 与 `175/175`；提交级 whitespace check 通过，focused 功能提交后的工作树干净。
+- `e98bf8a` 没有 GitHub Actions run；仓库没有提交级 CI workflow、required checks、main branch protection 或 ruleset，仅有 GitHub Pages 系统部署 workflow。因此 CI 记录为 `unavailable / not configured`，不得写成 passed。
+- PR review 记录为 `unavailable`：0 reviews、0 comments、0 review requests。Pages 仍由 `main / (root)` 发布 `main@c7d2978`，当前公开站点不是 V0.5；merge 会触发 Pages，但本轮没有 Ready、merge 或 Pages 授权。
+- 当前 focused checkout 只包含 `index.html`、`v2-demo.html` 与 `v05-demo.html`。V3、临时魂环 Demo 和 APK Route Demo 保留在 PR #4/原混合工作树，属于方案 B 的 focused 拓扑排除，不伪记为 PR #5 checkout 浏览器通过。
+- Ready 前结论为 `Conditional Go`：代码、archive 2R、自动化、提交范围与 focused 浏览器 RC 均已闭合；四文档状态同步完成后仍需分别授权精确 stage、commit、push，再复核 PR head，最后才可由独立 `A-READY` 决定是否转 Ready。
+- 本次只修改 `docs/V05_DEMO.md`、`docs/CURRENT_PROJECT_STATUS_2026-08-20.md`、`docs/DEVLOG.md` 与 `docs/review/V05_RC1_PR_DESCRIPTION_2026-08-24.md`；DEVLOG 仅追加。未修改功能、生成器、测试、数据或 archive，未 stage、commit、push、修改 PR、转 Ready、merge 或操作 Pages。
