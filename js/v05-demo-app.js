@@ -86,7 +86,6 @@ function renderHistory(session) {
         fragment.append(item);
     }
     fields.history.replaceChildren(fragment);
-    fields.history.lastElementChild?.scrollIntoView({ block: "nearest" });
 }
 
 function render() {
