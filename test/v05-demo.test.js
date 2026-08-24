@@ -85,6 +85,17 @@ test("V0.5 has an independent RC entry and leaves focused-base entries intact", 
     assert.doesNotMatch(app, /route-graph\.json/u);
 });
 
+test("history rendering does not move the page viewport", () => {
+    const app = fs.readFileSync(
+        new URL("../js/v05-demo-app.js", import.meta.url),
+        "utf8"
+    );
+
+    assert.match(app, /fields\.history\.replaceChildren\(fragment\)/u);
+    assert.doesNotMatch(app, /\.scrollIntoView\s*\(/u);
+    assert.doesNotMatch(app, /\bwindow\.scroll(?:To|By)\s*\(/u);
+});
+
 test("default seed reaches the first exact age-25 commit at item 100 and locks state", async () => {
     const runner = createRunner();
     const transcript = [];
