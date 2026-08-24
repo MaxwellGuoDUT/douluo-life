@@ -1,0 +1,192 @@
+{
+  "manifestVersion": "apk-provenance/1.0",
+  "generatedOn": "2026-08-16",
+  "status": "reference_only",
+  "source": {
+    "path": "dl.dl.狗成百多神盐大神神神神神野百盐盐味配盐芙.apk.APK",
+    "sha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "sizeBytes": 22270928,
+    "analysisRoot": "apk-analysis/E4FB340E",
+    "sha256DirectoryPrefix": "E4FB340E",
+    "directoryPrefixMatchesSha256": true
+  },
+  "extraction": {
+    "entryInventory": {
+      "path": "apk-analysis/E4FB340E/apk-entry-inventory.csv",
+      "sizeBytes": 49310,
+      "sha256": "4BC8EE348767F65C6AB8EFA1528E9AF97508F9EA62C8A83C50235318594B516E"
+    },
+    "androidManifest": {
+      "path": "apk-analysis/E4FB340E/extracted/AndroidManifest.xml",
+      "sizeBytes": 18892,
+      "sha256": "730B8DF003DD3EF2A8D2B07962A7A50893E70CF89AD42D9D74196BBBEE551AAC"
+    },
+    "tooling": {
+      "dependencies": {
+        "acorn": "8.15.0",
+        "prettier": "3.6.2"
+      },
+      "files": [
+        {
+          "path": "apk-analysis/E4FB340E/tooling/analyze-bundles.mjs",
+          "sizeBytes": 10258,
+          "sha256": "2EEB43D8685FCF861D843976CDBD113BAD4C0B381220A526843396EC3EAB6BE2"
+        },
+        {
+          "path": "apk-analysis/E4FB340E/tooling/build-domain-index.py",
+          "sizeBytes": 24450,
+          "sha256": "E566DE9FDE79604B7D5DC5E4F347B6C8F0A839623EACEA26FAE5533D829E6C20"
+        },
+        {
+          "path": "apk-analysis/E4FB340E/tooling/package.json",
+          "sizeBytes": 69,
+          "sha256": "A2F64F5CE7A7DE92DE4507E3A5E5B16B2C351598B816056F4400AEC5A47D6EBA"
+        },
+        {
+          "path": "apk-analysis/E4FB340E/tooling/pnpm-lock.yaml",
+          "sizeBytes": 700,
+          "sha256": "98ECADDFEDC7935D466BAF90ECED8585C50D8C08FFAB2F5C1EB5366EE51466A9"
+        }
+      ]
+    }
+  },
+  "derivedCatalogs": {
+    "summary": {
+      "path": "apk-analysis/E4FB340E/derived/catalogs/summary.json",
+      "sizeBytes": 2575,
+      "sha256": "73AA0FA93361BF2F3D7E8B0FD3BE9F3F46F39924E63931858A7BC38B8FEE53D1",
+      "uniqueStaticDatasets": 61,
+      "allStaticDatasetFiles": 79,
+      "poolRecords": 4781,
+      "optionRecords": 41637,
+      "effectRecords": 19126,
+      "requirementRecords": 2848,
+      "endingOrDeathRecords": 1580,
+      "martialSoulRecords": 584,
+      "soulBeastSpeciesRecords": 107,
+      "soulBeastRawSpeciesRecords": 243,
+      "soulBeastStructuredSemanticsRecords": 107,
+      "storyTimelineRecords": 107
+    },
+    "staticDataSummary": {
+      "path": "apk-analysis/E4FB340E/derived/static-data-summary.json",
+      "sizeBytes": 29126,
+      "sha256": "B203E3EA11C89C93095CF28130B031017F75BD256164ED7A22A51E1FF644951F"
+    },
+    "catalogFiles": [
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/datasets.csv",
+        "sizeBytes": 15984,
+        "sha256": "8D5ED144A93ED6A93423882D13ED67102CE9F920606B57F03D2C933E22D36C1A"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/effects.csv",
+        "sizeBytes": 5465003,
+        "sha256": "6A18407C248CC6ACADB96585328986DA025C7B54ACC1A7EBD1CBA73C4E72E31C"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/endings-and-deaths.csv",
+        "sizeBytes": 746062,
+        "sha256": "3F512FBF10FA3EB0DA79B6F3499B9BB77243E56D09E67538CEC5496D98124C31"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/martial-souls.csv",
+        "sizeBytes": 106572,
+        "sha256": "240BBF26BD85E0C839064083A2A36C5260218CBF513C9063D9349DA81252B5C7"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/options.csv",
+        "sizeBytes": 14512582,
+        "sha256": "8BA4D998BAEA7ECF27BBBD3136200906A720348AA155C4358F5CBE1C0EC7A79A"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/pools.csv",
+        "sizeBytes": 1425297,
+        "sha256": "4E33204680C6E0FE14EBD21AE33AC7CB169DE3BF5630AC30E0D8B25CAFA5034C"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/requirements.csv",
+        "sizeBytes": 846586,
+        "sha256": "F1A4F7B73C2D69A1E5A1444CA3666BB9FCE1B54E55AA8E43D1602299E3892F35"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/soul-beast-species-raw.csv",
+        "sizeBytes": 36225,
+        "sha256": "0A7912E3CCCA7304D5B12E11E64AD0488C3ED277BA12B9643E360044C6EC96AE"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/soul-beast-species.csv",
+        "sizeBytes": 35032,
+        "sha256": "F644F315B8A411A877C099BE53A5AA4F4C085E0E19DFD97E9CD893F899AC123B"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/story-timeline.csv",
+        "sizeBytes": 75556,
+        "sha256": "18AF1E6AB1FB5FAC84D23B61164A039E8E67E775F1AF16ADA3076A9708EDDE1D"
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/catalogs/summary.json",
+        "sizeBytes": 2575,
+        "sha256": "73AA0FA93361BF2F3D7E8B0FD3BE9F3F46F39924E63931858A7BC38B8FEE53D1"
+      }
+    ]
+  },
+  "reports": [
+    {
+      "path": "apk-analysis/E4FB340E/APK_RULES_REPORT_ZH.md",
+      "sizeBytes": 24244,
+      "sha256": "0B7968A601E7130B30CF7DF742B7CD29C93E6A768C0E9020938495A3FBB86CF4",
+      "status": "reference_only"
+    },
+    {
+      "path": "docs/review/APK_RULE_COMPARISON_2026-08-16.md",
+      "sizeBytes": 14651,
+      "sha256": "B913A9F5D2EB2467FCFB3DE457B1DDA1DEDCE05A7761D6B75D0CC1E3140FA66B",
+      "status": "review_only"
+    }
+  ],
+  "stage0Outputs": [
+    {
+      "path": "outputs/stage0-evidence-review-2026-08-16/stage0-counts.json",
+      "sizeBytes": 271,
+      "sha256": "380F498BDFECF2718EA7FDE4FB49B073A603DD4BECB931B84EF77975EA04C488"
+    },
+    {
+      "path": "outputs/stage0-evidence-review-2026-08-16/STAGE0_EVIDENCE_REVIEW_2026-08-16.xlsx",
+      "sizeBytes": 265970,
+      "sha256": "2F47F6DBD5EC9CF840BD1A418D6BE2D0C3344E5557262B22DDE21BA031F42AFF",
+      "status": "owner_review_pending"
+    },
+    {
+      "path": "outputs/stage0-evidence-review-2026-08-16/STAGE0_EVIDENCE_REVIEW_2026-08-16.xlsx.inspect.ndjson",
+      "sizeBytes": 17765013,
+      "sha256": "23897E6EA05DD42576525633AB7FEB5A3D8E27E3D4A41D991343B8DAE935BC36",
+      "status": "inspection_artifact"
+    }
+  ],
+  "productionComparisonBaseline": [
+    {
+      "path": "data/v2/catalogs/martial-souls.json",
+      "sizeBytes": 86986,
+      "sha256": "B0EA9E9BDE6545FCC919DB0657A132F35E332C7288089429AFE15DB7CC77810D",
+      "status": "production",
+      "recordCount": 271,
+      "uniqueIdCount": 271
+    },
+    {
+      "path": "data/v2/config/awakening-probabilities.json",
+      "sizeBytes": 12749,
+      "sha256": "6D6DDD4F5F478D1384713B94318C92ED604A903D2DFE7D25188B24122414440E",
+      "status": "production",
+      "innateRows": 12,
+      "countGroups": 12,
+      "qualityGroups": 12
+    }
+  ],
+  "boundaries": [
+    "APK and extracted catalogs remain read-only reference evidence.",
+    "This manifest records provenance and does not grant production import authorization.",
+    "The manifest does not decide canonLevel, reviewStatus, conflict resolution, wording, weights, effects, routes, or copyright eligibility.",
+    "Existing owner materials and outputs are preserved; no Git operation is implied."
+  ]
+}

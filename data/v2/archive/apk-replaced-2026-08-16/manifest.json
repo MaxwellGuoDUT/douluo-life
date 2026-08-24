@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "production-content-archive/1.0",
+  "status": "archive-only",
+  "archivedAt": "2026-08-16",
+  "reason": "APK owner-authorized migration replaced these files as the active content source.",
+  "preservationPolicy": "retain_original_bytes_with_path_mapping",
+  "files": [
+    {
+      "originalPath": "data/v2/catalogs/martial-souls.json",
+      "archivePath": "data/v2/archive/apk-replaced-2026-08-16/catalogs/martial-souls.json",
+      "sha256": "B0EA9E9BDE6545FCC919DB0657A132F35E332C7288089429AFE15DB7CC77810D"
+    },
+    {
+      "originalPath": "data/v2/config/awakening-probabilities.json",
+      "archivePath": "data/v2/archive/apk-replaced-2026-08-16/config/awakening-probabilities.json",
+      "sha256": "6D6DDD4F5F478D1384713B94318C92ED604A903D2DFE7D25188B24122414440E"
+    },
+    {
+      "originalPath": "data/v2/content/age-6-awakening.json",
+      "archivePath": "data/v2/archive/apk-replaced-2026-08-16/content/age-6-awakening.json",
+      "sha256": "EB022EE5CEE219E6776DB4A4ABBA24B09C9882DEDD5D92DF87641C95A38BC0B8"
+    }
+  ],
+  "runtimeUse": "must_not_be_loaded_by_active_production_entry",
+  "gitPolicy": "do_not_stage_or_commit_without_explicit_authorization"
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "production-entry/1.0",
+  "status": "active",
+  "source": "apk-canonical",
+  "packageIndex": "data/v05-rc/package-index.json",
+  "policy": "data/v05-rc/package-policy.json",
+  "routeGraphLoadingPolicy": "pack-shard-only",
+  "formalSpecialResultEvidence": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
+  "humanSoulRingEvidence": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+  "humanSoulRingSpeciesEvidence": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
+  "combatPowerEvidence": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+  "routeDemo": "v05-demo.html",
+  "runtime": "js/apk-rule-runtime.js",
+  "routeRuntime": "js/apk-route-runtime.js",
+  "adapter": "js/apk-content-adapter.js",
+  "availabilityPolicy": "preserve_apk_original_state",
+  "releaseScope": {
+    "channel": "release-candidate",
+    "version": "V0.5 RC1",
+    "publicPackIds": [
+      "douluo1"
+    ],
+    "endpointAge": 25,
+    "defaultSeed": "apk-route-demo-seed",
+    "typedBoundaryAllowed": true,
+    "completeLifeClaimAllowed": false,
+    "knownTypedBoundaries": [
+      "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
+      "APK_COMBAT_POWER_UNCOVERED_STATE"
+    ]
+  },
+  "legacyArchive": {
+    "status": "archive-only",
+    "manifest": "data/v2/archive/apk-replaced-2026-08-16/manifest.json"
+  }
+}

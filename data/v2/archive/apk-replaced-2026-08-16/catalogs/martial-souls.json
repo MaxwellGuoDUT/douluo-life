@@ -1,0 +1,3563 @@
+{
+  "schemaVersion": "martial-soul-catalog/1.0",
+  "catalogVersion": "martial-souls/1.1",
+  "status": "production",
+  "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+  "sourceWorkbookSha256": "78BDC7F2FFEFD3529B690265490855EC641F8AF7F841EF1D057034D4EE4426FA",
+  "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10",
+  "reviewDecisionSha256": "2FC0D135DDB42080A2777CF0865A0B355C874104CF956DE3EE4C3E9F350874C5",
+  "approvedDecisionCount": 14,
+  "allowedCanonLevels": [
+    "canon",
+    "expanded"
+  ],
+  "definitions": [
+    {
+      "id": "ms_expanded_appendix",
+      "name": "阑尾",
+      "form": "body",
+      "qualityGrade": "low",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_expanded_fotiaoqiang",
+      "name": "佛跳墙",
+      "form": "food",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_001",
+      "name": "昊天锤",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_002",
+      "name": "铁锤",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_003",
+      "name": "天星炉",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "防御"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_004",
+      "name": "七宝琉璃塔",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_005",
+      "name": "九宝琉璃塔",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_006",
+      "name": "七杀剑",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_007",
+      "name": "破魂枪",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_008",
+      "name": "蛇矛",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_009",
+      "name": "海矛",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "水"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_010",
+      "name": "千击矛",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_011",
+      "name": "风剑",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "风"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_012",
+      "name": "月刃",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_013",
+      "name": "蛇刃",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_014",
+      "name": "圣剑",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "神圣"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_015",
+      "name": "追魂剑",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_016",
+      "name": "龙杖",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_017",
+      "name": "盘龙棍",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_018",
+      "name": "蛇杖",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_021",
+      "name": "盾牌",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "防御"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_022",
+      "name": "铁剑",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_023",
+      "name": "铁刀",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_024",
+      "name": "铁斧",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_025",
+      "name": "一块陨铁",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "金"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_026",
+      "name": "九凤来仪箫",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_027",
+      "name": "如意盘",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_028",
+      "name": "星罗棋",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_029",
+      "name": "摄魂铃",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_030",
+      "name": "长鞭",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_031",
+      "name": "三叉戟",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_032",
+      "name": "三生镇魂鼎",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_034",
+      "name": "火凤剑",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_035",
+      "name": "星辰珠",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "空间"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_036",
+      "name": "擎天枪",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_037",
+      "name": "黄金龙枪",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_038",
+      "name": "星神剑",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "空间"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_039",
+      "name": "斩龙刀",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_040",
+      "name": "穿云弓",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_041",
+      "name": "弓",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_042",
+      "name": "光翎神弓",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_043",
+      "name": "星杖",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_044",
+      "name": "冰轮星杖",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_045",
+      "name": "光龙匕首",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_046",
+      "name": "暗龙匕首",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "暗"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_047",
+      "name": "冰剑",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_049",
+      "name": "治疗权杖",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "生命"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_050",
+      "name": "灵犀盾",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "防御"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_051",
+      "name": "天甲盾",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "防御"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_052",
+      "name": "雷珠",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "雷"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_054",
+      "name": "血魔斧",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_055",
+      "name": "多情剑",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_056",
+      "name": "无情剑",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_057",
+      "name": "旗",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_058",
+      "name": "笛子",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_059",
+      "name": "海魔笛",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_060",
+      "name": "星冠",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_061",
+      "name": "宝石",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_062",
+      "name": "开山斧",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_068",
+      "name": "锻造锤",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_069",
+      "name": "震天斧",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_070",
+      "name": "紫华弓",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "射击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_071",
+      "name": "银针",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_072",
+      "name": "宝典",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_073",
+      "name": "迷之珠",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_074",
+      "name": "星云扇",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_075",
+      "name": "太阳",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "火",
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_076",
+      "name": "火球",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_077",
+      "name": "冰球",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_078",
+      "name": "元素杖",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "元素"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_079",
+      "name": "土球",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "土"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_080",
+      "name": "风球",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "风"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_081",
+      "name": "纸巾",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_082",
+      "name": "镰刀",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "金"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_083",
+      "name": "锄头",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "金"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_084",
+      "name": "铁铲",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "金"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_085",
+      "name": "剪刀",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "金"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_086",
+      "name": "折扇",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_087",
+      "name": "面具",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_088",
+      "name": "丹药",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_092",
+      "name": "梳子",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_104",
+      "name": "药瓶",
+      "form": "tool",
+      "qualityGrade": "low",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_131",
+      "name": "焚天龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_132",
+      "name": "沙漏",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "时间"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_138",
+      "name": "镜子",
+      "form": "tool",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "空间"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_45_139",
+      "name": "虚空镜",
+      "form": "tool",
+      "qualityGrade": "top",
+      "attributes": [
+        "空间"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_001",
+      "name": "邪眸白虎",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_002",
+      "name": "幽冥灵猫",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_003",
+      "name": "蓝电霸王龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "雷"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_004",
+      "name": "碧磷蛇皇",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_005",
+      "name": "黄金鳄",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_006",
+      "name": "独角火暴龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_007",
+      "name": "火烈鸟",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_008",
+      "name": "冰凤凰",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_009",
+      "name": "狮鹫",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "飞行"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_010",
+      "name": "魔蛛",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_011",
+      "name": "苍狼",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_012",
+      "name": "猛虎",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_013",
+      "name": "巨象",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_014",
+      "name": "柔骨兔",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_015",
+      "name": "骨龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_016",
+      "name": "魔鬼鱼",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "水"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_017",
+      "name": "海星",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "精神"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_018",
+      "name": "海豚",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "水"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_019",
+      "name": "海马",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "水"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_020",
+      "name": "海蛇",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_021",
+      "name": "光明女神蝶",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_022",
+      "name": "火龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_024",
+      "name": "彩虹龙",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "生命"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_025",
+      "name": "饕餮神牛",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_026",
+      "name": "玄冥龟",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "防御",
+        "水"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_027",
+      "name": "白虎",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量",
+        "金"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_028",
+      "name": "玄冰鹿",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_029",
+      "name": "巨鳄",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_030",
+      "name": "泰坦巨猿",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_031",
+      "name": "堕落天使",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "邪恶"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_032",
+      "name": "雷霆龙驹",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "雷"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_033",
+      "name": "碧水灵龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "水"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_034",
+      "name": "疾风魔狼",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "风"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_035",
+      "name": "霜羽鹤",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_036",
+      "name": "银翼隼",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_037",
+      "name": "玄甲犀牛",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "防御"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_038",
+      "name": "熊",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_039",
+      "name": "尖尾雨燕",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_040",
+      "name": "钻石猛犸",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "防御"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_041",
+      "name": "岩羚羊",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_042",
+      "name": "青鸾",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_043",
+      "name": "魔熊",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_044",
+      "name": "噬魂蛛皇",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_045",
+      "name": "死亡蛛皇",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_046",
+      "name": "人面魔蛛",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_047",
+      "name": "烈焰雄狮",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_049",
+      "name": "冰碧蝎",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_051",
+      "name": "紫煌灭天龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_053",
+      "name": "火凤凰",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_054",
+      "name": "四眼猫鹰",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_055",
+      "name": "银英兽",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "精神"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_056",
+      "name": "金鹰",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_057",
+      "name": "光明凤凰",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_058",
+      "name": "霸王龙",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_059",
+      "name": "青炎龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_060",
+      "name": "大力猩猩",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_061",
+      "name": "雪魄魔熊",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_062",
+      "name": "火焰狮",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_063",
+      "name": "金虎",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "金"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_064",
+      "name": "斑斓猫",
+      "form": "beast",
+      "qualityGrade": "low",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_065",
+      "name": "独狼",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_066",
+      "name": "地穴魔蛛",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_067",
+      "name": "紫灵狈",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "雷"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_068",
+      "name": "大力神猿",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_069",
+      "name": "治愈天使",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "生命"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_070",
+      "name": "镜影兽",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "空间"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_071",
+      "name": "大地之王",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "土"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_072",
+      "name": "三足金蟾",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "金",
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_073",
+      "name": "朱晴冰蟾",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火",
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_074",
+      "name": "皮皮象",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "防御"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_075",
+      "name": "九尾狐",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_076",
+      "name": "闪电兔",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "雷"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_077",
+      "name": "暗金恐爪熊",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_078",
+      "name": "九节翡翠",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_079",
+      "name": "虚幻之蛇",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "空间"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_080",
+      "name": "曼陀罗蛇",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_081",
+      "name": "粉红娘娘",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_082",
+      "name": "雀蜂",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "飞行"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_084",
+      "name": "凤尾鸡冠蛇",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "飞行"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_085",
+      "name": "十首烈阳蛇",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_086",
+      "name": "海蝰蛇",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_087",
+      "name": "刺豚",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_088",
+      "name": "火毒烈蟒",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火",
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_089",
+      "name": "天梦冰蚕",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "精神"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_090",
+      "name": "冰天雪女",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_091",
+      "name": "钢鳞地龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "土"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_092",
+      "name": "千环地龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "土"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_099",
+      "name": "剑齿虎",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_100",
+      "name": "霜齿虎",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_120",
+      "name": "泥鳅",
+      "form": "beast",
+      "qualityGrade": "low",
+      "attributes": [
+        "水"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_122",
+      "name": "紫帽水母",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_124",
+      "name": "铁嘴海雀",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_125",
+      "name": "紫电鳐",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "雷"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_126",
+      "name": "银光海蛇",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_127",
+      "name": "紫纹巨蟹",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_128",
+      "name": "海岚翼鸟",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "速度"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_129",
+      "name": "瀚海光阴魔鲸",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "时间"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_131",
+      "name": "魔魂大白鲨",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "水"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_132",
+      "name": "星鳗龙",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "空间"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_134",
+      "name": "冰暴虎",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_147",
+      "name": "狗",
+      "form": "beast",
+      "qualityGrade": "low",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_46_148",
+      "name": "史莱姆",
+      "form": "beast",
+      "qualityGrade": "low",
+      "attributes": [
+        "普通"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_001",
+      "name": "蓝银皇",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_002",
+      "name": "奇茸通天菊",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_003",
+      "name": "八角玄冰草",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_004",
+      "name": "相思断肠红",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_005",
+      "name": "蓝银草",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_006",
+      "name": "天青藤",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_007",
+      "name": "鬼王藤",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_008",
+      "name": "鬼藤",
+      "form": "plant",
+      "qualityGrade": "top",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_009",
+      "name": "孤竹",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_010",
+      "name": "九心海棠",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "生命"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_011",
+      "name": "赤炎荆棘",
+      "form": "plant",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_012",
+      "name": "太阳花",
+      "form": "plant",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_013",
+      "name": "碧磷七绝花",
+      "form": "plant",
+      "qualityGrade": "top",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_014",
+      "name": "食人花",
+      "form": "plant",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_015",
+      "name": "含羞草",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_017",
+      "name": "幽香绮罗花",
+      "form": "plant",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_028",
+      "name": "冰晶雪莲",
+      "form": "plant",
+      "qualityGrade": "top",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_029",
+      "name": "黄金叶",
+      "form": "plant",
+      "qualityGrade": "top",
+      "attributes": [
+        "金"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_030",
+      "name": "生命之树",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "生命"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_036",
+      "name": "荷花",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_038",
+      "name": "烈火杏娇疏",
+      "form": "plant",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_040",
+      "name": "树",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_041",
+      "name": "菊花",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_042",
+      "name": "藤蔓",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_043",
+      "name": "海藻",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_044",
+      "name": "水草",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_046",
+      "name": "柳树",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_047",
+      "name": "金针菇",
+      "form": "food",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_048",
+      "name": "苔藓",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_049",
+      "name": "火龙果",
+      "form": "food",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_050",
+      "name": "折耳根",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_051",
+      "name": "四叶草",
+      "form": "plant",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_052",
+      "name": "五叶草",
+      "form": "plant",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_47_054",
+      "name": "花生",
+      "form": "food",
+      "qualityGrade": "low",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "expanded",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_001",
+      "name": "火影",
+      "form": "body",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_002",
+      "name": "头发",
+      "form": "body",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "控制"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_003",
+      "name": "灵眸",
+      "form": "body",
+      "qualityGrade": "top",
+      "attributes": [
+        "精神"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_004",
+      "name": "虚瞳",
+      "form": "body",
+      "qualityGrade": "top",
+      "attributes": [
+        "精神"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_005",
+      "name": "大脑",
+      "form": "body",
+      "qualityGrade": "top",
+      "attributes": [
+        "精神"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_006",
+      "name": "自身",
+      "form": "body",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_007",
+      "name": "头部",
+      "form": "body",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_008",
+      "name": "右臂",
+      "form": "body",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_009",
+      "name": "左臂",
+      "form": "body",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_010",
+      "name": "右腿",
+      "form": "body",
+      "qualityGrade": "low",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_011",
+      "name": "左腿",
+      "form": "body",
+      "qualityGrade": "low",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_012",
+      "name": "躯干",
+      "form": "body",
+      "qualityGrade": "top",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_48_013",
+      "name": "皮肤",
+      "form": "body",
+      "qualityGrade": "low",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_001",
+      "name": "六翼天使",
+      "form": "body",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "光",
+        "神圣"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_002",
+      "name": "海神",
+      "form": "body",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "水",
+        "神圣"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_003",
+      "name": "罗刹魔蛛",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "毒"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_004",
+      "name": "光明龙神蝶",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量",
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_005",
+      "name": "金龙王",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_006",
+      "name": "死灵圣法神",
+      "form": "body",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "死灵"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_007",
+      "name": "银龙王",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "元素"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_49_008",
+      "name": "修罗魔剑",
+      "form": "tool",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "攻击"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_001",
+      "name": "香肠",
+      "form": "food",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_002",
+      "name": "糖豆",
+      "form": "food",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_003",
+      "name": "大麦",
+      "form": "food",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_004",
+      "name": "雪茄",
+      "form": "food",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10",
+      "reviewDecision": "MARTIAL_SOUL_CAPACITY_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_005",
+      "name": "橘子",
+      "form": "food",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_006",
+      "name": "苹果",
+      "form": "food",
+      "qualityGrade": "low",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_007",
+      "name": "鸡腿",
+      "form": "food",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_008",
+      "name": "饺子",
+      "form": "food",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_009",
+      "name": "香蕉",
+      "form": "food",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_010",
+      "name": "豆腐",
+      "form": "food",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_011",
+      "name": "肉包",
+      "form": "food",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_50_012",
+      "name": "啤酒",
+      "form": "food",
+      "qualityGrade": "top",
+      "attributes": [
+        "辅助"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_51_001",
+      "name": "邪火凤凰",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_51_004",
+      "name": "鬼魅",
+      "form": "body",
+      "qualityGrade": "top",
+      "attributes": [
+        "死灵"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_51_005",
+      "name": "血魂魔傀",
+      "form": "body",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "死灵"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_51_006",
+      "name": "死神魔傀",
+      "form": "body",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "死灵"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_51_007",
+      "name": "邪凤凰",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "邪恶"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_51_008",
+      "name": "黑火凤凰",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "暗",
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_51_013",
+      "name": "暗黑蓝银草",
+      "form": "plant",
+      "qualityGrade": "top",
+      "attributes": [
+        "木"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_52_001",
+      "name": "光明圣龙",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_52_002",
+      "name": "黑暗圣龙",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "暗"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_52_004",
+      "name": "冰碧帝皇蝎",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "冰"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_52_007",
+      "name": "黄金龙",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "力量"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_53_002",
+      "name": "疾风双头狼",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "风"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_53_005",
+      "name": "罗三炮",
+      "form": "beast",
+      "qualityGrade": "ordinary",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_53_008",
+      "name": "烈火苍狼",
+      "form": "beast",
+      "qualityGrade": "top",
+      "attributes": [
+        "火"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_53_010",
+      "name": "黑暗凤凰",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "暗"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    },
+    {
+      "id": "ms_legacy_53_013",
+      "name": "麒麟",
+      "form": "beast",
+      "qualityGrade": "extreme",
+      "attributes": [
+        "光"
+      ],
+      "canonLevel": "canon",
+      "reviewStatus": "confirmed",
+      "enabled": true,
+      "sourceReview": "MARTIAL_SOUL_REVIEW_2026-08-10"
+    }
+  ]
+}

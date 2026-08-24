@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "v05-rc-policy/1.0",
+  "packageVersion": "v05-rc1/2026-08-24",
+  "channel": "release-candidate",
+  "sourceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
+  "sourceSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+  "publicPackIds": [
+    "douluo1"
+  ],
+  "endpointAge": 25,
+  "defaultSeed": "apk-route-demo-seed",
+  "routeGraphPackagingPolicy": "pack-shard-only-no-monolith-fallback",
+  "catalogLoadingPolicy": "catalogNames-empty",
+  "archiveManifest": "data/v2/archive/apk-replaced-2026-08-16/manifest.json",
+  "typedBoundariesRequired": true
+}
