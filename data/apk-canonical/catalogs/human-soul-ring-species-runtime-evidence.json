@@ -1,0 +1,6075 @@
+{
+  "schemaVersion": "apk-human-soul-ring-species-evidence/1.0",
+  "source": {
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "module": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+    "moduleSha256": "0AABF5E741403FF75BB0192D2661A28179612D095A49C67E03F7E8B46B77EC99",
+    "staticExpression": "const $a",
+    "sourceFunctions": [
+      "wt",
+      "pt",
+      "de",
+      "finalizeSoulRingSpecies"
+    ]
+  },
+  "extraction": {
+    "mode": "static_source_mapping_only",
+    "gameplayExecuted": false,
+    "packId": "douluo1",
+    "customHandler": "finalizeSoulRingSpecies",
+    "recordCount": 231,
+    "explicitAttributeRecordCount": 107,
+    "noExplicitAttributeEffectRecordCount": 124,
+    "routeGraphMatchedRecordCount": 171,
+    "routeGraphUnmatchedRecordCount": 60,
+    "scope": "APK shared soul-ring species source rules, including explicit empty attribute effects",
+    "noExplicitAttributeEffectSemantics": "pt(wt(poolId, optionId)) returns [] when the APK attribute rule lookup is absent"
+  },
+  "records": [
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "a28a72",
+      "displayName": "【顶级血脉】泰坦巨猿",
+      "sourceText": "【顶级血脉】泰坦巨猿（拥有力量属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "537420",
+      "displayName": "【顶级血脉】赤背巨猩",
+      "sourceText": "【顶级血脉】赤背巨猩（拥有防御属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "defense",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "7a2d74",
+      "displayName": "【顶级血脉】金狮子",
+      "sourceText": "【顶级血脉】金狮子（拥有力量+雷双属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 1
+        },
+        {
+          "elementId": "lightning",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "2d58bb",
+      "displayName": "【顶级血脉】泰坦雪魔猿",
+      "sourceText": "【顶级血脉】泰坦雪魔猿（自带冰属性，若有血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "ice",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若有血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "b15e98",
+      "displayName": "【顶级血脉】巴蛇",
+      "sourceText": "【顶级血脉】巴蛇（拥有体型属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [
+        "体型"
+      ],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "9baaa6",
+      "displayName": "【顶级血脉】蛇王龙",
+      "sourceText": "【顶级血脉】蛇王龙（拥有力量+防御+体型三属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 1
+        },
+        {
+          "elementId": "defense",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [
+        "体型"
+      ],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "eb090c",
+      "displayName": "【顶级血脉】天青牛蟒",
+      "sourceText": "【顶级血脉】天青牛蟒（拥有水属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "water",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "50e541",
+      "displayName": "【顶级血脉】金角巨蟒",
+      "sourceText": "【顶级血脉】金角巨蟒（拥有金+水双属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "metal",
+          "stage": 1
+        },
+        {
+          "elementId": "water",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "metal",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "3bf50d",
+      "displayName": "【顶级血脉】蛇帝龙",
+      "sourceText": "【顶级血脉】蛇帝龙（拥有力量+防御+体型+黑暗四属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 1
+        },
+        {
+          "elementId": "defense",
+          "stage": 1
+        },
+        {
+          "elementId": "dark",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [
+        "体型"
+      ],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "78ad2e",
+      "displayName": "【顶级血脉】邪毒魔龙蛇",
+      "sourceText": "【顶级血脉】邪毒魔龙蛇（拥有毒属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "poison",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "poison",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "3e4f40",
+      "displayName": "双角蛟",
+      "sourceText": "双角蛟（自带风属性，若血脉融合则叠加）",
+      "bloodlineTier": "lesser-dragon",
+      "attributes": [
+        {
+          "elementId": "wind",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wind",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "f7e10e",
+      "displayName": "青蛟",
+      "sourceText": "青蛟（自带水属性，若血脉融合则叠加）",
+      "bloodlineTier": "lesser-dragon",
+      "attributes": [
+        {
+          "elementId": "water",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "b99781",
+      "displayName": "螭龙",
+      "sourceText": "螭龙（自带光+水双属性，若血脉融合则叠加）",
+      "bloodlineTier": "lesser-dragon",
+      "attributes": [
+        {
+          "elementId": "light",
+          "stage": 1
+        },
+        {
+          "elementId": "water",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "light",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "f6782b",
+      "displayName": "龟龙",
+      "sourceText": "龟龙（自带防御属性，若血脉融合则叠加）",
+      "bloodlineTier": "lesser-dragon",
+      "attributes": [
+        {
+          "elementId": "defense",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "bc9afe",
+      "displayName": "三头蛟",
+      "sourceText": "三头蛟（自带水+力量+雷三属性，若血脉融合则叠加）",
+      "bloodlineTier": "lesser-dragon",
+      "attributes": [
+        {
+          "elementId": "water",
+          "stage": 1
+        },
+        {
+          "elementId": "strength",
+          "stage": 1
+        },
+        {
+          "elementId": "lightning",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "a5ba52",
+      "displayName": "阿尔宙斯",
+      "sourceText": "阿尔宙斯（自带【金木水火土、时间、空间、生命、毁灭、死亡、光、暗】12属性，若血脉融合则叠加）",
+      "bloodlineTier": "lesser-dragon",
+      "attributes": [
+        {
+          "elementId": "metal",
+          "stage": 1
+        },
+        {
+          "elementId": "wood",
+          "stage": 1
+        },
+        {
+          "elementId": "water",
+          "stage": 1
+        },
+        {
+          "elementId": "fire",
+          "stage": 1
+        },
+        {
+          "elementId": "earth",
+          "stage": 1
+        },
+        {
+          "elementId": "time",
+          "stage": 1
+        },
+        {
+          "elementId": "space",
+          "stage": 1
+        },
+        {
+          "elementId": "life",
+          "stage": 1
+        },
+        {
+          "elementId": "destruction",
+          "stage": 1
+        },
+        {
+          "elementId": "death",
+          "stage": 1
+        },
+        {
+          "elementId": "light",
+          "stage": 1
+        },
+        {
+          "elementId": "dark",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "metal",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wood",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "time",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "space",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "life",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "destruction",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "light",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "800180",
+      "displayName": "圣主",
+      "sourceText": "圣主（自带精神+力量+火三属性，若血脉融合则叠加）",
+      "bloodlineTier": "lesser-dragon",
+      "attributes": [
+        {
+          "elementId": "spirit",
+          "stage": 1
+        },
+        {
+          "elementId": "strength",
+          "stage": 1
+        },
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "e1326f",
+      "displayName": "岩龙",
+      "sourceText": "岩龙（自带土属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "earth",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "48b2c7",
+      "displayName": "盾甲龙",
+      "sourceText": "盾甲龙（自带防御属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "defense",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "bddfef",
+      "displayName": "土龙",
+      "sourceText": "土龙（真龙血脉比较纯粹的地龙，自带极致土属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "earth",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "ee3cf4",
+      "displayName": "沙龙",
+      "sourceText": "沙龙（自带土属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "earth",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "cb3d78",
+      "displayName": "穴龙",
+      "sourceText": "穴龙（自带土属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "earth",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "0db78f",
+      "displayName": "赤甲地龙",
+      "sourceText": "赤甲地龙（自带土属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "earth",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "fe4250",
+      "displayName": "独角暴龙",
+      "sourceText": "独角暴龙（自带力量属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "130051",
+      "displayName": "霸王龙",
+      "sourceText": "霸王龙（自带土力量属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "earth",
+          "stage": 1
+        },
+        {
+          "elementId": "strength",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "10279e",
+      "displayName": "蛮颚龙",
+      "sourceText": "蛮颚龙（自带力量属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "388723",
+      "displayName": "牛头尾锤龙",
+      "sourceText": "牛头尾锤龙（自带防御属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "defense",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "ff4370",
+      "displayName": "斩龙",
+      "sourceText": "斩龙（自带火属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "7e5a27",
+      "displayName": "固拉多",
+      "sourceText": "固拉多（自带火+土+力量+防御四属性，若血脉融合则叠加）",
+      "bloodlineTier": "earth-dragon",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        },
+        {
+          "elementId": "earth",
+          "stage": 1
+        },
+        {
+          "elementId": "strength",
+          "stage": 1
+        },
+        {
+          "elementId": "defense",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "ea0b14",
+      "displayName": "绿龙",
+      "sourceText": "绿龙（自带极致力量属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "a323ed",
+      "displayName": "帝龙",
+      "sourceText": "帝龙（自带极致力量+极致防御双属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 2
+        },
+        {
+          "elementId": "defense",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "aad8d8",
+      "displayName": "雷龙",
+      "sourceText": "雷龙（自带极致雷属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "lightning",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "8152c1",
+      "displayName": "火龙",
+      "sourceText": "火龙（自带极致火属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "0612be",
+      "displayName": "流星龙",
+      "sourceText": "流星龙（自带极致风属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "wind",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wind",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "292336",
+      "displayName": "冰龙",
+      "sourceText": "冰龙（自带极致冰属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "ice",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "3559e5",
+      "displayName": "白银龙",
+      "sourceText": "白银龙（自带【金木水火土】五大属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "metal",
+          "stage": 1
+        },
+        {
+          "elementId": "wood",
+          "stage": 1
+        },
+        {
+          "elementId": "water",
+          "stage": 1
+        },
+        {
+          "elementId": "fire",
+          "stage": 1
+        },
+        {
+          "elementId": "earth",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "metal",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wood",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "17a43f",
+      "displayName": "光龙",
+      "sourceText": "光龙（自带极致光属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "light",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "light",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "751f77",
+      "displayName": "时间龙",
+      "sourceText": "时间龙（自带极致时间属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "time",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "time",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "72bd93",
+      "displayName": "水龙",
+      "sourceText": "水龙（自带极致水属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "water",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "76e452",
+      "displayName": "暗龙",
+      "sourceText": "暗龙（自带极致暗属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "23ea3b",
+      "displayName": "黄金龙",
+      "sourceText": "黄金龙（自带【力量+防御+速度+精神】四大属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 1
+        },
+        {
+          "elementId": "defense",
+          "stage": 1
+        },
+        {
+          "elementId": "speed",
+          "stage": 1
+        },
+        {
+          "elementId": "spirit",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "d14636",
+      "displayName": "空间龙",
+      "sourceText": "空间龙（自带极致空间属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "space",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "space",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "c2b0c9",
+      "displayName": "骨龙",
+      "sourceText": "骨龙（自带极致死亡属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "death",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "8a4bba",
+      "displayName": "白龙",
+      "sourceText": "白龙（自带极致生命属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "life",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "life",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "571393",
+      "displayName": "木龙",
+      "sourceText": "木龙（自带极致木属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "wood",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wood",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "99329f",
+      "displayName": "赤龙",
+      "sourceText": "赤龙（自带极致力量属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "b428cc",
+      "displayName": "黑龙",
+      "sourceText": "黑龙（自带极致力量属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "e22787",
+      "displayName": "岚龙",
+      "sourceText": "岚龙（自带极致风属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "wind",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wind",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "3d0fc4",
+      "displayName": "天彗龙",
+      "sourceText": "天彗龙（自带极致速度+极致力量+极致毁灭三大属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "speed",
+          "stage": 2
+        },
+        {
+          "elementId": "strength",
+          "stage": 2
+        },
+        {
+          "elementId": "destruction",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "destruction",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "8c6444",
+      "displayName": "煌黑龙",
+      "sourceText": "煌黑龙（自带【火+雷+风+冰+毁灭+死亡+暗】七大属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        },
+        {
+          "elementId": "lightning",
+          "stage": 1
+        },
+        {
+          "elementId": "wind",
+          "stage": 1
+        },
+        {
+          "elementId": "ice",
+          "stage": 1
+        },
+        {
+          "elementId": "destruction",
+          "stage": 1
+        },
+        {
+          "elementId": "death",
+          "stage": 1
+        },
+        {
+          "elementId": "dark",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wind",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "destruction",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "c0933b",
+      "displayName": "灭烬龙",
+      "sourceText": "灭烬龙（自带极致力量属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "2e3e9b",
+      "displayName": "冥龙",
+      "sourceText": "冥龙（自带【暗+极致死亡】两大属性，若血脉融合则叠加）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 1
+        },
+        {
+          "elementId": "death",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "6de2f8",
+      "displayName": "银龙王",
+      "sourceText": "银龙王（自带金木水火土、时间、空间、生命、毁灭九大属性，若血脉融合则叠加，若与金龙王血脉融合则变成至高血脉【龙神血脉】，目前拥有的所有属性全部变成完整法则）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "metal",
+          "stage": 1
+        },
+        {
+          "elementId": "wood",
+          "stage": 1
+        },
+        {
+          "elementId": "water",
+          "stage": 1
+        },
+        {
+          "elementId": "fire",
+          "stage": 1
+        },
+        {
+          "elementId": "earth",
+          "stage": 1
+        },
+        {
+          "elementId": "time",
+          "stage": 1
+        },
+        {
+          "elementId": "space",
+          "stage": 1
+        },
+        {
+          "elementId": "life",
+          "stage": 1
+        },
+        {
+          "elementId": "destruction",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "metal",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "wood",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "time",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "space",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "life",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "destruction",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "643fe6",
+      "displayName": "金龙王",
+      "sourceText": "金龙王（自带极致力量+极致防御+极致速度+极致精神四大属性，血脉融合则叠加，若与银龙王血脉融合则变成至高血脉【龙神血脉】，目前拥有的所有属性全部变成完整法则）",
+      "bloodlineTier": "pure-dragon",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 2
+        },
+        {
+          "elementId": "defense",
+          "stage": 2
+        },
+        {
+          "elementId": "speed",
+          "stage": 2
+        },
+        {
+          "elementId": "spirit",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "defense",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "a52cd6",
+      "displayName": "【顶级血脉】天使",
+      "sourceText": "【顶级血脉】天使（自带光属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "light",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "light",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "6ced46",
+      "displayName": "【顶级血脉】毕方",
+      "sourceText": "【顶级血脉】毕方（自带火属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "bd1932",
+      "displayName": "【顶级血脉】闪电鸟",
+      "sourceText": "【顶级血脉】闪电鸟（自带雷属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "lightning",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "f26f1c",
+      "displayName": "【顶级血脉】邪凤",
+      "sourceText": "【顶级血脉】邪凤（自带暗属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "b31e07",
+      "displayName": "【顶级血脉】天凤",
+      "sourceText": "【顶级血脉】天凤（自带极致火属性，若血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "de54b1",
+      "displayName": "【顶级血脉】急冻鸟",
+      "sourceText": "【顶级血脉】急冻鸟（自带冰属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "ice",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "5a6d2b",
+      "displayName": "【顶级血脉】火凤凰",
+      "sourceText": "【顶级血脉】火凤凰（自带火属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "b9e5dc",
+      "displayName": "【顶级血脉】六翼天使",
+      "sourceText": "【顶级血脉】六翼天使（自带极致光属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "light",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "light",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "13fece",
+      "displayName": "【顶级血脉】四翼堕天使",
+      "sourceText": "【顶级血脉】四翼堕天使（自带极致暗属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "9f3523",
+      "displayName": "【顶级血脉】火焰鸟",
+      "sourceText": "【顶级血脉】火焰鸟（自带火属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "26d484",
+      "displayName": "【顶级血脉】幽冥猫",
+      "sourceText": "【顶级血脉】幽冥猫（自带速度属性，若血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "speed",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "584cb2",
+      "displayName": "【顶级血脉】日轮狮",
+      "sourceText": "【顶级血脉】日轮狮（自带光属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "light",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "light",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "6c025a",
+      "displayName": "【顶级血脉】邪魔暗虎",
+      "sourceText": "【顶级血脉】邪魔暗虎（自带死亡属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "death",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "d40166",
+      "displayName": "【顶级血脉】罗小黑",
+      "sourceText": "【顶级血脉】罗小黑（自带空间属性，若血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "space",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "space",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "02e096",
+      "displayName": "【低等血脉】路边的野狗",
+      "sourceText": "【低等血脉】路边的野狗（因为族群里出了一个完整火法则的野狗神，该血脉自带火属性，若血脉融合则叠加）",
+      "bloodlineTier": "low",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "cf891a",
+      "displayName": "【顶级血脉】地狱三头犬",
+      "sourceText": "【顶级血脉】地狱三头犬（自带死亡属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "death",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "a60b50",
+      "displayName": "【顶级血脉】泰坦冰狼",
+      "sourceText": "【顶级血脉】泰坦冰狼（自带冰属性血脉，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "ice",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "013ad4",
+      "displayName": "【顶级血脉】雷狼龙",
+      "sourceText": "【顶级血脉】雷狼龙（自带雷属性血脉，若雷属性魂兽进行血脉融合则变成极致之雷）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "lightning",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": false,
+      "fusionWording": "若雷属性魂兽进行血脉融合则变成极致之雷",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "b349d5",
+      "displayName": "【顶级血脉】九尾妖狐",
+      "sourceText": "【顶级血脉】九尾妖狐（自带极致火属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "a2869e",
+      "displayName": "【顶级血脉】六尾火狐狸",
+      "sourceText": "【顶级血脉】六尾火狐狸（自带火属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "323589",
+      "displayName": "【顶级血脉】路卡利欧",
+      "sourceText": "【顶级血脉】路卡利欧（自带精神属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "spirit",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "4caa74",
+      "displayName": "【顶级血脉】念动力恶魔",
+      "sourceText": "【顶级血脉】念动力恶魔（自带精神属性，若血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "spirit",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "b95ea9",
+      "displayName": "【顶级血脉】佐克",
+      "sourceText": "【顶级血脉】佐克（冥界邪神血脉，自带暗属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "b2adde",
+      "displayName": "【普通血脉】艾克佐迪亚",
+      "sourceText": "【普通血脉】艾克佐迪亚（自带极致暗+极致死亡+极致精神三大属性，若血脉融合则叠加）",
+      "bloodlineTier": "ordinary",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 2
+        },
+        {
+          "elementId": "death",
+          "stage": 2
+        },
+        {
+          "elementId": "spirit",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "43d87d",
+      "displayName": "【顶级血脉】噬魂蝗",
+      "sourceText": "【顶级血脉】噬魂蝗（自带死亡属性，若血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "death",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "3d72e8",
+      "displayName": "【顶级血脉】死亡蛛皇",
+      "sourceText": "【顶级血脉】死亡蛛皇（自带死亡元素，若血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "death",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "death",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "b68ee6",
+      "displayName": "【顶级血脉】天梦冰蚕",
+      "sourceText": "【顶级血脉】天梦冰蚕（自带精神属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "spirit",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "e03682",
+      "displayName": "【顶级血脉】月兔",
+      "sourceText": "【顶级血脉】月兔（自带月元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "moon",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "moon",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "ab60ef",
+      "displayName": "【顶级血脉】太阴灵兔",
+      "sourceText": "【顶级血脉】太阴灵兔（自带极致月元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "moon",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "moon",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "3bc0d1",
+      "displayName": "【顶级血脉】月华柔兔",
+      "sourceText": "【顶级血脉】月华柔兔（自带月元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "moon",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "moon",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "0f8551",
+      "displayName": "【顶级血脉】霜灵兔",
+      "sourceText": "【顶级血脉】霜灵兔（自带冰元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "ice",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "e69fe2",
+      "displayName": "【顶级血脉】幻雾兔",
+      "sourceText": "【顶级血脉】幻雾兔（自带精神元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "spirit",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "128c3b",
+      "displayName": "【顶级血脉】赤焰兔",
+      "sourceText": "【顶级血脉】赤焰兔（自带火元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "b38ee8",
+      "displayName": "【顶级血脉】三目魅心兔",
+      "sourceText": "【顶级血脉】三目魅心兔（自带精神元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "spirit",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "2dac29",
+      "displayName": "【顶级血脉】暴雪兔",
+      "sourceText": "【顶级血脉】暴雪兔（自带冰元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "ice",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "009bcc",
+      "displayName": "【顶级血脉】虚空兔",
+      "sourceText": "【顶级血脉】虚空兔（自带空间元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "space",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "space",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "fb8754",
+      "displayName": "【顶级血脉】大地岩甲兔",
+      "sourceText": "【顶级血脉】大地岩甲兔（自带土元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "earth",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "earth",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "5065c4",
+      "displayName": "【顶级血脉】蓝银皇",
+      "sourceText": "【顶级血脉】蓝银皇（自带生命属性，若血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "life",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "若血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "life",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "67492d",
+      "displayName": "【顶级血脉】生命树",
+      "sourceText": "【顶级血脉】生命树（自带极致生命属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "life",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "life",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "2bcb04",
+      "displayName": "【顶级血脉】世界树",
+      "sourceText": "【顶级血脉】世界树（自带体型属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [
+        "体型"
+      ],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "78799e",
+      "displayName": "【顶级血脉】盖欧卡",
+      "sourceText": "【顶级血脉】盖欧卡（自带极致水，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "water",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "c2bd6e",
+      "displayName": "【顶级血脉】玄武",
+      "sourceText": "【顶级血脉】玄武（自带极致水，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "water",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "15a713",
+      "displayName": "【顶级血脉】塞壬",
+      "sourceText": "【顶级血脉】塞壬（自带精神+水双属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "spirit",
+          "stage": 1
+        },
+        {
+          "elementId": "water",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "spirit",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "water",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "952625",
+      "displayName": "【顶级血脉】青焰龙猪",
+      "sourceText": "【顶级血脉】青焰龙猪（带有些许火龙血脉，自带火元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "3999e3",
+      "displayName": "【顶级血脉】幽冥噬魂猪",
+      "sourceText": "【顶级血脉】幽冥噬魂猪（自带暗元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "909021",
+      "displayName": "【顶级血脉】奔雷猪",
+      "sourceText": "【顶级血脉】奔雷猪（自带雷元素，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "lightning",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "b23d59",
+      "displayName": "【顶级血脉】太古封豨",
+      "sourceText": "【顶级血脉】太古封豨（猪神血脉，自带极致力，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "strength",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "strength",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "4ed7e8",
+      "displayName": "【顶级血脉】天马",
+      "sourceText": "【顶级血脉】天马（自带光+速度双属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "light",
+          "stage": 1
+        },
+        {
+          "elementId": "speed",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "light",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "3b2226",
+      "displayName": "【顶级血脉】独角兽",
+      "sourceText": "【顶级血脉】独角兽（自带速度属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "speed",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "b429ef",
+      "displayName": "【顶级血脉】黑天马",
+      "sourceText": "【顶级血脉】黑天马（自带暗+速度双属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "dark",
+          "stage": 1
+        },
+        {
+          "elementId": "speed",
+          "stage": 1
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "dark",
+          "level": 1
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 1
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "fe3d52",
+      "displayName": "【顶级血脉】火麒麟",
+      "sourceText": "【顶级血脉】火麒麟（自带极致火+极致速度，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "fire",
+          "stage": 2
+        },
+        {
+          "elementId": "speed",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "fire",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "0f2ca6",
+      "displayName": "【顶级血脉】雷麒麟",
+      "sourceText": "【顶级血脉】雷麒麟（自带极致雷+极致速度，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "lightning",
+          "stage": 2
+        },
+        {
+          "elementId": "speed",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "lightning",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "9b0825",
+      "displayName": "【顶级血脉】冰呪龙",
+      "sourceText": "【顶级血脉】冰呪龙（说是龙，其实更像是长了翅膀的麒麟，自带极致冰+极致速度双属性，血脉融合则叠加）",
+      "bloodlineTier": "top",
+      "attributes": [
+        {
+          "elementId": "ice",
+          "stage": 2
+        },
+        {
+          "elementId": "speed",
+          "stage": 2
+        }
+      ],
+      "fusionStacks": true,
+      "fusionWording": "血脉融合则叠加",
+      "schemaGaps": [],
+      "effects": [
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "ice",
+          "level": 2
+        },
+        {
+          "type": "ensureHumanElementLevel",
+          "elementId": "speed",
+          "level": 2
+        }
+      ],
+      "attributeRuleStatus": "source-verified-attribute-rule",
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "15b214",
+      "displayName": "【普通血脉】镰鼬",
+      "sourceText": "【普通血脉】镰鼬",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "15b214",
+        "text": "【普通血脉】镰鼬",
+        "weight": 35,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "7b7932",
+      "displayName": "【普通血脉】云雀",
+      "sourceText": "【普通血脉】云雀",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "7b7932",
+        "text": "【普通血脉】云雀",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "8beb6d",
+      "displayName": "【普通血脉】岚雀",
+      "sourceText": "【普通血脉】岚雀",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "8beb6d",
+        "text": "【普通血脉】岚雀",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "a515c9",
+      "displayName": "【普通血脉】鹰身女妖",
+      "sourceText": "【普通血脉】鹰身女妖",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a515c9",
+        "text": "【普通血脉】鹰身女妖",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "536531",
+      "displayName": "【普通血脉】苍鹰",
+      "sourceText": "【普通血脉】苍鹰",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "536531",
+        "text": "【普通血脉】苍鹰",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "6552c0",
+      "displayName": "【普通血脉】翼人",
+      "sourceText": "【普通血脉】翼人",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "6552c0",
+        "text": "【普通血脉】翼人",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "86a2d7",
+      "displayName": "【普通血脉】蝠翼兽",
+      "sourceText": "【普通血脉】蝠翼兽",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "86a2d7",
+        "text": "【普通血脉】蝠翼兽",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "81b43b",
+      "displayName": "【普通血脉】金雕",
+      "sourceText": "【普通血脉】金雕",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "81b43b",
+        "text": "【普通血脉】金雕",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "277c8a",
+      "displayName": "【普通血脉】游隼",
+      "sourceText": "【普通血脉】游隼",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "277c8a",
+        "text": "【普通血脉】游隼",
+        "weight": 40,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "0141a27b-f784-4830-9ce3-7a1a5fde9ed1",
+      "poolName": "翼类魂兽初始池子",
+      "optionId": "4176fe",
+      "displayName": "【低等血脉】路边的野鸟",
+      "sourceText": "【低等血脉】路边的野鸟",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "4176fe",
+        "text": "【低等血脉】路边的野鸟",
+        "weight": 70,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "0643f3",
+      "displayName": "【普通血脉】地狱犬",
+      "sourceText": "【普通血脉】地狱犬",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "0643f3",
+        "text": "【普通血脉】地狱犬",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "0f0de1",
+      "displayName": "【普通血脉】赤豺",
+      "sourceText": "【普通血脉】赤豺",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "0f0de1",
+        "text": "【普通血脉】赤豺",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "6531bb",
+      "displayName": "【普通血脉】蓝眼黑背狼",
+      "sourceText": "【普通血脉】蓝眼黑背狼",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "6531bb",
+        "text": "【普通血脉】蓝眼黑背狼",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "338595",
+      "displayName": "【低等血脉】平平无奇的灰狼",
+      "sourceText": "【低等血脉】平平无奇的灰狼",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "338595",
+        "text": "【低等血脉】平平无奇的灰狼",
+        "weight": 35,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "10e6ae4b-342b-4982-ad4b-429a110920ea",
+      "poolName": "犬科魂兽初始池子",
+      "optionId": "25fd89",
+      "displayName": "【低等血脉】罗三炮（本体以及后天血脉融合若拥有本血脉，则每次时间跳跃获得的年限修为锁定为当前阶段的最低值，比如十年魂兽期间只能获得10年修为，百年魂兽期间只能固定获得100年修为）",
+      "sourceText": "【低等血脉】罗三炮（本体以及后天血脉融合若拥有本血脉，则每次时间跳跃获得的年限修为锁定为当前阶段的最低值，比如十年魂兽期间只能获得10年修为，百年魂兽期间只能固定获得100年修为）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "25fd89",
+        "text": "【低等血脉】罗三炮（本体以及后天血脉融合若拥有本血脉，则每次时间跳跃获得的年限修为锁定为当前阶段的最低值，比如十年魂兽期间只能获得10年修为，百年魂兽期间只能固定获得100年修为）",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "5c8993",
+      "displayName": "【低等血脉】路边的野猪",
+      "sourceText": "【低等血脉】路边的野猪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "5c8993",
+        "text": "【低等血脉】路边的野猪",
+        "weight": 90,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "a0b457",
+      "displayName": "【普通血脉】黑角山猪",
+      "sourceText": "【普通血脉】黑角山猪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a0b457",
+        "text": "【普通血脉】黑角山猪",
+        "weight": 35,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "755bbc",
+      "displayName": "【普通血脉】铁甲獠牙猪",
+      "sourceText": "【普通血脉】铁甲獠牙猪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "755bbc",
+        "text": "【普通血脉】铁甲獠牙猪",
+        "weight": 35,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "7b9806",
+      "displayName": "【普通血脉】石鳞重甲猪",
+      "sourceText": "【普通血脉】石鳞重甲猪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "7b9806",
+        "text": "【普通血脉】石鳞重甲猪",
+        "weight": 35,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "362ec0",
+      "displayName": "【低等血脉】美味家养猪",
+      "sourceText": "【低等血脉】美味家养猪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "362ec0",
+        "text": "【低等血脉】美味家养猪",
+        "weight": 80,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "fb9fbc",
+      "displayName": "【普通血脉】血狱暴食猪",
+      "sourceText": "【普通血脉】血狱暴食猪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "fb9fbc",
+        "text": "【普通血脉】血狱暴食猪",
+        "weight": 35,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e845a1d-1bc6-41ba-a660-a23a21853ea6",
+      "poolName": "猪类魂兽",
+      "optionId": "687181",
+      "displayName": "【普通血脉】双头魔猪",
+      "sourceText": "【普通血脉】双头魔猪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "687181",
+        "text": "【普通血脉】双头魔猪",
+        "weight": 35,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "76380c",
+      "displayName": "【普通血脉】巨型猎猫",
+      "sourceText": "【普通血脉】巨型猎猫",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "76380c",
+        "text": "【普通血脉】巨型猎猫",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "226e5d",
+      "displayName": "【普通血脉】云豹",
+      "sourceText": "【普通血脉】云豹",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "226e5d",
+        "text": "【普通血脉】云豹",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "b1d3cc",
+      "displayName": "【普通血脉】白虎",
+      "sourceText": "【普通血脉】白虎",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "b1d3cc",
+        "text": "【普通血脉】白虎",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "5a693a",
+      "displayName": "【普通血脉】金钱豹",
+      "sourceText": "【普通血脉】金钱豹",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "5a693a",
+        "text": "【普通血脉】金钱豹",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "26dfa4",
+      "displayName": "【普通血脉】猞猁",
+      "sourceText": "【普通血脉】猞猁",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "26dfa4",
+        "text": "【普通血脉】猞猁",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "f92409",
+      "displayName": "【普通血脉】狮虎兽",
+      "sourceText": "【普通血脉】狮虎兽",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "f92409",
+        "text": "【普通血脉】狮虎兽",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "51ebbb",
+      "displayName": "【低等血脉】路边的野猫（圆头耄耋）",
+      "sourceText": "【低等血脉】路边的野猫（圆头耄耋）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "51ebbb",
+        "text": "【低等血脉】路边的野猫（圆头耄耋）",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "d5a52b",
+      "displayName": "【普通血脉】九尾猫",
+      "sourceText": "【普通血脉】九尾猫",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "d5a52b",
+        "text": "【普通血脉】九尾猫",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "6c06fc",
+      "displayName": "【普通血脉】猫又",
+      "sourceText": "【普通血脉】猫又",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "6c06fc",
+        "text": "【普通血脉】猫又",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "5b4079be-5fa6-47e3-9c55-726ffef9f7ec",
+      "poolName": "猫科类魂兽初始池子",
+      "optionId": "db1812",
+      "displayName": "【普通血脉】白光灵猫",
+      "sourceText": "【普通血脉】白光灵猫",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "db1812",
+        "text": "【普通血脉】白光灵猫",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "d66b44",
+      "displayName": "【普通血脉】风绒蝶",
+      "sourceText": "【普通血脉】风绒蝶",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "d66b44",
+        "text": "【普通血脉】风绒蝶",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "c6ce00",
+      "displayName": "【普通血脉】千钧蚂蚁",
+      "sourceText": "【普通血脉】千钧蚂蚁",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "c6ce00",
+        "text": "【普通血脉】千钧蚂蚁",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "026006",
+      "displayName": "【普通血脉】赤土沙蝎",
+      "sourceText": "【普通血脉】赤土沙蝎",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "026006",
+        "text": "【普通血脉】赤土沙蝎",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "30e86d",
+      "displayName": "【普通血脉】飞天螳螂",
+      "sourceText": "【普通血脉】飞天螳螂",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "30e86d",
+        "text": "【普通血脉】飞天螳螂",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "9feba1",
+      "displayName": "【普通血脉】沙鲁（2个沙鲁血脉叠加会变成顶级血脉，获得一次元素进化抽取池的机会，3个沙鲁血脉叠加会变成至高血脉，获得5次元素进化抽取池的机会）",
+      "sourceText": "【普通血脉】沙鲁（2个沙鲁血脉叠加会变成顶级血脉，获得一次元素进化抽取池的机会，3个沙鲁血脉叠加会变成至高血脉，获得5次元素进化抽取池的机会）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "9feba1",
+        "text": "【普通血脉】沙鲁（2个沙鲁血脉叠加会变成顶级血脉，获得一次元素进化抽取池的机会，3个沙鲁血脉叠加会变成至高血脉，获得5次元素进化抽取池的机会）",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "adfb92",
+      "displayName": "【普通血脉】雪蚕",
+      "sourceText": "【普通血脉】雪蚕",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "adfb92",
+        "text": "【普通血脉】雪蚕",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "065164",
+      "displayName": "【低等血脉】随处可见的毛毛虫",
+      "sourceText": "【低等血脉】随处可见的毛毛虫",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "065164",
+        "text": "【低等血脉】随处可见的毛毛虫",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "025f0d",
+      "displayName": "【普通血脉】千足虫",
+      "sourceText": "【普通血脉】千足虫",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "025f0d",
+        "text": "【普通血脉】千足虫",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "ce131f",
+      "displayName": "【普通血脉】蟑螂",
+      "sourceText": "【普通血脉】蟑螂",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "ce131f",
+        "text": "【普通血脉】蟑螂",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "67f972a7-c2e7-4516-9b26-e24e8785f74d",
+      "poolName": "虫蛹类魂兽初始池子",
+      "optionId": "98e3da",
+      "displayName": "【低等血脉】路边的蛆蛆",
+      "sourceText": "【低等血脉】路边的蛆蛆",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "98e3da",
+        "text": "【低等血脉】路边的蛆蛆",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "4423a9",
+      "displayName": "【低等血脉】孤竹",
+      "sourceText": "【低等血脉】孤竹",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "4423a9",
+        "text": "【低等血脉】孤竹",
+        "weight": 55,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "34e9cc",
+      "displayName": "【低等血脉】蓝银草",
+      "sourceText": "【低等血脉】蓝银草",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "34e9cc",
+        "text": "【低等血脉】蓝银草",
+        "weight": 55,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "29b715",
+      "displayName": "【普通血脉】剑草",
+      "sourceText": "【普通血脉】剑草",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "29b715",
+        "text": "【普通血脉】剑草",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "c2dc01",
+      "displayName": "【普通血脉】蛇藤花",
+      "sourceText": "【普通血脉】蛇藤花",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "c2dc01",
+        "text": "【普通血脉】蛇藤花",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "d91038",
+      "displayName": "【普通血脉】巨型花",
+      "sourceText": "【普通血脉】巨型花",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "d91038",
+        "text": "【普通血脉】巨型花",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "20b035",
+      "displayName": "【低等血脉】枯树",
+      "sourceText": "【低等血脉】枯树",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "20b035",
+        "text": "【低等血脉】枯树",
+        "weight": 55,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "523cc7",
+      "displayName": "【低等血脉】蔓藤",
+      "sourceText": "【低等血脉】蔓藤",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "523cc7",
+        "text": "【低等血脉】蔓藤",
+        "weight": 55,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "226ec1",
+      "displayName": "【低等血脉】路边的野草",
+      "sourceText": "【低等血脉】路边的野草",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "226ec1",
+        "text": "【低等血脉】路边的野草",
+        "weight": 85,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "f400cc",
+      "displayName": "【普通血脉】霸王花",
+      "sourceText": "【普通血脉】霸王花",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "f400cc",
+        "text": "【普通血脉】霸王花",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "7535d326-d21a-4a6a-aa19-6dd1b6e1bfcd",
+      "poolName": "植物系魂兽初始池子",
+      "optionId": "04ac6f",
+      "displayName": "【普通血脉】天青藤",
+      "sourceText": "【普通血脉】天青藤",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "04ac6f",
+        "text": "【普通血脉】天青藤",
+        "weight": 225,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "a4a3c6",
+      "displayName": "双翼飞龙",
+      "sourceText": "双翼飞龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a4a3c6",
+        "text": "双翼飞龙",
+        "weight": 10,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "9b891b",
+      "displayName": "蜥龙",
+      "sourceText": "蜥龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "9b891b",
+        "text": "蜥龙",
+        "weight": 5,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "2b16c5",
+      "displayName": "鳄龙",
+      "sourceText": "鳄龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "2b16c5",
+        "text": "鳄龙",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "afd7c0",
+      "displayName": "泥鱼龙",
+      "sourceText": "泥鱼龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "afd7c0",
+        "text": "泥鱼龙",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "3346e9",
+      "displayName": "鲨龙",
+      "sourceText": "鲨龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "3346e9",
+        "text": "鲨龙",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "61e880",
+      "displayName": "蝠翼血龙",
+      "sourceText": "蝠翼血龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "61e880",
+        "text": "蝠翼血龙",
+        "weight": 10,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "0bd29e",
+      "displayName": "鲸龙",
+      "sourceText": "鲸龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "0bd29e",
+        "text": "鲸龙",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "ed34e4",
+      "displayName": "雀龙",
+      "sourceText": "雀龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "ed34e4",
+        "text": "雀龙",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "149d21",
+      "displayName": "独角蟒蛟",
+      "sourceText": "独角蟒蛟",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "149d21",
+        "text": "独角蟒蛟",
+        "weight": 2,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "8001d4e9-2ead-484c-86ab-550686c6ce0d",
+      "poolName": "亚龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "e69212",
+      "displayName": "蝎龙",
+      "sourceText": "蝎龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "e69212",
+        "text": "蝎龙",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "f41f50",
+      "displayName": "【普通血脉】大力狒狒",
+      "sourceText": "【普通血脉】大力狒狒",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "f41f50",
+        "text": "【普通血脉】大力狒狒",
+        "weight": 1,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "8158df",
+      "displayName": "【普通血脉】人猿（在十年魂兽期间，每次经过时间跳跃可额外获得10年修为）",
+      "sourceText": "【普通血脉】人猿（在十年魂兽期间，每次经过时间跳跃可额外获得10年修为）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "8158df",
+        "text": "【普通血脉】人猿（在十年魂兽期间，每次经过时间跳跃可额外获得10年修为）",
+        "weight": 6,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "9cd499",
+      "displayName": "【普通血脉】长尾猴",
+      "sourceText": "【普通血脉】长尾猴",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "9cd499",
+        "text": "【普通血脉】长尾猴",
+        "weight": 1,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "de32dc",
+      "displayName": "【普通血脉】金刚狒狒",
+      "sourceText": "【普通血脉】金刚狒狒",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "de32dc",
+        "text": "【普通血脉】金刚狒狒",
+        "weight": 2,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "78d2f8",
+      "displayName": "【顶级血脉】赛亚人（每次经过【战斗池】后，修为增加当前阶段修为上限的10%，无法重复血脉融合，只能融合一次，否则重抽）",
+      "sourceText": "【顶级血脉】赛亚人（每次经过【战斗池】后，修为增加当前阶段修为上限的10%，无法重复血脉融合，只能融合一次，否则重抽）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "78d2f8",
+        "text": "【顶级血脉】赛亚人（每次经过【战斗池】后，修为增加当前阶段修为上限的10%，无法重复血脉融合，只能融合一次，否则重抽）",
+        "weight": 1,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "04576b",
+      "displayName": "【普通血脉】山猿",
+      "sourceText": "【普通血脉】山猿",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "04576b",
+        "text": "【普通血脉】山猿",
+        "weight": 1,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "b96661",
+      "displayName": "【普通血脉】白臂猿",
+      "sourceText": "【普通血脉】白臂猿",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "b96661",
+        "text": "【普通血脉】白臂猿",
+        "weight": 1,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "ce01bd",
+      "displayName": "【普通血脉】长臂猿",
+      "sourceText": "【普通血脉】长臂猿",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "ce01bd",
+        "text": "【普通血脉】长臂猿",
+        "weight": 3,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "1782ff",
+      "displayName": "【低等血脉】路边的野猴",
+      "sourceText": "【低等血脉】路边的野猴",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "1782ff",
+        "text": "【低等血脉】路边的野猴",
+        "weight": 14,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "83306f0e-1096-4cb2-8e89-951303751680",
+      "poolName": "猿猴类魂兽初始池子",
+      "optionId": "98274c",
+      "displayName": "【至高血脉】超级赛亚人（所有的【战斗池】无视前置条件，全部默认为胜利，每次经过时间跳跃可额外获得当前阶段修为上限的10%，比如十年魂兽的上限是100年，那就获得10年修为）",
+      "sourceText": "【至高血脉】超级赛亚人（所有的【战斗池】无视前置条件，全部默认为胜利，每次经过时间跳跃可额外获得当前阶段修为上限的10%，比如十年魂兽的上限是100年，那就获得10年修为）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "98274c",
+        "text": "【至高血脉】超级赛亚人（所有的【战斗池】无视前置条件，全部默认为胜利，每次经过时间跳跃可额外获得当前阶段修为上限的10%，比如十年魂兽的上限是100年，那就获得10年修为）",
+        "weight": 1,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "f9db3d",
+      "displayName": "牙龙",
+      "sourceText": "牙龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "f9db3d",
+        "text": "牙龙",
+        "weight": 10,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "3bcd54",
+      "displayName": "巨爪龙",
+      "sourceText": "巨爪龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "3bcd54",
+        "text": "巨爪龙",
+        "weight": 10,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "9afadc",
+      "displayName": "穴居蠕虫龙",
+      "sourceText": "穴居蠕虫龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "9afadc",
+        "text": "穴居蠕虫龙",
+        "weight": 10,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "10c9bf",
+      "displayName": "狗龙王",
+      "sourceText": "狗龙王",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "10c9bf",
+        "text": "狗龙王",
+        "weight": 10,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "917a611f-c50b-4c67-9b27-da19f136e5c5",
+      "poolName": "地龙种魂兽初始池子（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "300571",
+      "displayName": "【低等血脉】奶龙（地龙种的唯一例外，虽然是龙族，确实低等血脉，不仅享受地龙种的debuff还享受低等血脉的debuff）",
+      "sourceText": "【低等血脉】奶龙（地龙种的唯一例外，虽然是龙族，确实低等血脉，不仅享受地龙种的debuff还享受低等血脉的debuff）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "300571",
+        "text": "【低等血脉】奶龙（地龙种的唯一例外，虽然是龙族，确实低等血脉，不仅享受地龙种的debuff还享受低等血脉的debuff）",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "b0de8f",
+      "displayName": "【普通血脉】青蛇",
+      "sourceText": "【普通血脉】青蛇",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "b0de8f",
+        "text": "【普通血脉】青蛇",
+        "weight": 5,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "ed755e",
+      "displayName": "【普通血脉】双翼飞蛇",
+      "sourceText": "【普通血脉】双翼飞蛇",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "ed755e",
+        "text": "【普通血脉】双翼飞蛇",
+        "weight": 5,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "aeccf6",
+      "displayName": "【普通血脉】灰网巨蟒",
+      "sourceText": "【普通血脉】灰网巨蟒",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "aeccf6",
+        "text": "【普通血脉】灰网巨蟒",
+        "weight": 5,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "3743ac",
+      "displayName": "【普通血脉】双角蟒",
+      "sourceText": "【普通血脉】双角蟒",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "3743ac",
+        "text": "【普通血脉】双角蟒",
+        "weight": 5,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "5777ee",
+      "displayName": "【普通血脉】沼泽巨蛇",
+      "sourceText": "【普通血脉】沼泽巨蛇",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "5777ee",
+        "text": "【普通血脉】沼泽巨蛇",
+        "weight": 5,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "a86098df-468d-4851-8d66-f507df1f5d0c",
+      "poolName": "蛇类魂兽初始池子",
+      "optionId": "6ba7e5",
+      "displayName": "【低等血脉】路边的野蛇",
+      "sourceText": "【低等血脉】路边的野蛇",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "6ba7e5",
+        "text": "【低等血脉】路边的野蛇",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "6674cc",
+      "displayName": "【普通血脉】虎鲸",
+      "sourceText": "【普通血脉】虎鲸",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "6674cc",
+        "text": "【普通血脉】虎鲸",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "2dc34c",
+      "displayName": "【普通血脉】深海魔鲸",
+      "sourceText": "【普通血脉】深海魔鲸",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "2dc34c",
+        "text": "【普通血脉】深海魔鲸",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "a6cd1f",
+      "displayName": "【普通血脉】魔魂大白鲨",
+      "sourceText": "【普通血脉】魔魂大白鲨",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a6cd1f",
+        "text": "【普通血脉】魔魂大白鲨",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "e966c8",
+      "displayName": "【普通血脉】巨钳虾蟹",
+      "sourceText": "【普通血脉】巨钳虾蟹",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "e966c8",
+        "text": "【普通血脉】巨钳虾蟹",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "d6b26c",
+      "displayName": "【普通血脉】幻影水母",
+      "sourceText": "【普通血脉】幻影水母",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "d6b26c",
+        "text": "【普通血脉】幻影水母",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "e79962",
+      "displayName": "【普通血脉】苍鳄",
+      "sourceText": "【普通血脉】苍鳄",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "e79962",
+        "text": "【普通血脉】苍鳄",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "a952df",
+      "displayName": "【普通血脉】锯齿鲨",
+      "sourceText": "【普通血脉】锯齿鲨",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a952df",
+        "text": "【普通血脉】锯齿鲨",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "d27f2a",
+      "displayName": "【普通血脉】暴鲤龙",
+      "sourceText": "【普通血脉】暴鲤龙",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "d27f2a",
+        "text": "【普通血脉】暴鲤龙",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "d61397",
+      "displayName": "【普通血脉】人身海妖",
+      "sourceText": "【普通血脉】人身海妖",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "d61397",
+        "text": "【普通血脉】人身海妖",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "6a2b99",
+      "displayName": "【普通血脉】宝石海星",
+      "sourceText": "【普通血脉】宝石海星",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "6a2b99",
+        "text": "【普通血脉】宝石海星",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "38b6cc",
+      "displayName": "【普通血脉】深海魔豚",
+      "sourceText": "【普通血脉】深海魔豚",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "38b6cc",
+        "text": "【普通血脉】深海魔豚",
+        "weight": 15,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "b892ab24-634a-47fb-8e9e-585254bd668e",
+      "poolName": "海魂兽初始池子（默认全部带水属性，血脉融合则叠加）",
+      "optionId": "2e584f",
+      "displayName": "【低等血脉】路边的野鱼",
+      "sourceText": "【低等血脉】路边的野鱼",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "2e584f",
+        "text": "【低等血脉】路边的野鱼",
+        "weight": 55,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "c898523e-82f4-45d4-9dc8-ee6845e2b74d",
+      "poolName": "纯血龙种魂兽初始池（龙族血脉不列入【普通血脉】【顶级血脉】等一列，单独为一个血脉等级）",
+      "optionId": "6f1165",
+      "displayName": "宝石龙（每次进化可额外获得一次【元素进化抽取池】的抽取机会）",
+      "sourceText": "宝石龙（每次进化可额外获得一次【元素进化抽取池】的抽取机会）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "6f1165",
+        "text": "宝石龙（每次进化可额外获得一次【元素进化抽取池】的抽取机会）",
+        "weight": 3,
+        "enabled": true,
+        "customHandler": "applyHumanMartialSoul"
+      },
+      "routeGraphMatch": false
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "402f79",
+      "displayName": "【普通血脉】硬爪兔",
+      "sourceText": "【普通血脉】硬爪兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "402f79",
+        "text": "【普通血脉】硬爪兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "0d95b5",
+      "displayName": "【普通血脉】长尾兔",
+      "sourceText": "【普通血脉】长尾兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "0d95b5",
+        "text": "【普通血脉】长尾兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "eaab85",
+      "displayName": "【普通血脉】穴兔",
+      "sourceText": "【普通血脉】穴兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "eaab85",
+        "text": "【普通血脉】穴兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "c8e038",
+      "displayName": "【普通血脉】长耳兔",
+      "sourceText": "【普通血脉】长耳兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "c8e038",
+        "text": "【普通血脉】长耳兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "c0cde8",
+      "displayName": "【普通血脉】媚兔",
+      "sourceText": "【普通血脉】媚兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "c0cde8",
+        "text": "【普通血脉】媚兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "8a433c",
+      "displayName": "【普通血脉】柔骨兔",
+      "sourceText": "【普通血脉】柔骨兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "8a433c",
+        "text": "【普通血脉】柔骨兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "99015d",
+      "displayName": "【普通血脉】软足兔",
+      "sourceText": "【普通血脉】软足兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "99015d",
+        "text": "【普通血脉】软足兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "df9b4f",
+      "displayName": "【普通血脉】闪电兔",
+      "sourceText": "【普通血脉】闪电兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "df9b4f",
+        "text": "【普通血脉】闪电兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "a37544",
+      "displayName": "【低等血脉】路边的野兔",
+      "sourceText": "【低等血脉】路边的野兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a37544",
+        "text": "【低等血脉】路边的野兔",
+        "weight": 80,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "a54059",
+      "displayName": "【普通血脉】魔鬼兔",
+      "sourceText": "【普通血脉】魔鬼兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a54059",
+        "text": "【普通血脉】魔鬼兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "df4c90ff-4cd5-4abb-acf3-289b9be1e2e1",
+      "poolName": "兔子类魂兽初始池子",
+      "optionId": "52113a",
+      "displayName": "【普通血脉】毒丝绒尾兔",
+      "sourceText": "【普通血脉】毒丝绒尾兔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "52113a",
+        "text": "【普通血脉】毒丝绒尾兔",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "5f60c1",
+      "displayName": "【普通血脉】大眼怪",
+      "sourceText": "【普通血脉】大眼怪",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "5f60c1",
+        "text": "【普通血脉】大眼怪",
+        "weight": 50,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "d8011e",
+      "displayName": "【普通血脉】蛇人",
+      "sourceText": "【普通血脉】蛇人",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "d8011e",
+        "text": "【普通血脉】蛇人",
+        "weight": 50,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "f3aa5e",
+      "displayName": "【普通血脉】梦貘",
+      "sourceText": "【普通血脉】梦貘",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "f3aa5e",
+        "text": "【普通血脉】梦貘",
+        "weight": 50,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "f266c2",
+      "displayName": "【普通血脉】独眼巨人",
+      "sourceText": "【普通血脉】独眼巨人",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "f266c2",
+        "text": "【普通血脉】独眼巨人",
+        "weight": 50,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "40699a",
+      "displayName": "【普通血脉】石像鬼",
+      "sourceText": "【普通血脉】石像鬼",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "40699a",
+        "text": "【普通血脉】石像鬼",
+        "weight": 50,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "afe45a",
+      "displayName": "【普通血脉】幻形魔",
+      "sourceText": "【普通血脉】幻形魔",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "afe45a",
+        "text": "【普通血脉】幻形魔",
+        "weight": 50,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "e860a9ed-ccda-48eb-b440-661a87039345",
+      "poolName": "精神类魂兽初始池子",
+      "optionId": "8cdede",
+      "displayName": "【顶级血脉】魅魔（任何战斗池都视为胜利）",
+      "sourceText": "【顶级血脉】魅魔（任何战斗池都视为胜利）",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "8cdede",
+        "text": "【顶级血脉】魅魔（任何战斗池都视为胜利）",
+        "weight": 2,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "83cab9",
+      "displayName": "【低等血脉】路边的野马",
+      "sourceText": "【低等血脉】路边的野马",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "83cab9",
+        "text": "【低等血脉】路边的野马",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "5403d5",
+      "displayName": "【普通血脉】黑角犀牛",
+      "sourceText": "【普通血脉】黑角犀牛",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "5403d5",
+        "text": "【普通血脉】黑角犀牛",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "43c369",
+      "displayName": "【普通血脉】长颈鹿",
+      "sourceText": "【普通血脉】长颈鹿",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "43c369",
+        "text": "【普通血脉】长颈鹿",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "0a8671",
+      "displayName": "【普通血脉】梅花鹿",
+      "sourceText": "【普通血脉】梅花鹿",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "0a8671",
+        "text": "【普通血脉】梅花鹿",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "a0225c",
+      "displayName": "【低等血脉】美味家养驴",
+      "sourceText": "【低等血脉】美味家养驴",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a0225c",
+        "text": "【低等血脉】美味家养驴",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "f0006f",
+      "displayName": "【普通血脉】水牛",
+      "sourceText": "【普通血脉】水牛",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "f0006f",
+        "text": "【普通血脉】水牛",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "b07907",
+      "displayName": "【普通血脉】金角魔牛",
+      "sourceText": "【普通血脉】金角魔牛",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "b07907",
+        "text": "【普通血脉】金角魔牛",
+        "weight": 25,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "a5592d",
+      "displayName": "【低等血脉】路边的野牛",
+      "sourceText": "【低等血脉】路边的野牛",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "a5592d",
+        "text": "【低等血脉】路边的野牛",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "98e780",
+      "displayName": "【低等血脉】路边的野鹿",
+      "sourceText": "【低等血脉】路边的野鹿",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "98e780",
+        "text": "【低等血脉】路边的野鹿",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    },
+    {
+      "poolId": "3e8d9563-41fa-4de8-b588-8c6d86f9c751",
+      "poolName": "蹄类魂兽",
+      "optionId": "cc4275",
+      "displayName": "【低等血脉】路边的野驴",
+      "sourceText": "【低等血脉】路边的野驴",
+      "bloodlineTier": null,
+      "attributes": [],
+      "fusionStacks": null,
+      "fusionWording": null,
+      "schemaGaps": [],
+      "effects": [],
+      "attributeRuleStatus": "source-verified-no-explicit-attribute-effect",
+      "sourceOption": {
+        "id": "cc4275",
+        "text": "【低等血脉】路边的野驴",
+        "weight": 45,
+        "enabled": true,
+        "customHandler": "finalizeSoulRingSpecies"
+      },
+      "routeGraphMatch": true
+    }
+  ]
+}

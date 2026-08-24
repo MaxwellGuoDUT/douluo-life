@@ -1,0 +1,827 @@
+{
+  "schemaVersion": "apk-combat-power-evidence/1.0",
+  "packageVersion": "apk-canonical/2026-08-17",
+  "ownerAuthorization": "confirmed",
+  "availabilityPolicy": "preserve_apk_original_state",
+  "source": {
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "extractionMode": "static_source_mapping_only",
+    "gameplayExecuted": false,
+    "modules": [
+      {
+        "path": "apk-analysis/E4FB340E/derived/pretty/App-qyLEl8t4.js",
+        "sha256": "05EA991B3AB0BB7F475F0686D7CB21AEB8934B539C3190D050A3CAF45214FC09",
+        "roles": [
+          "combat-power-engine",
+          "source-static-constants"
+        ]
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+        "sha256": "CD025DBAF024BCCD90B4601B3DAE0850DBE7907CEC9F38AA0ED40D64E3C3E166",
+        "roles": [
+          "formal-special-result-handler",
+          "threshold-comparison"
+        ]
+      },
+      {
+        "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+        "sha256": "0AABF5E741403FF75BB0192D2661A28179612D095A49C67E03F7E8B46B77EC99",
+        "roles": [
+          "formal-special-result-source-options"
+        ]
+      }
+    ],
+    "sourceFunctions": {
+      "combatCalculator": {
+        "Ke": 377,
+        "qe": 381,
+        "En": 385,
+        "We": 394,
+        "Vs": 398,
+        "js": 404,
+        "bl": 415,
+        "yl": 423,
+        "zs": 430,
+        "wl": 433,
+        "Sl": 446,
+        "Il": 473,
+        "kl": 482,
+        "Rl": 963,
+        "_l": 975,
+        "Hi": 1004,
+        "Ol": 1020,
+        "Ln": 1111
+      },
+      "formalSpecialResultHandler": {
+        "name": "fn",
+        "module": "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+        "line": 64221
+      }
+    }
+  },
+  "extraction": {
+    "scope": "APK combat-power.total used by douluo1 formal special-result checks",
+    "sourceFormulaCopiedAsTypedAdapter": true,
+    "inferredRules": [],
+    "unsupportedSourceBranches": []
+  },
+  "runtimeContract": {
+    "totalField": "total",
+    "thresholdOperators": [
+      ">=",
+      ">"
+    ],
+    "defaultThresholdOperator": ">=",
+    "comparison": "combatPower.total operator combatThreshold",
+    "deathThreshold": "failure effects are allowed only when combat total is below deathThreshold"
+  },
+  "formula": {
+    "levelPower": [
+      {
+        "minimumLevel": 1,
+        "basePower": 1,
+        "powerPerLevel": 1
+      },
+      {
+        "minimumLevel": 11,
+        "basePower": 12,
+        "powerPerLevel": 2
+      },
+      {
+        "minimumLevel": 21,
+        "basePower": 33,
+        "powerPerLevel": 3
+      },
+      {
+        "minimumLevel": 31,
+        "basePower": 64,
+        "powerPerLevel": 4
+      },
+      {
+        "minimumLevel": 41,
+        "basePower": 105,
+        "powerPerLevel": 5
+      },
+      {
+        "minimumLevel": 51,
+        "basePower": 156,
+        "powerPerLevel": 6
+      },
+      {
+        "minimumLevel": 61,
+        "basePower": 217,
+        "powerPerLevel": 7
+      },
+      {
+        "minimumLevel": 71,
+        "basePower": 288,
+        "powerPerLevel": 8
+      },
+      {
+        "minimumLevel": 81,
+        "basePower": 370,
+        "powerPerLevel": 10
+      },
+      {
+        "minimumLevel": 91,
+        "basePower": 480,
+        "powerPerLevel": 20
+      },
+      {
+        "minimumLevel": 96,
+        "basePower": 610,
+        "powerPerLevel": 50
+      },
+      {
+        "minimumLevel": 100,
+        "basePower": 1260,
+        "powerPerLevel": 500
+      },
+      {
+        "minimumLevel": 110,
+        "basePower": 6760,
+        "powerPerLevel": 1000
+      },
+      {
+        "minimumLevel": 120,
+        "basePower": 17760,
+        "powerPerLevel": 2000
+      },
+      {
+        "minimumLevel": 130,
+        "basePower": 39760,
+        "powerPerLevel": 4000
+      },
+      {
+        "minimumLevel": 140,
+        "basePower": 81760,
+        "powerPerLevel": 6000
+      },
+      {
+        "minimumLevel": 150,
+        "basePower": 145760,
+        "powerPerLevel": 10000
+      },
+      {
+        "minimumLevel": 160,
+        "basePower": 255760,
+        "powerPerLevel": 20000
+      }
+    ],
+    "beastCultivation": [
+      {
+        "minimumYears": 10,
+        "basePower": 2,
+        "yearsPerStep": 10,
+        "powerPerStep": 2
+      },
+      {
+        "minimumYears": 100,
+        "basePower": 30,
+        "yearsPerStep": 100,
+        "powerPerStep": 5
+      },
+      {
+        "minimumYears": 1000,
+        "basePower": 100,
+        "yearsPerStep": 1000,
+        "powerPerStep": 15
+      },
+      {
+        "minimumYears": 10000,
+        "basePower": 300,
+        "yearsPerStep": 10000,
+        "powerPerStep": 50
+      },
+      {
+        "minimumYears": 100000,
+        "basePower": 900,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 200000,
+        "basePower": 1090,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 300000,
+        "basePower": 1280,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 400000,
+        "basePower": 1470,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 500000,
+        "basePower": 1660,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 600000,
+        "basePower": 1850,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 700000,
+        "basePower": 2040,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 800000,
+        "basePower": 2230,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      },
+      {
+        "minimumYears": 900000,
+        "basePower": 2420,
+        "yearsPerStep": 10000,
+        "powerPerStep": 10
+      }
+    ],
+    "agePower": [
+      {
+        "minimumYears": 1000000,
+        "power": 200
+      },
+      {
+        "minimumYears": 900000,
+        "power": 110
+      },
+      {
+        "minimumYears": 800000,
+        "power": 100
+      },
+      {
+        "minimumYears": 700000,
+        "power": 90
+      },
+      {
+        "minimumYears": 600000,
+        "power": 80
+      },
+      {
+        "minimumYears": 500000,
+        "power": 70
+      },
+      {
+        "minimumYears": 400000,
+        "power": 60
+      },
+      {
+        "minimumYears": 300000,
+        "power": 50
+      },
+      {
+        "minimumYears": 200000,
+        "power": 40
+      },
+      {
+        "minimumYears": 100000,
+        "power": 30
+      },
+      {
+        "minimumYears": 50000,
+        "power": 21
+      },
+      {
+        "minimumYears": 10000,
+        "power": 16
+      },
+      {
+        "minimumYears": 5000,
+        "power": 11
+      },
+      {
+        "minimumYears": 1000,
+        "power": 8
+      },
+      {
+        "minimumYears": 500,
+        "power": 5
+      },
+      {
+        "minimumYears": 100,
+        "power": 3
+      },
+      {
+        "minimumYears": 10,
+        "power": 1
+      }
+    ],
+    "ringQualityMultipliers": {
+      "low": 1000,
+      "ordinary": 10000,
+      "top": 20000,
+      "sub-dragon": 20000,
+      "earth-dragon": 20000,
+      "pure-dragon": 30000
+    },
+    "martialSoulQuality": {
+      "low": 0,
+      "ordinary": 1000,
+      "top": 2500,
+      "ultimate": 3000
+    },
+    "martialSoulAvatarQuality": {
+      "low": 500,
+      "ordinary": 1000,
+      "top": 2500,
+      "ultimate": 3000
+    },
+    "attributeQuality": {
+      "ordinary": 500,
+      "ultimate": 1200,
+      "law-seed": 2000,
+      "complete-law": 3000
+    },
+    "bloodlineQuality": {
+      "low": -5000,
+      "ordinary": 0,
+      "top": 1000,
+      "sub-dragon": 2000,
+      "earth-dragon": 1000,
+      "pure-dragon": 5000,
+      "supreme": 10000
+    },
+    "titlePower": {
+      "marquis": 500,
+      "king": 1000,
+      "emperor": 1500,
+      "sovereign": 2000,
+      "ruler": 3000,
+      "beast-king": 3000,
+      "dragon-king": 3000
+    },
+    "godArmorPower": {
+      "third": 300,
+      "second": 500,
+      "first": 800,
+      "king": 1000,
+      "supreme-king": 2000
+    },
+    "soulBoneParts": {
+      "672129": "left-arm",
+      "751286": "torso",
+      "head": "head",
+      "torso": "torso",
+      "leftArm": "left-arm",
+      "rightArm": "right-arm",
+      "leftLeg": "left-leg",
+      "rightLeg": "right-leg",
+      "external": "external",
+      "left-arm": "left-arm",
+      "right-arm": "right-arm",
+      "left-leg": "left-leg",
+      "right-leg": "right-leg",
+      "40809b": "head",
+      "5c21d5": "left-leg",
+      "7f9b7a": "right-arm",
+      "082528": "right-leg",
+      "9a5039": "external",
+      "fe17d1": "external"
+    },
+    "constants": {
+      "levelClampMaximum": 169,
+      "godBestowedPower": 1000,
+      "humanSoulCoreBaseCap": 760,
+      "domainBasisPoints": 1000,
+      "soulCoreBasisPoints": 5000,
+      "defaultItemBasisPoints": 1000,
+      "divineQualityBasisPoints": 20000,
+      "soulBoneGodArmorMultiplier": 3,
+      "multiGodArmorEfficiencyBasisPoints": 8000,
+      "subHundredArtifactDivisor": 10,
+      "defaultStatusBasisPoints": 10000,
+      "severelyInjuredStatusBasisPoints": 5000,
+      "desperateStatusBasisPoints": 15000,
+      "beastMillionYearPower": 2510,
+      "beastMillionYearTribulationPower": 3510
+    },
+    "staticOptionSets": {
+      "lowMartialSouls": [
+        "91f81f",
+        "d07259",
+        "105779",
+        "c095ab",
+        "d96e26",
+        "91d405",
+        "50bf46",
+        "a8999d",
+        "50df3d",
+        "58f1b5",
+        "26189f",
+        "6eae6c",
+        "ddb393",
+        "535532",
+        "90a340",
+        "80dda7",
+        "085dda",
+        "010f3c",
+        "70eee4",
+        "1b3e6d",
+        "2982e1",
+        "a1899b",
+        "5b37fa",
+        "7ce2aa",
+        "ac7151",
+        "253e6c",
+        "2299dc",
+        "9959f7",
+        "2e1d80",
+        "37ab68",
+        "f4363a",
+        "af37d3",
+        "ec0b09",
+        "27a3bb",
+        "14c039",
+        "23e74a"
+      ],
+      "topMartialSouls": [
+        "3eadd3",
+        "211d29",
+        "f1b091",
+        "03723c",
+        "a62a1b",
+        "6dea33",
+        "6a4784",
+        "b9503e",
+        "19b21b",
+        "23d24a",
+        "8df1b1",
+        "33e513",
+        "3a74da",
+        "f2c36e",
+        "f99c23",
+        "2e65a6",
+        "86f306",
+        "ec9455",
+        "694eef",
+        "9ebb37",
+        "e8f617",
+        "f6321b",
+        "7f883c",
+        "aadbf9",
+        "cb769b",
+        "7cc957",
+        "c80831",
+        "a4856d",
+        "636076",
+        "72dab4",
+        "1924d2",
+        "dc6c18",
+        "490626",
+        "973ffa",
+        "1d09a1",
+        "f8fa12",
+        "604793",
+        "c27be2",
+        "d761ec",
+        "0d8596",
+        "334906",
+        "130846",
+        "c16fd7",
+        "f4fe04",
+        "4e5031",
+        "974def",
+        "3f5c8c",
+        "908ee3",
+        "fef5a7",
+        "31df22",
+        "650679",
+        "3773c7",
+        "f165b5",
+        "f66f45",
+        "eddca3",
+        "392275",
+        "8d6017",
+        "274df9",
+        "697d0a",
+        "bce304",
+        "89c50a",
+        "9d7cff",
+        "85fd1a",
+        "7616d7",
+        "b18294",
+        "be9150",
+        "412d4f",
+        "5d5aa3",
+        "06e17d",
+        "147fd1",
+        "4ef17e",
+        "ec19c3",
+        "c42d5a",
+        "13c304",
+        "5b6917",
+        "c0cb12",
+        "2e7973",
+        "710547",
+        "0fd97a",
+        "5afcec",
+        "458c99",
+        "8209da",
+        "745049",
+        "961837",
+        "a89e7a",
+        "e58fd7",
+        "d3b532",
+        "ef316e",
+        "411997",
+        "ab2bc6",
+        "53c0b6",
+        "43cdcc",
+        "b5db60",
+        "cb5424",
+        "e43691",
+        "2019ea",
+        "3bed6c",
+        "a2b1c9",
+        "783745",
+        "2c5df6",
+        "a5f53d",
+        "0810c3",
+        "d4f60a",
+        "7b058d",
+        "ab3ca1",
+        "bf75b7",
+        "ddd7ef",
+        "defab7",
+        "cbcea9",
+        "e35cb9",
+        "c9040e",
+        "6eb96c",
+        "9a0264",
+        "645a22",
+        "8fcc9a",
+        "08974b",
+        "e5b67d",
+        "dd015d",
+        "2159ba",
+        "9baab3",
+        "41c0b7",
+        "6620d8",
+        "bfe91c",
+        "de4547",
+        "25508b",
+        "727277",
+        "5852ea",
+        "bbd7e4",
+        "4110f8",
+        "182a80",
+        "f9c228",
+        "5fdecb",
+        "b9ef31",
+        "2af219",
+        "3928b9",
+        "696230",
+        "7ffe6e",
+        "36ede0",
+        "ed129f",
+        "7783d4",
+        "f6add6",
+        "d6ed28",
+        "6a5a92",
+        "ba0cb3",
+        "a27bba",
+        "e1584d",
+        "bfcf94",
+        "6a616b",
+        "d8afe4",
+        "c514cd",
+        "63d4cc",
+        "5d67ef",
+        "e47839",
+        "edc4f1",
+        "dd9986",
+        "4dd9b9",
+        "19d730",
+        "150a0e",
+        "c0c794",
+        "a606aa",
+        "56b559",
+        "e01a6e",
+        "5aa758",
+        "07e753",
+        "98c5ad",
+        "1493fb",
+        "5b549e",
+        "d89970",
+        "469b21"
+      ],
+      "subDragonRingTypes": [
+        "899307",
+        "c94f2f",
+        "2bdf0b",
+        "9e8e80",
+        "9d24ca",
+        "f92dfc",
+        "ccb4c6",
+        "347486",
+        "1e5243"
+      ],
+      "earthDragonRingTypes": [
+        "0a87d4",
+        "ec1cb4",
+        "838519",
+        "65d32f",
+        "0c7919",
+        "737bc9",
+        "5a62ac",
+        "f71926",
+        "1114d9"
+      ],
+      "pureDragonRingTypes": [
+        "7bbe67",
+        "4c82df",
+        "730cb3",
+        "e85765",
+        "6b6961",
+        "852a87",
+        "2dcdb3",
+        "86cec7",
+        "52d5f4"
+      ],
+      "lowRingSpecies": [
+        "83cab9",
+        "a0225c",
+        "a5592d",
+        "98e780",
+        "cc4275",
+        "5c8993",
+        "362ec0",
+        "2e584f",
+        "4423a9",
+        "34e9cc",
+        "20b035",
+        "523cc7",
+        "226ec1",
+        "a37544",
+        "065164",
+        "98e3da",
+        "02e096",
+        "338595",
+        "25fd89",
+        "51ebbb",
+        "4176fe",
+        "300571",
+        "a2b3ac",
+        "6ba7e5",
+        "1782ff"
+      ],
+      "topRingSpecies": [
+        "4ed7e8",
+        "3b2226",
+        "b429ef",
+        "fe3d52",
+        "0f2ca6",
+        "9b0825",
+        "952625",
+        "3999e3",
+        "909021",
+        "b23d59",
+        "78799e",
+        "c2bd6e",
+        "15a713",
+        "5065c4",
+        "67492d",
+        "2bcb04",
+        "e03682",
+        "ab60ef",
+        "3bc0d1",
+        "0f8551",
+        "e69fe2",
+        "128c3b",
+        "b38ee8",
+        "2dac29",
+        "009bcc",
+        "fb8754",
+        "43d87d",
+        "3d72e8",
+        "b68ee6",
+        "4caa74",
+        "8cdede",
+        "b95ea9",
+        "cf891a",
+        "a60b50",
+        "013ad4",
+        "b349d5",
+        "a2869e",
+        "323589",
+        "26d484",
+        "584cb2",
+        "6c025a",
+        "d40166",
+        "a52cd6",
+        "6ced46",
+        "bd1932",
+        "f26f1c",
+        "b31e07",
+        "de54b1",
+        "5a6d2b",
+        "b9e5dc",
+        "13fece",
+        "9f3523",
+        "fc46f4",
+        "586b05",
+        "247d4f",
+        "6fe244",
+        "b15e98",
+        "9baaa6",
+        "eb090c",
+        "50e541",
+        "3bf50d",
+        "78ad2e",
+        "a28a72",
+        "78d2f8",
+        "537420",
+        "7a2d74",
+        "2d58bb"
+      ]
+    },
+    "titleKinds": {
+      "侯": "marquis",
+      "王": "king",
+      "皇": "emperor",
+      "帝": "sovereign",
+      "主宰": "ruler",
+      "兽王": "beast-king",
+      "龙王": "dragon-king"
+    },
+    "rounding": {
+      "finiteNumber": "throw",
+      "round": "APK qe: half away from zero for finite values",
+      "positiveScaledValue": "APK We: max(1, round(value * basisPoints / 10000)) unless zero/negative or minimum disabled",
+      "total": "max(1, round(base + components + status modifiers))",
+      "statusEffects": {
+        "severelyInjured": "positive scaled total by 0.5",
+        "desperate": "positive scaled total by 1.5"
+      }
+    },
+    "calculationSteps": [
+      "human base = levelPower[level], beast base = beastCultivation[beastYears]",
+      "human martial-soul quality and optional true-body quality are scaled from base",
+      "soul-ring base and quality are derived from source ring years, quality and divine slots",
+      "soul-bone base/quality and god-armor contribution are derived from source bone parts",
+      "domains, artifacts, attributes, soul cores, items, special skills and other source components are accumulated",
+      "status modifiers are applied after component accumulation"
+    ],
+    "coverage": {
+      "status": "source-verified-with-typed-guards",
+      "noApproximateTotal": true,
+      "verifiedComponents": [
+        "human.base",
+        "beast.base",
+        "martialSoulQuality",
+        "martialSoulTrueBody",
+        "soulRing",
+        "soulBone",
+        "godArmor.levelGate",
+        "godhood",
+        "artifacts.humanSubHundredDivisor",
+        "artifacts.beastNoSubHundredDivisor",
+        "attributes",
+        "beastBloodline.singleAndFusion",
+        "beastTitles.scaledByBase",
+        "status"
+      ],
+      "typedGuardCode": "APK_COMBAT_POWER_UNCOVERED_STATE"
+    }
+  },
+  "fieldMapping": {
+    "level": "character.level",
+    "beastYears": "character.beastYears",
+    "martialSouls": "character.martialSouls",
+    "soulRings": "character.martialSouls[].rings",
+    "soulBones": "character.soulBones",
+    "godhood": "character.godhood or character.godTrial",
+    "artifacts": "character.artifacts",
+    "titles": "character.titles",
+    "domains": "character.domains",
+    "attributes": "character.attributes / character.elementProgress / character.beast.attributeStages",
+    "traits": "character.traits",
+    "flags": "character.flags"
+  },
+  "validationAnchors": {
+    "formalSpecialOption": {
+      "poolId": "f4d48cb4-7f96-4153-addb-1570b9781a26",
+      "optionId": "27c4ae",
+      "combatThreshold": 47,
+      "combatThresholdOperator": ">=",
+      "sourceText": "战力低于于47点判定战斗失败，战败将失去1枚银灵币"
+    },
+    "formalSpecialHandler": {
+      "module": "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+      "sourceSemantics": "ut.total(character) >= threshold or > threshold"
+    }
+  }
+}
