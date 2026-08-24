@@ -338,3 +338,15 @@ PR #4 继续作为历史 APK 主线集成 Draft；focused V0.5 使用独立 Draf
 当前节点为 `Day19 V0.5 RC1 focused PR Ready 前收口`。`e98bf8a` 已 commit、普通 push 并创建 Draft PR #5；新鲜自动化与当前 checkout 浏览器 RC 均通过。CI 和 review 为 unavailable，Pages 仍为 `main@c7d2978`。
 
 下一步仅处理本轮四文档差异的精确 stage、commit 与 push 授权；完成后重新核对 PR head，再由负责人单独决定是否执行 `A-READY`。Ready 不包含 merge 或 Pages 授权。
+
+## 十五、Day19 RC1 合并与公开验收最终状态（2026-08-25）
+
+第十四节是 Ready 前历史快照。后续独立授权已完成以下交付：
+
+- PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已转 Ready，并以 merge commit `67abd4785d5365c8c95816201ef4524688709b21` 合并到 `main`；Pages run [32752990658](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/32752990658) 成功。
+- 公开验收暴露“每次推进后页面跳到 history 底部”的交互问题。hotfix 仅移除页面级 `scrollIntoView` 并增加防页面跳底回归测试，没有改变游戏规则、数据或运行时请求边界；focused `7/7`、完整 `176/176` 通过。
+- hotfix commit `981af0f74142c956a4605a40a19d5b690fc3cb43` 经 PR [#6](https://github.com/MaxwellGuoDUT/douluo-life/pull/6) 以 merge commit `10d33a2bb0f3399df7a18c139848f4330a41ec35` 合并；Pages run [32755367252](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/32755367252) 成功。
+- Codex 的 hotfix 后公开自动浏览器证据确认开始流程、限定资源请求、console 0、页面不再自动跳底，并推进至21岁；25岁、完成锁、刷新与390×844窄屏未由该次自动调用闭合，原因是最终批次工具超时。
+- 项目负责人已在公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html) 完成人工验收，明确确认不再自动跳底，并通过0～25岁、Network、console、完成锁、刷新与390×844窄屏。该负责人验收是最终公开验收依据，不冒充 Codex 自动浏览器结果。
+
+当前结论为 `V0.5 RC1 merged / Pages success / owner public acceptance passed`。功能工作已停止扩展；未创建 tag、GitHub Release、artifact 或 `SHA256SUMS`，这些仍不是本次收口的一部分。

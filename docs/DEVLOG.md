@@ -1184,3 +1184,12 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 当前 focused checkout 只包含 `index.html`、`v2-demo.html` 与 `v05-demo.html`。V3、临时魂环 Demo 和 APK Route Demo 保留在 PR #4/原混合工作树，属于方案 B 的 focused 拓扑排除，不伪记为 PR #5 checkout 浏览器通过。
 - Ready 前结论为 `Conditional Go`：代码、archive 2R、自动化、提交范围与 focused 浏览器 RC 均已闭合；四文档状态同步完成后仍需分别授权精确 stage、commit、push，再复核 PR head，最后才可由独立 `A-READY` 决定是否转 Ready。
 - 本次只修改 `docs/V05_DEMO.md`、`docs/CURRENT_PROJECT_STATUS_2026-08-20.md`、`docs/DEVLOG.md` 与 `docs/review/V05_RC1_PR_DESCRIPTION_2026-08-24.md`；DEVLOG 仅追加。未修改功能、生成器、测试、数据或 archive，未 stage、commit、push、修改 PR、转 Ready、merge 或操作 Pages。
+
+### A-MERGE-DAY19-RC / A-HOTFIX-V05-SCROLL / A-DOC-CLOSEOUT - 2026-08-25
+
+- focused RC PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已转 Ready，并以 merge commit `67abd4785d5365c8c95816201ef4524688709b21` 合并到 `main`；Pages run [32752990658](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/32752990658) 成功。
+- 首轮公开验收发现每次推进都会触发页面级 `scrollIntoView`，使视口跳到 history 底部。hotfix 精确修改 `js/v05-demo-app.js`、`test/v05-demo.test.js`：移除页面级自动滚动并新增防跳底回归测试；focused `7/7`、完整 `176/176`、whitespace check 通过。
+- hotfix commit `981af0f74142c956a4605a40a19d5b690fc3cb43` 经 PR [#6](https://github.com/MaxwellGuoDUT/douluo-life/pull/6) 以 merge commit `10d33a2bb0f3399df7a18c139848f4330a41ec35` 合并到 `main`；Pages run [32755367252](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/32755367252) 成功。
+- hotfix 后，Codex 公开自动浏览器证据确认开始新人生、shard-only Network、console 0、页面 scroll 不再跳底，并推进至21岁；最后一批调用超时，因此没有把其余项目写成 Codex 自动验证通过。
+- 项目负责人随后在公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html) 完成人工验收，确认不再自动跳底，并通过0～25岁、Network、console、完成锁、刷新与390×844窄屏。负责人验收与 Codex 自动浏览器证据保持分层。
+- 本轮文档收口只同步 `docs/V05_DEMO.md`、`docs/CURRENT_PROJECT_STATUS_2026-08-20.md`、`docs/DEVLOG.md`、`docs/review/V05_RC1_PR_DESCRIPTION_2026-08-24.md`；DEVLOG 仅追加，不再修改功能。tag、Release、artifact 与 `SHA256SUMS` 均未创建。
