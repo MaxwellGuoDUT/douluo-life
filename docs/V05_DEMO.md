@@ -147,3 +147,15 @@ Ready 前审计确认：PR #5 没有该提交的 GitHub Actions run，仓库没�
 - 修改 canonical 数据、生成器、archive 或 owner 材料。
 
 下一步仅可对本次四文档差异执行精确范围核验；stage、commit、push 与 `A-READY` 继续分别授权。
+
+## Day19 合并、hotfix 与公开验收收口（2026-08-25）
+
+上面的 Ready 前状态是当时快照；当前交付状态已由后续独立授权闭合：
+
+- focused RC PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已转 Ready，并以 merge commit `67abd4785d5365c8c95816201ef4524688709b21` 合并到 `main`；对应 Pages run [32752990658](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/32752990658) 成功。
+- 公开页面首次验收发现推进时页面级 `scrollIntoView` 会把视口带到 history 底部。focused hotfix 仅修改 `js/v05-demo-app.js` 与 `test/v05-demo.test.js`，移除页面级自动滚动并增加防跳底回归测试；focused `7/7`、完整 `176/176` 与 whitespace check 均通过。
+- hotfix commit `981af0f74142c956a4605a40a19d5b690fc3cb43` 经 PR [#6](https://github.com/MaxwellGuoDUT/douluo-life/pull/6) 以 merge commit `10d33a2bb0f3399df7a18c139848f4330a41ec35` 合并到 `main`；对应 Pages run [32755367252](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/32755367252) 成功。
+- Codex 对 hotfix 后公开页面的可追溯自动浏览器证据覆盖：开始新人生、shard-only Network、console 0、页面 scroll 保持不跳底，并逐岁推进至21岁。最后一批自动浏览器调用超时，因此不把25岁、完成锁、刷新与窄屏写成 Codex 自动验证完成。
+- 项目负责人随后在公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html) 完成人工验收，确认不再自动跳底，并通过0～25岁、Network、console、完成锁、刷新与390×844窄屏项目。该结论属于负责人公开人工验收，与前述 Codex 自动浏览器证据分开记录。
+
+V0.5 RC1 当前可准确描述为：`merged to main / Pages deployed / owner public acceptance passed`。本轮只做四文档收口，不再修改功能；tag、GitHub Release、artifact 与 `SHA256SUMS` 均未创建，继续作为独立发布门。
