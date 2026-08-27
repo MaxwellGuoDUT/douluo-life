@@ -1193,3 +1193,13 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - hotfix 后，Codex 公开自动浏览器证据确认开始新人生、shard-only Network、console 0、页面 scroll 不再跳底，并推进至21岁；最后一批调用超时，因此没有把其余项目写成 Codex 自动验证通过。
 - 项目负责人随后在公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html) 完成人工验收，确认不再自动跳底，并通过0～25岁、Network、console、完成锁、刷新与390×844窄屏。负责人验收与 Codex 自动浏览器证据保持分层。
 - 本轮文档收口只同步 `docs/V05_DEMO.md`、`docs/CURRENT_PROJECT_STATUS_2026-08-20.md`、`docs/DEVLOG.md`、`docs/review/V05_RC1_PR_DESCRIPTION_2026-08-24.md`；DEVLOG 仅追加，不再修改功能。tag、Release、artifact 与 `SHA256SUMS` 均未创建。
+
+### A-DAY20-IMPLEMENT - 2026-08-26
+
+- 单一玩家可见目标是把既有 V0.5 audit transcript 转成可读人生：新增独立 `js/v05-life-presentation.js`，保存提交前后快照、计算年龄/等级/货币/路线/武魂/魂环/魂骨变化，并生成年龄分组年表与25岁结构化结局；不修改 canonical、route graph、evidence、generator、archive 或 RNG/commit 语义。
+- `v05-demo.html` 与 `js/v05-demo-app.js` 新增事件变化卡、静态年龄/跨岁年表组、结构化结局概览和窄屏样式；保留原始 JSON 审计摘要与既有 typed-stop。`js/v05-demo.js` 只在成功 commit 后追加呈现记录，reset 会清空记录。
+- 新增 `test/v05-life-presentation.test.js`，扩展 `test/v05-demo.test.js`，并新增最小 Node 24 CI 候选；`package.json` 本地版本更新为 `0.5.0-rc.1`。CI workflow 尚未提交和运行，因此不是 CI passed。
+- 定向测试 `13/13`、完整测试 `182/182`、RC generator `--check`、三个相关脚本 `node --check` 与 `git diff --check` 通过。
+- Codex in-app Browser 本地 HTTP 验收：默认 seed 到25岁/42级、铜灵币29850、`100/100`、100条记录、结局可见、完成锁有效；reset 后年表0条。`v05-custom-1` 在17岁以 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED` 停于 `95/94`，年表保留94条已提交记录。390×844 无横向溢出，console warning/error 为0。
+- 该浏览器结果只属于 Codex 对本地 checkout 的自动证据，不替代 Day19 项目负责人公开验收、Pages、CI 或 review。应用请求为200/304；仅非功能性 favicon 请求为404。
+- 本轮保持所有变更 unstaged；未 commit、push、修改/创建 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。PR #4、V3、临时 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner 材料和 archive 均排除。

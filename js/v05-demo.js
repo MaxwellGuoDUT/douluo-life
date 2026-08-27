@@ -5,6 +5,11 @@ import {
     createApkRouteSession,
     drawApkRouteStep
 } from "./apk-route-runtime.js";
+import {
+    createV05PresentationRecord,
+    createV05ReadableEnding,
+    snapshotV05Character
+} from "./v05-life-presentation.js";
 
 export const V05_PACK_ID = "douluo1";
 export const V05_ENTRY_PATH = "data/v05-rc/production-entry.json";
@@ -31,7 +36,7 @@ function isTypedBoundary(error) {
     return typeof error?.code === "string" && error.code.length > 0;
 }
 
-function endpointSummary(session, seed) {
+function endpointSummary(session, seed, presentationHistory) {
     const martialSouls = session.character?.martialSouls ?? [];
     return {
         scope: "V0.5 Demo endpoint; not a complete-life ending",
@@ -43,6 +48,11 @@ function endpointSummary(session, seed) {
         route: session.character?.route ?? null,
         cursor: session.random?.cursor ?? null,
         history: session.history?.length ?? 0,
+        readable: createV05ReadableEnding({
+            seed,
+            session,
+            records: presentationHistory
+        }),
         martialSouls: martialSouls.map(soul => ({
             id: soul.id,
             name: soul.name,
@@ -118,6 +128,7 @@ export function createV05DemoRunner({
         lastCommit: null,
         error: null,
         summary: null,
+        presentationHistory: [],
         seed: null,
         cancelRequested: false
     };
@@ -138,6 +149,7 @@ export function createV05DemoRunner({
         state.lastCommit = null;
         state.error = null;
         state.summary = null;
+        state.presentationHistory = [];
         state.cancelRequested = false;
     }
 
@@ -163,6 +175,7 @@ export function createV05DemoRunner({
             return blockedResult(state, "busy");
         }
         try {
+            const beforeCharacter = snapshotV05Character(state.session.character);
             const spin = drawApkRouteStep({
                 contentIndex,
                 session: state.session,
@@ -183,10 +196,22 @@ export function createV05DemoRunner({
                 ...dynamicHandlers
             });
             state.lastCommit = committed;
+            const presentation = createV05PresentationRecord({
+                index: state.session.history.length,
+                spin,
+                beforeCharacter,
+                afterCharacter: state.session.character,
+                randomCursor: state.session.random.cursor
+            });
+            state.presentationHistory.push(presentation);
             const age = state.session.character?.age;
             if (age === endpointAge) {
                 state.phase = "completed";
-                state.summary = endpointSummary(state.session, state.seed);
+                state.summary = endpointSummary(
+                    state.session,
+                    state.seed,
+                    state.presentationHistory
+                );
             } else if (age > endpointAge) {
                 state.phase = "boundary";
                 state.error = errorRecord(typedError(
@@ -203,6 +228,7 @@ export function createV05DemoRunner({
                 blocked: false,
                 spin,
                 commit: committed,
+                presentation,
                 error: state.error,
                 summary: state.summary
             };
@@ -231,6 +257,9 @@ export function createV05DemoRunner({
         },
         get summary() {
             return state.summary;
+        },
+        get presentationHistory() {
+            return state.presentationHistory;
         },
         step() {
             return commitOne();

@@ -74,6 +74,10 @@ test("V0.5 has an independent RC entry and leaves focused-base entries intact", 
     assert.match(html, /斗罗人生 V0\.5/u);
     assert.match(html, /0～25 岁/u);
     assert.match(html, /js\/v05-demo-app\.js/u);
+    assert.match(html, /id="eventChanges"/u);
+    assert.match(html, /id="endingOverview"/u);
+    assert.match(html, /人生年表/u);
+    assert.match(app, /groupV05PresentationTimeline/u);
     for (const status of ["loading", "ready", "advancing", "boundary", "completed", "error"]) {
         assert.match(app, new RegExp(`\\b${status}\\b`, "u"));
     }
@@ -127,10 +131,17 @@ test("default seed reaches the first exact age-25 commit at item 100 and locks s
     assert.equal(runner.session.random.cursor, 100);
     assert.equal(runner.session.history.length, 100);
     assert.equal(runner.session.routeHistory.length, 100);
+    assert.equal(runner.presentationHistory.length, 100);
+    assert.equal(runner.presentationHistory[0].index, 1);
+    assert.equal(runner.presentationHistory.at(-1).ageAfter, V05_ENDPOINT_AGE);
     assert.equal(runner.session.currentFlowId, "douluo1:flow.formal-special-growth");
     assert.equal(runner.summary.seed, V05_DEFAULT_SEED);
     assert.equal(runner.summary.martialSouls.length, 1);
     assert.equal(runner.summary.martialSouls[0].ringCount, 4);
+    assert.equal(runner.summary.readable.age, V05_ENDPOINT_AGE);
+    assert.equal(runner.summary.readable.level, 42);
+    assert.equal(runner.summary.readable.committedEvents, 100);
+    assert.match(runner.summary.readable.boundary, /不代表完整人生终局/u);
 
     const locked = {
         cursor: runner.session.random.cursor,
@@ -175,6 +186,7 @@ test("continuous age advance and single-step advance produce the same age-25 ses
     assert.deepEqual(continuous.session.character, single.session.character);
     assert.deepEqual(continuous.session.random, single.session.random);
     assert.deepEqual(routeTranscript(continuous.session), routeTranscript(single.session));
+    assert.deepEqual(continuous.presentationHistory, single.presentationHistory);
 });
 
 test("custom seed stops at a typed unresolved option without committing the failed item", () => {
@@ -186,6 +198,7 @@ test("custom seed stops at a typed unresolved option without committing the fail
     assert.equal(runner.session.character.age, 17);
     assert.equal(runner.session.random.cursor, 95);
     assert.equal(runner.session.history.length, 94);
+    assert.equal(runner.presentationHistory.length, 94);
     assert.equal(runner.error.code, "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED");
     assert.equal(runner.error.details.operationId, "beast.element.unresolved");
     assert.equal(runner.lastSpin.optionId, "a935ef");
@@ -222,6 +235,20 @@ test("busy guard blocks a second action and cancellation stops between commits",
     assert.equal(result.cancelled, true);
     assert.equal(runner.phase, "ready");
     assert.equal(runner.session.history.length, runner.session.random.cursor);
+    assert.equal(runner.presentationHistory.length, runner.session.history.length);
+});
+
+test("reset clears the presentation timeline and restarts the selected seed", () => {
+    const runner = createRunner();
+    runner.step();
+    runner.step();
+    assert.equal(runner.presentationHistory.length, 2);
+
+    assert.equal(runner.reset({ seed: "fresh-seed" }), true);
+    assert.equal(runner.phase, "ready");
+    assert.equal(runner.presentationHistory.length, 0);
+    assert.equal(runner.session.history.length, 0);
+    assert.equal(runner.session.random.seed, "fresh-seed");
 });
 
 test("V0.5 rejects a route graph that is not the single douluo1 shard", () => {

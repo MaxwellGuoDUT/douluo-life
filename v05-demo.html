@@ -61,10 +61,33 @@
         .event { margin-top: 1rem; padding: 1rem; border-left: 5px solid #d8b264; border-radius: 8px; background: #1d1a14; }
         .event-title { color: #f1d99d; font-size: 1.12rem; font-weight: 850; }
         .event p { margin-bottom: 0; }
+        .change-list { display: flex; flex-wrap: wrap; gap: .45rem; margin: .8rem 0 0; padding: 0; list-style: none; }
+        .change-list li {
+            padding: .35rem .55rem; color: #f2dfb4; background: #2b251a;
+            border: 1px solid #5d5037; border-radius: 999px; font-size: .78rem;
+        }
         .boundary { border-color: #d27959; background: #281815; }
         .completed { border-color: #63aa76; background: #14231a; }
+        .ending-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-top: .85rem; }
+        .ending-stat { padding: .7rem; border: 1px solid #31533a; border-radius: 9px; background: #0f1c14; }
+        .ending-stat strong { display: block; color: #89d99c; font-size: .72rem; }
+        .ending-stat span { display: block; margin-top: .25rem; overflow-wrap: anywhere; }
+        .ending-souls { display: grid; gap: .55rem; margin-top: .8rem; }
+        .ending-soul { padding: .75rem; border: 1px solid #31533a; border-radius: 9px; background: #0f1c14; }
+        .ending-soul strong { color: #b8e8c3; }
         .badge { display: inline-flex; margin-left: .5rem; padding: .18rem .5rem; border: 1px solid #68583b; border-radius: 999px; color: #e4c886; font-size: .72rem; }
-        ol { max-height: 430px; margin: 0; padding-left: 1.5rem; overflow: auto; }
+        .timeline { display: grid; gap: .75rem; max-height: 720px; overflow: auto; padding-right: .2rem; }
+        .timeline-empty { color: #8996a6; line-height: 1.6; }
+        .timeline-group { border: 1px solid #303946; border-radius: 12px; background: #10151c; overflow: hidden; }
+        .timeline-group h3 { margin: 0; padding: .7rem .85rem; color: #e7c982; background: #171d25; font-size: .95rem; }
+        .timeline-group ol { margin: 0; padding: 0; list-style: none; }
+        .timeline-record { padding: .7rem .85rem; border-bottom: 1px solid #252d36; }
+        .timeline-record:last-child { border-bottom: 0; }
+        .timeline-record p { margin: 0; color: #d5dbe3; line-height: 1.55; }
+        .timeline-meta { display: block; margin-top: .4rem; color: #758294; font-size: .72rem; }
+        .timeline-changes { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .45rem; }
+        .timeline-change { padding: .2rem .4rem; color: #dfc889; background: #251f16; border-radius: 6px; font-size: .7rem; }
+        ol { margin: 0; padding-left: 1.5rem; }
         li { padding: .5rem .25rem; color: #c8d0da; border-bottom: 1px solid #252d36; line-height: 1.5; }
         li:last-child { border-bottom: 0; }
         pre { max-height: 380px; overflow: auto; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; color: #cbd7e7; font-size: .78rem; }
@@ -78,11 +101,11 @@
         #v05Demo[data-status="error"] #pageStatus { color: #ee9277; }
         @media (max-width: 900px) {
             .controls, .grid { grid-template-columns: 1fr; }
-            .actions, .status-grid { grid-template-columns: 1fr 1fr; }
+            .actions, .status-grid, .ending-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 520px) {
             .shell { width: min(100% - 1rem, 1180px); padding-top: .5rem; }
-            .actions, .status-grid { grid-template-columns: 1fr; }
+            .actions, .status-grid, .ending-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -126,6 +149,7 @@
             <div id="eventBox" class="event" aria-live="polite">
                 <div id="eventTitle" class="event-title">正在加载</div>
                 <p id="eventText">正在读取 production entry、package index 和 policy。</p>
+                <ul id="eventChanges" class="change-list" aria-label="本次变化" hidden></ul>
             </div>
             <div id="boundaryBox" class="event boundary" hidden>
                 <div class="event-title">路线停在明确边界</div>
@@ -134,7 +158,13 @@
             <div id="completedBox" class="event completed" hidden>
                 <div class="event-title">V0.5 Demo 已完成</div>
                 <p>你已到达精确 25 岁。此处不会再抽取 option、增加 RNG cursor 或写入 history。</p>
-                <pre id="summaryValue"></pre>
+                <div id="endingOverview" class="ending-grid"></div>
+                <div id="endingSouls" class="ending-souls"></div>
+                <p><strong>边界：</strong><span id="endingBoundary">25 岁展示终点，不代表完整人生终局</span></p>
+                <details>
+                    <summary>结局结构化审计</summary>
+                    <pre id="summaryValue"></pre>
+                </details>
             </div>
 
             <details>
@@ -148,8 +178,11 @@
         </div>
 
         <aside class="panel">
-            <h2>人生记录</h2>
-            <ol id="historyList"><li>开始后，每个成功提交的事件都会保留在这里。</li></ol>
+            <h2>人生年表</h2>
+            <p class="scope">按年龄阶段记录每个成功提交的事件；失败项、busy guard 和取消不会生成半条记录。</p>
+            <div id="historyList" class="timeline" aria-live="polite">
+                <p class="timeline-empty">开始后，每个成功提交的事件都会按年龄保留在这里。</p>
+            </div>
         </aside>
     </section>
 </main>
