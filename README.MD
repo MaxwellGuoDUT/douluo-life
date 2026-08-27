@@ -6,8 +6,9 @@
 
 - V0.5 RC1 使用独立入口 `v05-demo.html`，只发布 `douluo1` 的 0～25 岁展示范围；默认 seed 在第 100 项完整提交后锁定 25 岁终点。
 - V0.5 RC1 从 `data/v05-rc/production-entry.json` 加载专用 package index/policy，只请求 `route-graph.douluo1.json` 与四类 runtime evidence；不请求 monolith、`douluo2`、`options.json` 或 archive preservation 文件。
-- V0.5 RC1 已经 PR #5/#6/#7 合并并由 Pages 发布；当前 focused 工作树上的 Day20 本地候选继续增加玩家可读年表、事件变更卡与结构化结局，但尚未 stage、commit、push、创建 PR 或触发 Pages。
-- 本地 package 版本为 `0.5.0-rc.1`；新增的 Node 24 CI workflow 也只是未提交候选，尚无 GitHub Actions run，不能记作 CI passed。
+- V0.5 RC1 的玩家可读年表、事件变更卡与结构化结局已由 PR [#8](https://github.com/MaxwellGuoDUT/douluo-life/pull/8) 合并到 `main@35f7c2f20359f07fdb2513517dd262f61b102cb5`，并由 Pages 发布到公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html)。
+- package 版本为 `0.5.0-rc.1`；Node 24 CI 已分别在 PR run [33056544343](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33056544343) 与 main run [33057309608](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057309608) 通过。Pages run [33057308794](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057308794) 部署同一 merge SHA。
+- 正式 RC 身份采用 GitHub prerelease `v0.5.0-rc.1`，tag 精确指向本次状态文档 closeout 合并后的 `main`；不上传自定义 Release asset，也不生成 `SHA256SUMS`。
 - V1 是默认可运行入口，提供早期年度事件玩法。
 - V2 是独立的 production playtest 入口，已经具备 Player v2、年度会话、最小 WheelFlowEngine 和原子年度提交。
 - V2 页面当前承载第一条完整 production 游戏内容“6 岁武魂觉醒”：依次抽取先天魂力、1～4 个武魂数量、一次共享品质、每槽独立基础形态和 271 项正式目录中的具体武魂，成功后原子推进到 7 岁内容边界。

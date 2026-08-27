@@ -180,3 +180,17 @@ V0.5 RC1 当前可准确描述为：`merged to main / Pages deployed / owner pub
 上述 Browser 是当前本地 checkout 证据；不是 Pages 验收，也不是项目负责人公开人工验收。新增 `.github/workflows/ci.yml` 是未提交、未运行的 Node 24 候选，不能作为 CI passed。`package.json` 的 `0.5.0-rc.1` 同样只是本地候选版本。
 
 本轮明确未触碰 PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner 材料与 archive；未 stage、commit、push，也未操作 PR、Pages、tag、Release、artifact 或 `SHA256SUMS`。
+
+## Day20 交付与公开验收（2026-08-27）
+
+上节是本地候选历史。玩家可读呈现层已由精确13路径提交 `7d1e48566366a37dfc7696f97a919c0cefe4ada7` 交付，并经 PR [#8](https://github.com/MaxwellGuoDUT/douluo-life/pull/8) 以 merge commit `35f7c2f20359f07fdb2513517dd262f61b102cb5` 合并到 `main`。
+
+- CI：PR run [33056544343](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33056544343) 与 main push run [33057309608](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057309608) 均为 success。
+- Pages：run [33057308794](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057308794) 和 deployment `6119825967` 成功，部署 `main@35f7c2f20359f07fdb2513517dd262f61b102cb5`，source 为 `main / (root)`。
+- HTTP 活性：公开页面、app module、新 presentation module 与 RC production entry 均返回200；这只证明资源可取回。
+- Codex 公开 Browser：确认新年表/变化卡可见且页面不自动跳到底部，推进到8岁、cursor/history `40/40`；控制通道随后超时，因此25岁、custom seed、console、Network 与390×844仍不属于本次 Codex 公开自动闭合项。
+- owner public acceptance：默认 seed 到达25岁/42级、铜灵币29850、`100/100`，第100项完整提交；24→25岁变化卡、100个已提交事件、铁角牛与4个魂环、结构化结局、完成锁和边界说明均可见，结构化错误为无。该记录不自动扩展为 owner 对 Network、console、390×844 或 custom seed 的本轮验收。
+
+自动化、Codex 本地 Browser、Codex 公开 Browser、owner acceptance、CI、review、Pages、tag、Release 和 artifact 必须继续分层。RC1 使用 prerelease tag `v0.5.0-rc.1`，精确指向本次文档 closeout 合并后的实时 `main`；不提供自定义 Release asset，不生成 `SHA256SUMS`。
+
+交付没有扩大产品范围：25岁仍是 presentation/release boundary，而不是完整人生终局；PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后、`official-beast.element`、其他 unresolved handler、save/load、owner 材料和 archive 操作继续排除。

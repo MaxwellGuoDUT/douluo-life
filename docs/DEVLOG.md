@@ -1203,3 +1203,13 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - Codex in-app Browser 本地 HTTP 验收：默认 seed 到25岁/42级、铜灵币29850、`100/100`、100条记录、结局可见、完成锁有效；reset 后年表0条。`v05-custom-1` 在17岁以 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED` 停于 `95/94`，年表保留94条已提交记录。390×844 无横向溢出，console warning/error 为0。
 - 该浏览器结果只属于 Codex 对本地 checkout 的自动证据，不替代 Day19 项目负责人公开验收、Pages、CI 或 review。应用请求为200/304；仅非功能性 favicon 请求为404。
 - 本轮保持所有变更 unstaged；未 commit、push、修改/创建 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。PR #4、V3、临时 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner 材料和 archive 均排除。
+
+### A-DAY20-DELIVER / A-DAY20-MERGE-PAGES-VERIFY / A-DAY20-RC1-CLOSEOUT-RELEASE - 2026-08-27
+
+- Day20 玩家呈现层以精确13路径提交 `7d1e48566366a37dfc7696f97a919c0cefe4ada7` 普通 push 到 `codex/day20-player-presentation`，非 Draft PR [#8](https://github.com/MaxwellGuoDUT/douluo-life/pull/8) 仅包含该提交；PR Node 24 CI run [33056544343](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33056544343) 成功。
+- PR #8 以 merge commit `35f7c2f20359f07fdb2513517dd262f61b102cb5` 合并到 `main`；main push CI run [33057309608](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057309608) 成功。远端 feature branch 保留，PR #4 未修改。
+- Pages run [33057308794](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057308794) 与 deployment `6119825967` 成功，部署 `main@35f7c2f20359f07fdb2513517dd262f61b102cb5`，source 为 `main / (root)`；公开 HTML、app/presentation modules 与 production entry 均返回 HTTP 200。
+- Codex 公开 Browser 可追溯覆盖新年表/变化卡、不自动跳底，并推进到8岁、cursor/history `40/40`；控制通道多次超时，未将25岁、custom seed、console、Network 或390×844升级为 Codex 公开自动证据。
+- 项目负责人随后提供同一公开页面的默认 seed 人工终点验收：25岁/42级、铜灵币29850、`100/100`、第100项完整提交、24→25岁变化、铁角牛与4个魂环、结构化结局与边界声明均可见，完成锁有效，结构化错误为无。该记录与 Codex Browser、CI、Pages 和 HTTP 分开；它本身不覆盖 Network、console、390×844 或 custom seed。
+- RC1 身份固定为 `v0.5.0-rc.1` GitHub prerelease，tag 目标是本次五文档 closeout 合并后的实时 `main` 准确 SHA。发布不包含自定义 Release asset/artifact，不生成或上传 `SHA256SUMS`；GitHub source archives 不冒充自定义资产。
+- 本轮文档白名单仅为 `README.MD`、当前状态页、`docs/V05_DEMO.md`、本 DEVLOG 追加段和 RC1 review 记录。PR #4、V3、临时 Demo、APK Route Demo、`douluo2`、25岁后、`official-beast.element`、其他 unresolved handler、save/load、owner 材料与 archive 操作继续排除。
