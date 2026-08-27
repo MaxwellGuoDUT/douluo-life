@@ -1,8 +1,8 @@
 # douluo-life 当前项目状态基线
 
-状态：`Day20 local implementation candidate / player-readable timeline and ending / automated and Codex local browser verified / unstaged / remote delivery unchanged`
+状态：`Day20 player-readable timeline delivered / PR and main CI passed / Pages deployed / owner public endpoint acceptance passed / RC1 closeout`
 
-基线日期：2026-08-26（Asia/Shanghai；文件名保留历史日期）
+基线日期：2026-08-27（Asia/Shanghai；文件名保留历史日期）
 
 适用工作树：`D:\0CODE\douluo-life-v05-rc1`（原 `D:\0CODE\douluo-life` 混合工作树保持独立）
 
@@ -364,3 +364,18 @@ Day19 的合并、Pages 与负责人公开验收仍是既有远端证据；本�
 - 本轮没有 stage、commit、push、PR、merge、Pages、tag、Release、artifact 或 `SHA256SUMS` 操作；公开 URL、Day19 owner acceptance 与远端交付状态没有被本地候选替代。
 
 明确排除：PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner APK/DOCX/XLSX/outputs/task books/`.codex-tmp`，以及 archive 迁移或清理。
+
+## 十七、Day20 交付、公开证据与 RC1 发布锚点（2026-08-27）
+
+第十六节是实现尚未交付时的历史快照。后续授权已完成玩家呈现层的 GitHub 交付与公开部署：
+
+- 精确13路径提交 `7d1e48566366a37dfc7696f97a919c0cefe4ada7` 经 PR [#8](https://github.com/MaxwellGuoDUT/douluo-life/pull/8) 以 merge commit `35f7c2f20359f07fdb2513517dd262f61b102cb5` 合并到 `main`；PR #4 未参与、未修改。
+- PR Node 24 CI run [33056544343](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33056544343) 与 main push CI run [33057309608](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057309608) 均成功。它们是 CI 证据，不替代 review、Pages 或人工验收。
+- Pages run [33057308794](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057308794) 与 deployment `6119825967` 成功，`ref=main`、`sha=35f7c2f20359f07fdb2513517dd262f61b102cb5`、source 为 `main / (root)`。公开 HTML、app module、新 presentation module 与 production entry 均返回 HTTP 200；HTTP 活性不替代页面行为验收。
+- Codex 对公开页面的自动浏览器证据为 partial：确认新年表/变化卡可见、不再自动滚到底部，并到达8岁、cursor/history `40/40`；后续控制通道多次超时。因此不把25岁、public custom seed、console、Network 或390×844写成 Codex 自动浏览器完成。
+- 项目负责人随后在同一公开页面完成人工终点验收：默认 `apk-route-demo-seed` 到达25岁/42级、铜灵币29850、cursor/history `100/100`，第100项完整提交，24→25岁变化卡、铁角牛与4个魂环、结构化结局和“25岁不是完整人生终局”边界可见，完成锁阻止后续抽取，结构化错误为无。该项是 owner acceptance；本次提供的终点记录本身不证明 Network、console、390×844 或 custom-seed 行为。
+- Day20 本地自动化仍为定向 `13/13`、完整 `182/182`、generator `--check`、syntax 与 whitespace 通过；本地 Codex Browser 的默认/custom/390×844/console 证据继续作为本地层，不冒充公开层。
+
+RC1 发布锚点固定为：candidate tag `v0.5.0-rc.1`，target 为本节状态文档 closeout 合并后实时 `main` 的准确 SHA，GitHub Release 类型为 prerelease。发布不包含自定义 artifact/Release asset，不生成或上传 `SHA256SUMS`；GitHub 自动提供的 source archives 不记作自定义资产。tag 与 Release 页面是发布登记证据，不能替代 CI、Pages、review、Codex Browser 或 owner acceptance。
+
+本次 closeout 仍明确排除 PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner APK/DOCX/XLSX/outputs/task books/`.codex-tmp`、archive 迁移/清理和任何玩法扩大。

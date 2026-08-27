@@ -1,6 +1,6 @@
-# V0.5 RC1 focused PR 与公开验收收口记录
+# V0.5 RC1 focused PR、Day20 交付与公开验收收口记录
 
-> PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已经 Ready 并合并；后续页面滚动 hotfix 由 PR [#6](https://github.com/MaxwellGuoDUT/douluo-life/pull/6) 合并，状态文档由 PR #7 收口。本文件保留 RC 范围、最终 Pages/负责人公开验收，并另列未交付的 Day20 本地候选。
+> PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已经 Ready 并合并；页面滚动 hotfix 由 PR [#6](https://github.com/MaxwellGuoDUT/douluo-life/pull/6) 合并，Day19 状态文档由 PR #7 收口，Day20 玩家呈现层由 PR [#8](https://github.com/MaxwellGuoDUT/douluo-life/pull/8) 合并。本文件保留 RC 范围，并把自动化、Codex Browser、owner acceptance、CI、Pages 与发布登记分层记录。
 
 ## Summary
 
@@ -39,15 +39,18 @@
 
 精确47路径与 Ready 文档已通过 PR #5 合并；两文件页面滚动 hotfix 已通过 PR #6 合并，后续状态文档已由 PR #7 合并。Day19 的 Pages 与 owner public acceptance 继续成立；不得用下面的本地候选改写这些独立证据。
 
-## Day20 local implementation candidate
+## Day20 player presentation delivery
 
-这不是现有 PR 的描述更新，也不是 GitHub 交付状态。`A-DAY20-IMPLEMENT` 当前只在 focused 工作树形成未暂存候选：
+`A-DAY20-IMPLEMENT` 的候选已由精确13路径提交 `7d1e48566366a37dfc7696f97a919c0cefe4ada7` 交付，并经 PR #8 以 merge commit `35f7c2f20359f07fdb2513517dd262f61b102cb5` 合并到 `main`：
 
 - 玩家可见变化：事件变更卡、按 `N 岁` / `N → N+1 岁` 分组的完整人生年表、25岁可读结局；
-- 实现范围：新增纯呈现模块和测试，扩展 V0.5 runner/UI，增加 Node 24 CI 候选，并把本地 package version 设为 `0.5.0-rc.1`；
+- 实现范围：新增纯呈现模块和测试，扩展 V0.5 runner/UI，增加 Node 24 CI，并把 package version 设为 `0.5.0-rc.1`；
 - 自动化：定向 `13/13`、完整 `182/182`、generator `--check`、script syntax 与 whitespace checks 通过；
 - Codex 本地 Browser：默认 seed 25岁 `100/100` 与100条记录闭合；custom seed 在 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED` 处为 `95/94` 与94条记录；390×844 无横向溢出，console warning/error 为0；
-- CI：workflow 文件存在于本地 diff，但没有 commit、run 或 check，状态是 `provisional / not run`；
-- Delivery：未 stage、commit、push、创建/修改 PR、merge、Pages、tag、Release、artifact 或 `SHA256SUMS`。
+- CI：PR run [33056544343](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33056544343) 与 main push run [33057309608](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057309608) 均成功；
+- Pages：run [33057308794](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057308794) 与 deployment `6119825967` 成功，部署 `main@35f7c2f20359f07fdb2513517dd262f61b102cb5`，source 为 `main / (root)`；
+- Codex 公开 Browser：新年表/变化卡和不自动跳底已确认，推进到8岁、cursor/history `40/40` 后控制通道超时；25岁、custom seed、console、Network 与390×844不记为本次 Codex 公开自动完成；
+- owner public acceptance：默认 seed 到达25岁/42级、铜灵币29850、`100/100`，第100项完整提交，24→25岁变化卡、铁角牛与4个魂环、结构化结局、完成锁和边界声明均可见，结构化错误为无；该终点记录不自动证明 Network、console、390×844 或 custom seed；
+- RC identity：`v0.5.0-rc.1` GitHub prerelease，tag 指向本次五文档 closeout 合并后的准确 `main` SHA；无自定义 Release asset，不生成 `SHA256SUMS`。
 
 明确排除 PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner 材料、archive 迁移与清理。
