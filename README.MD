@@ -6,7 +6,8 @@
 
 - V0.5 RC1 使用独立入口 `v05-demo.html`，只发布 `douluo1` 的 0～25 岁展示范围；默认 seed 在第 100 项完整提交后锁定 25 岁终点。
 - V0.5 RC1 从 `data/v05-rc/production-entry.json` 加载专用 package index/policy，只请求 `route-graph.douluo1.json` 与四类 runtime evidence；不请求 monolith、`douluo2`、`options.json` 或 archive preservation 文件。
-- 当前 RC1 文件位于从 `main@c7d2978` 建立的独立工作树；尚未 stage、commit、push、创建 focused PR 或发布 Pages。
+- V0.5 RC1 已经 PR #5/#6/#7 合并并由 Pages 发布；当前 focused 工作树上的 Day20 本地候选继续增加玩家可读年表、事件变更卡与结构化结局，但尚未 stage、commit、push、创建 PR 或触发 Pages。
+- 本地 package 版本为 `0.5.0-rc.1`；新增的 Node 24 CI workflow 也只是未提交候选，尚无 GitHub Actions run，不能记作 CI passed。
 - V1 是默认可运行入口，提供早期年度事件玩法。
 - V2 是独立的 production playtest 入口，已经具备 Player v2、年度会话、最小 WheelFlowEngine 和原子年度提交。
 - V2 页面当前承载第一条完整 production 游戏内容“6 岁武魂觉醒”：依次抽取先天魂力、1～4 个武魂数量、一次共享品质、每槽独立基础形态和 271 项正式目录中的具体武魂，成功后原子推进到 7 岁内容边界。
@@ -33,6 +34,12 @@ python -m http.server 8000
 
 ```powershell
 npm test
+```
+
+V0.5 玩家呈现层的定向回归：
+
+```powershell
+npm test -- test/v05-life-presentation.test.js test/v05-demo.test.js
 ```
 
 如果系统 PATH 中没有 Node.js，请使用 Codex bundled Node.js：

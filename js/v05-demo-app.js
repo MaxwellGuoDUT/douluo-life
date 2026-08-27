@@ -5,6 +5,10 @@ import {
     V05_PACK_ID,
     createV05DemoRunnerFromLoaded
 } from "./v05-demo.js";
+import {
+    groupV05PresentationTimeline,
+    presentationChangeLabels
+} from "./v05-life-presentation.js";
 
 const root = document.querySelector("#v05Demo");
 const fields = {
@@ -24,10 +28,14 @@ const fields = {
     source: document.querySelector("#sourceValue"),
     eventTitle: document.querySelector("#eventTitle"),
     eventText: document.querySelector("#eventText"),
+    eventChanges: document.querySelector("#eventChanges"),
     boundaryBox: document.querySelector("#boundaryBox"),
     boundaryText: document.querySelector("#boundaryText"),
     completedBox: document.querySelector("#completedBox"),
     summary: document.querySelector("#summaryValue"),
+    endingOverview: document.querySelector("#endingOverview"),
+    endingSouls: document.querySelector("#endingSouls"),
+    endingBoundary: document.querySelector("#endingBoundary"),
     audit: document.querySelector("#auditValue"),
     error: document.querySelector("#errorValue"),
     history: document.querySelector("#historyList")
@@ -49,9 +57,22 @@ function selectedSeed() {
     return fields.seed.value.trim();
 }
 
-function setEvent(title, text) {
+function renderChangeList(target, labels, itemClass = "") {
+    const fragment = document.createDocumentFragment();
+    for (const label of labels) {
+        const item = document.createElement("li");
+        if (itemClass) item.className = itemClass;
+        item.textContent = label;
+        fragment.append(item);
+    }
+    target.replaceChildren(fragment);
+    target.hidden = labels.length === 0;
+}
+
+function setEvent(title, text, changes = []) {
     fields.eventTitle.textContent = title;
     fields.eventText.textContent = text;
+    renderChangeList(fields.eventChanges, changes);
 }
 
 function pagePhase() {
@@ -71,21 +92,98 @@ function pageStatusLabel(phase) {
     }[phase] ?? phase;
 }
 
-function renderHistory(session) {
-    if (!session?.history?.length) {
+function renderHistory(records) {
+    if (!records?.length) {
         fields.history.replaceChildren();
-        const item = document.createElement("li");
+        const item = document.createElement("p");
+        item.className = "timeline-empty";
         item.textContent = "开始后，每个成功提交的事件都会保留在这里。";
         fields.history.append(item);
         return;
     }
     const fragment = document.createDocumentFragment();
-    for (const [index, record] of session.history.entries()) {
-        const item = document.createElement("li");
-        item.textContent = `${index + 1}. ${record.text} · cursor ${record.randomCursor}`;
-        fragment.append(item);
+    for (const group of groupV05PresentationTimeline(records)) {
+        const section = document.createElement("section");
+        section.className = "timeline-group";
+        const heading = document.createElement("h3");
+        heading.textContent = group.label;
+        const list = document.createElement("ol");
+        for (const record of group.records) {
+            const item = document.createElement("li");
+            item.className = "timeline-record";
+            const text = document.createElement("p");
+            text.textContent = record.text;
+            const meta = document.createElement("span");
+            meta.className = "timeline-meta";
+            meta.textContent = `事件 ${record.index} · cursor ${record.randomCursor}`;
+            item.append(text, meta);
+            if (record.changeLabels.length) {
+                const changes = document.createElement("div");
+                changes.className = "timeline-changes";
+                for (const label of record.changeLabels) {
+                    const change = document.createElement("span");
+                    change.className = "timeline-change";
+                    change.textContent = label;
+                    changes.append(change);
+                }
+                item.append(changes);
+            }
+            list.append(item);
+        }
+        section.append(heading, list);
+        fragment.append(section);
     }
     fields.history.replaceChildren(fragment);
+}
+
+function endingStat(label, value) {
+    const item = document.createElement("div");
+    item.className = "ending-stat";
+    const heading = document.createElement("strong");
+    heading.textContent = label;
+    const content = document.createElement("span");
+    content.textContent = value ?? "-";
+    item.append(heading, content);
+    return item;
+}
+
+function renderEnding(readable) {
+    if (!readable) {
+        fields.endingOverview.replaceChildren();
+        fields.endingSouls.replaceChildren();
+        fields.endingBoundary.textContent = "25 岁展示终点，不代表完整人生终局";
+        return;
+    }
+    fields.endingOverview.replaceChildren(
+        endingStat("年龄 / 等级", `${readable.age} 岁 / ${readable.level} 级`),
+        endingStat("铜灵币", String(readable.copper)),
+        endingStat("已提交事件", String(readable.committedEvents)),
+        endingStat("seed", readable.seed),
+        endingStat("境界", readable.rank),
+        endingStat("路线", readable.route)
+    );
+    const souls = document.createDocumentFragment();
+    if (!readable.martialSouls.length) {
+        const empty = document.createElement("p");
+        empty.textContent = "没有已记录武魂。";
+        souls.append(empty);
+    }
+    for (const soul of readable.martialSouls) {
+        const item = document.createElement("div");
+        item.className = "ending-soul";
+        const name = document.createElement("strong");
+        name.textContent = soul.name;
+        const rings = document.createElement("p");
+        rings.textContent = soul.rings.length
+            ? `魂环：${soul.rings.map(ring => [ring.years ? `${ring.years}年` : null, ring.type, ring.species]
+                .filter(Boolean)
+                .join(" · ") || ring.name).join("；")}`
+            : "魂环：无";
+        item.append(name, rings);
+        souls.append(item);
+    }
+    fields.endingSouls.replaceChildren(souls);
+    fields.endingBoundary.textContent = readable.boundary;
 }
 
 function render() {
@@ -125,6 +223,7 @@ function render() {
         : "";
     fields.completedBox.hidden = phase !== "completed";
     fields.summary.textContent = runner?.summary ? stringify(runner.summary) : "";
+    renderEnding(runner?.summary?.readable ?? null);
     fields.error.textContent = app.loadError
         ? stringify(app.loadError)
         : runner?.error
@@ -151,7 +250,7 @@ function render() {
                 loadingPolicy: app.controlPlane.entry?.routeGraphLoadingPolicy
             })
             : "尚未开始";
-    renderHistory(session);
+    renderHistory(runner?.presentationHistory ?? []);
 }
 
 function resultEvent(result) {
@@ -159,7 +258,8 @@ function resultEvent(result) {
         const count = app.runner?.session?.history?.length ?? "-";
         setEvent(
             "到达 25 岁",
-            `第 ${count} 个 option 已完整提交；V0.5 完成锁已阻止后续抽取。`
+            `第 ${count} 个 option 已完整提交；V0.5 完成锁已阻止后续抽取。`,
+            result.presentation?.changeLabels ?? []
         );
     } else if (result.status === "boundary") {
         setEvent("路线停在兼容边界", "失败项没有被静默补全；请查看结构化错误。" );
@@ -168,7 +268,9 @@ function resultEvent(result) {
     } else if (result.committed) {
         setEvent(
             "事件已提交",
-            `${result.spin.text}；下一 flow：${result.commit.nextFlowId ?? "终局"}`
+            `${result.spin.text}；下一 flow：${result.commit.nextFlowId ?? "终局"}`,
+            result.presentation?.changeLabels
+                ?? presentationChangeLabels(result.presentation?.changes)
         );
     }
 }

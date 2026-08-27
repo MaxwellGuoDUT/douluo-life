@@ -1,8 +1,8 @@
 # douluo-life 当前项目状态基线
 
-状态：`Day19 V0.5 RC1 / archive 2R / automated and browser verified / e98bf8a pushed / Draft PR #5 / Ready pre-audit Conditional Go`
+状态：`Day20 local implementation candidate / player-readable timeline and ending / automated and Codex local browser verified / unstaged / remote delivery unchanged`
 
-基线日期：2026-08-25（Asia/Shanghai；文件名保留历史日期）
+基线日期：2026-08-26（Asia/Shanghai；文件名保留历史日期）
 
 适用工作树：`D:\0CODE\douluo-life-v05-rc1`（原 `D:\0CODE\douluo-life` 混合工作树保持独立）
 
@@ -350,3 +350,17 @@ PR #4 继续作为历史 APK 主线集成 Draft；focused V0.5 使用独立 Draf
 - 项目负责人已在公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html) 完成人工验收，明确确认不再自动跳底，并通过0～25岁、Network、console、完成锁、刷新与390×844窄屏。该负责人验收是最终公开验收依据，不冒充 Codex 自动浏览器结果。
 
 当前结论为 `V0.5 RC1 merged / Pages success / owner public acceptance passed`。功能工作已停止扩展；未创建 tag、GitHub Release、artifact 或 `SHA256SUMS`，这些仍不是本次收口的一部分。
+
+## 十六、Day20 玩家可见呈现层本地候选（2026-08-26）
+
+Day19 的合并、Pages 与负责人公开验收仍是既有远端证据；本节只记录 `A-DAY20-IMPLEMENT` 在 focused 工作树中的本地实现，不把本地结果冒充新的 PR、CI、Pages 或负责人验收。
+
+- 单一玩家可见目标：让既有 `douluo1` 0～25 岁路径从“运行时审计页”提升为可读人生记录。页面现在按 `0 岁`、`0 → 1 岁` 等年龄阶段分组保存每个成功提交事件，并为年龄、等级、铜灵币、路线、武魂、魂环和魂骨变化生成可读卡片；25 岁显示结构化结局概览、武魂/魂环与边界声明。
+- 新呈现层只读取提交前后角色快照，不修改 canonical 数据、route graph、evidence、生成器、archive 或运行时规则。失败项、busy guard、取消和 typed boundary 均不追加半条人生记录。
+- 自动化：新增呈现层单测与 runner/UI 回归；定向 `13/13`、完整 `182/182`、RC generator `--check`、三个脚本 `node --check` 与 `git diff --check` 均通过。
+- Codex 本地 Browser：默认 seed 到达25岁/42级、铜灵币29850、`100/100`、100条记录，结构化结局可见且完成后按钮禁用；重置清空年表。`v05-custom-1` 在17岁以 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED` 停于 `95/94`，只保留94条已提交记录。390×844 下 document scroll width 为375、记录右边界小于 viewport，console warning/error 为0。
+- 本地 HTTP 请求证据：入口及新增模块为200/304，随后只加载 `douluo1` route graph 与既有四类 runtime evidence；favicon 的非功能性404不属于应用模块失败。
+- `package.json` 本地版本更新为 `0.5.0-rc.1`；新增最小 Node 24 `push(main)` / `pull_request` CI workflow，但它尚未提交或运行，因此 CI 状态为 `provisional / not run`，不是 passed。
+- 本轮没有 stage、commit、push、PR、merge、Pages、tag、Release、artifact 或 `SHA256SUMS` 操作；公开 URL、Day19 owner acceptance 与远端交付状态没有被本地候选替代。
+
+明确排除：PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner APK/DOCX/XLSX/outputs/task books/`.codex-tmp`，以及 archive 迁移或清理。

@@ -1,6 +1,6 @@
 # V0.5 RC1 focused PR 与公开验收收口记录
 
-> PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已经 Ready 并合并；后续页面滚动 hotfix 由 PR [#6](https://github.com/MaxwellGuoDUT/douluo-life/pull/6) 合并。本文件保留 RC 范围并记录最终 Pages 与负责人公开验收。
+> PR [#5](https://github.com/MaxwellGuoDUT/douluo-life/pull/5) 已经 Ready 并合并；后续页面滚动 hotfix 由 PR [#6](https://github.com/MaxwellGuoDUT/douluo-life/pull/6) 合并，状态文档由 PR #7 收口。本文件保留 RC 范围、最终 Pages/负责人公开验收，并另列未交付的 Day20 本地候选。
 
 ## Summary
 
@@ -37,4 +37,17 @@
 
 ## Delivery state
 
-精确47路径与 Ready 文档已通过 PR #5 合并；两文件页面滚动 hotfix 已通过 PR #6 合并。当前公开状态为 `main@10d33a2b / Pages success / owner public acceptance passed`。本轮仅进行四文档最终收口；不再修改功能，也不创建 tag、GitHub Release、artifact 或 `SHA256SUMS`。
+精确47路径与 Ready 文档已通过 PR #5 合并；两文件页面滚动 hotfix 已通过 PR #6 合并，后续状态文档已由 PR #7 合并。Day19 的 Pages 与 owner public acceptance 继续成立；不得用下面的本地候选改写这些独立证据。
+
+## Day20 local implementation candidate
+
+这不是现有 PR 的描述更新，也不是 GitHub 交付状态。`A-DAY20-IMPLEMENT` 当前只在 focused 工作树形成未暂存候选：
+
+- 玩家可见变化：事件变更卡、按 `N 岁` / `N → N+1 岁` 分组的完整人生年表、25岁可读结局；
+- 实现范围：新增纯呈现模块和测试，扩展 V0.5 runner/UI，增加 Node 24 CI 候选，并把本地 package version 设为 `0.5.0-rc.1`；
+- 自动化：定向 `13/13`、完整 `182/182`、generator `--check`、script syntax 与 whitespace checks 通过；
+- Codex 本地 Browser：默认 seed 25岁 `100/100` 与100条记录闭合；custom seed 在 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED` 处为 `95/94` 与94条记录；390×844 无横向溢出，console warning/error 为0；
+- CI：workflow 文件存在于本地 diff，但没有 commit、run 或 check，状态是 `provisional / not run`；
+- Delivery：未 stage、commit、push、创建/修改 PR、merge、Pages、tag、Release、artifact 或 `SHA256SUMS`。
+
+明确排除 PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner 材料、archive 迁移与清理。

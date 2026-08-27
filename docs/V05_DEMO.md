@@ -1,8 +1,8 @@
 # 斗罗人生 V0.5 Demo
 
-状态：`V0.5 RC1 focused package / archive 2R / automated-verified / browser-verified / committed and pushed / Draft PR #5 / Ready pre-audit Conditional Go`
+状态：`V0.5 RC1 delivered / Day20 player-readable presentation local candidate / automated and Codex local browser verified / unstaged`
 
-日期：2026-08-25（Day19 focused PR Ready 前审计更新）
+日期：2026-08-26（Day20 本地实现候选）
 
 对应任务：Day18 APK canonical `douluo1` 0～25 岁可玩 Demo
 
@@ -159,3 +159,24 @@ Ready 前审计确认：PR #5 没有该提交的 GitHub Actions run，仓库没�
 - 项目负责人随后在公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html) 完成人工验收，确认不再自动跳底，并通过0～25岁、Network、console、完成锁、刷新与390×844窄屏项目。该结论属于负责人公开人工验收，与前述 Codex 自动浏览器证据分开记录。
 
 V0.5 RC1 当前可准确描述为：`merged to main / Pages deployed / owner public acceptance passed`。本轮只做四文档收口，不再修改功能；tag、GitHub Release、artifact 与 `SHA256SUMS` 均未创建，继续作为独立发布门。
+
+## Day20 玩家可读年表与结局候选（2026-08-26）
+
+`A-DAY20-IMPLEMENT` 在 focused 工作树中新增纯呈现层，不改变现有 draw/commit、RNG、canonical 或 typed-stop 语义：
+
+- 每个成功提交保存不可变的提交前后角色快照，生成年龄、等级、铜灵币、路线、武魂、魂环和魂骨变化标签；
+- 年表按静态年龄与跨岁提交分别显示为 `N 岁` 和 `N → N+1 岁`，失败提交不进入年表；
+- 25 岁终点新增玩家可读概览、武魂/魂环、魂骨/里程碑与“不是完整人生终局”的明确边界，同时保留原始 JSON 审计摘要；
+- reset 清空呈现记录；默认 seed 单步和连续推进仍生成一致 transcript；custom seed 继续在未接 handler 处 typed stop。
+
+本地验证结果：
+
+- `npm test -- test/v05-life-presentation.test.js test/v05-demo.test.js`：`13/13`；
+- `npm test`：`182/182`；generator `--check`、相关 `node --check` 和 `git diff --check` 均通过；
+- Codex in-app Browser 默认 seed：25岁/42级、铜灵币29850、`100/100`、100条记录、50个静态/跨岁分组、结局可见、完成锁有效、reset 后0条；
+- Codex in-app Browser `v05-custom-1`：17岁停于 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED`，`95/94`、94条成功记录，推进按钮锁定；
+- 390×844：无横向溢出，21条已填充记录仍位于 viewport 内；全程 console warning/error 为0。
+
+上述 Browser 是当前本地 checkout 证据；不是 Pages 验收，也不是项目负责人公开人工验收。新增 `.github/workflows/ci.yml` 是未提交、未运行的 Node 24 候选，不能作为 CI passed。`package.json` 的 `0.5.0-rc.1` 同样只是本地候选版本。
+
+本轮明确未触碰 PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner 材料与 archive；未 stage、commit、push，也未操作 PR、Pages、tag、Release、artifact 或 `SHA256SUMS`。
