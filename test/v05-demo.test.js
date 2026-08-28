@@ -75,9 +75,17 @@ test("V0.5 has an independent RC entry and leaves focused-base entries intact", 
     assert.match(html, /0～25 岁/u);
     assert.match(html, /js\/v05-demo-app\.js/u);
     assert.match(html, /id="eventChanges"/u);
-    assert.match(html, /id="endingOverview"/u);
-    assert.match(html, /人生年表/u);
+    assert.match(html, /id="wheel"/u);
+    assert.match(html, /id="profilePanel"/u);
+    assert.match(html, /id="historyPanel"/u);
+    assert.match(html, /人生记事/u);
+    assert.match(html, /aria-expanded="false"/u);
+    assert.match(html, /prefers-reduced-motion/u);
     assert.match(app, /groupV05PresentationTimeline/u);
+    assert.match(app, /createV05Checkpoint/u);
+    assert.match(app, /restoreV05Checkpoint/u);
+    assert.match(app, /storedSavePresent/u);
+    assert.match(app, /clearSaveButton\.disabled = !app\.storedSavePresent/u);
     for (const status of ["loading", "ready", "advancing", "boundary", "completed", "error"]) {
         assert.match(app, new RegExp(`\\b${status}\\b`, "u"));
     }
@@ -95,9 +103,42 @@ test("history rendering does not move the page viewport", () => {
         "utf8"
     );
 
-    assert.match(app, /fields\.history\.replaceChildren\(fragment\)/u);
+    assert.match(app, /fields\.historyList\.replaceChildren\(fragment\)/u);
     assert.doesNotMatch(app, /\.scrollIntoView\s*\(/u);
     assert.doesNotMatch(app, /\bwindow\.scroll(?:To|By)\s*\(/u);
+});
+
+test("current wheel is a read-only view of the exact runtime eligible snapshot", () => {
+    const runner = createRunner();
+    const before = structuredClone({
+        random: runner.session.random,
+        history: runner.session.history,
+        routeHistory: runner.session.routeHistory,
+        flow: runner.session.currentFlowId,
+        character: runner.session.character
+    });
+    const wheel = runner.wheelView;
+    assert.equal(wheel.status, "ready");
+    assert.equal(wheel.segments.at(-1).endAngle, 360);
+    assert.deepEqual({
+        random: runner.session.random,
+        history: runner.session.history,
+        routeHistory: runner.session.routeHistory,
+        flow: runner.session.currentFlowId,
+        character: runner.session.character
+    }, before);
+
+    const result = runner.step();
+    assert.deepEqual(
+        wheel.segments.map(segment => ({ id: segment.optionId, weight: segment.weight })),
+        result.spin.options.map(option => ({
+            id: option.normalized.option_id,
+            weight: option.normalized.weight
+        }))
+    );
+    assert.equal(result.wheel.selectedOptionId, result.spin.optionId);
+    assert.equal(runner.characterProfile.age, runner.session.character.age);
+    assert.equal(runner.characterProfile.milestones.length, result.presentation.changeLabels.length);
 });
 
 test("default seed reaches the first exact age-25 commit at item 100 and locks state", async () => {

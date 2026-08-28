@@ -379,3 +379,14 @@ Day19 的合并、Pages 与负责人公开验收仍是既有远端证据；本�
 RC1 发布锚点固定为：candidate tag `v0.5.0-rc.1`，target 为本节状态文档 closeout 合并后实时 `main` 的准确 SHA，GitHub Release 类型为 prerelease。发布不包含自定义 artifact/Release asset，不生成或上传 `SHA256SUMS`；GitHub 自动提供的 source archives 不记作自定义资产。tag 与 Release 页面是发布登记证据，不能替代 CI、Pages、review、Codex Browser 或 owner acceptance。
 
 本次 closeout 仍明确排除 PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后内容、`official-beast.element`、其他 unresolved handler、save/load、owner APK/DOCX/XLSX/outputs/task books/`.codex-tmp`、archive 迁移/清理和任何玩法扩大。
+# Day21 当前状态补充（2026-08-28）
+
+> 本节是当前本地实现状态；上方 Day17～Day20 内容保留为历史快照。
+
+- 实时 GitHub 预检确认 default branch 为 `main`，`origin/main`、tag `v0.5.0-rc.1` 与 GitHub prerelease 均精确指向 `3969064aa5684aecf0ad4c9c2a3818a5ac53d000`。
+- PR #8/#9 均已合并；main 的 Node test 与 Pages build/deploy/report checks 成功，Pages run `33092496484` 部署同一 SHA。
+- focused 工作树在创建分支前干净；本地/远端均不存在 `codex/day21-v05-wheel-save`，随后从准确 `origin/main` 创建该本地分支。
+- Day21 在13路径白名单内实现中央真实权重转盘、角色档案与人生记事 drawer、版本化本地 checkpoint 与确定性重放；未修改 data、canonical、APK runtime、production loader、archive、workflow、旧 Demo 或 owner 材料。
+- package 本地版本为 `0.5.0-rc.2`；本节不表示 RC2 已交付、部署或发布。stage、commit、push、PR、merge、Pages、tag、Release、artifact 与 `SHA256SUMS` 均未授权。
+- 自动化为定向 `19/19`、完整 `193/193`，RC generator check、4个相关 syntax check 与 whitespace check 通过。
+- Codex 本地 Browser 已验证中央入口/成长权重、结果命中、drawer、焦点返回、刷新恢复、25岁完成锁、custom boundary、坏存档保留、390×844、reduced-motion 和 console 0/0；魂环 pool option/weight 直查与坏存档清除按钮修复后复测受 Browser policy 阻止，保持 `partial`，不得写成 Browser 全闭合。

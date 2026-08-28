@@ -10,12 +10,17 @@ import {
     createV05ReadableEnding,
     snapshotV05Character
 } from "./v05-life-presentation.js";
+import {
+    createV05WheelView,
+    createV05WheelViewFromSpin
+} from "./v05-wheel-view.js";
 
 export const V05_PACK_ID = "douluo1";
 export const V05_ENTRY_PATH = "data/v05-rc/production-entry.json";
 export const V05_DEFAULT_SEED = "apk-route-demo-seed";
 export const V05_ENDPOINT_AGE = 25;
 export const V05_DEFAULT_ADVANCE_LIMIT = 50;
+export const V05_APP_VERSION = "0.5.0-rc.2";
 
 function typedError(code, message, details = {}) {
     const error = new Error(message);
@@ -66,6 +71,35 @@ function endpointSummary(session, seed, presentationHistory) {
             }))
         }))
     };
+}
+
+function characterProfile(session, presentationHistory, phase) {
+    const source = session?.character ?? {};
+    const snapshot = snapshotV05Character(source);
+    return Object.freeze({
+        gender: source.gender?.text ?? source.gender ?? null,
+        age: snapshot.age,
+        level: snapshot.level,
+        rank: snapshot.rank,
+        copper: snapshot.copper,
+        route: snapshot.route,
+        routeStatus: session?.routeStatus ?? null,
+        faction: source.faction?.text ?? source.faction ?? null,
+        martialSouls: snapshot.martialSouls,
+        soulBones: snapshot.soulBones,
+        milestones: presentationHistory.flatMap(record => (
+            record.changeLabels.map(label => ({
+                index: record.index,
+                age: record.ageAfter,
+                label
+            }))
+        )),
+        boundary: phase === "completed"
+            ? "25 岁展示终点（完成锁已生效）"
+            : phase === "boundary"
+                ? "typed boundary（失败项未提交）"
+                : null
+    });
 }
 
 function blockedResult(state, reason = state.phase) {
@@ -130,7 +164,8 @@ export function createV05DemoRunner({
         summary: null,
         presentationHistory: [],
         seed: null,
-        cancelRequested: false
+        cancelRequested: false,
+        lastWheelResult: null
     };
 
     function initialize(nextSeed) {
@@ -151,6 +186,7 @@ export function createV05DemoRunner({
         state.summary = null;
         state.presentationHistory = [];
         state.cancelRequested = false;
+        state.lastWheelResult = null;
     }
 
     function stopAtBoundary(error, phase = "boundary") {
@@ -161,6 +197,7 @@ export function createV05DemoRunner({
             committed: false,
             blocked: false,
             spin: state.lastSpin,
+            wheel: state.lastWheelResult,
             error: state.error
         };
     }
@@ -189,6 +226,7 @@ export function createV05DemoRunner({
                     { age: state.session.character?.age ?? null }
                 ));
             }
+            state.lastWheelResult = createV05WheelViewFromSpin(spin);
             const committed = commitApkRouteOption({
                 contentIndex,
                 session: state.session,
@@ -229,6 +267,7 @@ export function createV05DemoRunner({
                 spin,
                 commit: committed,
                 presentation,
+                wheel: state.lastWheelResult,
                 error: state.error,
                 summary: state.summary
             };
@@ -260,6 +299,23 @@ export function createV05DemoRunner({
         },
         get presentationHistory() {
             return state.presentationHistory;
+        },
+        get seed() {
+            return state.seed;
+        },
+        get wheelView() {
+            return createV05WheelView({
+                contentIndex,
+                session: state.session,
+                phase: state.phase,
+                lastSpin: state.lastSpin
+            });
+        },
+        get lastWheelResult() {
+            return state.lastWheelResult;
+        },
+        get characterProfile() {
+            return characterProfile(state.session, state.presentationHistory, state.phase);
         },
         step() {
             return commitOne();
@@ -328,6 +384,7 @@ export default Object.freeze({
     V05_DEFAULT_SEED,
     V05_ENDPOINT_AGE,
     V05_DEFAULT_ADVANCE_LIMIT,
+    V05_APP_VERSION,
     createV05ContentIndex,
     createV05DemoRunner,
     createV05DemoRunnerFromLoaded
