@@ -4,10 +4,13 @@
 
 ## 当前阶段
 
-- V0.5 RC1 使用独立入口 `v05-demo.html`，只发布 `douluo1` 的 0～25 岁展示范围；默认 seed 在第 100 项完整提交后锁定 25 岁终点。
-- V0.5 RC1 从 `data/v05-rc/production-entry.json` 加载专用 package index/policy，只请求 `route-graph.douluo1.json` 与四类 runtime evidence；不请求 monolith、`douluo2`、`options.json` 或 archive preservation 文件。
+- V0.5 RC2 本地候选使用独立入口 `v05-demo.html`，只覆盖 `douluo1` 的 0～25 岁展示范围；默认 seed 在第 100 项完整提交后锁定 25 岁终点。
+- 页面以中央真实权重转盘为核心；每个扇区直接复用 runtime 当前 eligible options 的顺序和 weight。动态 handler 无法无副作用预解析时显示明确边界，不猜测概率。
+- 角色属性与完整人生年表分别进入“角色档案”和“人生记事”drawer；桌面侧栏覆盖展开，窄屏为 bottom sheet，不挤偏主转盘。
+- 每次成功原子提交后写入单浏览器、单站点、单槽的版本化本地检查点。刷新后“继续上次人生”会创建新 runner 并按相同 seed 确定性重放；坏 JSON、未知版本、内容指纹变化与重放不一致都会 typed reject，且不会自动删除原始存档。
+- V0.5 从 `data/v05-rc/production-entry.json` 加载专用 package index/policy，只请求 `route-graph.douluo1.json` 与四类 runtime evidence；不请求 monolith、`douluo2`、`options.json` 或 archive preservation 文件。
 - V0.5 RC1 的玩家可读年表、事件变更卡与结构化结局已由 PR [#8](https://github.com/MaxwellGuoDUT/douluo-life/pull/8) 合并到 `main@35f7c2f20359f07fdb2513517dd262f61b102cb5`，并由 Pages 发布到公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html)。
-- package 版本为 `0.5.0-rc.1`；Node 24 CI 已分别在 PR run [33056544343](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33056544343) 与 main run [33057309608](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057309608) 通过。Pages run [33057308794](https://github.com/MaxwellGuoDUT/douluo-life/actions/runs/33057308794) 部署同一 merge SHA。
+- package 本地候选版本为 `0.5.0-rc.2`；Day21 尚未 stage、commit、push、创建 PR 或部署 Pages。RC1 的既有 CI、Pages、tag 与 prerelease 证据继续作为历史基线，不冒充 RC2 证据。
 - 正式 RC 身份采用 GitHub prerelease `v0.5.0-rc.1`，tag 精确指向本次状态文档 closeout 合并后的 `main`；不上传自定义 Release asset，也不生成 `SHA256SUMS`。
 - V1 是默认可运行入口，提供早期年度事件玩法。
 - V2 是独立的 production playtest 入口，已经具备 Player v2、年度会话、最小 WheelFlowEngine 和原子年度提交。
@@ -29,7 +32,7 @@ python -m http.server 8000
 
 - V1：`http://localhost:8000/index.html`
 - V2 production playtest：`http://localhost:8000/v2-demo.html`
-- V0.5 RC1：`http://localhost:8000/v05-demo.html`
+- V0.5 RC2 本地候选：`http://localhost:8000/v05-demo.html`
 
 ## 测试
 
@@ -40,7 +43,7 @@ npm test
 V0.5 玩家呈现层的定向回归：
 
 ```powershell
-npm test -- test/v05-life-presentation.test.js test/v05-demo.test.js
+npm test -- test/v05-life-presentation.test.js test/v05-wheel-view.test.js test/v05-save-store.test.js test/v05-demo.test.js
 ```
 
 如果系统 PATH 中没有 Node.js，请使用 Codex bundled Node.js：

@@ -1213,3 +1213,17 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 项目负责人随后提供同一公开页面的默认 seed 人工终点验收：25岁/42级、铜灵币29850、`100/100`、第100项完整提交、24→25岁变化、铁角牛与4个魂环、结构化结局与边界声明均可见，完成锁有效，结构化错误为无。该记录与 Codex Browser、CI、Pages 和 HTTP 分开；它本身不覆盖 Network、console、390×844 或 custom seed。
 - RC1 身份固定为 `v0.5.0-rc.1` GitHub prerelease，tag 目标是本次五文档 closeout 合并后的实时 `main` 准确 SHA。发布不包含自定义 Release asset/artifact，不生成或上传 `SHA256SUMS`；GitHub source archives 不冒充自定义资产。
 - 本轮文档白名单仅为 `README.MD`、当前状态页、`docs/V05_DEMO.md`、本 DEVLOG 追加段和 RC1 review 记录。PR #4、V3、临时 Demo、APK Route Demo、`douluo2`、25岁后、`official-beast.element`、其他 unresolved handler、save/load、owner 材料与 archive 操作继续排除。
+
+### A-DAY21-IMPLEMENT - 2026-08-28
+
+- 预检确认 GitHub default branch 为 `main`；`origin/main`、RC1 tag 与 prerelease 均为 `3969064aa5684aecf0ad4c9c2a3818a5ac53d000`。PR #8/#9 已合并，main CI 与 Pages run `33092496484` 成功；focused 工作树干净且目标分支不存在。
+- 从准确 `origin/main` 创建本地 `codex/day21-v05-wheel-save`。全部实现限制在任务书13路径白名单内；没有修改 data、canonical、APK runtime、production loader、archive、workflow、旧 Demo、PR #4 或 owner 材料。
+- 新增 `js/v05-wheel-view.js`：复用 runtime `selectApkPoolOptions` 生成真实 eligible/weight 扇区，闭合360°；动态 resolver/action 返回明确 presentation boundary。runtime spin snapshot 是动画结果唯一来源。
+- 新增 `js/v05-save-store.js`：schema v1、内容指纹、单 key storage adapter、checkpoint digest 与确定性重放。ready/completed/boundary 分别恢复，unknown schema、内容变化和 replay mismatch typed reject；不反序列化信任 session。
+- 重构 `v05-demo.html` / `js/v05-demo-app.js` 为中央转盘、角色档案和人生记事 overlay drawer；支持 Escape、焦点返回、390×844 bottom sheet 与 reduced-motion。成功提交后 autosave，storage warning 不回滚 runtime。
+- Browser 首轮发现连续推进时 checkpoint 因临时 `advancing` phase 被拒绝；修正为只把完整 onStep checkpoint 规范化为持久化 `ready`，从不保存 `advancing`。随后 Browser 证实 `1岁/7级/10项` 自动存档与真实刷新恢复。
+- 坏存档 Browser 验收发现明确清除按钮被禁用；修正为单独记录 `storedSavePresent`，使坏存档不可继续但仍可明确清除，并增加静态回归断言。
+- 定向测试 `19/19`；完整测试 `193/193`；RC generator `--check`、4个相关 `node --check` 和 `git diff --check` 通过。
+- Codex in-app Browser 已验证入口/成长池权重、实际结果高亮、drawer 内容与键盘焦点、页面不跳底、中途刷新逐字段恢复、继续到25岁、completed 再刷新锁、custom `95/94` boundary 再刷新、坏 JSON 保留、390×844、reduced-motion 与 console error/warning 0/0。
+- Browser direct 魂环 pool option/weight 抽查和坏存档清除按钮修复后复测未闭合：in-app Browser security/URL policy 拒绝继续访问，未绕过或替换浏览器表面。自动化覆盖不能冒充 Browser 证据，因此本地 Browser 结论为 partial。
+- 当前所有变更 unstaged；未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。下一步 `A-DAY21-DELIVER` 建议以前述两项 Browser 补测为条件。

@@ -1,8 +1,8 @@
 # 斗罗人生 V0.5 Demo
 
-状态：`V0.5 RC1 delivered / Day20 player-readable presentation local candidate / automated and Codex local browser verified / unstaged`
+状态：`V0.5 RC1 delivered / Day21 wheel-save RC2 local implementation complete / automated verified / Browser partial / unstaged`
 
-日期：2026-08-26（Day20 本地实现候选）
+日期：2026-08-28（Day21 本地实现候选）
 
 对应任务：Day18 APK canonical `douluo1` 0～25 岁可玩 Demo
 
@@ -60,6 +60,24 @@ digest      967347b48f6680be71b1f33d18c52f392519afd4c7afb5255beae20a74531391
 - **推进下一项**：执行一次 draw 和一次完整原子 commit。
 - **推进至下一岁**：逐项调用同一个 runtime，在年龄改变、用户停止、typed boundary、错误、50 步安全上限或 25 岁时停止。
 - **重置会话**：使用当前 seed 回到 0 岁入口；不提供 save/load。
+
+上面四项是 RC1 历史控制说明。Day21 本地 RC2 候选已重构为：
+
+- **开始新人生**：显式创建新 runner；已有存档时先确认，首次成功提交后才覆盖当前 V0.5 槽。
+- **继续上次人生**：加载同一正式内容包，按 seed 重放到 checkpoint，并逐字段核对 cursor、history、flow、角色与摘要指纹。
+- **转动一次 / 推进至下一岁**：仍只调用既有 runner 的一次 draw + 原子 commit；转盘动画只消费 runtime 返回的 spin snapshot，不调用额外 RNG。
+- **清除本地存档**：只删除 `douluo-life:v05:checkpoint`，不调用 `localStorage.clear()`，也不修改当前内存会话。
+
+## Day21 中央转盘、侧栏与恢复模型
+
+- `js/v05-wheel-view.js` 直接调用 runtime 的 `selectApkPoolOptions`，保留 eligible option 的集合、顺序和原始 weight；每个正权重 option 独立成扇区，归一化角度闭合 360°。
+- 静态 exact flow 可以只读解析；遇到 dynamic resolver/action 时返回 `dynamic` presentation boundary，页面明确说明由 runtime 在正式提交时解析，不猜 pool、option 或概率。
+- runtime 完成 draw 后返回该次真实 eligible snapshot；UI 据此把指针动画落到实际 option。CSS 动画与 reduced-motion 降级均不读取或修改 RNG、cursor、history。
+- “角色档案”是性别、年龄/等级、铜灵币、路线、武魂、魂环、魂骨和里程碑的唯一完整展示；“人生记事”保留全部年龄分组、变化标签和已提交事件。二者从同一 runner/presentation state 派生。
+- 桌面 drawer 使用 fixed overlay，因此不会改变中央舞台宽度；390×844 下转为 bottom sheet。按钮有明确文字、`aria-expanded`/`aria-controls`、焦点样式、Escape 关闭与焦点返回。
+- save schema v1 仅保存 seed、phase、提交数、cursor、flow、内容身份和摘要指纹；不序列化后直接信任 session。恢复总是创建全新 runner 并确定性重放。
+- `ready` 重放成功提交数；`completed` 重放到第100项并恢复完成锁；`boundary` 先重放成功 history，再复现同一个失败 draw 和 typed error。坏 JSON、未知 schema、内容变化与重放不一致均拒绝且不自动删除。
+- localStorage 写入发生在游戏 commit 之后；quota/security error 只产生 persistence warning，不回滚或破坏已提交游戏状态。busy、cancel 和普通失败不生成半条 checkpoint。
 
 默认 seed 是正式验收路径。自定义 seed 标记为 experimental，不承诺 0～25 岁全路径闭合；命中未接逻辑时页面显示 typed boundary，并阻止重复消费失败项。
 
@@ -194,3 +212,18 @@ V0.5 RC1 当前可准确描述为：`merged to main / Pages deployed / owner pub
 自动化、Codex 本地 Browser、Codex 公开 Browser、owner acceptance、CI、review、Pages、tag、Release 和 artifact 必须继续分层。RC1 使用 prerelease tag `v0.5.0-rc.1`，精确指向本次文档 closeout 合并后的实时 `main`；不提供自定义 Release asset，不生成 `SHA256SUMS`。
 
 交付没有扩大产品范围：25岁仍是 presentation/release boundary，而不是完整人生终局；PR #4、V3、临时魂环 Demo、APK Route Demo、`douluo2`、25岁后、`official-beast.element`、其他 unresolved handler、save/load、owner 材料和 archive 操作继续排除。
+
+## Day21 本地验证结果（2026-08-28）
+
+- 定向 `test/v05-wheel-view.test.js`、`test/v05-save-store.test.js`、`test/v05-demo.test.js` 为 `19/19`；完整 `npm.cmd test` 为 `193/193`，既有182项全部继续通过并新增11项。
+- RC generator `outputs/parallel-prep-2026-08-16/generate-v05-rc-package.mjs --check`、4个相关脚本 `node --check` 与 `git diff --check` 通过。
+- Codex in-app Browser 首屏确认中央转盘、两个默认收起的文字 drawer 入口；入口身份池显示12个真实 option、weight 和百分比，成长池显示 weight `20/40/60/80/...` 的真实比例；单步选中 `34bd0a`，高亮、中心最近结果与 runtime 文案一致，页面 scroll 保持0。
+- 角色档案显示性别、年龄/等级、铜灵币、路线、武魂/魂环、魂骨和里程碑；人生记事保留年龄分组、变化标签与完整记录。Escape 关闭后焦点返回各自触发按钮。
+- 默认 seed 在 `1岁/7级/10项` 做真实刷新，恢复前后 summary、cursor/history、flow/audit、档案和记事逐字段一致；从恢复点继续到25岁后为42级、`100/100`，再次刷新仍保持 completed 锁。
+- `v05-custom-1` 到17岁、79级、`95 cursor / 94 history` 后以 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED` 停止；刷新后恢复同一 boundary，失败项仍未提交。
+- 损坏 JSON 在独立本地 origin 上连续两次刷新均以 `V05_SAVE_SCHEMA_INVALID` 拒绝，证明没有自动删除。该验收随后发现坏存档的明确清除按钮被禁用；实现已分离“存档存在”与“兼容可继续”并增加自动化断言，但修复后的 Browser 复测被 in-app Browser URL policy 阻止，因此仍为 partial。
+- 390×844 精确设备视口下 `scrollWidth=390`、无横向溢出，转盘宽约344px，drawer 从底部覆盖；reduced-motion media 为 true 时 animation/transition 为 `0.000001s`，结果高亮与 `1/1` cursor/history 正常。
+- console error 与 warning 分别读取：默认/完成/boundary 路径、fresh reduced-motion 路径和坏存档路径均为0。
+- Browser 尚未直接抽查魂环 pool 的 option/weight：继续单步取样时被 browser security policy 拒绝，未使用其他浏览器或绕过策略。魂环/全部 eligible 几何已有 runtime 自动化覆盖，但不能冒充 Browser 证据。
+
+因此本地代码与自动化为完成；Browser 验收为 `partial`。进入 `A-DAY21-DELIVER` 前建议在允许的 fresh in-app Browser 会话补齐：魂环 pool option/weight 直查，以及坏存档明确清除按钮的修复后复测。
