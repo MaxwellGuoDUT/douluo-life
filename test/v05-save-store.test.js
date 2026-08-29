@@ -39,6 +39,7 @@ function materialize() {
         formalSpecialResultEvidence: readJson("formal-special-result-runtime-evidence.json"),
         humanSoulRingEvidence: readJson("human-soul-ring-runtime-evidence.json"),
         humanSoulRingSpeciesEvidence: readJson("human-soul-ring-species-runtime-evidence.json"),
+        officialBeastElementEvidence: readJson("official-beast-element-runtime-evidence.json"),
         combatPowerEvidence: readJson("combat-power-runtime-evidence.json")
     };
     return {
@@ -100,10 +101,10 @@ test("typed boundary checkpoint replays the failed draw without committing it", 
     const envelope = createV05Checkpoint({ runner, contentIdentity: runtime.identity });
     const restored = restoreV05Checkpoint({ raw: envelope, createRunner, contentIdentity: runtime.identity }).runner;
     assert.equal(restored.phase, "boundary");
-    assert.equal(restored.session.character.age, 17);
-    assert.equal(restored.session.random.cursor, 95);
-    assert.equal(restored.session.history.length, 94);
-    assert.equal(restored.error.code, "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED");
+    assert.equal(restored.session.character.age, 24);
+    assert.equal(restored.session.random.cursor, 130);
+    assert.equal(restored.session.history.length, 129);
+    assert.equal(restored.error.code, "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED");
 });
 
 test("bad JSON, unknown version, content drift, and replay tampering are typed rejects", () => {
@@ -170,4 +171,77 @@ test("continuous onStep checkpoint normalizes advancing to ready and bad storage
     };
     assert.throws(() => readV05Save(storage), error => error.code === "V05_SAVE_SCHEMA_INVALID");
     assert.equal(removed, false);
+});
+
+test("Day21 v1 ready and completed saves migrate after exact replay", () => {
+    for (const committedCount of [34, 100]) {
+        const runner = createRunner(V05_DEFAULT_SEED);
+        while (runner.phase === "ready" && runner.session.history.length < committedCount) runner.step();
+        const current = createV05Checkpoint({ runner, contentIdentity: runtime.identity });
+        const legacy = {
+            ...current,
+            schemaVersion: 1,
+            packageIdentity: { ...current.packageIdentity, contentFingerprint: "day21-content" }
+        };
+        delete legacy.destinyId;
+        const restored = restoreV05Checkpoint({ raw: legacy, createRunner, contentIdentity: runtime.identity });
+        assert.equal(restored.migrated, true);
+        assert.equal(restored.sourceEnvelope, legacy);
+        assert.equal(restored.envelope.schemaVersion, 2);
+        assert.equal(restored.envelope.destinyId, "custom");
+        assert.equal(restored.runner.session.history.length, committedCount);
+        assert.equal(restored.runner.phase, runner.phase);
+    }
+});
+
+test("Day21 boundary closed by Day22 returns semantics changed without auto-advance", () => {
+    const runner = createRunner("v05-custom-1");
+    for (let index = 0; index < 94; index += 1) runner.step();
+    const ready = createV05Checkpoint({ runner, contentIdentity: runtime.identity });
+    const legacyBoundary = {
+        ...ready,
+        schemaVersion: 1,
+        phase: "boundary",
+        boundaryCode: "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
+        packageIdentity: { ...ready.packageIdentity, contentFingerprint: "day21-content" }
+    };
+    delete legacyBoundary.destinyId;
+    assert.throws(
+        () => restoreV05Checkpoint({ raw: legacyBoundary, createRunner, contentIdentity: runtime.identity }),
+        error => error.code === "V05_SAVE_BOUNDARY_SEMANTICS_CHANGED"
+            && error.details.previousBoundaryCode === "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED"
+    );
+    assert.equal(legacyBoundary.committedCount, 94);
+    assert.equal(legacyBoundary.randomCursor, 94);
+});
+
+test("Day22 official destiny identity requires manifest id and matching seed", () => {
+    const manifest = JSON.parse(fs.readFileSync(
+        new URL("../data/v05-rc/supported-destinies.json", import.meta.url),
+        "utf8"
+    ));
+    const destiny = manifest.destinies[0];
+    const runner = createRunner(destiny.seed);
+    runner.step();
+    const envelope = createV05Checkpoint({
+        runner,
+        contentIdentity: runtime.identity,
+        destinyId: destiny.id
+    });
+    const restored = restoreV05Checkpoint({
+        raw: envelope,
+        createRunner,
+        contentIdentity: runtime.identity,
+        destinyManifest: manifest
+    });
+    assert.equal(restored.envelope.destinyId, destiny.id);
+    assert.throws(
+        () => restoreV05Checkpoint({
+            raw: { ...envelope, seed: "wrong-seed" },
+            createRunner,
+            contentIdentity: runtime.identity,
+            destinyManifest: manifest
+        }),
+        error => error.code === "V05_SAVE_DESTINY_MISMATCH"
+    );
 });

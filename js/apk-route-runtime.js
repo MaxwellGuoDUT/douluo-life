@@ -27,7 +27,27 @@ const AVAILABILITY_POLICY = "preserve_apk_original_state";
 const FORMAL_SPECIAL_RESULT_HANDLER = "douluo1:handler.formal-special-result";
 const FORMAL_SPECIAL_RESULT_ACTION = "douluo1:action.after-formal-special-result";
 const OFFICIAL_BEAST_ELEMENT_HANDLER = "douluo1:handler.official-beast.element";
+const OFFICIAL_BEAST_AFTER_ELEMENT_RESOLVER = "douluo1:resolver.official-beast.after-element";
 const OFFICIAL_BEAST_ELEMENT_FLOW_PREFIX = "douluo1:flow.official-beast.pool.";
+const OFFICIAL_BEAST_ELEMENT_EVIDENCE_SCHEMA = "apk-official-beast-element-runtime-evidence/1.0";
+const OFFICIAL_BEAST_ELEMENT_SOURCE_SHA256 = "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
+const OFFICIAL_BEAST_ELEMENT_MODULE_SHA256 = "CD025DBAF024BCCD90B4601B3DAE0850DBE7907CEC9F38AA0ED40D64E3C3E166";
+const OFFICIAL_BEAST_HUMAN_ELEMENT_IDS = Object.freeze({
+    "锐金": "metal", "生命": "life", "火": "fire", "空间": "space", "月亮": "moon",
+    "岚": "haze", "毁灭": "destruction", "时间": "time", "水": "water", "暗": "dark",
+    "冰": "ice", "太阳": "solar", "木": "wood", "雷": "lightning", "土": "earth",
+    "死亡": "death", "光": "light", "毒": "poison"
+});
+const OFFICIAL_BEAST_ELEMENT_BLOODLINE_POOLS = Object.freeze({
+    "f2abac93-6b26-4e3e-aa92-a168db671577": "3f788371-f7de-4ddd-81a1-eae9a9287dbc",
+    "b372b169-4ebe-4021-9443-a144ed9d9504": "91053ffb-cdeb-4013-8361-eda7c3852ff7",
+    "91179d70-fbad-4f84-999f-8ba2e60db4b9": "ead1eba3-6532-473e-8d5c-e7269d72e242",
+    "f0d8a41d-f45a-4dea-bf3c-32e65938d12d": "b71a7c30-6271-442c-8367-3ca93d827627",
+    "e7fbd142-8003-4845-bc7b-796bf5352bdf": "f9117d0b-73f5-44f0-aa1c-fff6c8ff3a19",
+    "78d5f5b3-71b6-400d-850b-74a68c37d0da": "a4c44b83-e56f-458f-bd49-e4b0009cd776",
+    "ecb4b15c-72f9-4978-b796-c495b0a1c2d1": "ee5d1714-b7d5-4eed-b7e1-a17a634af4b4",
+    "d93d6db0-2081-4361-a713-84d776c6460e": "30200b8c-ec70-40ee-b547-697aada55ae4"
+});
 const FORMAL_SPECIAL_RESULT_NEXT_FLOW_FLAG = "formal:d1-special-growth-next-flow";
 const FORMAL_OPPORTUNITY_COUNTER = "formal:opportunity-draws";
 const FORMAL_SCHEDULER_FLOW = "douluo1:flow.formal-human.scheduler";
@@ -152,6 +172,37 @@ function buildHumanSoulRingSpeciesRuleMap(evidence) {
             `${record.poolId}:${record.optionId}`,
             clone(record)
         ]));
+}
+
+function buildOfficialBeastElementRuleMap(evidence) {
+    if (evidence === null || evidence === undefined) return new Map();
+    if (evidence?.schemaVersion !== OFFICIAL_BEAST_ELEMENT_EVIDENCE_SCHEMA
+        || evidence?.status !== "source-verified"
+        || evidence?.source?.apkSha256 !== OFFICIAL_BEAST_ELEMENT_SOURCE_SHA256
+        || evidence?.source?.moduleSha256 !== OFFICIAL_BEAST_ELEMENT_MODULE_SHA256
+        || evidence?.source?.handlerId !== "advanceBeastElement"
+        || !Array.isArray(evidence.records)) {
+        fail(
+            "APK_ROUTE_BEAST_ELEMENT_EVIDENCE_INVALID",
+            "official-beast.element evidence identity or schema is invalid."
+        );
+    }
+    const rules = new Map();
+    for (const record of evidence.records) {
+        const valid = typeof record?.poolId === "string" && record.poolId.length > 0
+            && typeof record?.optionId === "string" && record.optionId.length > 0
+            && typeof record?.elementId === "string" && record.elementId.length > 0
+            && record.branchPolicy === "beast-state:advanceBeastElement;human-state:advanceHumanElement";
+        if (!valid) {
+            fail("APK_ROUTE_BEAST_ELEMENT_EVIDENCE_INVALID", "official-beast.element evidence contains an invalid record.");
+        }
+        const key = `${record.poolId}:${record.optionId}`;
+        if (rules.has(key)) {
+            fail("APK_ROUTE_BEAST_ELEMENT_EVIDENCE_INVALID", `Duplicate official-beast.element mapping: ${key}`);
+        }
+        rules.set(key, clone(record));
+    }
+    return rules;
 }
 
 function routeOptionFollowUps(option) {
@@ -344,6 +395,7 @@ export function createApkRouteContentIndex({
     formalSpecialResultEvidence = routeGraph?.formalSpecialResultEvidence ?? null,
     humanSoulRingEvidence = routeGraph?.humanSoulRingEvidence ?? null,
     humanSoulRingSpeciesEvidence = routeGraph?.humanSoulRingSpeciesEvidence ?? null,
+    officialBeastElementEvidence = routeGraph?.officialBeastElementEvidence ?? null,
     combatPowerEvidence = routeGraph?.combatPowerEvidence ?? null
 } = {}) {
     assertRouteGraph(routeGraph);
@@ -386,6 +438,9 @@ export function createApkRouteContentIndex({
     const humanSoulRingSpeciesRulesByKey = buildHumanSoulRingSpeciesRuleMap(
         humanSoulRingSpeciesEvidence
     );
+    const officialBeastElementRulesByKey = buildOfficialBeastElementRuleMap(
+        officialBeastElementEvidence
+    );
     return Object.freeze({
         ...contentIndex,
         packId,
@@ -397,6 +452,7 @@ export function createApkRouteContentIndex({
         formalSpecialResultRulesByKey,
         humanSoulRingRulesByKey,
         humanSoulRingSpeciesRulesByKey,
+        officialBeastElementRulesByKey,
         combatPowerEvidence,
         getFlow(flowId) {
             return flowsById.get(flowId) ?? null;
@@ -415,6 +471,9 @@ export function createApkRouteContentIndex({
         },
         getHumanSoulRingSpeciesRule(poolId, optionId) {
             return humanSoulRingSpeciesRulesByKey.get(`${poolId}:${optionId}`) ?? null;
+        },
+        getOfficialBeastElementRule(poolId, optionId) {
+            return officialBeastElementRulesByKey.get(`${poolId}:${optionId}`) ?? null;
         }
     });
 }
@@ -834,6 +893,70 @@ function applyRouteCustomEffects({
         effects: safeEffects,
         applied: result.applied,
         controls: clone(result.controls ?? null)
+    });
+    return result;
+}
+
+function applyOfficialBeastElementHandler({
+    contentIndex,
+    session,
+    spin,
+    optionId
+}) {
+    if (!(contentIndex.officialBeastElementRulesByKey?.size > 0)) {
+        fail(
+            "APK_ROUTE_BEAST_ELEMENT_EVIDENCE_MISSING",
+            "official-beast.element requires its fixed source evidence package.",
+            { flowId: spin.flowId, poolId: spin.poolId, optionId }
+        );
+    }
+    const rule = contentIndex.getOfficialBeastElementRule(spin.poolId, optionId);
+    if (!rule) {
+        fail(
+            "APK_ROUTE_BEAST_ELEMENT_MAPPING_MISSING",
+            `official-beast.element has no exact mapping for ${spin.poolId}:${optionId}.`,
+            { flowId: spin.flowId, poolId: spin.poolId, optionId }
+        );
+    }
+    const character = session.character;
+    const hasBeastState = isPlainObject(character?.beast);
+    if ((!hasBeastState && character?.beast !== null)
+        || (character?.route === "beast" && !hasBeastState)) {
+        fail(
+            "APK_ROUTE_BEAST_ELEMENT_CONTEXT_INVALID",
+            "official-beast.element received an invalid character context.",
+            { route: character?.route ?? null, beastState: clone(character?.beast ?? null) }
+        );
+    }
+    const elementId = hasBeastState
+        ? rule.elementId
+        : OFFICIAL_BEAST_HUMAN_ELEMENT_IDS[rule.elementId];
+    if (!elementId) {
+        fail(
+            "APK_ROUTE_BEAST_ELEMENT_MAPPING_MISSING",
+            `official-beast.element has no exact human element normalization for ${rule.elementId}.`,
+            { poolId: spin.poolId, optionId, sourceElementId: rule.elementId }
+        );
+    }
+    const result = applyRouteCustomEffects({
+        session,
+        effects: [{
+            type: hasBeastState ? "advanceBeastElement" : "advanceHumanElement",
+            elementId,
+            ...(hasBeastState ? {} : { amount: 1 })
+        }],
+        handlerId: OFFICIAL_BEAST_ELEMENT_HANDLER,
+        operation: "beast.element",
+        referenceId: `${spin.poolId}:${optionId}:official-beast.element`
+    });
+    Object.assign(session.dynamicHistory.at(-1), {
+        flowId: spin.flowId,
+        poolId: spin.poolId,
+        optionId,
+        branch: hasBeastState ? "beast" : "human",
+        sourceElementId: rule.elementId,
+        elementId,
+        sourceRef: clone(rule.sourceRef ?? null)
     });
     return result;
 }
@@ -1262,17 +1385,17 @@ const ROUTE_OPERATION_REGISTRY = Object.freeze([
         execute: unresolvedRouteOperation
     }),
     Object.freeze({
-        operationId: "beast.element.unresolved",
+        operationId: "beast.element",
         handlerId: OFFICIAL_BEAST_ELEMENT_HANDLER,
         context: "douluo1:flow.official-beast.pool.*",
-        status: "unresolved",
+        status: "connected",
         matches: ({ packId, flowId, customHandler }) => (
             packId === "douluo1"
             && customHandler === OFFICIAL_BEAST_ELEMENT_HANDLER
             && typeof flowId === "string"
             && flowId.startsWith(OFFICIAL_BEAST_ELEMENT_FLOW_PREFIX)
         ),
-        execute: unresolvedRouteOperation
+        execute: applyOfficialBeastElementHandler
     }),
     Object.freeze({
         operationId: "beast.martial.unresolved",
@@ -1417,8 +1540,38 @@ function resumeEarlyRingRewardResult(contentIndex, session) {
     };
 }
 
-function createSourceProvenDynamicAction({ contentIndex, session, handlerId }) {
+function createSourceProvenDynamicAction({ contentIndex, session, flow, handlerId }) {
     const flags = session.character?.flags ?? {};
+    if (handlerId === OFFICIAL_BEAST_AFTER_ELEMENT_RESOLVER) {
+        const route = session.character?.route;
+        if (route !== "beast") {
+            if (route === "human" || route === "transformed") {
+                return firstExistingFlow(contentIndex, ["flow.formal-human.scheduler"]);
+            }
+            fail(
+                "APK_ROUTE_BEAST_ELEMENT_CONTEXT_INVALID",
+                "official-beast.after-element received an invalid character route.",
+                { route: route ?? null }
+            );
+        }
+        if (!session.character?.beast) {
+            fail(
+                "APK_ROUTE_BEAST_ELEMENT_CONTEXT_INVALID",
+                "official-beast.after-element requires beast state for the beast route."
+            );
+        }
+        const currentPoolId = typeof flow?.source?.poolId === "string"
+            ? flow.source.poolId
+            : flow?.route?.pool?.value;
+        const bloodlinePoolId = OFFICIAL_BEAST_ELEMENT_BLOODLINE_POOLS[currentPoolId];
+        const bloodlineFlowId = bloodlinePoolId
+            ? `${OFFICIAL_BEAST_ELEMENT_FLOW_PREFIX}${bloodlinePoolId}`
+            : null;
+        if (bloodlineFlowId && contentIndex.getFlow(bloodlineFlowId)) {
+            return bloodlineFlowId;
+        }
+        return firstExistingFlow(contentIndex, ["flow.official-beast.plan"]);
+    }
     if (handlerId === "douluo1:action.formal-human.before-innate"
         || handlerId === "douluo2:action.human.before-innate") {
         const value = flags["douluo2:innate-fixed"];
@@ -1534,7 +1687,10 @@ export function createApkRouteDynamicHandlers({ contentIndex } = {}) {
         dynamicAction,
         dynamicResolver: context => {
             if (context.kind !== "resolver"
-                || context.handlerId !== "selectRingTypeStep") {
+                || ![
+                    "selectRingTypeStep",
+                    OFFICIAL_BEAST_AFTER_ELEMENT_RESOLVER
+                ].includes(context.handlerId)) {
                 fail(
                     "APK_ROUTE_DYNAMIC_UNRESOLVED",
                     `APK dynamic resolver "${context.handlerId}" remains unresolved.`,

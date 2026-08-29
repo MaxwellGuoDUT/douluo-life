@@ -1,0 +1,1897 @@
+{
+  "schemaVersion": "apk-official-beast-element-runtime-evidence/1.0",
+  "status": "source-verified",
+  "source": {
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "apkPath": "../douluo-life/dl.dl.狗成百多神盐大神神神神神野百盐盐味配盐芙.apk.APK",
+    "modulePath": "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+    "moduleSha256": "CD025DBAF024BCCD90B4601B3DAE0850DBE7907CEC9F38AA0ED40D64E3C3E166",
+    "handlerId": "advanceBeastElement",
+    "canonicalHandlerId": "douluo1:handler.official-beast.element",
+    "extractionMode": "static_source_mapping_only",
+    "mappingModulePath": "apk-analysis/E4FB340E/derived/pretty/App-qyLEl8t4.js",
+    "mappingModuleSha256": "05EA991B3AB0BB7F475F0686D7CB21AEB8934B539C3190D050A3CAF45214FC09",
+    "mappingFunction": "Wl"
+  },
+  "records": [
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "083af3",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "1294b5",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "1d42c2",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "22b57e",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "260f51",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "281025",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "2e1af6",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "38ceb2",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "54bf79",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "6ac516",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "6c4bcf",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "78a9ec",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "9de576",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "b50543",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "bbe05f",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "bda2b0",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "dc238d",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "78d5f5b3-71b6-400d-850b-74a68c37d0da",
+      "optionId": "ee4627",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "1bf69f",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "3e1403",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "482891",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "4d3939",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "55bf3c",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "5f6c08",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "65cf1f",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "6b9635",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "6c841a",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "6d97a9",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "967f29",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "975088",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "a5b640",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "c70c60",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "cd74db",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "dd47f8",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "dde098",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "91179d70-fbad-4f84-999f-8ba2e60db4b9",
+      "optionId": "f2bcd2",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "1b9fc7",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "1f88cb",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "2db9ff",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "3d9f22",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "48e988",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "5290fd",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "5823a3",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "78e6cc",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "908cb5",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "932e1a",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "997914",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "a1f3e5",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "a732ad",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "acce95",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "afbe82",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "c3f34f",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "c6b3e7",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "b372b169-4ebe-4021-9443-a144ed9d9504",
+      "optionId": "f60497",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "05d47f",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "091fb1",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "1a466a",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "22c627",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "274486",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "4703e3",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "4a4216",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "6b52de",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "9d77f6",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "9e21a1",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "bc0883",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "bd37da",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "cf674b",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "d5e53b",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "e11cc1",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "e3b77f",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "e5d029",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "d93d6db0-2081-4361-a713-84d776c6460e",
+      "optionId": "fd4205",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "0b3be9",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "11e494",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "330265",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "33acc7",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "36bdd9",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "5d4302",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "609b16",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "664c70",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "6788e9",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "833bee",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "8772b0",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "8ab163",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "af8f09",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "bfa16d",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "c2d536",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "ccbc4d",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "db5d56",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "e7fbd142-8003-4845-bc7b-796bf5352bdf",
+      "optionId": "e028df",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "03ffc4",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "048bf9",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "09e243",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "14ab8c",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "3503ed",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "466e18",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "49c34e",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "58d982",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "6c12f5",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "843dd3",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "9542ca",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "9c3e2b",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "a075fa",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "ab5162",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "b331ee",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "bbccfc",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "c94562",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "ecb4b15c-72f9-4978-b796-c495b0a1c2d1",
+      "optionId": "d3a142",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "20fdfd",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "26ebb6",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "340006",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "46aef2",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "5c7a17",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "6450cb",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "72160a",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "7a191f",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "8a2313",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "8c0af5",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "936f93",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "944b11",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "b3e406",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "b73934",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "cb4750",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "d07720",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "d7615e",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "f0d8a41d-f45a-4dea-bf3c-32e65938d12d",
+      "optionId": "f55c23",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "15670e",
+      "elementId": "木",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 12
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "18afd8",
+      "elementId": "冰",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 10
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "357201",
+      "elementId": "月亮",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 4
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "3c8d55",
+      "elementId": "生命",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 1
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "3fc6af",
+      "elementId": "岚",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 5
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "408f78",
+      "elementId": "暗",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 9
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "591576",
+      "elementId": "毒",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 17
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "5f2c4d",
+      "elementId": "土",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 14
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "681776",
+      "elementId": "太阳",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 11
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "a935ef",
+      "elementId": "水",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 8
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "acb5c0",
+      "elementId": "光",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 16
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "b40176",
+      "elementId": "锐金",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 0
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "bea013",
+      "elementId": "时间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 7
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "d4025a",
+      "elementId": "火",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 2
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "d5d414",
+      "elementId": "死亡",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 15
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "de2fe2",
+      "elementId": "雷",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 13
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "e1418c",
+      "elementId": "空间",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 3
+      }
+    },
+    {
+      "poolId": "f2abac93-6b26-4e3e-aa92-a168db671577",
+      "optionId": "f16385",
+      "elementId": "毁灭",
+      "branchPolicy": "beast-state:advanceBeastElement;human-state:advanceHumanElement",
+      "sourceRef": {
+        "handlerLine": 77521,
+        "mappingFunction": "Wl",
+        "mappingTable": "iu",
+        "mappingElementTable": "ts",
+        "mappingIndex": 6
+      }
+    }
+  ],
+  "summary": {
+    "packId": "douluo1",
+    "poolCount": 8,
+    "recordCount": 144,
+    "uniqueKeyCount": 144,
+    "sourceHandlerLine": 77521
+  }
+}

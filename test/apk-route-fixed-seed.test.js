@@ -47,6 +47,9 @@ test("fixed APK route seed preserves the first 83 results and commits result 84"
         humanSoulRingSpeciesEvidence: readCatalog(
             "human-soul-ring-species-runtime-evidence.json"
         ),
+        officialBeastElementEvidence: readCatalog(
+            "official-beast-element-runtime-evidence.json"
+        ),
         combatPowerEvidence: readCatalog("combat-power-runtime-evidence.json"),
         packId: "douluo1"
     });
@@ -129,7 +132,7 @@ test("fixed APK route seed preserves the first 83 results and commits result 84"
     assert.equal(session.routeStatus, "ready");
 });
 
-test("fixed APK route seed continues to the next real unresolved boundary", () => {
+test("fixed APK route seed commits the exact official-beast element mapping", () => {
     const routeGraph = readDouluo1RouteGraph();
     const contentIndex = createApkRouteContentIndex({
         routeGraph,
@@ -141,6 +144,9 @@ test("fixed APK route seed continues to the next real unresolved boundary", () =
         ),
         humanSoulRingSpeciesEvidence: readCatalog(
             "human-soul-ring-species-runtime-evidence.json"
+        ),
+        officialBeastElementEvidence: readCatalog(
+            "official-beast-element-runtime-evidence.json"
         ),
         combatPowerEvidence: readCatalog("combat-power-runtime-evidence.json"),
         packId: "douluo1"
@@ -180,23 +186,15 @@ test("fixed APK route seed continues to the next real unresolved boundary", () =
         poolId: "f2abac93-6b26-4e3e-aa92-a168db671577",
         optionId: "f16385"
     });
-    assert.throws(
-        () => commitApkRouteOption({
-            contentIndex,
-            session,
-            spin,
-            ...handlers
-        }),
-        error => error.code === "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED"
-            && error.details.operationId === "beast.element.unresolved"
-            && error.details.operationStatus === "unresolved"
-    );
+    const committed = commitApkRouteOption({ contentIndex, session, spin, ...handlers });
+    assert.equal(committed.nextFlowId, "douluo1:flow.after-formal-special-result");
     assert.equal(session.random.cursor, 219);
-    assert.equal(session.history.length, 218);
+    assert.equal(session.history.length, 219);
+    assert.equal(session.character.elementProgress.destruction, 1);
     assert.equal(session.character.age, 58);
     assert.equal(session.character.level, 91);
-    assert.equal(session.currentFlowId, "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577");
-    assert.equal(session.routeStatus, "drawn");
+    assert.equal(session.currentFlowId, "douluo1:flow.after-formal-special-result");
+    assert.equal(session.routeStatus, "ready");
 });
 
 test("douluo1 compact route shard preserves the fixed-seed transcript and typed boundary", () => {
@@ -211,6 +209,9 @@ test("douluo1 compact route shard preserves the fixed-seed transcript and typed 
         ),
         humanSoulRingSpeciesEvidence: readCatalog(
             "human-soul-ring-species-runtime-evidence.json"
+        ),
+        officialBeastElementEvidence: readCatalog(
+            "official-beast-element-runtime-evidence.json"
         ),
         combatPowerEvidence: readCatalog("combat-power-runtime-evidence.json"),
         packId: "douluo1"
@@ -252,16 +253,8 @@ test("douluo1 compact route shard preserves the fixed-seed transcript and typed 
         poolId: "f2abac93-6b26-4e3e-aa92-a168db671577",
         optionId: "f16385"
     });
-    assert.throws(
-        () => commitApkRouteOption({
-            contentIndex,
-            session,
-            spin: boundary,
-            ...handlers
-        }),
-        error => error.code === "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED"
-            && error.details.operationId === "beast.element.unresolved"
-    );
+    commitApkRouteOption({ contentIndex, session, spin: boundary, ...handlers });
     assert.equal(session.random.cursor, 219);
-    assert.equal(session.history.length, 218);
+    assert.equal(session.history.length, 219);
+    assert.equal(session.character.elementProgress.destruction, 1);
 });

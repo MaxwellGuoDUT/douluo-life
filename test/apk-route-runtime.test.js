@@ -17,6 +17,7 @@ let realRouteGraph;
 let realFormalSpecialResultEvidence;
 let realHumanSoulRingEvidence;
 let realHumanSoulRingSpeciesEvidence;
+let realOfficialBeastElementEvidence;
 
 function loadRealRouteGraph() {
     if (!realRouteGraph) {
@@ -71,6 +72,17 @@ function loadRealHumanSoulRingSpeciesEvidence() {
         "utf8"
     ));
     return realHumanSoulRingSpeciesEvidence;
+}
+
+function loadRealOfficialBeastElementEvidence() {
+    realOfficialBeastElementEvidence ??= JSON.parse(fs.readFileSync(
+        new URL(
+            "../data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+            import.meta.url
+        ),
+        "utf8"
+    ));
+    return realOfficialBeastElementEvidence;
 }
 
 function realSoulRingContentIndex({ includeSpeciesEvidence = true } = {}) {
@@ -647,16 +659,20 @@ test("APK route operation registry dispatches by context and keeps unresolved br
             .filter(entry => entry.handlerId === "douluo1:handler.official-beast.element")
             .map(entry => [entry.operationId, entry.context, entry.status]),
         [[
-            "beast.element.unresolved",
+            "beast.element",
             "douluo1:flow.official-beast.pool.*",
-            "unresolved"
+            "connected"
         ]]
     );
 });
 
-test("APK official beast element handler remains explicitly unresolved and atomic", () => {
+test("APK official beast element handler uses exact evidence for human context", () => {
     const routeGraph = loadRealRouteGraph();
-    const contentIndex = createApkRouteContentIndex({ routeGraph, packId: "douluo1" });
+    const contentIndex = createApkRouteContentIndex({
+        routeGraph,
+        packId: "douluo1",
+        officialBeastElementEvidence: loadRealOfficialBeastElementEvidence()
+    });
     const session = createApkRouteSession({
         routeGraph,
         packId: "douluo1",
@@ -666,18 +682,66 @@ test("APK official beast element handler remains explicitly unresolved and atomi
     const poolId = "f2abac93-6b26-4e3e-aa92-a168db671577";
     const optionId = "f16385";
     session.currentFlowId = flowId;
-    const before = JSON.parse(JSON.stringify(session));
+    const option = contentIndex.getOptions(poolId).find(candidate => candidate.normalized.option_id === optionId);
+    const cursor = session.random.cursor;
+    const committed = commitApkRouteOption({
+        contentIndex,
+        session,
+        spin: { flowId, poolId, optionId, option },
+        ...createApkRouteDynamicHandlers({ contentIndex })
+    });
+    assert.equal(committed.nextFlowId, "douluo1:flow.formal-human.scheduler");
+    assert.equal(session.character.elementProgress.destruction, 1);
+    assert.equal(session.character.beast, null);
+    assert.equal(session.random.cursor, cursor);
+});
 
+test("APK official beast element handler updates only beast progression", () => {
+    const routeGraph = loadRealRouteGraph();
+    const contentIndex = createApkRouteContentIndex({
+        routeGraph,
+        packId: "douluo1",
+        officialBeastElementEvidence: loadRealOfficialBeastElementEvidence()
+    });
+    const session = createApkRouteSession({ routeGraph, packId: "douluo1", seed: "beast-element" });
+    const flowId = "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577";
+    const poolId = "f2abac93-6b26-4e3e-aa92-a168db671577";
+    const optionId = "f16385";
+    const option = contentIndex.getOptions(poolId).find(candidate => candidate.normalized.option_id === optionId);
+    session.currentFlowId = flowId;
+    session.character.route = "beast";
+    session.character.beast = {
+        elementProgress: null,
+        attributeStages: {},
+        bloodlines: [],
+        laws: [],
+        evolvedThresholds: [],
+        plotDone: []
+    };
+    commitApkRouteOption({
+        contentIndex,
+        session,
+        spin: { flowId, poolId, optionId, option },
+        ...createApkRouteDynamicHandlers({ contentIndex })
+    });
+    assert.equal(session.character.beast.attributeStages["毁灭"], 1);
+    assert.equal(session.character.elementProgress.destruction, undefined);
+    assert.equal(session.currentFlowId, "douluo1:flow.official-beast.pool.3f788371-f7de-4ddd-81a1-eae9a9287dbc");
+});
+
+test("APK official beast element missing evidence rejects atomically", () => {
+    const routeGraph = loadRealRouteGraph();
+    const contentIndex = createApkRouteContentIndex({ routeGraph, packId: "douluo1" });
+    const session = createApkRouteSession({ routeGraph, packId: "douluo1", seed: "missing-element-evidence" });
+    const flowId = "douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577";
+    const poolId = "f2abac93-6b26-4e3e-aa92-a168db671577";
+    const optionId = "f16385";
+    const option = contentIndex.getOptions(poolId).find(candidate => candidate.normalized.option_id === optionId);
+    session.currentFlowId = flowId;
+    const before = structuredClone(session);
     assert.throws(
-        () => commitApkRouteOption({
-            contentIndex,
-            session,
-            spin: { flowId, poolId, optionId }
-        }),
-        error => error.code === "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED"
-            && error.details.customHandler === "douluo1:handler.official-beast.element"
-            && error.details.operationId === "beast.element.unresolved"
-            && error.details.operationStatus === "unresolved"
+        () => commitApkRouteOption({ contentIndex, session, spin: { flowId, poolId, optionId, option } }),
+        error => error.code === "APK_ROUTE_BEAST_ELEMENT_EVIDENCE_MISSING"
     );
     assert.deepEqual(session, before);
 });

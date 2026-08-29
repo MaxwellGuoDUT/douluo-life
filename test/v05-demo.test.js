@@ -38,6 +38,9 @@ function materializeDouluo1() {
         humanSoulRingSpeciesEvidence: readJson(
             "human-soul-ring-species-runtime-evidence.json"
         ),
+        officialBeastElementEvidence: readJson(
+            "official-beast-element-runtime-evidence.json"
+        ),
         combatPowerEvidence: readJson("combat-power-runtime-evidence.json")
     };
     return {
@@ -230,19 +233,18 @@ test("continuous age advance and single-step advance produce the same age-25 ses
     assert.deepEqual(continuous.presentationHistory, single.presentationHistory);
 });
 
-test("custom seed stops at a typed unresolved option without committing the failed item", () => {
+test("custom seed commits official-beast.element and stops at the next typed boundary", () => {
     const runner = createRunner("v05-custom-1");
     let result;
-    for (let step = 1; step <= 95; step += 1) result = runner.step();
+    while (runner.phase === "ready") result = runner.step();
 
     assert.equal(result.status, "boundary");
-    assert.equal(runner.session.character.age, 17);
-    assert.equal(runner.session.random.cursor, 95);
-    assert.equal(runner.session.history.length, 94);
-    assert.equal(runner.presentationHistory.length, 94);
-    assert.equal(runner.error.code, "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED");
-    assert.equal(runner.error.details.operationId, "beast.element.unresolved");
-    assert.equal(runner.lastSpin.optionId, "a935ef");
+    assert.equal(runner.session.character.age, 24);
+    assert.equal(runner.session.random.cursor, 130);
+    assert.equal(runner.session.history.length, 129);
+    assert.equal(runner.presentationHistory.length, 129);
+    assert.equal(runner.error.code, "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED");
+    assert.equal(runner.session.character.elementProgress.water, 2);
 
     const before = {
         cursor: runner.session.random.cursor,

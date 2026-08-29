@@ -1,8 +1,8 @@
 # 斗罗人生 V0.5 Demo
 
-状态：`V0.5 RC1 delivered / Day21 wheel-save RC2 local implementation complete / automated verified / Browser partial / unstaged`
+状态：`V0.5 RC1 delivered / Day22 destiny-cohort RC2 local implementation complete / automated verified / Browser verified / unstaged`
 
-日期：2026-08-28（Day21 本地实现候选）
+日期：2026-08-29（Day22 本地实现候选）
 
 对应任务：Day18 APK canonical `douluo1` 0～25 岁可玩 Demo
 
@@ -227,3 +227,24 @@ V0.5 RC1 当前可准确描述为：`merged to main / Pages deployed / owner pub
 - Browser 尚未直接抽查魂环 pool 的 option/weight：继续单步取样时被 browser security policy 拒绝，未使用其他浏览器或绕过策略。魂环/全部 eligible 几何已有 runtime 自动化覆盖，但不能冒充 Browser 证据。
 
 因此本地代码与自动化为完成；Browser 验收为 `partial`。进入 `A-DAY21-DELIVER` 前建议在允许的 fresh in-app Browser 会话补齐：魂环 pool option/weight 直查，以及坏存档明确清除按钮的修复后复测。
+
+## Day22 正式命运、runtime 闭合与人生图鉴（2026-08-29）
+
+本节覆盖 Day21 的“单 golden seed / schema v1 / official-beast.element unresolved”当前描述；上文仍保留为历史证据。
+
+- 固定 APK 与 `douluo1` module 的 SHA-256 分别为 `E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C` 与 `CD025DBAF024BCCD90B4601B3DAE0850DBE7907CEC9F38AA0ED40D64E3C3E166`。generator 从固定 source handler/mapping 提取8个 pool、144条 exact `official-beast.element` runtime evidence；产物目标摘要为 `1B691D59A3ED8621F96613CFB98E4CDD2143DF1CD4F7D3182A60579523ECBAB6`。
+- `official-beast.element` 已按 source context 闭合 human 与 beast 分支：mapping/context/evidence 缺失均 typed reject，commit 原子回滚；handler 不额外消费 RNG，不改变 option weight、requirements 或 eligibility。human 回到正式 scheduler，beast 进入 source 指定的成对血脉 stage pool。
+- 对 `v05-destiny-000`～`255` 固定扫描：87条到达25岁；80条 `APK_POOL_HAS_NO_ELIGIBLE_OPTIONS`、17条 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED/beast.martial.unresolved`、28条 `APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED`、11条 `APK_ROUTE_SOUL_RING_EVIDENCE_MISSING`、13条 `UNSUPPORTED_APK_EFFECT`、20条 `V05_ROUTE_TERMINATED_EARLY`。未降低门槛、未吞掉 unresolved、未接第二个 handler。
+- 正式 cohort 为 `002, 003, 008, 017, 028, 032, 033, 055, 065, 081, 092, 175` 共12条；拥有12种核心角色画像、12种路线/里程碑组合、12种魂环/成长画像和12个唯一摘要 digest，超过 `4 / 3 / 3` Go 门槛。
+- 首屏将12条正式命运作为可访问的单选预设，自定义 seed 位于独立 experimental 区。中央转盘仍只读取 runtime 当前 eligible options、真实 weight 与已经决定的 spin snapshot，不因预设或动画消费 RNG。
+- 活动存档升级为 schema v2，绑定 destiny id、seed、内容身份和 replay digest。Day21 v1 ready/completed save 只有同 seed 重放逐字段一致才迁移；旧 boundary 若因本轮闭合而改变，返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED`，不自动推进、不删除原始存档。
+- 新增 completed-only 人生图鉴：只在 age25 完成后写入不可变摘要，可去重并选择两条比较武魂、路线、修为、魂环、里程碑和结局；不保存 runner session/history，不能恢复。活动存档、图鉴和当前内存会话使用独立清理入口。
+- `apk-route-demo-seed` 继续回归为25岁/42级/`100/100`。`v05-custom-1` 因 element handler 闭合后前进到24岁/91级、`130 cursor / 129 history`，再以 `APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED` 原子停止，保持 experimental。
+- 自动化为定向 `73/73`、完整 `207/207`；evidence extractor、destiny cohort generator、RC package generator 的 `--check`，10个相关脚本 `node --check`、5个 generated JSON parse 与 `git diff --check` 全部通过。当前29个 changed paths 全在31路径白名单内。
+- Codex in-app Browser 首屏显示12条正式预设；命运002/003/008分别完成为25岁38级/3环/86项、30级/2环/96项、13级/1环/100项。命运002在5岁/21项刷新后确定性恢复并继续完成，completed 再刷新仍锁定且图鉴幂等。
+- `v05-custom-1` 页面人生记事显示 `水元素事件 95 · cursor 95` 已提交，继续至24岁/129项后才在 cursor 130 返回新的 followup typed boundary，证明旧 element boundary 已闭合且新失败项未半提交。
+- 同源 Day21/Day22 双版本真实 UI 生成并验证 v1 ready、completed、boundary：ready/completed 均显示“Day21 存档迁移完成”；旧17岁/94项 boundary 返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED`、history 0，刷新后原摘要与继续入口仍在。
+- 图鉴完成3条收录、重复恢复不增项，并可对比武魂、路线、修为、魂环、魂骨、里程碑和结局。三个 drawer 的 Escape/焦点返回与图鉴 Shift+Tab 循环通过；内存人生、活动 save、图鉴三种 clear 依次验证互不删除。
+- 390×844 下 viewport 为 `390×844`、document scroll width 375、转盘宽约343.45px、drawer 为底部375.43px sheet；reduced-motion 为 true 时 animation/transition 均 `1e-06s`。clean Day22 acceptance tab 的 console error/warning 分别为 `0/0`。
+
+Day22 仍只覆盖0～25岁、一个活动存档槽和完成摘要图鉴；不扩展 `douluo2`、25岁后、完整魂兽人生、route graph、其他 handler、owner APK/DOCX/XLSX、workflow、archive preservation 或发布操作。代码、自动化与本地 Browser 验收已完成；所有变更保持 unstaged，未 commit、push、创建 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。

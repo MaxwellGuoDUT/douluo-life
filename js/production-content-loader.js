@@ -139,6 +139,12 @@ export async function loadProductionEntry({
     const combatPowerEvidencePath = entry.combatPowerEvidence
         ?? index.combatPowerEvidence?.path
         ?? null;
+    const officialBeastElementEvidencePath = entry.officialBeastElementEvidence
+        ?? index.officialBeastElementEvidence?.path
+        ?? null;
+    const supportedDestiniesPath = entry.supportedDestinies
+        ?? index.supportedDestinies?.path
+        ?? null;
     const routeGraphDocument = includeRouteGraph && routeGraphPath
         ? await fetchJson(fetchImpl, routeGraphPath)
         : null;
@@ -163,6 +169,13 @@ export async function loadProductionEntry({
     const combatPowerEvidence = includeRouteGraph
         && combatPowerEvidencePath
         ? await fetchJson(fetchImpl, combatPowerEvidencePath)
+        : null;
+    const officialBeastElementEvidence = includeRouteGraph
+        && officialBeastElementEvidencePath
+        ? await fetchJson(fetchImpl, officialBeastElementEvidencePath)
+        : null;
+    const supportedDestinies = supportedDestiniesPath
+        ? await fetchJson(fetchImpl, supportedDestiniesPath)
         : null;
     const routeGraphValidation = routeGraph
         ? validateRouteGraph(routeGraph)
@@ -209,6 +222,10 @@ export async function loadProductionEntry({
         humanSoulRingSpeciesEvidencePath,
         combatPowerEvidence,
         combatPowerEvidencePath,
+        officialBeastElementEvidence,
+        officialBeastElementEvidencePath,
+        supportedDestinies,
+        supportedDestiniesPath,
         routeGraphValidation,
         catalogs,
         complete,
