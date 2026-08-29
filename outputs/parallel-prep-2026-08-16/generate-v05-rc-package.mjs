@@ -56,23 +56,23 @@ function readJson(relativePath) {
     return JSON.parse(fs.readFileSync(absolute(relativePath), "utf8"));
 }
 
-function sha256(relativePath) {
+function canonicalText(relativePath) {
+    return fs.readFileSync(absolute(relativePath), "utf8").replace(/\r\n/gu, "\n");
+}
+
+function canonicalTextSha256(relativePath) {
     return crypto.createHash("sha256")
-        .update(fs.readFileSync(absolute(relativePath)))
+        .update(canonicalText(relativePath), "utf8")
         .digest("hex")
         .toUpperCase();
 }
 
-function canonicalTextSha256(relativePath) {
-    const text = fs.readFileSync(absolute(relativePath), "utf8").replace(/\r\n/gu, "\n");
-    return crypto.createHash("sha256").update(text, "utf8").digest("hex").toUpperCase();
-}
-
 function descriptor(relativePath) {
+    const text = canonicalText(relativePath);
     return {
         path: relativePath,
-        sizeBytes: fs.statSync(absolute(relativePath)).size,
-        sha256: sha256(relativePath)
+        sizeBytes: Buffer.byteLength(text, "utf8"),
+        sha256: crypto.createHash("sha256").update(text, "utf8").digest("hex").toUpperCase()
     };
 }
 

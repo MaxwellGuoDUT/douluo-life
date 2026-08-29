@@ -10,13 +10,6 @@ function readJson(path) {
     return JSON.parse(fs.readFileSync(new URL(path, ROOT), "utf8"));
 }
 
-function sha256(path) {
-    return crypto.createHash("sha256")
-        .update(fs.readFileSync(new URL(path, ROOT)))
-        .digest("hex")
-        .toUpperCase();
-}
-
 function canonicalText(path) {
     return fs.readFileSync(new URL(path, ROOT), "utf8").replace(/\r\n/gu, "\n");
 }
@@ -54,8 +47,8 @@ test("V0.5 RC artifacts are generator-current and shard-only", () => {
         "data/v05-rc/supported-destinies.json"
     ]);
     for (const file of index.files) {
-        assert.equal(sha256(file.path), file.sha256);
-        assert.equal(fs.statSync(new URL(file.path, ROOT)).size, file.sizeBytes);
+        assert.equal(canonicalTextSha256(file.path), file.sha256);
+        assert.equal(Buffer.byteLength(canonicalText(file.path), "utf8"), file.sizeBytes);
     }
     const serialized = JSON.stringify({ entry, index, policy });
     for (const forbidden of ["route-graph.json", "douluo2", "options.json"]) {
