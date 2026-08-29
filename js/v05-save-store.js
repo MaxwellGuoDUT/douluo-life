@@ -2,7 +2,8 @@ import { snapshotV05Character } from "./v05-life-presentation.js";
 
 export const V05_SAVE_KEY = "douluo-life:v05:checkpoint";
 export const V05_SAVE_SCHEMA = "douluo-life-v05-save";
-export const V05_SAVE_SCHEMA_VERSION = 1;
+export const V05_SAVE_SCHEMA_VERSION = 2;
+export const V05_SAVE_LEGACY_SCHEMA_VERSION = 1;
 
 function typedError(code, message, details = {}) {
     const error = new Error(message);
@@ -41,7 +42,13 @@ function transcript(runner) {
     }));
 }
 
-export function createV05ContentIdentity({ routeGraph, packId, appVersion } = {}) {
+export function createV05ContentIdentity({
+    routeGraph,
+    packId,
+    appVersion,
+    officialBeastElementEvidence = null,
+    supportedDestinies = null
+} = {}) {
     const pack = routeGraph?.packs?.find(candidate => candidate?.id === packId) ?? null;
     return Object.freeze({
         appVersion,
@@ -51,12 +58,19 @@ export function createV05ContentIdentity({ routeGraph, packId, appVersion } = {}
         contentFingerprint: digestV05Value({
             schemaVersion: routeGraph?.schemaVersion ?? null,
             packageVersion: routeGraph?.packageVersion ?? null,
-            pack
+            pack,
+            officialBeastElementEvidence,
+            supportedDestinies
         })
     });
 }
 
-export function createV05Checkpoint({ runner, contentIdentity, savedAt } = {}) {
+export function createV05Checkpoint({
+    runner,
+    contentIdentity,
+    destinyId = runner?.destinyId ?? "custom",
+    savedAt
+} = {}) {
     const session = runner?.session;
     const phase = runner?.phase;
     const persistentPhase = phase === "advancing" ? "ready" : phase;
@@ -71,6 +85,7 @@ export function createV05Checkpoint({ runner, contentIdentity, savedAt } = {}) {
         schemaVersion: V05_SAVE_SCHEMA_VERSION,
         appVersion: contentIdentity?.appVersion ?? null,
         packageIdentity: contentIdentity,
+        destinyId,
         seed: runner.seed ?? session.random?.seed ?? null,
         phase: persistentPhase,
         committedCount: session.history?.length ?? 0,
@@ -98,7 +113,7 @@ function validateObject(envelope) {
             schema: envelope.schema ?? null
         });
     }
-    if (envelope.schemaVersion !== V05_SAVE_SCHEMA_VERSION) {
+    if (![V05_SAVE_LEGACY_SCHEMA_VERSION, V05_SAVE_SCHEMA_VERSION].includes(envelope.schemaVersion)) {
         throw typedError("V05_SAVE_VERSION_UNSUPPORTED", "本地存档版本不受支持。", {
             schemaVersion: envelope.schemaVersion ?? null
         });
@@ -110,6 +125,10 @@ function validateObject(envelope) {
         || typeof envelope.transcriptDigest !== "string"
         || typeof envelope.characterDigest !== "string") {
         throw typedError("V05_SAVE_SCHEMA_INVALID", "本地存档缺少关键字段或字段类型错误。");
+    }
+    if (envelope.schemaVersion === V05_SAVE_SCHEMA_VERSION
+        && (typeof envelope.destinyId !== "string" || envelope.destinyId.length === 0)) {
+        throw typedError("V05_SAVE_SCHEMA_INVALID", "Day22 存档缺少 destinyId。");
     }
     return envelope;
 }
@@ -148,14 +167,41 @@ function replayMismatch(envelope, replayed, field) {
     });
 }
 
-export function restoreV05Checkpoint({ raw, createRunner, contentIdentity } = {}) {
+function deriveDestinyId(envelope, destinyManifest) {
+    if (envelope.schemaVersion === V05_SAVE_SCHEMA_VERSION) return envelope.destinyId;
+    const match = destinyManifest?.destinies?.find(destiny => destiny.seed === envelope.seed);
+    return match?.id ?? "custom";
+}
+
+function assertDestinyIdentity(envelope, destinyManifest) {
+    if (envelope.destinyId === "custom") return;
+    const destiny = destinyManifest?.destinies?.find(candidate => candidate.id === envelope.destinyId);
+    if (!destiny || destiny.seed !== envelope.seed) {
+        throw typedError("V05_SAVE_DESTINY_MISMATCH", "存档 destinyId 与当前正式命运 manifest 不一致。", {
+            destinyId: envelope.destinyId,
+            seed: envelope.seed
+        });
+    }
+}
+
+export function restoreV05Checkpoint({
+    raw,
+    createRunner,
+    contentIdentity,
+    destinyManifest = null
+} = {}) {
     const envelope = parseV05Save(raw);
     if (!envelope) return null;
-    assertContentIdentity(envelope.packageIdentity, contentIdentity);
+    const migrating = envelope.schemaVersion === V05_SAVE_LEGACY_SCHEMA_VERSION;
+    if (!migrating) {
+        assertContentIdentity(envelope.packageIdentity, contentIdentity);
+        assertDestinyIdentity(envelope, destinyManifest);
+    }
     if (typeof createRunner !== "function") {
         throw typedError("V05_SAVE_REPLAY_MISMATCH", "缺少确定性重放 runner factory。");
     }
-    const runner = createRunner(envelope.seed);
+    const destinyId = deriveDestinyId(envelope, destinyManifest);
+    const runner = createRunner(envelope.seed, destinyId);
     for (let index = 0; index < envelope.committedCount; index += 1) {
         const result = runner.step();
         if (!result.committed) replayMismatch(envelope, createV05Checkpoint({ runner, contentIdentity }), "committedCount");
@@ -163,12 +209,36 @@ export function restoreV05Checkpoint({ raw, createRunner, contentIdentity } = {}
     if (envelope.phase === "boundary") {
         const boundary = runner.step();
         if (boundary.committed || boundary.status !== "boundary") {
-            replayMismatch(envelope, createV05Checkpoint({ runner, contentIdentity }), "phase");
+            if (migrating) {
+                throw typedError(
+                    "V05_SAVE_BOUNDARY_SEMANTICS_CHANGED",
+                    "Day21 boundary 已被 Day22 runtime 闭合；原存档已保留，且不会自动推进。",
+                    {
+                        seed: envelope.seed,
+                        previousBoundaryCode: envelope.boundaryCode,
+                        currentStatus: boundary.status,
+                        currentCommitted: boundary.committed
+                    }
+                );
+            }
+            replayMismatch(envelope, createV05Checkpoint({ runner, contentIdentity, destinyId }), "phase");
+        }
+        if (migrating && boundary.error?.code !== envelope.boundaryCode) {
+            throw typedError(
+                "V05_SAVE_BOUNDARY_SEMANTICS_CHANGED",
+                "Day21 boundary 在 Day22 runtime 中已改变；原存档已保留。",
+                {
+                    seed: envelope.seed,
+                    previousBoundaryCode: envelope.boundaryCode,
+                    currentBoundaryCode: boundary.error?.code ?? null
+                }
+            );
         }
     }
     const replayed = createV05Checkpoint({
         runner,
         contentIdentity,
+        destinyId,
         savedAt: envelope.savedAt
     });
     for (const field of [
@@ -178,7 +248,12 @@ export function restoreV05Checkpoint({ raw, createRunner, contentIdentity } = {}
     ]) {
         if (!Object.is(envelope[field], replayed[field])) replayMismatch(envelope, replayed, field);
     }
-    return Object.freeze({ envelope, runner });
+    return Object.freeze({
+        envelope: migrating ? replayed : envelope,
+        sourceEnvelope: migrating ? envelope : null,
+        runner,
+        migrated: migrating
+    });
 }
 
 function storageError(operation, error) {
@@ -221,6 +296,7 @@ export default Object.freeze({
     V05_SAVE_KEY,
     V05_SAVE_SCHEMA,
     V05_SAVE_SCHEMA_VERSION,
+    V05_SAVE_LEGACY_SCHEMA_VERSION,
     stableV05Stringify,
     digestV05Value,
     createV05ContentIdentity,

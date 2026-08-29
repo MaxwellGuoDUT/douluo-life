@@ -1,6 +1,6 @@
 {
   "schemaVersion": "v05-rc-package/1.0",
-  "packageVersion": "v05-rc1/2026-08-24",
+  "packageVersion": "v05-rc2/2026-08-29",
   "source": {
     "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
     "provenanceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json"
@@ -14,7 +14,7 @@
       "packId": "douluo1",
       "title": "斗罗大陆 I",
       "entryFlowId": "douluo1:flow.formal-human.identity",
-      "releaseStatus": "v05-rc1"
+      "releaseStatus": "v05-rc2"
     }
   },
   "formalSpecialResultEvidence": {
@@ -36,6 +36,16 @@
     "path": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
     "sizeBytes": 18442,
     "sha256": "A6B281065E8045C4DF3DFC542AC8C698B1E2C5989994281D475AA3458798E962"
+  },
+  "officialBeastElementEvidence": {
+    "path": "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+    "sizeBytes": 58441,
+    "sha256": "1B691D59A3ED8621F96613CFB98E4CDD2143DF1CD4F7D3182A60579523ECBAB6"
+  },
+  "supportedDestinies": {
+    "path": "data/v05-rc/supported-destinies.json",
+    "sizeBytes": 796383,
+    "sha256": "EBB32D1ADC7888DDB838B7B72544584D1B870B1A2FE7A325D1B8A77CDAD3D97E"
   },
   "buildInputs": {
     "martialSoulRuntimeEvidence": {
@@ -70,6 +80,16 @@
       "path": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
       "sizeBytes": 18442,
       "sha256": "A6B281065E8045C4DF3DFC542AC8C698B1E2C5989994281D475AA3458798E962"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+      "sizeBytes": 58441,
+      "sha256": "1B691D59A3ED8621F96613CFB98E4CDD2143DF1CD4F7D3182A60579523ECBAB6"
+    },
+    {
+      "path": "data/v05-rc/supported-destinies.json",
+      "sizeBytes": 796383,
+      "sha256": "EBB32D1ADC7888DDB838B7B72544584D1B870B1A2FE7A325D1B8A77CDAD3D97E"
     }
   ]
 }

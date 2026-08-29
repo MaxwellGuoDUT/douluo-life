@@ -12,7 +12,7 @@ import {
 const ROOT = process.cwd();
 const OUTPUT_ROOT = path.join(ROOT, "data", "v05-rc");
 const CHECK_ONLY = process.argv.includes("--check");
-const PACKAGE_VERSION = "v05-rc1/2026-08-24";
+const PACKAGE_VERSION = "v05-rc2/2026-08-29";
 const SOURCE_MANIFEST = "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json";
 const ARCHIVE_MANIFEST = "data/v2/archive/apk-replaced-2026-08-16/manifest.json";
 const APPROVED_ARCHIVE_FILES = Object.freeze([
@@ -35,7 +35,9 @@ const ASSETS = Object.freeze({
     formalSpecialResultEvidence: "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
     humanSoulRingEvidence: "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
     humanSoulRingSpeciesEvidence: "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
-    combatPowerEvidence: "data/apk-canonical/catalogs/combat-power-runtime-evidence.json"
+    combatPowerEvidence: "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+    officialBeastElementEvidence: "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+    supportedDestinies: "data/v05-rc/supported-destinies.json"
 });
 
 const BUILD_INPUTS = Object.freeze({
@@ -54,18 +56,23 @@ function readJson(relativePath) {
     return JSON.parse(fs.readFileSync(absolute(relativePath), "utf8"));
 }
 
-function sha256(relativePath) {
+function canonicalText(relativePath) {
+    return fs.readFileSync(absolute(relativePath), "utf8").replace(/\r\n/gu, "\n");
+}
+
+function canonicalTextSha256(relativePath) {
     return crypto.createHash("sha256")
-        .update(fs.readFileSync(absolute(relativePath)))
+        .update(canonicalText(relativePath), "utf8")
         .digest("hex")
         .toUpperCase();
 }
 
 function descriptor(relativePath) {
+    const text = canonicalText(relativePath);
     return {
         path: relativePath,
-        sizeBytes: fs.statSync(absolute(relativePath)).size,
-        sha256: sha256(relativePath)
+        sizeBytes: Buffer.byteLength(text, "utf8"),
+        sha256: crypto.createHash("sha256").update(text, "utf8").digest("hex").toUpperCase()
     };
 }
 
@@ -89,7 +96,17 @@ function validateSources() {
     sourceSha(routeShard, "douluo1 route shard");
 
     for (const [name, relativePath] of Object.entries(ASSETS).slice(1)) {
-        sourceSha(readJson(relativePath), name);
+        const document = readJson(relativePath);
+        if (name === "supportedDestinies") {
+            if (document.schemaVersion !== "douluo-life-v05-destiny-cohort/1.0"
+                || document.packageVersion !== PACKAGE_VERSION
+                || document.endpointAge !== 25
+                || document.destinies?.length < 12) {
+                fail("V0.5 RC requires the generated Day22 destiny cohort.");
+            }
+        } else {
+            sourceSha(document, name);
+        }
     }
     sourceSha(
         readJson(BUILD_INPUTS.martialSoulRuntimeEvidence),
@@ -114,7 +131,7 @@ function validateSources() {
             || file.originalPath === file.archivePath) {
             fail(`Archive path mapping changed: ${expected.originalPath}`);
         }
-        const actual = sha256(file.archivePath);
+        const actual = canonicalTextSha256(file.archivePath);
         if (actual !== String(file.sha256).toUpperCase()) {
             fail(`Archive source hash mismatch: ${file.archivePath}`);
         }
@@ -137,6 +154,9 @@ function releaseDocuments() {
         publicPackIds: ["douluo1"],
         endpointAge: 25,
         defaultSeed: "apk-route-demo-seed",
+        supportedDestinyMinimum: 12,
+        candidateSeedCount: 256,
+        completedArchiveOnly: true,
         routeGraphPackagingPolicy: "pack-shard-only-no-monolith-fallback",
         catalogLoadingPolicy: "catalogNames-empty",
         archiveManifest: ARCHIVE_MANIFEST,
@@ -157,13 +177,15 @@ function releaseDocuments() {
                 packId: "douluo1",
                 title: routeShard.pack?.manifest?.title ?? "斗罗大陆 I",
                 entryFlowId: routeShard.pack?.entryFlowId,
-                releaseStatus: "v05-rc1"
+                releaseStatus: "v05-rc2"
             }
         },
         formalSpecialResultEvidence: descriptor(ASSETS.formalSpecialResultEvidence),
         humanSoulRingEvidence: descriptor(ASSETS.humanSoulRingEvidence),
         humanSoulRingSpeciesEvidence: descriptor(ASSETS.humanSoulRingSpeciesEvidence),
         combatPowerEvidence: descriptor(ASSETS.combatPowerEvidence),
+        officialBeastElementEvidence: descriptor(ASSETS.officialBeastElementEvidence),
+        supportedDestinies: descriptor(ASSETS.supportedDestinies),
         buildInputs: {
             martialSoulRuntimeEvidence: buildInput
         },
@@ -182,6 +204,8 @@ function releaseDocuments() {
         humanSoulRingEvidence: ASSETS.humanSoulRingEvidence,
         humanSoulRingSpeciesEvidence: ASSETS.humanSoulRingSpeciesEvidence,
         combatPowerEvidence: ASSETS.combatPowerEvidence,
+        officialBeastElementEvidence: ASSETS.officialBeastElementEvidence,
+        supportedDestinies: ASSETS.supportedDestinies,
         routeDemo: "v05-demo.html",
         runtime: "js/apk-rule-runtime.js",
         routeRuntime: "js/apk-route-runtime.js",
@@ -189,15 +213,21 @@ function releaseDocuments() {
         availabilityPolicy: "preserve_apk_original_state",
         releaseScope: {
             channel: "release-candidate",
-            version: "V0.5 RC1",
+            version: "V0.5 RC2",
             publicPackIds: ["douluo1"],
             endpointAge: 25,
             defaultSeed: "apk-route-demo-seed",
+            supportedDestinyMinimum: 12,
+            candidateSeedCount: 256,
             typedBoundaryAllowed: true,
             completeLifeClaimAllowed: false,
             knownTypedBoundaries: [
                 "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
-                "APK_COMBAT_POWER_UNCOVERED_STATE"
+                "APK_COMBAT_POWER_UNCOVERED_STATE",
+                "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED",
+                "APK_POOL_HAS_NO_ELIGIBLE_OPTIONS",
+                "APK_ROUTE_SOUL_RING_EVIDENCE_MISSING",
+                "UNSUPPORTED_APK_EFFECT"
             ]
         },
         legacyArchive: {

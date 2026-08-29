@@ -14,6 +14,11 @@ import {
     createV05WheelView,
     createV05WheelViewFromSpin
 } from "./v05-wheel-view.js";
+import {
+    createV05DestinyViewModel,
+    getV05Destiny,
+    validateV05DestinyManifest
+} from "./v05-destiny-cohort.js";
 
 export const V05_PACK_ID = "douluo1";
 export const V05_ENTRY_PATH = "data/v05-rc/production-entry.json";
@@ -133,16 +138,23 @@ export function createV05ContentIndex(loaded) {
         formalSpecialResultEvidence: loaded.formalSpecialResultEvidence,
         humanSoulRingEvidence: loaded.humanSoulRingEvidence,
         humanSoulRingSpeciesEvidence: loaded.humanSoulRingSpeciesEvidence,
+        officialBeastElementEvidence: loaded.officialBeastElementEvidence,
         combatPowerEvidence: loaded.combatPowerEvidence,
         packId: V05_PACK_ID
     });
+}
+
+export function createV05DestinyCatalog(loaded) {
+    return createV05DestinyViewModel(loaded?.supportedDestinies);
 }
 
 export function createV05DemoRunner({
     contentIndex,
     routeGraph,
     seed = V05_DEFAULT_SEED,
-    endpointAge = V05_ENDPOINT_AGE
+    destinyId = "custom",
+    endpointAge = V05_ENDPOINT_AGE,
+    onCompleted = null
 } = {}) {
     if (!contentIndex?.getFlow || !contentIndex?.getRouteOption) {
         throw typedError("V05_CONTENT_INDEX_MISSING", "V0.5 requires a route content index.");
@@ -164,8 +176,11 @@ export function createV05DemoRunner({
         summary: null,
         presentationHistory: [],
         seed: null,
+        destinyId: null,
         cancelRequested: false,
-        lastWheelResult: null
+        lastWheelResult: null,
+        completionNotified: false,
+        completionWarning: null
     };
 
     function initialize(nextSeed) {
@@ -179,6 +194,7 @@ export function createV05DemoRunner({
             seed: normalizedSeed
         });
         state.seed = normalizedSeed;
+        state.destinyId = String(destinyId ?? "custom");
         state.phase = "ready";
         state.lastSpin = null;
         state.lastCommit = null;
@@ -187,6 +203,8 @@ export function createV05DemoRunner({
         state.presentationHistory = [];
         state.cancelRequested = false;
         state.lastWheelResult = null;
+        state.completionNotified = false;
+        state.completionWarning = null;
     }
 
     function stopAtBoundary(error, phase = "boundary") {
@@ -250,6 +268,18 @@ export function createV05DemoRunner({
                     state.seed,
                     state.presentationHistory
                 );
+                if (!state.completionNotified && typeof onCompleted === "function") {
+                    state.completionNotified = true;
+                    try {
+                        onCompleted({
+                            runner: api,
+                            summary: state.summary,
+                            destinyId: state.destinyId
+                        });
+                    } catch (error) {
+                        state.completionWarning = errorRecord(error);
+                    }
+                }
             } else if (age > endpointAge) {
                 state.phase = "boundary";
                 state.error = errorRecord(typedError(
@@ -278,7 +308,7 @@ export function createV05DemoRunner({
 
     initialize(seed);
 
-    return Object.freeze({
+    const api = Object.freeze({
         get phase() {
             return state.phase;
         },
@@ -303,6 +333,12 @@ export function createV05DemoRunner({
         get seed() {
             return state.seed;
         },
+        get destinyId() {
+            return state.destinyId;
+        },
+        get completionWarning() {
+            return state.completionWarning;
+        },
         get wheelView() {
             return createV05WheelView({
                 contentIndex,
@@ -323,8 +359,9 @@ export function createV05DemoRunner({
         cancelAdvance() {
             state.cancelRequested = true;
         },
-        reset({ seed: nextSeed = V05_DEFAULT_SEED } = {}) {
+        reset({ seed: nextSeed = V05_DEFAULT_SEED, destinyId: nextDestinyId = "custom" } = {}) {
             if (state.phase === "advancing") return false;
+            destinyId = nextDestinyId;
             initialize(nextSeed);
             return true;
         },
@@ -366,16 +403,32 @@ export function createV05DemoRunner({
             ));
         }
     });
+    return api;
 }
 
 export function createV05DemoRunnerFromLoaded({
     loaded,
-    seed = V05_DEFAULT_SEED
+    seed = V05_DEFAULT_SEED,
+    destinyId = "custom",
+    onCompleted = null
 } = {}) {
+    if (destinyId !== "custom") {
+        validateV05DestinyManifest(loaded?.supportedDestinies);
+        const destiny = getV05Destiny(loaded.supportedDestinies, destinyId);
+        if (destiny.seed !== seed) {
+            throw typedError("V05_DESTINY_SEED_MISMATCH", "正式命运 ID 与 seed 不一致。", {
+                destinyId,
+                seed,
+                expectedSeed: destiny.seed
+            });
+        }
+    }
     return createV05DemoRunner({
         contentIndex: createV05ContentIndex(loaded),
         routeGraph: loaded.routeGraph,
-        seed
+        seed,
+        destinyId,
+        onCompleted
     });
 }
 
@@ -386,6 +439,7 @@ export default Object.freeze({
     V05_DEFAULT_ADVANCE_LIMIT,
     V05_APP_VERSION,
     createV05ContentIndex,
+    createV05DestinyCatalog,
     createV05DemoRunner,
     createV05DemoRunnerFromLoaded
 });

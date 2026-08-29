@@ -1227,3 +1227,17 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - Codex in-app Browser 已验证入口/成长池权重、实际结果高亮、drawer 内容与键盘焦点、页面不跳底、中途刷新逐字段恢复、继续到25岁、completed 再刷新锁、custom `95/94` boundary 再刷新、坏 JSON 保留、390×844、reduced-motion 与 console error/warning 0/0。
 - Browser direct 魂环 pool option/weight 抽查和坏存档清除按钮修复后复测未闭合：in-app Browser security/URL policy 拒绝继续访问，未绕过或替换浏览器表面。自动化覆盖不能冒充 Browser 证据，因此本地 Browser 结论为 partial。
 - 当前所有变更 unstaged；未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。下一步 `A-DAY21-DELIVER` 建议以前述两项 Browser 补测为条件。
+
+### A-DAY22-IMPLEMENT - 2026-08-29
+
+- 只读预检确认 `origin/main@2928993191c2fab8fd63fd553bf9b34549f28421`、PR #10、main CI/Pages、RC1 tag/prerelease、owner 混合工作树、Day21 focused 工作树、31路径白名单以及固定 APK/module SHA；从准确 main 创建本地 `codex/day22-v05-destiny-cohort` 与 focused 工作树。
+- 新增 generator，从固定 source handler/mapping 生成 `official-beast.element` 的8 pool、144条 exact runtime evidence；runtime 闭合 human/beast context、typed reject 与原子回滚，未增加 RNG 消费或改变权重/资格。
+- 对固定 `v05-destiny-000`～`255` 确定性扫描：87 completed；80 no-eligible；17 beast-martial unresolved；28 followup unresolved；11 ring evidence missing；13 unsupported effect；20 early ending。Go 门槛通过。
+- generator 选出12条正式命运 `002,003,008,017,028,032,033,055,065,081,092,175`；核心、路线/里程碑、成长画像各12种，12个唯一摘要 digest。产物与 RC package 均只由 generator 写入。
+- 入口新增正式命运 cohort 与 experimental seed；中央转盘仍复用 runtime 当前 eligible options、真实 weight 与既定 spin snapshot。新增第三个可访问“人生图鉴”drawer和两人生比较，390×844 使用 bottom sheet。
+- save schema 升级 v2；Day21 v1 ready/completed 仅在同 seed replay 全字段与 digest 一致时迁移，已改变的旧 boundary 返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED` 并保留原 save。图鉴只保存 completed age25 不可变摘要，不保存 session/history、不可恢复；三个 clear 隔离。
+- 默认 golden regression 仍为25岁/42级/`100/100`；`v05-custom-1` 现在在24岁/91级、`130/129` 以 `APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED` 停止。定向自动化当前 `73/73`。
+- 本地实现保持 unstaged；未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。完整自动化与 Browser 结果将在同一轮后续追加到 Day22 decision 记录。
+- 最终自动化：定向 `73/73`、完整 `207/207`；evidence/cohort/RC package 三个 generator `--check`、10个相关 `node --check`、5个 generated JSON parse、`git diff --check` 全部通过；29个 changed paths 均在31路径白名单内。
+- Codex in-app Browser：首屏12条预设；002/003/008 三条正式命运完成并进入图鉴；真实权重与命中高亮一致；`v05-custom-1` 的水元素事件95成功提交，随后在24岁/`130/129` 停于新 boundary。Day21 v1 ready/completed 迁移成功，旧 boundary typed reject 为 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED` 且原 save 保留。
+- Browser 图鉴3条幂等收录、两人生七字段比较、三 drawer 的 Tab/Escape/焦点返回、三种 clear 隔离、390×844 bottom sheet、reduced-motion 均通过；clean Day22 console error/warning 为 `0/0`。迁移搭建首次复用同 URL 时出现1条由 Day21 HTML 与缓存 Day22 module 混载导致的 harness `TypeError`，改用同源独立路径后不再复现，不记作最终候选应用 console pass 的替代证据。

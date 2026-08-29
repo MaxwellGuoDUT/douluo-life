@@ -390,3 +390,18 @@ RC1 发布锚点固定为：candidate tag `v0.5.0-rc.1`，target 为本节状态
 - package 本地版本为 `0.5.0-rc.2`；本节不表示 RC2 已交付、部署或发布。stage、commit、push、PR、merge、Pages、tag、Release、artifact 与 `SHA256SUMS` 均未授权。
 - 自动化为定向 `19/19`、完整 `193/193`，RC generator check、4个相关 syntax check 与 whitespace check 通过。
 - Codex 本地 Browser 已验证中央入口/成长权重、结果命中、drawer、焦点返回、刷新恢复、25岁完成锁、custom boundary、坏存档保留、390×844、reduced-motion 和 console 0/0；魂环 pool option/weight 直查与坏存档清除按钮修复后复测受 Browser policy 阻止，保持 `partial`，不得写成 Browser 全闭合。
+
+# Day22 当前状态补充（2026-08-29）
+
+> 本节是从 `origin/main@2928993191c2fab8fd63fd553bf9b34549f28421` 创建的 `codex/day22-v05-destiny-cohort` focused 工作树本地候选；Day21 及更早章节继续作为历史快照。
+
+- 固定 APK/module SHA 已复核；`official-beast.element` generator 生成8 pool、144条 exact evidence，并在 runtime 中闭合 human/beast context、typed reject 与原子回滚，不额外消费 RNG。
+- 256-seed 确定性覆盖分布为：completed 87；no-eligible 80；beast-martial unresolved 17；followup-prepare unresolved 28；soul-ring evidence missing 11；unsupported effect 13；early ending 20。
+- Go 门槛通过并选出12条正式命运：`002,003,008,017,028,032,033,055,065,081,092,175`；核心画像、路线/里程碑、成长画像均各12种，摘要 digest 12个唯一值。
+- V0.5 入口加入正式命运 cohort 与 experimental seed；中央转盘继续直接使用 runtime eligible options、真实 weight 和已决定结果。
+- 活动存档升级 schema v2；Day21 v1 仅在确定性 replay 全字段/digest 一致时迁移。旧 boundary 语义改变返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED`，原存档保留。
+- 新增 completed-only 人生图鉴，保存不可变摘要并支持两人生比较；不保存 session/history、不可恢复。活动存档、图鉴与内存会话 key/clear 严格隔离。
+- 自动化最终为定向 `73/73`、完整 `207/207`；三个 generator `--check`、10个相关脚本 syntax、5个 generated JSON parse、whitespace 均通过。精确29个 changed paths 全在31路径白名单内。
+- Codex in-app Browser 已覆盖12预设首屏、3条正式命运到25岁、真实 weight/结果高亮、element 事件95成功提交、ready/completed/boundary v1 迁移、刷新继续、图鉴去重/比较/三种 clear 隔离、三个 drawer 键盘焦点、390×844、reduced-motion，clean Day22 console error/warning 为 `0/0`。
+- 既有 golden regression 保持25岁/42级/`100/100`；`v05-custom-1` 的 element 旧 boundary 已闭合，新的保守 boundary 是24岁/91级、`130/129`、`APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED`。
+- 未 stage、commit、push、创建或修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。RC1 远端证据仍是历史基线，不冒充 RC2 本地证据。

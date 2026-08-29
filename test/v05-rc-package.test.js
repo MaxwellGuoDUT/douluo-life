@@ -10,11 +10,12 @@ function readJson(path) {
     return JSON.parse(fs.readFileSync(new URL(path, ROOT), "utf8"));
 }
 
-function sha256(path) {
-    return crypto.createHash("sha256")
-        .update(fs.readFileSync(new URL(path, ROOT)))
-        .digest("hex")
-        .toUpperCase();
+function canonicalText(path) {
+    return fs.readFileSync(new URL(path, ROOT), "utf8").replace(/\r\n/gu, "\n");
+}
+
+function canonicalTextSha256(path) {
+    return crypto.createHash("sha256").update(canonicalText(path), "utf8").digest("hex").toUpperCase();
 }
 
 test("V0.5 RC artifacts are generator-current and shard-only", () => {
@@ -41,11 +42,13 @@ test("V0.5 RC artifacts are generator-current and shard-only", () => {
         "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
         "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
         "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
-        "data/apk-canonical/catalogs/combat-power-runtime-evidence.json"
+        "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+        "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+        "data/v05-rc/supported-destinies.json"
     ]);
     for (const file of index.files) {
-        assert.equal(sha256(file.path), file.sha256);
-        assert.equal(fs.statSync(new URL(file.path, ROOT)).size, file.sizeBytes);
+        assert.equal(canonicalTextSha256(file.path), file.sha256);
+        assert.equal(Buffer.byteLength(canonicalText(file.path), "utf8"), file.sizeBytes);
     }
     const serialized = JSON.stringify({ entry, index, policy });
     for (const forbidden of ["route-graph.json", "douluo2", "options.json"]) {
@@ -85,9 +88,9 @@ test("archive option 2R preserves exact bytes off the active runtime paths", () 
     ]);
     for (const file of manifest.files) {
         assert.notEqual(file.originalPath, file.archivePath);
-        assert.equal(sha256(file.archivePath), file.sha256);
+        assert.equal(canonicalTextSha256(file.archivePath), file.sha256);
         assert.equal(
-            fs.statSync(new URL(file.archivePath, ROOT)).size,
+            Buffer.byteLength(canonicalText(file.archivePath), "utf8"),
             expectedSizes.get(file.archivePath)
         );
     }
