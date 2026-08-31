@@ -32,6 +32,7 @@ function completedRunner() {
         routeGraph,
         formalSpecialResultEvidence: readJson("formal-special-result-runtime-evidence.json"),
         humanSoulRingEvidence: readJson("human-soul-ring-runtime-evidence.json"),
+        followUpPrepareEvidence: readJson("followup-prepare-runtime-evidence.json"),
         humanSoulRingSpeciesEvidence: readJson("human-soul-ring-species-runtime-evidence.json"),
         officialBeastElementEvidence: readJson("official-beast-element-runtime-evidence.json"),
         combatPowerEvidence: readJson("combat-power-runtime-evidence.json")
@@ -45,8 +46,8 @@ const runner = completedRunner();
 const record = createV05LifeArchiveRecord({
     runner,
     destinyId: "custom",
-    packageVersion: "v05-rc2/2026-08-29",
-    completedAt: "2026-08-29T00:00:00.000Z"
+    packageVersion: "v05-rc2/2026-08-30",
+    completedAt: "2026-08-30T00:00:00.000Z"
 });
 
 function memoryStorage(initial = []) {
@@ -74,6 +75,9 @@ test("archive accepts completed age25 only and excludes runtime state", () => {
     assert.equal("routeHistory" in record, false);
     assert.equal(Array.isArray(record.martialSouls), true);
     assert.equal(Array.isArray(record.soulRings), true);
+    assert.equal(record.summaryPrecision, "runtime-derived");
+    assert.equal(record.recoverable, false);
+    assert.equal(record.milestoneTrail.length <= 8, true);
     const ready = { phase: "ready", session: { character: { age: 0 } } };
     assert.throws(
         () => createV05LifeArchiveRecord({ runner: ready }),
@@ -115,7 +119,7 @@ test("archive refuses the 51st unique summary and never evicts", () => {
     }));
     const storage = memoryStorage([[V05_LIFE_ARCHIVE_KEY, JSON.stringify({
         schema: "douluo-life-v05-life-archive",
-        schemaVersion: 1,
+        schemaVersion: 2,
         records
     })]]);
     const next = withIntegrity({ ...record, archiveId: "life-051", summaryDigest: "summary-051" });
@@ -137,4 +141,37 @@ test("archive quota and security failures preserve completed runner state", () =
         error => error.code === "V05_ARCHIVE_STORAGE_UNAVAILABLE"
     );
     assert.deepEqual([runner.phase, runner.session.random.cursor, runner.session.history.length], before);
+});
+
+test("legacy v1 archive migrates conservatively and writes only after validation", () => {
+    const legacyRecord = structuredClone(record);
+    for (const key of ["pathSignature", "routeFacets", "closureTags", "milestoneTrail", "summaryPrecision", "recoverable"]) {
+        delete legacyRecord[key];
+    }
+    legacyRecord.schemaVersion = 1;
+    legacyRecord.integrityDigest = digestV05Value((({ integrityDigest: _ignored, ...payload }) => payload)(legacyRecord));
+    const original = JSON.stringify({
+        schema: "douluo-life-v05-life-archive",
+        schemaVersion: 1,
+        records: [legacyRecord]
+    });
+    const storage = memoryStorage([[V05_LIFE_ARCHIVE_KEY, original]]);
+    const migrated = readV05LifeArchive(storage);
+    assert.equal(migrated.schemaVersion, 2);
+    assert.equal(migrated.records[0].summaryPrecision, "legacy-summary");
+    assert.deepEqual(migrated.records[0].closureTags, []);
+    assert.deepEqual(migrated.records[0].milestoneTrail, []);
+    assert.equal(migrated.records[0].routeFacets.includes("legacy-summary"), true);
+    assert.notEqual(storage.data.get(V05_LIFE_ARCHIVE_KEY), original);
+
+    let attemptedWrite = false;
+    const failed = {
+        getItem() { return original; },
+        setItem() { attemptedWrite = true; throw new DOMException("quota", "QuotaExceededError"); }
+    };
+    assert.throws(
+        () => readV05LifeArchive(failed),
+        error => error.code === "V05_ARCHIVE_STORAGE_UNAVAILABLE"
+    );
+    assert.equal(attemptedWrite, true);
 });

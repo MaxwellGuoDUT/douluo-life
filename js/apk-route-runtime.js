@@ -32,6 +32,9 @@ const OFFICIAL_BEAST_ELEMENT_FLOW_PREFIX = "douluo1:flow.official-beast.pool.";
 const OFFICIAL_BEAST_ELEMENT_EVIDENCE_SCHEMA = "apk-official-beast-element-runtime-evidence/1.0";
 const OFFICIAL_BEAST_ELEMENT_SOURCE_SHA256 = "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C";
 const OFFICIAL_BEAST_ELEMENT_MODULE_SHA256 = "CD025DBAF024BCCD90B4601B3DAE0850DBE7907CEC9F38AA0ED40D64E3C3E166";
+const FOLLOWUP_PREPARE_EVIDENCE_SCHEMA = "apk-followup-prepare-evidence/1.0";
+const FOLLOWUP_PREPARE_SOURCE_SHA256 = OFFICIAL_BEAST_ELEMENT_SOURCE_SHA256;
+const FOLLOWUP_PREPARE_DOULUO1_MODULE_SHA256 = OFFICIAL_BEAST_ELEMENT_MODULE_SHA256;
 const OFFICIAL_BEAST_HUMAN_ELEMENT_IDS = Object.freeze({
     "锐金": "metal", "生命": "life", "火": "fire", "空间": "space", "月亮": "moon",
     "岚": "haze", "毁灭": "destruction", "时间": "time", "水": "water", "暗": "dark",
@@ -156,6 +159,53 @@ function buildHumanSoulRingRuleMap(evidence) {
             `${record.poolId}:${record.optionId}`,
             clone(record)
         ]));
+}
+
+function buildFollowUpPrepareRuleMap(evidence) {
+    if (evidence === null || evidence === undefined) return new Map();
+    if (evidence?.schemaVersion !== FOLLOWUP_PREPARE_EVIDENCE_SCHEMA
+        || evidence?.status !== "source-verified"
+        || evidence?.source?.apkSha256 !== FOLLOWUP_PREPARE_SOURCE_SHA256
+        || evidence?.source?.douluo1ModuleSha256 !== FOLLOWUP_PREPARE_DOULUO1_MODULE_SHA256
+        || !Array.isArray(evidence?.source?.handlerIds)
+        || !evidence.source.handlerIds.includes("prepareSoulBonePart")
+        || !evidence.source.handlerIds.includes("addPendingSoulBone")
+        || evidence?.summary?.recordCount !== 131
+        || !Array.isArray(evidence.records)
+        || evidence.records.length !== 131) {
+        fail(
+            "APK_ROUTE_FOLLOWUP_PREPARE_EVIDENCE_INVALID",
+            "follow-up prepare evidence identity or schema is invalid."
+        );
+    }
+    const rules = new Map();
+    for (const record of evidence.records) {
+        const valid = typeof record?.sourcePoolId === "string"
+            && typeof record?.sourceOptionId === "string"
+            && Number.isInteger(record?.followUpIndex)
+            && record.followUpIndex >= 0
+            && typeof record?.targetPoolId === "string"
+            && Number.isInteger(record?.count)
+            && record.count > 0
+            && Array.isArray(record?.requirements)
+            && record?.prepare?.type === "soulBone"
+            && Number.isInteger(record?.prepare?.years)
+            && record.prepare.years > 0
+            && ["ordinary", "top", "pure-dragon", "earth-dragon"].includes(record.prepare.quality)
+            && Array.isArray(record?.sourceRefs)
+            && record.sourceRefs.length > 0;
+        if (!valid) {
+            fail("APK_ROUTE_FOLLOWUP_PREPARE_EVIDENCE_INVALID", "follow-up prepare evidence contains an invalid record.", {
+                record: clone(record)
+            });
+        }
+        const key = `${record.sourcePoolId}:${record.sourceOptionId}:${record.followUpIndex}`;
+        if (rules.has(key)) {
+            fail("APK_ROUTE_FOLLOWUP_PREPARE_EVIDENCE_INVALID", `Duplicate follow-up prepare mapping: ${key}`);
+        }
+        rules.set(key, clone(record));
+    }
+    return rules;
 }
 
 function buildHumanSoulRingSpeciesRuleMap(evidence) {
@@ -394,6 +444,7 @@ export function createApkRouteContentIndex({
     packId = "douluo1",
     formalSpecialResultEvidence = routeGraph?.formalSpecialResultEvidence ?? null,
     humanSoulRingEvidence = routeGraph?.humanSoulRingEvidence ?? null,
+    followUpPrepareEvidence = routeGraph?.followUpPrepareEvidence ?? null,
     humanSoulRingSpeciesEvidence = routeGraph?.humanSoulRingSpeciesEvidence ?? null,
     officialBeastElementEvidence = routeGraph?.officialBeastElementEvidence ?? null,
     combatPowerEvidence = routeGraph?.combatPowerEvidence ?? null
@@ -435,6 +486,9 @@ export function createApkRouteContentIndex({
     const humanSoulRingRulesByKey = buildHumanSoulRingRuleMap(
         humanSoulRingEvidence
     );
+    const followUpPrepareRulesByKey = buildFollowUpPrepareRuleMap(
+        followUpPrepareEvidence
+    );
     const humanSoulRingSpeciesRulesByKey = buildHumanSoulRingSpeciesRuleMap(
         humanSoulRingSpeciesEvidence
     );
@@ -451,6 +505,7 @@ export function createApkRouteContentIndex({
         routeOptionsByKey,
         formalSpecialResultRulesByKey,
         humanSoulRingRulesByKey,
+        followUpPrepareRulesByKey,
         humanSoulRingSpeciesRulesByKey,
         officialBeastElementRulesByKey,
         combatPowerEvidence,
@@ -468,6 +523,9 @@ export function createApkRouteContentIndex({
         },
         getHumanSoulRingRule(poolId, optionId) {
             return humanSoulRingRulesByKey.get(`${poolId}:${optionId}`) ?? null;
+        },
+        getFollowUpPrepareRule(poolId, optionId, followUpIndex) {
+            return followUpPrepareRulesByKey.get(`${poolId}:${optionId}:${followUpIndex}`) ?? null;
         },
         getHumanSoulRingSpeciesRule(poolId, optionId) {
             return humanSoulRingSpeciesRulesByKey.get(`${poolId}:${optionId}`) ?? null;
@@ -2004,13 +2062,6 @@ function buildFollowUp({
             { sourcePoolId, sourceOptionId, followUp: clone(followUp) }
         );
     }
-    if (followUp?.prepare) {
-        fail(
-            "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED",
-            `APK follow-up "${String(followUp.reason ?? "unknown")}" requires prepare semantics.`,
-            { sourcePoolId, sourceOptionId, followUp: clone(followUp), targetFlowId }
-        );
-    }
     const requirements = Array.isArray(followUp?.requirements)
         ? followUp.requirements
         : [];
@@ -2026,6 +2077,71 @@ function buildFollowUp({
             requirementStatus
         };
     }
+    let prepare = null;
+    if (followUp?.prepare) {
+        const rule = contentIndex.getFollowUpPrepareRule?.(sourcePoolId, sourceOptionId, index);
+        if (!rule) {
+            fail(
+                "APK_ROUTE_FOLLOWUP_PREPARE_EVIDENCE_MISSING",
+                `APK follow-up "${String(followUp.reason ?? "unknown")}" has no exact prepare evidence.`,
+                { sourcePoolId, sourceOptionId, followUpIndex: index, followUp: clone(followUp) }
+            );
+        }
+        if (followUp.prepare.type !== "soulBone" || rule.prepare?.type !== "soulBone") {
+            fail(
+                "APK_ROUTE_FOLLOWUP_PREPARE_TYPE_UNSUPPORTED",
+                `APK follow-up prepare type "${String(followUp.prepare.type)}" is unsupported.`,
+                { sourcePoolId, sourceOptionId, followUpIndex: index }
+            );
+        }
+        if (!Number.isInteger(rule.prepare.years)
+            || rule.prepare.years <= 0
+            || !["ordinary", "top", "pure-dragon", "earth-dragon"].includes(rule.prepare.quality)) {
+            fail(
+                "APK_ROUTE_FOLLOWUP_PREPARE_VALUE_INVALID",
+                "APK follow-up prepare years or quality is invalid.",
+                { sourcePoolId, sourceOptionId, followUpIndex: index, prepare: clone(rule.prepare) }
+            );
+        }
+        const exact = rule.targetPoolId === targetPoolId
+            && rule.count === followUp.count
+            && rule.reason === followUp.reason
+            && JSON.stringify(rule.requirements) === JSON.stringify(requirements)
+            && JSON.stringify(rule.prepare) === JSON.stringify(followUp.prepare);
+        if (!exact) {
+            fail(
+                "APK_ROUTE_FOLLOWUP_PREPARE_EVIDENCE_MISMATCH",
+                "APK follow-up prepare evidence does not match the canonical route record.",
+                { sourcePoolId, sourceOptionId, followUpIndex: index, evidence: clone(rule), followUp: clone(followUp) }
+            );
+        }
+        if (session.pendingSoulBone) {
+            fail(
+                "APK_ROUTE_FOLLOWUP_PREPARE_CONTEXT_CONFLICT",
+                "APK follow-up prepare cannot replace an uncommitted soul-bone context.",
+                { sourcePoolId, sourceOptionId, followUpIndex: index, pendingSoulBone: clone(session.pendingSoulBone) }
+            );
+        }
+        prepare = clone(rule.prepare);
+        session.pendingSoulBone = {
+            years: prepare.years,
+            quality: prepare.quality,
+            source: { poolId: sourcePoolId, optionId: sourceOptionId, followUpIndex: index,
+                reason: followUp.reason ?? null }
+        };
+        session.dynamicHistory ??= [];
+        session.dynamicHistory.push({
+            kind: "followUpPrepare",
+            handlerId: "prepareSoulBonePart",
+            operation: "followUp.prepare.soulBone",
+            sourcePoolId,
+            sourceOptionId,
+            followUpIndex: index,
+            targetPoolId,
+            prepare: clone(prepare),
+            randomCursor: session.random.cursor
+        });
+    }
     return {
         id: `${sourcePoolId}:${sourceOptionId}:${session.history.length}:${index}`,
         sourcePoolId,
@@ -2035,7 +2151,8 @@ function buildFollowUp({
         remainingDraws: Math.max(1, Math.trunc(Number(followUp.count) || 1)),
         returnFlowId,
         reason: followUp.reason ?? null,
-        requirementStatus
+        requirementStatus,
+        ...(prepare ? { prepare } : {})
     };
 }
 

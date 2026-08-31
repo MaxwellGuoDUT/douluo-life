@@ -1,6 +1,6 @@
 {
   "schemaVersion": "v05-rc-package/1.0",
-  "packageVersion": "v05-rc2/2026-08-29",
+  "packageVersion": "v05-rc2/2026-08-30",
   "source": {
     "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
     "provenanceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json"
@@ -24,8 +24,13 @@
   },
   "humanSoulRingEvidence": {
     "path": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
-    "sizeBytes": 74082,
-    "sha256": "66BFC07D502BA269C61E391E5623304D93C60AD4C1370E0C0BDBB57CD186B571"
+    "sizeBytes": 136357,
+    "sha256": "195ADADA8DF45EB9FBD72D76238B82B76A71ADA2F1EEE78EE21093C8B11165CA"
+  },
+  "followUpPrepareEvidence": {
+    "path": "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
+    "sizeBytes": 106988,
+    "sha256": "4C507DBDC868CC8FB77C54FD7A60A196E2F3123DD8E301F1F57FB7E779E88DA1"
   },
   "humanSoulRingSpeciesEvidence": {
     "path": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
@@ -44,8 +49,8 @@
   },
   "supportedDestinies": {
     "path": "data/v05-rc/supported-destinies.json",
-    "sizeBytes": 796383,
-    "sha256": "EBB32D1ADC7888DDB838B7B72544584D1B870B1A2FE7A325D1B8A77CDAD3D97E"
+    "sizeBytes": 2694705,
+    "sha256": "2A8072C6287BED32004378F9118B583E2AA6A676790FBBB47E5A240C210C24DB"
   },
   "buildInputs": {
     "martialSoulRuntimeEvidence": {
@@ -68,8 +73,13 @@
     },
     {
       "path": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
-      "sizeBytes": 74082,
-      "sha256": "66BFC07D502BA269C61E391E5623304D93C60AD4C1370E0C0BDBB57CD186B571"
+      "sizeBytes": 136357,
+      "sha256": "195ADADA8DF45EB9FBD72D76238B82B76A71ADA2F1EEE78EE21093C8B11165CA"
+    },
+    {
+      "path": "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
+      "sizeBytes": 106988,
+      "sha256": "4C507DBDC868CC8FB77C54FD7A60A196E2F3123DD8E301F1F57FB7E779E88DA1"
     },
     {
       "path": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
@@ -88,8 +98,8 @@
     },
     {
       "path": "data/v05-rc/supported-destinies.json",
-      "sizeBytes": 796383,
-      "sha256": "EBB32D1ADC7888DDB838B7B72544584D1B870B1A2FE7A325D1B8A77CDAD3D97E"
+      "sizeBytes": 2694705,
+      "sha256": "2A8072C6287BED32004378F9118B583E2AA6A676790FBBB47E5A240C210C24DB"
     }
   ]
 }

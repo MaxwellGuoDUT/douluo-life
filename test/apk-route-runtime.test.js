@@ -16,6 +16,7 @@ import {
 let realRouteGraph;
 let realFormalSpecialResultEvidence;
 let realHumanSoulRingEvidence;
+let realFollowUpPrepareEvidence;
 let realHumanSoulRingSpeciesEvidence;
 let realOfficialBeastElementEvidence;
 
@@ -61,6 +62,17 @@ function loadRealHumanSoulRingEvidence() {
         "utf8"
     ));
     return realHumanSoulRingEvidence;
+}
+
+function loadRealFollowUpPrepareEvidence() {
+    realFollowUpPrepareEvidence ??= JSON.parse(fs.readFileSync(
+        new URL(
+            "../data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
+            import.meta.url
+        ),
+        "utf8"
+    ));
+    return realFollowUpPrepareEvidence;
 }
 
 function loadRealHumanSoulRingSpeciesEvidence() {
@@ -286,6 +298,45 @@ test("APK route runtime resolves exact flow-to-pool edges and commits the next f
     assert.equal(session.character.level, 2);
     assert.equal(session.routeHistory.length, 1);
     assert.equal(session.routeStatus, "ready");
+});
+
+test("Day23 source evidence covers 131 follow-up prepares and all 10 ring pools", () => {
+    const followUp = loadRealFollowUpPrepareEvidence();
+    const rings = loadRealHumanSoulRingEvidence();
+    assert.equal(followUp.records.length, 131);
+    assert.equal(new Set(followUp.records.map(record => (
+        `${record.sourcePoolId}:${record.sourceOptionId}:${record.followUpIndex}`
+    ))).size, 131);
+    assert.equal(new Set(followUp.records.map(record => (
+        `${record.prepare.years}:${record.prepare.quality}`
+    ))).size, 50);
+    assert.deepEqual([...new Set(followUp.records.map(record => record.prepare.quality))].sort(), [
+        "earth-dragon", "ordinary", "pure-dragon", "top"
+    ]);
+    assert.equal(rings.extraction.poolCount, 10);
+    assert.equal(rings.extraction.canonicalRouteOptionCount, 153);
+    assert.equal(rings.extraction.canonicalCompleteness, true);
+    assert.deepEqual(Object.fromEntries(Object.entries(rings.knownDay23Mappings).map(([id, value]) => [
+        id, [value.ringYears, value.grantsSoulBone]
+    ])), {
+        "7143b4": [10, false],
+        "505d78": [10, false],
+        "6df424": [100000, true],
+        "94604a": [300000, true]
+    });
+});
+
+test("follow-up evidence rejects an unknown quality before runtime use", () => {
+    const evidence = structuredClone(loadRealFollowUpPrepareEvidence());
+    evidence.records[0].prepare.quality = "guessed";
+    assert.throws(
+        () => createApkRouteContentIndex({
+            routeGraph: loadRealRouteGraph(),
+            packId: "douluo1",
+            followUpPrepareEvidence: evidence
+        }),
+        error => error.code === "APK_ROUTE_FOLLOWUP_PREPARE_EVIDENCE_INVALID"
+    );
 });
 
 test("APK route runtime preserves terminal effects and ends the route", () => {

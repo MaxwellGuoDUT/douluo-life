@@ -137,6 +137,7 @@ export function createV05ContentIndex(loaded) {
         routeGraph: loaded.routeGraph,
         formalSpecialResultEvidence: loaded.formalSpecialResultEvidence,
         humanSoulRingEvidence: loaded.humanSoulRingEvidence,
+        followUpPrepareEvidence: loaded.followUpPrepareEvidence,
         humanSoulRingSpeciesEvidence: loaded.humanSoulRingSpeciesEvidence,
         officialBeastElementEvidence: loaded.officialBeastElementEvidence,
         combatPowerEvidence: loaded.combatPowerEvidence,

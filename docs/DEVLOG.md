@@ -1241,3 +1241,16 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 最终自动化：定向 `73/73`、完整 `207/207`；evidence/cohort/RC package 三个 generator `--check`、10个相关 `node --check`、5个 generated JSON parse、`git diff --check` 全部通过；29个 changed paths 均在31路径白名单内。
 - Codex in-app Browser：首屏12条预设；002/003/008 三条正式命运完成并进入图鉴；真实权重与命中高亮一致；`v05-custom-1` 的水元素事件95成功提交，随后在24岁/`130/129` 停于新 boundary。Day21 v1 ready/completed 迁移成功，旧 boundary typed reject 为 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED` 且原 save 保留。
 - Browser 图鉴3条幂等收录、两人生七字段比较、三 drawer 的 Tab/Escape/焦点返回、三种 clear 隔离、390×844 bottom sheet、reduced-motion 均通过；clean Day22 console error/warning 为 `0/0`。迁移搭建首次复用同 URL 时出现1条由 Day21 HTML 与缓存 Day22 module 混载导致的 harness `TypeError`，改用同源独立路径后不再复现，不记作最终候选应用 console pass 的替代证据。
+
+### A-DAY23-IMPLEMENT - 2026-08-30
+
+- 只读预检与 Source Gate 精确锚定 `origin/main@35edf9664fa3b8e9ccc946bdef14e5cdabbe95b0`、固定 APK/module/route graph；在 `codex/day23-v05-runtime-coverage-explorer` / `D:\0CODE\douluo-life-v05-day23` 实现，原混合工作树未写入。
+- 新增131条 follow-up prepare exact evidence（50组合、4 quality），补全10池189条魂环 evidence 与153个 canonical option；runtime 保持 requirements-first、唯一 pending、真实 part draw、无额外 RNG、typed reject 和原子回滚。
+- 固定512扫描最终 completed 218；原256 completed 87→107、救回20；两个 Day23 目标 boundary 均归零。24条 cohort 保留 Day22前12身份并新增12条 closure 命运，多样性与唯一 digest 全部门槛通过。
+- 新增命运探索器、path atlas、schema v3 save 与schema v2 archive；入口搜索/组合筛选/排序24条正式命运，完成图鉴只保存最多8项里程碑的不可恢复摘要并支持七字段双人生比较。
+- 完整测试 `220/220`；Day23 follow-up/ring extractor、512 cohort、RC package `--check`，18个脚本 syntax、6个 JSON parse、`git diff --check` 通过。统一 evidence script 额外检查白名单外 Day22 official-beast 旧产物并报告 stale，本轮按38路径上限未改第39路径。
+- Codex in-app Browser 覆盖24条探索器、搜索/组合筛选/排序/空态/清除、001高阶魂环与013 follow-up魂骨闭合、001/013/002/003四条正式命运到25岁、002中段真实刷新续跑、图鉴七字段比较、键盘焦点、390×844与reduced-motion；关键页 console error/warning 为 `0/0`。
+- `A-DAY23-BROWSER-MIGRATION-CLOSEOUT` 从真实 Day21/Day22 UI 在 `localhost/127.0.0.1:8101～8103` 隔离 origin 生成 v1/v2/archive v1 fixture。Day21 v1 ready `5岁/19级/27项`、completed `25岁/42级/100项`，Day22 v2 ready `5岁/10级/21项`、completed `25岁/30级/96项` 均显示迁移完成；刷新后二次恢复不再迁移且字段完全一致。
+- Day22 follow-up `24岁/91级/130 cursor/129 history` 与 soul-ring `17岁/92级/91/90` 旧 boundary 均返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED`，结构化 details 保留原 error code；刷新后旧 checkpoint 与继续入口仍在。archive v1 迁移为 `legacy-summary`，明确“旧记录未伪造里程碑轨迹”。
+- 经负责人即时确认，仅删除 `127.0.0.1:8102` 合成 fixture：清空图鉴后 active checkpoint 与内存 `25岁/30级/96/96` 保持；重建图鉴后清除 active checkpoint，图鉴1条与内存 `25岁/38级/86/86` 保持。6张迁移页和最终隔离页 console error/warning 均为 `0/0`，Browser 证据升级为 confirmed。
+- 当前变更全部 unstaged；未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。下一步只建议独立授权 `A-DAY23-DELIVER`。

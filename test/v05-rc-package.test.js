@@ -41,11 +41,19 @@ test("V0.5 RC artifacts are generator-current and shard-only", () => {
         "data/apk-canonical/catalogs/route-graph.douluo1.json",
         "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
         "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+        "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
         "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
         "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
         "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
         "data/v05-rc/supported-destinies.json"
     ]);
+    const destinies = readJson("data/v05-rc/supported-destinies.json");
+    assert.equal(destinies.coverage.length, 512);
+    assert.equal(destinies.destinies.length, 24);
+    assert.deepEqual(destinies.beforeAfter.targetBoundaryCounts, {
+        APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED: 0,
+        APK_ROUTE_SOUL_RING_EVIDENCE_MISSING: 0
+    });
     for (const file of index.files) {
         assert.equal(canonicalTextSha256(file.path), file.sha256);
         assert.equal(Buffer.byteLength(canonicalText(file.path), "utf8"), file.sizeBytes);

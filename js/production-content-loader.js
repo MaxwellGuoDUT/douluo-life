@@ -133,6 +133,9 @@ export async function loadProductionEntry({
     const humanSoulRingEvidencePath = entry.humanSoulRingEvidence
         ?? index.humanSoulRingEvidence?.path
         ?? null;
+    const followUpPrepareEvidencePath = entry.followUpPrepareEvidence
+        ?? index.followUpPrepareEvidence?.path
+        ?? null;
     const humanSoulRingSpeciesEvidencePath = entry.humanSoulRingSpeciesEvidence
         ?? index.humanSoulRingSpeciesEvidence?.path
         ?? null;
@@ -161,6 +164,10 @@ export async function loadProductionEntry({
     const humanSoulRingEvidence = includeRouteGraph
         && humanSoulRingEvidencePath
         ? await fetchJson(fetchImpl, humanSoulRingEvidencePath)
+        : null;
+    const followUpPrepareEvidence = includeRouteGraph
+        && followUpPrepareEvidencePath
+        ? await fetchJson(fetchImpl, followUpPrepareEvidencePath)
         : null;
     const humanSoulRingSpeciesEvidence = includeRouteGraph
         && humanSoulRingSpeciesEvidencePath
@@ -218,6 +225,8 @@ export async function loadProductionEntry({
         formalSpecialResultEvidencePath,
         humanSoulRingEvidence,
         humanSoulRingEvidencePath,
+        followUpPrepareEvidence,
+        followUpPrepareEvidencePath,
         humanSoulRingSpeciesEvidence,
         humanSoulRingSpeciesEvidencePath,
         combatPowerEvidence,

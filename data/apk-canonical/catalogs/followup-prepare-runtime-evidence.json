@@ -1,0 +1,3587 @@
+{
+  "schemaVersion": "apk-followup-prepare-evidence/1.0",
+  "status": "source-verified",
+  "source": {
+    "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "apkPath": "../douluo-life/dl.dl.狗成百多神盐大神神神神神野百盐盐味配盐芙.apk.APK",
+    "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+    "moduleSha256": "0AABF5E741403FF75BB0192D2661A28179612D095A49C67E03F7E8B46B77EC99",
+    "douluo1ModulePath": "apk-analysis/E4FB340E/derived/pretty/douluo1-pack-C6xEgEus.js",
+    "douluo1ModuleSha256": "CD025DBAF024BCCD90B4601B3DAE0850DBE7907CEC9F38AA0ED40D64E3C3E166",
+    "routeGraphPath": "data/apk-canonical/catalogs/route-graph.douluo1.json",
+    "routeGraphSha256": "4542B167B5647E728FAA0A1B7E5328705204EB7B56602B86A6F0B1FF796F7F09",
+    "handlerIds": [
+      "prepareSoulBonePart",
+      "addPendingSoulBone"
+    ],
+    "extractionMode": "static_source_mapping_only"
+  },
+  "records": [
+    {
+      "sourcePoolId": "037eac40-b4a4-4b2e-86be-862eeeef0038",
+      "sourceOptionId": "4d7192",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35516
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "04d05245-7e51-4b32-a649-4478a1d83c00",
+      "sourceOptionId": "483d2e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 1000000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33062
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "0864e3e5-1449-477a-97ef-847caf220e87",
+      "sourceOptionId": "f3eeb6",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 80000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35633
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "102e8be4-3725-4eef-a0d1-a35045f58c91",
+      "sourceOptionId": "9ae524",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 200000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35462
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "11d3120a-037e-4331-a850-c9c867a56f93",
+      "sourceOptionId": "51170b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 1035
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 34601
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "123f694c-008d-4edf-a9f1-63253269609c",
+      "sourceOptionId": "8de715",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35444
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "13c0f5f9-46f9-4b31-bffa-2c34cbca5922",
+      "sourceOptionId": "1fd1d5",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 2365
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 200000,
+        "quality": "pure-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 34549
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "13c0f5f9-46f9-4b31-bffa-2c34cbca5922",
+      "sourceOptionId": "a7d2c7",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 1530
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 34539
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "1402c994-eb3d-4c9b-9865-3846f9fc1e69",
+      "sourceOptionId": "255af5",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 70000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35543
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "17560611-62df-4549-ac95-8a62bf8f2dda",
+      "sourceOptionId": "d76e33",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 60000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35651
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "181b920c-3915-46f6-b22c-13c28fdc4023",
+      "sourceOptionId": "0112b6",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 500000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35435
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "1a18b217-32dc-44a2-9267-166902cc20b9",
+      "sourceOptionId": "a70620",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 2160
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 34298
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "1eb818b3-8704-4e43-9c21-ff80f841c57c",
+      "sourceOptionId": "7dfd0e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 60000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35606
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "2401f842-8ac0-4e15-b09f-693ffe8b9ffc",
+      "sourceOptionId": "4363ce",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 79
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 500,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33420
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "2401f842-8ac0-4e15-b09f-693ffe8b9ffc",
+      "sourceOptionId": "54d0b0",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 102
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 800,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33430
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "2401f842-8ac0-4e15-b09f-693ffe8b9ffc",
+      "sourceOptionId": "977c0b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 157
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 1000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33450
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "2401f842-8ac0-4e15-b09f-693ffe8b9ffc",
+      "sourceOptionId": "be50b8",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 110
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 900,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33440
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "2401f842-8ac0-4e15-b09f-693ffe8b9ffc",
+      "sourceOptionId": "ff599a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 181
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 2000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33460
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "2a68b6d8-2791-4e79-b7cc-f2870a0b8581",
+      "sourceOptionId": "fe17d1",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 36173
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "3473cc2a-b2a5-4752-82f0-7050c55f7890",
+      "sourceOptionId": "9fc9b9",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35570
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "3564aafb-2891-48ee-9eb9-d768b7272b0e",
+      "sourceOptionId": "4863bb",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 3764
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "pure-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33088
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "3564aafb-2891-48ee-9eb9-d768b7272b0e",
+      "sourceOptionId": "88a522",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 3725
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "pure-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33098
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "3564aafb-2891-48ee-9eb9-d768b7272b0e",
+      "sourceOptionId": "bc9b54",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 3652
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "pure-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33078
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "3564aafb-2891-48ee-9eb9-d768b7272b0e",
+      "sourceOptionId": "ca9a5f",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 3699
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "pure-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33108
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "3564aafb-2891-48ee-9eb9-d768b7272b0e",
+      "sourceOptionId": "ce95de",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 3911
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "pure-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33118
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "362cc9e5-9b55-46c3-b24e-e84e3a04496c",
+      "sourceOptionId": "8f2690",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35741
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "3b162af4-17ea-4e5d-bb30-5d2e94ab2108",
+      "sourceOptionId": "f9c677",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 60000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35678
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "438d3570-cb28-489b-9ac2-0a03e05996c0",
+      "sourceOptionId": "5f08f4",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 700000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35213
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4a43522f-04df-4078-ba01-a67110583906",
+      "sourceOptionId": "67b9b7",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35299
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4a43522f-04df-4078-ba01-a67110583906",
+      "sourceOptionId": "81450a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 500000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35290
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4a43522f-04df-4078-ba01-a67110583906",
+      "sourceOptionId": "c5bf4d",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 600000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35274
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4a43522f-04df-4078-ba01-a67110583906",
+      "sourceOptionId": "d6f6a2",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35308
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4f4f299f-10b8-4d7c-9a62-c5f74bdafe74",
+      "sourceOptionId": "3c71bc",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 600000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35238
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4f4f299f-10b8-4d7c-9a62-c5f74bdafe74",
+      "sourceOptionId": "6ef112",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 500000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35247
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4f4f299f-10b8-4d7c-9a62-c5f74bdafe74",
+      "sourceOptionId": "9974ee",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35265
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4f4f299f-10b8-4d7c-9a62-c5f74bdafe74",
+      "sourceOptionId": "a6e9f0",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 700000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35222
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "4f4f299f-10b8-4d7c-9a62-c5f74bdafe74",
+      "sourceOptionId": "aac11a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35256
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "54090238-121c-4115-a2dd-271dd6fd0281",
+      "sourceOptionId": "b3cd88",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 200000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35507
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "5f595703-209d-4ceb-bb84-9aae6a00cbc7",
+      "sourceOptionId": "fed72c",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35579
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "64e6184b-3f80-4309-9b68-7bc6750dd12d",
+      "sourceOptionId": "042bdd",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 70000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35768
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "69a92640-ad36-4450-8644-9dcfa15a8ea4",
+      "sourceOptionId": "21f427",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35525
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "6ed2045d-8a63-4ab9-adb2-2efb6ba39dae",
+      "sourceOptionId": "08f0fe",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 20000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35669
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "75a42de2-ccf8-441b-819f-79448aecf9e3",
+      "sourceOptionId": "8ad6d2",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 600000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35426
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "7a3da12e-dd0a-4d9c-b427-f04b617b888e",
+      "sourceOptionId": "3ea58a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 70000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35642
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "7e942923-833e-4e87-83d8-9ffd8bdb4a0b",
+      "sourceOptionId": "bf5e40",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35786
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8036252e-1ce4-4308-b7cf-3a4c176603bf",
+      "sourceOptionId": "06ee6b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 16
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 80,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33621
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8036252e-1ce4-4308-b7cf-3a4c176603bf",
+      "sourceOptionId": "2b818c",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 10
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 50,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33611
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8036252e-1ce4-4308-b7cf-3a4c176603bf",
+      "sourceOptionId": "88027b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 33
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33631
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8036252e-1ce4-4308-b7cf-3a4c176603bf",
+      "sourceOptionId": "af3a7d",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 2
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 10,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33591
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8036252e-1ce4-4308-b7cf-3a4c176603bf",
+      "sourceOptionId": "cf999e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 6
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 30,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33601
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "87bbbf17-0638-4562-8ca7-cc9bd2f6f5fa",
+      "sourceOptionId": "733d27",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35498
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "88d35a0e-2b9a-4fc0-846e-fdcac56cc329",
+      "sourceOptionId": "335d15",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 298
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 7000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33326
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "88d35a0e-2b9a-4fc0-846e-fdcac56cc329",
+      "sourceOptionId": "339ed1",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 322
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 8000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33336
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "88d35a0e-2b9a-4fc0-846e-fdcac56cc329",
+      "sourceOptionId": "59993e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 251
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 5000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33306
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "88d35a0e-2b9a-4fc0-846e-fdcac56cc329",
+      "sourceOptionId": "728a2b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 471
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 10000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33346
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "88d35a0e-2b9a-4fc0-846e-fdcac56cc329",
+      "sourceOptionId": "7ad5d2",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 275
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 6000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33316
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8b34fbfd-f6cf-4cfc-987b-bf26257a35b2",
+      "sourceOptionId": "aa54d0",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35750
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d3e5920-4f5c-498c-9598-0f741a252e10",
+      "sourceOptionId": "a76003",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35813
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d5c1d8d-528c-4fb8-ba14-529ea51a6f18",
+      "sourceOptionId": "0587d9",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 800000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35159
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d5c1d8d-528c-4fb8-ba14-529ea51a6f18",
+      "sourceOptionId": "152e5a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 700000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35168
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d5c1d8d-528c-4fb8-ba14-529ea51a6f18",
+      "sourceOptionId": "6a436b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 600000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35177
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d5c1d8d-528c-4fb8-ba14-529ea51a6f18",
+      "sourceOptionId": "9e63d5",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 500000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35186
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d5c1d8d-528c-4fb8-ba14-529ea51a6f18",
+      "sourceOptionId": "a2632d",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 900000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35143
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d5c1d8d-528c-4fb8-ba14-529ea51a6f18",
+      "sourceOptionId": "c58618",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35204
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8d5c1d8d-528c-4fb8-ba14-529ea51a6f18",
+      "sourceOptionId": "efb0c9",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35195
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8f8eb5bc-c5ab-487c-bd20-84c8850c6a83",
+      "sourceOptionId": "1ace4f",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 44
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33487
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8f8eb5bc-c5ab-487c-bd20-84c8850c6a83",
+      "sourceOptionId": "7ec5e3",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 12
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33477
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8f8eb5bc-c5ab-487c-bd20-84c8850c6a83",
+      "sourceOptionId": "d53e0e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 135
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 1000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33517
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8f8eb5bc-c5ab-487c-bd20-84c8850c6a83",
+      "sourceOptionId": "f6d6d3",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 55
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33497
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "8f8eb5bc-c5ab-487c-bd20-84c8850c6a83",
+      "sourceOptionId": "fe7e38",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 72
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 800,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33507
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "97d60775-6e78-4ff5-973e-e249ae5f4835",
+      "sourceOptionId": "308c26",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35804
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "9921ccd7-dacf-4c54-b91e-5c0ea2d6fe12",
+      "sourceOptionId": "b03e7c",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 600000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35480
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "a3383405-53ef-4b2d-80d0-0ec803732dd4",
+      "sourceOptionId": "0a9edb",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 800000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35408
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "a487ede7-b344-4148-a770-19f723e3e75c",
+      "sourceOptionId": "8bf247",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 80000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35534
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "a68eaa1a-532b-440e-920e-82bfcafe7344",
+      "sourceOptionId": "7296ce",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 50000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35660
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "a7dc1e17-3b36-496b-bc47-2499695c828a",
+      "sourceOptionId": "409044",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35367
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "a7dc1e17-3b36-496b-bc47-2499695c828a",
+      "sourceOptionId": "b42ca4",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35351
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "a9690a59-2515-4586-8a92-e96914e7beab",
+      "sourceOptionId": "37f3b8",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35489
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "aa124670-93cc-454a-8120-95b3afac6572",
+      "sourceOptionId": "685513",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 700000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35417
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "abe4a0dd-705d-42e4-8076-eee9b7134a0d",
+      "sourceOptionId": "41d866",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 80000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35588
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "ad3b9dc4-7cfb-417b-a0a1-fc1abb2505ed",
+      "sourceOptionId": "cdb0a6",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35795
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "aec5f6cd-2b10-4bc0-8010-357f78403d57",
+      "sourceOptionId": "ec9cdf",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 30000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35705
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "b1fa21f2-b3c3-47c2-bdc0-db9ebea3a601",
+      "sourceOptionId": "c4595e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35624
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "bd20f61c-cad8-4f3a-ba95-920806c1b375",
+      "sourceOptionId": "e55bcb",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35777
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "bfd2c102-e503-4b2a-8751-473e6b2fcf77",
+      "sourceOptionId": "12baae",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35453
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c3ddfc76-fde8-4edc-bc2a-ac80b3a8fbc0",
+      "sourceOptionId": "59f41d",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 275
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 6000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33393
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c3ddfc76-fde8-4edc-bc2a-ac80b3a8fbc0",
+      "sourceOptionId": "9b9e3e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 251
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 5000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33383
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c3ddfc76-fde8-4edc-bc2a-ac80b3a8fbc0",
+      "sourceOptionId": "dc0f18",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 204
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 3000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33363
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c3ddfc76-fde8-4edc-bc2a-ac80b3a8fbc0",
+      "sourceOptionId": "e757dc",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 322
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 8000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33403
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c3ddfc76-fde8-4edc-bc2a-ac80b3a8fbc0",
+      "sourceOptionId": "f6a683",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 228
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 4000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33373
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c5bf7395-bcf8-4183-9c50-a7ff16e0bc05",
+      "sourceOptionId": "42304b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 525
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 11000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33279
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c5bf7395-bcf8-4183-9c50-a7ff16e0bc05",
+      "sourceOptionId": "51341f",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 471
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 10000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33269
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c5bf7395-bcf8-4183-9c50-a7ff16e0bc05",
+      "sourceOptionId": "b064e8",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 559
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 15000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33289
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c5bf7395-bcf8-4183-9c50-a7ff16e0bc05",
+      "sourceOptionId": "cfbfdc",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 378
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 9000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33259
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c5bf7395-bcf8-4183-9c50-a7ff16e0bc05",
+      "sourceOptionId": "e2bb8d",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 322
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 8000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33249
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "c89dcd72-5e18-4e42-80ef-967a7aeb365f",
+      "sourceOptionId": "bdb847",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 40000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35696
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "cc460a1d-d52b-45ba-b86d-b50809639597",
+      "sourceOptionId": "01bf75",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35333
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "cc460a1d-d52b-45ba-b86d-b50809639597",
+      "sourceOptionId": "2a6f61",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 400000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35342
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "cc460a1d-d52b-45ba-b86d-b50809639597",
+      "sourceOptionId": "2cbf38",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 500000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35317
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "cf34b3bf-4c73-420a-8118-036d39fe3f4c",
+      "sourceOptionId": "7e5ce5",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 70000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35597
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "d45f7aed-2180-4daa-8b49-e4ab507b9d7b",
+      "sourceOptionId": "f338d0",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35831
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "d7a613bf-fa1d-46e3-a94e-31a6f89dff99",
+      "sourceOptionId": "9e792c",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35615
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "d9d143f8-66ba-411b-aa81-cda7212d6434",
+      "sourceOptionId": "29e231",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 50000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35687
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "daeac33c-bb03-4a5e-a714-bcfbee07c4fb",
+      "sourceOptionId": "50d6ca",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 200000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35561
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "dfa56131-6ff5-4ab9-b769-a6220627ef27",
+      "sourceOptionId": "e681ad",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35822
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e257edcd-6545-4f02-89bd-c173c48cb581",
+      "sourceOptionId": "98fac8",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35732
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e3aa0df8-4a03-427e-9d03-3252ae8efb94",
+      "sourceOptionId": "02d7f9",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 1530
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 34215
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e3aa0df8-4a03-427e-9d03-3252ae8efb94",
+      "sourceOptionId": "04053d",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 2365
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 200000,
+        "quality": "pure-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 34225
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e4c7e9a1-f996-4ead-9456-3642178528b0",
+      "sourceOptionId": "2d67cc",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 20000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35714
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e68a3d74-887b-4f7b-afc0-60424063e1d4",
+      "sourceOptionId": "1fda02",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35723
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e7e646c0-8c53-4f95-b978-5bb661d57fa5",
+      "sourceOptionId": "78dbb7",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35840
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e8792141-bd30-48d6-a65d-3e6c2351188a",
+      "sourceOptionId": "e72267",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35376
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e8c51f46-576b-457a-a32f-27ea88d7bb5a",
+      "sourceOptionId": "1360fe",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 64
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 500,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33544
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e8c51f46-576b-457a-a32f-27ea88d7bb5a",
+      "sourceOptionId": "3b5a1a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 35
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33534
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e8c51f46-576b-457a-a32f-27ea88d7bb5a",
+      "sourceOptionId": "4ec484",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 12
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 50,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33574
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e8c51f46-576b-457a-a32f-27ea88d7bb5a",
+      "sourceOptionId": "5c4968",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 21
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 80,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33564
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "e8c51f46-576b-457a-a32f-27ea88d7bb5a",
+      "sourceOptionId": "82203a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 46
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33554
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "f041277e-b19f-46a4-a13e-d54ac0942b17",
+      "sourceOptionId": "47be4e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 300000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35552
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "f7216939-2a57-4748-9b9d-50f6063f3a9a",
+      "sourceOptionId": "10733b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 200000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35392
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fbf799bb-051f-4307-b4bc-714ce34673e3",
+      "sourceOptionId": "222c77",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 963
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 40000,
+        "quality": "earth-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33155
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fbf799bb-051f-4307-b4bc-714ce34673e3",
+      "sourceOptionId": "40ef0e",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 1070
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 50000,
+        "quality": "earth-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33165
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fbf799bb-051f-4307-b4bc-714ce34673e3",
+      "sourceOptionId": "42c7f9",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 1498
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 90000,
+        "quality": "earth-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33175
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fbf799bb-051f-4307-b4bc-714ce34673e3",
+      "sourceOptionId": "e28b75",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 856
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 30000,
+        "quality": "earth-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33145
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fbf799bb-051f-4307-b4bc-714ce34673e3",
+      "sourceOptionId": "f582e4",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 749
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 20000,
+        "quality": "earth-dragon"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33135
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fdfbcab1-bece-486f-8c16-83fb556d4fab",
+      "sourceOptionId": "05350a",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 657
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 10000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33212
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fdfbcab1-bece-486f-8c16-83fb556d4fab",
+      "sourceOptionId": "625a05",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 668
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 11000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33222
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fdfbcab1-bece-486f-8c16-83fb556d4fab",
+      "sourceOptionId": "a1b35b",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 482
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 9000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33202
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fdfbcab1-bece-486f-8c16-83fb556d4fab",
+      "sourceOptionId": "a49dfb",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 712
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 15000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33232
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fdfbcab1-bece-486f-8c16-83fb556d4fab",
+      "sourceOptionId": "cfb9f8",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [
+        {
+          "type": "combatPowerAtLeast",
+          "value": 449
+        }
+      ],
+      "prepare": {
+        "type": "soulBone",
+        "years": 8000,
+        "quality": "top"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 33192
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "fe140829-1763-4e2c-85e7-94c4b9f1d9e5",
+      "sourceOptionId": "360738",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 100000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35471
+        }
+      ]
+    },
+    {
+      "sourcePoolId": "ff96cce2-d5a0-4d9e-996a-9af996ae7217",
+      "sourceOptionId": "ddfa87",
+      "followUpIndex": 0,
+      "targetPoolId": "ce286ca9-296f-471c-8f4f-701b9c7f6169",
+      "count": 1,
+      "reason": "formal-soul-bone-part-draw",
+      "requirements": [],
+      "prepare": {
+        "type": "soulBone",
+        "years": 80000,
+        "quality": "ordinary"
+      },
+      "sourceRefs": [
+        {
+          "modulePath": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "ruleTable": "ci",
+          "bridgeFunction": "hi",
+          "targetFunction": "si",
+          "handlerAction": "prepareSoulBonePart",
+          "commitHandler": "addPendingSoulBone",
+          "sourceRuleLine": 35759
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "recordCount": 131,
+    "uniquePrepareCount": 50,
+    "sourceRuleCount": 156,
+    "qualityCounts": {
+      "earth-dragon": 5,
+      "ordinary": 86,
+      "pure-dragon": 7,
+      "top": 33
+    }
+  }
+}

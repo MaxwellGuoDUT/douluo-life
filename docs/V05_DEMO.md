@@ -1,8 +1,8 @@
 # 斗罗人生 V0.5 Demo
 
-状态：`V0.5 RC1 delivered / Day22 destiny-cohort RC2 local implementation complete / automated verified / Browser verified / unstaged`
+状态：`V0.5 RC1 delivered / Day23 runtime-coverage + destiny-explorer RC2 local implementation complete / automated verified / Browser verified / unstaged`
 
-日期：2026-08-29（Day22 本地实现候选）
+日期：2026-08-30（Day23 本地实现候选）
 
 对应任务：Day18 APK canonical `douluo1` 0～25 岁可玩 Demo
 
@@ -248,3 +248,17 @@ V0.5 RC1 当前可准确描述为：`merged to main / Pages deployed / owner pub
 - 390×844 下 viewport 为 `390×844`、document scroll width 375、转盘宽约343.45px、drawer 为底部375.43px sheet；reduced-motion 为 true 时 animation/transition 均 `1e-06s`。clean Day22 acceptance tab 的 console error/warning 分别为 `0/0`。
 
 Day22 仍只覆盖0～25岁、一个活动存档槽和完成摘要图鉴；不扩展 `douluo2`、25岁后、完整魂兽人生、route graph、其他 handler、owner APK/DOCX/XLSX、workflow、archive preservation 或发布操作。代码、自动化与本地 Browser 验收已完成；所有变更保持 unstaged，未 commit、push、创建 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。
+
+## Day23 runtime coverage 与命运探索器（2026-08-30）
+
+- 固定 APK/module/route graph 来源生成131条 follow-up prepare exact evidence，覆盖50个唯一 prepare 组合与4种 quality；runtime 按 requirements → 唯一 pending context → 真实 part draw → 兑现 → return flow 闭合，不额外消费 RNG。
+- human soul-ring evidence 现有10池、189条记录、153个 canonical route option 全部具备 exact mapping；已知缺口精确闭合为 `7143b4=10年/无魂骨`、`505d78=10年/无魂骨`、`6df424=100000年/有魂骨`、`94604a=300000年/有魂骨`。
+- 固定512域分布为 completed 218、no-eligible 168、beast-martial unresolved 36、unsupported effect 30、early ending 60；原256域 completed 从87增至107，救回20，两个 Day23 目标 boundary 在256与512域均为0。
+- 正式 cohort 恰好24条：`002,003,008,017,028,032,033,055,065,081,092,175,001,013,031,046,083,088,105,117,195,259,260,418`。Day22前12条 identity/seed/digest/profile 保持；24个 core、24个 route/milestone、20个 growth、4个 ring band、4个 level band、24个唯一摘要 digest；12条 closure 命运按 follow-up / soul-ring 各6条。
+- 首页只展示推荐命运，探索器提供全部24条的搜索、武魂/魂环/等级/路线组合筛选、排序、空态与清除。完成图鉴保存 schema v2 bounded path summary，milestone trail 最多8项，不保存 session/history/routeHistory/dynamicHistory/random，也不可恢复。
+- 活动存档升级为 schema v3；Day21 v1 与 Day22 v2 ready/completed 只有同 seed replay 全字段/digest 一致才迁移。已经由 Day23 闭合的旧 follow-up / soul-ring boundary 返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED`，不自动推进也不删除原存档。
+- 自动化为完整 `220/220`；两类 Day23 evidence extractor、512 cohort generator、RC package generator `--check`、18个相关脚本 `node --check`、6个 generated JSON parse 与 `git diff --check` 通过。统一 `check:v05-evidence` 仍会先检查白名单外的 Day22 official-beast 旧产物并报告 stale；Day23 要求的两个 extractor 均独立通过，本轮未越权重写该第39路径。
+- Codex in-app Browser 验证全部24条、搜索/组合筛选/排序/0结果/清除；001 的 `94604a` 真实300000年魂环→魂兽类型→物种→魂骨部位链与013的 follow-up prepare→两次真实魂骨 part draw均闭合。001、013、002、003四条正式命运到25岁，002在12岁/44项真实刷新恢复后完成为25岁/38级/86项；图鉴两人生七字段比较通过。
+- Browser 还验证三个 drawer 与探索器 Escape/焦点返回、390×844 无横向溢出、reduced-motion 下 animation/transition 为 `1e-06s`。`A-DAY23-BROWSER-MIGRATION-CLOSEOUT` 又从真实 Day21/Day22 UI 在隔离 origin 生成 v1/v2/archive v1 fixture：v1/v2 ready、completed 均迁移并二次恢复；两类旧 boundary 均返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED` 且刷新后原 checkpoint 保留；archive v1 保守迁移为 `legacy-summary`，不伪造里程碑轨迹。清空图鉴不影响活动存档或内存人生，清除活动存档不影响图鉴或内存人生；全部迁移与隔离页 console error/warning 为 `0/0`。
+
+Day23 仍不扩展 route graph、第三类 handler、`douluo2`、25岁后、完整魂兽人生、owner 材料或发布面。全部改动保持 unstaged；未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="斗罗人生 V0.5：12条正式命运、中央真实权重转盘、可验证本地恢复与人生图鉴。">
+    <meta name="description" content="斗罗人生 V0.5：24条正式命运、中央真实权重转盘、可验证本地恢复与路径图谱。">
     <title>斗罗人生 V0.5 · 多命运人生图鉴</title>
     <style>
         :root {
@@ -20,7 +20,7 @@
                 radial-gradient(circle at 10% 80%, rgb(40 72 105 / 22%), transparent 28rem),
                 #0a0f15;
         }
-        button, input { font: inherit; }
+        button, input, select { font: inherit; }
         button {
             min-height: 44px; padding: .7rem .9rem; color: #171208; background: #e4bd69;
             border: 1px solid #e4bd69; border-radius: 10px; font-weight: 800; cursor: pointer;
@@ -53,7 +53,7 @@
         .destiny-card[aria-pressed="true"] { border-color: #f3d77f; background: #2a2519; box-shadow: 0 0 0 2px rgb(243 215 127 / 20%); }
         .seed { display: grid; gap: .35rem; }
         label { color: #d7dde5; font-size: .86rem; font-weight: 750; }
-        input { width: 100%; min-width: 0; padding: .75rem; color: #fff; background: #090c10; border: 1px solid #544630; border-radius: 9px; }
+        input, select { width: 100%; min-width: 0; padding: .75rem; color: #fff; background: #090c10; border: 1px solid #544630; border-radius: 9px; }
         .badge { display: inline-flex; margin-left: .35rem; padding: .15rem .45rem; color: #e4c886; border: 1px solid #68583b; border-radius: 999px; font-size: .68rem; }
         .actions { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .5rem; align-items: end; }
         .save-line { grid-column: 1 / -1; display: grid; gap: .25rem; padding-top: .6rem; color: #aeb7c3; font-size: .8rem; }
@@ -125,6 +125,17 @@
         .archive-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: .75rem 0; }
         .compare-grid { display: grid; grid-template-columns: 8rem 1fr 1fr; gap: .35rem; margin-top: .7rem; font-size: .78rem; }
         .compare-grid > * { min-width: 0; padding: .45rem; overflow-wrap: anywhere; border-bottom: 1px solid #29313b; }
+        .explorer-backdrop { position: fixed; z-index: 10; inset: 0; display: grid; place-items: center; padding: 1rem; background: rgb(0 0 0 / 72%); }
+        .explorer { width: min(960px, 100%); max-height: min(90vh, 900px); overflow: auto; padding: 1rem; border: 1px solid #66563c; border-radius: 18px; background: #111820; box-shadow: 0 24px 80px #000; }
+        .explorer-header { position: sticky; z-index: 2; top: -1rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin: -1rem -1rem 1rem; padding: 1rem; background: #111820; border-bottom: 1px solid #303946; }
+        .explorer-header h2 { margin: 0; }
+        .explorer-filters { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: .6rem; }
+        .explorer-field { display: grid; gap: .3rem; min-width: 0; }
+        .explorer-toolbar { display: flex; justify-content: space-between; gap: .7rem; align-items: center; margin: .8rem 0; }
+        .explorer-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; }
+        .path-view { margin: .7rem 0; padding: .8rem; border: 1px solid #4d4233; border-radius: 11px; background: #151b22; }
+        .path-badges { display: flex; flex-wrap: wrap; gap: .35rem; margin: .5rem 0; }
+        .path-badges span { padding: .25rem .45rem; border-radius: 999px; background: #2b251a; color: #ead08e; font-size: .72rem; }
         [hidden] { display: none !important; }
         @keyframes wheel-land { to { transform: rotate(var(--landing-rotation)); } }
         @media (max-width: 820px) {
@@ -133,6 +144,8 @@
             .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .destiny-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .wheel-legend { grid-template-columns: 1fr; }
+            .explorer-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .explorer-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 520px) {
             .shell { width: calc(100% - 1rem); padding-top: .6rem; }
@@ -146,6 +159,9 @@
             .drawer { top: auto; left: 0; right: 0; width: 100%; max-height: 78vh; border: 1px solid #4b402f; border-radius: 20px 20px 0 0; transform: translateY(105%); }
             .drawer.is-open { transform: translateY(0); }
             .profile-row { grid-template-columns: 6rem minmax(0, 1fr); }
+            .explorer-backdrop { padding: 0; place-items: end center; }
+            .explorer { width: 100%; max-height: 88vh; border-radius: 20px 20px 0 0; }
+            .explorer-filters, .explorer-results { grid-template-columns: 1fr; }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
@@ -170,8 +186,9 @@
     <section class="control-card" aria-label="人生控制与存档">
         <div class="destiny-entry">
             <h2>选择正式命运</h2>
-            <p>这些 seed 已逐条确定性验证到25岁；选择只初始化人生，不预抽任何 option。</p>
+            <p>推荐命运与全部24条均已逐条确定性验证到25岁；选择只初始化人生，不预抽任何 option。</p>
             <div id="destinyList" class="destiny-grid" aria-label="正式命运预设"></div>
+            <button id="explorerButton" class="secondary" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="explorerPanel">浏览全部24条命运</button>
         </div>
         <div class="seed">
             <label for="seedInput">自定义实验 seed <span id="seedMode" class="badge">实验 seed</span></label>
@@ -225,6 +242,25 @@
     <details><summary>结构化错误</summary><pre id="errorValue">无</pre></details>
 
     <div id="drawerBackdrop" class="drawer-backdrop" hidden></div>
+    <div id="explorerBackdrop" class="explorer-backdrop" hidden>
+        <section id="explorerPanel" class="explorer" role="dialog" aria-modal="true" aria-labelledby="explorerHeading" aria-hidden="true">
+            <header class="explorer-header"><h2 id="explorerHeading">命运探索器</h2><button id="explorerClose" class="secondary close-button" type="button">关闭</button></header>
+            <div class="explorer-filters">
+                <div class="explorer-field"><label for="explorerSearch">搜索标题、武魂或摘要</label><input id="explorerSearch" type="search" autocomplete="off"></div>
+                <div class="explorer-field"><label for="martialFilter">武魂类别</label><select id="martialFilter"><option value="">全部</option></select></div>
+                <div class="explorer-field"><label for="ringFilter">魂环区间</label><select id="ringFilter"><option value="">全部</option></select></div>
+                <div class="explorer-field"><label for="levelFilter">等级区间</label><select id="levelFilter"><option value="">全部</option></select></div>
+                <div class="explorer-field"><label for="routeFilter">路线 / 天赋</label><select id="routeFilter"><option value="">全部</option></select></div>
+            </div>
+            <div class="explorer-toolbar">
+                <span id="explorerCount" role="status" aria-live="polite">24 / 24 条</span>
+                <div class="explorer-field"><label for="explorerSort">排序</label><select id="explorerSort"><option value="recommended">推荐顺序</option><option value="seed">seed</option><option value="level">终点等级</option><option value="rings">魂环数</option></select></div>
+                <button id="clearExplorerButton" class="secondary" type="button">清除筛选</button>
+            </div>
+            <div id="explorerEmpty" class="timeline-empty" hidden>没有符合条件的命运。可清除筛选恢复全部24条。</div>
+            <div id="explorerResults" class="explorer-results"></div>
+        </section>
+    </div>
     <aside id="profilePanel" class="drawer drawer-left" role="dialog" aria-modal="true" aria-labelledby="profileHeading" aria-hidden="true">
         <header class="drawer-header"><h2 id="profileHeading">角色档案</h2><button id="profileClose" class="secondary close-button" type="button" aria-label="关闭角色档案">关闭</button></header>
         <div id="profileContent"></div>

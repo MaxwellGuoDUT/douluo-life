@@ -1,6 +1,6 @@
 {
   "schemaVersion": "v05-rc-policy/1.0",
-  "packageVersion": "v05-rc2/2026-08-29",
+  "packageVersion": "v05-rc2/2026-08-30",
   "channel": "release-candidate",
   "sourceManifest": "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json",
   "sourceSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
@@ -9,8 +9,8 @@
   ],
   "endpointAge": 25,
   "defaultSeed": "apk-route-demo-seed",
-  "supportedDestinyMinimum": 12,
-  "candidateSeedCount": 256,
+  "supportedDestinyMinimum": 24,
+  "candidateSeedCount": 512,
   "completedArchiveOnly": true,
   "routeGraphPackagingPolicy": "pack-shard-only-no-monolith-fallback",
   "catalogLoadingPolicy": "catalogNames-empty",
