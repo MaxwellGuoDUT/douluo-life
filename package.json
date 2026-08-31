@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "check:v05-evidence": "node outputs/parallel-prep-2026-08-16/extract-apk-official-beast-element-runtime-evidence.mjs --check",
+    "check:v05-evidence": "node outputs/parallel-prep-2026-08-16/extract-apk-official-beast-element-runtime-evidence.mjs --check && node outputs/parallel-prep-2026-08-16/extract-apk-human-soul-ring-runtime-evidence.mjs --check",
+    "check:v05-day23-evidence": "node outputs/parallel-prep-2026-08-16/extract-apk-followup-prepare-runtime-evidence.mjs --check && node outputs/parallel-prep-2026-08-16/extract-apk-human-soul-ring-runtime-evidence.mjs --check",
     "check:v05-destinies": "node outputs/parallel-prep-2026-08-16/generate-v05-destiny-cohort.mjs --check",
     "check:v05-package": "node outputs/parallel-prep-2026-08-16/generate-v05-rc-package.mjs --check",
-    "check:v05-day22": "npm run check:v05-evidence && npm run check:v05-destinies && npm run check:v05-package"
+    "check:v05-day22": "npm run check:v05-evidence && npm run check:v05-destinies && npm run check:v05-package",
+    "check:v05-day23": "npm run check:v05-day23-evidence && npm run check:v05-destinies && npm run check:v05-package && npm test"
   }
 }

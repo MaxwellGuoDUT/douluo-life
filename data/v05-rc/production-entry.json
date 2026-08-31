@@ -7,6 +7,7 @@
   "routeGraphLoadingPolicy": "pack-shard-only",
   "formalSpecialResultEvidence": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
   "humanSoulRingEvidence": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+  "followUpPrepareEvidence": "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
   "humanSoulRingSpeciesEvidence": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
   "combatPowerEvidence": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
   "officialBeastElementEvidence": "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
@@ -24,16 +25,14 @@
     ],
     "endpointAge": 25,
     "defaultSeed": "apk-route-demo-seed",
-    "supportedDestinyMinimum": 12,
-    "candidateSeedCount": 256,
+    "supportedDestinyMinimum": 24,
+    "candidateSeedCount": 512,
     "typedBoundaryAllowed": true,
     "completeLifeClaimAllowed": false,
     "knownTypedBoundaries": [
       "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
       "APK_COMBAT_POWER_UNCOVERED_STATE",
-      "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED",
       "APK_POOL_HAS_NO_ELIGIBLE_OPTIONS",
-      "APK_ROUTE_SOUL_RING_EVIDENCE_MISSING",
       "UNSUPPORTED_APK_EFFECT"
     ]
   },

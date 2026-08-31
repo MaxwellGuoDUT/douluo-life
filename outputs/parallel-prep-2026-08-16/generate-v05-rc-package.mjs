@@ -12,7 +12,7 @@ import {
 const ROOT = process.cwd();
 const OUTPUT_ROOT = path.join(ROOT, "data", "v05-rc");
 const CHECK_ONLY = process.argv.includes("--check");
-const PACKAGE_VERSION = "v05-rc2/2026-08-29";
+const PACKAGE_VERSION = "v05-rc2/2026-08-30";
 const SOURCE_MANIFEST = "outputs/parallel-prep-2026-08-16/APK_PROVENANCE_MANIFEST_2026-08-16.json";
 const ARCHIVE_MANIFEST = "data/v2/archive/apk-replaced-2026-08-16/manifest.json";
 const APPROVED_ARCHIVE_FILES = Object.freeze([
@@ -34,6 +34,7 @@ const ASSETS = Object.freeze({
     routeGraphDouluo1: "data/apk-canonical/catalogs/route-graph.douluo1.json",
     formalSpecialResultEvidence: "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
     humanSoulRingEvidence: "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+    followUpPrepareEvidence: "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
     humanSoulRingSpeciesEvidence: "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
     combatPowerEvidence: "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
     officialBeastElementEvidence: "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
@@ -98,11 +99,12 @@ function validateSources() {
     for (const [name, relativePath] of Object.entries(ASSETS).slice(1)) {
         const document = readJson(relativePath);
         if (name === "supportedDestinies") {
-            if (document.schemaVersion !== "douluo-life-v05-destiny-cohort/1.0"
+            if (document.schemaVersion !== "douluo-life-v05-destiny-cohort/2.0"
                 || document.packageVersion !== PACKAGE_VERSION
                 || document.endpointAge !== 25
-                || document.destinies?.length < 12) {
-                fail("V0.5 RC requires the generated Day22 destiny cohort.");
+                || document.destinies?.length !== 24
+                || document.coverage?.length !== 512) {
+                fail("V0.5 RC requires the generated Day23 destiny cohort.");
             }
         } else {
             sourceSha(document, name);
@@ -154,8 +156,8 @@ function releaseDocuments() {
         publicPackIds: ["douluo1"],
         endpointAge: 25,
         defaultSeed: "apk-route-demo-seed",
-        supportedDestinyMinimum: 12,
-        candidateSeedCount: 256,
+        supportedDestinyMinimum: 24,
+        candidateSeedCount: 512,
         completedArchiveOnly: true,
         routeGraphPackagingPolicy: "pack-shard-only-no-monolith-fallback",
         catalogLoadingPolicy: "catalogNames-empty",
@@ -182,6 +184,7 @@ function releaseDocuments() {
         },
         formalSpecialResultEvidence: descriptor(ASSETS.formalSpecialResultEvidence),
         humanSoulRingEvidence: descriptor(ASSETS.humanSoulRingEvidence),
+        followUpPrepareEvidence: descriptor(ASSETS.followUpPrepareEvidence),
         humanSoulRingSpeciesEvidence: descriptor(ASSETS.humanSoulRingSpeciesEvidence),
         combatPowerEvidence: descriptor(ASSETS.combatPowerEvidence),
         officialBeastElementEvidence: descriptor(ASSETS.officialBeastElementEvidence),
@@ -202,6 +205,7 @@ function releaseDocuments() {
         routeGraphLoadingPolicy: "pack-shard-only",
         formalSpecialResultEvidence: ASSETS.formalSpecialResultEvidence,
         humanSoulRingEvidence: ASSETS.humanSoulRingEvidence,
+        followUpPrepareEvidence: ASSETS.followUpPrepareEvidence,
         humanSoulRingSpeciesEvidence: ASSETS.humanSoulRingSpeciesEvidence,
         combatPowerEvidence: ASSETS.combatPowerEvidence,
         officialBeastElementEvidence: ASSETS.officialBeastElementEvidence,
@@ -217,16 +221,14 @@ function releaseDocuments() {
             publicPackIds: ["douluo1"],
             endpointAge: 25,
             defaultSeed: "apk-route-demo-seed",
-            supportedDestinyMinimum: 12,
-            candidateSeedCount: 256,
+            supportedDestinyMinimum: 24,
+            candidateSeedCount: 512,
             typedBoundaryAllowed: true,
             completeLifeClaimAllowed: false,
             knownTypedBoundaries: [
                 "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
                 "APK_COMBAT_POWER_UNCOVERED_STATE",
-                "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED",
                 "APK_POOL_HAS_NO_ELIGIBLE_OPTIONS",
-                "APK_ROUTE_SOUL_RING_EVIDENCE_MISSING",
                 "UNSUPPORTED_APK_EFFECT"
             ]
         },

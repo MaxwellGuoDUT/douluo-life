@@ -38,6 +38,7 @@ function materialize() {
         routeGraph,
         formalSpecialResultEvidence: readJson("formal-special-result-runtime-evidence.json"),
         humanSoulRingEvidence: readJson("human-soul-ring-runtime-evidence.json"),
+        followUpPrepareEvidence: readJson("followup-prepare-runtime-evidence.json"),
         humanSoulRingSpeciesEvidence: readJson("human-soul-ring-species-runtime-evidence.json"),
         officialBeastElementEvidence: readJson("official-beast-element-runtime-evidence.json"),
         combatPowerEvidence: readJson("combat-power-runtime-evidence.json")
@@ -45,12 +46,19 @@ function materialize() {
     return {
         routeGraph,
         contentIndex: createV05ContentIndex(loaded),
-        identity: createV05ContentIdentity({ routeGraph, packId: V05_PACK_ID, appVersion: V05_APP_VERSION })
+        identity: createV05ContentIdentity({
+            routeGraph,
+            packId: V05_PACK_ID,
+            appVersion: V05_APP_VERSION,
+            officialBeastElementEvidence: loaded.officialBeastElementEvidence,
+            humanSoulRingEvidence: loaded.humanSoulRingEvidence,
+            followUpPrepareEvidence: loaded.followUpPrepareEvidence
+        })
     };
 }
 
 const runtime = materialize();
-const createRunner = seed => createV05DemoRunner({ ...runtime, seed });
+const createRunner = (seed, destinyId = "custom") => createV05DemoRunner({ ...runtime, seed, destinyId });
 
 function core(runner) {
     return {
@@ -95,16 +103,16 @@ test("completed checkpoint restores 25 years, 100/100, and completion lock with 
     assert.deepEqual({ cursor: restored.session.random.cursor, history: restored.session.history.length }, before);
 });
 
-test("typed boundary checkpoint replays the failed draw without committing it", () => {
+test("formerly blocked custom seed now restores as an exact completed checkpoint", () => {
     const runner = createRunner("v05-custom-1");
     while (runner.phase === "ready") runner.step();
     const envelope = createV05Checkpoint({ runner, contentIdentity: runtime.identity });
     const restored = restoreV05Checkpoint({ raw: envelope, createRunner, contentIdentity: runtime.identity }).runner;
-    assert.equal(restored.phase, "boundary");
-    assert.equal(restored.session.character.age, 24);
-    assert.equal(restored.session.random.cursor, 130);
-    assert.equal(restored.session.history.length, 129);
-    assert.equal(restored.error.code, "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED");
+    assert.equal(restored.phase, "completed");
+    assert.equal(restored.session.character.age, 25);
+    assert.equal(restored.session.random.cursor, 131);
+    assert.equal(restored.session.history.length, 131);
+    assert.equal(restored.error, null);
 });
 
 test("bad JSON, unknown version, content drift, and replay tampering are typed rejects", () => {
@@ -187,10 +195,55 @@ test("Day21 v1 ready and completed saves migrate after exact replay", () => {
         const restored = restoreV05Checkpoint({ raw: legacy, createRunner, contentIdentity: runtime.identity });
         assert.equal(restored.migrated, true);
         assert.equal(restored.sourceEnvelope, legacy);
-        assert.equal(restored.envelope.schemaVersion, 2);
+        assert.equal(restored.envelope.schemaVersion, 3);
         assert.equal(restored.envelope.destinyId, "custom");
         assert.equal(restored.runner.session.history.length, committedCount);
         assert.equal(restored.runner.phase, runner.phase);
+    }
+});
+
+test("Day22 v2 ready and completed saves migrate after exact replay", () => {
+    for (const committedCount of [34, 100]) {
+        const runner = createRunner(V05_DEFAULT_SEED);
+        while (runner.phase === "ready" && runner.session.history.length < committedCount) runner.step();
+        const current = createV05Checkpoint({ runner, contentIdentity: runtime.identity });
+        const day22 = {
+            ...current,
+            schemaVersion: 2,
+            packageIdentity: { ...current.packageIdentity, contentFingerprint: "day22-content" }
+        };
+        const restored = restoreV05Checkpoint({ raw: day22, createRunner, contentIdentity: runtime.identity });
+        assert.equal(restored.migrated, true);
+        assert.equal(restored.sourceEnvelope, day22);
+        assert.equal(restored.envelope.schemaVersion, 3);
+        assert.equal(restored.runner.session.history.length, committedCount);
+        assert.equal(restored.runner.phase, runner.phase);
+    }
+});
+
+test("Day22 follow-up and soul-ring boundaries are preserved as semantics-changed rejects", () => {
+    for (const fixture of [
+        ["v05-destiny-000", 9, "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED"],
+        ["v05-destiny-001", 90, "APK_ROUTE_SOUL_RING_EVIDENCE_MISSING"]
+    ]) {
+        const [seed, committedCount, boundaryCode] = fixture;
+        const runner = createRunner(seed);
+        while (runner.session.history.length < committedCount) runner.step();
+        const current = createV05Checkpoint({ runner, contentIdentity: runtime.identity });
+        const day22Boundary = {
+            ...current,
+            schemaVersion: 2,
+            phase: "boundary",
+            boundaryCode,
+            randomCursor: committedCount + 1,
+            packageIdentity: { ...current.packageIdentity, contentFingerprint: "day22-content" }
+        };
+        assert.throws(
+            () => restoreV05Checkpoint({ raw: day22Boundary, createRunner, contentIdentity: runtime.identity }),
+            error => error.code === "V05_SAVE_BOUNDARY_SEMANTICS_CHANGED"
+                && error.details.previousBoundaryCode === boundaryCode
+        );
+        assert.equal(day22Boundary.committedCount, committedCount);
     }
 });
 

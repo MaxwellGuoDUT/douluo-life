@@ -1,6 +1,6 @@
-export const V05_DESTINY_COHORT_SCHEMA = "douluo-life-v05-destiny-cohort/1.0";
-export const V05_DESTINY_CANDIDATE_COUNT = 256;
-export const V05_DESTINY_MINIMUM_COHORT = 12;
+export const V05_DESTINY_COHORT_SCHEMA = "douluo-life-v05-destiny-cohort/2.0";
+export const V05_DESTINY_CANDIDATE_COUNT = 512;
+export const V05_DESTINY_MINIMUM_COHORT = 24;
 
 function typedError(code, message, details = {}) {
     const error = new Error(message);
@@ -31,7 +31,7 @@ export function validateV05DestinyManifest(manifest) {
         || !Array.isArray(manifest.coverage)
         || !Array.isArray(manifest.destinies)
         || manifest.coverage.length !== V05_DESTINY_CANDIDATE_COUNT
-        || manifest.destinies.length < V05_DESTINY_MINIMUM_COHORT) {
+        || manifest.destinies.length !== V05_DESTINY_MINIMUM_COHORT) {
         throw typedError("V05_DESTINY_MANIFEST_INVALID", "正式命运 manifest 的 schema 或规模无效。");
     }
     const expectedSeeds = Array.from(
@@ -40,7 +40,7 @@ export function validateV05DestinyManifest(manifest) {
     );
     const coverageSeeds = manifest.coverage.map(record => record?.seed);
     if (!expectedSeeds.every((seed, index) => coverageSeeds[index] === seed)) {
-        throw typedError("V05_DESTINY_MANIFEST_INVALID", "256-seed coverage 域或排序无效。");
+        throw typedError("V05_DESTINY_MANIFEST_INVALID", "512-seed coverage 域或排序无效。");
     }
     const coverageBySeed = new Map(manifest.coverage.map(record => [record.seed, record]));
     const ids = new Set();
@@ -55,6 +55,7 @@ export function validateV05DestinyManifest(manifest) {
             && destiny?.schemaVersion === V05_DESTINY_COHORT_SCHEMA
             && destiny?.packageVersion === manifest.packageVersion
             && destiny?.endpointAge === 25
+            && Number.isFinite(destiny?.level)
             && Number.isInteger(destiny?.committedCount)
             && Number.isInteger(destiny?.randomCursor)
             && validString(destiny?.finalFlowId)
@@ -62,6 +63,15 @@ export function validateV05DestinyManifest(manifest) {
             && validString(destiny?.characterDigest)
             && validString(destiny?.summaryDigest)
             && Array.isArray(destiny?.coverageTags)
+            && validString(destiny?.pathSignature)
+            && Array.isArray(destiny?.routeFacets)
+            && Array.isArray(destiny?.closureTags)
+            && Array.isArray(destiny?.milestoneTrail)
+            && destiny.milestoneTrail.length <= 8
+            && validString(destiny?.ringBand)
+            && validString(destiny?.levelBand)
+            && validString(destiny?.growthProfile)
+            && validString(destiny?.routeMilestoneProfile)
             && coverage?.status === "completed"
             && coverage.age === 25
             && coverage.committedCount === destiny.committedCount
@@ -80,6 +90,12 @@ export function validateV05DestinyManifest(manifest) {
         seeds.add(destiny.seed);
         digests.add(destiny.summaryDigest);
     }
+    const expectedIds = Array.from({ length: V05_DESTINY_MINIMUM_COHORT }, (_, index) => (
+        `official-destiny-${String(index + 1).padStart(2, "0")}`
+    ));
+    if (!manifest.destinies.every((destiny, index) => destiny.id === expectedIds[index])) {
+        throw typedError("V05_DESTINY_MANIFEST_INVALID", "正式命运 ID 顺序无效。");
+    }
     return manifest;
 }
 
@@ -91,12 +107,22 @@ export function createV05DestinyViewModel(manifest) {
         title: destiny.title,
         summary: destiny.summary,
         endpointAge: destiny.endpointAge,
+        level: destiny.level,
         committedCount: destiny.committedCount,
         randomCursor: destiny.randomCursor,
         primaryMartialSoul: destiny.primaryMartialSoul,
         soulRingCount: destiny.soulRingCount,
+        soulBoneCount: destiny.soulBoneCount,
         routeSummary: destiny.routeSummary,
         milestoneIds: clone(destiny.milestoneIds),
+        milestoneTrail: clone(destiny.milestoneTrail),
+        pathSignature: destiny.pathSignature,
+        routeFacets: clone(destiny.routeFacets),
+        closureTags: clone(destiny.closureTags),
+        ringBand: destiny.ringBand,
+        levelBand: destiny.levelBand,
+        growthProfile: destiny.growthProfile,
+        routeMilestoneProfile: destiny.routeMilestoneProfile,
         coverageTags: clone(destiny.coverageTags),
         official: true,
         experimental: false

@@ -1,10 +1,13 @@
 {
   "schemaVersion": "apk-human-soul-ring-evidence/1.0",
+  "status": "source-verified-complete",
   "source": {
     "apkSha256": "E4FB340EF0DAD857A018E2F06982D32623BDD683B22BD44230A2257C35DAA11C",
+    "apkPath": "../douluo-life/dl.dl.狗成百多神盐大神神神神神野百盐盐味配盐芙.apk.APK",
     "dataset": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
     "datasetSha256": "03754713DF11A56F431CB0A61695372CDC4D53C23C927636BE625ED5D4CADD05",
     "module": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+    "moduleSha256": "0AABF5E741403FF75BB0192D2661A28179612D095A49C67E03F7E8B46B77EC99",
     "customHandler": "prepareSoulRing",
     "nextResolver": "selectRingTypeStep",
     "sourceFunctions": [
@@ -12,12 +15,12 @@
       "de",
       "Jt",
       "sn",
-      "$e"
-    ]
+      "$e",
+      "gn"
+    ],
+    "extractionMode": "exact_dataset_plus_exact_module_fallback"
   },
   "extraction": {
-    "mode": "static_source_mapping_only",
-    "gameplayExecuted": false,
     "poolIds": [
       "24ab4336-6902-498e-a1fa-e65b616d7154",
       "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
@@ -31,1224 +34,39 @@
       "a99c09fe-a29c-4a7e-bb75-51f405bca3a0"
     ],
     "poolCount": 10,
-    "recordCount": 176,
-    "scope": "douluo1 human soul-ring age pools and the shared secondary-soul-ring pool"
+    "primaryRecordCount": 176,
+    "fallbackRecordCount": 13,
+    "recordCount": 189,
+    "canonicalRouteOptionCount": 153,
+    "canonicalCompleteness": true
   },
-  "records": [
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "fac3d0",
-      "text": "1200年魂环",
-      "wheelLabel": "1200年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 1200,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "4371de",
-      "text": "300年魂环",
-      "wheelLabel": "300年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 300,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "9505f3",
-      "text": "1000年魂环",
-      "wheelLabel": "1000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 1000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "b2b94a",
-      "text": "400年魂环",
-      "wheelLabel": "400年魂环",
-      "sourceWeight": 45,
-      "sourceEnabled": true,
-      "ringYears": 400,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "866181",
-      "text": "764年魂环",
-      "wheelLabel": "764年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 764,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "5f0927",
-      "text": "800年魂环",
-      "wheelLabel": "800年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 800,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "b42434",
-      "text": "200年魂环",
-      "wheelLabel": "200年魂环",
-      "sourceWeight": 35,
-      "sourceEnabled": true,
-      "ringYears": 200,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "056ac9",
-      "text": "600年魂环",
-      "wheelLabel": "600年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 600,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "d7b189",
-      "text": "80年魂环",
-      "wheelLabel": "80年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 80,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "466344",
-      "text": "120年魂环",
-      "wheelLabel": "120年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 120,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "ab316c",
-      "text": "1500年魂环",
-      "wheelLabel": "1500年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 1500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "2ca763",
-      "text": "10年魂环",
-      "wheelLabel": "10年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
+  "knownDay23Mappings": {
+    "7143b4": {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
       "ringYears": 10,
       "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
+      "requiresGodTrial": false
     },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "1963eb",
-      "text": "1800年魂环",
-      "wheelLabel": "1800年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 1800,
+    "505d78": {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "ringYears": 10,
       "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
+      "requiresGodTrial": false
     },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "d73dfa",
-      "text": "423年魂环（常规上限）",
-      "wheelLabel": "423年魂环",
-      "sourceWeight": 50,
-      "sourceEnabled": true,
-      "ringYears": 423,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "841f9c",
-      "text": "900年魂环",
-      "wheelLabel": "900年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 900,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "0f93b2",
-      "text": "获得十万年魂兽献祭，等级+5，获得一块十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "获得十万年魂兽献祭，等级…",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
+    "6df424": {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
       "ringYears": 100000,
       "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "ringLevelDelta": 5,
-      "requirements": [],
-      "effects": [
-        {
-          "type": "changeLevel",
-          "amount": 5
-        }
-      ]
+      "requiresGodTrial": false
     },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "b86006",
-      "text": "700年魂环",
-      "wheelLabel": "700年魂环",
-      "sourceWeight": 20,
-      "sourceEnabled": true,
-      "ringYears": 700,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "d57e06",
-      "text": "50年魂环",
-      "wheelLabel": "50年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 50,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
-      "optionId": "508956",
-      "text": "500年魂环",
-      "wheelLabel": "500年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "e0376e",
-      "text": "4600年魂环",
-      "wheelLabel": "4600年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 4600,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "ef1766",
-      "text": "3500年魂环",
-      "wheelLabel": "3500年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 3500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "562d0b",
-      "text": "4400年魂环",
-      "wheelLabel": "4400年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 4400,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "8e5d1e",
-      "text": "800年魂环",
-      "wheelLabel": "800年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 800,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "aecd6e",
-      "text": "4800年魂环",
-      "wheelLabel": "4800年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 4800,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "e13ac8",
-      "text": "十万年魂兽献祭，等级+4，获得十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "十万年魂兽献祭，等级+4…",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 100000,
+    "94604a": {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "ringYears": 300000,
       "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "ringLevelDelta": 4,
-      "requirements": [],
-      "effects": [
-        {
-          "type": "changeLevel",
-          "amount": 4
-        }
-      ]
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "35e8db",
-      "text": "900年魂环",
-      "wheelLabel": "900年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 900,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "689656",
-      "text": "423年魂环",
-      "wheelLabel": "423年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 423,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "2314cb",
-      "text": "2000年魂环",
-      "wheelLabel": "2000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 2000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "ed6516",
-      "text": "100年魂环",
-      "wheelLabel": "100年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 100,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "674747",
-      "text": "1000年魂环",
-      "wheelLabel": "1000年魂环",
-      "sourceWeight": 20,
-      "sourceEnabled": true,
-      "ringYears": 1000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "1d5a0e",
-      "text": "1500年魂环",
-      "wheelLabel": "1500年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 1500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "0a6083",
-      "text": "700年魂环",
-      "wheelLabel": "700年魂环",
-      "sourceWeight": 45,
-      "sourceEnabled": true,
-      "ringYears": 700,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "802eda",
-      "text": "1760年魂环",
-      "wheelLabel": "1760年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 1760,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "5c31c4",
-      "text": "5500年魂环",
-      "wheelLabel": "5500年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 5500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "d1123c",
-      "text": "3000年魂环",
-      "wheelLabel": "3000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 3000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "a9170f",
-      "text": "764年魂环（二环常规上限）",
-      "wheelLabel": "764年魂环",
-      "sourceWeight": 50,
-      "sourceEnabled": true,
-      "ringYears": 764,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "dfd6bb",
-      "text": "200年魂环",
-      "wheelLabel": "200年魂环",
-      "sourceWeight": 20,
-      "sourceEnabled": true,
-      "ringYears": 200,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "1a6bbe",
-      "text": "4000年魂环",
-      "wheelLabel": "4000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 4000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "ddde38",
-      "text": "2500年魂环",
-      "wheelLabel": "2500年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 2500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
-      "optionId": "da3ac2",
-      "text": "500年魂环",
-      "wheelLabel": "500年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "2805d4",
-      "text": "999年魂环",
-      "wheelLabel": "999年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 999,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "de6a2b",
-      "text": "1760年魂环（三环常规上限）",
-      "wheelLabel": "1760年魂环",
-      "sourceWeight": 100,
-      "sourceEnabled": true,
-      "ringYears": 1760,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "fd6002",
-      "text": "1100年魂环",
-      "wheelLabel": "1100年魂环",
-      "sourceWeight": 50,
-      "sourceEnabled": true,
-      "ringYears": 1100,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "5e1e2d",
-      "text": "900年魂环",
-      "wheelLabel": "900年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 900,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "846d7c",
-      "text": "1700年魂环",
-      "wheelLabel": "1700年魂环",
-      "sourceWeight": 90,
-      "sourceEnabled": true,
-      "ringYears": 1700,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "e6d79a",
-      "text": "3000年魂环",
-      "wheelLabel": "3000年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 3000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "fbb0b9",
-      "text": "1500年魂环",
-      "wheelLabel": "1500年魂环",
-      "sourceWeight": 70,
-      "sourceEnabled": true,
-      "ringYears": 1500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "f06eb4",
-      "text": "800年魂环",
-      "wheelLabel": "800年魂环",
-      "sourceWeight": 20,
-      "sourceEnabled": true,
-      "ringYears": 800,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "e6fc15",
-      "text": "2000年魂环",
-      "wheelLabel": "2000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 2000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "ae5ff8",
-      "text": "9999年魂环",
-      "wheelLabel": "9999年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 9999,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "7c8cc2",
-      "text": "7500年魂环",
-      "wheelLabel": "7500年魂环",
-      "sourceWeight": 7,
-      "sourceEnabled": true,
-      "ringYears": 7500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "5d52d9",
-      "text": "2500年魂环",
-      "wheelLabel": "2500年魂环",
-      "sourceWeight": 50,
-      "sourceEnabled": true,
-      "ringYears": 2500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "dc10f6",
-      "text": "5500年魂环",
-      "wheelLabel": "5500年魂环",
-      "sourceWeight": 9,
-      "sourceEnabled": true,
-      "ringYears": 5500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "9ef528",
-      "text": "1万年魂环",
-      "wheelLabel": "1万年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 10000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "25a07d",
-      "text": "1600年魂环",
-      "wheelLabel": "1600年魂环",
-      "sourceWeight": 80,
-      "sourceEnabled": true,
-      "ringYears": 1600,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "f4adc0",
-      "text": "1400年魂环",
-      "wheelLabel": "1400年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 1400,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "d9856c",
-      "text": "6000年魂环",
-      "wheelLabel": "6000年魂环",
-      "sourceWeight": 8,
-      "sourceEnabled": true,
-      "ringYears": 6000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "018623",
-      "text": "3800年魂环",
-      "wheelLabel": "3800年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 3800,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "4935ed",
-      "text": "1000年魂环",
-      "wheelLabel": "1000年魂环",
-      "sourceWeight": 50,
-      "sourceEnabled": true,
-      "ringYears": 1000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "f0babd",
-      "text": "700年魂环",
-      "wheelLabel": "700年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 700,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "4066bd",
-      "text": "1800年魂环",
-      "wheelLabel": "1800年魂环",
-      "sourceWeight": 90,
-      "sourceEnabled": true,
-      "ringYears": 1800,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "40b90d",
-      "text": "1300年魂环",
-      "wheelLabel": "1300年魂环",
-      "sourceWeight": 50,
-      "sourceEnabled": true,
-      "ringYears": 1300,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "2c15bc",
-      "text": "9000年魂环",
-      "wheelLabel": "9000年魂环",
-      "sourceWeight": 6,
-      "sourceEnabled": true,
-      "ringYears": 9000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "693b89",
-      "text": "十万年魂环（十万年魂兽献祭，等级+3，获得十万年魂骨）",
-      "wheelLabel": "十万年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "ringLevelDelta": 3,
-      "requirements": [],
-      "effects": [
-        {
-          "type": "changeLevel",
-          "amount": 3
-        }
-      ]
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "e424f0",
-      "text": "1200年魂环",
-      "wheelLabel": "1200年魂环",
-      "sourceWeight": 50,
-      "sourceEnabled": true,
-      "ringYears": 1200,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
-      "optionId": "53d5bf",
-      "text": "1900年魂环",
-      "wheelLabel": "1900年魂环",
-      "sourceWeight": 80,
-      "sourceEnabled": true,
-      "ringYears": 1900,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "c61652",
-      "text": "4000年魂环",
-      "wheelLabel": "4000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 4000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "83f75c",
-      "text": "10000年魂环",
-      "wheelLabel": "10000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 10000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "1d06b5",
-      "text": "900年魂环",
-      "wheelLabel": "900年魂环",
-      "sourceWeight": 15,
-      "sourceEnabled": true,
-      "ringYears": 900,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "1d4429",
-      "text": "3000年魂环",
-      "wheelLabel": "3000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 3000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "bbc9fc",
-      "text": "9000年魂环",
-      "wheelLabel": "9000年魂环",
-      "sourceWeight": 25,
-      "sourceEnabled": true,
-      "ringYears": 9000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "68d3df",
-      "text": "6500年魂环",
-      "wheelLabel": "6500年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 6500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "9c5123",
-      "text": "7500年魂环",
-      "wheelLabel": "7500年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 7500,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "b6d647",
-      "text": "2000年魂环",
-      "wheelLabel": "2000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 2000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "23ca51",
-      "text": "9999年魂环",
-      "wheelLabel": "9999年魂环",
-      "sourceWeight": 20,
-      "sourceEnabled": true,
-      "ringYears": 9999,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "f9b7ba",
-      "text": "1000年魂环",
-      "wheelLabel": "1000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 1000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "b487bf",
-      "text": "十万年魂兽献祭，等级+2，获得十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "十万年魂兽献祭，等级+2…",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "ringLevelDelta": 2,
-      "requirements": [],
-      "effects": [
-        {
-          "type": "changeLevel",
-          "amount": 2
-        }
-      ]
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "1a7598",
-      "text": "5000年魂环（四环常规上限）",
-      "wheelLabel": "5000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 5000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "14199c",
-      "text": "7000年魂环",
-      "wheelLabel": "7000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 7000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "c0abe3",
-      "text": "15000年魂环",
-      "wheelLabel": "15000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 15000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "96438d",
-      "text": "8000年魂环",
-      "wheelLabel": "8000年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 8000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "0d85d4",
-      "text": "12000年魂环",
-      "wheelLabel": "12000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 12000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
-      "optionId": "fe7e43",
-      "text": "18000年魂环",
-      "wheelLabel": "18000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 18000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "788a70",
-      "text": "28000年魂环",
-      "wheelLabel": "28000年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 28000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "6f84c5",
-      "text": "15000年魂环",
-      "wheelLabel": "15000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 15000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
+      "requiresGodTrial": false
+    }
+  },
+  "records": [
     {
       "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
       "optionId": "02c753",
@@ -1261,7 +79,153 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "02c753"
+        }
+      ]
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "08a3e8",
+      "text": "十万年魂兽献祭，等级+3，获得十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "十万年魂兽献祭，等级+3…",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [
+        {
+          "type": "changeLevel",
+          "amount": 3
+        }
+      ],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "08a3e8"
+        }
+      ],
+      "ringLevelDelta": 3
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "141a18",
+      "text": "30000年魂环",
+      "wheelLabel": "30000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 30000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "141a18"
+        }
+      ]
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "322fa6",
+      "text": "9999年魂环",
+      "wheelLabel": "9999年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 9999,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "322fa6"
+        }
+      ]
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "34cb25",
+      "text": "22000年魂环",
+      "wheelLabel": "22000年魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 22000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "34cb25"
+        }
+      ]
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "6adcb6",
+      "text": "9000年魂环",
+      "wheelLabel": "9000年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 9000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "6adcb6"
+        }
+      ]
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "6dd50d",
+      "text": "8000年魂环",
+      "wheelLabel": "8000年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 8000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "6dd50d"
+        }
+      ]
     },
     {
       "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
@@ -1275,25 +239,79 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "6eda0f"
+        }
+      ]
     },
     {
       "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "08a3e8",
-      "text": "十万年魂兽献祭，等级+3，获得十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "十万年魂兽献祭，等级+3…",
-      "sourceWeight": 30,
+      "optionId": "6f84c5",
+      "text": "15000年魂环",
+      "wheelLabel": "15000年魂环",
+      "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
+      "ringYears": 15000,
+      "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
-      "ringLevelDelta": 3,
       "requirements": [],
-      "effects": [
+      "effects": [],
+      "sourceRefs": [
         {
-          "type": "changeLevel",
-          "amount": 3
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "6f84c5"
+        }
+      ]
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "73bedb",
+      "text": "18000年魂环",
+      "wheelLabel": "18000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 18000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "73bedb"
+        }
+      ]
+    },
+    {
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "788a70",
+      "text": "28000年魂环",
+      "wheelLabel": "28000年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 28000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "788a70"
         }
       ]
     },
@@ -1309,133 +327,15 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "322fa6",
-      "text": "9999年魂环",
-      "wheelLabel": "9999年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 9999,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "a90e5c",
-      "text": "12000年魂环（五环常规上限）",
-      "wheelLabel": "12000年魂环",
-      "sourceWeight": 70,
-      "sourceEnabled": true,
-      "ringYears": 12000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "e2a416",
-      "text": "7000年魂环",
-      "wheelLabel": "7000年魂环",
-      "sourceWeight": 20,
-      "sourceEnabled": true,
-      "ringYears": 7000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "6adcb6",
-      "text": "9000年魂环",
-      "wheelLabel": "9000年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 9000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "c827fc",
-      "text": "6000年魂环",
-      "wheelLabel": "6000年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 6000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "34cb25",
-      "text": "22000年魂环",
-      "wheelLabel": "22000年魂环",
-      "sourceWeight": 20,
-      "sourceEnabled": true,
-      "ringYears": 22000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "bc2001",
-      "text": "35000年魂环",
-      "wheelLabel": "35000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 35000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "a9b900",
-      "text": "11000年魂环",
-      "wheelLabel": "11000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 11000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "6dd50d",
-      "text": "8000年魂环",
-      "wheelLabel": "8000年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 8000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "8c968c"
+        }
+      ]
     },
     {
       "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
@@ -1449,383 +349,798 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "a4cc40"
+        }
+      ]
     },
     {
       "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "141a18",
-      "text": "30000年魂环",
-      "wheelLabel": "30000年魂环",
-      "sourceWeight": 5,
+      "optionId": "a90e5c",
+      "text": "12000年魂环（五环常规上限）",
+      "wheelLabel": "12000年魂环",
+      "sourceWeight": 70,
       "sourceEnabled": true,
-      "ringYears": 30000,
+      "ringYears": 12000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "a90e5c"
+        }
+      ]
     },
     {
       "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
-      "optionId": "73bedb",
-      "text": "18000年魂环",
-      "wheelLabel": "18000年魂环",
+      "optionId": "a9b900",
+      "text": "11000年魂环",
+      "wheelLabel": "11000年魂环",
       "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 18000,
+      "ringYears": 11000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "a9b900"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "078b9e",
-      "text": "42000年魂环",
-      "wheelLabel": "42000年魂环",
-      "sourceWeight": 20,
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "bc2001",
+      "text": "35000年魂环",
+      "wheelLabel": "35000年魂环",
+      "sourceWeight": 5,
       "sourceEnabled": true,
-      "ringYears": 42000,
+      "ringYears": 35000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "bc2001"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "8e4661",
-      "text": "50000年魂环",
-      "wheelLabel": "50000年魂环",
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "c827fc",
+      "text": "6000年魂环",
+      "wheelLabel": "6000年魂环",
       "sourceWeight": 10,
       "sourceEnabled": true,
-      "ringYears": 50000,
+      "ringYears": 6000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "c827fc"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "1a8b5a",
-      "text": "30000年魂环",
-      "wheelLabel": "30000年魂环",
-      "sourceWeight": 40,
+      "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+      "optionId": "e2a416",
+      "text": "7000年魂环",
+      "wheelLabel": "7000年魂环",
+      "sourceWeight": 20,
       "sourceEnabled": true,
-      "ringYears": 30000,
+      "ringYears": 7000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "1f67adc9-bbb4-4c54-aca9-17e1380feb54",
+          "optionId": "e2a416"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "6765cf",
-      "text": "十万年魂兽献祭，等级+2，获得十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "十万年魂兽献祭，等级+2…",
-      "sourceWeight": 35,
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "056ac9",
+      "text": "600年魂环",
+      "wheelLabel": "600年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 600,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "056ac9"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "0f93b2",
+      "text": "获得十万年魂兽献祭，等级+5，获得一块十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "获得十万年魂兽献祭，等级…",
+      "sourceWeight": 10,
       "sourceEnabled": true,
       "ringYears": 100000,
       "grantsSoulBone": true,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
-      "ringLevelDelta": 2,
       "requirements": [],
       "effects": [
         {
           "type": "changeLevel",
-          "amount": 2
+          "amount": 5
+        }
+      ],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "0f93b2"
+        }
+      ],
+      "ringLevelDelta": 5
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "1963eb",
+      "text": "1800年魂环",
+      "wheelLabel": "1800年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 1800,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "1963eb"
         }
       ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "a8d712",
-      "text": "17000年魂环",
-      "wheelLabel": "17000年魂环",
-      "sourceWeight": 60,
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "2ca763",
+      "text": "10年魂环",
+      "wheelLabel": "10年魂环",
+      "sourceWeight": 5,
       "sourceEnabled": true,
-      "ringYears": 17000,
+      "ringYears": 10,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "2ca763"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "141782",
-      "text": "38000年魂环",
-      "wheelLabel": "38000年魂环",
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "4371de",
+      "text": "300年魂环",
+      "wheelLabel": "300年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 300,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "4371de"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "466344",
+      "text": "120年魂环",
+      "wheelLabel": "120年魂环",
       "sourceWeight": 30,
       "sourceEnabled": true,
-      "ringYears": 38000,
+      "ringYears": 120,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "466344"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "4fc5c2",
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "508956",
+      "text": "500年魂环",
+      "wheelLabel": "500年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "508956"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "5f0927",
+      "text": "800年魂环",
+      "wheelLabel": "800年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 800,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "5f0927"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "841f9c",
+      "text": "900年魂环",
+      "wheelLabel": "900年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 900,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "841f9c"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "866181",
+      "text": "764年魂环",
+      "wheelLabel": "764年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 764,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "866181"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "9505f3",
+      "text": "1000年魂环",
+      "wheelLabel": "1000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 1000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "9505f3"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "ab316c",
+      "text": "1500年魂环",
+      "wheelLabel": "1500年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 1500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "ab316c"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "b2b94a",
+      "text": "400年魂环",
+      "wheelLabel": "400年魂环",
+      "sourceWeight": 45,
+      "sourceEnabled": true,
+      "ringYears": 400,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "b2b94a"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "b42434",
+      "text": "200年魂环",
+      "wheelLabel": "200年魂环",
+      "sourceWeight": 35,
+      "sourceEnabled": true,
+      "ringYears": 200,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "b42434"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "b86006",
+      "text": "700年魂环",
+      "wheelLabel": "700年魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 700,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "b86006"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "d57e06",
+      "text": "50年魂环",
+      "wheelLabel": "50年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 50,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "d57e06"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "d73dfa",
+      "text": "423年魂环（常规上限）",
+      "wheelLabel": "423年魂环",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 423,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "d73dfa"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "d7b189",
+      "text": "80年魂环",
+      "wheelLabel": "80年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 80,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "d7b189"
+        }
+      ]
+    },
+    {
+      "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+      "optionId": "fac3d0",
+      "text": "1200年魂环",
+      "wheelLabel": "1200年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 1200,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "24ab4336-6902-498e-a1fa-e65b616d7154",
+          "optionId": "fac3d0"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "018623",
+      "text": "3800年魂环",
+      "wheelLabel": "3800年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 3800,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "018623"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "25a07d",
+      "text": "1600年魂环",
+      "wheelLabel": "1600年魂环",
+      "sourceWeight": 80,
+      "sourceEnabled": true,
+      "ringYears": 1600,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "25a07d"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "2805d4",
+      "text": "999年魂环",
+      "wheelLabel": "999年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 999,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "2805d4"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "2c15bc",
       "text": "9000年魂环",
       "wheelLabel": "9000年魂环",
-      "sourceWeight": 25,
+      "sourceWeight": 6,
       "sourceEnabled": true,
       "ringYears": 9000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "2c15bc"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "46f5bb",
-      "text": "25000年魂环",
-      "wheelLabel": "25000年魂环",
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "4066bd",
+      "text": "1800年魂环",
+      "wheelLabel": "1800年魂环",
+      "sourceWeight": 90,
+      "sourceEnabled": true,
+      "ringYears": 1800,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "4066bd"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "40b90d",
+      "text": "1300年魂环",
+      "wheelLabel": "1300年魂环",
       "sourceWeight": 50,
       "sourceEnabled": true,
-      "ringYears": 25000,
+      "ringYears": 1300,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "40b90d"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "170f5c",
-      "text": "12000年魂环",
-      "wheelLabel": "12000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 12000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "386e9e",
-      "text": "18000年魂环",
-      "wheelLabel": "18000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 18000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "25d1fe",
-      "text": "14000年魂环",
-      "wheelLabel": "14000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 14000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "73b5d6",
-      "text": "10000年魂环",
-      "wheelLabel": "10000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 10000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "b3a591",
-      "text": "19000年魂环",
-      "wheelLabel": "19000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 19000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "60d318",
-      "text": "20000年魂环（6环常规上限）",
-      "wheelLabel": "20000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 20000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "b3c59f",
-      "text": "8000年魂环",
-      "wheelLabel": "8000年魂环",
-      "sourceWeight": 25,
-      "sourceEnabled": true,
-      "ringYears": 8000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "9282e7",
-      "text": "16000年魂环",
-      "wheelLabel": "16000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 16000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "1d2acc",
-      "text": "68000年魂环",
-      "wheelLabel": "68000年魂环",
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "43cb61",
+      "text": "10年魂环",
+      "wheelLabel": "10年魂环",
       "sourceWeight": 5,
       "sourceEnabled": true,
-      "ringYears": 68000,
+      "ringYears": 10,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
     },
     {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "47f1a6",
-      "text": "72000年魂环",
-      "wheelLabel": "72000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 72000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
-      "optionId": "4c82f4",
-      "text": "78000年魂环",
-      "wheelLabel": "78000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 78000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "30fa90",
-      "text": "50000年魂环（七环常规上限）",
-      "wheelLabel": "50000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 50000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "78503a",
-      "text": "60000年魂环",
-      "wheelLabel": "60000年魂环",
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "4935ed",
+      "text": "1000年魂环",
+      "wheelLabel": "1000年魂环",
       "sourceWeight": 50,
       "sourceEnabled": true,
-      "ringYears": 60000,
+      "ringYears": 1000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "4935ed"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "fbe813",
-      "text": "24000年魂环",
-      "wheelLabel": "24000年魂环",
-      "sourceWeight": 25,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "53d5bf",
+      "text": "1900年魂环",
+      "wheelLabel": "1900年魂环",
+      "sourceWeight": 80,
       "sourceEnabled": true,
-      "ringYears": 24000,
+      "ringYears": 1900,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "53d5bf"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "1d8bbe",
-      "text": "18000魂环",
-      "wheelLabel": "18000魂环",
-      "sourceWeight": 20,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "5d52d9",
+      "text": "2500年魂环",
+      "wheelLabel": "2500年魂环",
+      "sourceWeight": 50,
       "sourceEnabled": true,
-      "ringYears": 18000,
+      "ringYears": 2500,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "5d52d9"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "8faaa5",
-      "text": "99000年魂环",
-      "wheelLabel": "99000年魂环",
-      "sourceWeight": 10,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "5e1e2d",
+      "text": "900年魂环",
+      "wheelLabel": "900年魂环",
+      "sourceWeight": 30,
       "sourceEnabled": true,
-      "ringYears": 99000,
+      "ringYears": 900,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "5e1e2d"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "28a6c2",
-      "text": "获得十万年魂兽献祭，获得十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "获得十万年魂兽献祭，获得…",
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "693b89",
+      "text": "十万年魂环（十万年魂兽献祭，等级+3，获得十万年魂骨）",
+      "wheelLabel": "十万年魂环",
       "sourceWeight": 10,
       "sourceEnabled": true,
       "ringYears": 100000,
@@ -1833,249 +1148,351 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "77d97d",
-      "text": "获得十万年神赐魂环（有神考情况获得，否则重抽）",
-      "wheelLabel": "获得十万年神赐魂环",
-      "sourceWeight": 35,
-      "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": true,
-      "customHandler": "prepareSoulRing",
-      "requirements": [
+      "effects": [
         {
-          "type": "hasGodTrial"
+          "type": "changeLevel",
+          "amount": 3
         }
       ],
-      "effects": []
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "693b89"
+        }
+      ],
+      "ringLevelDelta": 3
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "3bf783",
-      "text": "10000魂环",
-      "wheelLabel": "10000魂环",
-      "sourceWeight": 10,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "7c8cc2",
+      "text": "7500年魂环",
+      "wheelLabel": "7500年魂环",
+      "sourceWeight": 7,
+      "sourceEnabled": true,
+      "ringYears": 7500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "7c8cc2"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "846d7c",
+      "text": "1700年魂环",
+      "wheelLabel": "1700年魂环",
+      "sourceWeight": 90,
+      "sourceEnabled": true,
+      "ringYears": 1700,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "846d7c"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "9ef528",
+      "text": "1万年魂环",
+      "wheelLabel": "1万年魂环",
+      "sourceWeight": 5,
       "sourceEnabled": true,
       "ringYears": 10000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "9ef528"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "a0418e",
-      "text": "75000年魂环",
-      "wheelLabel": "75000年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 75000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "096397",
-      "text": "单独狩猎拿下十万年魂环魂骨（进入魂骨抽取池）",
-      "wheelLabel": "单独狩猎拿下十万年魂环魂…",
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "ae5ff8",
+      "text": "9999年魂环",
+      "wheelLabel": "9999年魂环",
       "sourceWeight": 5,
       "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "4c8545",
-      "text": "12000年魂环",
-      "wheelLabel": "12000年魂环",
-      "sourceWeight": 15,
-      "sourceEnabled": true,
-      "ringYears": 12000,
+      "ringYears": 9999,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "ae5ff8"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "c793f3",
-      "text": "47000年魂环",
-      "wheelLabel": "47000年魂环",
-      "sourceWeight": 60,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "d9856c",
+      "text": "6000年魂环",
+      "wheelLabel": "6000年魂环",
+      "sourceWeight": 8,
       "sourceEnabled": true,
-      "ringYears": 47000,
+      "ringYears": 6000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "d9856c"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "f0266d",
-      "text": "36000年魂环",
-      "wheelLabel": "36000年魂环",
-      "sourceWeight": 60,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "dc10f6",
+      "text": "5500年魂环",
+      "wheelLabel": "5500年魂环",
+      "sourceWeight": 9,
       "sourceEnabled": true,
-      "ringYears": 36000,
+      "ringYears": 5500,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "dc10f6"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "35584c",
-      "text": "69000年魂环",
-      "wheelLabel": "69000年魂环",
-      "sourceWeight": 20,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "de6a2b",
+      "text": "1760年魂环（三环常规上限）",
+      "wheelLabel": "1760年魂环",
+      "sourceWeight": 100,
       "sourceEnabled": true,
-      "ringYears": 69000,
+      "ringYears": 1760,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "de6a2b"
+        }
+      ]
     },
     {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "6e79c5",
-      "text": "88000年魂环",
-      "wheelLabel": "88000年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 88000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
-      "optionId": "7d0bc5",
-      "text": "30000年魂环",
-      "wheelLabel": "30000年魂环",
-      "sourceWeight": 25,
-      "sourceEnabled": true,
-      "ringYears": 30000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "1f6dd3",
-      "text": "32000年魂环",
-      "wheelLabel": "32000年魂环",
-      "sourceWeight": 5,
-      "sourceEnabled": true,
-      "ringYears": 32000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "4baae8",
-      "text": "80000年魂环",
-      "wheelLabel": "80000年魂环",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 80000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "9de2d9",
-      "text": "88000年魂环",
-      "wheelLabel": "88000年魂环",
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "e424f0",
+      "text": "1200年魂环",
+      "wheelLabel": "1200年魂环",
       "sourceWeight": 50,
       "sourceEnabled": true,
-      "ringYears": 88000,
+      "ringYears": 1200,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "e424f0"
+        }
+      ]
     },
     {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "ead649",
-      "text": "74000年魂环",
-      "wheelLabel": "74000年魂环",
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "e6d79a",
+      "text": "3000年魂环",
+      "wheelLabel": "3000年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 3000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "e6d79a"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "e6fc15",
+      "text": "2000年魂环",
+      "wheelLabel": "2000年魂环",
       "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 74000,
+      "ringYears": 2000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "e6fc15"
+        }
+      ]
     },
     {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "aaa25f",
-      "text": "93000年魂环",
-      "wheelLabel": "93000年魂环",
-      "sourceWeight": 40,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "f06eb4",
+      "text": "800年魂环",
+      "wheelLabel": "800年魂环",
+      "sourceWeight": 20,
       "sourceEnabled": true,
-      "ringYears": 93000,
+      "ringYears": 800,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "f06eb4"
+        }
+      ]
     },
     {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "a4f8e6",
-      "text": "55000年魂环",
-      "wheelLabel": "55000年魂环",
-      "sourceWeight": 15,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "f0babd",
+      "text": "700年魂环",
+      "wheelLabel": "700年魂环",
+      "sourceWeight": 10,
       "sourceEnabled": true,
-      "ringYears": 55000,
+      "ringYears": 700,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "f0babd"
+        }
+      ]
     },
     {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "c2d5ac",
-      "text": "38000年魂环",
-      "wheelLabel": "38000年魂环",
-      "sourceWeight": 5,
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "f4adc0",
+      "text": "1400年魂环",
+      "wheelLabel": "1400年魂环",
+      "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 38000,
+      "ringYears": 1400,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "f4adc0"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "fbb0b9",
+      "text": "1500年魂环",
+      "wheelLabel": "1500年魂环",
+      "sourceWeight": 70,
+      "sourceEnabled": true,
+      "ringYears": 1500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "fbb0b9"
+        }
+      ]
+    },
+    {
+      "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+      "optionId": "fd6002",
+      "text": "1100年魂环",
+      "wheelLabel": "1100年魂环",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 1100,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "3ba869ca-d2e9-4513-8fcd-6316573c132e",
+          "optionId": "fd6002"
+        }
+      ]
     },
     {
       "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
@@ -2089,35 +1506,15 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "b8247f",
-      "text": "单独狩猎十万年魂兽，获得十万年魂环魂骨（进入魂骨抽取池）",
-      "wheelLabel": "单独狩猎十万年魂兽，获得…",
-      "sourceWeight": 35,
-      "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
-      "optionId": "b1600c",
-      "text": "99999年魂环（八环常规吸收上限）",
-      "wheelLabel": "99999年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 99999,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "17f1a7"
+        }
+      ]
     },
     {
       "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
@@ -2131,7 +1528,15 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "19a023"
+        }
+      ]
     },
     {
       "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
@@ -2149,7 +1554,37 @@
           "type": "hasGodTrial"
         }
       ],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "1cc7fa"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "1f6dd3",
+      "text": "32000年魂环",
+      "wheelLabel": "32000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 32000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "1f6dd3"
+        }
+      ]
     },
     {
       "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
@@ -2163,7 +1598,214 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "35023b"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "4baae8",
+      "text": "80000年魂环",
+      "wheelLabel": "80000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 80000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "4baae8"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "6df424",
+      "text": "单独狩猎二十万年魂兽，获得十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎二十万年魂兽，获得十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 45,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "9de2d9",
+      "text": "88000年魂环",
+      "wheelLabel": "88000年魂环",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 88000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "9de2d9"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "a4f8e6",
+      "text": "55000年魂环",
+      "wheelLabel": "55000年魂环",
+      "sourceWeight": 15,
+      "sourceEnabled": true,
+      "ringYears": 55000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "a4f8e6"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "aaa25f",
+      "text": "93000年魂环",
+      "wheelLabel": "93000年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 93000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "aaa25f"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "b1600c",
+      "text": "99999年魂环（八环常规吸收上限）",
+      "wheelLabel": "99999年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 99999,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "b1600c"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "b8247f",
+      "text": "单独狩猎十万年魂兽，获得十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎十万年魂兽，获得…",
+      "sourceWeight": 35,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "b8247f"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "c2d5ac",
+      "text": "38000年魂环",
+      "wheelLabel": "38000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 38000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "c2d5ac"
+        }
+      ]
+    },
+    {
+      "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+      "optionId": "ead649",
+      "text": "74000年魂环",
+      "wheelLabel": "74000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 74000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "ead649"
+        }
+      ]
     },
     {
       "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
@@ -2177,7 +1819,59 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "40c8dd07-5521-4e49-b6ff-ccb256f224a2",
+          "optionId": "f9ced7"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "005bed",
+      "text": "单独狩猎拿下十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下十万年魂环魂…",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "005bed"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "1d8087",
+      "text": "88000年魂环",
+      "wheelLabel": "88000年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 88000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "1d8087"
+        }
+      ]
     },
     {
       "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
@@ -2195,119 +1889,15 @@
           "type": "hasGodTrial"
         }
       ],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "ff94b9",
-      "text": "50000年魂环",
-      "wheelLabel": "50000年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 50000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "bc018d",
-      "text": "70000年魂环",
-      "wheelLabel": "70000年魂环",
-      "sourceWeight": 25,
-      "sourceEnabled": true,
-      "ringYears": 70000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "a7af84",
-      "text": "献祭获得十万年魂环，获得十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "献祭获得十万年魂环，获得…",
-      "sourceWeight": 25,
-      "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "005bed",
-      "text": "单独狩猎拿下十万年魂环魂骨（进入魂骨抽取池）",
-      "wheelLabel": "单独狩猎拿下十万年魂环魂…",
-      "sourceWeight": 60,
-      "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "bd6537",
-      "text": "99999年魂环",
-      "wheelLabel": "99999年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 99999,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "1d8087",
-      "text": "88000年魂环",
-      "wheelLabel": "88000年魂环",
-      "sourceWeight": 30,
-      "sourceEnabled": true,
-      "ringYears": 88000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "b0c048",
-      "text": "45000年魂环",
-      "wheelLabel": "45000年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 45000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
-      "optionId": "8e366c",
-      "text": "64000年魂环",
-      "wheelLabel": "64000年魂环",
-      "sourceWeight": 15,
-      "sourceEnabled": true,
-      "ringYears": 64000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "38557e"
+        }
+      ]
     },
     {
       "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
@@ -2321,7 +1911,148 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "7db777"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "8e366c",
+      "text": "64000年魂环",
+      "wheelLabel": "64000年魂环",
+      "sourceWeight": 15,
+      "sourceEnabled": true,
+      "ringYears": 64000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "8e366c"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "94604a",
+      "text": "单独狩猎拿下三十万年凶兽魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下三十万年凶兽魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 300000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "a7af84",
+      "text": "献祭获得十万年魂环，获得十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "献祭获得十万年魂环，获得…",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "a7af84"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "b0c048",
+      "text": "45000年魂环",
+      "wheelLabel": "45000年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 45000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "b0c048"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "bc018d",
+      "text": "70000年魂环",
+      "wheelLabel": "70000年魂环",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 70000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "bc018d"
+        }
+      ]
+    },
+    {
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "bd6537",
+      "text": "99999年魂环",
+      "wheelLabel": "99999年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 99999,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "bd6537"
+        }
+      ]
     },
     {
       "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
@@ -2335,138 +2066,511 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "ec449a"
+        }
+      ]
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "86ba36",
-      "text": "单独狩猎拿下十万年魂环魂骨（进入魂骨抽取池）",
-      "wheelLabel": "单独狩猎拿下十万年魂环魂…",
-      "sourceWeight": 50,
+      "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+      "optionId": "ff94b9",
+      "text": "50000年魂环",
+      "wheelLabel": "50000年魂环",
+      "sourceWeight": 10,
       "sourceEnabled": true,
-      "ringYears": 100000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "ccf9ef",
-      "text": "单独狩猎拿下二十万年魂环魂骨（进入魂骨抽取池）",
-      "wheelLabel": "单独狩猎拿下二十万年魂环…",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 200000,
-      "grantsSoulBone": true,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "dd75d0",
-      "text": "59000年魂环",
-      "wheelLabel": "59000年魂环",
-      "sourceWeight": 40,
-      "sourceEnabled": true,
-      "ringYears": 59000,
+      "ringYears": 50000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "ff94b9"
+        }
+      ]
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "c3ca10",
-      "text": "66000年魂环",
-      "wheelLabel": "66000年魂环",
-      "sourceWeight": 50,
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "0d85d4",
+      "text": "12000年魂环",
+      "wheelLabel": "12000年魂环",
+      "sourceWeight": 5,
       "sourceEnabled": true,
-      "ringYears": 66000,
+      "ringYears": 12000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "0d85d4"
+        }
+      ]
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "49c228",
-      "text": "74000年魂环",
-      "wheelLabel": "74000年魂环",
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "14199c",
+      "text": "7000年魂环",
+      "wheelLabel": "7000年魂环",
       "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 74000,
+      "ringYears": 7000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "14199c"
+        }
+      ]
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "c38cef",
-      "text": "45000年魂环",
-      "wheelLabel": "45000年魂环",
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "1a7598",
+      "text": "5000年魂环（四环常规上限）",
+      "wheelLabel": "5000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 5000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "1a7598"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "1d06b5",
+      "text": "900年魂环",
+      "wheelLabel": "900年魂环",
+      "sourceWeight": 15,
+      "sourceEnabled": true,
+      "ringYears": 900,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "1d06b5"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "1d4429",
+      "text": "3000年魂环",
+      "wheelLabel": "3000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 3000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "1d4429"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "23ca51",
+      "text": "9999年魂环",
+      "wheelLabel": "9999年魂环",
       "sourceWeight": 20,
       "sourceEnabled": true,
-      "ringYears": 45000,
+      "ringYears": 9999,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "23ca51"
+        }
+      ]
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "96796e",
-      "text": "80000年魂环",
-      "wheelLabel": "80000年魂环",
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "68d3df",
+      "text": "6500年魂环",
+      "wheelLabel": "6500年魂环",
       "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 80000,
+      "ringYears": 6500,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "68d3df"
+        }
+      ]
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "726838",
-      "text": "献祭获得十万年魂骨，获得十万年魂骨（进入魂骨抽取池）",
-      "wheelLabel": "献祭获得十万年魂骨，获得…",
-      "sourceWeight": 45,
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "7143b4",
+      "text": "10年魂环",
+      "wheelLabel": "10年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 10,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "83f75c",
+      "text": "10000年魂环",
+      "wheelLabel": "10000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 10000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "83f75c"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "96438d",
+      "text": "8000年魂环",
+      "wheelLabel": "8000年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 8000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "96438d"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "9c5123",
+      "text": "7500年魂环",
+      "wheelLabel": "7500年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 7500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "9c5123"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "b487bf",
+      "text": "十万年魂兽献祭，等级+2，获得十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "十万年魂兽献祭，等级+2…",
+      "sourceWeight": 10,
       "sourceEnabled": true,
       "ringYears": 100000,
       "grantsSoulBone": true,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [
+        {
+          "type": "changeLevel",
+          "amount": 2
+        }
+      ],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "b487bf"
+        }
+      ],
+      "ringLevelDelta": 2
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "e3c8ee",
-      "text": "88000年魂环",
-      "wheelLabel": "88000年魂环",
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "b6d647",
+      "text": "2000年魂环",
+      "wheelLabel": "2000年魂环",
       "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 88000,
+      "ringYears": 2000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "b6d647"
+        }
+      ]
     },
     {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "337612",
-      "text": "50000年魂环",
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "bbc9fc",
+      "text": "9000年魂环",
+      "wheelLabel": "9000年魂环",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 9000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "bbc9fc"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "c0abe3",
+      "text": "15000年魂环",
+      "wheelLabel": "15000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 15000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "c0abe3"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "c61652",
+      "text": "4000年魂环",
+      "wheelLabel": "4000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 4000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "c61652"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "f9b7ba",
+      "text": "1000年魂环",
+      "wheelLabel": "1000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 1000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "f9b7ba"
+        }
+      ]
+    },
+    {
+      "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+      "optionId": "fe7e43",
+      "text": "18000年魂环",
+      "wheelLabel": "18000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 18000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "6532a80b-02c2-4d45-a18c-f297c15a54db",
+          "optionId": "fe7e43"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "096397",
+      "text": "单独狩猎拿下十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下十万年魂环魂…",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "096397"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "1d8bbe",
+      "text": "18000魂环",
+      "wheelLabel": "18000魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 18000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "1d8bbe"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "28a6c2",
+      "text": "获得十万年魂兽献祭，获得十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "获得十万年魂兽献祭，获得…",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "28a6c2"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "30fa90",
+      "text": "50000年魂环（七环常规上限）",
       "wheelLabel": "50000年魂环",
       "sourceWeight": 60,
       "sourceEnabled": true,
@@ -2475,7 +2579,820 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "30fa90"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "35584c",
+      "text": "69000年魂环",
+      "wheelLabel": "69000年魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 69000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "35584c"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "3bf783",
+      "text": "10000魂环",
+      "wheelLabel": "10000魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 10000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "3bf783"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "4c8545",
+      "text": "12000年魂环",
+      "wheelLabel": "12000年魂环",
+      "sourceWeight": 15,
+      "sourceEnabled": true,
+      "ringYears": 12000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "4c8545"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "505d78",
+      "text": "10年魂环",
+      "wheelLabel": "10年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 10,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "6e79c5",
+      "text": "88000年魂环",
+      "wheelLabel": "88000年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 88000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "6e79c5"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "77d97d",
+      "text": "获得十万年神赐魂环（有神考情况获得，否则重抽）",
+      "wheelLabel": "获得十万年神赐魂环",
+      "sourceWeight": 35,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": true,
+      "customHandler": "prepareSoulRing",
+      "requirements": [
+        {
+          "type": "hasGodTrial"
+        }
+      ],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "77d97d"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "78503a",
+      "text": "60000年魂环",
+      "wheelLabel": "60000年魂环",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 60000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "78503a"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "7d0bc5",
+      "text": "30000年魂环",
+      "wheelLabel": "30000年魂环",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 30000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "7d0bc5"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "8faaa5",
+      "text": "99000年魂环",
+      "wheelLabel": "99000年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 99000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "8faaa5"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "a0418e",
+      "text": "75000年魂环",
+      "wheelLabel": "75000年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 75000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "a0418e"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "c793f3",
+      "text": "47000年魂环",
+      "wheelLabel": "47000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 47000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "c793f3"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "f0266d",
+      "text": "36000年魂环",
+      "wheelLabel": "36000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 36000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "f0266d"
+        }
+      ]
+    },
+    {
+      "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+      "optionId": "fbe813",
+      "text": "24000年魂环",
+      "wheelLabel": "24000年魂环",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 24000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "89532610-bd97-4f6d-9ceb-de9a8e67936e",
+          "optionId": "fbe813"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "0a6083",
+      "text": "700年魂环",
+      "wheelLabel": "700年魂环",
+      "sourceWeight": 45,
+      "sourceEnabled": true,
+      "ringYears": 700,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "0a6083"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "1a6bbe",
+      "text": "4000年魂环",
+      "wheelLabel": "4000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 4000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "1a6bbe"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "1d5a0e",
+      "text": "1500年魂环",
+      "wheelLabel": "1500年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 1500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "1d5a0e"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "2314cb",
+      "text": "2000年魂环",
+      "wheelLabel": "2000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 2000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "2314cb"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "35e8db",
+      "text": "900年魂环",
+      "wheelLabel": "900年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 900,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "35e8db"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "562d0b",
+      "text": "4400年魂环",
+      "wheelLabel": "4400年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 4400,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "562d0b"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "5c31c4",
+      "text": "5500年魂环",
+      "wheelLabel": "5500年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 5500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "5c31c4"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "674747",
+      "text": "1000年魂环",
+      "wheelLabel": "1000年魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 1000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "674747"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "689656",
+      "text": "423年魂环",
+      "wheelLabel": "423年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 423,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "689656"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "802eda",
+      "text": "1760年魂环",
+      "wheelLabel": "1760年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 1760,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "802eda"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "8e5d1e",
+      "text": "800年魂环",
+      "wheelLabel": "800年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 800,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "8e5d1e"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "a9170f",
+      "text": "764年魂环（二环常规上限）",
+      "wheelLabel": "764年魂环",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 764,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "a9170f"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "aecd6e",
+      "text": "4800年魂环",
+      "wheelLabel": "4800年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 4800,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "aecd6e"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "bc7744",
+      "text": "10年魂环",
+      "wheelLabel": "10年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 10,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "d1123c",
+      "text": "3000年魂环",
+      "wheelLabel": "3000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 3000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "d1123c"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "da3ac2",
+      "text": "500年魂环",
+      "wheelLabel": "500年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "da3ac2"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "ddde38",
+      "text": "2500年魂环",
+      "wheelLabel": "2500年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 2500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "ddde38"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "dfd6bb",
+      "text": "200年魂环",
+      "wheelLabel": "200年魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 200,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "dfd6bb"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "e0376e",
+      "text": "4600年魂环",
+      "wheelLabel": "4600年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 4600,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "e0376e"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "e13ac8",
+      "text": "十万年魂兽献祭，等级+4，获得十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "十万年魂兽献祭，等级+4…",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [
+        {
+          "type": "changeLevel",
+          "amount": 4
+        }
+      ],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "e13ac8"
+        }
+      ],
+      "ringLevelDelta": 4
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "ed6516",
+      "text": "100年魂环",
+      "wheelLabel": "100年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 100,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "ed6516"
+        }
+      ]
+    },
+    {
+      "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+      "optionId": "ef1766",
+      "text": "3500年魂环",
+      "wheelLabel": "3500年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 3500,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "986c34f4-0e36-49c4-b3cd-3e81ed3b1480",
+          "optionId": "ef1766"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "178919",
+      "text": "单独狩猎拿下四十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下四十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 400000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
     },
     {
       "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
@@ -2489,49 +3406,37 @@
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "23bd8b"
+        }
+      ]
     },
     {
       "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "4b576d",
-      "text": "93000年魂环",
-      "wheelLabel": "93000年魂环",
-      "sourceWeight": 80,
+      "optionId": "337612",
+      "text": "50000年魂环",
+      "wheelLabel": "50000年魂环",
+      "sourceWeight": 60,
       "sourceEnabled": true,
-      "ringYears": 93000,
+      "ringYears": 50000,
       "grantsSoulBone": false,
       "requiresGodTrial": false,
       "customHandler": "prepareSoulRing",
       "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "f36451",
-      "text": "99999年魂环",
-      "wheelLabel": "99999年魂环",
-      "sourceWeight": 70,
-      "sourceEnabled": true,
-      "ringYears": 99999,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
-    },
-    {
-      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
-      "optionId": "a00ac0",
-      "text": "39000年魂环",
-      "wheelLabel": "39000年魂环",
-      "sourceWeight": 10,
-      "sourceEnabled": true,
-      "ringYears": 39000,
-      "grantsSoulBone": false,
-      "requiresGodTrial": false,
-      "customHandler": "prepareSoulRing",
-      "requirements": [],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "337612"
+        }
+      ]
     },
     {
       "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
@@ -2549,7 +3454,841 @@
           "type": "hasGodTrial"
         }
       ],
-      "effects": []
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "420c12"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "49c228",
+      "text": "74000年魂环",
+      "wheelLabel": "74000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 74000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "49c228"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "4b576d",
+      "text": "93000年魂环",
+      "wheelLabel": "93000年魂环",
+      "sourceWeight": 80,
+      "sourceEnabled": true,
+      "ringYears": 93000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "4b576d"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "726838",
+      "text": "献祭获得十万年魂骨，获得十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "献祭获得十万年魂骨，获得…",
+      "sourceWeight": 45,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "726838"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "79f82e",
+      "text": "单独狩猎拿下三十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下三十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 35,
+      "sourceEnabled": true,
+      "ringYears": 300000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "86ba36",
+      "text": "单独狩猎拿下十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下十万年魂环魂…",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "86ba36"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "87cf61",
+      "text": "单独狩猎拿下七十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下七十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 15,
+      "sourceEnabled": true,
+      "ringYears": 700000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "8d26d1",
+      "text": "单独狩猎拿下八十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下八十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 800000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "92ef06",
+      "text": "单独狩猎拿下五十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下五十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 500000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "96796e",
+      "text": "80000年魂环",
+      "wheelLabel": "80000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 80000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "96796e"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "9681ee",
+      "text": "单独狩猎拿下六十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下六十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 600000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "a00ac0",
+      "text": "39000年魂环",
+      "wheelLabel": "39000年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 39000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "a00ac0"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "a7228f",
+      "text": "单独狩猎拿下九十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下九十万年魂环魂骨（进入魂骨抽取池）",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 900000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-module-fallback",
+          "path": "apk-analysis/E4FB340E/derived/pretty/human-foundation-CduvzjjO.js",
+          "map": "Bd",
+          "scopedLookup": "fe.get(poolId:optionId) ?? Bd[optionId]",
+          "handler": "prepareSoulRing"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "c38cef",
+      "text": "45000年魂环",
+      "wheelLabel": "45000年魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 45000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "c38cef"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "c3ca10",
+      "text": "66000年魂环",
+      "wheelLabel": "66000年魂环",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 66000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "c3ca10"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "ccf9ef",
+      "text": "单独狩猎拿下二十万年魂环魂骨（进入魂骨抽取池）",
+      "wheelLabel": "单独狩猎拿下二十万年魂环…",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 200000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "ccf9ef"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "dd75d0",
+      "text": "59000年魂环",
+      "wheelLabel": "59000年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 59000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "dd75d0"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "e3c8ee",
+      "text": "88000年魂环",
+      "wheelLabel": "88000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 88000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "e3c8ee"
+        }
+      ]
+    },
+    {
+      "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+      "optionId": "f36451",
+      "text": "99999年魂环",
+      "wheelLabel": "99999年魂环",
+      "sourceWeight": 70,
+      "sourceEnabled": true,
+      "ringYears": 99999,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "a99c09fe-a29c-4a7e-bb75-51f405bca3a0",
+          "optionId": "f36451"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "078b9e",
+      "text": "42000年魂环",
+      "wheelLabel": "42000年魂环",
+      "sourceWeight": 20,
+      "sourceEnabled": true,
+      "ringYears": 42000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "078b9e"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "141782",
+      "text": "38000年魂环",
+      "wheelLabel": "38000年魂环",
+      "sourceWeight": 30,
+      "sourceEnabled": true,
+      "ringYears": 38000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "141782"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "170f5c",
+      "text": "12000年魂环",
+      "wheelLabel": "12000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 12000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "170f5c"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "1a8b5a",
+      "text": "30000年魂环",
+      "wheelLabel": "30000年魂环",
+      "sourceWeight": 40,
+      "sourceEnabled": true,
+      "ringYears": 30000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "1a8b5a"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "1d2acc",
+      "text": "68000年魂环",
+      "wheelLabel": "68000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 68000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "1d2acc"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "25d1fe",
+      "text": "14000年魂环",
+      "wheelLabel": "14000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 14000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "25d1fe"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "386e9e",
+      "text": "18000年魂环",
+      "wheelLabel": "18000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 18000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "386e9e"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "46f5bb",
+      "text": "25000年魂环",
+      "wheelLabel": "25000年魂环",
+      "sourceWeight": 50,
+      "sourceEnabled": true,
+      "ringYears": 25000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "46f5bb"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "47f1a6",
+      "text": "72000年魂环",
+      "wheelLabel": "72000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 72000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "47f1a6"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "4c82f4",
+      "text": "78000年魂环",
+      "wheelLabel": "78000年魂环",
+      "sourceWeight": 5,
+      "sourceEnabled": true,
+      "ringYears": 78000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "4c82f4"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "4fc5c2",
+      "text": "9000年魂环",
+      "wheelLabel": "9000年魂环",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 9000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "4fc5c2"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "60d318",
+      "text": "20000年魂环（6环常规上限）",
+      "wheelLabel": "20000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 20000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "60d318"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "6765cf",
+      "text": "十万年魂兽献祭，等级+2，获得十万年魂骨（进入魂骨抽取池）",
+      "wheelLabel": "十万年魂兽献祭，等级+2…",
+      "sourceWeight": 35,
+      "sourceEnabled": true,
+      "ringYears": 100000,
+      "grantsSoulBone": true,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [
+        {
+          "type": "changeLevel",
+          "amount": 2
+        }
+      ],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "6765cf"
+        }
+      ],
+      "ringLevelDelta": 2
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "73b5d6",
+      "text": "10000年魂环",
+      "wheelLabel": "10000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 10000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "73b5d6"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "8e4661",
+      "text": "50000年魂环",
+      "wheelLabel": "50000年魂环",
+      "sourceWeight": 10,
+      "sourceEnabled": true,
+      "ringYears": 50000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "8e4661"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "9282e7",
+      "text": "16000年魂环",
+      "wheelLabel": "16000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 16000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "9282e7"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "a8d712",
+      "text": "17000年魂环",
+      "wheelLabel": "17000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 17000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "a8d712"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "b3a591",
+      "text": "19000年魂环",
+      "wheelLabel": "19000年魂环",
+      "sourceWeight": 60,
+      "sourceEnabled": true,
+      "ringYears": 19000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "b3a591"
+        }
+      ]
+    },
+    {
+      "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+      "optionId": "b3c59f",
+      "text": "8000年魂环",
+      "wheelLabel": "8000年魂环",
+      "sourceWeight": 25,
+      "sourceEnabled": true,
+      "ringYears": 8000,
+      "grantsSoulBone": false,
+      "requiresGodTrial": false,
+      "customHandler": "prepareSoulRing",
+      "requirements": [],
+      "effects": [],
+      "sourceRefs": [
+        {
+          "kind": "exact-dataset-record",
+          "path": "apk-analysis/E4FB340E/derived/static-data/human-foundation-CduvzjjO/00280930-Dd.json",
+          "poolId": "d9df4080-7534-4d55-b9e7-0f4b0fdc5ca8",
+          "optionId": "b3c59f"
+        }
+      ]
     }
   ]
 }

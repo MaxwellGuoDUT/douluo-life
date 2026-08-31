@@ -2,8 +2,9 @@ import { snapshotV05Character } from "./v05-life-presentation.js";
 
 export const V05_SAVE_KEY = "douluo-life:v05:checkpoint";
 export const V05_SAVE_SCHEMA = "douluo-life-v05-save";
-export const V05_SAVE_SCHEMA_VERSION = 2;
+export const V05_SAVE_SCHEMA_VERSION = 3;
 export const V05_SAVE_LEGACY_SCHEMA_VERSION = 1;
+export const V05_SAVE_DAY22_SCHEMA_VERSION = 2;
 
 function typedError(code, message, details = {}) {
     const error = new Error(message);
@@ -47,6 +48,8 @@ export function createV05ContentIdentity({
     packId,
     appVersion,
     officialBeastElementEvidence = null,
+    humanSoulRingEvidence = null,
+    followUpPrepareEvidence = null,
     supportedDestinies = null
 } = {}) {
     const pack = routeGraph?.packs?.find(candidate => candidate?.id === packId) ?? null;
@@ -60,6 +63,8 @@ export function createV05ContentIdentity({
             packageVersion: routeGraph?.packageVersion ?? null,
             pack,
             officialBeastElementEvidence,
+            humanSoulRingEvidence,
+            followUpPrepareEvidence,
             supportedDestinies
         })
     });
@@ -113,7 +118,7 @@ function validateObject(envelope) {
             schema: envelope.schema ?? null
         });
     }
-    if (![V05_SAVE_LEGACY_SCHEMA_VERSION, V05_SAVE_SCHEMA_VERSION].includes(envelope.schemaVersion)) {
+    if (![V05_SAVE_LEGACY_SCHEMA_VERSION, V05_SAVE_DAY22_SCHEMA_VERSION, V05_SAVE_SCHEMA_VERSION].includes(envelope.schemaVersion)) {
         throw typedError("V05_SAVE_VERSION_UNSUPPORTED", "本地存档版本不受支持。", {
             schemaVersion: envelope.schemaVersion ?? null
         });
@@ -126,7 +131,7 @@ function validateObject(envelope) {
         || typeof envelope.characterDigest !== "string") {
         throw typedError("V05_SAVE_SCHEMA_INVALID", "本地存档缺少关键字段或字段类型错误。");
     }
-    if (envelope.schemaVersion === V05_SAVE_SCHEMA_VERSION
+    if ([V05_SAVE_DAY22_SCHEMA_VERSION, V05_SAVE_SCHEMA_VERSION].includes(envelope.schemaVersion)
         && (typeof envelope.destinyId !== "string" || envelope.destinyId.length === 0)) {
         throw typedError("V05_SAVE_SCHEMA_INVALID", "Day22 存档缺少 destinyId。");
     }
@@ -168,7 +173,7 @@ function replayMismatch(envelope, replayed, field) {
 }
 
 function deriveDestinyId(envelope, destinyManifest) {
-    if (envelope.schemaVersion === V05_SAVE_SCHEMA_VERSION) return envelope.destinyId;
+    if (envelope.schemaVersion >= V05_SAVE_DAY22_SCHEMA_VERSION) return envelope.destinyId;
     const match = destinyManifest?.destinies?.find(destiny => destiny.seed === envelope.seed);
     return match?.id ?? "custom";
 }
@@ -192,7 +197,7 @@ export function restoreV05Checkpoint({
 } = {}) {
     const envelope = parseV05Save(raw);
     if (!envelope) return null;
-    const migrating = envelope.schemaVersion === V05_SAVE_LEGACY_SCHEMA_VERSION;
+    const migrating = envelope.schemaVersion !== V05_SAVE_SCHEMA_VERSION;
     if (!migrating) {
         assertContentIdentity(envelope.packageIdentity, contentIdentity);
         assertDestinyIdentity(envelope, destinyManifest);
@@ -212,7 +217,7 @@ export function restoreV05Checkpoint({
             if (migrating) {
                 throw typedError(
                     "V05_SAVE_BOUNDARY_SEMANTICS_CHANGED",
-                    "Day21 boundary 已被 Day22 runtime 闭合；原存档已保留，且不会自动推进。",
+                    "旧 boundary 已被 Day23 runtime 闭合；原存档已保留，且不会自动推进。",
                     {
                         seed: envelope.seed,
                         previousBoundaryCode: envelope.boundaryCode,
@@ -226,7 +231,7 @@ export function restoreV05Checkpoint({
         if (migrating && boundary.error?.code !== envelope.boundaryCode) {
             throw typedError(
                 "V05_SAVE_BOUNDARY_SEMANTICS_CHANGED",
-                "Day21 boundary 在 Day22 runtime 中已改变；原存档已保留。",
+                "旧 boundary 在 Day23 runtime 中已改变；原存档已保留。",
                 {
                     seed: envelope.seed,
                     previousBoundaryCode: envelope.boundaryCode,
@@ -242,7 +247,7 @@ export function restoreV05Checkpoint({
         savedAt: envelope.savedAt
     });
     for (const field of [
-        "appVersion", "seed", "phase", "committedCount", "randomCursor", "age", "level",
+        ...(migrating ? [] : ["appVersion"]), "seed", "phase", "committedCount", "randomCursor", "age", "level",
         "currentFlowId", "routeStatus", "historyCount", "routeHistoryCount",
         "presentationCount", "transcriptDigest", "characterDigest", "boundaryCode"
     ]) {
@@ -297,6 +302,7 @@ export default Object.freeze({
     V05_SAVE_SCHEMA,
     V05_SAVE_SCHEMA_VERSION,
     V05_SAVE_LEGACY_SCHEMA_VERSION,
+    V05_SAVE_DAY22_SCHEMA_VERSION,
     stableV05Stringify,
     digestV05Value,
     createV05ContentIdentity,

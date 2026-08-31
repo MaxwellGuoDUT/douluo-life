@@ -86,6 +86,7 @@ test("production loader keeps the heavy APK route graph lazy but can validate it
             routeGraph: "data/apk-canonical/catalogs/route-graph.json",
             formalSpecialResultEvidence: "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
             humanSoulRingEvidence: "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+            followUpPrepareEvidence: "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
             humanSoulRingSpeciesEvidence: "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
             combatPowerEvidence: "data/apk-canonical/catalogs/combat-power-runtime-evidence.json"
         },
@@ -105,6 +106,10 @@ test("production loader keeps the heavy APK route graph lazy but can validate it
         },
         "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json": {
             schemaVersion: "apk-human-soul-ring-evidence/1.0",
+            records: []
+        },
+        "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json": {
+            schemaVersion: "apk-followup-prepare-evidence/1.0",
             records: []
         },
         "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json": {
@@ -133,6 +138,10 @@ test("production loader keeps the heavy APK route graph lazy but can validate it
     assert.equal(
         loaded.humanSoulRingEvidence.schemaVersion,
         "apk-human-soul-ring-evidence/1.0"
+    );
+    assert.equal(
+        loaded.followUpPrepareEvidence.schemaVersion,
+        "apk-followup-prepare-evidence/1.0"
     );
     assert.equal(
         loaded.humanSoulRingSpeciesEvidence.schemaVersion,
@@ -240,6 +249,7 @@ test("V0.5 RC entry loads only its listed douluo1 shard and runtime evidence", a
             policy: "data/v05-rc/package-policy.json",
             formalSpecialResultEvidence: "formal.json",
             humanSoulRingEvidence: "rings.json",
+            followUpPrepareEvidence: "followup.json",
             humanSoulRingSpeciesEvidence: "species.json",
             combatPowerEvidence: "combat.json"
         },
@@ -261,6 +271,7 @@ test("V0.5 RC entry loads only its listed douluo1 shard and runtime evidence", a
         },
         "formal.json": { schemaVersion: "apk-formal-special-result-evidence/1.0" },
         "rings.json": { schemaVersion: "apk-human-soul-ring-evidence/1.0" },
+        "followup.json": { schemaVersion: "apk-followup-prepare-evidence/1.0" },
         "species.json": { schemaVersion: "apk-human-soul-ring-species-evidence/1.0" },
         "combat.json": { schemaVersion: "apk-combat-power-evidence/1.0" }
     };
@@ -283,4 +294,5 @@ test("V0.5 RC entry loads only its listed douluo1 shard and runtime evidence", a
     assert.equal(requested.includes("data/apk-canonical/catalogs/route-graph.json"), false);
     assert.equal(requested.some(path => path.includes("douluo2")), false);
     assert.equal(requested.some(path => path.startsWith("data/v2/")), false);
+    assert.equal(loaded.followUpPrepareEvidence.schemaVersion, "apk-followup-prepare-evidence/1.0");
 });

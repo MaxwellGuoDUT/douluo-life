@@ -11,6 +11,11 @@ import {
     createV05ContentIndex,
     createV05DemoRunner
 } from "../js/v05-demo.js";
+import {
+    commitApkRouteOption,
+    createApkRouteDynamicHandlers,
+    drawApkRouteStep
+} from "../js/apk-route-runtime.js";
 
 const CATALOG_ROOT = new URL("../data/apk-canonical/catalogs/", import.meta.url);
 
@@ -18,7 +23,7 @@ function readJson(name) {
     return JSON.parse(fs.readFileSync(new URL(name, CATALOG_ROOT), "utf8"));
 }
 
-function materializeDouluo1() {
+function materializeDouluo1({ includeFollowUpEvidence = true } = {}) {
     const shard = readJson("route-graph.douluo1.json");
     const routeGraph = {
         schemaVersion: "apk-route-graph/1.0",
@@ -35,6 +40,9 @@ function materializeDouluo1() {
             "formal-special-result-runtime-evidence.json"
         ),
         humanSoulRingEvidence: readJson("human-soul-ring-runtime-evidence.json"),
+        ...(includeFollowUpEvidence
+            ? { followUpPrepareEvidence: readJson("followup-prepare-runtime-evidence.json") }
+            : {}),
         humanSoulRingSpeciesEvidence: readJson(
             "human-soul-ring-species-runtime-evidence.json"
         ),
@@ -233,18 +241,23 @@ test("continuous age advance and single-step advance produce the same age-25 ses
     assert.deepEqual(continuous.presentationHistory, single.presentationHistory);
 });
 
-test("custom seed commits official-beast.element and stops at the next typed boundary", () => {
+test("custom seed re-locks after requirement-first follow-up evaluation", () => {
     const runner = createRunner("v05-custom-1");
     let result;
     while (runner.phase === "ready") result = runner.step();
 
-    assert.equal(result.status, "boundary");
-    assert.equal(runner.session.character.age, 24);
-    assert.equal(runner.session.random.cursor, 130);
-    assert.equal(runner.session.history.length, 129);
-    assert.equal(runner.presentationHistory.length, 129);
-    assert.equal(runner.error.code, "APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED");
+    assert.equal(result.status, "completed");
+    assert.equal(runner.session.character.age, 25);
+    assert.equal(runner.session.random.cursor, 131);
+    assert.equal(runner.session.history.length, 131);
+    assert.equal(runner.presentationHistory.length, 131);
+    assert.equal(runner.error, null);
     assert.equal(runner.session.character.elementProgress.water, 2);
+    const skipped = runner.session.routeHistory.flatMap(record => record.followUpResults ?? [])
+        .find(followUp => followUp.reason === "requirements_unresolved");
+    assert.ok(skipped);
+    assert.equal(skipped.requirementStatus.met, false);
+    assert.equal(runner.session.pendingSoulBone, null);
 
     const before = {
         cursor: runner.session.random.cursor,
@@ -255,6 +268,61 @@ test("custom seed commits official-beast.element and stops at the next typed bou
         cursor: runner.session.random.cursor,
         history: runner.session.history.length
     }, before);
+});
+
+test("closure destiny uses source prepare, existing part draw, one commit and the return flow", () => {
+    const runner = createRunner("v05-destiny-013");
+    while (runner.phase === "ready") runner.step();
+    const closure = runner.session.dynamicHistory.find(event => event.operation === "followUp.prepare.soulBone");
+    assert.ok(closure);
+    const sourceIndex = runner.session.routeHistory.findIndex(record => (
+        record.poolId === closure.sourcePoolId && record.optionId === closure.sourceOptionId
+    ));
+    const source = runner.session.routeHistory[sourceIndex];
+    const part = runner.session.routeHistory[sourceIndex + 1];
+    assert.equal(closure.randomCursor, sourceIndex + 1);
+    assert.equal(source.followUpResults[0].requirementStatus.met, true);
+    assert.deepEqual(source.followUpResults[0].prepare, closure.prepare);
+    assert.equal(part.poolId, closure.targetPoolId);
+    assert.equal(part.nextFlowId, source.followUpResults[0].returnFlowId);
+    assert.equal(runner.session.character.soulBones.filter(bone => bone.years === closure.prepare.years).length, 1);
+    assert.equal(runner.phase, "completed");
+});
+
+test("missing follow-up evidence is typed and rolls back the failed commit", () => {
+    const legacyRuntime = materializeDouluo1({ includeFollowUpEvidence: false });
+    const runner = createV05DemoRunner({ ...legacyRuntime, seed: "v05-destiny-013" });
+    while (runner.phase === "ready" && runner.session.history.length < 96) runner.step();
+    const dynamicHandlers = createApkRouteDynamicHandlers({ contentIndex: legacyRuntime.contentIndex });
+    const spin = drawApkRouteStep({
+        contentIndex: legacyRuntime.contentIndex,
+        session: runner.session,
+        ...dynamicHandlers
+    });
+    const before = structuredClone({
+        character: runner.session.character,
+        history: runner.session.history,
+        routeHistory: runner.session.routeHistory,
+        dynamicHistory: runner.session.dynamicHistory,
+        pendingSoulBone: runner.session.pendingSoulBone
+    });
+    assert.throws(
+        () => commitApkRouteOption({
+            contentIndex: legacyRuntime.contentIndex,
+            session: runner.session,
+            spin,
+            ...dynamicHandlers
+        }),
+        error => error.code === "APK_ROUTE_FOLLOWUP_PREPARE_EVIDENCE_MISSING"
+    );
+    assert.deepEqual({
+        character: runner.session.character,
+        history: runner.session.history,
+        routeHistory: runner.session.routeHistory,
+        dynamicHistory: runner.session.dynamicHistory,
+        pendingSoulBone: runner.session.pendingSoulBone
+    }, before);
+    assert.equal(runner.session.random.cursor, 97);
 });
 
 test("busy guard blocks a second action and cancellation stops between commits", async () => {

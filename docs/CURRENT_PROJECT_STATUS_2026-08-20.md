@@ -405,3 +405,14 @@ RC1 发布锚点固定为：candidate tag `v0.5.0-rc.1`，target 为本节状态
 - Codex in-app Browser 已覆盖12预设首屏、3条正式命运到25岁、真实 weight/结果高亮、element 事件95成功提交、ready/completed/boundary v1 迁移、刷新继续、图鉴去重/比较/三种 clear 隔离、三个 drawer 键盘焦点、390×844、reduced-motion，clean Day22 console error/warning 为 `0/0`。
 - 既有 golden regression 保持25岁/42级/`100/100`；`v05-custom-1` 的 element 旧 boundary 已闭合，新的保守 boundary 是24岁/91级、`130/129`、`APK_ROUTE_FOLLOWUP_PREPARE_UNRESOLVED`。
 - 未 stage、commit、push、创建或修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。RC1 远端证据仍是历史基线，不冒充 RC2 本地证据。
+
+## Day23 runtime coverage 与命运探索器本地候选（2026-08-30）
+
+- 固定来源 Gate 通过：131条 follow-up prepare exact evidence、50个唯一组合、4种 quality；10个魂环池的153个 canonical prepare option 全部 exact，四个指定 option 映射为10/10/100000/300000年，后两项精确携带魂骨。
+- 512域最终为 completed 218、no-eligible 168、beast-martial unresolved 36、unsupported effect 30、early ending 60；原256 completed 87→107，救回20，follow-up 与 soul-ring 两个目标 boundary 在256/512域均为0。
+- 正式 cohort 从12扩为恰好24，Day22前12 identity/seed/digest/profile 不变；多样性为 core 24、route/milestone 24、growth 20、ring band 4、level band 4、closure 12（follow-up 6、soul-ring 6）、唯一 digest 24。
+- 玩家入口新增 manifest 驱动探索器，支持全部24条搜索、组合筛选、排序、空态和清除；人生图鉴升级为 bounded path atlas 与七字段双人生比较，milestone trail 最多8项且不可恢复。
+- 活动存档 schema v3 保守迁移 Day21 v1 与 Day22 v2；Day22 archive v1 先验 integrity 后迁移为 v2。已闭合旧 boundary 返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED` 并保留原记录。
+- 完整自动化 `220/220`；两个 Day23 evidence extractor、cohort、RC package `--check`、18个 syntax、6个 JSON parse、whitespace 通过。白名单外 Day22 official-beast 旧产物的独立 stale 状态未被越权重写。
+- Browser 验证24条探索器、001/013真实 closure、002真实刷新续跑、001/013/002/003四条到25岁、两人生比较、抽屉/探索器键盘、390×844、reduced-motion和关键页 console `0/0`。后续 closeout 使用真实旧 UI 完成 Day21 v1、Day22 v2 ready/completed 迁移、两类 semantics-changed、archive v1→v2 与 active/archive/memory 双向 clear 隔离；6张迁移页及隔离页 console error/warning 均为 `0/0`，Browser 结论升级为 confirmed。
+- focused worktree 为 `D:\0CODE\douluo-life-v05-day23`，分支为 `codex/day23-v05-runtime-coverage-explorer`；所有改动 unstaged，未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。

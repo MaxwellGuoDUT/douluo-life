@@ -44,6 +44,7 @@ test("fixed APK route seed preserves the first 83 results and commits result 84"
         humanSoulRingEvidence: readCatalog(
             "human-soul-ring-runtime-evidence.json"
         ),
+        followUpPrepareEvidence: readCatalog("followup-prepare-runtime-evidence.json"),
         humanSoulRingSpeciesEvidence: readCatalog(
             "human-soul-ring-species-runtime-evidence.json"
         ),
@@ -142,6 +143,7 @@ test("fixed APK route seed commits the exact official-beast element mapping", ()
         humanSoulRingEvidence: readCatalog(
             "human-soul-ring-runtime-evidence.json"
         ),
+        followUpPrepareEvidence: readCatalog("followup-prepare-runtime-evidence.json"),
         humanSoulRingSpeciesEvidence: readCatalog(
             "human-soul-ring-species-runtime-evidence.json"
         ),
@@ -207,6 +209,7 @@ test("douluo1 compact route shard preserves the fixed-seed transcript and typed 
         humanSoulRingEvidence: readCatalog(
             "human-soul-ring-runtime-evidence.json"
         ),
+        followUpPrepareEvidence: readCatalog("followup-prepare-runtime-evidence.json"),
         humanSoulRingSpeciesEvidence: readCatalog(
             "human-soul-ring-species-runtime-evidence.json"
         ),

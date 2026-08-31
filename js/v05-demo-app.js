@@ -24,6 +24,12 @@ import {
     readV05LifeArchive
 } from "./v05-life-archive.js";
 import { groupV05PresentationTimeline } from "./v05-life-presentation.js";
+import {
+    createV05DestinyExplorerRecords,
+    createV05DestinyFilterOptions,
+    filterV05Destinies
+} from "./v05-destiny-explorer.js";
+import { createV05PathComparison } from "./v05-path-atlas.js";
 
 const root = document.querySelector("#v05Demo");
 const fields = Object.fromEntries([
@@ -34,7 +40,10 @@ const fields = Object.fromEntries([
     "boundaryBox", "boundaryText", "completedBox", "endingText", "auditValue",
     "errorValue", "profileButton", "historyButton", "archiveButton", "profilePanel", "historyPanel", "archivePanel",
     "profileClose", "historyClose", "archiveClose", "profileContent", "historyList", "historyCount",
-    "archiveList", "archiveCount", "compareButton", "compareView", "clearArchiveButton", "drawerBackdrop"
+    "archiveList", "archiveCount", "compareButton", "compareView", "clearArchiveButton", "drawerBackdrop",
+    "explorerButton", "explorerBackdrop", "explorerPanel", "explorerClose", "explorerSearch",
+    "martialFilter", "ringFilter", "levelFilter", "routeFilter", "explorerSort", "clearExplorerButton",
+    "explorerCount", "explorerEmpty", "explorerResults"
 ].map(id => [id, document.querySelector(`#${id}`)]));
 
 const app = {
@@ -48,6 +57,9 @@ const app = {
     archiveError: null,
     selectedArchiveIds: new Set(),
     destinies: [],
+    explorerRecords: [],
+    explorerOptions: null,
+    explorerOpen: false,
     selectedDestinyId: "custom",
     loading: true,
     loadError: null,
@@ -70,27 +82,80 @@ function selectedDestiny() {
     return app.destinies.find(destiny => destiny.id === app.selectedDestinyId) ?? null;
 }
 
+function destinyButton(destiny, { closeExplorer = false } = {}) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "destiny-card";
+    button.dataset.destinyId = destiny.id;
+    button.setAttribute("aria-pressed", String(app.selectedDestinyId === destiny.id));
+    button.disabled = app.loading || app.runner?.phase === "advancing";
+    button.textContent = destiny.title;
+    const tags = document.createElement("span");
+    tags.textContent = `${destiny.summary} · ${destiny.primaryMartialSoul?.category ?? "角色画像"} · ${destiny.ringBand ?? ""} · 正式`;
+    button.append(tags);
+    button.addEventListener("click", () => {
+        app.selectedDestinyId = destiny.id;
+        fields.seedInput.value = destiny.seed;
+        if (closeExplorer) closeExplorerPanel();
+        render();
+    });
+    return button;
+}
+
 function renderDestinies() {
     const fragment = document.createDocumentFragment();
-    for (const destiny of app.destinies) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "destiny-card";
-        button.dataset.destinyId = destiny.id;
-        button.setAttribute("aria-pressed", String(app.selectedDestinyId === destiny.id));
-        button.disabled = app.loading || app.runner?.phase === "advancing";
-        button.textContent = destiny.title;
-        const tags = document.createElement("span");
-        tags.textContent = `${destiny.summary} · ${destiny.primaryMartialSoul?.category ?? "角色画像"}`;
-        button.append(tags);
-        button.addEventListener("click", () => {
-            app.selectedDestinyId = destiny.id;
-            fields.seedInput.value = destiny.seed;
-            render();
-        });
-        fragment.append(button);
-    }
+    const selected = selectedDestiny();
+    const recommended = app.destinies.slice(0, 3);
+    if (selected && !recommended.some(record => record.id === selected.id)) recommended.push(selected);
+    for (const destiny of recommended) fragment.append(destinyButton(destiny));
     fields.destinyList.replaceChildren(fragment);
+    fields.explorerButton.textContent = `浏览全部${app.destinies.length || 24}条命运`;
+    fields.explorerButton.setAttribute("aria-expanded", String(app.explorerOpen));
+    renderExplorer();
+}
+
+function fillSelect(select, values) {
+    const current = select.value;
+    const fragment = document.createDocumentFragment();
+    const all = document.createElement("option"); all.value = ""; all.textContent = "全部"; fragment.append(all);
+    for (const value of values ?? []) { const option = document.createElement("option"); option.value = value; option.textContent = value; fragment.append(option); }
+    select.replaceChildren(fragment);
+    select.value = values?.includes(current) ? current : "";
+}
+
+function renderExplorer() {
+    if (!app.explorerOptions) return;
+    const results = filterV05Destinies(app.explorerRecords, {
+        query: fields.explorerSearch.value,
+        martialCategory: fields.martialFilter.value,
+        ringBand: fields.ringFilter.value,
+        levelBand: fields.levelFilter.value,
+        routeFacet: fields.routeFilter.value,
+        sort: fields.explorerSort.value
+    });
+    fields.explorerCount.textContent = `${results.length} / ${app.explorerRecords.length} 条`;
+    fields.explorerEmpty.hidden = results.length !== 0;
+    const fragment = document.createDocumentFragment();
+    for (const destiny of results) fragment.append(destinyButton(destiny, { closeExplorer: true }));
+    fields.explorerResults.replaceChildren(fragment);
+}
+
+function openExplorerPanel() {
+    closeDrawer({ restoreFocus: false });
+    app.explorerOpen = true;
+    fields.explorerBackdrop.hidden = false;
+    fields.explorerPanel.setAttribute("aria-hidden", "false");
+    fields.explorerButton.setAttribute("aria-expanded", "true");
+    fields.explorerSearch.focus();
+}
+
+function closeExplorerPanel({ restoreFocus = true } = {}) {
+    if (!app.explorerOpen) return;
+    app.explorerOpen = false;
+    fields.explorerBackdrop.hidden = true;
+    fields.explorerPanel.setAttribute("aria-hidden", "true");
+    fields.explorerButton.setAttribute("aria-expanded", "false");
+    if (restoreFocus) fields.explorerButton.focus();
 }
 
 function archiveLabel(record) {
@@ -114,8 +179,8 @@ function renderArchive() {
     }
     const fragment = document.createDocumentFragment();
     for (const record of records) {
-        const label = document.createElement("label");
-        label.className = "archive-item";
+        const item = document.createElement("div");
+        item.className = "archive-item";
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.value = record.archiveId;
@@ -136,26 +201,46 @@ function renderArchive() {
         const detail = document.createElement("span");
         detail.textContent = `${record.seed} · ${record.routeSummary} · ${record.committedCount}项 · 不可恢复`;
         body.append(title, detail);
-        label.append(checkbox, body);
-        fragment.append(label);
+        const view = document.createElement("button");
+        view.type = "button";
+        view.className = "secondary";
+        view.textContent = "查看路径";
+        view.addEventListener("click", () => renderPathView(record));
+        body.append(view);
+        item.append(checkbox, body);
+        fragment.append(item);
     }
     fields.archiveList.replaceChildren(fragment);
+}
+
+function renderPathView(record) {
+    const view = document.createElement("section");
+    view.className = "path-view";
+    const heading = document.createElement("h3");
+    heading.textContent = `${archiveLabel(record)} · 路径图谱`;
+    const notice = document.createElement("p");
+    notice.textContent = `摘要精度：${record.summaryPrecision} · 仅供比较，不可继续`;
+    const badges = document.createElement("div");
+    badges.className = "path-badges";
+    for (const text of [...record.routeFacets, ...record.closureTags]) {
+        const badge = document.createElement("span"); badge.textContent = text; badges.append(badge);
+    }
+    const list = document.createElement("ol");
+    for (const milestone of record.milestoneTrail) {
+        const item = document.createElement("li"); item.textContent = `${milestone.age ?? "?"}岁 · ${milestone.label}`; list.append(item);
+    }
+    if (!record.milestoneTrail.length) { const item = document.createElement("li"); item.textContent = "旧记录未伪造里程碑轨迹"; list.append(item); }
+    view.append(heading, notice, badges, list);
+    fields.compareView.replaceChildren(view);
 }
 
 function compareSelectedLives() {
     const records = (app.archive?.records ?? []).filter(record => app.selectedArchiveIds.has(record.archiveId));
     if (records.length !== 2) return;
     const [left, right] = records;
-    const rows = [
-        ["命运", left.destinyId, right.destinyId],
-        ["武魂", left.martialSouls[0]?.name ?? "-", right.martialSouls[0]?.name ?? "-"],
-        ["路线", left.routeSummary, right.routeSummary],
-        ["修为", `${left.level}级`, `${right.level}级`],
-        ["魂环", `${left.soulRings.length}枚`, `${right.soulRings.length}枚`],
-        ["魂骨", `${left.soulBones.length}块`, `${right.soulBones.length}块`],
-        ["里程碑", `${left.milestones.length}项`, `${right.milestones.length}项`],
-        ["结局", left.ending, right.ending]
-    ];
+    const comparison = createV05PathComparison(left, right);
+    const rows = [["项目", archiveLabel(left), archiveLabel(right)],
+        ...comparison.items.map(item => [item.same ? `${item.label}（相同）` : `${item.label}（不同）`, item.left, item.right])];
     const grid = document.createElement("div");
     grid.className = "compare-grid";
     for (const row of rows) {
@@ -461,6 +546,8 @@ async function loadRuntime(seed, destinyId = "custom") {
         packId: V05_PACK_ID,
         appVersion: V05_APP_VERSION,
         officialBeastElementEvidence: app.loaded.officialBeastElementEvidence,
+        humanSoulRingEvidence: app.loaded.humanSoulRingEvidence,
+        followUpPrepareEvidence: app.loaded.followUpPrepareEvidence,
         supportedDestinies: app.loaded.supportedDestinies
     });
     return createV05DemoRunnerFromLoaded({
@@ -527,10 +614,10 @@ async function continueLife() {
             try {
                 writeV05Save(window.localStorage, restored.envelope);
                 app.storedEnvelope = restored.envelope;
-                setEvent("Day21 存档迁移完成", "同 seed 重放全字段一致；新 envelope 成功写入后才替换旧存档。");
+                setEvent("旧存档迁移完成", "Day21 v1 / Day22 v2 均以同 seed 重放；新 envelope 成功写入后才替换旧存档。");
             } catch (error) {
                 app.saveWarning = errorRecord(error, "V05_SAVE_STORAGE_UNAVAILABLE");
-                setEvent("Day21 存档已恢复但未替换", "新 envelope 写入失败；原始存档仍保留，当前游戏状态不受影响。");
+                setEvent("旧存档已恢复但未替换", "新 envelope 写入失败；原始存档仍保留，当前游戏状态不受影响。");
             }
         } else {
             setEvent("已从本地检查点恢复", "重放、cursor、history、角色、命运身份和内容指纹校验全部一致。");
@@ -695,6 +782,7 @@ function closeDrawer({ restoreFocus = true } = {}) {
 }
 
 function openDrawer(name, trigger) {
+    closeExplorerPanel({ restoreFocus: false });
     if (app.drawer === name) {
         closeDrawer();
         return;
@@ -737,18 +825,41 @@ fields.profileClose.addEventListener("click", () => closeDrawer());
 fields.historyClose.addEventListener("click", () => closeDrawer());
 fields.archiveClose.addEventListener("click", () => closeDrawer());
 fields.drawerBackdrop.addEventListener("click", () => closeDrawer());
+fields.explorerButton.addEventListener("click", openExplorerPanel);
+fields.explorerClose.addEventListener("click", () => closeExplorerPanel());
+fields.explorerBackdrop.addEventListener("click", event => {
+    if (event.target === fields.explorerBackdrop) closeExplorerPanel();
+});
+for (const field of [fields.explorerSearch, fields.martialFilter, fields.ringFilter,
+    fields.levelFilter, fields.routeFilter, fields.explorerSort]) {
+    field.addEventListener(field === fields.explorerSearch ? "input" : "change", renderExplorer);
+}
+fields.clearExplorerButton.addEventListener("click", () => {
+    fields.explorerSearch.value = "";
+    fields.martialFilter.value = "";
+    fields.ringFilter.value = "";
+    fields.levelFilter.value = "";
+    fields.routeFilter.value = "";
+    fields.explorerSort.value = "recommended";
+    renderExplorer();
+    fields.explorerSearch.focus();
+});
 document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && app.explorerOpen) {
+        closeExplorerPanel();
+        return;
+    }
     if (event.key === "Escape" && app.drawer) {
         closeDrawer();
         return;
     }
-    if (event.key === "Tab" && app.drawer) {
-        const panel = {
+    if (event.key === "Tab" && (app.drawer || app.explorerOpen)) {
+        const panel = app.explorerOpen ? fields.explorerPanel : ({
             profile: fields.profilePanel,
             history: fields.historyPanel,
             archive: fields.archivePanel
-        }[app.drawer];
-        const focusable = [...panel.querySelectorAll("button:not(:disabled), input:not(:disabled), [tabindex]:not([tabindex='-1'])")];
+        }[app.drawer]);
+        const focusable = [...panel.querySelectorAll("button:not(:disabled), input:not(:disabled), select:not(:disabled), [tabindex]:not([tabindex='-1'])")];
         if (!focusable.length) return;
         const first = focusable[0];
         const last = focusable.at(-1);
@@ -770,6 +881,12 @@ loadProductionEntry({ entryPath: V05_ENTRY_PATH, catalogNames: [], validate: fal
     }
     app.controlPlane = loaded;
     app.destinies = createV05DestinyCatalog(loaded);
+    app.explorerRecords = createV05DestinyExplorerRecords(loaded.supportedDestinies);
+    app.explorerOptions = createV05DestinyFilterOptions(app.explorerRecords);
+    fillSelect(fields.martialFilter, app.explorerOptions.martialCategories);
+    fillSelect(fields.ringFilter, app.explorerOptions.ringBands);
+    fillSelect(fields.levelFilter, app.explorerOptions.levelBands);
+    fillSelect(fields.routeFilter, app.explorerOptions.routeFacets);
     refreshStoredSave();
     refreshArchive();
     if (!app.loadError) setEvent("V0.5 RC2 候选已就绪", "可开始新人生，或继续经过重放验证的本地检查点。");
