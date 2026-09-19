@@ -152,22 +152,27 @@ export function createV05DestinyCatalog(loaded) {
 export function createV05DemoRunner({
     contentIndex,
     routeGraph,
+    packId = V05_PACK_ID,
     seed = V05_DEFAULT_SEED,
     destinyId = "custom",
     endpointAge = V05_ENDPOINT_AGE,
+    route = "human",
+    entryFlowId = null,
+    dynamicHandlers = null,
     onCompleted = null
 } = {}) {
     if (!contentIndex?.getFlow || !contentIndex?.getRouteOption) {
         throw typedError("V05_CONTENT_INDEX_MISSING", "V0.5 requires a route content index.");
     }
-    if (!routeGraph?.packs?.some(pack => pack.id === V05_PACK_ID)) {
+    if (contentIndex.packId !== packId || !routeGraph?.packs?.some(pack => pack.id === packId)) {
         throw typedError("V05_ROUTE_GRAPH_MISSING", "V0.5 requires the douluo1 route graph.");
     }
     if (!Number.isInteger(endpointAge) || endpointAge < 1) {
         throw typedError("V05_ENDPOINT_INVALID", "V0.5 endpointAge must be a positive integer.");
     }
 
-    const dynamicHandlers = createApkRouteDynamicHandlers({ contentIndex });
+    const activeDynamicHandlers = dynamicHandlers
+        ?? createApkRouteDynamicHandlers({ contentIndex });
     const state = {
         phase: "ready",
         session: null,
@@ -191,8 +196,10 @@ export function createV05DemoRunner({
         }
         state.session = createApkRouteSession({
             routeGraph,
-            packId: V05_PACK_ID,
-            seed: normalizedSeed
+            packId,
+            seed: normalizedSeed,
+            route,
+            entryFlowId
         });
         state.seed = normalizedSeed;
         state.destinyId = String(destinyId ?? "custom");
@@ -235,7 +242,7 @@ export function createV05DemoRunner({
             const spin = drawApkRouteStep({
                 contentIndex,
                 session: state.session,
-                ...dynamicHandlers
+                ...activeDynamicHandlers
             });
             state.lastSpin = spin;
             if (spin.status === "terminal") {
@@ -250,7 +257,7 @@ export function createV05DemoRunner({
                 contentIndex,
                 session: state.session,
                 spin,
-                ...dynamicHandlers
+                ...activeDynamicHandlers
             });
             state.lastCommit = committed;
             const presentation = createV05PresentationRecord({
@@ -364,6 +371,30 @@ export function createV05DemoRunner({
             if (state.phase === "advancing") return false;
             destinyId = nextDestinyId;
             initialize(nextSeed);
+            return true;
+        },
+        restore(sessionSnapshot) {
+            if (state.phase === "advancing") return false;
+            if (sessionSnapshot?.schemaVersion !== "apk-session/1.0"
+                || sessionSnapshot?.routeSchemaVersion !== "apk-route-session/1.0"
+                || sessionSnapshot?.packId !== packId
+                || sessionSnapshot?.random?.seed !== state.seed) {
+                throw typedError(
+                    "V05_SESSION_SNAPSHOT_INVALID",
+                    "Session snapshot does not match the active pack and seed."
+                );
+            }
+            state.session = structuredClone(sessionSnapshot);
+            state.phase = "ready";
+            state.lastSpin = null;
+            state.lastCommit = null;
+            state.error = null;
+            state.summary = null;
+            state.presentationHistory = [];
+            state.cancelRequested = false;
+            state.lastWheelResult = null;
+            state.completionNotified = false;
+            state.completionWarning = null;
             return true;
         },
         async advanceToNextAge({

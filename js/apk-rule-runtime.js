@@ -34,7 +34,8 @@ const SOURCE_RUNTIME_EFFECT_TYPES = Object.freeze([
     "removeTrait",
     "deleteFlag",
     "advanceHumanTime",
-    "advanceBeastTime"
+    "advanceBeastTime",
+    "grantGodhood"
 ]);
 
 export const APK_RUNTIME_EFFECT_TYPES = Object.freeze([
@@ -351,14 +352,22 @@ function getContentStatus(record) {
         ?? null;
 }
 
-function requirementStatuses(requirements, character) {
+function requirementStatuses(
+    requirements,
+    character,
+    requirementEvaluator = evaluateApkRequirement
+) {
     return requirements.map(requirement => (
-        evaluateApkRequirement(requirement, character)
+        requirementEvaluator(requirement, character)
     ));
 }
 
-function allRequirementsMet(requirements, character) {
-    const results = requirementStatuses(requirements, character);
+function allRequirementsMet(
+    requirements,
+    character,
+    requirementEvaluator = evaluateApkRequirement
+) {
+    const results = requirementStatuses(requirements, character, requirementEvaluator);
     return {
         met: results.every(result => result.status === "met"),
         unresolved: results.filter(result => result.status === "unresolved"),
@@ -421,7 +430,8 @@ export function selectApkPoolOptions(
     {
         includeDisabled = false,
         excludeOptionIds = [],
-        excludeRerolled = true
+        excludeRerolled = true,
+        requirementEvaluator = evaluateApkRequirement
     } = {}
 ) {
     const pool = contentIndex.getPool(poolId);
@@ -437,7 +447,8 @@ export function selectApkPoolOptions(
         }
         const requirementResult = allRequirementsMet(
             getOptionRequirements(option),
-            character
+            character,
+            requirementEvaluator
         );
         if (!requirementResult.met) {
             if (requirementResult.unresolved.length > 0) {
@@ -452,7 +463,11 @@ export function selectApkPoolOptions(
         if (excludeRerolled) {
             const rerollWhen = getOptionRerollWhen(option);
             if (rerollWhen.length > 0) {
-                const reroll = allRequirementsMet(rerollWhen, character);
+                const reroll = allRequirementsMet(
+                    rerollWhen,
+                    character,
+                    requirementEvaluator
+                );
                 if (reroll.met) return false;
             }
         }
@@ -489,13 +504,19 @@ export function drawApkPool({
     random,
     excludeOptionIds = [],
     includeDisabled = false,
-    excludeRerolled = true
+    excludeRerolled = true,
+    requirementEvaluator = evaluateApkRequirement
 } = {}) {
     const selection = selectApkPoolOptions(
         contentIndex,
         character,
         poolId,
-        { excludeOptionIds, includeDisabled, excludeRerolled }
+        {
+            excludeOptionIds,
+            includeDisabled,
+            excludeRerolled,
+            requirementEvaluator
+        }
     );
     if (selection.options.length === 0) {
         fail(
@@ -639,7 +660,13 @@ function advanceElement(state, elementId, amount = 1, beast = false) {
     if (beast) {
         const target = ensureBeast(state);
         const current = target.attributeStages[normalized] ?? 0;
-        const next = Math.max(0, Math.min(4, Math.trunc(current + amount)));
+        if (current >= 4) {
+            fail(
+                "APK_BEAST_ELEMENT_ALREADY_COMPLETE",
+                `元素 ${normalized} 已完成法则，必须在 effects 前重抽。`
+            );
+        }
+        const next = Math.max(0, Math.trunc(current + amount));
         target.attributeStages[normalized] = next;
         target.elementProgress = {
             elementId: normalized,
@@ -648,9 +675,14 @@ function advanceElement(state, elementId, amount = 1, beast = false) {
                 ? "complete-law"
                 : next === 3 ? "law-seed" : next === 2 ? "ultimate" : "normal"
         };
-        if (next >= 1 && !target.bloodlines.includes(normalized)) {
-            target.bloodlines.push(normalized);
-        }
+        const trait = next === 2
+            ? `douluo2:element.${normalized}.ultimate`
+            : next === 3
+                ? `douluo2:element.${normalized}.law-seed`
+                : next === 4
+                    ? `douluo2:element.${normalized}.complete-law`
+                    : null;
+        if (trait && !state.traits.includes(trait)) state.traits.push(trait);
         if (next >= 4 && !target.laws.includes(`douluo2:law.${normalized}`)) {
             target.laws.push(`douluo2:law.${normalized}`);
         }
@@ -1147,6 +1179,36 @@ function applyEffect(state, effect, controls, meta) {
         case "addDomainSeed":
             flags["formal:pending-domain-seed"] = true;
             break;
+        case "grantGodhood": {
+            const id = String(effect.godhoodId ?? "").trim();
+            if (!id) fail("APK_GODHOOD_ID_REQUIRED", "正式神位 ID 不能为空。");
+            state.godhoods ??= [];
+            if (state.godhoods.some(item => item?.id === id)) break;
+            if (state.godhoods.length >= 6) break;
+            const tierCaps = { "三级": 109, "二级": 119, "一级": 139, "神王": 159 };
+            const tier = effect.tier ?? state.godTrial?.tier;
+            const levelCap = effect.maxLevel ?? tierCaps[tier] ?? 100;
+            state.godhood = tier || effect.name || effect.maxLevel !== undefined
+                ? {
+                    id,
+                    name: effect.name,
+                    tier,
+                    levelCap,
+                    levelBeforeAscension: state.level,
+                    grantedAtAge: state.age
+                }
+                : { id };
+            state.godhoods.push(clone(state.godhood));
+            state.maxLevel = Math.max(state.maxLevel, levelCap, 100);
+            state.level = Math.max(state.level, 100);
+            if (state.godTrial) {
+                state.godTrial.status = "completed";
+                state.godTrial.completedAtAge = state.age;
+                state.godTrial.currentStage = state.godTrial.totalStages;
+            }
+            flags.finalStatus = "god";
+            break;
+        }
         case "addArtifact": {
             const existing = state.artifacts.find(item => item.id === effect.artifact?.id);
             if (!existing) state.artifacts.push(clone(effect.artifact));
@@ -1447,7 +1509,9 @@ export function commitApkOption({
     option,
     poolId,
     reason = "formal-option-effect",
-    effectsOverride = null
+    effectsOverride = null,
+    effectApplier = applyApkEffects,
+    requirementEvaluator = evaluateApkRequirement
 } = {}) {
     if (!isPlainObject(session) || session.schemaVersion !== APK_SESSION_SCHEMA_VERSION) {
         fail("INVALID_APK_SESSION", "APK option commit requires an APK session.");
@@ -1458,7 +1522,8 @@ export function commitApkOption({
     const eligible = selectApkPoolOptions(
         contentIndex,
         session.character,
-        actualPoolId
+        actualPoolId,
+        { requirementEvaluator }
     ).options;
     const selected = eligible.find(candidate => (
         (getNormalized(candidate)?.option_id ?? candidate.id) === optionId
@@ -1474,7 +1539,7 @@ export function commitApkOption({
         const effects = Array.isArray(effectsOverride)
             ? clone(effectsOverride)
             : getOptionEffects(selected);
-        const result = applyApkEffects(
+        const result = effectApplier(
             session.character,
             effects,
             {

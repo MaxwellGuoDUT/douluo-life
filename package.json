@@ -10,6 +10,8 @@
     "check:v05-destinies": "node outputs/parallel-prep-2026-08-16/generate-v05-destiny-cohort.mjs --check",
     "check:v05-package": "node outputs/parallel-prep-2026-08-16/generate-v05-rc-package.mjs --check",
     "check:v05-day22": "npm run check:v05-evidence && npm run check:v05-destinies && npm run check:v05-package",
-    "check:v05-day23": "npm run check:v05-day23-evidence && npm run check:v05-destinies && npm run check:v05-package && npm test"
+    "check:v05-day23": "npm run check:v05-day23-evidence && npm run check:v05-destinies && npm run check:v05-package && npm test",
+    "generate:v10-source": "node tools/v10/generate-source-inventory.mjs",
+    "check:v10-source": "node tools/v10/generate-source-inventory.mjs --check"
   }
 }
