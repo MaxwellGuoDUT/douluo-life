@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="斗罗人生模拟器 V1.0 内容入口">
+    <title>斗罗人生模拟器 V1.0</title>
+    <link rel="stylesheet" href="css/v10.css">
+</head>
+<body>
+    <main class="v10-shell">
+        <header class="hero">
+            <p class="eyebrow">V1.0 · 斗罗人生模拟器</p>
+            <h1>在斗罗世界，走完你的一生。</h1>
+            <p class="lede">选择斗罗一或绝世唐门，以人类或魂兽的身份开始人生。随时手动保存，在下一次继续旅程。</p>
+        </header>
+        <p id="v10-status" role="status">正在载入内容包…</p>
+        <section id="pack-list" class="pack-list" aria-label="内容包"></section>
+        <section id="human-game" class="human-game" aria-labelledby="game-title" hidden>
+            <div class="game-heading">
+                <div>
+                    <p id="game-route-label" class="eyebrow">douluo1 · human</p>
+                    <h2 id="game-title">完整人类生命周期</h2>
+                </div>
+                <label>命运种子 <input id="human-seed" value="apk-route-demo-seed"></label>
+            </div>
+            <div class="game-controls">
+                <button id="human-restart" type="button" class="secondary-action">重新开始</button>
+                <button id="human-step" type="button" class="primary-action">转动一次</button>
+                <button id="human-age" type="button" class="secondary-action">推进至下一阶段</button>
+                <button id="human-terminal" type="button" class="secondary-action">推进至人生结局</button>
+            </div>
+            <p id="human-progress" role="status">等待开始</p>
+            <dl class="human-profile">
+                <div><dt id="human-age-label">年龄</dt><dd id="human-age-value">—</dd></div>
+                <div><dt>等级</dt><dd id="human-level-value">—</dd></div>
+                <div><dt>物种</dt><dd id="human-species-value">—</dd></div>
+                <div><dt>阶段</dt><dd id="human-stage-value">—</dd></div>
+                <div><dt>游标 / 记录</dt><dd id="human-cursor-value">—</dd></div>
+            </dl>
+            <section class="current-event" aria-labelledby="current-event-title">
+                <h3 id="current-event-title">当前选择</h3>
+                <p id="human-result">尚未转动。</p>
+                <ol id="human-options"></ol>
+            </section>
+            <section id="human-ending" class="human-ending" aria-labelledby="human-ending-title" hidden>
+                <h3 id="human-ending-title">人生结局</h3>
+                <p id="human-ending-text"></p>
+            </section>
+        </section>
+        <section id="save-panel" class="human-game" aria-labelledby="save-title">
+            <h2 id="save-title">本地8槽</h2>
+            <p>手动保存。选择目标槽后操作；覆盖需确认。旧版存档保持原样，不自动迁移。</p>
+            <label for="save-slot">目标槽位</label>
+            <select id="save-slot" aria-describedby="save-status"></select>
+            <div class="game-controls">
+                <button type="button" class="primary-action" data-save-action="save">保存当前人生</button>
+                <button type="button" class="secondary-action" data-save-action="load">读取所选槽</button>
+                <button type="button" class="secondary-action" data-save-action="export">导出所选槽</button>
+            </div>
+            <label for="save-file">导入 JSON（最大4 MiB）</label>
+            <input id="save-file" type="file" accept=".json,application/json">
+            <button type="button" class="secondary-action" data-save-action="import">导入到所选槽</button>
+            <p id="save-status" role="status" aria-live="polite">请选择槽位。导入只保存文件，读取后才切换当前人生。</p>
+        </section>
+        <p class="footnote">纯前端版本 · 存档保存在本机浏览器 · 请主动导出备份 · 无账号、无云端依赖</p>
+    </main>
+    <script type="module" src="js/v10-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+:root {
+    color-scheme: dark;
+    font-family: Inter, "Microsoft YaHei", system-ui, sans-serif;
+    background: #080b13;
+    color: #f7f3e8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 5%, rgba(174, 113, 45, .23), transparent 30rem),
+        linear-gradient(160deg, #101624 0%, #080b13 58%, #15101a 100%);
+}
+
+.v10-shell {
+    width: min(1080px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 4.5rem 0 3rem;
+}
+
+.hero { max-width: 760px; }
+
+.eyebrow {
+    margin: 0 0 .6rem;
+    color: #d9aa65;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-family: Georgia, "STSong", serif;
+    font-size: clamp(2.4rem, 7vw, 5.5rem);
+    font-weight: 500;
+    line-height: .98;
+}
+
+.lede {
+    margin: 1.4rem 0 0;
+    color: #c8c4bc;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+#v10-status {
+    margin: 2rem 0 1.2rem;
+    padding: .9rem 1rem;
+    border-left: 3px solid #d9aa65;
+    background: rgba(255, 255, 255, .05);
+    color: #d7d4cc;
+}
+
+#v10-status[data-tone="ready"] { border-color: #72b58c; }
+#v10-status[data-tone="error"] { border-color: #d26b64; }
+
+.pack-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.pack-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(217, 170, 101, .25);
+    border-radius: 1rem;
+    background: rgba(17, 23, 37, .82);
+    box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, .22);
+}
+
+.pack-card h2 { margin: 0; font-size: 1.65rem; }
+.route-label, .pack-detail { color: #bcb7ad; }
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .55rem;
+    margin: 1.4rem 0;
+}
+
+.inventory-grid div {
+    padding: .75rem;
+    border-radius: .65rem;
+    background: rgba(255, 255, 255, .045);
+}
+
+.inventory-grid dt { color: #99958d; font-size: .76rem; }
+.inventory-grid dd { margin: .3rem 0 0; font-size: 1.2rem; font-weight: 750; }
+
+.card-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+button {
+    padding: .72rem .95rem;
+    border: 1px solid #d9aa65;
+    border-radius: .6rem;
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.primary-action { background: #d9aa65; color: #19120b; }
+.secondary-action { background: transparent; color: #e8d4b4; }
+button:disabled { cursor: not-allowed; opacity: .46; }
+button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+select:focus-visible, input:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+#save-slot { display: block; width: 100%; min-width: 0; margin-top: .5rem; padding: .75rem; background: #0d111b; color: inherit; font: inherit; }
+#save-file { max-width: 100%; margin-bottom: 1rem; }
+#save-status { overflow-wrap: anywhere; }
+
+.footnote { margin-top: 1.5rem; color: #8e8b85; font-size: .86rem; }
+
+.human-game {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(114, 181, 140, .4);
+    border-radius: 1rem;
+    background: rgba(10, 20, 25, .88);
+}
+
+.game-heading, .game-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: .8rem;
+}
+
+.game-heading h2 { margin: 0; }
+.game-heading label { color: #bcb7ad; }
+
+input {
+    display: block;
+    width: min(20rem, 70vw);
+    margin-top: .35rem;
+    padding: .65rem .75rem;
+    border: 1px solid #777269;
+    border-radius: .5rem;
+    background: #0d111b;
+    color: inherit;
+    font: inherit;
+}
+
+.game-controls { justify-content: flex-start; margin: 1.1rem 0; }
+
+.human-profile {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: .6rem;
+}
+
+.human-profile div, .current-event, .human-ending {
+    padding: .85rem;
+    border-radius: .65rem;
+    background: rgba(255, 255, 255, .045);
+}
+
+.human-profile dt { color: #99958d; font-size: .78rem; }
+.human-profile dd { margin: .25rem 0 0; overflow-wrap: anywhere; }
+.current-event h3, .human-ending h3 { margin-top: 0; }
+#human-options { max-height: 18rem; overflow: auto; line-height: 1.6; }
+.human-ending { border-left: 3px solid #d9aa65; }
+
+@media (max-width: 760px) {
+    .v10-shell { padding-top: 2.5rem; }
+    .pack-list { grid-template-columns: 1fr; }
+    .inventory-grid { grid-template-columns: repeat(2, 1fr); }
+    .human-profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

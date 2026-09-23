@@ -1,0 +1,10 @@
+data/v05-rc/*.json text eol=lf
+data/v10/*.json text eol=lf
+package.json text eol=lf
+outputs/parallel-prep-2026-08-16/generate-v05-rc-package.mjs text eol=lf
+tools/v10/*.mjs text eol=lf
+js/v10-*.js text eol=lf
+test/v10-*.test.js text eol=lf
+v10.html text eol=lf
+css/v10.css text eol=lf
+data/v10/source-runtime/* -text

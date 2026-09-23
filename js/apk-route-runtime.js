@@ -325,15 +325,60 @@ function getPoolFlowId(contentIndex, poolId) {
     return contentIndex.flowIdsByPoolId.get(poolId)?.[0] ?? null;
 }
 
-function requirementResult(requirements, character) {
-    const results = requirements.map(requirement => (
-        evaluateApkRequirement(requirement, character)
-    ));
+function requirementResult(requirements, character, contentIndex = null) {
+    let combatPower = null;
+    const results = requirements.map(requirement => {
+        const source = requirement?.normalized?.requirement
+            ?? requirement?.requirement
+            ?? requirement;
+        if (["combatPowerAtLeast", "combatPowerBelow"].includes(source?.type)) {
+            if (!contentIndex?.combatPowerEvidence) {
+                return {
+                    status: "unresolved",
+                    requirementType: source.type,
+                    reason: "Combat power requirement lacks source evidence."
+                };
+            }
+            combatPower ??= calculateApkCombatPower(
+                character,
+                contentIndex.combatPowerEvidence
+            ).total;
+            return {
+                status: source.type === "combatPowerAtLeast"
+                    ? combatPower >= source.value ? "met" : "not_met"
+                    : combatPower < source.value ? "met" : "not_met",
+                requirementType: source.type,
+                combatPower
+            };
+        }
+        return evaluateApkRequirement(requirement, character);
+    });
     return {
         met: results.every(result => result.status === "met"),
         unresolved: results.filter(result => result.status === "unresolved"),
         results
     };
+}
+
+function routeRequirementEvaluator(contentIndex, character) {
+    return requirement => requirementResult(
+        [requirement],
+        character,
+        contentIndex
+    ).results[0];
+}
+
+export function createApkRouteRequirementEvaluator({ contentIndex } = {}) {
+    if (!contentIndex?.combatPowerEvidence) {
+        fail(
+            "APK_ROUTE_COMBAT_POWER_EVIDENCE_MISSING",
+            "Route requirement evaluator requires combat-power source evidence."
+        );
+    }
+    return (requirement, character) => routeRequirementEvaluator(
+        contentIndex,
+        character
+    )(requirement);
 }
 
 function makePoolRecord(packId, pool) {
@@ -541,6 +586,7 @@ export function createApkRouteSession({
     packId = "douluo1",
     seed,
     route = "human",
+    entryFlowId = null,
     character,
     cursor = 0
 } = {}) {
@@ -552,11 +598,21 @@ export function createApkRouteSession({
         contentPackId: packId,
         cursor
     });
+    const startFlowId = entryFlowId ?? contentIndex.pack.entryFlowId;
+    if (!contentIndex.getFlow(startFlowId)) {
+        fail(
+            "APK_ROUTE_ENTRY_FLOW_NOT_FOUND",
+            `APK route entry flow "${String(startFlowId)}" does not exist.`,
+            { packId, route, entryFlowId: startFlowId }
+        );
+    }
     return {
         ...session,
+        ...(contentIndex.pack.ownership?.defaultWorldEra
+            ? { worldEra: contentIndex.pack.ownership.defaultWorldEra } : {}),
         routeSchemaVersion: APK_ROUTE_SESSION_SCHEMA_VERSION,
         routeGraphVersion: routeGraph.packageVersion ?? null,
-        currentFlowId: contentIndex.pack.entryFlowId,
+        currentFlowId: startFlowId,
         routeStatus: "ready",
         routeHistory: [],
         dynamicHistory: [],
@@ -1774,7 +1830,8 @@ function resolveDynamicTransition({
     flow,
     transition,
     dynamicResolver,
-    kind
+    kind,
+    routeOption = null
 }) {
     if (typeof dynamicResolver !== "function") {
         fail(
@@ -1792,6 +1849,7 @@ function resolveDynamicTransition({
         contentIndex,
         session,
         flow: clone(flow),
+        routeOption: clone(routeOption),
         handlerId: transition.value,
         kind
     });
@@ -1995,7 +2053,8 @@ export function drawApkRouteStep({
     contentIndex,
     session,
     dynamicResolver = null,
-    dynamicAction = null
+    dynamicAction = null,
+    requirementEvaluator = null
 } = {}) {
     validateSession(session);
     const snapshot = clone(session);
@@ -2012,7 +2071,8 @@ export function drawApkRouteStep({
             contentIndex,
             character: session.character,
             poolId: resolved.poolId,
-            random: session.random
+            random: session.random,
+            requirementEvaluator: requirementEvaluator ?? evaluateApkRequirement
         });
         session.currentPoolId = resolved.poolId;
         session.routeStatus = "drawn";
@@ -2051,7 +2111,8 @@ function buildFollowUp({
     sourceOptionId,
     followUp,
     returnFlowId,
-    index
+    index,
+    requirementEvaluator = null
 }) {
     const targetPoolId = followUp?.targetPoolId;
     const targetFlowId = contentIndex.getFlowForPool(targetPoolId);
@@ -2065,7 +2126,18 @@ function buildFollowUp({
     const requirements = Array.isArray(followUp?.requirements)
         ? followUp.requirements
         : [];
-    const requirementStatus = requirementResult(requirements, session.character);
+    const requirementStatus = requirementEvaluator
+        ? (() => {
+            const results = requirements.map(requirement => (
+                requirementEvaluator(requirement, session.character)
+            ));
+            return {
+                met: results.every(result => result.status === "met"),
+                unresolved: results.filter(result => result.status === "unresolved"),
+                results
+            };
+        })()
+        : requirementResult(requirements, session.character);
     if (!requirementStatus.met) {
         return {
             skipped: true,
@@ -2106,7 +2178,7 @@ function buildFollowUp({
         const exact = rule.targetPoolId === targetPoolId
             && rule.count === followUp.count
             && rule.reason === followUp.reason
-            && JSON.stringify(rule.requirements) === JSON.stringify(requirements)
+            && JSON.stringify(rule.requirements === undefined ? [] : rule.requirements) === JSON.stringify(requirements)
             && JSON.stringify(rule.prepare) === JSON.stringify(followUp.prepare);
         if (!exact) {
             fail(
@@ -2500,7 +2572,10 @@ export function commitApkRouteOption({
     session,
     spin,
     option = spin?.option,
-    dynamicResolver = null
+    effectApplier = applyApkEffects,
+    dynamicResolver = null,
+    dynamicOption = null,
+    requirementEvaluator = null
 } = {}) {
     if (!contentIndex?.getRouteOption) {
         fail("INVALID_APK_ROUTE_INDEX", "APK route option commit requires a route content index.");
@@ -2530,9 +2605,19 @@ export function commitApkRouteOption({
         customHandler,
         optionId
     };
-    const operation = customHandler
+    const registeredOperation = customHandler
         ? resolveRouteOperation(operationContext)
         : null;
+    const operation = registeredOperation && registeredOperation.status !== "unresolved"
+        ? registeredOperation
+        : customHandler && typeof dynamicOption === "function"
+            ? {
+                operationId: `source.${customHandler}`,
+                handlerId: customHandler,
+                status: "connected",
+                execute: context => dynamicOption(context)
+            }
+            : registeredOperation;
     if (customHandler && !operation) {
         fail(
             "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED",
@@ -2555,9 +2640,11 @@ export function commitApkRouteOption({
             option,
             poolId: spin.poolId,
             reason: "apk-route-option",
+            effectApplier,
             effectsOverride: operation?.operationId === "formal.specialResult"
                 ? []
-                : null
+                : null,
+            requirementEvaluator: requirementEvaluator ?? evaluateApkRequirement
         });
         const customEffectResult = operation
             ? operation.execute(operationContext)
@@ -2574,7 +2661,8 @@ export function commitApkRouteOption({
                     flow,
                     transition: resolver,
                     dynamicResolver,
-                    kind: "resolver"
+                    kind: "resolver",
+                    routeOption
                 });
             }
         }
@@ -2620,7 +2708,8 @@ export function commitApkRouteOption({
                 sourceOptionId: optionId,
                 followUp,
                 returnFlowId: nextFlowId,
-                index
+                index,
+                requirementEvaluator
             });
             followUpResults.push(result);
             if (!result.skipped) {
@@ -2631,6 +2720,7 @@ export function commitApkRouteOption({
         if (firstPending) nextFlowId = firstPending.targetFlowId;
 
         if (session.character.ending || session.finished) {
+            session.finished = true;
             session.currentFlowId = null;
             session.currentPoolId = null;
             session.pendingNextStepId = null;
@@ -2689,20 +2779,25 @@ export function runApkRouteStep({
     contentIndex,
     session,
     dynamicResolver = null,
-    dynamicAction = null
+    dynamicAction = null,
+    dynamicOption = null,
+    requirementEvaluator = null
 } = {}) {
     const spin = drawApkRouteStep({
         contentIndex,
         session,
         dynamicResolver,
-        dynamicAction
+        dynamicAction,
+        requirementEvaluator
     });
     if (spin.status === "terminal") return spin;
     return commitApkRouteOption({
         contentIndex,
         session,
         spin,
-        dynamicResolver
+        dynamicResolver,
+        dynamicOption,
+        requirementEvaluator
     });
 }
 

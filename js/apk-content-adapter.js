@@ -53,7 +53,9 @@ export const APK_EFFECT_TYPES = Object.freeze([
 
 export const APK_REQUIREMENT_TYPES = Object.freeze([
     "anyOf",
+    "beastElementComplete",
     "beastNameSuffixCountAtLeast",
+    "beastYearsAtLeast",
     "completeLawCountAtLeast",
     "counterAtLeast",
     "currencyAtLeast",
@@ -62,6 +64,7 @@ export const APK_REQUIREMENT_TYPES = Object.freeze([
     "hasAnySoulBone",
     "hasAttribute",
     "hasBeastNameSuffix",
+    "hasFlag",
     "hasSoulBonePart",
     "inventoryAtLeast",
     "inventoryBelow",
@@ -540,6 +543,29 @@ export function evaluateApkRequirement(requirementRecord, player = {}) {
                 status: player.flags?.[value] ? "not_met" : "met",
                 requirementType: type
             };
+        case "hasFlag":
+            return {
+                status: player.flags?.[value] ? "met" : "not_met",
+                requirementType: type
+            };
+        case "beastYearsAtLeast":
+            return {
+                status: Number.isFinite(player.beastYears)
+                    ? player.beastYears >= value ? "met" : "not_met"
+                    : "unresolved",
+                requirementType: type
+            };
+        case "beastElementComplete": {
+            const beast = getBeast(player);
+            const elementId = requirement.elementId ?? value;
+            const stage = beast?.attributeStages?.[elementId];
+            return {
+                status: Number.isFinite(stage)
+                    ? stage >= 4 ? "met" : "not_met"
+                    : beast ? "not_met" : "unresolved",
+                requirementType: type
+            };
+        }
         case "lacksDomain": {
             if (!Array.isArray(player?.domains)) {
                 return {
