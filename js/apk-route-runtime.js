@@ -1,4 +1,5 @@
 import { evaluateApkRequirement } from "./apk-content-adapter.js";
+import { V10_GOD_TRIAL_SEMANTICS } from "./v10-god-trial-runtime.js";
 import {
     APK_SESSION_SCHEMA_VERSION,
     applyApkEffects,
@@ -2472,6 +2473,29 @@ function applyFormalSpecialResultHandler({
             ...(Array.isArray(chosenEffects) ? chosenEffects : [])
         ]
     );
+    if (contentIndex.pack?.v10GodTrialSemantics === V10_GOD_TRIAL_SEMANTICS
+        && session.packId === "douluo1" && character.route === "human"
+        && ((spin.poolId === "a7f4d0a4-734d-4b16-9a1d-53ae2fb55497" && optionId === "cf6cc4")
+            || (spin.poolId === "cb923c96-7fa3-474b-8c37-8e530d0a8e26" && optionId === "49adbc")
+            || (spin.poolId === "dab03114-3b0a-416a-a2a2-4a1e57af0157" && optionId === "c77382")
+            || (spin.poolId === "9aed9e67-028b-428c-89fa-52bf3c0e9970" && optionId === "eed09e"))) {
+        const routeOption = contentIndex.getRouteOption(spin.poolId, optionId);
+        const sourceEffects = routeOption?.route?.effects;
+        const counterKey = "formal:god-trial-draws";
+        if (!Array.isArray(sourceEffects) || sourceEffects.length !== 1
+            || sourceEffects[0]?.type !== "changeCounter"
+            || sourceEffects[0].key !== counterKey || sourceEffects[0].amount !== 1
+            || JSON.stringify(sourceEffects) !== JSON.stringify(routeOption?.source?.effects)) {
+            fail("V10_GOD_TRIAL_OPPORTUNITY_SOURCE_DRIFT", "神考机会的有效源效果缺失或漂移。",
+                { poolId: spin.poolId, optionId });
+        }
+        const existing = coreEffects.filter(effect => effect?.key === counterKey);
+        if (existing.length > 1 || existing.some(effect => effect.type !== "changeCounter" || effect.amount !== 1)) {
+            fail("V10_GOD_TRIAL_OPPORTUNITY_MAPPING_DRIFT", "神考机会计数映射重复或漂移。",
+                { poolId: spin.poolId, optionId });
+        }
+        if (existing.length === 0) coreEffects.push(clone(sourceEffects[0]));
+    }
     let effectResult = {
         character,
         controls: { appliedTypes: [], terminal: null },

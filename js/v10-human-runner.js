@@ -8,10 +8,27 @@ import {
     createApkRouteDynamicHandlers,
     createApkRouteRequirementEvaluator
 } from "./apk-route-runtime.js";
-import { applyApkEffects } from "./apk-rule-runtime.js";
+import { applyApkEffects, selectApkPoolOptions } from "./apk-rule-runtime.js";
+import { planFormalHumanScheduler, V10_ASCENSION_ATTEMPT_AGE, assertV10AscensionRetryContract } from "./apk-scheduler-runtime.js";
+
+import { V10_GOD_TRIAL_SEMANTICS, withV10GodTrialRuntime, evaluateV10GodTrialRequirement } from "./v10-god-trial-runtime.js";
+
+import { createV05WheelSegments, resolveV05StaticPool } from "./v05-wheel-view.js";
 
 const V10_HUMAN_MAX_STEPS = 2000;
 const V10_BEAST_MAX_STEPS = 25000;
+const V10_LIFESPAN_PEAK_LEVEL = "v10:lifespan:peak-level";
+const SHREK_FACTION_POOL_ID = "d2701441-4df0-4eeb-bed4-b5dbc8390392";
+const SHREK_FACTION_OPTION_ID = "cfe7dd";
+const V10_LIFESPAN_TIERS = Object.freeze([
+    { level: 0, youngest: 150, oldest: 180 },
+    { level: 30, youngest: 165, oldest: 200 },
+    { level: 50, youngest: 185, oldest: 230 },
+    { level: 70, youngest: 220, oldest: 280 },
+    { level: 90, youngest: 260, oldest: 320 },
+    { level: 95, youngest: 300, oldest: 360 },
+    { level: 99, youngest: 340, oldest: 400 }
+]);
 const SOURCE_CHARACTER_FIELDS = Object.freeze([
     "route", "wallet", "entrySelections", "age", "level", "maxLevel",
     "beastYears", "timelineEra", "gender", "appearance", "appearanceRank",
@@ -23,6 +40,14 @@ const SOURCE_CHARACTER_FIELDS = Object.freeze([
     "skills", "artifacts", "traits", "titles", "domains", "godhood", "godhoods",
     "ending", "flags", "background", "affiliations"
 ]);
+
+function projectCharacter(character) {
+    return Object.fromEntries(SOURCE_CHARACTER_FIELDS
+        .filter(field => field in character)
+        .map(field => [field, structuredClone(character[field])]));
+}
+
+export { projectCharacter as projectV10SourceCharacter };
 
 function exactString(value, targetKinds = []) {
     return typeof value === "string"
@@ -92,18 +117,91 @@ function withSourceBeastRuntime(loaded, sourcePack, route) {
     return { ...loaded, routeGraph };
 }
 
-function sourceRuntimeHandlers(contentIndex, sourcePack) {
+function withCorrectedShrekBranch(loaded, packId, route) {
+    if (packId !== "douluo1" || route !== "human") return loaded;
+    const pack = loaded.routeGraph?.packs?.find(item => item.id === packId);
+    const pool = pack?.pools?.find(item => item.id === SHREK_FACTION_POOL_ID);
+    const option = pool?.options?.find(item => item.id === SHREK_FACTION_OPTION_ID);
+    const sourceOption = pool?.source?.options?.find(item => item.id === SHREK_FACTION_OPTION_ID);
+    const effects = option?.route?.effects;
+    const expected = effects?.filter(effect => effect.type === "setStoryBranch");
+    if (!option || expected?.length !== 1 || expected[0].branch !== 3
+        || !effects.some(effect => effect.type === "setFaction"
+            && effect.selection?.optionId === SHREK_FACTION_OPTION_ID)
+        || JSON.stringify(option.source?.effects) !== JSON.stringify(effects)
+        || (sourceOption && JSON.stringify(sourceOption.effects) !== JSON.stringify(effects))) {
+        throw Object.assign(new Error("史莱克主线源选项结构已变化，无法应用已核准的分支修正。"), {
+            code: "V10_SHREK_BRANCH_SOURCE_DRIFT"
+        });
+    }
+    const correctedEffects = effects.flatMap(effect => effect.type === "setStoryBranch"
+        ? [{ ...effect, branch: 1 }, { type: "setFlag", key: "formal:faction-locked", value: true }]
+        : [effect]);
+    const correctedOption = {
+        ...option,
+        source: { ...option.source, effects: correctedEffects },
+        route: { ...option.route, effects: correctedEffects }
+    };
+    const correctedPool = {
+        ...pool,
+        ...(sourceOption ? { source: { ...pool.source, options: pool.source.options.map(item =>
+            item.id === SHREK_FACTION_OPTION_ID ? { ...item, effects: correctedEffects } : item) } } : {}),
+        options: pool.options.map(item => item.id === SHREK_FACTION_OPTION_ID ? correctedOption : item)
+    };
+    return { ...loaded, routeGraph: { ...loaded.routeGraph, packs: loaded.routeGraph.packs.map(item =>
+        item.id === packId ? { ...item, pools: item.pools.map(candidate =>
+            candidate.id === SHREK_FACTION_POOL_ID ? correctedPool : candidate) } : item) } };
+}
+
+function usesOldShrekBranch(snapshot) {
+    return snapshot?.session?.history?.some(item => item.poolId === SHREK_FACTION_POOL_ID
+        && item.optionId === SHREK_FACTION_OPTION_ID
+        && item.effects?.some(effect => effect.type === "setStoryBranch" && effect.branch === 3));
+}
+
+export function planV10HumanLifespan(session, seed) {
+    const character = session.character;
+    if (character.route === "beast" || character.ending || character.godhood
+        || character.flags?.immortal === true
+        || character.talents?.some(talent => talent?.optionId === "0d2184")) return null;
+    const age = character.age;
+    if (!Number.isSafeInteger(age) || age < 150) return null;
+    const level = Math.max(0, Math.trunc(Number(character.level) || 0),
+        Math.trunc(Number(character.flags?.[V10_LIFESPAN_PEAK_LEVEL]) || 0));
+    const tier = V10_LIFESPAN_TIERS.findLast(entry => level >= entry.level);
+    // One seed-specific longevity percentile is shared by every cultivation
+    // tier, so gaining levels can only extend the lifespan.
+    let hash = 2166136261;
+    const key = `${session.packId}:${seed}:v10-human-lifespan`;
+    for (let index = 0; index < key.length; index += 1) {
+        hash = Math.imul(hash ^ key.charCodeAt(index), 16777619);
+    }
+    const lifespan = tier.youngest + Math.floor((hash >>> 0) / 4294967296
+        * (tier.oldest - tier.youngest + 1));
+    if (age < lifespan) return null;
+    return {
+        terminal: true,
+        effects: [{
+            type: "ending",
+            endingId: `${session.packId}:v10-human-natural-lifespan`,
+            title: "寿终",
+            kind: "death",
+            text: `享年${age}岁；最高修为${level}级。`
+        }],
+        reason: "v10-human-natural-lifespan"
+    };
+}
+
+function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
     const builtIn = createApkRouteDynamicHandlers({ contentIndex });
     const game = sourcePack?.game;
     if (!game) return builtIn;
     const isDouluo2 = sourcePack.manifest?.id === "douluo2";
+    const localRequirementEvaluator = isDouluo2 ? null : createApkRouteRequirementEvaluator({ contentIndex });
     const contract = sourcePack.routeGraph?.pack?.runtimeContract;
     if (isDouluo2 && (!contract || typeof sourcePack.engine?.a !== "function" || typeof sourcePack.engine?.l !== "function")) {
         throw Object.assign(new Error("斗罗二缺少权威效果与条件执行器。"), { code: "V10_SOURCE_ENGINE_MISSING" });
     }
-    const projectCharacter = character => Object.fromEntries(SOURCE_CHARACTER_FIELDS
-        .filter(field => field in character)
-        .map(field => [field, structuredClone(character[field])]));
     function checkRequirement(requirement) {
         if (!contract.requirementTypes.includes(requirement?.type)) {
             throw Object.assign(new Error(`Source requirement unavailable: ${requirement?.type}`), { code: "APK_REQUIREMENT_UNRESOLVED" });
@@ -148,6 +246,12 @@ function sourceRuntimeHandlers(contentIndex, sourcePack) {
         if (typeof handler !== "function") return { found: false, value: null };
         const localCharacter = context.session.character;
         const sourceCharacter = projectCharacter(localCharacter);
+        const post150Planner = allowPost150 && localCharacter.route !== "beast"
+            && localCharacter.age >= 150 && registryName === "flowActions"
+            && ["douluo2:action.annual-growth-plan", "douluo2:action.human-story.plan", "planHumanStep"].includes(context.handlerId);
+        // The copied source planner embeds the 150-year ending. Give only that
+        // planning call its last pre-limit age, then retain the real age.
+        if (post150Planner) sourceCharacter.age = 149;
         context.session.character = sourceCharacter;
         context.session.currentStepId = context.flow?.source?.id ?? context.flow?.id;
         const value = handler({
@@ -157,6 +261,14 @@ function sourceRuntimeHandlers(contentIndex, sourcePack) {
             option: context.routeOption?.source ?? context.routeOption ?? null,
             ...extra
         });
+        if (post150Planner) {
+            if (context.session.character.age !== 149) {
+                throw Object.assign(new Error("年度规划器意外修改了年龄。"), {
+                    code: "V10_POST150_PLANNER_AGE_MUTATION"
+                });
+            }
+            context.session.character.age = localCharacter.age;
+        }
         context.session.character = {
             ...localCharacter,
             ...context.session.character,
@@ -173,6 +285,19 @@ function sourceRuntimeHandlers(contentIndex, sourcePack) {
 
     function dynamicTransition(kind, context) {
         const registryName = kind === "action" ? "flowActions" : "flowResolvers";
+        if (allowPost150 && kind === "action" && [
+            "douluo1:action.formal-human.schedule",
+            "douluo2:action.annual-growth-plan",
+            "douluo2:action.human-story.plan",
+            "planHumanStep"
+        ].includes(context.handlerId)) {
+            const lifespan = planV10HumanLifespan(context.session, seed);
+            if (lifespan) return lifespan;
+        }
+        if (allowPost150 && kind === "action"
+            && context.handlerId === "douluo1:action.formal-human.schedule") {
+            return planFormalHumanScheduler({ contentIndex, session: context.session, allowPost150: true });
+        }
         if (sourcePack.manifest?.id === "douluo2" || context.session.character?.route === "beast") {
             const source = sourceCall(registryName, context);
             if (source.found) {
@@ -206,16 +331,28 @@ function sourceRuntimeHandlers(contentIndex, sourcePack) {
                 checkRequirement(requirement);
                 return { status: sourcePack.engine.l(character, [requirement]) ? "met" : "not_met", requirementType: requirement.type };
             }
-            : createApkRouteRequirementEvaluator({ contentIndex }),
+            : (record, character) => evaluateV10GodTrialRequirement(record, character, localRequirementEvaluator),
         dynamicAction: context => dynamicTransition("action", context),
         dynamicResolver: context => dynamicTransition("resolver", context),
         dynamicOption(context) {
+            const before = context.session.character;
+            const recordAscensionAttempt = contentIndex.pack?.v10GodTrialSemantics === V10_GOD_TRIAL_SEMANTICS
+                && context.session.packId === "douluo1" && before.route === "human" && !before.ending
+                && before.storyBranch === 2
+                && before.flags?.["formal:d1-story:selected:cdae9943-fb9d-49ba-853c-40d9b78924ae:403ea3"] === true
+                && context.poolId === "1209bb56-d533-48af-b012-204292b96f68"
+                && context.customHandler === "douluo1:handler.formal-story.result"
+                && ((context.optionId === "a3e30b" && before.level < 100)
+                    || Object.hasOwn(before.flags ?? {}, V10_ASCENSION_ATTEMPT_AGE));
+            if (recordAscensionAttempt) assertV10AscensionRetryContract(contentIndex, before);
+            const attemptAge = before.age;
             let aggregate = null;
+            let effectBatch = 0;
             const applyEffects = effects => {
                 const result = effectApplier(context.session.character, effects, {
                     reason: "v10-source-custom-handler",
                     referenceId: `${context.flowId}:${context.customHandler}`,
-                    idempotencyKeyPrefix: `v10-source:${context.session.packId}:${context.session.history.length}:${context.optionId}`
+                    idempotencyKeyPrefix: `v10-source:${context.session.packId}:${context.session.history.length}:${context.optionId}:${effectBatch++}`
                 });
                 context.session.character = result.character;
                 aggregate = result;
@@ -230,6 +367,12 @@ function sourceRuntimeHandlers(contentIndex, sourcePack) {
                 const error = new Error(`Source customHandler is unavailable: ${context.customHandler}`);
                 error.code = "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED";
                 throw error;
+            }
+            if (recordAscensionAttempt && !context.session.character.ending) {
+                if (context.session.character.age !== attemptAge) {
+                    throw Object.assign(new Error("独立飞升结果意外改变年龄。"), { code: "V10_ASCENSION_RETRY_STATE_INVALID" });
+                }
+                applyEffects([{ type: "setFlag", key: V10_ASCENSION_ATTEMPT_AGE, value: attemptAge }]);
             }
             context.session.dynamicHistory.push({
                 kind: "customHandler",
@@ -277,10 +420,13 @@ export function createV10HumanRunner({
     seed = V05_DEFAULT_SEED,
     route = "human",
     sourcePack = null,
-    snapshot = null
+    snapshot = null,
+    allowPost150 = false
 } = {}) {
     const packId = sourcePack?.manifest?.id ?? "douluo1";
-    const runtimeLoaded = withSourceBeastRuntime(loaded, sourcePack, route);
+    const runtimeLoaded = withCorrectedShrekBranch(
+        withV10GodTrialRuntime(withSourceBeastRuntime(loaded, sourcePack, route), sourcePack, route), packId, route
+    );
     let contentIndex = packId === "douluo1"
         ? createV05ContentIndex(runtimeLoaded)
         : createApkRouteContentIndex({ routeGraph: runtimeLoaded.routeGraph, packId });
@@ -292,6 +438,7 @@ export function createV10HumanRunner({
             }
         });
     }
+    const handlers = sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed);
     const base = createV05DemoRunner({
         contentIndex,
         packId,
@@ -302,8 +449,9 @@ export function createV10HumanRunner({
         entryFlowId: packId === "douluo2"
             ? sourcePack.routeGraph.pack.routeEntries[route]
             : route === "beast" ? "beastPeriod" : null,
-        dynamicHandlers: sourceRuntimeHandlers(contentIndex, sourcePack)
+        dynamicHandlers: handlers
     });
+    const godTrialRuntimeEnabled = contentIndex.pack.v10GodTrialSemantics === V10_GOD_TRIAL_SEMANTICS;
     let phase = "ready";
     let error = null;
     let summary = null;
@@ -311,6 +459,16 @@ export function createV10HumanRunner({
     let lastResult = null;
 
     if (snapshot !== null) {
+        if (godTrialRuntimeEnabled && snapshot?.runtimeSemantics !== V10_GOD_TRIAL_SEMANTICS) {
+            throw Object.assign(new Error('旧存档使用了未注册二级神考奖励的运行语义，请保留原文件并重新开局。'), {
+                code: 'V10_SNAPSHOT_SEMANTICS_CHANGED'
+            });
+        }
+        if (packId === "douluo1" && route === "human" && usesOldShrekBranch(snapshot)) {
+            throw Object.assign(new Error("旧存档使用了史莱克主线的错误分支语义，请保留原文件并重新开局。"), {
+                code: "V10_SNAPSHOT_SEMANTICS_CHANGED"
+            });
+        }
         if (snapshot?.schemaVersion !== "v10-runner-snapshot/1.0"
             || snapshot?.packId !== packId
             || snapshot?.seed !== seed
@@ -370,7 +528,15 @@ export function createV10HumanRunner({
 
     function commitBaseStep() {
         const snapshot = structuredClone(base.session);
-        const result = normalize(base.step());
+        const committed = base.step();
+        if (allowPost150 && committed.committed) {
+            const character = base.session.character;
+            character.flags[V10_LIFESPAN_PEAK_LEVEL] = Math.max(
+                Number(character.flags[V10_LIFESPAN_PEAK_LEVEL]) || 0,
+                Number(character.level) || 0
+            );
+        }
+        const result = normalize(committed);
         if (phase === "boundary" || phase === "error") restoreSession(snapshot);
         return result;
     }
@@ -410,6 +576,16 @@ export function createV10HumanRunner({
                 }
                 await yieldStep();
             }
+            if (allowPost150) {
+                phase = "ready";
+                return {
+                    status: phase,
+                    committed: false,
+                    blocked: false,
+                    steps: maxSteps,
+                    reason: "batch-limit"
+                };
+            }
             phase = "boundary";
             error = {
                 code: "V10_HUMAN_STEP_LIMIT_REACHED",
@@ -435,8 +611,23 @@ export function createV10HumanRunner({
         get summary() { return summary; },
         get seed() { return base.seed; },
         get lastResult() { return lastResult; },
-        get wheelView() { return base.wheelView; },
-        get presentationHistory() { return base.presentationHistory; },
+        get lastWheelResult() { return base.lastWheelResult; },
+        get wheelView() {
+            if (!godTrialRuntimeEnabled || phase !== 'ready'
+                || !base.session.currentFlowId?.startsWith('humanGodTrialReward:二级:')) return base.wheelView;
+            const resolved = resolveV05StaticPool({ contentIndex, session: base.session });
+            const selection = selectApkPoolOptions(contentIndex, base.session.character, resolved.poolId, {
+                requirementEvaluator: handlers.requirementEvaluator
+            });
+            const segments = createV05WheelSegments(selection.options);
+            const last = base.session.history.at(-1);
+            const recentResult = last ? { optionId: last.optionId, text: last.text } : null;
+            return Object.freeze({ version: 'v05-wheel-view/1', status: 'ready',
+                title: selection.pool.normalized.pool_name, flowId: resolved.flowId, poolId: resolved.poolId,
+                segments, totalWeight: segments.reduce((total, item) => total + item.weight, 0),
+                unresolvedRequirements: selection.unresolved, recentResult,
+                selectedOptionId: segments.some(item => item.optionId === recentResult?.optionId) ? recentResult.optionId : null });
+        },
         get characterProfile() {
             return Object.freeze({
                 ...base.characterProfile,
@@ -472,7 +663,7 @@ export function createV10HumanRunner({
                 {
                     maxSteps: route === "beast"
                         ? V10_BEAST_MAX_STEPS
-                        : V10_HUMAN_MAX_STEPS,
+                        : allowPost150 ? 200 : V10_HUMAN_MAX_STEPS,
                     ...options
                 }
             );
@@ -481,6 +672,7 @@ export function createV10HumanRunner({
             return structuredClone({
                 schemaVersion: "v10-runner-snapshot/1.0",
                 packId: base.session.packId,
+                ...(godTrialRuntimeEnabled ? { runtimeSemantics: V10_GOD_TRIAL_SEMANTICS } : {}),
                 ...(packId === "douluo2" ? { contentIdentity: sourcePack.routeGraph.pack.contentIdentity } : {}),
                 route,
                 seed,

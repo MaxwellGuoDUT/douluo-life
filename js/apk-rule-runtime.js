@@ -35,7 +35,10 @@ const SOURCE_RUNTIME_EFFECT_TYPES = Object.freeze([
     "deleteFlag",
     "advanceHumanTime",
     "advanceBeastTime",
-    "grantGodhood"
+    "grantGodhood",
+    "addBloodline",
+    "startGodTrial",
+    "setGodTrialDeity"
 ]);
 
 export const APK_RUNTIME_EFFECT_TYPES = Object.freeze([
@@ -903,6 +906,42 @@ function applyEffect(state, effect, controls, meta) {
             else affiliations.push(clone(effect.affiliation));
             break;
         }
+        case "startGodTrial": {
+            const current = state.godTrial;
+            if (current) {
+                if (["active", "qualified"].includes(current.status)) {
+                    fail("APK_GOD_TRIAL_ACTIVE", "已有神考正在进行，新的神考机会必须保留到当前神考结束后。");
+                }
+                ensureArray(state, "godTrials").push(clone(current));
+            }
+            state.godTrial = {
+                tier: effect.tier,
+                tierSelection: clone(effect.selection),
+                deityId: null,
+                deityName: null,
+                deitySelection: null,
+                currentStage: 0,
+                totalStages: effect.total,
+                completedStages: [],
+                claimedRewardStages: [],
+                claimedRewardIds: [],
+                status: "qualified",
+                startedAtAge: state.age,
+                completed: 0,
+                total: effect.total
+            };
+            break;
+        }
+        case "setGodTrialDeity": {
+            if (!state.godTrial) fail("APK_GOD_TRIAL_MISSING", "内容配置错误：尚未获得神考等级。");
+            state.godTrial.deityId = effect.deityId;
+            state.godTrial.deityName = effect.deityName;
+            state.godTrial.deitySelection = clone(effect.selection);
+            state.godTrial.trialId = effect.deityId;
+            state.godTrial.status = "active";
+            state.godTrial.currentStage = Math.max(1, state.godTrial.currentStage);
+            break;
+        }
         case "archiveCompletedGodTrial": {
             const trial = state.godTrial;
             if (trial && ["completed", "failed", "abandoned"].includes(trial.status)) {
@@ -1132,6 +1171,9 @@ function applyEffect(state, effect, controls, meta) {
         }
         case "addTalent":
             addUniqueOption(ensureArray(state, "talents"), effect.selection);
+            break;
+        case "addBloodline":
+            if (!state.bloodlines.includes(effect.bloodlineId)) state.bloodlines.push(effect.bloodlineId);
             break;
         case "addTrait":
             if (!state.traits.includes(effect.traitId)) state.traits.push(effect.traitId);
