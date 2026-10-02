@@ -23,25 +23,19 @@ export function createV10LifeRunner({
                         { packId, route }
                     );
                 }
-                let loaded;
-                let sourcePack = null;
-                if (route === "beast") {
-                    const [runtimeContent, sourceRuntime, routeGraph] = await Promise.all([
-                        contentLoader.getHumanRuntimeContent(),
-                        contentLoader.getSourceRuntime(packId),
-                        contentLoader.getRouteGraph(packId)
-                    ]);
-                    loaded = runtimeContent;
-                    sourcePack = Object.freeze({ ...sourceRuntime, routeGraph });
-                } else {
-                    loaded = await contentLoader.getHumanRuntimeContent();
-                }
+                const [loaded, sourceRuntime, routeGraph] = await Promise.all([
+                    contentLoader.getHumanRuntimeContent(),
+                    contentLoader.getSourceRuntime(packId),
+                    contentLoader.getRouteGraph(packId)
+                ]);
+                const sourcePack = Object.freeze({ ...sourceRuntime, routeGraph });
                 return createV10HumanRunner({
                     loaded,
                     seed,
                     route,
                     sourcePack,
-                    snapshot
+                    snapshot,
+                    allowPost150: true
                 });
             }
             if (packId === "douluo2") {
@@ -61,7 +55,8 @@ export function createV10LifeRunner({
                     sourcePack: { ...sourcePack, routeGraph: graph },
                     seed,
                     route,
-                    snapshot
+                    snapshot,
+                    allowPost150: true
                 });
             }
             throw new V10RuntimeBoundary(

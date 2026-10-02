@@ -1,3 +1,4 @@
+import { V10_GOD_TRIAL_SEMANTICS, planV10GodTrialReward } from "./v10-god-trial-runtime.js";
 export const APK_SCHEDULER_RUNTIME_VERSION = "apk-scheduler-runtime/1.0";
 
 const FORMAL_SOURCE_PREFIX = "douluo1:flow.formal-source.";
@@ -17,6 +18,8 @@ const FORMAL_GOD_TRIAL_RETURN_STEP = "godTrialReturnStep";
 const FORMAL_STORY_COMPLETE = "formal:d1-story:complete";
 const FORMAL_STORY_FREE_MODE = "formal:d1-story:free-mode";
 const HUMAN_LIFESPAN = 150;
+export const V10_ASCENSION_ATTEMPT_AGE = "v10:independent-ascension:last-attempt-age";
+const V10_ASCENSION_POOL = "1209bb56-d533-48af-b012-204292b96f68";
 
 const ANNUAL_SOURCE_POOLS = Object.freeze({
     F: "5fc640cc-8030-4f30-8e77-ed41c3bf6ab0",
@@ -357,9 +360,48 @@ function storyPoolEnabled(contentIndex, poolId) {
         ));
 }
 
-export function planFormalStory({ contentIndex, character } = {}) {
+// Shared by the real result hook and the scheduler; never rewrites source content.
+export function assertV10AscensionRetryContract(contentIndex, character) {
+    const age = character.age;
+    const last = character.flags?.[V10_ASCENSION_ATTEMPT_AGE];
+    if (!Number.isSafeInteger(age) || age < 0
+        || (Object.hasOwn(character.flags ?? {}, V10_ASCENSION_ATTEMPT_AGE) && (!Number.isSafeInteger(last) || last < 0 || last > age))) {
+        throw Object.assign(new Error("飞升重试年龄记录无效。"), { code: "V10_ASCENSION_RETRY_STATE_INVALID" });
+    }
+    const flow = contentIndex.getFlow(FORMAL_STORY_PREFIX + V10_ASCENSION_POOL);
+    const options = contentIndex.getOptions(V10_ASCENSION_POOL);
+    if (flow?.source?.poolId !== V10_ASCENSION_POOL
+        || flow.route?.pool?.value !== V10_ASCENSION_POOL || options.length !== 3
+        || ![["a3e30b", 50], ["745466", 40], ["607ee5", 40]].every(([id, weight]) => {
+            const option = contentIndex.getRouteOption(V10_ASCENSION_POOL, id);
+            const requirements = id === "607ee5" ? [{ type: "levelAtLeast", value: 100 }] : [];
+            return option?.source?.weight === weight && option.source.enabled === true
+                && option.source.customHandler === "douluo1:handler.formal-story.result"
+                && option.route?.customHandler?.value === option.source.customHandler
+                && option.source.next === "douluo1:flow.formal-story.plan"
+                && option.route?.next?.value === option.source.next
+                && JSON.stringify(option.source.requirements) === JSON.stringify(requirements)
+                && JSON.stringify(option.route.requirements) === JSON.stringify(requirements)
+                && JSON.stringify(option.source.effects) === JSON.stringify(option.route.effects);
+        })) {
+        throw Object.assign(new Error("独立飞升重试的源池合同漂移。"), { code: "V10_ASCENSION_RETRY_SOURCE_DRIFT" });
+    }
+}
+
+export function planFormalStory({ contentIndex, character, allowPost150 = false } = {}) {
     const flags = character?.flags ?? {};
-    if (flags[FORMAL_STORY_FREE_MODE] === true && character.age >= HUMAN_LIFESPAN) {
+    if (allowPost150 && contentIndex?.pack?.v10GodTrialSemantics === V10_GOD_TRIAL_SEMANTICS
+        && Object.hasOwn(flags, V10_ASCENSION_ATTEMPT_AGE)) {
+        assertV10AscensionRetryContract(contentIndex, character);
+        if (character.route === "human" && !character.ending && character.storyBranch === 2
+            && flags["formal:d1-story:selected:cdae9943-fb9d-49ba-853c-40d9b78924ae:403ea3"] === true
+            && !["qualified", "active"].includes(character.godTrial?.status)
+            && character.level >= 100 && character.age > flags[V10_ASCENSION_ATTEMPT_AGE]) {
+            return { kind: "target", target: FORMAL_STORY_PREFIX + V10_ASCENSION_POOL,
+                effects: [], poolId: V10_ASCENSION_POOL };
+        }
+    }
+    if (!allowPost150 && flags[FORMAL_STORY_FREE_MODE] === true && character.age >= HUMAN_LIFESPAN) {
         return {
             kind: "terminal",
             effects: [{
@@ -558,13 +600,13 @@ function setSchedulerMode(mode, index = 0) {
     ];
 }
 
-export function planFormalHumanScheduler({ contentIndex, session } = {}) {
+export function planFormalHumanScheduler({ contentIndex, session, allowPost150 = false } = {}) {
     if (contentIndex?.packId !== "douluo1") return null;
     const character = session.character;
     const flags = character.flags ?? {};
     const effects = [];
 
-    if (character.route !== "beast" && character.age >= HUMAN_LIFESPAN) {
+    if (!allowPost150 && character.route !== "beast" && character.age >= HUMAN_LIFESPAN) {
         return {
             terminal: true,
             effects: [{
@@ -596,6 +638,9 @@ export function planFormalHumanScheduler({ contentIndex, session } = {}) {
             reason: "domain-draw"
         };
     }
+
+    const godTrialReward = planV10GodTrialReward(contentIndex, session);
+    if (godTrialReward) return { ...godTrialReward, effects: [...effects, ...godTrialReward.effects] };
 
     const godTrialStatus = character.godTrial?.status;
     const godTrialCompleted = ["completed", "failed", "abandoned"].includes(godTrialStatus);
@@ -645,7 +690,7 @@ export function planFormalHumanScheduler({ contentIndex, session } = {}) {
         ? String(flags[FORMAL_SCHEDULER_MODE])
         : "annual";
     if (mode === "annual") {
-        const storyPlan = planFormalStory({ contentIndex, character });
+        const storyPlan = planFormalStory({ contentIndex, character, allowPost150 });
         if (storyPlan.kind === "terminal") {
             return {
                 terminal: true,
@@ -664,7 +709,7 @@ export function planFormalHumanScheduler({ contentIndex, session } = {}) {
 
         const storyComplete = flags[FORMAL_STORY_COMPLETE] === true
             || storyPlan.kind === "complete";
-        if (character.age >= HUMAN_LIFESPAN
+        if (!allowPost150 && character.age >= HUMAN_LIFESPAN
             && (character.storyBranch === 3 || storyComplete)) {
             return {
                 target: FORMAL_COMPLETE_FLOW,

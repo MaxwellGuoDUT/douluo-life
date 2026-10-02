@@ -111,10 +111,25 @@ test("V1 HTML is a static Pages entry with no cloud or account dependency", () =
     const app = fs.readFileSync(path.join(process.cwd(), "js", "v10-app.js"), "utf8");
     assert.match(html, /js\/v10-app\.js/u);
     assert.match(html, /纯前端版本/u);
-    assert.match(html, /完整人类生命周期/u);
+    assert.match(html, /人类人生/u);
     assert.match(app, /开始魂兽人生/u);
-    assert.match(app, /human-result.*尚未转动/u);
+    assert.match(app, /human-result.*等待抽取/u);
     assert.match(html, /物种/u);
-    assert.match(html, /推进至人生结局/u);
+    assert.match(html, /极速推进/u);
+    assert.match(html, /id="human-reroll"[^>]*disabled[^>]*>撤销并重抽/u);
+    assert.match(html, /重抽仍可能得到相同结果/u);
+    assert.match(html, /每批最多200次/u);
+    assert.match(html, /<h1>斗罗大陆<\/h1>/u);
+    assert.ok(html.indexOf('id="human-age"') < html.indexOf('id="human-step"'));
+    assert.ok(html.indexOf('id="human-step"') < html.indexOf('id="human-terminal"'));
+    assert.ok(html.indexOf('id="human-wheel-title"') < html.indexOf('id="human-result"'));
+    assert.equal((html.match(/<dialog /gu) ?? []).length, 3);
+    for (const id of ['human-soul-bones', 'human-attributes', 'human-domains', 'human-martial-souls']) {
+        assert.match(html, new RegExp(`id="${id}"`, 'u'));
+    }
+    assert.match(html, /id="character-menu-panel"[^>]*hidden/u);
+    assert.match(html, /id="character-toggle"[^>]*aria-expanded="false"/u);
+    assert.match(html, /id="route-toggle"[^>]*aria-controls="pack-list"/u);
+    assert.equal((html.match(/<details><summary>/gu) ?? []).length, 8);
     assert.doesNotMatch(html, /oidc|postgres|cloud sync/iu);
 });

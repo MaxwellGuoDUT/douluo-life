@@ -1,3 +1,4 @@
+import { V10_GOD_TRIAL_CONTENT } from "./v10-god-trial-runtime.js";
 import { createApkCharacterState } from "./apk-rule-runtime.js";
 // One atomic localStorage value per slot. No migration or writes on startup.
 export const SAVE_PREFIX = "douluo-life:v10:manual:1:";
@@ -78,15 +79,18 @@ export function saveSummary(snapshot) {
 
 export function createV10SaveStore({ contentLoader, runner, storage = () => globalThis.localStorage }) {
     const identities = new Map();
-    async function identity(packId) {
-        if (!identities.has(packId)) {
+    async function identity(packId, route) {
+        const identityKey = packId === "douluo1" && route === "human" ? `${packId}:human:second-tier` : packId;
+        if (!identities.has(identityKey)) {
             const graph = await contentLoader.getRouteGraph(packId);
             const human = packId === "douluo1" ? await contentLoader.getHumanRuntimeContent() : null;
-            const bytes = new TextEncoder().encode(JSON.stringify([SCHEMA, graph, human]));
+            const content = [SCHEMA, graph, human];
+            if (packId === "douluo1" && route === "human") content.push(V10_GOD_TRIAL_CONTENT);
+            const bytes = new TextEncoder().encode(JSON.stringify(content));
             const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
-            identities.set(packId, Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join(""));
+            identities.set(identityKey, Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join(""));
         }
-        return identities.get(packId);
+        return identities.get(identityKey);
     }
     function key(slot) {
         requireValue(Number.isInteger(slot) && slot >= 1 && slot <= 8, "请选择1至8号槽位。");
@@ -100,7 +104,7 @@ export function createV10SaveStore({ contentLoader, runner, storage = () => glob
     async function validate(text) {
         const envelope = parse(text);
         const snapshot = validateShape(envelope);
-        if (envelope.contentIdentity !== await identity(snapshot.packId)) {
+        if (envelope.contentIdentity !== await identity(snapshot.packId, snapshot.route)) {
             reject("SAVE_CONTENT_MISMATCH", "存档内容版本与当前游戏不兼容。");
         }
         // Restore a separate runtime. No step, RNG draw, or mutation of the active life.
@@ -123,7 +127,7 @@ export function createV10SaveStore({ contentLoader, runner, storage = () => glob
         async serialize(life) {
             const snapshot = life.exportSnapshot();
             const text = JSON.stringify({ schemaVersion: SCHEMA, packId: snapshot.packId,
-                contentIdentity: await identity(snapshot.packId), snapshot });
+                contentIdentity: await identity(snapshot.packId, snapshot.route), snapshot });
             return text;
         },
         async read(slot) {

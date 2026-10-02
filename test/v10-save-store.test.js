@@ -23,7 +23,7 @@ function advance(life, count = 1000, until = () => false) {
 for (const [packId, route, seed] of [
     ['douluo1', 'human', 'v10-save-human'], ['douluo1', 'beast', 'v10-beast-cohort-001'],
     ['douluo2', 'human', 'day27-human-3'], ['douluo2', 'beast', 'day27-beast-1']
-]) test(`real save/resume ${packId}/${route} including transformation and terminal`, async () => {
+]) test(`real save/resume ${packId}/${route} including transformation and endings`, async () => {
     const { store, data } = fixture();
     const life = advance(await runner.start(packId, { seed, route }), 12);
     const independent = advance(await runner.start(packId, { seed, route }), 12);
@@ -40,15 +40,23 @@ for (const [packId, route, seed] of [
         await store.write(3, await store.serialize(life));
         assert.deepEqual((await store.read(3)).exportSnapshot(), life.exportSnapshot());
     }
-    advance(life); advance(resumed); advance(independent);
-    assert.equal(life.phase, 'completed');
+    const stopAfter150 = value => route !== 'beast' && value.session.character.age >= 151;
+    advance(life, 1000, stopAfter150); advance(resumed, 1000, stopAfter150); advance(independent, 1000, stopAfter150);
     assert.deepEqual(resumed.exportSnapshot(), independent.exportSnapshot());
     assert.deepEqual(life.exportSnapshot(), independent.exportSnapshot());
     await store.write(4, await store.serialize(life));
     const terminal = await store.read(4);
-    assert.equal(terminal.phase, 'completed');
+    assert.equal(terminal.phase, life.phase);
     assert.deepEqual(terminal.exportSnapshot(), life.exportSnapshot());
-    assert.equal(terminal.step().committed, false);
+    if (route === 'human') {
+        assert.equal(life.phase, 'ready');
+        assert.ok(life.session.character.age >= 151);
+        assert.equal(life.session.character.ending, null);
+    }
+    if (life.phase === 'completed') assert.equal(terminal.step().committed, false);
+    else {
+        assert.equal(terminal.step().error, null);
+    }
     assert.equal(data.get('old-v05'), 'owner save');
 });
 test('eight slots, overwrite, isolation, stale writes, quota and unavailable storage', async () => {
@@ -173,9 +181,9 @@ test('UI test copy: real runtime rejection displays its error and disables progr
         loaded: { routeGraph: { schemaVersion: 'apk-route-graph/1.0', packageVersion: source.manifest.version, packs: [{ ...graph.pack, id: 'douluo2' }] } } });
     const before = broken.exportSnapshot();
     const nodes = new Map();
-    const element = () => ({ value: '', textContent: '', dataset: {}, disabled: false, hidden: false, addEventListener() {}, replaceChildren() {}, scrollIntoView() {} });
-    const doc = { querySelector(id) { if(!nodes.has(id)) nodes.set(id, element()); return nodes.get(id); }, querySelectorAll: () => [], createElement: element };
-    const context = { document: doc, setTimeout, createV10ContentLoader: () => ({ getManifest: async () => ({ packs: [] }) }),
+    const element = () => ({ value: '', textContent: '', dataset: {}, disabled: false, hidden: false, style: { setProperty() {}, removeProperty() {} }, setAttribute() {}, focus() {}, querySelector: () => ({ focus() {} }), addEventListener() {}, replaceChildren() {}, scrollIntoView() {} });
+    const doc = { querySelector(id) { if(!nodes.has(id)) nodes.set(id, element()); return nodes.get(id); }, querySelectorAll: () => [], createElement: element, addEventListener() {} };
+    const context = { document: doc, setTimeout, crypto: { randomUUID: () => 'ui-boundary-seed' }, createV10ContentLoader: () => ({ getManifest: async () => ({ packs: [] }) }),
         createV10LifeRunner: () => ({ start: async () => broken }), createV10SaveStore: () => ({ list: async () => [] }) };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url), 'utf8').replace(/^import .+;\r?\n/gmu, '');
     runInNewContext(app + '\nglobalThis.testUI = { startLife, runLife };', context);
