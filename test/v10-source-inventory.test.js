@@ -96,7 +96,7 @@ test("Douluo I restores only the exact land-finale source closure", () => {
     )));
 });
 
-test("source generator check is current when the restored vault is present", () => {
+test("source generator check is current when the restored vault is present", t => {
     const defaultVault = path.join(
         path.dirname(ROOT),
         "douluo-life-source-vault",
@@ -104,10 +104,15 @@ test("source generator check is current when the restored vault is present", () 
         "apk-analysis",
         "E4FB340E"
     );
-    if (!fs.existsSync(defaultVault)) return;
+    const configuredVault = process.env.DOULUO_SOURCE_VAULT;
+    const vault = path.resolve(configuredVault || defaultVault);
+    if (!configuredVault && !fs.existsSync(vault)) {
+        t.skip("Restored source vault is absent; set DOULUO_SOURCE_VAULT to run this check.");
+        return;
+    }
     const result = spawnSync(
         process.execPath,
-        [path.join(ROOT, "tools", "v10", "generate-source-inventory.mjs"), "--check"],
+        [path.join(ROOT, "tools", "v10", "generate-source-inventory.mjs"), "--check", "--vault", vault],
         { cwd: ROOT, encoding: "utf8" }
     );
     assert.equal(result.status, 0, result.stderr || result.stdout);

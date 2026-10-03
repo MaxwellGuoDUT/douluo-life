@@ -2,6 +2,14 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import { runInNewContext } from 'node:vm';
+import { createV10Display, actualAgeText, playerWheelView } from '../js/v10-display.js';
+import { createV10HistoryView } from '../js/v10-history-view.js';
+function runUI(source, context) {
+    Object.assign(context, { actualAgeText, playerWheelView,
+        createV10Display: fields => createV10Display(fields, context.document),
+        createV10HistoryView: options => createV10HistoryView({...options, document: context.document}) });
+    return runInNewContext(source, context);
+}
 import { APK_RUNTIME_EFFECT_TYPES, applyApkEffects, createApkCharacterState, selectApkPoolOptions } from '../js/apk-rule-runtime.js';
 import { createV05ContentIndex } from '../js/v05-demo.js';
 import { createApkRouteRequirementEvaluator } from '../js/apk-route-runtime.js';
@@ -250,7 +258,7 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
         createV10SaveStore: () => ({ list: async () => [], read: async () => currentLife })
     };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url), 'utf8').replace(/^import .+;\r?\n/gmu, '');
-    runInNewContext(app + '\nglobalThis.testUI = { startLife, renderGame, saveAction, runLife };', context);
+    runUI(app + '\nglobalThis.testUI = { startLife, renderGame, saveAction, runLife };', context);
     await context.testUI.startLife('human', 'douluo1');
     assert.equal(nodes.get('#pack-list').hidden, true);
     assert.equal(nodes.get('#v10-status').hidden, true);
@@ -348,7 +356,8 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
     currentLife.wheelView = { status: 'dynamic', title: '动态转盘', message: '由 runtime 解析', flowId: 'flow-1', segments: [] };
     context.testUI.renderGame();
     assert.equal(nodes.get('#human-options').children.length, 0);
-    assert.match(nodes.get('#human-wheel-note').textContent, /flow-1/);
+    assert.match(nodes.get('#runtime-diagnostics').textContent, /flow-1/);
+    assert.doesNotMatch(nodes.get('#human-wheel-note').textContent, /flow-1|runtime/);
     await context.testUI.runLife('runToTerminal', '正在连续推进…');
     assert.equal(batchOptions.maxSteps, 200);
     assert.match(nodes.get('#human-progress').textContent, /本批已推进 200 次/);
@@ -408,7 +417,7 @@ test('player seed 105th source death immediately appears above the wheel', async
         testLife: life
     };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url), 'utf8').replace(/^import .+;\r?\n/gmu, '');
-    runInNewContext(app + '\nlifeRunner = testLife; globalThis.testUI = { runLife };', context);
+    runUI(app + '\nlifeRunner = testLife; globalThis.testUI = { runLife };', context);
     await context.testUI.runLife('step', '正在提交一次选择…');
     assert.equal(life.phase, 'completed');
     assert.equal(life.session.history.length, 105);
@@ -548,7 +557,7 @@ test('screenshot UI projects distinct human and beast facts without changing the
     life.characterProfile.route = 'beast';
     Object.assign(life.session.character, {
         route: 'beast', age: 160, beastYears: 1045,
-        beast: { species: { text: '测试本体' }, bloodlines: [
+        beast: { chronologicalAge: 160, species: { text: '测试本体' }, bloodlines: [
             { selection: { optionId: 'body', text: '本体' }, percentage: 50 },
             { selection: { optionId: 'other', text: '融合血脉' }, percentage: 50 }
         ], bloodlineComponents: [{bloodlineId:'body',ratioBasisPoints:5000},{bloodlineId:'other',ratioBasisPoints:5000}],
@@ -565,6 +574,7 @@ test('screenshot UI projects distinct human and beast facts without changing the
     ui.closePanel('character-menu-panel');
     assert.equal(JSON.stringify(life.session), beastBefore);
     life.characterProfile.route = 'transformed';
+    life.session.character.route = 'transformed';
     ui.renderGame();
     assert.equal(nodes.get('#cultivation-value').textContent, '19 级');
     assert.equal(nodes.get('#character-name').textContent, '蓝银草');
@@ -830,7 +840,8 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
             {optionId:'b',fullText:'第二项',weight:3,percentage:75,startAngle:90,endAngle:360,midpoint:225}
         ] },
         lastWheelResult:null,
-        step() {
+        step({ onCheckpoint = null } = {}) {
+            const checkpoint = onCheckpoint ? this.exportSnapshot() : null;
             count += 1;
             if (['boundary','error'].includes(stopPhase)) {
                 this.phase=stopPhase; this.error={code:'FIXTURE_TYPED_STOP',message:'测试停止'};
@@ -844,11 +855,12 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
                 this.error = {code:'FIXTURE_TYPED_STOP',message:'测试停止'};
                 this.summary = {route:'human',age:10,level:19,history:count,ending:{title:'测试结局',text:'完整终局文字'}};
             }
+            if (onCheckpoint) onCheckpoint(checkpoint);
             return {committed:true};
         },
         exportSnapshot() { return {packId:this.session.packId,route:this.session.character.route,seed:this.seed ?? 'fixture',session:structuredClone(this.session)}; },
-        async runToTerminal({onStep}) {
-            for (let i=1;i<=5;i++) { const result = this.step(); await onStep(result,i); if (!result.committed) break; }
+        async runToTerminal({onStep, onCheckpoint}) {
+            for (let i=1;i<=5;i++) { const result = this.step({onCheckpoint}); await onStep(result,i); if (!result.committed) break; }
             return {reason:'batch-limit',steps:5};
         }
     };
@@ -875,7 +887,7 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
         testLife:actualLife ?? life
     };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url),'utf8').replace(/^import .+;\r?\n/gmu,'');
-    runInNewContext(app+'\nlifeRunner=testLife; globalThis.testUI={renderGame,runLife,toggleAuto,stopAutoAndWait,togglePanel,closePanel,startLife,saveAction,currentLife:()=>lifeRunner,checkpoint:()=>undoCheckpoint};',context);
+    runUI(app+'\nlifeRunner=testLife; globalThis.testUI={renderGame,runLife,toggleAuto,stopAutoAndWait,togglePanel,closePanel,startLife,saveAction,currentLife:()=>lifeRunner,checkpoint:()=>undoCheckpoint};',context);
     context.testUI.renderGame();
     return {nodes,listeners,document,life,ui:context.testUI,timers,starts,seedCalls:()=>seedCount,steps:()=>count,
         async flushTimer() { assert.ok(timers.length); timers.shift()(); for(let i=0;i<15;i++) await Promise.resolve(); }

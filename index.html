@@ -86,6 +86,7 @@
             <div><dt>游标 / 记录</dt><dd id="human-cursor-value">—</dd></div>
         </dl>
         <p id="game-route-label" class="seed-help">douluo1 · human</p>
+        <details><summary>诊断信息</summary><p id="runtime-diagnostics"></p></details>
         <div class="character-details-grid">
                             <details><summary>武魂与魂环</summary><ul id="human-martial-souls"></ul></details>
                             <details><summary>魂骨</summary><ul id="human-soul-bones"></ul></details>
@@ -99,6 +100,12 @@
     </dialog>
     <dialog id="history-panel" class="side-panel" aria-labelledby="recent-history-title" hidden>
         <div class="drawer-heading"><h2 id="recent-history-title">命运记事</h2><button type="button" class="secondary-action" data-close-panel="history-panel">完成</button></div>
+        <div class="history-navigation" aria-label="记事分页">
+            <button id="history-older" type="button" class="secondary-action">更早</button>
+            <button id="history-newer" type="button" class="secondary-action">更新</button>
+            <button id="history-latest" type="button" class="secondary-action">回到最新</button>
+            <span id="history-page" role="status" aria-live="polite"></span>
+        </div>
         <ol id="human-history"></ol>
     </dialog>
     <dialog id="save-panel" class="side-panel" aria-labelledby="save-title" hidden>

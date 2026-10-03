@@ -1,5 +1,7 @@
 # 斗罗人生模拟器
 
+[![CI](https://github.com/MaxwellGuoDUT/douluo-life/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MaxwellGuoDUT/douluo-life/actions/workflows/ci.yml)
+
 斗罗大陆题材的纯前端人生转盘游戏，使用 HTML、CSS、原生 JavaScript 和 JSON 构建。
 
 **[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.0.1 更新说明](https://github.com/MaxwellGuoDUT/douluo-life/releases/tag/v1.0.1) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
@@ -21,6 +23,14 @@
 - 成神与飞升是少数人生的终极成就，不保证发生。人类寿命按当前规则结算；魂兽修为年限与实际年龄分别显示。
 - 旧版斗一人类存档可能因内容语义不兼容被明确拒绝，不自动迁移或覆盖。请保留原导出文件。
 - 相同种子与相同操作可复现人生；“同种子重播”从开局开始，不包含本次页面上的重抽操作。刷新、读档或新命运会清除当前撤销机会。
+
+## 本地维护候选（尚未发布）
+
+2026-10-04 本地修正版改善斗二魂兽标题，按来源字段显示实际年龄，记事每页最多50条并保留全部存档历史。检查点减少一次复制，职责拆分独立按可维护性验收；原设备卡顿和长尾提速尚未证实。详见[本地验证报告](docs/evidence/V101_D2_BEAST_PERFORMANCE_2026-10-04.md)。公开站点仍以现有发布为准。
+
+## 项目文档
+
+[版本变化](CHANGELOG.md) · [开发与贡献](CONTRIBUTING.md) · [文档导航](docs/README.md) · [开发日志](docs/DEVLOG.md) · [维护记录](docs/MAINTENANCE.md)
 
 ## 本地运行
 
@@ -46,7 +56,7 @@ npm test
 node --test test/v10-platform-smoke.test.js
 ```
 
-完整套件覆盖运行时、随机性、生命周期及手动存档等行为。测试通过、浏览器验收和 Pages 部署是独立证据；源 vault 条件生成检查需要对应源文件，套件通过不代表全源路线完整性已经验证。
+完整套件覆盖运行时、随机性、生命周期及手动存档等行为。测试通过、浏览器验收和 Pages 部署是独立证据；源 vault 条件生成检查需要对应源文件，未配置且缺少默认 vault 时该项明确标记 SKIP；套件通过不代表全源路线完整性已经验证。
 
 ## 目录与维护
 

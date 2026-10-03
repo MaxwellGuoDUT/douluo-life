@@ -1,3 +1,5 @@
+import { createV10Display, actualAgeText, playerWheelView } from '../js/v10-display.js';
+import { createV10HistoryView } from '../js/v10-history-view.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -186,6 +188,7 @@ test('UI test copy: real runtime rejection displays its error and disables progr
     const context = { document: doc, setTimeout, crypto: { randomUUID: () => 'ui-boundary-seed' }, createV10ContentLoader: () => ({ getManifest: async () => ({ packs: [] }) }),
         createV10LifeRunner: () => ({ start: async () => broken }), createV10SaveStore: () => ({ list: async () => [] }) };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url), 'utf8').replace(/^import .+;\r?\n/gmu, '');
+    Object.assign(context, { actualAgeText, playerWheelView, createV10Display: fields => createV10Display(fields, doc), createV10HistoryView: options => createV10HistoryView({...options, document: doc}) });
     runInNewContext(app + '\nglobalThis.testUI = { startLife, runLife };', context);
     await context.testUI.startLife('human', 'douluo2');
     await context.testUI.runLife('step', 'test step');

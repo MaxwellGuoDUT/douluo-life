@@ -1,10 +1,21 @@
 # 开发日志
 
 项目：斗罗人生模拟器  
-记录范围：2026-07-19 至 2026-07-25  
-当前阶段：文字人生模拟 MVP，已具备玩家状态系统、事件、历史记录、数值效果、条件触发、武魂觉醒和学院入学事件链。
+记录范围：2026-07-19 至 2026-10-04（Asia/Shanghai）
 
-## 项目总览
+当前阶段：V1.0.1 可玩正式版已发布；根首页已承载当前游戏，旧 v10.html 保留兼容跳转。
+
+最近整理：2026-10-04；已补回 Day24 以后的开发过程，并记录 GitHub 项目维护整理。
+
+阅读说明：
+
+- Day 是开发阶段编号，不是连续自然日；同一天可以推进多个阶段，一个阶段也可以跨多天。
+- 原日志实际写到了 Day23（2026-08-30），其提交日期为 2026-08-31。Day20～23 原来只有授权回执小节，本次补齐同级标题，原正文保留。
+- Day24 以后为本次历史补记。无法拆分的阶段合并记录，日期用区间，不把任务书里的计划当作已经完成的工作。
+- 下方原“项目总览”和各日“当前状态／下一步”保留当时语境；最新产品说明见 [README](../README.MD)，后续成果见本文末尾。
+- 本次仅整理文档，没有重新运行历史测试、重放人生或重新发布；文中的测试和验收数字均注明所属阶段。
+
+## 项目总览（Day1～9 时点，原文保留）
 
 《斗罗人生模拟器》从静态网页起步，逐步演进为一个由 `Game` 统一调度、`Player` 保存状态、`EventManager` 提供事件、`UI` 负责渲染的前端文字模拟游戏。
 
@@ -1007,7 +1018,7 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 重新调查固定 seed 后，物种证据生成器补齐了 APK `pt(wt(...))` 明确返回空 effects 的正式选项：总记录从 107 条变为 231 条，其中 124 条标记为 `source-verified-no-explicit-attribute-effect`；没有手写属性或跳过路线。
 - 本地固定 seed 回放已验证第 1--83 项摘要保持不变：第 83 项为 `humanRingType3/838519`，第 84 项为 `humanRingSpecies4/bddfef`；第 84 项提交后为 21 岁、32 级、cursor/history=84、第三环 2000 年、土属性=2、武魂数仍为 1。
 - 本地继续推进第 84 项之后，第 85 项 `b52e1b` 正常回到 `humanPlan`；下一 typed boundary 出现在抽取第 219 项：`douluo1:flow.official-beast.pool.f2abac93-6b26-4e3e-aa92-a168db671577 / f16385`，错误为 `APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED`，并带 `operationId=beast.element.unresolved`、`operationStatus=unresolved`；当时 cursor=219、已提交=218、58 岁/91 级。APK 源码虽提供元素映射和 `after-element` resolver，但本轮按 beast 分支范围保持未接入。
-- 战力差分表覆盖人类/魂兽、神装 100 级门槛、血脉、称号、状态、魂环、魂骨和神器；已修复魂兽称号倍率与人类 100 级神装门槛。覆盖范围外的状态由 `APK_COMBAT_POWER_UNCOVERED_STATE` 阻断，不返回近似总值。差分表见 [`docs/review/APK_COMBAT_POWER_DIFFERENTIAL_TABLE_2026-08-17.md`](review/APK_COMBAT_POWER_DIFFERENTIAL_TABLE_2026-08-17.md)。
+- 战力差分表覆盖人类/魂兽、神装 100 级门槛、血脉、称号、状态、魂环、魂骨和神器；已修复魂兽称号倍率与人类 100 级神装门槛。覆盖范围外的状态由 `APK_COMBAT_POWER_UNCOVERED_STATE` 阻断，不返回近似总值。差分表见 [`docs/review/APK_COMBAT_POWER_DIFFERENTIAL_TABLE_2026-08-17.md`](https://github.com/MaxwellGuoDUT/douluo-life/blob/e17ec726aee404d639ea3479ed74887d9ee6069d/docs/review/APK_COMBAT_POWER_DIFFERENTIAL_TABLE_2026-08-17.md)。
 - bundled Node.js 全量测试：`245 passed, 0 failed, 0 cancelled, 0 skipped`；满足本轮不少于 218 项的验收线。PR #4 仍为 open Draft，未合并、未切换 Ready、未 force-push。
 
 #### 浏览器验证
@@ -1023,7 +1034,7 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 当前代码与生成包已修正第 19 项的“源中明确空 effects 被误判为缺证据”问题；第 84 项和下一处第 219 项边界已经取得浏览器证据。`official-beast.element` 现在有明确 registry unresolved 条目，但仍不得静默补全。
 - 术语边界：当前 APK scheduler 在 32 级按 `floor(level / 10)` 目标为第 3 槽，因此 `humanRingSpecies4` 表示“第 4 类魂兽物种 flow”，本地第 84 项实际写入第三魂环。若验收必须是第四魂环槽，需要另有 checkpoint 或单独确认 scheduler 语义；本轮没有强行改成第四槽。
 - PR #4 body 的收窄版文案已准备在 [`docs/review/APK_PR4_DESCRIPTION_2026-08-17.md`](review/APK_PR4_DESCRIPTION_2026-08-17.md)，本次授权发布步骤将同步到现有 PR；PR 状态保持 open Draft。
-- packaging decision 已单独记录于 [`docs/review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md`](review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md)：先保留 generator 产出的 canonical JSON，再以 pack-level route shard 作为后续 release 方向；当前不生成或发布 Release artifact。
+- packaging decision 已单独记录于 [`docs/review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md`](https://github.com/MaxwellGuoDUT/douluo-life/blob/e17ec726aee404d639ea3479ed74887d9ee6069d/docs/review/APK_CANONICAL_PACKAGING_DECISION_2026-08-17.md)：先保留 generator 产出的 canonical JSON，再以 pack-level route shard 作为后续 release 方向；当前不生成或发布 Release artifact。
 - APK、`apk-analysis/`、任务书、Word/Excel、archive、负责人生成输出和无关 `index.html` 不进入本次提交；仅纳入 canonical package 生成器/provenance、运行时、测试、生成后的审计 JSON 与收尾文档。本次授权范围包含显式 staging、commit、push 和 PR body 同步；不 merge、不 force-push、不重写分支。
 
 ### 2026-08-19：Preview 与 pack-shard 文件实现（A-FILE）
@@ -1194,6 +1205,8 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - 项目负责人随后在公开 [`v05-demo.html`](https://maxwellguodut.github.io/douluo-life/v05-demo.html) 完成人工验收，确认不再自动跳底，并通过0～25岁、Network、console、完成锁、刷新与390×844窄屏。负责人验收与 Codex 自动浏览器证据保持分层。
 - 本轮文档收口只同步 `docs/V05_DEMO.md`、`docs/CURRENT_PROJECT_STATUS_2026-08-20.md`、`docs/DEVLOG.md`、`docs/review/V05_RC1_PR_DESCRIPTION_2026-08-24.md`；DEVLOG 仅追加，不再修改功能。tag、Release、artifact 与 `SHA256SUMS` 均未创建。
 
+## Day 20 - 2026-08-26～08-27 - 可读人生与 RC1 发布
+
 ### A-DAY20-IMPLEMENT - 2026-08-26
 
 - 单一玩家可见目标是把既有 V0.5 audit transcript 转成可读人生：新增独立 `js/v05-life-presentation.js`，保存提交前后快照、计算年龄/等级/货币/路线/武魂/魂环/魂骨变化，并生成年龄分组年表与25岁结构化结局；不修改 canonical、route graph、evidence、generator、archive 或 RNG/commit 语义。
@@ -1214,6 +1227,8 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - RC1 身份固定为 `v0.5.0-rc.1` GitHub prerelease，tag 目标是本次五文档 closeout 合并后的实时 `main` 准确 SHA。发布不包含自定义 Release asset/artifact，不生成或上传 `SHA256SUMS`；GitHub source archives 不冒充自定义资产。
 - 本轮文档白名单仅为 `README.MD`、当前状态页、`docs/V05_DEMO.md`、本 DEVLOG 追加段和 RC1 review 记录。PR #4、V3、临时 Demo、APK Route Demo、`douluo2`、25岁后、`official-beast.element`、其他 unresolved handler、save/load、owner 材料与 archive 操作继续排除。
 
+## Day 21 - 2026-08-28 - 真实转盘与检查点恢复
+
 ### A-DAY21-IMPLEMENT - 2026-08-28
 
 - 预检确认 GitHub default branch 为 `main`；`origin/main`、RC1 tag 与 prerelease 均为 `3969064aa5684aecf0ad4c9c2a3818a5ac53d000`。PR #8/#9 已合并，main CI 与 Pages run `33092496484` 成功；focused 工作树干净且目标分支不存在。
@@ -1227,6 +1242,8 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - Codex in-app Browser 已验证入口/成长池权重、实际结果高亮、drawer 内容与键盘焦点、页面不跳底、中途刷新逐字段恢复、继续到25岁、completed 再刷新锁、custom `95/94` boundary 再刷新、坏 JSON 保留、390×844、reduced-motion 与 console error/warning 0/0。
 - Browser direct 魂环 pool option/weight 抽查和坏存档清除按钮修复后复测未闭合：in-app Browser security/URL policy 拒绝继续访问，未绕过或替换浏览器表面。自动化覆盖不能冒充 Browser 证据，因此本地 Browser 结论为 partial。
 - 当前所有变更 unstaged；未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。下一步 `A-DAY21-DELIVER` 建议以前述两项 Browser 补测为条件。
+
+## Day 22 - 2026-08-29 - 正式命运与人生图鉴
 
 ### A-DAY22-IMPLEMENT - 2026-08-29
 
@@ -1242,6 +1259,8 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - Codex in-app Browser：首屏12条预设；002/003/008 三条正式命运完成并进入图鉴；真实权重与命中高亮一致；`v05-custom-1` 的水元素事件95成功提交，随后在24岁/`130/129` 停于新 boundary。Day21 v1 ready/completed 迁移成功，旧 boundary typed reject 为 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED` 且原 save 保留。
 - Browser 图鉴3条幂等收录、两人生七字段比较、三 drawer 的 Tab/Escape/焦点返回、三种 clear 隔离、390×844 bottom sheet、reduced-motion 均通过；clean Day22 console error/warning 为 `0/0`。迁移搭建首次复用同 URL 时出现1条由 Day21 HTML 与缓存 Day22 module 混载导致的 harness `TypeError`，改用同源独立路径后不再复现，不记作最终候选应用 console pass 的替代证据。
 
+## Day 23 - 2026-08-30 - 路线补全与命运探索器
+
 ### A-DAY23-IMPLEMENT - 2026-08-30
 
 - 只读预检与 Source Gate 精确锚定 `origin/main@35edf9664fa3b8e9ccc946bdef14e5cdabbe95b0`、固定 APK/module/route graph；在 `codex/day23-v05-runtime-coverage-explorer` / `D:\0CODE\douluo-life-v05-day23` 实现，原混合工作树未写入。
@@ -1254,3 +1273,218 @@ Day 12 的代码实现和自动化验收已完成；浏览器手工验收待具�
 - Day22 follow-up `24岁/91级/130 cursor/129 history` 与 soul-ring `17岁/92级/91/90` 旧 boundary 均返回 `V05_SAVE_BOUNDARY_SEMANTICS_CHANGED`，结构化 details 保留原 error code；刷新后旧 checkpoint 与继续入口仍在。archive v1 迁移为 `legacy-summary`，明确“旧记录未伪造里程碑轨迹”。
 - 经负责人即时确认，仅删除 `127.0.0.1:8102` 合成 fixture：清空图鉴后 active checkpoint 与内存 `25岁/30级/96/96` 保持；重建图鉴后清除 active checkpoint，图鉴1条与内存 `25岁/38级/86/86` 保持。6张迁移页和最终隔离页 console error/warning 均为 `0/0`，Browser 证据升级为 confirmed。
 - 当前变更全部 unstaged；未 commit、push、创建/修改 PR、merge、操作 Pages、tag、Release、artifact 或 `SHA256SUMS`。下一步只建议独立授权 `A-DAY23-DELIVER`。
+
+## Day24～Day26 - 2026-09 上旬至 09-13 - 精简 V1 与斗一生命周期接入（历史补记）
+
+### 目标
+
+从 V0.5 的 0～25 岁展示边界，推进到由原始内容驱动的 V1 人生流程；为两个内容包建立统一入口、加载和运行机制。
+
+### 完成内容
+
+- 将 V1 方案收敛为 GitHub Pages 纯前端、本地存档与导入导出，取消账号、云同步、数据库及企业级部署要求。
+- 建立 V1 页面、内容清单、生成器和统一 runner，逐步接入斗一人类、魂兽及化形流程。后续候选提供了代表性人生与恢复证据，但本阶段不能写成所有路线闭环。
+- 解决 Windows CRLF/LF 引起的生成物一致性检查失败，增加换行规范。
+- 恢复斗一陆地兽神终局缺失的精确来源闭包：1 个 flow、1 个 pool、7 个选项。通过生成器恢复，不修改权威原件，不把无关显示池全部并入运行时。
+- 开始按实际行为做消融：减少重复层与未来功能占位，保留来源语义、确定性随机数、明确错误和原子回滚。
+
+### 验证与边界
+
+历史完整回归由修整后的 241/241 达到终局闭包加入后的 242/242；终局相关定向 18/18 通过。本地 Browser 观察到斗一魂兽入口可启动、来源清单加载及无控制台 warning/error。这些入口和机制证据不等于每个终局都已实际走通。
+
+截至该阶段末，斗二仍只有来源清单，正式运行时尚待接入。斗一人类入口后来发现的源运行时接线缺口，见发布后补记，不能用后来修复的结果改写本阶段。
+
+### 整理说明与收获
+
+现有历史回执将 Day24～26 合并推进，无法可靠拆出 Day25 的独立完成日，因此保留组合条目。七工作日是当时的阶段计划，不代表实际只经历七个自然日。
+
+关键取舍是让复杂度服务于当前玩法：复用共同机制，按来源补真实缺口，避免为了覆盖数字扩展无关内容。
+
+## Day27 - 2026-09-13～09-18 - 斗罗二运行时与双包切换（历史补记）
+
+### 目标与完成内容
+
+让 douluo2 使用自己的来源规则、入口和终点，进入同一个 V1 页面，而不是复制斗罗一规则。
+
+- 生成斗二来源运行模块和清单引用，接入其 actions、resolvers、handlers、effects 与条件执行。
+- 复用统一 runner，按内容包选择图谱和处理器；页面增加内容包选择、路线启动、切换清空与错误状态显示。
+- 验证快照往返、确定性恢复、错包／错内容拒绝及失败回滚。
+- 通过相同 seed、快照与输入的 A/B 比较，删除只读来源条件判断前的重复角色投影；保留处理器所需投影。
+
+### 验证与边界
+
+历史全量 253/253、相关 smoke 5/5 通过。真实代表性回放包括人类死亡、150 岁寿命终点、魂兽死亡、化形后死亡及至高兽神。Browser 验证了双包入口、推进、终局显示、状态隔离和窄屏布局。
+
+静态登记与引用完整，不等于全部随机分支都已回放；关系、神考、献祭等仍需补证。工具连接中断导致错误状态的 Browser 验证未闭合，当时结论保留为 Conditional Go。
+
+## Day28 - 2026-09-16～09-19 - 关键分支补证与手动八槽（历史补记）
+
+### 完成内容
+
+- 补充献祭接受／拒绝、关系结算、神考奖励及关键战斗等代表性路径；按来源保留延后至 150 岁的关系结算，不改成即时结局。
+- 修复 follow-up 对缺省 requirements 与空数组的误拒绝，同时保留真实条件差异和事务回滚。
+- 实现 localStorage 手动固定 8 槽：保存、读取、明确确认覆盖、JSON 导入与导出。
+- 导入及恢复先校验格式、内容身份和历史，错误时保留当前人生及原槽位；设置 4 MiB 输入上限。
+- 后续决定取代早期方案中的 IndexedDB、自动保存、删除、重命名和自动迁移。刷新后需要手动读取已保存槽位。
+- A/B 验证后删除 serialize 后的重复完整校验和递归 shape 已覆盖的重复结构校验。
+
+### 验证与边界
+
+历史全量 271/271 通过，负责人明确完成本地人工验收。工具 Browser 不可用的部分仍独立标记，人工验收不改写为自动浏览器通过。
+
+这次交付确立了后来正式版的存档范围：纯前端、本地八槽、玩家主动保存和导入导出，没有账号或跨设备云同步。
+
+## Day29 - 截至 2026-09-19 - 集成收口与候选冻结（历史补记）
+
+### 完成内容
+
+整理 V1 文案、双包生命周期、存档恢复和已知边界；文案调整后定向 15/15 通过，随后完成上述 271/271 全量回归和本地人工验收。
+
+35 个候选文件提交为 ac44bd349f326c9b23281148bb8b9bc2f26f8dc0，标题为“feat(v10): integrate dual-pack life routes and eight local save slots”。任务书、outputs 和其他原有材料留在工作区，没有混入候选。
+
+### 发现与下一步
+
+此前全量来自包含其他修改的工作区，不能直接证明纯提交树可独立运行。Day30 因而安排提交导出副本验证，而不是继续增加玩法。
+
+本条日期来自 09-19 交接记录，没有足够证据推定独立的 Day29 开始日。候选提交、验收和公开发布是三个不同节点。
+
+## Day30 - 2026-09-19～09-24 - 独立验证与 V1.0.0 首次正式发布（历史补记）
+
+### 完成内容
+
+- 从精确候选导出独立副本，确认不依赖未提交的 outputs 修改。测试日志为 271/271、0 失败；该次 shell 退出码未取回，沿用原记录，不补写为 0。
+- 显式指定 vault 执行生成器检查并通过。发现默认 vault 缺失时部分测试会提前返回，因此 CI 绿色不能单独证明源完整性检查执行过。
+- 创建并完成 [PR #13](https://github.com/MaxwellGuoDUT/douluo-life/pull/13)，合并提交为 15ff8ee42e27785b7de87760d2ebe55cb6e373b1；本地 Git 记录合并时间为 09-23 23:58（北京时间）。
+- main CI、Pages 部署和负责人公开验收分别取得记录，发布 [V1.0.0](https://github.com/MaxwellGuoDUT/douluo-life/releases/tag/v1.0.0)。该 tag 指向上述合并提交。
+
+### 当时的交付范围
+
+双内容包、代表性人类／魂兽／化形及终局、手动八槽和导入导出。游戏通过 v10.html 访问，当时未替换旧根首页。
+
+本地与 Pages 是不同 origin，存档通过主动导出／导入搬运。没有账号、云同步或自动迁移，也不宣称穷尽全部随机路线。
+
+### 复盘
+
+首次正式发布完成了从开发候选到公开可玩版本的交付。发布后的实际试玩仍暴露了此前测试未覆盖的运行时缺口，后续修复见下文。
+
+## 2026-09 下旬 - V1.0.0 发布后运行时修复（历史补记）
+
+### 问题与处理
+
+实际试玩发现斗一人类在某剧情池停止：战力大于等于 150 与低于 150 的两个互补选项被同时判为不可选。降级不是死亡原因，真正缺口是人类入口没有加载相应来源运行时，且后继故事处理器尚未接好。
+
+后续在隔离工作树中修复人类源流程接线，保留明确错误与回滚；继续完善默认新种子、手动种子复现、血脉幂等和实际结局展示。转盘与动画读取真实运行结果，避免再抽一次随机数。
+
+### 日期与证据边界
+
+09-25 修整任务书能确认当时的诊断与待执行范围；具体修复随 10-03 的 V1.0.1 候选交付。这里不把任务书创建日当成所有修改的完成日。
+
+来源：本地任务书 V10_POST_RELEASE_RUNTIME_WHEEL_UI_REPAIR.md、[最终修复 PR #14](https://github.com/MaxwellGuoDUT/douluo-life/pull/14)。任务书是未纳入本次交付的本地材料，因此不提供会在 GitHub 失效的相对链接。
+
+## 2026-09-30～10-02 - 神考、授神后续生与真实飞升（历史补记）
+
+### 完成内容
+
+- 对成神、飞升和结局可达性做来源及实际路径审计，区分“抽到神考”“获得神位”“飞升结算”。
+- 恢复斗一人类二级八考的奖励节点与调度，补正源机会计数、接续和授神后继续人生的相关处理；没有把其他神考层级一并宣称完成。
+- 多次候选仍受等级、魂骨、计数或范围外奖励链限制。停止将继续搜索种子当作默认工作，转而围绕负责人真实成功人生保全与验证。
+- 负责人实际试玩取得虎神并飞升；随后对同一已知种子完成 1359 步复放：第 1184 次正式授予二级虎神且人生继续，第 1359 次在 338 岁／119 级完成自由成长来源飞升结算。
+- 验证授神前、授神后、终局三点恢复，以及隔离环境八槽导入、读取、覆盖确认／取消和坏文件拒绝。修正终局读档仍提示“可继续”的文案。
+
+### 验证与边界
+
+该成功人生证明了一条真实成神续生及自由成长飞升路径，不等于原三条剧情飞升候选、其他神考层级或所有结局已经覆盖。原负责人页面未取得完整内存快照，复放记录不冒称与其原页面逐字相等。
+
+Browser 导出下载文件落盘／回读、截图持久化存在工具缺项；负责人接受它们不作为本次发布阻断，记录为“接受缺项”，不改记为“验证通过”。
+
+运行语义变化使旧斗一人类存档可能被明确拒绝；保留原文件，不静默迁移或覆盖。
+
+### 消融与资料
+
+只携带测试断言实际需要的两份固定历史输入，约 6.49 MB，避免将约 114.77 MB 的整份审计轨迹加入发布候选。继续保留原始本地材料。
+
+详细来源：[成神飞升验证报告](evidence/V10_ASCENSION_CLOSURE_2026-09-30.md)第 11～34 节，特别是第 32～34 节的成功路径、恢复及验收范围。
+
+## 2026-10-03 - 白底转盘 UI、重抽与 V1.0.1 正式发布（历史补记）
+
+### 玩家可见变化
+
+- 改为白底居中单列、大转盘、突出抽取结果，角色、记事和存档集中到抽屉。
+- 区分魂师等级、魂兽修为年限和实际年龄，使用真实角色字段，不借截图造角色数据。
+- 自动推进可暂停且串行；极速推进每批最多 200 次，旧循环不会继续推动新人生。
+- “新命运”回到斗一／斗二、人类／魂兽选择首页，清空当前人生视图，不删除已有存档。
+- 经后续明确需求新增“撤销并重抽”：仅保留最近一次抽取的瞬时检查点，仍按原池权重抽取，可能重复结果；刷新、读档、新命运清除撤销机会。
+
+### 验证与发布
+
+UI、复位和重抽分别完成针对性自动检查及范围内 Browser 验证，负责人随后确认验收通过。发布前完整本地回归为 306/306。
+
+19 条候选路径形成提交 1e6805fde64eaa6cfeb0b6a0da2f74a13cba8b63，经 [PR #14](https://github.com/MaxwellGuoDUT/douluo-life/pull/14) 合并为 195025c33c22c46ea818252d3dc5ea54589150c6；PR 与 main CI 各自 306/306 通过，Pages 对应部署成功。10 个公开文件与该合并提交字节一致，公开 Browser 验证了首页加载及四个开局入口；没有据此宣称重做全路线公开验收。
+
+[V1.0.1 正式 Release](https://github.com/MaxwellGuoDUT/douluo-life/releases/tag/v1.0.1) 于北京时间 2026-10-03 04:22 发布，tag 指向 195025c。源 vault 条件检查未执行的限制、其他神考层级缺口及旧斗一人类存档兼容限制继续保留。
+
+来源：[验证报告](evidence/V10_ASCENSION_CLOSURE_2026-09-30.md)第 35～39 节。第 39.1 节发布回执为发布后本地追加，不能假称已包含在当时的发布提交中。
+
+## 2026-10-03 - 正式首页与项目说明收口（历史补记）
+
+### 完成内容
+
+- [PR #15](https://github.com/MaxwellGuoDUT/douluo-life/pull/15) 先修正根地址仍指向旧版的问题，合并为 5b06d6b。
+- [PR #16](https://github.com/MaxwellGuoDUT/douluo-life/pull/16) 进一步让 index.html 直接承载当前游戏，v10.html 仅保留兼容跳转，避免维护两份游戏 HTML。
+- 更新 README 的实际玩法、已知限制、本地运行方式与目录说明；package.json 版本同步为 1.0.1。
+- 本地 Git 记录该次实现提交为 003a29b，18:54 合并为 c3d883acf382d397a2a3c58f8b77a915c5446803。
+
+### 版本对应关系
+
+V1.0.1 tag 仍标识 195025c 的正式发布快照；其后首页与说明更新位于上述后续提交，不能把 tag 当成浮动 main。本次日志整理已核对本地提交和文件内容，没有重新检查这两次后续提交的远端 CI／部署，因此不另写新的部署通过结论。
+
+现在推荐从 [根首页](https://maxwellguodut.github.io/douluo-life/) 开始游戏；当前入口关系也可查 [README](../README.MD)。
+
+## 2026-10-04 - GitHub 项目维护整理（本地完成，待交付）
+
+### 实际变化
+
+- 新增文档导航、贡献指引、版本更新记录和维护说明，README 连接各入口。
+- 给 AI_CONTEXT、旧状态页和 V0.5 Demo 加历史标记，原正文保留。
+- 增加问题／建议模板、PR 模板和最小忽略规则，声明 Node.js 24.x。
+- 修正源清单测试：默认 vault 缺席明确 SKIP，支持已有 DOULUO_SOURCE_VAULT 配置；显式错误配置仍失败。
+- 没有改变游戏、存档、内容生成物或 CI 工作流；outputs 下仍被引用的工具继续保留。
+- 两个旧审计文档链接改指向已核对的历史提交，本地未提交任务书改为文字引用；保留原历史结论。
+
+### 验证与交付边界
+
+8 份文档的 33 个本地链接、大小写、编码和模板头部检查通过；3 份旧文档正文与 HEAD 完整一致。源清单测试分别验证：默认源缺席为 4 通过／1 跳过，显式真实源为 5/5，显式不存在的源为预期失败。差异检查通过，没有为纯维护改动重跑完整人生套件。
+
+远端审计确认 9 条旧分支已经被 main 包含，另一个 Draft PR #4 的分支尚未被包含。详细清单及保护规则建议见 [维护记录](MAINTENANCE.md)。本阶段只完成本地整理，未提交、推送、删除远端分支、关闭 PR 或调整发布配置。
+
+## 开发日志接续说明 - 2026-10-03
+
+### 这次补回了什么
+
+保留 Day1～23 原始正文，补齐 Day20～23 的标题层级，接上 Day24～30 与发布后修复、成功飞升、UI 改版、V1.0.1 和首页收口。文首旧的 07-25 范围说明同步更新，早期项目总览标为历史。
+
+Day24～29 主要依据历史开发对话回执及 09-19 交接记录重建；Day30 对照 09-23 最终发布交接、历史发布回执与本地 Git；09-30 以后优先使用现有验证报告和实际提交。早期交接文档保存在 D:/0CODE/douluo-life/docs/tasks/，本次没有复制或改写：
+
+- DAY24_DAY30_V10_FULL_SCOPE_SEVEN_DAY_TASK.md：仅用于解释阶段计划与设计变化，不能证明任务完成。
+- DAY30_V10_RELEASE_READINESS_AND_HANDOFF.md：09-19 候选、代表性行为、本地验收及待办记录。
+- DAY30_V10_FINAL_RELEASE_EXECUTION_AND_HANDOFF.md：09-23 独立候选验证及 PR 交接，不把其中发布计划当成发布回执。
+
+历史对话定位：精简 V1 为 01a0590f-8617-7b11-8180-23bd13e79ef9；Day27 为 01a09aba-033a-7422-9997-e750e4db0e6e；Day27/28 与候选交接为 01a0aadb-543b-7430-81fe-573411dd0abb；V1.0.0 发布为 01a0cef3-c0ac-7470-aa00-3d03f6681cbc。对话只作历史追溯，不代表本次重新验证。
+
+### 以后怎么继续写
+
+有实际交付后，在本节前追加一条“日期 — 阶段／版本 — 主题”。已有 Day 编号就沿用；没有使用过编号的发布后工作按日期记录，不追造 Day31、Day32。
+
+每条只需要：当天目标、实际完成的玩家变化、验证结果与未解决问题、关键决定和下一步。跨多天就写区间；计划与完成分开。详细技术回执链接到现有报告，DEVLOG 保留可读的开发故事，不再堆全部授权码和重复检查。
+
+仅整理日志不代表提交或发布。本次补记留在本地，原任务书、验证报告和其他工作区材料保持原样。
+
+## 2026-10-04 — 斗二魂兽显示、真实年龄和长局维护候选
+
+- 复现原始ID／runtime文案和年龄0问题；源advanceBeastTime已正确维护chronologicalAge，页面改为来源字段。
+- 源名修复限定为轮盘展示，撤回改变存档poolTitle的标准化实验；RNG、事务和存档语义保持。
+- 复用脱离事务快照给最近一次重抽；记事50条分页；拆出v10-display和v10-history-view，无第二份会话或历史镜像。
+- 同真实seed交错A/B、浏览器渲染计时、别名隔离／回滚／四开局和旧入口验证见[报告](evidence/V101_D2_BEAST_PERFORMANCE_2026-10-04.md)。复制和DOM减少已确认；300条历史的极速200批次中位数3511.7→3119.4ms，单步计算p95未改善，原设备整体提速未证实。
+- 最终自动测试310项：309通过、0失败、1项来源vault检查跳过；Browser正式入口与窄屏检查独立完成，不替代未测量的长期体验。
+- 负责人于2026-10-04反馈“我觉得目前没有问题”，本地候选人工验收通过，并授权补写DEVLOG及提交、推送当前codex/v10-randomness-hotfix分支。
+- 继承15路径整理，提交范围为与本轮修复合并后的29个文件。原发布回执差异、原始轨迹／快照／存档及任务书独立保留；PR、合并、部署、发布和远端清理仍未授权。

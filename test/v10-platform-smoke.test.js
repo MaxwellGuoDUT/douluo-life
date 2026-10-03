@@ -135,6 +135,7 @@ test("V1 HTML is a static Pages entry with no cloud or account dependency", () =
     assert.match(html, /id="character-menu-panel"[^>]*hidden/u);
     assert.match(html, /id="character-toggle"[^>]*aria-expanded="false"/u);
     assert.match(html, /id="route-toggle"[^>]*aria-controls="pack-list"/u);
-    assert.equal((html.match(/<details><summary>/gu) ?? []).length, 8);
+    assert.equal((html.match(/<details><summary>/gu) ?? []).length, 9);
+    assert.match(html, /id="runtime-diagnostics"/u);
     assert.doesNotMatch(html, /oidc|postgres|cloud sync/iu);
 });

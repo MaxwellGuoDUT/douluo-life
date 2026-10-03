@@ -1,3 +1,5 @@
+> **历史记录，非当前状态。** 本文保留当时的架构、候选和验收语境；其中“当前／下一步”不构成现行开发指令。当前产品见 [README](../README.MD)，维护入口见 [文档导航](README.md)。2026-10-03 补充此说明，原正文未改。
+
 # douluo-life 当前项目状态基线
 
 状态：`Day20 player-readable timeline delivered / PR and main CI passed / Pages deployed / owner public endpoint acceptance passed / RC1 closeout`

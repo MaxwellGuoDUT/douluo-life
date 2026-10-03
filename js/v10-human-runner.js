@@ -526,7 +526,17 @@ export function createV10HumanRunner({
         Object.assign(base.session, snapshot);
     }
 
-    function commitBaseStep() {
+    function snapshotEnvelope(session) {
+        return {
+            schemaVersion: "v10-runner-snapshot/1.0",
+            packId,
+            ...(godTrialRuntimeEnabled ? { runtimeSemantics: V10_GOD_TRIAL_SEMANTICS } : {}),
+            ...(packId === "douluo2" ? { contentIdentity: sourcePack.routeGraph.pack.contentIdentity } : {}),
+            route, seed, session
+        };
+    }
+
+    function commitBaseStep(onCheckpoint = null) {
         const snapshot = structuredClone(base.session);
         const committed = base.step();
         if (allowPost150 && committed.committed) {
@@ -538,19 +548,23 @@ export function createV10HumanRunner({
         }
         const result = normalize(committed);
         if (phase === "boundary" || phase === "error") restoreSession(snapshot);
+        // The rollback copy is detached on success. Publish it only after full commit;
+        // failed steps restore it privately and leave the prior UI undo opportunity intact.
+        else if (result.committed && onCheckpoint) onCheckpoint(snapshotEnvelope(snapshot));
         return result;
     }
 
-    function commitOne() {
+    function commitOne(onCheckpoint) {
         if (["completed", "boundary", "error"].includes(phase)) {
             return blockedResult(phase, error, summary);
         }
-        return commitBaseStep();
+        return commitBaseStep(onCheckpoint);
     }
 
     async function advanceUntil(stop, {
         maxSteps,
         onStep = null,
+        onCheckpoint = null,
         yieldStep = () => Promise.resolve()
     }) {
         if (phase !== "ready" || busy) {
@@ -565,7 +579,7 @@ export function createV10HumanRunner({
         phase = "advancing";
         try {
             for (let step = 1; step <= maxSteps; step += 1) {
-                const result = commitBaseStep();
+                const result = commitBaseStep(onCheckpoint);
                 if (typeof onStep === "function") await onStep(result, step);
                 if (phase === "completed" || phase === "boundary" || phase === "error") {
                     return { ...result, steps: step };
@@ -643,9 +657,9 @@ export function createV10HumanRunner({
                         : null
             });
         },
-        step() {
+        step({ onCheckpoint = null } = {}) {
             if (busy) return blockedResult(phase, error, summary, "busy");
-            return commitOne();
+            return commitOne(onCheckpoint);
         },
         advanceToNextAge(options = {}) {
             const progressKey = base.session.character?.route === "beast"
@@ -669,15 +683,7 @@ export function createV10HumanRunner({
             );
         },
         exportSnapshot() {
-            return structuredClone({
-                schemaVersion: "v10-runner-snapshot/1.0",
-                packId: base.session.packId,
-                ...(godTrialRuntimeEnabled ? { runtimeSemantics: V10_GOD_TRIAL_SEMANTICS } : {}),
-                ...(packId === "douluo2" ? { contentIdentity: sourcePack.routeGraph.pack.contentIdentity } : {}),
-                route,
-                seed,
-                session: base.session
-            });
+            return structuredClone(snapshotEnvelope(base.session));
         }
     });
 }

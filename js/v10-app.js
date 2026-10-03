@@ -1,7 +1,8 @@
 import { createV10ContentLoader } from "./v10-content-loader.js";
 import { createV10LifeRunner } from "./v10-life-runner.js";
 import { createV10SaveStore, MAX_SAVE_BYTES } from "./v10-save-store.js";
-import { V10_GOD_TRIAL_STAGES } from "./v10-god-trial-runtime.js";
+import { createV10Display, actualAgeText, playerWheelView } from "./v10-display.js";
+import { createV10HistoryView } from "./v10-history-view.js";
 
 const loader = createV10ContentLoader();
 const runner = createV10LifeRunner({ contentLoader: loader });
@@ -24,7 +25,7 @@ const gameFields = Object.fromEntries([
     "human-martial-souls", "human-soul-bones", "human-attributes", "human-domains",
     "human-bloodlines", "human-talents", "human-skills", "human-godhood",
     "current-seed", "character-name", "character-bloodline", "character-attributes",
-    "cultivation-label", "cultivation-value", "actual-age-value", "character-identity", "wheel-labels"
+    "cultivation-label", "cultivation-value", "actual-age-value", "character-identity", "wheel-labels", "runtime-diagnostics"
 ].map(id => [id, document.querySelector(`#${id}`)]));
 const panels = {
     "character-menu-panel": { panel: characterMenuPanel, toggle: characterToggle },
@@ -125,200 +126,14 @@ function togglePanel(id) {
     panel.querySelector("[data-close-panel]").focus();
 }
 
-function renderHistory() {
-    const history = lifeRunner.session.timeline
-        .filter(entry => typeof entry.text === "string" && entry.text.trim())
-        .map(entry => {
-            const item = document.createElement("li");
-            item.textContent = entry.text;
-            return item;
-        });
-    gameFields["human-history"].replaceChildren(...history);
-}
-
-const ATTRIBUTE_NAMES = Object.freeze({
-    fire: "火", water: "水", earth: "土", metal: "金", wood: "木",
-    ice: "冰", wind: "风", lightning: "雷", light: "光", dark: "暗",
-    life: "生命", death: "死亡", poison: "毒", space: "空间", time: "时间",
-    strength: "力量", speed: "速度", defense: "防御", spirit: "精神",
-    destruction: "毁灭", solar: "太阳", moon: "月亮", haze: "岚"
+const { renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress } = createV10Display(gameFields);
+const historyView = createV10HistoryView({
+    list: gameFields['human-history'],
+    older: document.querySelector('#history-older'), newer: document.querySelector('#history-newer'),
+    latest: document.querySelector('#history-latest'), status: document.querySelector('#history-page'),
+    getTimeline: () => lifeRunner?.session.timeline ?? []
 });
-
-function entryName(value) {
-    if (typeof value === "string") return value;
-    return value?.name ?? value?.text ?? value?.title ?? value?.id ?? value?.optionId ?? "未命名";
-}
-
-function renderDetailList(id, entries) {
-    const values = entries.length ? entries : ["暂无"];
-    gameFields[id].replaceChildren(...values.map(value => {
-        const item = document.createElement("li");
-        item.textContent = value;
-        return item;
-    }));
-}
-
-function godTrialProgress(character, packId) {
-    const trial = character.godTrial;
-    if (!trial) return null;
-    const status = { qualified: "待选择神位", active: "考核中", failed: "神考失败",
-        completed: "考核完成", abandoned: "考核已结束" }[trial.status] ?? "考核状态待确认";
-    if (packId === "douluo1" && trial.tier !== "二级") {
-        return (trial.tier ?? "未知层级") + "考核 · " + status + " · 奖励流程未完整开放";
-    }
-    const claimed = trial.claimedRewardStages?.length ?? 0;
-    const stage = trial.currentStage > 0 ? " · 第" + trial.currentStage + "考" : "";
-    const requirement = packId === "douluo1" && trial.status === "active"
-        ? V10_GOD_TRIAL_STAGES.find(item => item.stage === trial.currentStage) : null;
-    const level = requirement ? " · 需" + requirement.minLevel + "级（当前" + character.level + "级）" : "";
-    return (trial.tier ?? "") + "神考" + (trial.deityName ? " · " + trial.deityName : "")
-        + " · " + status + " · 已领取" + claimed + "/" + (trial.totalStages ?? trial.total ?? "—") + "考奖励" + stage + level;
-}
-
-function characterAttributes(character) {
-    return [...new Set([
-        ...(character.attributes ?? []), ...(character.combatAttributes ?? []),
-        ...Object.keys(character.elementProgress ?? {}),
-        ...Object.keys(character.beast?.attributeStages ?? {})
-    ].map(value => typeof value === "string" ? value : entryName(value)))];
-}
-
-function bloodlineTexts(character) {
-    const beast = character.beast ?? character.beastOrigin;
-    const lines = beast?.bloodlines ?? [];
-    const components = beast?.bloodlineComponents ?? [];
-    const beastLines = lines.map(line => {
-        const selection = line.selection ?? line;
-        const component = components.find(item => item.bloodlineId === selection.optionId);
-        const percent = Number.isFinite(component?.ratioBasisPoints) ? component.ratioBasisPoints / 100 : line.percentage;
-        return entryName(selection) + (Number.isFinite(percent) ? percent + "%" : "");
-    });
-    return [...new Set([...beastLines, ...(character.bloodlines ?? []).map(entryName)])];
-}
-
-function renderCharacterSummary(character, profile) {
-    const isBeast = profile.route === "beast";
-    const beast = character.beast ?? character.beastOrigin;
-    const species = profile.species ?? beast?.species?.text;
-    const name = character.name ?? (isBeast && species
-        ? [...(beast?.namePrefixes ?? []), species, ...(beast?.nameSuffixes ?? [])].map(entryName).join("")
-        : (character.martialSouls ?? []).map(entryName).join(" / "));
-    gameFields["character-name"].textContent = name?.split(/[（(]/u)[0].trim() || (isBeast ? "魂兽本体未确定" : "武魂未确定");
-    const lines = bloodlineTexts(character);
-    gameFields["character-bloodline"].textContent = lines.join(" + ") || "暂无";
-    gameFields["character-bloodline"].title = lines.join(" + ") || "暂无";
-    gameFields["character-attributes"].replaceChildren(...(characterAttributes(character).length
-        ? [...new Set(characterAttributes(character).map(attribute => ATTRIBUTE_NAMES[attribute] ?? attribute))] : ["暂无属性"]).map(attribute => {
-            const tag = document.createElement("span");
-            tag.textContent = ATTRIBUTE_NAMES[attribute] ?? attribute;
-            return tag;
-        }));
-    const cultivation = isBeast ? character.beastYears : character.level;
-    const age = character.age;
-    gameFields["cultivation-label"].textContent = isBeast ? "修为年限" : "魂力修为";
-    gameFields["cultivation-value"].textContent = Number.isFinite(cultivation)
-        ? cultivation.toLocaleString("zh-CN") + (isBeast ? " 年" : " 级") : "未确定";
-    gameFields["actual-age-value"].textContent = Number.isFinite(age) ? age.toLocaleString("zh-CN") + " 岁" : "未确定";
-    renderDetailList("character-identity", [
-        "名称：" + (name || gameFields["character-name"].textContent),
-        "血脉：" + (lines.join(" + ") || "暂无"),
-        "修为：" + gameFields["cultivation-value"].textContent,
-        "实际年龄：" + gameFields["actual-age-value"].textContent,
-        "性别：" + (character.gender ? entryName(character.gender) : "未确定"),
-        "时代：" + (beast?.period ? entryName(beast.period) : character.entrySelections?.period ? entryName(character.entrySelections.period) : "未确定"),
-        "时间线：" + (character.entrySelections?.worldLine ? entryName(character.entrySelections.worldLine) : "未确定"),
-        "容貌：" + (character.appearance ? entryName(character.appearance) : "未确定"),
-        "初始魂力：" + (Number.isFinite(character.innateSoulPower) ? character.innateSoulPower + "级" : "未确定"),
-        "初始势力：" + (character.faction ? entryName(character.faction) : "未确定"),
-        "栖息地：" + (beast?.area ? entryName(beast.area) : "未确定")
-    ]);
-}
-
-function renderCharacterDetails(character, packId) {
-    const martialSouls = character.martialSouls ?? [];
-    renderDetailList("human-martial-souls", martialSouls.map(soul => {
-        const rings = soul.rings ?? [];
-        const years = rings.map(ring => Number.isFinite(ring?.years) ? `${ring.years}年` : entryName(ring));
-        return `${entryName(soul)} · ${rings.length}环${years.length ? `（${years.join("、")}）` : ""}`;
-    }));
-    renderDetailList("human-soul-bones", (character.soulBones ?? []).map(bone =>
-        `${entryName(bone)}${Number.isFinite(bone?.years) ? ` · ${bone.years}年` : ""}`));
-    const progress = character.elementProgress ?? {};
-    const beastProgress = character.beast?.attributeStages ?? {};
-    const attributes = characterAttributes(character);
-    gameFields["human-ability-counts"].textContent = `${(character.soulBones ?? []).length} / ${attributes.length} / ${(character.domains ?? []).length}`;
-    renderDetailList("human-attributes", attributes.map(attribute => {
-        const id = typeof attribute === "string" ? attribute : entryName(attribute);
-        const name = ATTRIBUTE_NAMES[id] ? `${ATTRIBUTE_NAMES[id]}（${id}）` : id;
-        const stage = progress[id] ?? beastProgress[id];
-        return `${name}${Number.isFinite(stage) && stage > 0 ? ` · 进度 ${stage}` : ""}`;
-    }));
-    renderDetailList("human-domains", (character.domains ?? []).map(entryName));
-    renderDetailList("human-bloodlines", bloodlineTexts(character));
-    renderDetailList("human-talents", [
-        ...(character.talents ?? []).map(talent => `天赋：${entryName(talent)}`),
-        ...(character.martialSoulTalents ?? []).map(talent => `武魂天赋：${entryName(talent)}`),
-        ...(character.traits ?? []).map(trait => `特质：${entryName(trait)}`)
-    ]);
-    renderDetailList("human-skills", [
-        ...(character.skills ?? []).map(skill => `技能：${entryName(skill)}${Number.isFinite(skill?.level) ? ` · ${skill.level}级` : ""}`),
-        ...(character.artifacts ?? []).map(artifact => `神器：${entryName(artifact)}${Number.isFinite(artifact?.rank) ? ` · 阶${artifact.rank}` : ""}`)
-    ]);
-    const godhoods = character.godhoods?.length ? character.godhoods : character.godhood ? [character.godhood] : [];
-    const trialText = godTrialProgress(character, packId);
-    const boneParts = { head: "头骨", torso: "躯干骨", leftArm: "左臂骨", rightArm: "右臂骨", leftLeg: "左腿骨", rightLeg: "右腿骨" };
-    const acquiredParts = new Set((character.soulBones ?? []).map(bone => bone.partId ?? bone.part));
-    const missing = Object.entries(boneParts).filter(([part]) => !acquiredParts.has(part)).map(([,name]) => name);
-    const boneRequirement = packId === "douluo1" && character.godTrial?.tier === "二级"
-        && ["qualified", "active"].includes(character.godTrial.status)
-        ? "神考继承需要六个部位魂骨：" + (missing.length ? "还缺" + missing.join("、") : "已齐全，仍须完成考核") : null;
-    renderDetailList("human-godhood", [
-        ...(trialText ? [trialText] : []),
-        ...(boneRequirement ? [boneRequirement] : []),
-        ...godhoods.map(godhood => `神位：${entryName(godhood)}${godhood.tier ? ` · ${godhood.tier}` : ""}`),
-        ...(character.titles ?? []).map(title => `称号：${entryName(title)}`)
-    ]);
-}
-
-function renderWheel(view) {
-    const disc = gameFields["human-wheel"];
-    const segments = Array.isArray(view?.segments) ? view.segments : [];
-    const colors = ["#285976", "#8c4051", "#2d7067", "#79517f", "#94633c", "#3e694a", "#356379", "#9a4c34", "#535383", "#68804a", "#977331", "#416c73"];
-    disc.style.background = segments.length
-        ? `conic-gradient(${segments.map((segment, index) => `${colors[index % colors.length]} ${segment.startAngle}deg ${segment.endAngle}deg`).join(", ")})`
-        : "#e8eef1";
-    disc.className = `life-wheel ${segments.length ? "has-options" : "is-quiet"}`;
-    disc.setAttribute("aria-label", segments.length
-        ? `${view.title}，${segments.length}个可选扇区，总权重${view.totalWeight}`
-        : view?.message ?? view?.title ?? "等待开始");
-    gameFields["human-wheel-title"].textContent = view?.title ?? "等待开始";
-    gameFields["wheel-labels"].replaceChildren(...segments.map(segment => {
-        const label = document.createElement("span");
-        label.className = "wheel-label";
-        label.dataset.optionId = segment.optionId;
-        const fullText = segment.fullText ?? segment.text ?? segment.optionId;
-        const chars = [...fullText];
-        label.textContent = chars.length > 13 ? chars.slice(0, 12).join("") + "…" : fullText;
-        const midpoint = segment.midpoint ?? (segment.startAngle + segment.endAngle) / 2;
-        label.style.transform = "rotate(" + (midpoint - 90) + "deg) translateY(-50%)";
-        const arc = segment.endAngle - segment.startAngle;
-        // Tiny sectors keep their full, accessible text in the list.
-        if (arc < 4) label.hidden = true;
-        if (arc < 10) label.style.fontSize = "10px";
-        return label;
-    }));
-    gameFields["human-wheel-note"].textContent = view?.status === "dynamic"
-        ? `${view.message} 当前流程：${view.flowId ?? "未确定"}`
-        : view?.status === "completed" ? "人生已完成，转盘锁定。"
-            : ["boundary", "error"].includes(view?.status) ? "运行时已停止；请查看下方错误。"
-                : segments.length ? `下一可选转盘 · ${view.poolId ?? "未确定池"} · 总权重 ${view.totalWeight}`
-                    : "下一可选转盘将在开局后显示。";
-    gameFields["human-options"].replaceChildren(...segments.map(segment => {
-        const item = document.createElement("li");
-        item.textContent = `${segment.fullText ?? segment.text ?? segment.optionId} · 权重 ${segment.weight} · ${segment.percentage.toFixed(2)}%`;
-        return item;
-    }));
-}
+function renderHistory() { historyView.render(); }
 
 async function animateCommittedSpin(view) {
     const selected = view?.segments?.find(segment => segment.optionId === view.selectedOptionId);
@@ -370,6 +185,7 @@ async function saveAction(action) {
         if (action === "load") {
             const restored = await saves.read(slot);
             lifeRunner = restored;
+            historyView.reset();
             undoCheckpoint = null;
             const snapshot = restored.exportSnapshot();
             activePack = snapshot.packId;
@@ -432,11 +248,12 @@ function renderGame() {
     gameFields["current-seed"].textContent = gameFields["human-seed"].value;
     renderCharacterSummary(session.character, profile);
     gameFields["human-age-label"].textContent = "实际年龄";
-    gameFields["human-age-value"].textContent = Number.isFinite(session.character.age) ? session.character.age + "岁" : "未确定";
+    gameFields["human-age-value"].textContent = actualAgeText(session.character);
     gameFields["human-level-value"].textContent = String(profile.level ?? "—");
     gameFields["human-species-value"].textContent = profile.species ?? "未确定";
     const completed = lifeRunner.phase === "completed";
-    const wheel = completed ? null : lifeRunner.wheelView;
+    const wheel = completed ? null : playerWheelView(lifeRunner.wheelView);
+    gameFields["runtime-diagnostics"].textContent = `flowId: ${wheel?.flowId ?? session.currentFlowId ?? "—"} · poolId: ${wheel?.poolId ?? session.currentPoolId ?? "—"}`;
     const trialText = godTrialProgress(session.character, session.packId);
     gameFields["human-stage-value"].textContent = completed ? "人生结局"
         : trialText ?? (session.character.flags?.["formal:d1-story:free-mode"] ? "自由修炼" : wheel?.title ?? "人生成长");
@@ -458,7 +275,7 @@ function renderGame() {
     if (completed) {
         const ending = lifeRunner.summary.ending;
         const progress = lifeRunner.summary.route === "beast"
-            ? `修为年限${lifeRunner.session.character.beastYears}年 · 实际年龄${Number.isFinite(session.character.age) ? session.character.age + "岁" : "未确定"}`
+            ? `修为年限${lifeRunner.session.character.beastYears}年 · 实际年龄${actualAgeText(session.character)}`
             : `${lifeRunner.summary.age}岁`;
         const detail = [ending?.text, ["death", "success"].includes(ending?.kind) ? resultText : null, ending?.cause]
             .find(value => typeof value === "string" && value.trim());
@@ -484,6 +301,7 @@ function clearLifeView(route = null, packId = null) {
     gameFields["human-reroll"].disabled = true;
     gameFields["human-result"].textContent = "等待抽取";
     renderWheel(null);
+    historyView.reset();
     gameFields["human-history"].replaceChildren();
     gameFields["human-ending"].hidden = true;
     gameFields["human-ending-text"].textContent = "";
@@ -554,10 +372,10 @@ async function runLife(action, label, automatic = false) {
     let failure = null;
     try {
         if (action === "step") {
-            const before = lifeRunner.exportSnapshot();
-            const result = lifeRunner.step();
+            const result = lifeRunner.step({ onCheckpoint(snapshot) {
+                undoCheckpoint = { snapshot, nextCursor: lifeRunner.session.random.cursor };
+            } });
             if (result.committed) {
-                undoCheckpoint = { snapshot: before, nextCursor: lifeRunner.session.random.cursor };
                 gameFields["human-reroll"].disabled = !automatic;
             }
             if (lifeRunner.phase === "completed") {
@@ -567,14 +385,12 @@ async function runLife(action, label, automatic = false) {
                 await animateCommittedSpin(lifeRunner.lastWheelResult);
             }
         } else {
-            let before = lifeRunner.exportSnapshot();
             batchResult = await lifeRunner[action]({
                 ...(action === "runToTerminal" ? { maxSteps: 200 } : {}),
+                onCheckpoint(snapshot) {
+                    undoCheckpoint = { snapshot, nextCursor: lifeRunner.session.random.cursor };
+                },
                 onStep(result, step) {
-                    if (result.committed) {
-                        undoCheckpoint = { snapshot: before, nextCursor: lifeRunner.session.random.cursor };
-                        before = lifeRunner.exportSnapshot();
-                    }
                     if (step % 25 === 0) renderGame();
                 },
                 yieldStep: () => new Promise(resolve => setTimeout(resolve, 0))
@@ -615,6 +431,7 @@ async function rerollLast() {
         }
         // Publish only a validated, committed replacement; failures retain the original life.
         lifeRunner = candidate;
+        historyView.reset();
         undoCheckpoint = { snapshot, nextCursor: candidate.session.random.cursor };
         renderGame();
         if (candidate.phase !== "completed" && candidate.lastWheelResult) {

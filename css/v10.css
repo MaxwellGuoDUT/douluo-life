@@ -93,3 +93,6 @@ input, select { display: block; width: 100%; max-width: 100%; min-width: 0; marg
     .wheel-title { font-size: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .life-wheel.is-spinning { animation: none; } }
+
+.history-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-block: 1rem; }
+.history-navigation [role=status] { flex-basis: 100%; }

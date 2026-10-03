@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "private": true,
   "type": "module",
+  "engines": { "node": "24.x" },
   "scripts": {
     "test": "node --test",
     "check:v05-evidence": "node outputs/parallel-prep-2026-08-16/extract-apk-official-beast-element-runtime-evidence.mjs --check && node outputs/parallel-prep-2026-08-16/extract-apk-human-soul-ring-runtime-evidence.mjs --check",

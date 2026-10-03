@@ -1,3 +1,5 @@
+> **历史记录，非当前状态。** 本文保留当时的架构、候选和验收语境；其中“当前／下一步”不构成现行开发指令。当前产品见 [README](../README.MD)，维护入口见 [文档导航](README.md)。2026-10-03 补充此说明，原正文未改。
+
 # 斗罗人生 V0.5 Demo
 
 状态：`V0.5 RC1 delivered / Day23 runtime-coverage + destiny-explorer RC2 local implementation complete / automated verified / Browser verified / unstaged`

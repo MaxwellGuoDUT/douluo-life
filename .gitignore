@@ -1,0 +1,13 @@
+# Local dependencies and Codex temporary files
+/node_modules/
+/.codex-tmp/
+/.tmp/
+
+# Local environment settings
+.env
+.env.*
+!.env.example
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
