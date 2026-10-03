@@ -74,7 +74,7 @@ test("V1 loader imports the Douluo I source runtime and foundation lazily", asyn
                 sourceRuntimeFoundation: "data/v10/source-runtime/foundation.js"
             }]
         }),
-        moduleBaseUrl: "https://local.test/v10.html",
+        moduleBaseUrl: "https://local.test/douluo-life/",
         moduleImport: async url => {
             imports.push(url);
             return url.endsWith("pack.js")
@@ -86,8 +86,8 @@ test("V1 loader imports the Douluo I source runtime and foundation lazily", asyn
     assert.equal(runtime.manifest.id, "douluo1");
     assert.equal(runtime.foundation.marker, "foundation");
     assert.deepEqual(imports, [
-        "https://local.test/data/v10/source-runtime/pack.js",
-        "https://local.test/data/v10/source-runtime/foundation.js"
+        "https://local.test/douluo-life/data/v10/source-runtime/pack.js",
+        "https://local.test/douluo-life/data/v10/source-runtime/foundation.js"
     ]);
 });
 
@@ -107,8 +107,13 @@ test("Douluo II rejects a route absent from its own source manifest", async () =
 });
 
 test("V1 HTML is a static Pages entry with no cloud or account dependency", () => {
-    const html = fs.readFileSync(path.join(process.cwd(), "v10.html"), "utf8");
+    const html = fs.readFileSync(path.join(process.cwd(), "index.html"), "utf8");
     const app = fs.readFileSync(path.join(process.cwd(), "js", "v10-app.js"), "utf8");
+    const legacyEntry = fs.readFileSync(path.join(process.cwd(), "v10.html"), "utf8");
+    assert.doesNotMatch(html, /http-equiv="refresh"/u);
+    assert.match(legacyEntry, /http-equiv="refresh" content="0; url=\.\/"/u);
+    assert.match(legacyEntry, /href="\.\/"/u);
+    assert.doesNotMatch(legacyEntry, /js\/v10-app\.js/u);
     assert.match(html, /js\/v10-app\.js/u);
     assert.match(html, /纯前端版本/u);
     assert.match(html, /人类人生/u);
