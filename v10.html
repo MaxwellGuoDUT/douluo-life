@@ -3,119 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="斗罗人生模拟器 V1.0 内容入口">
+    <meta http-equiv="refresh" content="0; url=./">
     <title>斗罗大陆 · 斗罗人生</title>
-    <link rel="stylesheet" href="css/v10.css">
 </head>
 <body>
-    <main class="v10-shell">
-        <header class="topbar">
-            <div class="brand"><h1>斗罗大陆</h1><p class="seed-line">命运种子 <span id="current-seed">尚未开始</span></p></div>
-            <nav aria-label="人生操作">
-                <button id="human-new" type="button" class="nav-action">新命运</button>
-                <button id="character-toggle" type="button" class="nav-action" aria-expanded="false" aria-controls="character-menu-panel">角色</button>
-                <button id="history-toggle" type="button" class="nav-action" aria-expanded="false" aria-controls="history-panel">记事</button>
-                <button id="save-toggle" type="button" class="nav-action" aria-expanded="false" aria-controls="save-panel">存档</button>
-            </nav>
-        </header>
-        <details class="life-settings">
-            <summary>种子与路线</summary>
-            <label>命运种子 <input id="human-seed" placeholder="留空生成新种子；输入后选择内容包与路线" aria-describedby="seed-help"></label>
-            <p id="seed-help" class="seed-help">新命运返回首页并清空当前人生与种子。选择内容包与路线后生成新种子，也可先手动输入；同种子重播从开局重新抽取，不保留重抽操作。</p>
-            <div class="game-controls">
-                <button id="human-restart" type="button" disabled class="secondary-action">同种子重播</button>
-                <button id="route-toggle" type="button" class="secondary-action" aria-expanded="false" aria-controls="pack-list">更换路线</button>
-            </div>
-        </details>
-        <p id="v10-status" role="status">正在载入内容包…</p>
-        <section id="pack-list" class="pack-list" aria-label="内容包"></section>
-        <section id="human-game" class="human-game" aria-labelledby="game-title" hidden>
-            <section class="character-summary" aria-label="当前角色">
-                <p id="game-title" class="summary-label">人类人生</p>
-                <h2 id="character-name">身份未确定</h2>
-                <p class="summary-label">血脉</p>
-                <p id="character-bloodline" class="bloodline-summary">暂无</p>
-                <div id="character-attributes" class="attribute-tags" aria-label="属性"></div>
-                <dl class="vital-stats">
-                    <div><dt id="cultivation-label">修为</dt><dd id="cultivation-value">未确定</dd></div>
-                    <div><dt>实际年龄</dt><dd id="actual-age-value">未确定</dd></div>
-                </dl>
-            </section>
-            <div class="wheel-stage">
-                <h3 id="human-wheel-title" class="wheel-title">等待开始</h3>
-                <section class="current-event" aria-label="本次抽取结果">
-                    <p id="human-result" role="status" aria-live="polite">等待抽取</p>
-                </section>
-                <div class="reroll-control">
-                    <button id="human-reroll" type="button" class="secondary-action" disabled aria-describedby="reroll-help">撤销并重抽</button>
-                    <p id="reroll-help" class="seed-help">只撤销最新一次抽取；重抽仍可能得到相同结果。</p>
-                </div>
-                <section id="human-ending" class="human-ending" aria-labelledby="human-ending-title" hidden>
-                    <h3 id="human-ending-title">人生结局</h3>
-                    <p id="human-ending-text"></p>
-                </section>
-                <div class="wheel-wrap">
-                    <div class="wheel-pointer" aria-hidden="true"></div>
-                    <div id="human-wheel" class="life-wheel" role="img" aria-label="当前可选转盘">
-                        <div id="wheel-labels" class="wheel-labels" aria-hidden="true"></div>
-                        <div class="wheel-hub">命运</div>
-                    </div>
-                </div>
-                <p id="human-progress" role="status">等待开始</p>
-                <details class="options-details"><summary>查看完整选项与真实权重</summary><p id="human-wheel-note" class="wheel-note">下一可选转盘将在开局后显示。</p><ol id="human-options" class="wheel-options"></ol></details>
-            </div>
-            <div class="advance-bar" aria-label="命运推进">
-                <button id="human-age" type="button" class="secondary-action">自动推进</button>
-                <button id="human-step" type="button" class="primary-action">转动一次命运</button>
-                <button id="human-terminal" type="button" class="secondary-action" title="每批最多200次，达到上限可继续">极速推进</button>
-            </div>
-        </section>
-        <details class="play-scope"><summary>可玩范围与说明</summary><p id="play-scope">当前为发布候选：可体验人类与魂兽人生、自由修炼和手动8槽。斗一二级神考的八考奖励、真实授神后续生及自由成长飞升已验证；斗一其他神考层级及海神路线未纳入完整可玩范围，抽到后可能遇到无法继续的内容。成神是少数幸运人生的终极成就，自由修炼不保证飞升。</p><p>人类寿命随最高修为延长；到达寿数时结算。同种子可复现，成神或获得永生者天赋可免于普通衰老。</p></details>
-        <p class="footnote">纯前端版本 · 手动本地8槽 · 请主动导出备份</p>
+    <main>
+        <h1>斗罗大陆</h1>
+        <p><a href="./">进入斗罗人生最新版本</a></p>
     </main>
-    <dialog id="character-menu-panel" class="side-panel" aria-labelledby="character-title" hidden>
-        <div class="drawer-heading"><h2 id="character-title">角色档案</h2><button type="button" class="secondary-action" data-close-panel="character-menu-panel">完成</button></div>
-        <ul id="character-identity" class="identity-list"></ul>
-        <dl class="human-profile">
-            <div><dt>内容包 / 路线</dt><dd id="human-route-value">—</dd></div>
-            <div><dt id="human-age-label">实际年龄</dt><dd id="human-age-value">—</dd></div>
-            <div><dt>等级</dt><dd id="human-level-value">—</dd></div>
-            <div><dt>物种</dt><dd id="human-species-value">未确定</dd></div>
-            <div><dt>魂骨 / 属性 / 领域</dt><dd id="human-ability-counts">0 / 0 / 0</dd></div>
-            <div><dt>阶段</dt><dd id="human-stage-value">—</dd></div>
-            <div><dt>游标 / 记录</dt><dd id="human-cursor-value">—</dd></div>
-        </dl>
-        <p id="game-route-label" class="seed-help">douluo1 · human</p>
-        <div class="character-details-grid">
-                            <details><summary>武魂与魂环</summary><ul id="human-martial-souls"></ul></details>
-                            <details><summary>魂骨</summary><ul id="human-soul-bones"></ul></details>
-                            <details><summary>属性与元素</summary><ul id="human-attributes"></ul></details>
-                            <details><summary>领域</summary><ul id="human-domains"></ul></details>
-                            <details><summary>血脉</summary><ul id="human-bloodlines"></ul></details>
-                            <details><summary>天赋与特质</summary><ul id="human-talents"></ul></details>
-                            <details><summary>技能与神器</summary><ul id="human-skills"></ul></details>
-                            <details><summary>神考、神位与称号</summary><ul id="human-godhood"></ul></details>
-                        </div>
-    </dialog>
-    <dialog id="history-panel" class="side-panel" aria-labelledby="recent-history-title" hidden>
-        <div class="drawer-heading"><h2 id="recent-history-title">命运记事</h2><button type="button" class="secondary-action" data-close-panel="history-panel">完成</button></div>
-        <ol id="human-history"></ol>
-    </dialog>
-    <dialog id="save-panel" class="side-panel" aria-labelledby="save-title" hidden>
-        <div class="drawer-heading"><h2 id="save-title">本地存档 · 8 槽</h2><button type="button" class="secondary-action" data-close-panel="save-panel">完成</button></div>
-            <p>手动保存。选择目标槽后操作；覆盖需确认。旧版存档保持原样，不自动迁移。</p>
-            <label for="save-slot">目标槽位</label>
-            <select id="save-slot" aria-describedby="save-status"></select>
-            <div class="game-controls">
-                <button type="button" class="primary-action" data-save-action="save">保存当前人生</button>
-                <button type="button" class="secondary-action" data-save-action="load">读取所选槽</button>
-                <button type="button" class="secondary-action" data-save-action="export">导出所选槽</button>
-            </div>
-            <label for="save-file">导入 JSON（最大4 MiB）</label>
-            <input id="save-file" type="file" accept=".json,application/json">
-            <button type="button" class="secondary-action" data-save-action="import">导入到所选槽</button>
-            <p id="save-status" role="status" aria-live="polite">请选择槽位。导入只保存文件，读取后才切换当前人生。</p>
-    </dialog>
-    <script type="module" src="js/v10-app.js"></script>
 </body>
 </html>

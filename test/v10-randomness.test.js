@@ -420,7 +420,7 @@ test('player seed 105th source death immediately appears above the wheel', async
     assert.equal(nodes.get('#human-wheel-title').textContent, '人生结局');
     assert.equal(nodes.get('#human-step').disabled, true);
     assert.match(nodes.get('#human-progress').textContent, /人生已结束/);
-    const html = fs.readFileSync(new URL('../v10.html', import.meta.url), 'utf8');
+    const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
     assert.ok(html.indexOf('id="human-ending"') < html.indexOf('class="wheel-wrap"'));
     const replay = await runner.start('douluo1', { route: 'human', seed, snapshot: beforeDeath });
     replay.step();
