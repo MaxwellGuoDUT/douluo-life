@@ -25,7 +25,7 @@ const gameFields = Object.fromEntries([
     "human-martial-souls", "human-soul-bones", "human-attributes", "human-domains",
     "human-bloodlines", "human-talents", "human-skills", "human-godhood",
     "current-seed", "character-name", "character-bloodline", "character-attributes",
-    "cultivation-label", "cultivation-value", "actual-age-value", "character-identity", "wheel-labels", "runtime-diagnostics"
+    "cultivation-label", "cultivation-value", "actual-age-value", "combat-power-value", "human-fast-cancel", "character-identity", "wheel-labels", "runtime-diagnostics"
 ].map(id => [id, document.querySelector(`#${id}`)]));
 const panels = {
     "character-menu-panel": { panel: characterMenuPanel, toggle: characterToggle },
@@ -43,6 +43,40 @@ let undoCheckpoint = null;
 let autoRunning = false;
 let autoEpoch = 0;
 let autoTask = null;
+// One transient batch request; never included in session snapshots or save slots.
+let fastControl = null;
+let fastTask = null;
+
+function stopFast(reason = "paused") {
+    if (fastControl && !fastControl.reason) {
+        fastControl.reason = reason;
+        gameFields["human-terminal"].disabled = true;
+        gameFields["human-fast-cancel"].disabled = true;
+        gameFields["human-progress"].textContent = reason === "cancelled" ? "正在取消推进…" : "正在暂停极速…";
+    }
+}
+
+function stopContinuous() { stopAuto(); stopFast(); }
+
+async function toggleFast() {
+    if (fastControl) { stopFast(); return; }
+    if (!lifeRunner || gameBusy || autoRunning || autoTask || fastTask
+        || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
+    const control = { reason: null };
+    fastControl = control;
+    fastTask = runLife("runToTerminal", "极速推进中…");
+    try { await fastTask; } finally {
+        const message = gameFields["human-progress"].textContent;
+        fastControl = null;
+        fastTask = null;
+        renderGame();
+        if (!["completed", "boundary", "error"].includes(lifeRunner.phase)) {
+            gameFields["human-progress"].textContent = control.reason === "cancelled"
+                ? "本批极速推进已取消，已完成的抽取保留。"
+                : control.reason === "paused" ? "极速推进已暂停，可继续推进。" : message;
+        }
+    }
+}
 
 function stopAuto() {
     autoRunning = false;
@@ -51,13 +85,14 @@ function stopAuto() {
 }
 
 async function stopAutoAndWait() {
-    stopAuto();
+    stopContinuous();
     if (autoTask) await autoTask;
+    if (fastTask) await fastTask;
 }
 
 async function toggleAuto() {
     if (autoRunning) { stopAuto(); return; }
-    if (!lifeRunner || gameBusy || autoTask || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
+    if (!lifeRunner || gameBusy || autoTask || fastControl || fastTask || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
     autoRunning = true;
     const epoch = ++autoEpoch;
     gameFields["human-age"].textContent = "暂停推进";
@@ -115,7 +150,7 @@ function setRouteChoicesVisible(visible) {
 function togglePanel(id) {
     const { panel, toggle } = panels[id];
     if (!panel.hidden) return closePanel(id);
-    stopAuto();
+    stopContinuous();
     for (const other of Object.keys(panels)) {
         if (other !== id && !panels[other].panel.hidden) closePanel(other, false);
     }
@@ -126,7 +161,7 @@ function togglePanel(id) {
     panel.querySelector("[data-close-panel]").focus();
 }
 
-const { renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress } = createV10Display(gameFields);
+const { renderCombatPower, renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress } = createV10Display(gameFields);
 const historyView = createV10HistoryView({
     list: gameFields['human-history'],
     older: document.querySelector('#history-older'), newer: document.querySelector('#history-newer'),
@@ -150,9 +185,14 @@ function setGameBusy(value, message = null) {
     gameBusy = value;
     for (const id of ["human-restart", "human-new", "human-step", "human-age", "human-terminal"]) {
         gameFields[id].disabled = (!lifeRunner && id !== "human-new")
-            || (value && !(autoRunning && ["human-age", "human-new", "human-restart"].includes(id)));
+            || (value && !(autoRunning && ["human-age", "human-new", "human-restart"].includes(id))
+                && !(fastControl && ["human-terminal", "human-new", "human-restart"].includes(id)))
+            || (id === "human-terminal" && Boolean(fastControl?.reason));
     }
-    gameFields["human-reroll"].disabled = !undoCheckpoint || (value && !autoRunning);
+    gameFields["human-fast-cancel"].hidden = !fastControl;
+    gameFields["human-fast-cancel"].disabled = !fastControl || Boolean(fastControl.reason);
+    gameFields["human-terminal"].textContent = fastControl ? "暂停极速" : "极速推进";
+    gameFields["human-reroll"].disabled = !undoCheckpoint || (value && !autoRunning && !fastControl);
     gameFields["human-seed"].disabled = value;
     for (const button of document.querySelectorAll("[data-start-route]")) button.disabled = value;
     for (const control of document.querySelectorAll("#save-panel button, #save-panel input, #save-panel select")) control.disabled = value;
@@ -246,6 +286,7 @@ function renderGame() {
             ? "化形后人类生命周期"
             : "人类人生";
     gameFields["current-seed"].textContent = gameFields["human-seed"].value;
+    renderCombatPower(lifeRunner.combatPower);
     renderCharacterSummary(session.character, profile);
     gameFields["human-age-label"].textContent = "实际年龄";
     gameFields["human-age-value"].textContent = actualAgeText(session.character);
@@ -284,10 +325,13 @@ function renderGame() {
     const blocked = ["completed", "boundary", "error"].includes(lifeRunner.phase);
     gameFields["human-step"].disabled = gameBusy || autoRunning || blocked;
     gameFields["human-age"].disabled = (gameBusy && !autoRunning) || blocked;
-    gameFields["human-terminal"].disabled = gameBusy || autoRunning || blocked;
-    gameFields["human-restart"].disabled = gameBusy && !autoRunning;
-    gameFields["human-new"].disabled = gameBusy && !autoRunning;
-    gameFields["human-reroll"].disabled = !undoCheckpoint || (gameBusy && !autoRunning);
+    gameFields["human-terminal"].disabled = (gameBusy && !fastControl) || autoRunning || blocked || Boolean(fastControl?.reason);
+    gameFields["human-terminal"].textContent = fastControl ? "暂停极速" : "极速推进";
+    gameFields["human-fast-cancel"].hidden = !fastControl;
+    gameFields["human-fast-cancel"].disabled = !fastControl || Boolean(fastControl.reason) || blocked;
+    gameFields["human-restart"].disabled = gameBusy && !autoRunning && !fastControl;
+    gameFields["human-new"].disabled = gameBusy && !autoRunning && !fastControl;
+    gameFields["human-reroll"].disabled = !undoCheckpoint || (gameBusy && !autoRunning && !fastControl);
     gameFields["human-seed"].disabled = gameBusy;
     gameFields["human-progress"].textContent = completed
         ? "人生已结束，可保存或导出这段旅程。"
@@ -308,6 +352,7 @@ function clearLifeView(route = null, packId = null) {
     gameFields["game-route-label"].textContent = packId ? `${packId} · ${route}` : "尚未开始";
     for (const id of ["human-age-value", "human-level-value", "human-route-value", "human-stage-value", "human-cursor-value"]) gameFields[id].textContent = "—";
     gameFields["human-species-value"].textContent = "未确定";
+    renderCombatPower(null);
     renderCharacterSummary({}, { route });
     renderCharacterDetails({});
     gameFields["human-ability-counts"].textContent = "0 / 0 / 0";
@@ -365,7 +410,7 @@ async function startLife(route = activeRoute, packId = activePack, { replay = fa
 }
 
 async function runLife(action, label, automatic = false) {
-    if (!lifeRunner || gameBusy || (autoRunning && !automatic)
+    if (!lifeRunner || gameBusy || (autoRunning && !automatic) || (fastControl && action !== "runToTerminal")
         || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
     setGameBusy(true, label);
     let batchResult = null;
@@ -386,7 +431,7 @@ async function runLife(action, label, automatic = false) {
             }
         } else {
             batchResult = await lifeRunner[action]({
-                ...(action === "runToTerminal" ? { maxSteps: 200 } : {}),
+                ...(action === "runToTerminal" ? { maxSteps: 200, shouldStop: () => Boolean(fastControl?.reason) } : {}),
                 onCheckpoint(snapshot) {
                     undoCheckpoint = { snapshot, nextCursor: lifeRunner.session.random.cursor };
                 },
@@ -514,9 +559,10 @@ gameFields["human-new"].addEventListener("click", () => newFate());
 gameFields["human-reroll"].addEventListener("click", () => rerollLast());
 gameFields["human-step"].addEventListener("click", () => void runLife("step", "正在提交一次选择…"));
 gameFields["human-age"].addEventListener("click", () => void toggleAuto());
-gameFields["human-terminal"].addEventListener("click", () => void runLife("runToTerminal", "正在连续推进…"));
+gameFields["human-terminal"].addEventListener("click", () => void toggleFast());
+gameFields["human-fast-cancel"].addEventListener("click", () => stopFast("cancelled"));
 routeToggle.addEventListener("click", () => {
-    stopAuto();
+    stopContinuous();
     if (!characterMenuPanel.hidden) closeCharacterMenu(false);
     const visible = packList.hidden;
     setRouteChoicesVisible(visible);
@@ -532,7 +578,7 @@ for (const [id, { panel }] of Object.entries(panels)) {
             || event.clientY < rect.top || event.clientY > rect.bottom) closePanel(id);
     });
 }
-document.addEventListener("visibilitychange", () => { if (document.hidden) stopAuto(); });
+document.addEventListener("visibilitychange", () => { if (document.hidden) stopContinuous(); });
 for (const button of document.querySelectorAll("[data-close-panel]")) button.addEventListener("click", () => closePanel(button.dataset.closePanel));
 document.addEventListener("keydown", event => {
     const open = Object.keys(panels).find(id => !panels[id].panel.hidden);

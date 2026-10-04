@@ -39,6 +39,7 @@
                 <dl class="vital-stats">
                     <div><dt id="cultivation-label">修为</dt><dd id="cultivation-value">未确定</dd></div>
                     <div><dt>实际年龄</dt><dd id="actual-age-value">未确定</dd></div>
+                    <div><dt>战力</dt><dd id="combat-power-value">未确定</dd></div>
                 </dl>
             </section>
             <div class="wheel-stage">
@@ -67,7 +68,8 @@
             <div class="advance-bar" aria-label="命运推进">
                 <button id="human-age" type="button" class="secondary-action">自动推进</button>
                 <button id="human-step" type="button" class="primary-action">转动一次命运</button>
-                <button id="human-terminal" type="button" class="secondary-action" title="每批最多200次，达到上限可继续">极速推进</button>
+                <button id="human-terminal" type="button" class="secondary-action" title="每批最多200次；运行时可暂停，保留已完成抽取">极速推进</button>
+                <button id="human-fast-cancel" type="button" class="secondary-action" hidden title="结束本批极速推进，保留已完成抽取">取消推进</button>
             </div>
         </section>
         <details class="play-scope"><summary>可玩范围与说明</summary><p id="play-scope">当前为 V1.0.1：可体验人类与魂兽人生、自由修炼和手动8槽。斗一二级神考的八考奖励、真实授神后续生及自由成长飞升已验证；斗一其他神考层级及海神路线未纳入完整可玩范围，抽到后可能遇到无法继续的内容。成神是少数幸运人生的终极成就，自由修炼不保证飞升。</p><p>人类寿命随最高修为延长；到达寿数时结算。同种子可复现，成神或获得永生者天赋可免于普通衰老。</p></details>

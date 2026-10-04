@@ -38,7 +38,7 @@ input, select { display: block; width: 100%; max-width: 100%; min-width: 0; marg
 .bloodline-summary { margin: 0 auto 18px; font-size: 21px; font-weight: 750; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 .attribute-tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; min-height: 28px; margin-bottom: 20px; }
 .attribute-tags span { border: 1px solid #d7e4eb; border-radius: 20px; padding: 5px 12px; color: #315b75; background: #f4f8fa; font-size: 14px; }
-.vital-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #e6edef; margin: 0; text-align: left; padding: 16px 0; }
+.vital-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #e6edef; margin: 0; text-align: left; padding: 16px 0; }
 .vital-stats div { padding: 0 16px; min-width: 0; }
 .vital-stats div + div { border-left: 1px solid #e6edef; }
 .vital-stats dt { color: #758696; font-size: 13px; }
@@ -65,6 +65,7 @@ input, select { display: block; width: 100%; max-width: 100%; min-width: 0; marg
 .wheel-options { max-height: 300px; overflow: auto; padding-left: 26px; overflow-wrap: anywhere; }
 .wheel-options li { padding: 5px 0; }
 .advance-bar { position: fixed; z-index: 3; bottom: calc(12px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: min(660px, calc(100% - 24px)); display: grid; grid-template-columns: 1fr 1.9fr 1fr; gap: 8px; padding: 8px; border: 1px solid #dce6eb; border-radius: 17px; background: #fffffff5; box-shadow: 0 6px 25px #29475920; }
+.advance-bar #human-fast-cancel { grid-column: 1 / -1; padding: 8px; }
 .advance-bar button { min-width: 0; padding: 14px 5px; font-size: 16px; }
 .side-panel { position: fixed; inset: 0 0 0 auto; margin: 0; width: min(480px, 100%); max-width: 100%; height: 100dvh; max-height: 100dvh; overflow: auto; overscroll-behavior: contain; padding: 24px; border: 0; background: #fff; color: #202b34; box-shadow: -10px 0 35px #132f4933; }
 .side-panel::backdrop { background: #20343d73; }

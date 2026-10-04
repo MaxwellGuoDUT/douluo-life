@@ -5,6 +5,7 @@ import { createV10ContentLoader } from '../js/v10-content-loader.js';
 import { createV10LifeRunner } from '../js/v10-life-runner.js';
 import { createV10HumanRunner } from '../js/v10-human-runner.js';
 import { actualAge, actualAgeText, createV10Display } from '../js/v10-display.js';
+import { calculateApkCombatPower } from '../js/apk-combat-power-runtime.js';
 import { createV10HistoryView, historyWindow } from '../js/v10-history-view.js';
 globalThis.document ??= {createElement(){return {relList:{supports:()=>true},addEventListener(n,f){if(n==='load')queueMicrotask(f)},setAttribute(){}}},getElementsByTagName:()=>[],querySelector:()=>null,querySelectorAll:()=>[],head:{appendChild(){}}};
 globalThis.window ??= {dispatchEvent:()=>true};
@@ -82,4 +83,48 @@ test('history view fixture renders <=50 nodes, anchors old pages, and reset foll
  newer.listeners.click();assert.equal(list.children[0].textContent,'记录951');latest.listeners.click();assert.equal(list.children.at(-1).textContent,'新记录');
  view.reset();view.render();assert.equal(list.children.length,50);assert.equal(timeline.length,1001);
  assert.deepEqual(historyWindow([{text:''},{text:'真实文本'},{text:' '}]).entries,[{text:'真实文本'}]);
+});
+
+
+test('combat display matches each pack runtime, restores and never consumes RNG or changes state',async()=>{
+ for(const [packId,route,seed] of [['douluo1','human','apk-route-demo-seed'],['douluo1','beast','day24-beast-1'],['douluo2','human','day27-human-3'],['douluo2','beast','day27-beast-3']]){
+  const life=await factory.start(packId,{route,seed});
+  const source=packId==='douluo2'?await loader.getSourceRuntime(packId):null;
+  const loaded=packId==='douluo1'?await loader.getHumanRuntimeContent():null;
+  for(let i=0;i<35&&life.phase==='ready';i++){
+   const before=life.exportSnapshot(); const power=life.combatPower;
+   const expected=packId==='douluo2'?source.engine.C.total(life.session.character):calculateApkCombatPower(life.session.character,loaded.combatPowerEvidence).total;
+   assert.equal(power.status,'ready');assert.equal(power.total,expected);
+   display.renderCombatPower(power);display.renderCharacterSummary(life.session.character,life.characterProfile);
+   assert.equal(fields['combat-power-value'].textContent,expected.toLocaleString('zh-CN'));
+   assert.ok(fields['character-identity'].children.some(n=>n.textContent==='战力：'+expected.toLocaleString('zh-CN')));
+   assert.deepEqual(life.exportSnapshot(),before);
+   assert.equal(life.step().committed,true);
+  }
+  const saved=life.exportSnapshot();const restored=await factory.start(packId,{route,seed,snapshot:JSON.parse(JSON.stringify(saved))});
+  assert.deepEqual(restored.combatPower,life.combatPower);assert.deepEqual(restored.exportSnapshot(),saved);
+ }
+ const guarded=await factory.start('douluo1',{route:'human',seed:'combat-uncovered'});
+ guarded.session.character.flags['combat:status-multiplier-basis-points']=12345;
+ const before=guarded.exportSnapshot();const unavailable=guarded.combatPower;
+ assert.equal(unavailable.status,'unavailable');assert.equal(unavailable.total,null);
+ assert.equal(unavailable.code,'APK_COMBAT_POWER_UNCOVERED_STATE');
+ display.renderCombatPower(unavailable);assert.equal(fields['combat-power-value'].textContent,'暂无法计算');
+ assert.deepEqual(guarded.exportSnapshot(),before);
+ display.renderCombatPower(null);assert.equal(fields['combat-power-value'].textContent,'未确定');
+});
+
+test('real fast cancellation stops before next transaction and retains latest reroll checkpoint',async()=>{
+ for(const [packId,route,seed] of [['douluo1','human','apk-route-demo-seed'],['douluo2','beast','day27-beast-3']]){
+  const life=await factory.start(packId,{route,seed});const reference=await factory.start(packId,{route,seed});
+  const initial=life.exportSnapshot();
+  const zero=await life.runToTerminal({maxSteps:200,shouldStop:()=>true});
+  assert.equal(zero.reason,'cancelled');assert.equal(zero.steps,0);assert.equal(life.phase,'ready');assert.deepEqual(life.exportSnapshot(),initial);
+  let stop=false,checkpoint=null;
+  const result=await life.runToTerminal({maxSteps:200,shouldStop:()=>stop,onCheckpoint:s=>{checkpoint=s},onStep:(r,n)=>{assert.equal(r.committed,true);if(n===4)stop=true},yieldStep:()=>Promise.resolve()});
+  assert.equal(result.reason,'cancelled');assert.equal(result.steps,4);assert.equal(life.phase,'ready');
+  let expectedCheckpoint;for(let i=0;i<4;i++){expectedCheckpoint=reference.exportSnapshot();reference.step()}
+  assert.deepEqual(life.exportSnapshot(),reference.exportSnapshot());assert.deepEqual(checkpoint,expectedCheckpoint);
+  assert.deepEqual(life.step(),reference.step());assert.deepEqual(life.exportSnapshot(),reference.exportSnapshot());
+ }
 });

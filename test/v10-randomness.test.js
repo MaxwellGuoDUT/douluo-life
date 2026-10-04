@@ -859,8 +859,13 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
             return {committed:true};
         },
         exportSnapshot() { return {packId:this.session.packId,route:this.session.character.route,seed:this.seed ?? 'fixture',session:structuredClone(this.session)}; },
-        async runToTerminal({onStep, onCheckpoint}) {
-            for (let i=1;i<=5;i++) { const result = this.step({onCheckpoint}); await onStep(result,i); if (!result.committed) break; }
+        async runToTerminal({onStep, onCheckpoint, shouldStop, yieldStep}) {
+            for (let i=1;i<=5;i++) {
+                if (shouldStop?.()) return {reason:'cancelled',steps:i-1};
+                const result = this.step({onCheckpoint}); await onStep(result,i);
+                if (!result.committed || ['completed','boundary','error'].includes(this.phase)) return {...result,steps:i};
+                if (yieldStep) await yieldStep();
+            }
             return {reason:'batch-limit',steps:5};
         }
     };
@@ -887,9 +892,72 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
         testLife:actualLife ?? life
     };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url),'utf8').replace(/^import .+;\r?\n/gmu,'');
-    runUI(app+'\nlifeRunner=testLife; globalThis.testUI={renderGame,runLife,toggleAuto,stopAutoAndWait,togglePanel,closePanel,startLife,saveAction,currentLife:()=>lifeRunner,checkpoint:()=>undoCheckpoint};',context);
+    runUI(app+'\nlifeRunner=testLife; globalThis.testUI={renderGame,runLife,toggleAuto,toggleFast,stopAutoAndWait,togglePanel,closePanel,startLife,saveAction,currentLife:()=>lifeRunner,checkpoint:()=>undoCheckpoint};',context);
     context.testUI.renderGame();
     return {nodes,listeners,document,life,ui:context.testUI,timers,starts,seedCalls:()=>seedCount,steps:()=>count,
         async flushTimer() { assert.ok(timers.length); timers.shift()(); for(let i=0;i<15;i++) await Promise.resolve(); }
     };
 }
+
+
+test('fast UI exposes pause and cancel, retains committed results, and resumes serially', async () => {
+    for (const mode of ['pause','cancel']) {
+        const h=screenshotUIHarness();
+        const pending=h.ui.toggleFast();
+        await Promise.resolve();
+        assert.equal(h.steps(),1);
+        assert.equal(h.nodes.get('#human-terminal').textContent,'暂停极速');
+        assert.equal(h.nodes.get('#human-terminal').disabled,false);
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,false);
+        assert.equal(h.nodes.get('#human-fast-cancel').disabled,false);
+        const snapshot=h.life.exportSnapshot();
+        await h.ui.toggleAuto(); await h.ui.runLife('step','manual');
+        assert.equal(h.steps(),1,'no competing advance');
+        if(mode==='pause') await h.ui.toggleFast();
+        else h.nodes.get('#human-fast-cancel').listeners.click();
+        await h.flushTimer(); await pending;
+        assert.deepEqual(h.life.exportSnapshot(),snapshot,'stop consumes no extra RNG or history');
+        assert.equal(h.nodes.get('#human-terminal').textContent,'极速推进');
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,true);
+        assert.match(h.nodes.get('#human-progress').textContent,mode==='pause'?/已暂停/:/已取消/);
+        assert.ok(h.ui.checkpoint(),'latest draw remains rerollable');
+        const resumed=h.ui.toggleFast(); await Promise.resolve();
+        assert.equal(h.steps(),2);
+        await h.ui.toggleFast(); await h.flushTimer(); await resumed;
+        assert.equal(h.steps(),2);
+    }
+});
+
+test('fast UI stops before switching life, loading, rerolling, opening drawers or hiding', async () => {
+    for(const mode of ['new','load','reroll','drawer','hidden','route']) {
+        const h=screenshotUIHarness(); const pending=h.ui.toggleFast(); await Promise.resolve();
+        let switching;
+        if(mode==='new')switching=h.nodes.get('#human-new').listeners.click();
+        if(mode==='load')switching=h.ui.saveAction('load');
+        if(mode==='reroll')switching=h.nodes.get('#human-reroll').listeners.click();
+        if(mode==='drawer')h.ui.togglePanel('history-panel');
+        if(mode==='hidden'){h.document.hidden=true;h.listeners.visibilitychange();}
+        if(mode==='route')h.nodes.get('#route-toggle').listeners.click();
+        await h.flushTimer(); await pending;
+        if(mode==='reroll') { await Promise.resolve(); if(h.timers.length)await h.flushTimer(); }
+        if(switching)await switching;
+        assert.equal(h.life.session.history.length,1,mode);
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,true,mode);
+        assert.equal(h.timers.length,0,mode);
+    }
+});
+
+test('fast UI completion and typed errors restore controls without hiding the result', async () => {
+    const normal=screenshotUIHarness({immediate:true}); await normal.ui.toggleFast();
+    assert.match(normal.nodes.get('#human-progress').textContent,/本批已推进 5 次/);
+    assert.equal(normal.nodes.get('#human-fast-cancel').hidden,true);
+    for(const phase of ['completed','boundary','error']) {
+        const h=screenshotUIHarness({immediate:true,stopPhase:phase});await h.ui.toggleFast();
+        assert.equal(h.steps(),1);
+        assert.equal(h.nodes.get('#human-terminal').disabled,true);
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,true);
+        assert.match(h.nodes.get('#human-progress').textContent,phase==='completed'?/人生已结束/:/FIXTURE_TYPED_STOP/);
+    }
+    const thrown=screenshotUIHarness({immediate:true});thrown.life.runToTerminal=async()=>{throw new Error('fast fixture failure')};
+    await thrown.ui.toggleFast();assert.match(thrown.nodes.get('#human-progress').textContent,/UI_STEP_FAILED.*fast fixture failure/);
+});

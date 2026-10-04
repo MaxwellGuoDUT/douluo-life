@@ -8,6 +8,7 @@ import {
     createApkRouteDynamicHandlers,
     createApkRouteRequirementEvaluator
 } from "./apk-route-runtime.js";
+import { calculateApkCombatPower } from "./apk-combat-power-runtime.js";
 import { applyApkEffects, selectApkPoolOptions } from "./apk-rule-runtime.js";
 import { planFormalHumanScheduler, V10_ASCENSION_ATTEMPT_AGE, assertV10AscensionRetryContract } from "./apk-scheduler-runtime.js";
 
@@ -565,6 +566,7 @@ export function createV10HumanRunner({
         maxSteps,
         onStep = null,
         onCheckpoint = null,
+        shouldStop = null,
         yieldStep = () => Promise.resolve()
     }) {
         if (phase !== "ready" || busy) {
@@ -579,6 +581,11 @@ export function createV10HumanRunner({
         phase = "advancing";
         try {
             for (let step = 1; step <= maxSteps; step += 1) {
+                // Stop between transactions, before consuming the next random input.
+                if (shouldStop?.()) {
+                    phase = "ready";
+                    return { status: phase, committed: false, blocked: false, steps: step - 1, reason: "cancelled" };
+                }
                 const result = commitBaseStep(onCheckpoint);
                 if (typeof onStep === "function") await onStep(result, step);
                 if (phase === "completed" || phase === "boundary" || phase === "error") {
@@ -641,6 +648,18 @@ export function createV10HumanRunner({
                 segments, totalWeight: segments.reduce((total, item) => total + item.weight, 0),
                 unresolvedRequirements: selection.unresolved, recentResult,
                 selectedOptionId: segments.some(item => item.optionId === recentResult?.optionId) ? recentResult.optionId : null });
+        },
+        get combatPower() {
+            try {
+                // Reuse the same calculators as runtime combat requirements.
+                const total = packId === "douluo2"
+                    ? sourcePack.engine.C.total(base.session.character)
+                    : calculateApkCombatPower(base.session.character, contentIndex.combatPowerEvidence).total;
+                if (!Number.isFinite(total)) throw new Error("战力结果不是有限数值。");
+                return { status: "ready", total };
+            } catch (error) {
+                return { status: "unavailable", total: null, code: error.code ?? "V10_COMBAT_POWER_UNAVAILABLE", message: error.message };
+            }
         },
         get characterProfile() {
             return Object.freeze({

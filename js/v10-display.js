@@ -83,6 +83,13 @@ export function createV10Display(gameFields, document = globalThis.document) {
         return [...new Set([...beastLines, ...(character.bloodlines ?? []).map(entryName)])];
     }
 
+    function renderCombatPower(power) {
+        const field = gameFields["combat-power-value"];
+        field.textContent = Number.isFinite(power?.total) ? power.total.toLocaleString("zh-CN")
+            : power?.status === "unavailable" ? "暂无法计算" : "未确定";
+        field.title = power?.message ?? "当前角色总战力";
+    }
+
     function renderCharacterSummary(character, profile) {
         const isBeast = profile.route === "beast";
         const beast = character.beast ?? character.beastOrigin;
@@ -111,6 +118,7 @@ export function createV10Display(gameFields, document = globalThis.document) {
             "血脉：" + (lines.join(" + ") || "暂无"),
             "修为：" + gameFields["cultivation-value"].textContent,
             "实际年龄：" + gameFields["actual-age-value"].textContent,
+            "战力：" + gameFields["combat-power-value"].textContent,
             "性别：" + (character.gender ? entryName(character.gender) : "未确定"),
             "时代：" + (beast?.period ? entryName(beast.period) : character.entrySelections?.period ? entryName(character.entrySelections.period) : "未确定"),
             "时间线：" + (character.entrySelections?.worldLine ? entryName(character.entrySelections.worldLine) : "未确定"),
@@ -209,5 +217,5 @@ export function createV10Display(gameFields, document = globalThis.document) {
     }
 
 
-    return {renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress};
+    return {renderCombatPower, renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress};
 }
