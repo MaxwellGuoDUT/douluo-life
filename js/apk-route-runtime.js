@@ -304,7 +304,13 @@ function optionEffects(option) {
         : Array.isArray(sourceOption(option).effects)
         ? clone(sourceOption(option).effects)
         : [];
-    return mergeOptionEffects(baseEffects, canonicalSupplementalEffects(option));
+    // The formal tribulation handler owns Ti/Ai settlement, including bonus
+    // years/elements. Static option supplements describe that same reward;
+    // applying them before the handler would award it twice (3 -> 4 -> reject).
+    // Keep explicit source effects, rerollWhen and the effect safety guard.
+    const handler = routeOptionCustomHandler(option);
+    const sourceOwnsReward = handler === "douluo1:handler.official-beast.tribulation";
+    return mergeOptionEffects(baseEffects, sourceOwnsReward ? [] : canonicalSupplementalEffects(option));
 }
 
 function getOptionId(option) {
@@ -2474,7 +2480,7 @@ function applyFormalSpecialResultHandler({
         ]
     );
     if (contentIndex.pack?.v10GodTrialSemantics === V10_GOD_TRIAL_SEMANTICS
-        && session.packId === "douluo1" && character.route === "human"
+        && session.packId === "douluo1" && ["human","transformed"].includes(character.route)
         && ((spin.poolId === "a7f4d0a4-734d-4b16-9a1d-53ae2fb55497" && optionId === "cf6cc4")
             || (spin.poolId === "cb923c96-7fa3-474b-8c37-8e530d0a8e26" && optionId === "49adbc")
             || (spin.poolId === "dab03114-3b0a-416a-a2a2-4a1e57af0157" && optionId === "c77382")

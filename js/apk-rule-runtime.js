@@ -1422,10 +1422,15 @@ function applyEffect(state, effect, controls, meta) {
         case "death":
             if (!consumeDeathShield(state)) markDeath(state, { cause: effect.cause });
             break;
-        case "ending":
+        case "ending": {
+            const seaAscension=effect.endingId==='douluo1:sea-god-ascension';
+            if(seaAscension&&(state.seaTrial?.rulesVersion!=='sea-god-nine/1'||state.seaTrial.status!=='completed'
+                ||state.seaTrial.ascensionChoice!=='ascended'||!state.godhoods?.some(g=>g.id==='94cc96')))
+                fail('V10_SEA_GOD_ASCENSION_INVALID','海神九考尚未继承或未主动选择飞升。');
+            // Owner-approved Sea God choice is immediate; all source endings retain their age rule.
             if (state.route !== "beast"
                 && flags.formalHumanSetupComplete === true
-                && state.age < 150) {
+                && state.age < 150 && !seaAscension) {
                 flags[`formal:deferred-ending:${effect.endingId}`] = true;
                 flags["formal:free-mode"] = true;
             } else {
@@ -1437,6 +1442,7 @@ function applyEffect(state, effect, controls, meta) {
                 });
             }
             break;
+        }
         default:
             fail(
                 "UNSUPPORTED_APK_EFFECT",

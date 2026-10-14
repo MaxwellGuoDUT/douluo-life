@@ -1,0 +1,66 @@
+{
+  "verified": [],
+  "representatives": [
+    {
+      "seed": "natural-sea-20261014-human-013",
+      "calls": 188,
+      "file": "natural-sea-20261014-human-013-replayed-final.json",
+      "sha256": "6445610dc6d6653cef5be51077f4f411cb3c9a98c1b2d5809b8a9441e852e05b",
+      "tier": "top",
+      "stages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "naturalFromStart": true,
+      "allSeaTransitionsEqual": true,
+      "completeSnapshotEqual": true,
+      "strictRestoreAndExportEqual": true
+    },
+    {
+      "seed": "natural-sea-20261014-human-021",
+      "calls": 226,
+      "file": "natural-sea-20261014-human-021-replayed-final.json",
+      "sha256": "ee1072fb382f3b7b805e5ba9e8473477ddcf0195e9a3f4b86aaefb955ab3d5c7",
+      "tier": "black",
+      "stages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "naturalFromStart": true,
+      "allSeaTransitionsEqual": true,
+      "completeSnapshotEqual": true,
+      "strictRestoreAndExportEqual": true
+    }
+  ],
+  "interruptions": [
+    {
+      "seed": "natural-sea-20261014-beast-004",
+      "errorCode": "APK_POOL_HAS_NO_ELIGIBLE_OPTIONS",
+      "nextAttemptSameError": true,
+      "rollbackExact": true,
+      "history": 1453,
+      "rng": 1453,
+      "bonePartCounts": {
+        "head": 1,
+        "torso": 1,
+        "leftArm": 1,
+        "rightArm": 1,
+        "leftLeg": 1,
+        "rightLeg": 1,
+        "external": 100
+      },
+      "strictRead": {
+        "ok": false,
+        "code": "V05_WHEEL_EMPTY",
+        "message": "当前 pool 没有正权重 eligible option。"
+      }
+    }
+  ],
+  "naturalTargetLives": 0,
+  "targetReplayStatus": "SKIP: no natural nine/yellow hit; representative other sea trials are separate evidence"
+}

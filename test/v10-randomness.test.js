@@ -2,6 +2,17 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import { runInNewContext } from 'node:vm';
+import { createV10Display, actualAgeText, playerWheelView } from '../js/v10-display.js';
+import { createV10HistoryView } from '../js/v10-history-view.js';
+import { packName, routeName, growthChanges, nextGoal, endingText, problemInfo } from '../js/v10-experience.js';
+import { MAX_SAVE_BYTES } from '../js/v10-save-store.js';
+function runUI(source, context) {
+    context.window ??= {confirm:()=>true,addEventListener(){}};
+    Object.assign(context, { actualAgeText, playerWheelView, packName, routeName, growthChanges, nextGoal, endingText, problemInfo, MAX_SAVE_BYTES,
+        createV10Display: fields => createV10Display(fields, context.document),
+        createV10HistoryView: options => createV10HistoryView({...options, document: context.document}) });
+    return runInNewContext(source, context);
+}
 import { APK_RUNTIME_EFFECT_TYPES, applyApkEffects, createApkCharacterState, selectApkPoolOptions } from '../js/apk-rule-runtime.js';
 import { createV05ContentIndex } from '../js/v05-demo.js';
 import { createApkRouteRequirementEvaluator } from '../js/apk-route-runtime.js';
@@ -175,12 +186,13 @@ test('V1 continuous advance stops at a resumable batch limit', async () => {
 test('Douluo I source runtime commits the complementary combat pool and formal story handler', async () => {
     const seed = '00000000-0000-4000-8000-000000000001';
     const life = await runner.start('douluo1', { route: 'human', seed });
-    for (let i = 0; i < 65; i++) {
+    // The source 神王 first reward now commits at 66, before this combat at 67.
+    for (let i = 0; i < 66; i++) {
         const result = life.step();
         assert.equal(result.error, null);
     }
     const before = life.exportSnapshot();
-    assert.equal(life.session.random.cursor, 65);
+    assert.equal(life.session.random.cursor, 66);
     const contentIndex = createV05ContentIndex(await loader.getHumanRuntimeContent());
     const pool = selectApkPoolOptions(contentIndex, life.session.character,
         'e86c0163-ccdc-4a71-a4a7-ed802953e5e0',
@@ -194,18 +206,18 @@ test('Douluo I source runtime commits the complementary combat pool and formal s
     assert.equal(life.session.history.at(-1).poolId, 'e86c0163-ccdc-4a71-a4a7-ed802953e5e0');
     assert.equal(life.session.dynamicHistory.at(-1).handlerId, 'douluo1:handler.formal-story.result');
     assert.equal(life.session.character.flags['formal:d1-story:completed:e86c0163-ccdc-4a71-a4a7-ed802953e5e0'], true);
-    assert.equal(life.session.random.cursor, 66);
-    assert.equal(life.session.history.length, 66);
+    assert.equal(life.session.random.cursor, 67);
+    assert.equal(life.session.history.length, 67);
     assert.notDeepEqual(life.exportSnapshot(), before);
     assert.equal(life.step().error, null);
     assert.notEqual(life.session.history.at(-1).poolId, 'e86c0163-ccdc-4a71-a4a7-ed802953e5e0');
     const replay = await runner.start('douluo1', { route: 'human', seed });
-    for (let i = 0; i < 67; i++) replay.step();
+    for (let i = 0; i < 68; i++) replay.step();
     assert.deepEqual(replay.exportSnapshot(), life.exportSnapshot());
     await life.runToTerminal({ yieldStep: () => Promise.resolve() });
     assert.equal(life.phase, 'completed');
-    assert.equal(life.session.history.length, 99);
-    assert.equal(life.session.random.cursor, 99);
+    assert.equal(life.session.history.length, 98);
+    assert.equal(life.session.random.cursor, 98);
     assert.equal(life.session.history.filter(entry => entry.poolId === 'e86c0163-ccdc-4a71-a4a7-ed802953e5e0').length, 1);
     assert.equal(life.summary.ending.id, 'death');
 });
@@ -250,7 +262,7 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
         createV10SaveStore: () => ({ list: async () => [], read: async () => currentLife })
     };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url), 'utf8').replace(/^import .+;\r?\n/gmu, '');
-    runInNewContext(app + '\nglobalThis.testUI = { startLife, renderGame, saveAction, runLife };', context);
+    runUI(app + '\nglobalThis.testUI = { startLife, renderGame, saveAction, runLife };', context);
     await context.testUI.startLife('human', 'douluo1');
     assert.equal(nodes.get('#pack-list').hidden, true);
     assert.equal(nodes.get('#v10-status').hidden, true);
@@ -285,7 +297,7 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
     context.testUI.renderGame();
     assert.match(nodes.get('#human-wheel').style.background, /0deg 90deg/);
     assert.match(nodes.get('#human-options').children[1].textContent, /第二项 · 权重 3 · 75\.00%/);
-    assert.equal(nodes.get('#human-route-value').textContent, 'douluo2 / 魂兽');
+    assert.equal(nodes.get('#human-route-value').textContent, '绝世唐门 · 霍雨浩时代 / 魂兽');
     assert.equal(nodes.get('#human-species-value').textContent, '未确定');
     assert.equal(nodes.get('#character-menu-panel').hidden, true);
     nodes.get('#character-toggle').listeners.click();
@@ -310,7 +322,7 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
     assert.equal(nodes.get('#human-ability-counts').textContent, '1 / 2 / 1');
     assert.match(nodes.get('#human-martial-souls').children[0].textContent, /蓝银草 · 1环（1000年）/);
     assert.equal(nodes.get('#human-soul-bones').children[0].textContent, '头骨 · 200000年');
-    assert.deepEqual(nodes.get('#human-attributes').children.map(item => item.textContent), ['水（water） · 进度 2', '火（fire） · 进度 1']);
+    assert.deepEqual(nodes.get('#human-attributes').children.map(item => item.textContent), ['水 · 进度 2', '火 · 进度 1']);
     assert.equal(nodes.get('#human-domains').children[0].textContent, '海神领域');
     assert.equal(nodes.get('#human-bloodlines').children[0].textContent, '地龙血脉');
     assert.deepEqual(nodes.get('#human-talents').children.map(item => item.textContent), ['天赋：永生者', '特质：坚韧']);
@@ -331,11 +343,14 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
     context.testUI.renderGame();
     assert.match(nodes.get('#human-stage-value').textContent, /第3考.*需60级（当前31级）/);
     assert.ok(nodes.get('#human-godhood').children[0].textContent.includes('已领取2/8考奖励'));
-    assert.equal(nodes.get('#human-godhood').children[1].textContent, '神考继承需要六个部位魂骨：还缺左臂骨');
+    assert.match(nodes.get('#human-godhood').children[0].textContent, /继承需六部位魂骨：还缺左臂骨/);
     assert.equal(JSON.stringify(currentLife.session), trialBefore);
     currentLife.session.character.godTrial = {tier:'神王',status:'qualified'};
     context.testUI.renderGame();
-    assert.match(nodes.get('#human-stage-value').textContent, /神王考核.*奖励流程未完整开放/);
+    assert.match(nodes.get('#human-stage-value').textContent, /神王神考.*待选择神位/);
+    currentLife.session.character.godTrial = {tier:'一级',status:'active',currentStage:8,totalStages:9,claimedRewardStages:[1,2,3,4,5,6,7]};
+    context.testUI.renderGame();
+    assert.match(nodes.get('#human-stage-value').textContent, /已领取7\/9.*第8考.*需98级（当前31级）/);
     currentLife.session.character.flags = {'formal:deferred-ending:douluo1:story:independent-ascension':true};
     context.testUI.renderGame();
     assert.match(nodes.get('#human-result').textContent, /尚未形成飞升结局/);
@@ -348,7 +363,8 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
     currentLife.wheelView = { status: 'dynamic', title: '动态转盘', message: '由 runtime 解析', flowId: 'flow-1', segments: [] };
     context.testUI.renderGame();
     assert.equal(nodes.get('#human-options').children.length, 0);
-    assert.match(nodes.get('#human-wheel-note').textContent, /flow-1/);
+    assert.match(nodes.get('#runtime-diagnostics').textContent, /flow-1/);
+    assert.doesNotMatch(nodes.get('#human-wheel-note').textContent, /flow-1|runtime/);
     await context.testUI.runLife('runToTerminal', '正在连续推进…');
     assert.equal(batchOptions.maxSteps, 200);
     assert.match(nodes.get('#human-progress').textContent, /本批已推进 200 次/);
@@ -408,14 +424,15 @@ test('player seed 105th source death immediately appears above the wheel', async
         testLife: life
     };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url), 'utf8').replace(/^import .+;\r?\n/gmu, '');
-    runInNewContext(app + '\nlifeRunner = testLife; globalThis.testUI = { runLife };', context);
+    runUI(app + '\nlifeRunner = testLife; globalThis.testUI = { runLife };', context);
     await context.testUI.runLife('step', '正在提交一次选择…');
     assert.equal(life.phase, 'completed');
     assert.equal(life.session.history.length, 105);
     assert.equal(life.session.character.ending.kind, 'death');
     assert.equal(nodes.get('#human-ending').hidden, false);
     assert.match(nodes.get('#human-result').textContent, /人生结局：逃不过炮灰的宿命，你死了/);
-    assert.match(nodes.get('#human-ending-text').textContent, /陨落 · 21岁 · 等级38 · 105次选择 · 逃不过炮灰的宿命，你死了/);
+    assert.match(nodes.get('#human-ending-text').textContent, /陨落/);
+    assert.match(nodes.get('#human-ending-text').textContent, /逃不过炮灰的宿命，你死了/);
     assert.equal(nodes.get('#human-stage-value').textContent, '人生结局');
     assert.equal(nodes.get('#human-wheel-title').textContent, '人生结局');
     assert.equal(nodes.get('#human-step').disabled, true);
@@ -522,7 +539,7 @@ test('ablation A/B: unused V1 presentationHistory forwarding does not change run
         delete brokenHandlers['douluo1:handler.formal-story.result'];
         const broken = factory({ loaded, sourcePack: { ...sourcePack, game: { ...source.game, customHandlers: brokenHandlers } },
             seed: '00000000-0000-4000-8000-000000000001' });
-        for (let i = 0; i < 65; i++) assert.equal(broken.step().error, null);
+        for (let i = 0; i < 66; i++) assert.equal(broken.step().error, null);
         const before = broken.exportSnapshot();
         const rejected = broken.step();
         assert.equal(rejected.status, 'boundary');
@@ -548,7 +565,7 @@ test('screenshot UI projects distinct human and beast facts without changing the
     life.characterProfile.route = 'beast';
     Object.assign(life.session.character, {
         route: 'beast', age: 160, beastYears: 1045,
-        beast: { species: { text: '测试本体' }, bloodlines: [
+        beast: { chronologicalAge: 160, species: { text: '测试本体' }, bloodlines: [
             { selection: { optionId: 'body', text: '本体' }, percentage: 50 },
             { selection: { optionId: 'other', text: '融合血脉' }, percentage: 50 }
         ], bloodlineComponents: [{bloodlineId:'body',ratioBasisPoints:5000},{bloodlineId:'other',ratioBasisPoints:5000}],
@@ -565,6 +582,7 @@ test('screenshot UI projects distinct human and beast facts without changing the
     ui.closePanel('character-menu-panel');
     assert.equal(JSON.stringify(life.session), beastBefore);
     life.characterProfile.route = 'transformed';
+    life.session.character.route = 'transformed';
     ui.renderGame();
     assert.equal(nodes.get('#cultivation-value').textContent, '19 级');
     assert.equal(nodes.get('#character-name').textContent, '蓝银草');
@@ -630,7 +648,12 @@ test('screenshot UI auto caps at 200 and terminal or typed failure locks all adv
         for (const id of ['human-step','human-age','human-terminal']) assert.equal(h.nodes.get('#'+id).disabled, true);
         assert.equal(h.timers.length, 0);
         if (phase === 'completed') assert.match(h.nodes.get('#human-result').textContent, /完整终局文字/);
-        else assert.match(h.nodes.get('#human-progress').textContent, /FIXTURE_TYPED_STOP/);
+        else {
+            assert.match(h.nodes.get('#human-progress').textContent, /推进已停止，原进度保留/);
+            assert.doesNotMatch(h.nodes.get('#human-progress').textContent, /FIXTURE_TYPED_STOP/);
+            assert.match(h.nodes.get('#runtime-diagnostics').textContent, /FIXTURE_TYPED_STOP/);
+            assert.equal(JSON.parse(h.nodes.get('#problem-details').textContent).code,'FIXTURE_TYPED_STOP');
+        }
     }
 });
 
@@ -802,9 +825,10 @@ test('screenshot UI reroll targets last fast or terminal draw and clears on new 
     }
 });
 
-function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife = null, restoreFailure = false, rejectReroll = false } = {}) {
+function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife = null, restoreFailure = false, rejectReroll = false, saveStore = null, confirm = ()=>true, reducedMotion = false, clipboard = undefined } = {}) {
     // Explicit UI mechanism fixture, never used as a real gameplay reachability input.
     const nodes = new Map(), listeners = {}, timers = [], starts = [];
+    const downloads = [], blobs = [], revoked = [];
     const element = () => ({
         textContent: '', value: '', dataset: {}, hidden: false, disabled: false, attributes: {},
         style: { setProperty() {}, removeProperty() {} },
@@ -816,7 +840,11 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
     const document = {
         hidden: false,
         querySelector(selector) { if (!nodes.has(selector)) nodes.set(selector, element()); return nodes.get(selector); },
-        querySelectorAll: () => [], createElement: element,
+        querySelectorAll: () => [], createElement(tag) {
+            const node = element();
+            if (tag === "a") node.click = () => downloads.push({ name: node.download, href: node.href });
+            return node;
+        },
         addEventListener(name,handler) { listeners[name] = handler; }
     };
     for (const id of ['character-menu-panel','history-panel','save-panel']) document.querySelector('#'+id).hidden = true;
@@ -830,7 +858,8 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
             {optionId:'b',fullText:'第二项',weight:3,percentage:75,startAngle:90,endAngle:360,midpoint:225}
         ] },
         lastWheelResult:null,
-        step() {
+        step({ onCheckpoint = null } = {}) {
+            const checkpoint = onCheckpoint ? this.exportSnapshot() : null;
             count += 1;
             if (['boundary','error'].includes(stopPhase)) {
                 this.phase=stopPhase; this.error={code:'FIXTURE_TYPED_STOP',message:'测试停止'};
@@ -844,18 +873,26 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
                 this.error = {code:'FIXTURE_TYPED_STOP',message:'测试停止'};
                 this.summary = {route:'human',age:10,level:19,history:count,ending:{title:'测试结局',text:'完整终局文字'}};
             }
+            if (onCheckpoint) onCheckpoint(checkpoint);
             return {committed:true};
         },
         exportSnapshot() { return {packId:this.session.packId,route:this.session.character.route,seed:this.seed ?? 'fixture',session:structuredClone(this.session)}; },
-        async runToTerminal({onStep}) {
-            for (let i=1;i<=5;i++) { const result = this.step(); await onStep(result,i); if (!result.committed) break; }
+        async runToTerminal({onStep, onCheckpoint, shouldStop, yieldStep}) {
+            for (let i=1;i<=5;i++) {
+                if (shouldStop?.()) return {reason:'cancelled',steps:i-1};
+                const result = this.step({onCheckpoint}); await onStep(result,i);
+                if (!result.committed || ['completed','boundary','error'].includes(this.phase)) return {...result,steps:i};
+                if (yieldStep) await yieldStep();
+            }
             return {reason:'batch-limit',steps:5};
         }
     };
     const initialSession = structuredClone(life.session);
     let seedCount = 0;
     const context = {
-        document, structuredClone, V10_GOD_TRIAL_STAGES, crypto:{randomUUID:()=> 'new-fixture-'+(++seedCount)},
+        navigator: {clipboard},
+        document, structuredClone, V10_GOD_TRIAL_STAGES, window:{confirm,addEventListener(){}}, matchMedia:()=>({matches:reducedMotion}), crypto:{randomUUID:()=> 'new-fixture-'+(++seedCount)},
+        Blob, URL: { createObjectURL(blob) { blobs.push(blob); return 'blob:backup-fixture'; }, revokeObjectURL(url) { revoked.push(url); } },
         setTimeout(callback) { if (immediate) queueMicrotask(callback); else timers.push(callback); },
         createV10ContentLoader:()=>({getManifest:async()=>({packs:[]})}),
         createV10LifeRunner:()=>({start:async(packId, options)=> {
@@ -871,13 +908,205 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
             }
             return candidate;
         }}),
-        createV10SaveStore:()=>({list:async()=>[],read:async()=>({...life,phase:'ready',session:structuredClone(life.session)})}),
+        createV10SaveStore:()=>saveStore ?? ({list:async()=>[],read:async()=>({...life,phase:'ready',session:structuredClone(life.session)})}),
         testLife:actualLife ?? life
     };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url),'utf8').replace(/^import .+;\r?\n/gmu,'');
-    runInNewContext(app+'\nlifeRunner=testLife; globalThis.testUI={renderGame,runLife,toggleAuto,stopAutoAndWait,togglePanel,closePanel,startLife,saveAction,currentLife:()=>lifeRunner,checkpoint:()=>undoCheckpoint};',context);
+    runUI(app+'\nlifeRunner=testLife; globalThis.testUI={newFate,renderGame,runLife,toggleAuto,toggleFast,stopAutoAndWait,togglePanel,closePanel,startLife,saveAction,currentLife:()=>lifeRunner,checkpoint:()=>undoCheckpoint,dirty:()=>unsaved,changes:()=>lastChanges};',context);
     context.testUI.renderGame();
-    return {nodes,listeners,document,life,ui:context.testUI,timers,starts,seedCalls:()=>seedCount,steps:()=>count,
+    return {nodes,listeners,document,life,ui:context.testUI,timers,starts,downloads,blobs,revoked,seedCalls:()=>seedCount,steps:()=>count,
         async flushTimer() { assert.ok(timers.length); timers.shift()(); for(let i=0;i<15;i++) await Promise.resolve(); }
     };
 }
+
+test('Sea inheritance pauses fast UI for a deliberate choice; continue and ascend retain deterministic state',async()=>{
+    const {startSeaGod,SEA_GOD_STAGES,SEA_DOMAIN,SEA_TRIDENT}=await import('../js/v10-sea-god-runtime.js');
+    const life=await runner.start('douluo1',{seed:'v10-save-human',route:'human'});for(let i=0;i<20;i++)assert.equal(life.step().error,null);
+    const s=life.exportSnapshot(),c=s.session.character;startSeaGod(s.session,{optionId:'710c23',text:'mechanism fixture'});
+    Object.assign(c,{level:99,maxLevel:99,age:30});c.martialSouls[0].rings=Array.from({length:9},()=>({years:10000}));
+    c.soulBones=['head','torso','leftArm','rightArm','leftLeg','rightLeg'].map(partId=>({id:partId,partId,years:30000}));c.domains.push(SEA_DOMAIN);c.artifacts.push({id:SEA_TRIDENT,stage:'embryo'});
+    Object.assign(c.seaTrial,{currentStage:9,completedStages:[1,2,3,4,5,6,7,8],claimedRewardStages:[1,2,3,4,5,6,7,8],claimedRewardOptionIds:SEA_GOD_STAGES.slice(0,8).map(x=>x.id)});
+    Object.assign(s.session,{currentFlowId:SEA_GOD_STAGES[8].id,currentPoolId:null,pendingNextStepId:null,awaitingAdvance:false});
+    const h=screenshotUIHarness({immediate:true,actualLife:await runner.start('douluo1',{seed:s.seed,route:s.route,snapshot:s})});
+    await h.ui.toggleFast();assert.equal(h.ui.currentLife().awaitingSeaGodChoice,true);assert.equal(h.nodes.get('#sea-god-choice').hidden,false);assert.equal(h.nodes.get('#human-step').disabled,true);
+    assert.match(h.nodes.get('#human-progress').textContent,/选择立即飞升或继续人生/);const cursor=h.ui.currentLife().session.random.cursor;
+    await h.nodes.get('#sea-god-continue').listeners.click();assert.equal(h.ui.currentLife().awaitingSeaGodChoice,false);assert.equal(h.nodes.get('#human-step').disabled,false);assert.equal(h.ui.dirty(),true);
+    await h.nodes.get('#sea-god-ascend').listeners.click();assert.equal(h.ui.currentLife().phase,'completed');assert.equal(h.ui.currentLife().session.random.cursor,cursor);
+    const finished=h.ui.currentLife().exportSnapshot();await h.nodes.get('#sea-god-ascend').listeners.click();assert.deepEqual(h.ui.currentLife().exportSnapshot(),finished);
+    const auto=screenshotUIHarness({immediate:true,actualLife:await runner.start('douluo1',{seed:s.seed,route:s.route,snapshot:s})});
+    await auto.ui.toggleAuto();assert.equal(auto.ui.currentLife().awaitingSeaGodChoice,true);
+    assert.equal(auto.nodes.get('#human-step').disabled,true);assert.equal(auto.ui.currentLife().session.random.cursor,cursor);
+});
+test('problem copy awaits actual write and preserves selectable manual diagnostics on failure',async()=>{
+    let release, copied;
+    const pending=new Promise(resolve=>release=resolve);
+    const h=screenshotUIHarness({clipboard:{writeText:async text=>{copied=text;await pending}}});
+    const before=h.life.exportSnapshot();
+    const click=h.nodes.get('#copy-problem').listeners.click();
+    await Promise.resolve();
+    assert.doesNotMatch(h.nodes.get('#problem-status').textContent,/已复制/);
+    assert.equal(copied,h.nodes.get('#problem-details').textContent);
+    release();await click;assert.match(h.nodes.get('#problem-status').textContent,/已复制/);
+    assert.deepEqual(h.life.exportSnapshot(),before);
+    for(const clipboard of [undefined,{writeText:async()=>{throw new Error('denied')}}]) {
+        const failed=screenshotUIHarness({clipboard});
+        await failed.nodes.get('#copy-problem').listeners.click();
+        assert.match(failed.nodes.get('#problem-status').textContent,/手动选择复制/);
+        assert.ok(JSON.parse(failed.nodes.get('#problem-details').textContent).recent);
+    }
+});
+
+
+test('fast UI exposes pause and cancel, retains committed results, and resumes serially', async () => {
+    for (const mode of ['pause','cancel']) {
+        const h=screenshotUIHarness();
+        const pending=h.ui.toggleFast();
+        await Promise.resolve();
+        assert.equal(h.steps(),1);
+        assert.equal(h.nodes.get('#human-terminal').textContent,'暂停极速');
+        assert.equal(h.nodes.get('#human-terminal').disabled,false);
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,false);
+        assert.equal(h.nodes.get('#human-fast-cancel').disabled,false);
+        const snapshot=h.life.exportSnapshot();
+        await h.ui.toggleAuto(); await h.ui.runLife('step','manual');
+        assert.equal(h.steps(),1,'no competing advance');
+        if(mode==='pause') await h.ui.toggleFast();
+        else h.nodes.get('#human-fast-cancel').listeners.click();
+        await h.flushTimer(); await pending;
+        assert.deepEqual(h.life.exportSnapshot(),snapshot,'stop consumes no extra RNG or history');
+        assert.equal(h.nodes.get('#human-terminal').textContent,'极速推进');
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,true);
+        assert.match(h.nodes.get('#human-progress').textContent,mode==='pause'?/已暂停/:/已取消/);
+        assert.ok(h.ui.checkpoint(),'latest draw remains rerollable');
+        const resumed=h.ui.toggleFast(); await Promise.resolve();
+        assert.equal(h.steps(),2);
+        await h.ui.toggleFast(); await h.flushTimer(); await resumed;
+        assert.equal(h.steps(),2);
+    }
+});
+
+test('fast UI stops before switching life, loading, rerolling, opening drawers or hiding', async () => {
+    for(const mode of ['new','load','reroll','drawer','hidden','route']) {
+        const h=screenshotUIHarness(); const pending=h.ui.toggleFast(); await Promise.resolve();
+        let switching;
+        if(mode==='new')switching=h.nodes.get('#human-new').listeners.click();
+        if(mode==='load')switching=h.ui.saveAction('load');
+        if(mode==='reroll')switching=h.nodes.get('#human-reroll').listeners.click();
+        if(mode==='drawer')h.ui.togglePanel('history-panel');
+        if(mode==='hidden'){h.document.hidden=true;h.listeners.visibilitychange();}
+        if(mode==='route')h.nodes.get('#route-toggle').listeners.click();
+        await h.flushTimer(); await pending;
+        if(mode==='reroll') { await Promise.resolve(); if(h.timers.length)await h.flushTimer(); }
+        if(switching)await switching;
+        assert.equal(h.life.session.history.length,1,mode);
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,true,mode);
+        assert.equal(h.timers.length,0,mode);
+    }
+});
+
+test('fast UI completion and typed errors restore controls without hiding the result', async () => {
+    const normal=screenshotUIHarness({immediate:true}); await normal.ui.toggleFast();
+    assert.match(normal.nodes.get('#human-progress').textContent,/本批已推进 5 次/);
+    assert.equal(normal.nodes.get('#human-fast-cancel').hidden,true);
+    for(const phase of ['completed','boundary','error']) {
+        const h=screenshotUIHarness({immediate:true,stopPhase:phase});await h.ui.toggleFast();
+        assert.equal(h.steps(),1);
+        assert.equal(h.nodes.get('#human-terminal').disabled,true);
+        assert.equal(h.nodes.get('#human-fast-cancel').hidden,true);
+        assert.match(h.nodes.get('#human-progress').textContent,phase==='completed'?/人生已结束/:/推进已停止，原进度保留/);
+        if(phase!=='completed') {
+            assert.match(h.nodes.get('#runtime-diagnostics').textContent,/FIXTURE_TYPED_STOP/);
+            assert.equal(JSON.parse(h.nodes.get('#problem-details').textContent).code,'FIXTURE_TYPED_STOP');
+        }
+    }
+    const thrown=screenshotUIHarness({immediate:true});thrown.life.runToTerminal=async()=>{throw new Error('fast fixture failure')};
+    await thrown.ui.toggleFast();assert.match(thrown.nodes.get('#human-progress').textContent,/UI_STEP_FAILED.*fast fixture failure/);
+});
+
+
+test('raw backup UI downloads original text, skips slot revalidation and preserves active life', async () => {
+    const original = '{broken\r\n原件 🐉';
+    const calls = []; let lists = 0;
+    const h = screenshotUIHarness({ saveStore: {
+        async list() { lists++; return []; },
+        async exportSlot(slot, options) { calls.push({ slot, rawBackup: options.rawBackup }); return original; }
+    } });
+    for (let i = 0; i < 5; i++) await Promise.resolve();
+    h.nodes.get('#save-slot').value = '8';
+    const before = h.life.exportSnapshot(), previousLists = lists;
+    await h.ui.saveAction('export-raw');
+    assert.deepEqual(calls, [{ slot: 8, rawBackup: true }]);
+    assert.equal(lists, previousLists);
+    assert.deepEqual(h.downloads, [{ name: 'douluo-life-slot-8-raw-backup.json', href: 'blob:backup-fixture' }]);
+    assert.equal(await h.blobs[0].text(), original);
+    assert.match(h.nodes.get('#save-status').textContent, /未经校验.*原槽位保持不变/u);
+    assert.deepEqual(h.life.exportSnapshot(), before);
+    assert.equal(h.nodes.get('#human-step').disabled, false);
+    await h.flushTimer();
+    assert.deepEqual(h.revoked, ['blob:backup-fixture']);
+    await h.ui.saveAction('export');
+    assert.deepEqual(calls[1], { slot: 8, rawBackup: false });
+    assert.equal(h.downloads[1].name, 'douluo-life-slot-8.json');
+});
+
+test('raw backup UI reports unavailable or empty slots without a download and unlocks controls', async () => {
+    for (const code of ['SAVE_EMPTY', 'SAVE_STORAGE_UNAVAILABLE']) {
+        const h = screenshotUIHarness({ saveStore: {
+            async list() { return []; },
+            async exportSlot() { throw Object.assign(new Error('无法导出'), { code }); }
+        } });
+        h.nodes.get('#save-slot').value = '8';
+        const before = h.life.exportSnapshot();
+        await h.ui.saveAction('export-raw');
+        assert.equal(h.downloads.length, 0);
+        assert.ok(h.nodes.get('#save-status').textContent.startsWith(code));
+        assert.equal(h.nodes.get('#human-step').disabled, false);
+        assert.deepEqual(h.life.exportSnapshot(), before);
+    }
+});
+
+test('player UI overwrite cancellation preserves A, current B, RNG, history and undo; confirmation writes B once',async()=>{
+    const {createV10SaveStore,SAVE_PREFIX}=await import('../js/v10-save-store.js');
+    const data=new Map();let writes=0,allow=false,confirms=0;
+    const store=createV10SaveStore({contentLoader:loader,runner,storage:()=>({getItem:k=>data.get(k)??null,setItem(k,v){writes++;data.set(k,v)}})});
+    const life=await runner.start('douluo2',{route:'beast',seed:'audit-20261010-douluo2-beast-1'});
+    for(let i=0;i<35;i++)life.step();
+    const A=await store.serialize(life);await store.write(1,A);
+    const h=screenshotUIHarness({actualLife:life,saveStore:store,reducedMotion:true,confirm:()=>{confirms++;return allow}});
+    h.nodes.get('#save-slot').value='1';await h.ui.runLife('step','step');
+    const B=life.exportSnapshot(),checkpoint=JSON.stringify(h.ui.checkpoint());assert.equal(h.ui.dirty(),true);
+    await h.ui.saveAction('save');assert.equal(data.get(SAVE_PREFIX+1),A);assert.equal(writes,1);
+    assert.deepEqual(life.exportSnapshot(),B);assert.equal(JSON.stringify(h.ui.checkpoint()),checkpoint);assert.equal(h.ui.dirty(),true);
+    assert.match(h.nodes.get('#save-status').textContent,/已取消覆盖/);
+    allow=true;await Promise.all([h.ui.saveAction('save'),h.ui.saveAction('save')]);
+    assert.equal(writes,2);assert.equal(confirms,2);assert.equal(h.ui.dirty(),false);
+    assert.deepEqual((await store.read(1)).exportSnapshot(),B);
+});
+
+test('player UI protects unsaved life, isolates next seed, clears restored changes and honors reduced motion',async()=>{
+    let allow=false;
+    const h=screenshotUIHarness({reducedMotion:true,confirm:()=>allow});
+    await h.ui.runLife('step','step');assert.equal(h.timers.length,0);assert.equal(h.ui.dirty(),true);
+    const B=h.ui.currentLife().exportSnapshot();
+    h.nodes.get('#human-seed').value='next-seed';h.nodes.get('#human-seed').listeners.input();h.ui.renderGame();
+    assert.equal(h.nodes.get('#current-seed').textContent,'来源未记录');
+    await h.ui.newFate();assert.deepEqual(h.ui.currentLife().exportSnapshot(),B);
+    await h.ui.startLife('beast','douluo2');assert.equal(h.starts.length,0);
+    await h.ui.saveAction('load');assert.deepEqual(h.ui.currentLife().exportSnapshot(),B);
+    allow=true;await h.ui.startLife('human','douluo1');assert.equal(h.starts.at(-1).seed,'next-seed');
+    h.nodes.get('#human-seed').value='different-next';await h.ui.startLife('human','douluo1',{replay:true});assert.equal(h.starts.at(-1).seed,'next-seed');
+    assert.deepEqual(Array.from(h.ui.changes()),[]);assert.equal(h.ui.checkpoint(),null);
+    await h.ui.runLife('step','step');await h.ui.saveAction('load');assert.deepEqual(Array.from(h.ui.changes()),[]);
+    await h.ui.newFate();assert.equal(h.ui.currentLife(),null);assert.equal(h.ui.dirty(),false);
+    assert.doesNotMatch(h.nodes.get('#life-save-state').textContent,/有未保存进度/);
+    const cleared=JSON.parse(h.nodes.get('#problem-details').textContent);assert.equal(cleared.seed,null);assert.equal(cleared.phase,'not-started');assert.deepEqual(cleared.recent,[]);
+});
+
+test('current-life recovery export marks oversized files, and cancelled file choice does not write',async()=>{
+    let writes=0;
+    const h=screenshotUIHarness({saveStore:{list:async()=>[],raw:()=>null,serialize:async()=> 'x'.repeat(MAX_SAVE_BYTES+1),write:async()=>{writes++}}});
+    h.nodes.get('#save-slot').value='1';h.nodes.get('#save-file').files=[];
+    await h.ui.saveAction('import');assert.equal(writes,0);assert.match(h.nodes.get('#save-status').textContent,/请先选择/);
+    const before=h.life.exportSnapshot();await h.ui.saveAction('export-current');
+    assert.equal(writes,0);assert.match(h.nodes.get('#save-status').textContent,/超过4 MiB.*无法导入/);assert.deepEqual(h.life.exportSnapshot(),before);
+});

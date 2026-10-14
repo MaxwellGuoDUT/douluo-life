@@ -1,3 +1,4 @@
+import { actualAgeText } from '../js/v10-display.js';
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
@@ -63,6 +64,10 @@ for (const scenario of [
         const restored = create(scenario.seed, scenario.route, { snapshot: JSON.parse(JSON.stringify(before)) });
         assert.equal(restored.phase, "completed");
         assert.deepEqual(restored.summary, runner.summary);
+        const sourceAge = runner.session.character.route === 'beast'
+            ? runner.session.character.beast.chronologicalAge : runner.session.character.age;
+        assert.equal(actualAgeText(runner.session.character), sourceAge.toLocaleString('zh-CN') + ' 岁');
+        assert.equal(actualAgeText(restored.session.character), actualAgeText(runner.session.character));
     });
 }
 test("independent seed replay and JSON resume preserve every committed field", () => {

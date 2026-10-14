@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
+import { resolveSourceVault } from '../tools/v10/source-vault.mjs';
 
 const ROOT = process.cwd();
 const DATA_ROOT = path.join(ROOT, "data", "v10");
@@ -96,18 +97,15 @@ test("Douluo I restores only the exact land-finale source closure", () => {
     )));
 });
 
-test("source generator check is current when the restored vault is present", () => {
-    const defaultVault = path.join(
-        path.dirname(ROOT),
-        "douluo-life-source-vault",
-        "5ba6453",
-        "apk-analysis",
-        "E4FB340E"
-    );
-    if (!fs.existsSync(defaultVault)) return;
+test("source generator check is current when the restored vault is present", t => {
+    const { path: vault, explicit } = resolveSourceVault({ root: ROOT });
+    if (!explicit && !fs.existsSync(vault)) {
+        t.skip("Restored source vault is absent; set DOULUO_SOURCE_VAULT to run this check.");
+        return;
+    }
     const result = spawnSync(
         process.execPath,
-        [path.join(ROOT, "tools", "v10", "generate-source-inventory.mjs"), "--check"],
+        [path.join(ROOT, "tools", "v10", "generate-source-inventory.mjs"), "--check", "--vault", vault],
         { cwd: ROOT, encoding: "utf8" }
     );
     assert.equal(result.status, 0, result.stderr || result.stdout);

@@ -6,7 +6,9 @@ import {createV10ContentLoader} from '../js/v10-content-loader.js';
 import {projectV10SourceCharacter} from '../js/v10-human-runner.js';
 import {createV10LifeRunner} from '../js/v10-life-runner.js';
 import {createV10SaveStore,SAVE_PREFIX} from '../js/v10-save-store.js';
-import {V10_GOD_TRIAL_STAGES,V10_GOD_TRIAL_POOLS,V10_GOD_TRIAL_SEMANTICS,V10_GOD_TRIAL_CONTENT,evaluateV10GodTrialRequirement} from '../js/v10-god-trial-runtime.js';
+import {V10_GOD_TRIAL_STAGES as ALL_STAGES,V10_GOD_TRIAL_POOLS as ALL_POOLS,V10_GOD_TRIAL_SEMANTICS,V10_GOD_TRIAL_CONTENT,evaluateV10GodTrialRequirement} from '../js/v10-god-trial-runtime.js';
+const V10_GOD_TRIAL_STAGES=ALL_STAGES.filter(stage=>stage.tier==='二级');
+const V10_GOD_TRIAL_POOLS=ALL_POOLS.filter(pool=>V10_GOD_TRIAL_STAGES.some(stage=>stage.poolId===pool.id));
 globalThis.document??={createElement(){return {relList:{supports:()=>true},addEventListener(n,h){if(n==='load')queueMicrotask(h)},setAttribute(){}}},getElementsByTagName:()=>[],querySelector:()=>null,querySelectorAll:()=>[],head:{appendChild(){}}};
 globalThis.window??={dispatchEvent(){}};
 const root=new URL('../',import.meta.url);
@@ -157,15 +159,21 @@ test('recorded /3 sessions match fresh /5 and current snapshots resume identical
 });
 
 
-test('real six-bone prefix: low-level opportunity matches source once, restores, rolls back drift and rejects /3',async()=>{
+test('six-bone mechanism fixture: low-level opportunity matches source once, restores, rolls back drift and rejects /3',async()=>{
  const seed='ascension-closure-20260930-008',poolId='dab03114-3b0a-416a-a2a2-4a1e57af0157',optionId='c77382',key='formal:god-trial-draws',counter={type:'changeCounter',key,amount:1};
- const life=advance(await page.start('douluo1',{seed,route:'human'}),242),before=life.exportSnapshot();const source=(await loader.getSourceRuntime('douluo1')).game,option=source.pools.find(p=>p.id===poolId).options.find(o=>o.id===optionId),expected=structuredClone(before.session),emitted=[];
+ // Restored sea rewards change this seed's later organic life. Preserve the
+ // six-bone mechanism as an explicit fixture; never call it a genuine prefix.
+ const before=advance(await page.start('douluo1',{seed,route:'human'}),242).exportSnapshot();
+ before.session.character.soulBones=structuredClone(legacy.sixBoneContinuation.lives[0].final.session.character.soulBones);
+ Object.assign(before.session,{currentFlowId:'douluo1:flow.special.'+poolId,currentPoolId:null,pendingNextStepId:null,awaitingAdvance:false});
+ const variant=modify=>({...loader,getHumanRuntimeContent:async()=>{const c=structuredClone(await loader.getHumanRuntimeContent()),pool=c.routeGraph.packs[0].pools.find(p=>p.id===poolId),route=pool.options.find(o=>o.id===optionId),rule=c.formalSpecialResultEvidence.records.find(r=>r.poolId===poolId&&r.optionId===optionId);for(const o of pool.options)o.source.weight=o.id===optionId?1:0;modify(route,rule);return c;}});
+ const fixturePage=createV10LifeRunner({contentLoader:variant(()=>{})}),life=await fixturePage.start('douluo1',{seed,route:'human',snapshot:before});
+ const source=(await loader.getSourceRuntime('douluo1')).game,option=source.pools.find(p=>p.id===poolId).options.find(o=>o.id===optionId),expected=structuredClone(before.session),emitted=[];
  expected.character=projectV10SourceCharacter(expected.character);const engine=await import('../data/v10/source-runtime/App-qyLEl8t4.js');assert.equal(engine.n(expected.character),true);
  source.customHandlers[option.customHandler]({pack:source,state:expected,step:source.flows['douluo1:flow.special.'+poolId],option,applyEffects(effects){emitted.push(...structuredClone(effects));engine.a(expected.character,effects.filter(e=>e.type!=='addLog'));}});assert.deepEqual(emitted.filter(e=>e.key===key),[counter]);
  const result=life.step();assert.equal(result.error,null);assert.equal(result.spin.optionId,optionId);assert.equal(life.session.character.flags[key],1);assert.equal(life.session.character.transactions.filter(t=>t.referenceId?.includes(optionId)&&t.type==='changeCounter').length,1);
- const restored=await page.start('douluo1',{seed,route:'human',snapshot:before});advance(restored,1);assert.deepEqual(restored.exportSnapshot(),life.exportSnapshot());
- const after=life.exportSnapshot(),resumed=await page.start('douluo1',{seed,route:'human',snapshot:after});advance(life,1);advance(resumed,1);assert.deepEqual(resumed.exportSnapshot(),life.exportSnapshot());assert.equal(life.session.character.flags[key],0);assert.ok(life.session.character.godTrial);
- const variant=modify=>({...loader,getHumanRuntimeContent:async()=>{const c=structuredClone(await loader.getHumanRuntimeContent()),route=c.routeGraph.packs[0].pools.find(p=>p.id===poolId).options.find(o=>o.id===optionId),rule=c.formalSpecialResultEvidence.records.find(r=>r.poolId===poolId&&r.optionId===optionId);modify(route,rule);return c;}});
+ const restored=await fixturePage.start('douluo1',{seed,route:'human',snapshot:before});advance(restored,1);assert.deepEqual(restored.exportSnapshot(),life.exportSnapshot());
+ const after=life.exportSnapshot(),resumed=await fixturePage.start('douluo1',{seed,route:'human',snapshot:after});advance(life,1);advance(resumed,1);assert.deepEqual(resumed.exportSnapshot(),life.exportSnapshot());assert.equal(life.session.character.flags[key],0);assert.ok(life.session.character.godTrial);
  const dup=await createV10LifeRunner({contentLoader:variant((_route,rule)=>rule.effects.push(counter))}).start('douluo1',{seed,route:'human',snapshot:before});advance(dup,1);assert.equal(dup.session.character.flags[key],1);
  for(const [modify,code] of [[route=>{route.route.effects=[];route.source.effects=[];},'V10_GOD_TRIAL_OPPORTUNITY_SOURCE_DRIFT'],[(_route,rule)=>rule.effects.push(counter,counter),'V10_GOD_TRIAL_OPPORTUNITY_MAPPING_DRIFT'],[(_route,rule)=>rule.effects.push(counter,{type:'unknown-opportunity-effect'}),'UNSUPPORTED_APK_EFFECT']]){const fixture=await createV10LifeRunner({contentLoader:variant(modify)}).start('douluo1',{seed,route:'human',snapshot:before}),saved=fixture.exportSnapshot(),rejected=fixture.step();assert.equal(rejected.committed,false);assert.equal(rejected.error.code,code);assert.deepEqual(fixture.exportSnapshot(),saved);}
  const old=legacy.sixBoneContinuation.lives[0].final;assert.equal(old.runtimeSemantics,'douluo1:second-tier-god-trial/3');await assert.rejects(page.start('douluo1',{seed,route:'human',snapshot:old}),{code:'V10_SNAPSHOT_SEMANTICS_CHANGED'});

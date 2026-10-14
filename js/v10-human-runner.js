@@ -8,12 +8,14 @@ import {
     createApkRouteDynamicHandlers,
     createApkRouteRequirementEvaluator
 } from "./apk-route-runtime.js";
+import { calculateApkCombatPower } from "./apk-combat-power-runtime.js";
 import { applyApkEffects, selectApkPoolOptions } from "./apk-rule-runtime.js";
 import { planFormalHumanScheduler, V10_ASCENSION_ATTEMPT_AGE, assertV10AscensionRetryContract } from "./apk-scheduler-runtime.js";
 
 import { V10_GOD_TRIAL_SEMANTICS, withV10GodTrialRuntime, evaluateV10GodTrialRequirement } from "./v10-god-trial-runtime.js";
+import { startSeaGod, claimSeaGod, validateSeaGodState, assertSeaGodExclusivity, seaGodChoicePending } from "./v10-sea-god-runtime.js";
 
-import { createV05WheelSegments, resolveV05StaticPool } from "./v05-wheel-view.js";
+import { createV05WheelSegments, createV05WheelView, resolveV05StaticPool } from "./v05-wheel-view.js";
 
 const V10_HUMAN_MAX_STEPS = 2000;
 const V10_BEAST_MAX_STEPS = 25000;
@@ -118,7 +120,7 @@ function withSourceBeastRuntime(loaded, sourcePack, route) {
 }
 
 function withCorrectedShrekBranch(loaded, packId, route) {
-    if (packId !== "douluo1" || route !== "human") return loaded;
+    if (packId !== "douluo1" || !["human","beast"].includes(route)) return loaded;
     const pack = loaded.routeGraph?.packs?.find(item => item.id === packId);
     const pool = pack?.pools?.find(item => item.id === SHREK_FACTION_POOL_ID);
     const option = pool?.options?.find(item => item.id === SHREK_FACTION_OPTION_ID);
@@ -246,6 +248,15 @@ function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
         if (typeof handler !== "function") return { found: false, value: null };
         const localCharacter = context.session.character;
         const sourceCharacter = projectCharacter(localCharacter);
+        // The copied V6 handlers cannot validate owner-approved Sea fields.
+        // Keep that independent trial outside their state projection, then put
+        // back the exact record. They may still update the ordinary Asura trial.
+        const independentSea = localCharacter.seaTrial?.tier === "seaGod"
+            ? structuredClone(localCharacter.seaTrial) : null;
+        if (independentSea) {
+            validateSeaGodState(localCharacter);
+            sourceCharacter.seaTrial = null;
+        }
         const post150Planner = allowPost150 && localCharacter.route !== "beast"
             && localCharacter.age >= 150 && registryName === "flowActions"
             && ["douluo2:action.annual-growth-plan", "douluo2:action.human-story.plan", "planHumanStep"].includes(context.handlerId);
@@ -261,6 +272,14 @@ function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
             option: context.routeOption?.source ?? context.routeOption ?? null,
             ...extra
         });
+        if (independentSea) {
+            if (context.session.character.seaTrial != null) {
+                throw Object.assign(new Error("源处理器试图替换独立海神九考，本步未提交。"), {
+                    code: "V10_SEA_GOD_SOURCE_REPLACEMENT"
+                });
+            }
+            context.session.character.seaTrial = independentSea;
+        }
         if (post150Planner) {
             if (context.session.character.age !== 149) {
                 throw Object.assign(new Error("年度规划器意外修改了年龄。"), {
@@ -296,6 +315,12 @@ function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
         }
         if (allowPost150 && kind === "action"
             && context.handlerId === "douluo1:action.formal-human.schedule") {
+            const trial=context.session.character.seaTrial;
+            // Soul-bone rewards return through humanPlan. Finish via the source action
+            // here, without scheduling humanPlan twice in one resolution chain.
+            if(trial?.status==='active' && trial.tier!=='seaGod' && trial.currentStage>trial.totalStages) {
+                sourceCall('flowActions',{...context,handlerId:'continueHumanSeaTrial'});
+            }
             return planFormalHumanScheduler({ contentIndex, session: context.session, allowPost150: true });
         }
         if (sourcePack.manifest?.id === "douluo2" || context.session.character?.route === "beast") {
@@ -337,7 +362,7 @@ function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
         dynamicOption(context) {
             const before = context.session.character;
             const recordAscensionAttempt = contentIndex.pack?.v10GodTrialSemantics === V10_GOD_TRIAL_SEMANTICS
-                && context.session.packId === "douluo1" && before.route === "human" && !before.ending
+                && context.session.packId === "douluo1" && ["human","transformed"].includes(before.route) && !before.ending
                 && before.storyBranch === 2
                 && before.flags?.["formal:d1-story:selected:cdae9943-fb9d-49ba-853c-40d9b78924ae:403ea3"] === true
                 && context.poolId === "1209bb56-d533-48af-b012-204292b96f68"
@@ -358,6 +383,16 @@ function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
                 aggregate = result;
                 return result;
             };
+            if(context.customHandler.startsWith('v10:sea-god:')) {
+                if(context.customHandler==='v10:sea-god:start') {
+                    const previous=before.seaTrial?structuredClone(before.seaTrial):null;
+                    const original=context.routeOption.source.v10OriginalHandler;
+                    if(original)sourceCall('customHandlers',{...context,handlerId:original,flow:context.contentIndex.getFlow(context.flowId)},{applyEffects});
+                    startSeaGod(context.session,{optionId:context.optionId,text:context.routeOption.source.text},previous);
+                } else claimSeaGod(context,applyEffects);
+                context.session.dynamicHistory.push({kind:'customHandler',handlerId:context.customHandler,operation:'owner-approved-sea-god',flowId:context.flowId,poolId:context.poolId,optionId:context.optionId});
+                return aggregate??{character:context.session.character,applied:true,controls:{appliedTypes:[]}};
+            }
             const source = sourceCall("customHandlers", {
                 ...context,
                 handlerId: context.customHandler,
@@ -368,6 +403,7 @@ function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
                 error.code = "APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED";
                 throw error;
             }
+            if(!isDouluo2)assertSeaGodExclusivity(context.session.character);
             if (recordAscensionAttempt && !context.session.character.ending) {
                 if (context.session.character.age !== attemptAge) {
                     throw Object.assign(new Error("独立飞升结果意外改变年龄。"), { code: "V10_ASCENSION_RETRY_STATE_INVALID" });
@@ -390,7 +426,7 @@ function sourceRuntimeHandlers(contentIndex, sourcePack, allowPost150, seed) {
 function terminalSummary(base) {
     const character = base.session.character;
     return Object.freeze({
-        scope: `V1.0 ${base.session.packId} ${character?.route ?? "unknown"} source terminal`,
+        scope: `V1.0 ${base.session.packId} ${character?.route ?? "unknown"} ${character?.ending?.id === 'douluo1:sea-god-ascension' ? 'owner-approved Sea terminal' : 'source terminal'}`,
         packId: base.session.packId,
         seed: base.seed,
         age: character?.age ?? null,
@@ -460,7 +496,7 @@ export function createV10HumanRunner({
 
     if (snapshot !== null) {
         if (godTrialRuntimeEnabled && snapshot?.runtimeSemantics !== V10_GOD_TRIAL_SEMANTICS) {
-            throw Object.assign(new Error('旧存档使用了未注册二级神考奖励的运行语义，请保留原文件并重新开局。'), {
+            throw Object.assign(new Error('旧存档的神考运行语义与当前候选不兼容，原数据保留；请导出原始备份，并在原版本继续或重新开局。'), {
                 code: 'V10_SNAPSHOT_SEMANTICS_CHANGED'
             });
         }
@@ -489,10 +525,32 @@ export function createV10HumanRunner({
             });
         }
         base.restore(snapshot.session);
+        if(godTrialRuntimeEnabled)validateSeaGodState(base.session.character);
         if (base.session.finished && base.session.character.ending) {
             phase = "completed";
             summary = terminalSummary(base);
         }
+        // Derive a known exhausted pool from validated content and state. Do not
+        // persist an arbitrary error flag or advance a restored life to detect it.
+        if (godTrialRuntimeEnabled && phase === "ready") {
+            const current = currentPoolSelection();
+            if (current && current.selection.options.length === 0 && current.selection.unresolved.length === 0) {
+                phase = "boundary";
+                error = {
+                    code: "APK_POOL_HAS_NO_ELIGIBLE_OPTIONS",
+                    message: "当前阶段没有可用选项；原进度保留，推进已停止。",
+                    details: { poolId: current.resolved.poolId, unresolved: [] }
+                };
+            }
+        }
+    }
+
+    function currentPoolSelection() {
+        const resolved = resolveV05StaticPool({ contentIndex, session: base.session });
+        if (resolved.status !== "pool") return null;
+        return { resolved, selection: selectApkPoolOptions(contentIndex, base.session.character, resolved.poolId, {
+            requirementEvaluator: handlers.requirementEvaluator
+        }) };
     }
 
     function normalize(result) {
@@ -526,9 +584,23 @@ export function createV10HumanRunner({
         Object.assign(base.session, snapshot);
     }
 
-    function commitBaseStep() {
+    function snapshotEnvelope(session) {
+        return {
+            schemaVersion: "v10-runner-snapshot/1.0",
+            packId,
+            ...(godTrialRuntimeEnabled ? { runtimeSemantics: V10_GOD_TRIAL_SEMANTICS } : {}),
+            ...(packId === "douluo2" ? { contentIdentity: sourcePack.routeGraph.pack.contentIdentity } : {}),
+            route, seed, session
+        };
+    }
+
+    function commitBaseStep(onCheckpoint = null) {
         const snapshot = structuredClone(base.session);
-        const committed = base.step();
+        let committed = base.step();
+        if(committed.committed&&godTrialRuntimeEnabled){
+            try{assertSeaGodExclusivity(base.session.character);validateSeaGodState(base.session.character)}
+            catch(e){restoreSession(snapshot);committed={committed:false,status:'boundary',error:{code:e.code,message:e.message}}}
+        }
         if (allowPost150 && committed.committed) {
             const character = base.session.character;
             character.flags[V10_LIFESPAN_PEAK_LEVEL] = Math.max(
@@ -538,19 +610,25 @@ export function createV10HumanRunner({
         }
         const result = normalize(committed);
         if (phase === "boundary" || phase === "error") restoreSession(snapshot);
+        // The rollback copy is detached on success. Publish it only after full commit;
+        // failed steps restore it privately and leave the prior UI undo opportunity intact.
+        else if (result.committed && onCheckpoint) onCheckpoint(snapshotEnvelope(snapshot));
         return result;
     }
 
-    function commitOne() {
+    function commitOne(onCheckpoint) {
         if (["completed", "boundary", "error"].includes(phase)) {
             return blockedResult(phase, error, summary);
         }
-        return commitBaseStep();
+        if(godTrialRuntimeEnabled&&seaGodChoicePending(base.session.character))return blockedResult('ready',null,null,'sea-god-choice');
+        return commitBaseStep(onCheckpoint);
     }
 
     async function advanceUntil(stop, {
         maxSteps,
         onStep = null,
+        onCheckpoint = null,
+        shouldStop = null,
         yieldStep = () => Promise.resolve()
     }) {
         if (phase !== "ready" || busy) {
@@ -565,11 +643,17 @@ export function createV10HumanRunner({
         phase = "advancing";
         try {
             for (let step = 1; step <= maxSteps; step += 1) {
-                const result = commitBaseStep();
+                // Stop between transactions, before consuming the next random input.
+                if (shouldStop?.()) {
+                    phase = "ready";
+                    return { status: phase, committed: false, blocked: false, steps: step - 1, reason: "cancelled" };
+                }
+                const result = commitBaseStep(onCheckpoint);
                 if (typeof onStep === "function") await onStep(result, step);
                 if (phase === "completed" || phase === "boundary" || phase === "error") {
                     return { ...result, steps: step };
                 }
+                if(godTrialRuntimeEnabled&&seaGodChoicePending(base.session.character)){phase='ready';return {...result,status:phase,steps:step,reason:'sea-god-choice'};}
                 if (stop()) {
                     phase = "ready";
                     return { ...result, status: phase, steps: step };
@@ -610,15 +694,35 @@ export function createV10HumanRunner({
         get error() { return error; },
         get summary() { return summary; },
         get seed() { return base.seed; },
+        get awaitingSeaGodChoice(){return godTrialRuntimeEnabled&&seaGodChoicePending(base.session.character)},
+        resolveSeaGodAscension(choice) {
+            if(busy||phase!=='ready')return blockedResult(phase,error,summary);
+            const before=structuredClone(base.session),t=base.session.character.seaTrial,previousPhase=phase,previousSummary=summary;
+            if(!['ascend','continue'].includes(choice)||t?.tier!=='seaGod'||t.status!=='completed')throw Object.assign(new Error('当前没有可选择的海神飞升。'),{code:'V10_SEA_GOD_CHOICE_INVALID'});
+            if(choice==='continue'&&t.ascensionChoice==='continue')return {status:phase,committed:false,reason:'already-continued'};
+            try {
+                validateSeaGodState(base.session.character);
+                t.ascensionChoice=choice==='ascend'?'ascended':'continue';
+                if(choice==='ascend'){
+                    base.session.character=applyApkEffects(base.session.character,[{type:'ending',endingId:'douluo1:sea-god-ascension',title:'海神飞升',kind:'success',text:'你已完成海神九考并继承海神神位，主动选择飞升神界。'}],{reason:'owner-approved-sea-god',idempotencyKeyPrefix:'sea-god-ascension'}).character;
+                    Object.assign(base.session,{finished:true,routeStatus:'terminal',currentFlowId:null,currentPoolId:null,pendingNextStepId:null,pendingDynamic:null});
+                    phase='completed';summary=terminalSummary(base);
+                }
+                base.session.timeline.push({kind:'system',text:choice==='ascend'?'完成海神九考后主动飞升，人生结束。':'继承海神后选择继续人生，仍可主动飞升。'});
+                return {status:phase,committed:true,error:null,summary};
+            }catch(e){restoreSession(before);phase=previousPhase;summary=previousSummary;throw e}
+        },
         get lastResult() { return lastResult; },
         get lastWheelResult() { return base.lastWheelResult; },
         get wheelView() {
-            if (!godTrialRuntimeEnabled || phase !== 'ready'
-                || !base.session.currentFlowId?.startsWith('humanGodTrialReward:二级:')) return base.wheelView;
-            const resolved = resolveV05StaticPool({ contentIndex, session: base.session });
-            const selection = selectApkPoolOptions(contentIndex, base.session.character, resolved.poolId, {
-                requirementEvaluator: handlers.requirementEvaluator
-            });
+            if (["boundary", "error"].includes(phase)) {
+                return Object.freeze({ ...createV05WheelView({ contentIndex, session: base.session, phase,
+                    lastSpin: base.session.lastResolvedSpin?.result }), poolId: error?.details?.poolId ?? base.session.currentPoolId });
+            }
+            if (!godTrialRuntimeEnabled || phase !== 'ready') return base.wheelView;
+            const current = currentPoolSelection();
+            if (!current) return base.wheelView;
+            const { resolved, selection } = current;
             const segments = createV05WheelSegments(selection.options);
             const last = base.session.history.at(-1);
             const recentResult = last ? { optionId: last.optionId, text: last.text } : null;
@@ -627,6 +731,18 @@ export function createV10HumanRunner({
                 segments, totalWeight: segments.reduce((total, item) => total + item.weight, 0),
                 unresolvedRequirements: selection.unresolved, recentResult,
                 selectedOptionId: segments.some(item => item.optionId === recentResult?.optionId) ? recentResult.optionId : null });
+        },
+        get combatPower() {
+            try {
+                // Reuse the same calculators as runtime combat requirements.
+                const total = packId === "douluo2"
+                    ? sourcePack.engine.C.total(base.session.character)
+                    : calculateApkCombatPower(base.session.character, contentIndex.combatPowerEvidence).total;
+                if (!Number.isFinite(total)) throw new Error("战力结果不是有限数值。");
+                return { status: "ready", total };
+            } catch (error) {
+                return { status: "unavailable", total: null, code: error.code ?? "V10_COMBAT_POWER_UNAVAILABLE", message: error.message };
+            }
         },
         get characterProfile() {
             return Object.freeze({
@@ -637,15 +753,15 @@ export function createV10HumanRunner({
                 stage: base.session.currentFlowId,
                 ending: structuredClone(base.session.character?.ending ?? null),
                 boundary: phase === "completed"
-                    ? "source terminal（完整提交后锁定）"
+                        ? (base.session.character?.ending?.id==='douluo1:sea-god-ascension'?'海神飞升（完整提交后锁定）':"source terminal（完整提交后锁定）")
                     : phase === "boundary"
                         ? "typed boundary（失败项未提交）"
                         : null
             });
         },
-        step() {
+        step({ onCheckpoint = null } = {}) {
             if (busy) return blockedResult(phase, error, summary, "busy");
-            return commitOne();
+            return commitOne(onCheckpoint);
         },
         advanceToNextAge(options = {}) {
             const progressKey = base.session.character?.route === "beast"
@@ -669,15 +785,7 @@ export function createV10HumanRunner({
             );
         },
         exportSnapshot() {
-            return structuredClone({
-                schemaVersion: "v10-runner-snapshot/1.0",
-                packId: base.session.packId,
-                ...(godTrialRuntimeEnabled ? { runtimeSemantics: V10_GOD_TRIAL_SEMANTICS } : {}),
-                ...(packId === "douluo2" ? { contentIdentity: sourcePack.routeGraph.pack.contentIdentity } : {}),
-                route,
-                seed,
-                session: base.session
-            });
+            return structuredClone(snapshotEnvelope(base.session));
         }
     });
 }

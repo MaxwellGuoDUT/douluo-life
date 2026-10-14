@@ -1,7 +1,9 @@
 import { createV10ContentLoader } from "./v10-content-loader.js";
 import { createV10LifeRunner } from "./v10-life-runner.js";
 import { createV10SaveStore, MAX_SAVE_BYTES } from "./v10-save-store.js";
-import { V10_GOD_TRIAL_STAGES } from "./v10-god-trial-runtime.js";
+import { createV10Display, actualAgeText, playerWheelView } from "./v10-display.js";
+import { createV10HistoryView } from "./v10-history-view.js";
+import { packName, routeName, growthChanges, nextGoal, endingText, problemInfo } from "./v10-experience.js";
 
 const loader = createV10ContentLoader();
 const runner = createV10LifeRunner({ contentLoader: loader });
@@ -24,7 +26,8 @@ const gameFields = Object.fromEntries([
     "human-martial-souls", "human-soul-bones", "human-attributes", "human-domains",
     "human-bloodlines", "human-talents", "human-skills", "human-godhood",
     "current-seed", "character-name", "character-bloodline", "character-attributes",
-    "cultivation-label", "cultivation-value", "actual-age-value", "character-identity", "wheel-labels"
+    "cultivation-label", "cultivation-value", "actual-age-value", "combat-power-value", "human-fast-cancel", "character-identity", "wheel-labels", "runtime-diagnostics",
+    "result-changes", "next-goal", "life-save-state", "problem-details", "problem-status", "human-ending-title", "bloodline-label", "sea-god-choice", "sea-god-ascend", "sea-god-continue"
 ].map(id => [id, document.querySelector(`#${id}`)]));
 const panels = {
     "character-menu-panel": { panel: characterMenuPanel, toggle: characterToggle },
@@ -42,6 +45,55 @@ let undoCheckpoint = null;
 let autoRunning = false;
 let autoEpoch = 0;
 let autoTask = null;
+// One transient batch request; never included in session snapshots or save slots.
+let fastControl = null;
+let fastTask = null;
+let unsaved = false;
+let lastChanges = [];
+let lastError = null;
+let slotsEpoch = 0;
+let slotsLoading = false;
+function confirmDiscard() {
+    return !unsaved || window.confirm("当前人生有未保存进度。继续将离开这段进度；取消后可先打开存档手动保存或导出。是否继续？");
+}
+function captureCommit(snapshot) {
+    undoCheckpoint = { snapshot, nextCursor: lifeRunner.session.random.cursor };
+    lastChanges = growthChanges(snapshot.session.character, lifeRunner.session.character);
+    unsaved = true;
+    lastError = null;
+}
+
+function stopFast(reason = "paused") {
+    if (fastControl && !fastControl.reason) {
+        fastControl.reason = reason;
+        gameFields["human-terminal"].disabled = true;
+        gameFields["human-fast-cancel"].disabled = true;
+        gameFields["human-progress"].textContent = reason === "cancelled" ? "正在取消推进…" : "正在暂停极速…";
+    }
+}
+
+function stopContinuous() { stopAuto(); stopFast(); }
+
+async function toggleFast() {
+    if (fastControl) { stopFast(); return; }
+    if (!lifeRunner || gameBusy || autoRunning || autoTask || fastTask
+        || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
+    const control = { reason: null };
+    fastControl = control;
+    fastTask = runLife("runToTerminal", "极速推进中…");
+    try { await fastTask; } finally {
+        const message = gameFields["human-progress"].textContent;
+        fastControl = null;
+        fastTask = null;
+        renderGame();
+        if(lifeRunner.awaitingSeaGodChoice)gameFields['human-progress'].textContent='海神已继承，请选择立即飞升或继续人生。';
+        else if (!["completed", "boundary", "error"].includes(lifeRunner.phase)) {
+            gameFields["human-progress"].textContent = control.reason === "cancelled"
+                ? "本批极速推进已取消，已完成的抽取保留。"
+                : control.reason === "paused" ? "极速推进已暂停，可继续推进。" : message;
+        }
+    }
+}
 
 function stopAuto() {
     autoRunning = false;
@@ -50,13 +102,14 @@ function stopAuto() {
 }
 
 async function stopAutoAndWait() {
-    stopAuto();
+    stopContinuous();
     if (autoTask) await autoTask;
+    if (fastTask) await fastTask;
 }
 
 async function toggleAuto() {
     if (autoRunning) { stopAuto(); return; }
-    if (!lifeRunner || gameBusy || autoTask || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
+    if (!lifeRunner || gameBusy || autoTask || fastControl || fastTask || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
     autoRunning = true;
     const epoch = ++autoEpoch;
     gameFields["human-age"].textContent = "暂停推进";
@@ -67,7 +120,7 @@ async function toggleAuto() {
             while (autoRunning && epoch === autoEpoch && steps < 200) {
                 if (await runLife("step", "自动推进中…", true) === false) { failed = true; break; }
                 steps += 1;
-                if (["completed", "boundary", "error"].includes(lifeRunner.phase)) break;
+                if (["completed", "boundary", "error"].includes(lifeRunner.phase)||lifeRunner.awaitingSeaGodChoice) break;
                 if (autoRunning && epoch === autoEpoch && steps < 200) {
                     await new Promise(resolve => setTimeout(resolve, 180));
                 }
@@ -77,7 +130,8 @@ async function toggleAuto() {
             const failureMessage = failed ? gameFields["human-progress"].textContent : null;
             renderGame();
             if (failureMessage) gameFields["human-progress"].textContent = failureMessage;
-            if (!failed && !["completed", "boundary", "error"].includes(lifeRunner.phase)) {
+            if(lifeRunner.awaitingSeaGodChoice)gameFields['human-progress'].textContent='海神已继承，请选择立即飞升或继续人生。';
+            else if (!failed && !["completed", "boundary", "error"].includes(lifeRunner.phase)) {
                 gameFields["human-progress"].textContent = steps >= 200
                     ? "自动已推进200次，已暂停，可再次启动。"
                     : "自动推进已暂停。";
@@ -114,7 +168,7 @@ function setRouteChoicesVisible(visible) {
 function togglePanel(id) {
     const { panel, toggle } = panels[id];
     if (!panel.hidden) return closePanel(id);
-    stopAuto();
+    stopContinuous();
     for (const other of Object.keys(panels)) {
         if (other !== id && !panels[other].panel.hidden) closePanel(other, false);
     }
@@ -122,208 +176,29 @@ function togglePanel(id) {
     panel.showModal?.();
     toggle.setAttribute("aria-expanded", "true");
     if (id === "history-panel" && lifeRunner) renderHistory();
+    if (id === 'save-panel') void refreshSlots();
+    // Finish the in-flight atomic step before refreshing an opened drawer.
+    void stopAutoAndWait().then(() => { if (!panel.hidden) renderGame(); });
     panel.querySelector("[data-close-panel]").focus();
 }
 
-function renderHistory() {
-    const history = lifeRunner.session.timeline
-        .filter(entry => typeof entry.text === "string" && entry.text.trim())
-        .map(entry => {
-            const item = document.createElement("li");
-            item.textContent = entry.text;
-            return item;
-        });
-    gameFields["human-history"].replaceChildren(...history);
-}
-
-const ATTRIBUTE_NAMES = Object.freeze({
-    fire: "火", water: "水", earth: "土", metal: "金", wood: "木",
-    ice: "冰", wind: "风", lightning: "雷", light: "光", dark: "暗",
-    life: "生命", death: "死亡", poison: "毒", space: "空间", time: "时间",
-    strength: "力量", speed: "速度", defense: "防御", spirit: "精神",
-    destruction: "毁灭", solar: "太阳", moon: "月亮", haze: "岚"
+const { renderCombatPower, renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress } = createV10Display(gameFields);
+const historyView = createV10HistoryView({
+    list: gameFields['human-history'],
+    older: document.querySelector('#history-older'), newer: document.querySelector('#history-newer'),
+    latest: document.querySelector('#history-latest'), status: document.querySelector('#history-page'),
+    getTimeline: () => lifeRunner?.session.timeline ?? [],
+    getHistory: () => lifeRunner?.session.history ?? [],
+    filter: document.querySelector('#history-filter'), search: document.querySelector('#history-search'),
+    review: document.querySelector('#life-review')
 });
-
-function entryName(value) {
-    if (typeof value === "string") return value;
-    return value?.name ?? value?.text ?? value?.title ?? value?.id ?? value?.optionId ?? "未命名";
-}
-
-function renderDetailList(id, entries) {
-    const values = entries.length ? entries : ["暂无"];
-    gameFields[id].replaceChildren(...values.map(value => {
-        const item = document.createElement("li");
-        item.textContent = value;
-        return item;
-    }));
-}
-
-function godTrialProgress(character, packId) {
-    const trial = character.godTrial;
-    if (!trial) return null;
-    const status = { qualified: "待选择神位", active: "考核中", failed: "神考失败",
-        completed: "考核完成", abandoned: "考核已结束" }[trial.status] ?? "考核状态待确认";
-    if (packId === "douluo1" && trial.tier !== "二级") {
-        return (trial.tier ?? "未知层级") + "考核 · " + status + " · 奖励流程未完整开放";
-    }
-    const claimed = trial.claimedRewardStages?.length ?? 0;
-    const stage = trial.currentStage > 0 ? " · 第" + trial.currentStage + "考" : "";
-    const requirement = packId === "douluo1" && trial.status === "active"
-        ? V10_GOD_TRIAL_STAGES.find(item => item.stage === trial.currentStage) : null;
-    const level = requirement ? " · 需" + requirement.minLevel + "级（当前" + character.level + "级）" : "";
-    return (trial.tier ?? "") + "神考" + (trial.deityName ? " · " + trial.deityName : "")
-        + " · " + status + " · 已领取" + claimed + "/" + (trial.totalStages ?? trial.total ?? "—") + "考奖励" + stage + level;
-}
-
-function characterAttributes(character) {
-    return [...new Set([
-        ...(character.attributes ?? []), ...(character.combatAttributes ?? []),
-        ...Object.keys(character.elementProgress ?? {}),
-        ...Object.keys(character.beast?.attributeStages ?? {})
-    ].map(value => typeof value === "string" ? value : entryName(value)))];
-}
-
-function bloodlineTexts(character) {
-    const beast = character.beast ?? character.beastOrigin;
-    const lines = beast?.bloodlines ?? [];
-    const components = beast?.bloodlineComponents ?? [];
-    const beastLines = lines.map(line => {
-        const selection = line.selection ?? line;
-        const component = components.find(item => item.bloodlineId === selection.optionId);
-        const percent = Number.isFinite(component?.ratioBasisPoints) ? component.ratioBasisPoints / 100 : line.percentage;
-        return entryName(selection) + (Number.isFinite(percent) ? percent + "%" : "");
-    });
-    return [...new Set([...beastLines, ...(character.bloodlines ?? []).map(entryName)])];
-}
-
-function renderCharacterSummary(character, profile) {
-    const isBeast = profile.route === "beast";
-    const beast = character.beast ?? character.beastOrigin;
-    const species = profile.species ?? beast?.species?.text;
-    const name = character.name ?? (isBeast && species
-        ? [...(beast?.namePrefixes ?? []), species, ...(beast?.nameSuffixes ?? [])].map(entryName).join("")
-        : (character.martialSouls ?? []).map(entryName).join(" / "));
-    gameFields["character-name"].textContent = name?.split(/[（(]/u)[0].trim() || (isBeast ? "魂兽本体未确定" : "武魂未确定");
-    const lines = bloodlineTexts(character);
-    gameFields["character-bloodline"].textContent = lines.join(" + ") || "暂无";
-    gameFields["character-bloodline"].title = lines.join(" + ") || "暂无";
-    gameFields["character-attributes"].replaceChildren(...(characterAttributes(character).length
-        ? [...new Set(characterAttributes(character).map(attribute => ATTRIBUTE_NAMES[attribute] ?? attribute))] : ["暂无属性"]).map(attribute => {
-            const tag = document.createElement("span");
-            tag.textContent = ATTRIBUTE_NAMES[attribute] ?? attribute;
-            return tag;
-        }));
-    const cultivation = isBeast ? character.beastYears : character.level;
-    const age = character.age;
-    gameFields["cultivation-label"].textContent = isBeast ? "修为年限" : "魂力修为";
-    gameFields["cultivation-value"].textContent = Number.isFinite(cultivation)
-        ? cultivation.toLocaleString("zh-CN") + (isBeast ? " 年" : " 级") : "未确定";
-    gameFields["actual-age-value"].textContent = Number.isFinite(age) ? age.toLocaleString("zh-CN") + " 岁" : "未确定";
-    renderDetailList("character-identity", [
-        "名称：" + (name || gameFields["character-name"].textContent),
-        "血脉：" + (lines.join(" + ") || "暂无"),
-        "修为：" + gameFields["cultivation-value"].textContent,
-        "实际年龄：" + gameFields["actual-age-value"].textContent,
-        "性别：" + (character.gender ? entryName(character.gender) : "未确定"),
-        "时代：" + (beast?.period ? entryName(beast.period) : character.entrySelections?.period ? entryName(character.entrySelections.period) : "未确定"),
-        "时间线：" + (character.entrySelections?.worldLine ? entryName(character.entrySelections.worldLine) : "未确定"),
-        "容貌：" + (character.appearance ? entryName(character.appearance) : "未确定"),
-        "初始魂力：" + (Number.isFinite(character.innateSoulPower) ? character.innateSoulPower + "级" : "未确定"),
-        "初始势力：" + (character.faction ? entryName(character.faction) : "未确定"),
-        "栖息地：" + (beast?.area ? entryName(beast.area) : "未确定")
-    ]);
-}
-
-function renderCharacterDetails(character, packId) {
-    const martialSouls = character.martialSouls ?? [];
-    renderDetailList("human-martial-souls", martialSouls.map(soul => {
-        const rings = soul.rings ?? [];
-        const years = rings.map(ring => Number.isFinite(ring?.years) ? `${ring.years}年` : entryName(ring));
-        return `${entryName(soul)} · ${rings.length}环${years.length ? `（${years.join("、")}）` : ""}`;
-    }));
-    renderDetailList("human-soul-bones", (character.soulBones ?? []).map(bone =>
-        `${entryName(bone)}${Number.isFinite(bone?.years) ? ` · ${bone.years}年` : ""}`));
-    const progress = character.elementProgress ?? {};
-    const beastProgress = character.beast?.attributeStages ?? {};
-    const attributes = characterAttributes(character);
-    gameFields["human-ability-counts"].textContent = `${(character.soulBones ?? []).length} / ${attributes.length} / ${(character.domains ?? []).length}`;
-    renderDetailList("human-attributes", attributes.map(attribute => {
-        const id = typeof attribute === "string" ? attribute : entryName(attribute);
-        const name = ATTRIBUTE_NAMES[id] ? `${ATTRIBUTE_NAMES[id]}（${id}）` : id;
-        const stage = progress[id] ?? beastProgress[id];
-        return `${name}${Number.isFinite(stage) && stage > 0 ? ` · 进度 ${stage}` : ""}`;
-    }));
-    renderDetailList("human-domains", (character.domains ?? []).map(entryName));
-    renderDetailList("human-bloodlines", bloodlineTexts(character));
-    renderDetailList("human-talents", [
-        ...(character.talents ?? []).map(talent => `天赋：${entryName(talent)}`),
-        ...(character.martialSoulTalents ?? []).map(talent => `武魂天赋：${entryName(talent)}`),
-        ...(character.traits ?? []).map(trait => `特质：${entryName(trait)}`)
-    ]);
-    renderDetailList("human-skills", [
-        ...(character.skills ?? []).map(skill => `技能：${entryName(skill)}${Number.isFinite(skill?.level) ? ` · ${skill.level}级` : ""}`),
-        ...(character.artifacts ?? []).map(artifact => `神器：${entryName(artifact)}${Number.isFinite(artifact?.rank) ? ` · 阶${artifact.rank}` : ""}`)
-    ]);
-    const godhoods = character.godhoods?.length ? character.godhoods : character.godhood ? [character.godhood] : [];
-    const trialText = godTrialProgress(character, packId);
-    const boneParts = { head: "头骨", torso: "躯干骨", leftArm: "左臂骨", rightArm: "右臂骨", leftLeg: "左腿骨", rightLeg: "右腿骨" };
-    const acquiredParts = new Set((character.soulBones ?? []).map(bone => bone.partId ?? bone.part));
-    const missing = Object.entries(boneParts).filter(([part]) => !acquiredParts.has(part)).map(([,name]) => name);
-    const boneRequirement = packId === "douluo1" && character.godTrial?.tier === "二级"
-        && ["qualified", "active"].includes(character.godTrial.status)
-        ? "神考继承需要六个部位魂骨：" + (missing.length ? "还缺" + missing.join("、") : "已齐全，仍须完成考核") : null;
-    renderDetailList("human-godhood", [
-        ...(trialText ? [trialText] : []),
-        ...(boneRequirement ? [boneRequirement] : []),
-        ...godhoods.map(godhood => `神位：${entryName(godhood)}${godhood.tier ? ` · ${godhood.tier}` : ""}`),
-        ...(character.titles ?? []).map(title => `称号：${entryName(title)}`)
-    ]);
-}
-
-function renderWheel(view) {
-    const disc = gameFields["human-wheel"];
-    const segments = Array.isArray(view?.segments) ? view.segments : [];
-    const colors = ["#285976", "#8c4051", "#2d7067", "#79517f", "#94633c", "#3e694a", "#356379", "#9a4c34", "#535383", "#68804a", "#977331", "#416c73"];
-    disc.style.background = segments.length
-        ? `conic-gradient(${segments.map((segment, index) => `${colors[index % colors.length]} ${segment.startAngle}deg ${segment.endAngle}deg`).join(", ")})`
-        : "#e8eef1";
-    disc.className = `life-wheel ${segments.length ? "has-options" : "is-quiet"}`;
-    disc.setAttribute("aria-label", segments.length
-        ? `${view.title}，${segments.length}个可选扇区，总权重${view.totalWeight}`
-        : view?.message ?? view?.title ?? "等待开始");
-    gameFields["human-wheel-title"].textContent = view?.title ?? "等待开始";
-    gameFields["wheel-labels"].replaceChildren(...segments.map(segment => {
-        const label = document.createElement("span");
-        label.className = "wheel-label";
-        label.dataset.optionId = segment.optionId;
-        const fullText = segment.fullText ?? segment.text ?? segment.optionId;
-        const chars = [...fullText];
-        label.textContent = chars.length > 13 ? chars.slice(0, 12).join("") + "…" : fullText;
-        const midpoint = segment.midpoint ?? (segment.startAngle + segment.endAngle) / 2;
-        label.style.transform = "rotate(" + (midpoint - 90) + "deg) translateY(-50%)";
-        const arc = segment.endAngle - segment.startAngle;
-        // Tiny sectors keep their full, accessible text in the list.
-        if (arc < 4) label.hidden = true;
-        if (arc < 10) label.style.fontSize = "10px";
-        return label;
-    }));
-    gameFields["human-wheel-note"].textContent = view?.status === "dynamic"
-        ? `${view.message} 当前流程：${view.flowId ?? "未确定"}`
-        : view?.status === "completed" ? "人生已完成，转盘锁定。"
-            : ["boundary", "error"].includes(view?.status) ? "运行时已停止；请查看下方错误。"
-                : segments.length ? `下一可选转盘 · ${view.poolId ?? "未确定池"} · 总权重 ${view.totalWeight}`
-                    : "下一可选转盘将在开局后显示。";
-    gameFields["human-options"].replaceChildren(...segments.map(segment => {
-        const item = document.createElement("li");
-        item.textContent = `${segment.fullText ?? segment.text ?? segment.optionId} · 权重 ${segment.weight} · ${segment.percentage.toFixed(2)}%`;
-        return item;
-    }));
-}
+function renderHistory() { historyView.render(); }
 
 async function animateCommittedSpin(view) {
     const selected = view?.segments?.find(segment => segment.optionId === view.selectedOptionId);
     if (!selected) return;
     renderWheel(view);
+    if (globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
     const disc = gameFields["human-wheel"];
     disc.style.setProperty("--landing-rotation", `${720 + 360 - selected.midpoint}deg`);
     disc.className = "life-wheel has-options is-spinning";
@@ -335,41 +210,68 @@ function setGameBusy(value, message = null) {
     gameBusy = value;
     for (const id of ["human-restart", "human-new", "human-step", "human-age", "human-terminal"]) {
         gameFields[id].disabled = (!lifeRunner && id !== "human-new")
-            || (value && !(autoRunning && ["human-age", "human-new", "human-restart"].includes(id)));
+            || (value && !(autoRunning && ["human-age", "human-new", "human-restart"].includes(id))
+                && !(fastControl && ["human-terminal", "human-new", "human-restart"].includes(id)))
+            || (id === "human-terminal" && Boolean(fastControl?.reason));
     }
-    gameFields["human-reroll"].disabled = !undoCheckpoint || (value && !autoRunning);
+    gameFields["human-fast-cancel"].hidden = !fastControl;
+    gameFields["human-fast-cancel"].disabled = !fastControl || Boolean(fastControl.reason);
+    gameFields["human-terminal"].textContent = fastControl ? "暂停极速" : "极速推进";
+    gameFields["human-reroll"].disabled = !undoCheckpoint || (value && !autoRunning && !fastControl);
     gameFields["human-seed"].disabled = value;
     for (const button of document.querySelectorAll("[data-start-route]")) button.disabled = value;
-    for (const control of document.querySelectorAll("#save-panel button, #save-panel input, #save-panel select")) control.disabled = value;
+    for (const control of document.querySelectorAll("#save-panel button, #save-panel input, #save-panel select")) control.disabled = value || slotsLoading;
     if (message) gameFields["human-progress"].textContent = message;
 }
 
 async function refreshSlots() {
+    const epoch=++slotsEpoch;
+    slotsLoading=true;
+    saveSlot.disabled=true;
+    for(const button of document.querySelectorAll('[data-save-action]')) button.disabled=true;
+    document.querySelector('#save-slot-summary').textContent='正在校验槽位摘要…';
     const selected = saveSlot.value;
-    const slots = await saves.list();
-    saveSlot.replaceChildren(...slots.map(({ slot, summary }) => {
-        const option = document.createElement("option");
-        option.value = String(slot);
-        option.textContent = `${slot}号 · ${summary}`;
-        return option;
-    }));
-    if (selected) saveSlot.value = selected;
+    try {
+        const slots = await saves.list();
+        if(epoch !== slotsEpoch) return;
+        saveSlot.replaceChildren(...slots.map(({ slot, summary }) => {
+            const option = document.createElement("option");
+            option.value = String(slot);
+            option.textContent = `${slot}号 · ${summary}`;
+            return option;
+        }));
+        if (selected) saveSlot.value = selected;
+        renderSlotSummary();
+    } catch(error) { saveStatus.textContent=`槽位摘要读取失败：${error.message}。当前人生保留，可导出当前人生。`; }
+    finally {
+        if(epoch===slotsEpoch) {
+            slotsLoading=false;saveSlot.disabled=gameBusy;
+            for(const button of document.querySelectorAll('[data-save-action]')) button.disabled=gameBusy;
+        }
+    }
+}
+function renderSlotSummary() {
+    document.querySelector('#save-slot-summary').textContent=saveSlot.selectedOptions?.[0]?.textContent ?? '请选择槽位。';
 }
 
 async function saveAction(action) {
     await stopAutoAndWait();
     if (gameBusy) return;
-    if (!saveSlot.value) {
-        await refreshSlots();
-        if (gameBusy) return;
-    }
-    const slot = Number(saveSlot.value);
     setGameBusy(true);
-    saveStatus.textContent = "正在校验存档…";
+    slotsEpoch += 1;
+    slotsLoading = false;
+    saveStatus.textContent = action === "export-raw" ? "正在导出原始备份…" : "正在校验存档…";
     try {
+        if (!saveSlot.value) await refreshSlots();
+        const slot = Number(saveSlot.value);
         if (action === "load") {
+            if (!confirmDiscard()) { saveStatus.textContent = "已取消读取；当前人生和槽位均保留。"; return; }
             const restored = await saves.read(slot);
             lifeRunner = restored;
+            unsaved = false;
+            lastChanges = [];
+            lastError = null;
+            historyView.reset();
             undoCheckpoint = null;
             const snapshot = restored.exportSnapshot();
             activePack = snapshot.packId;
@@ -378,16 +280,21 @@ async function saveAction(action) {
             manualSeed = true;
             game.hidden = false;
             setRouteChoicesVisible(false);
-            saveStatus.textContent = `已读取${slot}号槽；${restored.phase === "completed" ? "人生已结束。" : "可继续当前人生。"}`;
-        } else if (action === "export") {
-            const text = await saves.exportSlot(slot);
-            const url = URL.createObjectURL(new Blob([text], { type: "application/json" }));
+            saveStatus.textContent = `已读取${slot}号槽；${restored.phase === "completed" ? "人生已结束。" : ["boundary","error"].includes(restored.phase) ? "已恢复中断时的进度，可保存、导出并查看问题信息。" : "可继续当前人生。"}`;
+        } else if (["export", "export-raw", "export-current"].includes(action)) {
+            const rawBackup = action === "export-raw";
+            if (action === 'export-current' && !lifeRunner) throw new Error('请先开始一次人生。');
+            const text = action === 'export-current' ? await saves.serialize(lifeRunner) : await saves.exportSlot(slot, { rawBackup });
+            const blob = new Blob([text], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            link.download = `douluo-life-slot-${slot}.json`;
+            link.download = action === 'export-current' ? 'douluo-life-current.json' : `douluo-life-slot-${slot}${rawBackup ? "-raw-backup" : ""}.json`;
             link.click();
             setTimeout(() => URL.revokeObjectURL(url), 1000);
-            saveStatus.textContent = `已导出${slot}号槽。`;
+            saveStatus.textContent = action === 'export-current' ? (blob.size > MAX_SAVE_BYTES ? '已导出当前人生；文件超过4 MiB读取上限，仅作状态备份，当前版本无法导入。槽位保持不变。' : '已导出当前人生；槽位保持不变，请保管下载文件。') : rawBackup
+                ? `已导出${slot}号槽原始备份（未经校验，不代表可读取）；原槽位保持不变。`
+                : `已导出${slot}号槽。`;
         } else {
             const expected = saves.raw(slot);
             let text;
@@ -404,40 +311,50 @@ async function saveAction(action) {
                 saveStatus.textContent = "已取消覆盖；原槽位保持不变。";
                 return;
             }
-            await saves.write(slot, text, { expected, overwrite: expected !== null });
+            const saved = await saves.write(slot, text, { expected, overwrite: expected !== null });
+            // Reuse the validated write summary; no second restore of all eight slots.
+            if(saved && saveSlot.selectedOptions?.[0]) saveSlot.selectedOptions[0].textContent=`${slot}号 · ${saved.summary}`;
+            renderSlotSummary();
+            if (action === 'save') unsaved = false;
             saveStatus.textContent = `已${action === "import" ? "导入" : "保存"}到${slot}号槽。`;
         }
     } catch (error) {
-        saveStatus.textContent = `${error.code ?? "SAVE_FAILED"}：${error.message}`;
+        lastError = error;
+        saveStatus.textContent = `${error.code ?? "SAVE_FAILED"}：${error.message} 当前人生未切换，原槽位未被本操作替换。可重试、换空槽，或先导出原始备份；存储不可用时可导出当前人生。`;
     } finally {
-        await refreshSlots();
+        // Slots are refreshed when the drawer opens; reads/exports/cancellation do not change them.
         setGameBusy(false);
         renderGame();
     }
 }
 
 function renderGame() {
+    gameFields['problem-details'].textContent = problemInfo(lifeRunner,lastError);
     if (!lifeRunner) return;
     const profile = lifeRunner.characterProfile;
     const session = lifeRunner.session;
     const isBeast = profile.route === "beast";
     const routeText = profile.route === "transformed" ? "化形后人类" : profile.route === "beast" ? "魂兽" : "人类";
-    gameFields["game-route-label"].textContent = `${session.packId} · ${routeText}`;
-    gameFields["human-route-value"].textContent = `${session.packId} / ${routeText}`;
+    gameFields["game-route-label"].textContent = `${packName(session.packId)} · ${routeText}`;
+    gameFields["human-route-value"].textContent = `${packName(session.packId)} / ${routeText}`;
     gameFields["game-title"].textContent = isBeast
         ? "魂兽人生"
         : profile.route === "transformed"
             ? "化形后人类生命周期"
             : "人类人生";
-    gameFields["current-seed"].textContent = gameFields["human-seed"].value;
+    gameFields["current-seed"].textContent = lifeRunner.seed ?? session.random.seed ?? '来源未记录';
+    gameFields["life-save-state"].textContent = unsaved ? '有未保存进度 · 请手动保存或导出' : '当前无新增未保存抽取 · 手动保存，不会自动恢复';
+    renderCombatPower(lifeRunner.combatPower);
     renderCharacterSummary(session.character, profile);
     gameFields["human-age-label"].textContent = "实际年龄";
-    gameFields["human-age-value"].textContent = Number.isFinite(session.character.age) ? session.character.age + "岁" : "未确定";
-    gameFields["human-level-value"].textContent = String(profile.level ?? "—");
+    gameFields["human-age-value"].textContent = actualAgeText(session.character);
+    gameFields["human-level-value"].textContent = isBeast ? '魂兽以修为年限成长' : String(profile.level ?? "来源未记录");
     gameFields["human-species-value"].textContent = profile.species ?? "未确定";
     const completed = lifeRunner.phase === "completed";
-    const wheel = completed ? null : lifeRunner.wheelView;
+    const wheel = completed ? null : playerWheelView(lifeRunner.wheelView);
+    gameFields["runtime-diagnostics"].textContent = `pack: ${session.packId} · route: ${session.character.route} · flowId: ${wheel?.flowId ?? session.currentFlowId ?? "—"} · poolId: ${wheel?.poolId ?? session.currentPoolId ?? "—"} · code: ${lifeRunner.error?.code ?? "—"}`;
     const trialText = godTrialProgress(session.character, session.packId);
+    gameFields['next-goal'].textContent = nextGoal(session.character,session.packId,lifeRunner.phase,trialText);
     gameFields["human-stage-value"].textContent = completed ? "人生结局"
         : trialText ?? (session.character.flags?.["formal:d1-story:free-mode"] ? "自由修炼" : wheel?.title ?? "人生成长");
     gameFields["human-cursor-value"].textContent = `${session.random.cursor} / ${session.history.length}`;
@@ -449,47 +366,64 @@ function renderGame() {
     gameFields["human-result"].textContent = completed
         ? `人生结局：${resultText ?? lifeRunner.summary?.ending?.title ?? "旅程结束"}`
         : resultText ? `已抽取：${resultText}` : "等待抽取";
+    gameFields['result-changes'].textContent = lastChanges.length ? '本次已提交变化：\n' + lastChanges.join('\n') : '暂无新的关键数值变化；条件文字不代表奖励已获得。';
     if (!completed && session.character.flags?.["formal:deferred-ending:douluo1:story:independent-ascension"] === true) {
         gameFields["human-result"].textContent += " 已抽到过飞升选项，但尚未形成飞升结局：当前规则在150岁前只记录该选择，后续仍须满足条件并实际结算。";
     }
     renderWheel(completed ? { status: "completed", title: "人生结局", segments: [] } : wheel);
     if (!panels["history-panel"].panel.hidden) renderHistory();
-    gameFields["human-ending"].hidden = !completed;
-    if (completed) {
-        const ending = lifeRunner.summary.ending;
-        const progress = lifeRunner.summary.route === "beast"
-            ? `修为年限${lifeRunner.session.character.beastYears}年 · 实际年龄${Number.isFinite(session.character.age) ? session.character.age + "岁" : "未确定"}`
-            : `${lifeRunner.summary.age}岁`;
-        const detail = [ending?.text, ["death", "success"].includes(ending?.kind) ? resultText : null, ending?.cause]
-            .find(value => typeof value === "string" && value.trim());
-        gameFields["human-ending-text"].textContent = `${ending?.title ?? "人生结局"} · ${progress} · 等级${lifeRunner.summary.level} · ${lifeRunner.summary.history}次选择${detail ? ` · ${detail}` : ""}`;
+    gameFields["human-ending"].hidden = !["completed","boundary","error"].includes(lifeRunner.phase);
+    if (!gameFields['human-ending'].hidden) {
+        gameFields['human-ending-title'].textContent = completed ? '人生结局' : '旅程暂时中断';
+        gameFields['human-ending-text'].textContent = endingText(lifeRunner);
     }
     const blocked = ["completed", "boundary", "error"].includes(lifeRunner.phase);
-    gameFields["human-step"].disabled = gameBusy || autoRunning || blocked;
-    gameFields["human-age"].disabled = (gameBusy && !autoRunning) || blocked;
-    gameFields["human-terminal"].disabled = gameBusy || autoRunning || blocked;
-    gameFields["human-restart"].disabled = gameBusy && !autoRunning;
-    gameFields["human-new"].disabled = gameBusy && !autoRunning;
-    gameFields["human-reroll"].disabled = !undoCheckpoint || (gameBusy && !autoRunning);
+    const seaChoice=Boolean(lifeRunner.awaitingSeaGodChoice);
+    gameFields['sea-god-choice'].hidden=blocked||session.character.seaTrial?.tier!=='seaGod'||session.character.seaTrial.status!=='completed';
+    gameFields['sea-god-continue'].hidden=!seaChoice;
+    gameFields['sea-god-ascend'].disabled=gameBusy;
+    if(seaChoice)stopContinuous();
+    gameFields["human-step"].disabled = gameBusy || autoRunning || blocked || seaChoice;
+    gameFields["human-age"].disabled = (gameBusy && !autoRunning) || blocked || seaChoice;
+    gameFields["human-terminal"].disabled = (gameBusy && !fastControl) || autoRunning || blocked || seaChoice || Boolean(fastControl?.reason);
+    gameFields["human-terminal"].textContent = fastControl ? "暂停极速" : "极速推进";
+    gameFields["human-fast-cancel"].hidden = !fastControl;
+    gameFields["human-fast-cancel"].disabled = !fastControl || Boolean(fastControl.reason) || blocked;
+    gameFields["human-restart"].disabled = gameBusy && !autoRunning && !fastControl;
+    gameFields["human-new"].disabled = gameBusy && !autoRunning && !fastControl;
+    gameFields["human-reroll"].disabled = seaChoice || !undoCheckpoint || (gameBusy && !autoRunning && !fastControl);
     gameFields["human-seed"].disabled = gameBusy;
+    gameFields['human-step'].textContent = wheel?.status==='dynamic' ? '结算当前阶段' : '转动一次命运';
     gameFields["human-progress"].textContent = completed
         ? "人生已结束，可保存或导出这段旅程。"
         : ["boundary", "error"].includes(lifeRunner.phase)
-            ? `${lifeRunner.error.code}：${lifeRunner.error.message}${lifeRunner.error.details?.poolId ? ` · 源池 ${lifeRunner.error.details.poolId}` : ""}${lifeRunner.error.details?.flowId ? ` · 流程 ${lifeRunner.error.details.flowId}` : ""}`
-            : `运行中 · ${isBeast ? `${profile.beastYears}年` : `${profile.age}岁`} · ${gameFields["human-stage-value"].textContent}`;
+            ? `${lifeRunner.error?.code==='APK_POOL_HAS_NO_ELIGIBLE_OPTIONS'?'当前阶段没有可用选项':lifeRunner.phase==='boundary'?'当前内容尚未支持':'本次结算失败'}。推进已停止，原进度保留；可保存、导出并复制问题信息。未判定为死亡，技术详情见诊断信息。`
+            : gameBusy ? (wheel?.status==='dynamic' ? '正在结算当前阶段…' : '正在提交抽取…')
+                : autoRunning ? '自动推进中 · 点击暂停将在当前一步完成后停止'
+                    : fastControl ? '极速推进中 · 可暂停，已完成的抽取保留'
+                        : seaChoice ? '海神已继承，请选择立即飞升或继续人生。' : wheel?.status==='dynamic' ? '下一步将结算当前阶段，不是新的随机抽取。' : `可抽取下一次命运 · ${gameFields['human-stage-value'].textContent}`;
 }
 
 function clearLifeView(route = null, packId = null) {
+    gameFields['sea-god-choice'].hidden=true;
     undoCheckpoint = null;
+    lastChanges = [];
+    lastError = null;
+    gameFields['result-changes'].textContent = '';
+    gameFields['problem-status'].textContent = '';
+    gameFields['problem-details'].textContent = problemInfo(null);
+    gameFields['life-save-state'].textContent = '开局前请了解：只有手动保存或导出才会保留人生；刷新后需主动读档。部分内容遇到运行时边界会中断。';
     gameFields["human-reroll"].disabled = true;
     gameFields["human-result"].textContent = "等待抽取";
     renderWheel(null);
+    historyView.reset();
     gameFields["human-history"].replaceChildren();
     gameFields["human-ending"].hidden = true;
     gameFields["human-ending-text"].textContent = "";
     gameFields["game-route-label"].textContent = packId ? `${packId} · ${route}` : "尚未开始";
     for (const id of ["human-age-value", "human-level-value", "human-route-value", "human-stage-value", "human-cursor-value"]) gameFields[id].textContent = "—";
     gameFields["human-species-value"].textContent = "未确定";
+    renderCombatPower(null);
     renderCharacterSummary({}, { route });
     renderCharacterDetails({});
     gameFields["human-ability-counts"].textContent = "0 / 0 / 0";
@@ -499,6 +433,8 @@ function clearLifeView(route = null, packId = null) {
 async function newFate() {
     await stopAutoAndWait();
     if (gameBusy) return;
+    if (!confirmDiscard()) return;
+    unsaved = false;
     for (const id of Object.keys(panels)) if (!panels[id].panel.hidden) closePanel(id, false);
     lifeRunner = null;
     activePack = null;
@@ -518,63 +454,66 @@ async function newFate() {
 async function startLife(route = activeRoute, packId = activePack, { replay = false, fresh = false } = {}) {
     await stopAutoAndWait();
     if (gameBusy) return;
-    activeRoute = route;
-    activePack = packId;
-    lifeRunner = null;
-    clearLifeView(route, packId);
-    game.hidden = false;
+    if (!confirmDiscard()) return;
+    const replaySeed = lifeRunner?.seed ?? lifeRunner?.session.random.seed;
+    let failure = null;
     setGameBusy(true, `正在载入${packId === "douluo2" ? "绝世唐门" : "斗罗一"}${route === "beast" ? "魂兽" : "人类"}内容…`);
     try {
-        const seed = fresh || (!replay && !manualSeed) || !gameFields["human-seed"].value.trim()
+        const seed = replay && replaySeed ? replaySeed : fresh || (!replay && !manualSeed) || !gameFields["human-seed"].value.trim()
             ? globalThis.crypto.randomUUID()
             : gameFields["human-seed"].value.trim();
-        gameFields["human-seed"].value = seed;
-        if (fresh) manualSeed = false;
-        lifeRunner = await runner.start(packId, {
+        const candidate = await runner.start(packId, {
             seed,
             route
         });
+        activeRoute = route;
+        activePack = packId;
+        clearLifeView(route,packId);
+        lifeRunner = candidate;
+        unsaved = false;
+        gameFields['human-seed'].value = seed;
+        if (fresh) manualSeed = false;
+        game.hidden = false;
         for (const id of Object.keys(panels)) if (!panels[id].panel.hidden) closePanel(id, false);
         setRouteChoicesVisible(false);
         renderGame();
         game.scrollIntoView({ block: "start" });
     } catch (error) {
-        gameFields["human-progress"].textContent = `${error.code ?? "START_FAILED"}：${error.message}`;
+        lastError = error;
+        failure = `${error.code ?? "START_FAILED"}：${error.message} 开局未切换，原人生保留。`;
     } finally {
         setGameBusy(false);
         renderGame();
+        if(failure) { setStatus(failure,'error');gameFields['human-progress'].textContent=failure; }
     }
 }
 
 async function runLife(action, label, automatic = false) {
-    if (!lifeRunner || gameBusy || (autoRunning && !automatic)
+    if (!lifeRunner || gameBusy || (autoRunning && !automatic) || (fastControl && action !== "runToTerminal")
         || ["completed", "boundary", "error"].includes(lifeRunner.phase)) return;
     setGameBusy(true, label);
     let batchResult = null;
     let failure = null;
     try {
         if (action === "step") {
-            const before = lifeRunner.exportSnapshot();
-            const result = lifeRunner.step();
+            const result = lifeRunner.step({ onCheckpoint: captureCommit });
+            if (!result.committed) lastChanges = [];
             if (result.committed) {
-                undoCheckpoint = { snapshot: before, nextCursor: lifeRunner.session.random.cursor };
                 gameFields["human-reroll"].disabled = !automatic;
             }
             if (lifeRunner.phase === "completed") {
                 renderGame();
             } else if (result.committed && lifeRunner.lastWheelResult) {
+                renderGame();
                 gameFields["human-result"].textContent = `已抽取：${lifeRunner.lastWheelResult.recentResult?.text ?? result.spin?.optionId ?? "结果已提交"}`;
                 await animateCommittedSpin(lifeRunner.lastWheelResult);
             }
         } else {
-            let before = lifeRunner.exportSnapshot();
             batchResult = await lifeRunner[action]({
-                ...(action === "runToTerminal" ? { maxSteps: 200 } : {}),
+                ...(action === "runToTerminal" ? { maxSteps: 200, shouldStop: () => Boolean(fastControl?.reason) } : {}),
+                onCheckpoint: captureCommit,
                 onStep(result, step) {
-                    if (result.committed) {
-                        undoCheckpoint = { snapshot: before, nextCursor: lifeRunner.session.random.cursor };
-                        before = lifeRunner.exportSnapshot();
-                    }
+                    if (!result.committed) lastChanges=[];
                     if (step % 25 === 0) renderGame();
                 },
                 yieldStep: () => new Promise(resolve => setTimeout(resolve, 0))
@@ -582,6 +521,8 @@ async function runLife(action, label, automatic = false) {
         }
     } catch (error) {
         stopAuto();
+        lastError = error;
+        lastChanges = [];
         failure = (error.code ?? "UI_STEP_FAILED") + "：" + error.message;
     } finally {
         setGameBusy(false);
@@ -615,12 +556,18 @@ async function rerollLast() {
         }
         // Publish only a validated, committed replacement; failures retain the original life.
         lifeRunner = candidate;
+        unsaved = true;
+        lastChanges = growthChanges(snapshot.session.character, candidate.session.character);
+        lastError = null;
+        historyView.reset();
         undoCheckpoint = { snapshot, nextCursor: candidate.session.random.cursor };
         renderGame();
         if (candidate.phase !== "completed" && candidate.lastWheelResult) {
             await animateCommittedSpin(candidate.lastWheelResult);
         }
     } catch (error) {
+        lastError = error;
+        lastChanges = [];
         failure = (error.code ?? "REROLL_FAILED") + "：" + error.message;
     } finally {
         setGameBusy(false);
@@ -632,11 +579,13 @@ async function rerollLast() {
 function packCard(pack) {
     const article = document.createElement("article");
     article.className = "pack-card";
-    const routes = pack.supportedRoutes.join(" / ");
+    const routes = pack.supportedRoutes.map(routeName).join(" / ");
     article.innerHTML = `
-        <p class="eyebrow">${pack.id}</p>
-        <h2>${pack.title}</h2>
+        <p class="eyebrow">${pack.id === 'douluo2' ? '万年之后的魂师世界' : '唐三时代的魂师世界'}</p>
+        <h2>${packName(pack.id)}</h2>
         <p class="route-label">路线：${routes}</p>
+        <p>人类：觉醒武魂、获取魂环、修炼与经历剧情。魂兽：积累修为、血脉融合与特殊遭遇；化形由事件决定。</p>
+        <p>本地手动8槽，请主动保存；刷新不会自动恢复。${pack.id === 'douluo1' ? '人类及化形后的普通神考、海神岛黄紫黑顶级奖励已接入；海神独立九考使用已确认项目规则，资格即开始、仅与修罗共存，继承后可主动飞升。旧斗一档需原版本继续，可先导出原始备份。' : '部分源路线仍可能中断，可保存和导出当时进度。'}</p>
         <div class="card-actions"></div>
         <p class="pack-detail" hidden></p>
     `;
@@ -697,14 +646,37 @@ gameFields["human-new"].addEventListener("click", () => newFate());
 gameFields["human-reroll"].addEventListener("click", () => rerollLast());
 gameFields["human-step"].addEventListener("click", () => void runLife("step", "正在提交一次选择…"));
 gameFields["human-age"].addEventListener("click", () => void toggleAuto());
-gameFields["human-terminal"].addEventListener("click", () => void runLife("runToTerminal", "正在连续推进…"));
+gameFields["human-terminal"].addEventListener("click", () => void toggleFast());
+for(const [id,choice] of [['sea-god-ascend','ascend'],['sea-god-continue','continue']])gameFields[id].addEventListener('click',async()=>{
+    await stopAutoAndWait();if(gameBusy||!lifeRunner)return;
+    setGameBusy(true);
+    try{const before=lifeRunner.exportSnapshot().session.character;const result=lifeRunner.resolveSeaGodAscension(choice);if(result.committed){unsaved=true;undoCheckpoint=null;lastChanges=growthChanges(before,lifeRunner.session.character);lastError=null;}}
+    catch(error){lastError=error;}
+    finally{setGameBusy(false);renderGame();}
+});
+gameFields["human-fast-cancel"].addEventListener("click", () => stopFast("cancelled"));
 routeToggle.addEventListener("click", () => {
-    stopAuto();
+    stopContinuous();
     if (!characterMenuPanel.hidden) closeCharacterMenu(false);
     const visible = packList.hidden;
     setRouteChoicesVisible(visible);
     if (visible) packList.scrollIntoView({ block: "start" });
 });
+document.querySelector('#copy-problem').addEventListener('click', async () => {
+    gameFields['problem-details'].textContent=problemInfo(lifeRunner,lastError);
+    try {
+        await navigator.clipboard.writeText(gameFields['problem-details'].textContent);
+        gameFields['problem-status'].textContent='已复制有限问题信息；未包含完整存档，也没有上传。';
+    } catch { gameFields['problem-status'].textContent='复制不可用，请展开问题信息并手动选择复制。'; }
+});
+for(const button of document.querySelectorAll('[data-ending-action]')) button.addEventListener('click',()=> {
+    const action=button.dataset.endingAction;
+    if(action==='save') togglePanel('save-panel');
+    if(action==='export') void saveAction('export-current');
+    if(action==='replay') void startLife(activeRoute,activePack,{replay:true});
+    if(action==='new') void newFate();
+});
+globalThis.window?.addEventListener?.('beforeunload',event=>{ if(unsaved){event.preventDefault();event.returnValue='';} });
 for (const [id, { toggle }] of Object.entries(panels)) toggle.addEventListener("click", () => togglePanel(id));
 for (const [id, { panel }] of Object.entries(panels)) {
     panel.addEventListener("cancel", event => { event.preventDefault(); closePanel(id); });
@@ -715,7 +687,7 @@ for (const [id, { panel }] of Object.entries(panels)) {
             || event.clientY < rect.top || event.clientY > rect.bottom) closePanel(id);
     });
 }
-document.addEventListener("visibilitychange", () => { if (document.hidden) stopAuto(); });
+document.addEventListener("visibilitychange", () => { if (document.hidden) stopContinuous(); });
 for (const button of document.querySelectorAll("[data-close-panel]")) button.addEventListener("click", () => closePanel(button.dataset.closePanel));
 document.addEventListener("keydown", event => {
     const open = Object.keys(panels).find(id => !panels[id].panel.hidden);
@@ -741,4 +713,4 @@ boot();
 for (const button of document.querySelectorAll("[data-save-action]")) {
     button.addEventListener("click", () => void saveAction(button.dataset.saveAction));
 }
-void refreshSlots();
+saveSlot.addEventListener('change',renderSlotSummary);

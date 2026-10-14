@@ -1,0 +1,49 @@
+{
+  "note": "Includes the generated internal sea pool, absent from base source.game.pools. Runtime owner eligibility is separate; raw weights are not whole-life probabilities.",
+  "pools": [
+    {
+      "id": "0025071b-4c37-4013-b2b7-43750819e528",
+      "name": "一级神考抽取池（一级神一共9考）",
+      "totalRawWeight": 17,
+      "targets": [
+        {
+          "id": "94cc96",
+          "weight": 1
+        }
+      ],
+      "classification": "static source coverage only"
+    },
+    {
+      "id": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+      "name": "（唐三20岁限定）剧情24:在海神岛获得的考核是（选择完后请去抽取剧情25后，再抽取对应的考核奖励）",
+      "totalRawWeight": 150,
+      "targets": [
+        {
+          "id": "d58e35",
+          "weight": 5
+        },
+        {
+          "id": "5ad644",
+          "weight": 5
+        }
+      ],
+      "classification": "static source coverage only"
+    },
+    {
+      "id": "cf8335da-795a-4d26-b4c2-e29aaaf49980",
+      "name": "获得的海神考核是（选择完后请先选择“在海神岛五年你将完成几考”后，再选择神考奖励）",
+      "totalRawWeight": 150,
+      "targets": [
+        {
+          "id": "710c23",
+          "weight": 5
+        },
+        {
+          "id": "91080d",
+          "weight": 5
+        }
+      ],
+      "classification": "static source coverage only"
+    }
+  ]
+}

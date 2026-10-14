@@ -1,0 +1,96 @@
+{
+  "lives": 26,
+  "totalCalls": 13001,
+  "searchDurationMs": 480119.97390000004,
+  "budget": {
+    "maxMs": 480000,
+    "maxLives": 80,
+    "maxCalls": 24000,
+    "maxCallsPerLife": 1600
+  },
+  "stop": "time budget; no further search",
+  "routes": {
+    "human": 21,
+    "beast": 5
+  },
+  "finalRoutes": {
+    "human": 21,
+    "beast": 5
+  },
+  "stopReasons": {
+    "real-ending": 24,
+    "typed-interruption": 1,
+    "global-budget": 1
+  },
+  "nine": {
+    "qualified": 0,
+    "complete": 0,
+    "effectiveEntryDraws": 6,
+    "filteredOrdinaryDraws": 7,
+    "unreached": "No nine stage reached; cannot diagnose missing per-stage requirements from these lives."
+  },
+  "yellow": {
+    "qualified": 0,
+    "complete": 0,
+    "formalEntryDraws": 3
+  },
+  "drawsByPool": {
+    "0025071b-4c37-4013-b2b7-43750819e528": {
+      "draws": 10,
+      "seaGodEligible": 3
+    },
+    "8c4f9874-bda6-4751-97d7-ae73a6c0cd58": {
+      "draws": 3,
+      "seaGodEligible": 3
+    },
+    "cf8335da-795a-4d26-b4c2-e29aaaf49980": {
+      "draws": 0,
+      "seaGodEligible": 0
+    }
+  },
+  "livesWithRecordedEntry": 8,
+  "livesWithoutRecordedEntry": 18,
+  "realEndingBefore20": 9,
+  "naturalOtherSea": [
+    {
+      "seed": "natural-sea-20261014-human-000",
+      "tier": "top",
+      "status": "completed",
+      "claimed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "seed": "natural-sea-20261014-human-013",
+      "tier": "top",
+      "status": "completed",
+      "claimed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "seed": "natural-sea-20261014-human-021",
+      "tier": "black",
+      "status": "completed",
+      "claimed": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "naturalTransformationHits": 0,
+  "newMechanismFixtures": 0,
+  "newBrowserAcceptance": 0,
+  "performanceGainVerified": false
+}

@@ -1,3 +1,5 @@
+import { createV10Display, actualAgeText, playerWheelView } from '../js/v10-display.js';
+import { createV10HistoryView } from '../js/v10-history-view.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -31,6 +33,7 @@ for (const [packId, route, seed] of [
     await store.write(1, text);
     assert.deepEqual(life.exportSnapshot(), before);
     assert.equal(await store.exportSlot(1), text);
+    assert.equal(await store.exportSlot(1, { rawBackup: true }), text);
     await store.write(2, await store.exportSlot(1));
     const resumed = await store.read(2);
     assert.deepEqual(resumed.exportSnapshot(), before);
@@ -48,7 +51,15 @@ for (const [packId, route, seed] of [
     const terminal = await store.read(4);
     assert.equal(terminal.phase, life.phase);
     assert.deepEqual(terminal.exportSnapshot(), life.exportSnapshot());
-    if (route === 'human') {
+    if (route === 'human' && packId === 'douluo1') {
+        // Restored black sea-trial rewards consume two actual source draws;
+        // the resulting story now reaches this real death, never a synthetic end.
+        assert.equal(life.phase,'completed');
+        assert.equal(life.session.character.age,24);
+        assert.equal(life.session.history.length,140);
+        assert.deepEqual(life.session.character.seaTrial.claimedRewardStages,[1,2]);
+        assert.equal(life.session.character.ending.cause,'formal:d2e4500f-2adf-434a-8fdd-83bcafa24ab4:0ce437');
+    } else if (route === 'human') {
         assert.equal(life.phase, 'ready');
         assert.ok(life.session.character.age >= 151);
         assert.equal(life.session.character.ending, null);
@@ -135,8 +146,8 @@ for (const candidate of ['serialize', 'shape']) test('ablation A/B: remove dupli
     const bText = original;
     const aText = candidate === 'shape' ? original.replace(lean, duplicate) : original.replace('            return text;\n        },\n        async read', '            await validate(text);\n            return text;\n        },\n        async read');
     assert.notEqual(aText, bText);
-    const load = async text => (await import('data:text/javascript;base64,' + Buffer.from(text.replace(/from "(\.\/[^"]+)"/gu,
-        (_match, path) => 'from ' + JSON.stringify(new URL(path, moduleUrl).href))).toString('base64'))).createV10SaveStore;
+    const load = async text => (await import('data:text/javascript;base64,' + Buffer.from(text.replace(/from (["'])(\.\/[^"']+)\1/gu,
+        (_match, _quote, path) => 'from ' + JSON.stringify(new URL(path, moduleUrl).href))).toString('base64'))).createV10SaveStore;
     const [aFactory, bFactory] = await Promise.all([load(aText), load(bText)]);
     for (const packId of ['douluo1', 'douluo2']) {
         const life = advance(await runner.start(packId, { seed: 'day28-ablation', route: 'beast' }), 12);
@@ -186,12 +197,47 @@ test('UI test copy: real runtime rejection displays its error and disables progr
     const context = { document: doc, setTimeout, crypto: { randomUUID: () => 'ui-boundary-seed' }, createV10ContentLoader: () => ({ getManifest: async () => ({ packs: [] }) }),
         createV10LifeRunner: () => ({ start: async () => broken }), createV10SaveStore: () => ({ list: async () => [] }) };
     const app = fs.readFileSync(new URL('../js/v10-app.js', import.meta.url), 'utf8').replace(/^import .+;\r?\n/gmu, '');
+    Object.assign(context, await import('../js/v10-experience.js'), { actualAgeText, playerWheelView, createV10Display: fields => createV10Display(fields, doc), createV10HistoryView: options => createV10HistoryView({...options, document: doc}) });
     runInNewContext(app + '\nglobalThis.testUI = { startLife, runLife };', context);
     await context.testUI.startLife('human', 'douluo2');
     await context.testUI.runLife('step', 'test step');
     assert.ok(['boundary', 'error'].includes(broken.phase));
-    assert.match(nodes.get('#human-progress').textContent, /APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED/);
+    assert.match(nodes.get('#human-progress').textContent, /推进已停止，原进度保留/);
+    assert.doesNotMatch(nodes.get('#human-progress').textContent, /APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED/);
+    assert.match(nodes.get('#runtime-diagnostics').textContent, /APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED/);
+    assert.equal(JSON.parse(nodes.get('#problem-details').textContent).code,'APK_ROUTE_DYNAMIC_OPTION_UNRESOLVED');
     assert.doesNotMatch(nodes.get('#human-progress').textContent, /运行中/);
     for(const id of ['#human-step', '#human-age', '#human-terminal']) assert.equal(nodes.get(id).disabled, true);
     assert.deepEqual(broken.exportSnapshot(), before);
+});
+
+
+test('raw backup preserves damaged and incompatible originals without loading or weakening validation', async () => {
+    const { store, data } = fixture();
+    const life = advance(await runner.start('douluo2', { seed: 'raw-backup-audit' }), 3);
+    const snapshot = life.exportSnapshot();
+    const valid = await store.serialize(life);
+    const old = JSON.parse(valid); old.contentIdentity = 'older-content';
+    const samples = ['{broken\r\n原件 🐉', '', ' '.repeat(MAX_SAVE_BYTES + 1), JSON.stringify(old)];
+    for (const text of samples) {
+        data.set(SAVE_PREFIX + 1, text);
+        const before = [...data];
+        assert.equal(await store.exportSlot(1, { rawBackup: true }), text);
+        await assert.rejects(store.exportSlot(1));
+        await assert.rejects(store.read(1));
+        await assert.rejects(store.write(2, text));
+        assert.deepEqual([...data], before);
+        assert.deepEqual(life.exportSnapshot(), snapshot);
+    }
+    // Recovery still works with content loading and runtime restoration unavailable.
+    const offline = createV10SaveStore({
+        contentLoader: new Proxy({}, { get() { assert.fail('backup requested content'); } }),
+        runner: { start() { assert.fail('backup restored a runner'); } },
+        storage: () => ({ getItem: key => data.get(key) ?? null, setItem() { assert.fail('backup wrote storage'); } })
+    });
+    assert.equal(await offline.exportSlot(1, { rawBackup: true }), data.get(SAVE_PREFIX + 1));
+    await assert.rejects(offline.exportSlot(8, { rawBackup: true }), { code: 'SAVE_EMPTY' });
+    await assert.rejects(offline.exportSlot(9, { rawBackup: true }), { code: 'SAVE_INVALID' });
+    const unavailable = createV10SaveStore({ storage() { throw new Error('denied'); } });
+    await assert.rejects(unavailable.exportSlot(1, { rawBackup: true }), { code: 'SAVE_STORAGE_UNAVAILABLE' });
 });

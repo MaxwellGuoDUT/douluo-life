@@ -1,0 +1,33 @@
+{
+  "origin": "http://127.0.0.1:8889",
+  "records": [
+    {
+      "file": "browser-boundary-restored.json",
+      "source": "E:/CODEX/douluo-life-current (16).json",
+      "bytes": 2980463,
+      "completeFileEqual": true,
+      "completeSnapshotEqual": true,
+      "strictRestoreAndExportEqual": true,
+      "phase": "boundary",
+      "history": 1453,
+      "rng": 1453,
+      "snapshotSha256": "449da7ae345d93eecbc9b45131e52de391686cbff0d280fc858176584a0c26e2"
+    },
+    {
+      "file": "browser-boundary-refreshed.json",
+      "source": "E:/CODEX/douluo-life-current (17).json",
+      "bytes": 2980463,
+      "completeFileEqual": true,
+      "completeSnapshotEqual": true,
+      "strictRestoreAndExportEqual": true,
+      "phase": "boundary",
+      "history": 1453,
+      "rng": 1453,
+      "snapshotSha256": "449da7ae345d93eecbc9b45131e52de391686cbff0d280fc858176584a0c26e2"
+    }
+  ],
+  "explicitOverwriteConfirmed": true,
+  "refreshNoAutoRestore": true,
+  "realQuotaFailurePreservedOriginal": true,
+  "toolTimeoutExcluded": true
+}

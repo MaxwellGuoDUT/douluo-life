@@ -35,7 +35,10 @@ function optionWeight(option) {
 }
 
 function poolTitle(pool, fallback) {
-    return pool?.normalized?.pool_name ?? fallback ?? "当前转盘";
+    const name = pool?.normalized?.pool_name;
+    // The graph preserves the source name inside routeSource. Keep stored spin metadata intact.
+    const sourceName = pool?.routeSource?.source?.source?.name ?? pool?.routeSource?.source?.name;
+    return name && name !== pool?.normalized?.pool_id ? name : sourceName ?? fallback ?? "当前转盘";
 }
 
 export function createV05WheelSegments(options = []) {
