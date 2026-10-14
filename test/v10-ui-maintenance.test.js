@@ -7,6 +7,7 @@ import { createV10HumanRunner } from '../js/v10-human-runner.js';
 import { actualAge, actualAgeText, createV10Display } from '../js/v10-display.js';
 import { calculateApkCombatPower } from '../js/apk-combat-power-runtime.js';
 import { createV10HistoryView, historyWindow } from '../js/v10-history-view.js';
+import { growthChanges, problemInfo, nextGoal } from '../js/v10-experience.js';
 globalThis.document ??= {createElement(){return {relList:{supports:()=>true},addEventListener(n,f){if(n==='load')queueMicrotask(f)},setAttribute(){}}},getElementsByTagName:()=>[],querySelector:()=>null,querySelectorAll:()=>[],head:{appendChild(){}}};
 globalThis.window ??= {dispatchEvent:()=>true};
 const root=new URL('../',import.meta.url);
@@ -53,6 +54,7 @@ test('checkpoint ablation: four real openings retain all fields and isolate save
   for(let i=0;i<60&&baseline.phase==='ready';i++){
    const before=baseline.exportSnapshot();const first=baseline.step();let calls=0;
    const second=lean.step({onCheckpoint(value){checkpoint=value;calls++}});
+   growthChanges(before.session.character,lean.session.character);problemInfo(lean);nextGoal(lean.session.character,packId,lean.phase);
    assert.equal(second.committed,first.committed);assert.deepEqual(second.error,first.error);
    assert.deepEqual(lean.exportSnapshot(),baseline.exportSnapshot());assert.equal(calls,first.committed?1:0);
    if(first.committed){assert.deepEqual(checkpoint,before);const after=lean.exportSnapshot();

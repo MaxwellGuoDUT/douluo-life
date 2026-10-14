@@ -1,0 +1,35 @@
+{
+  "status": "pass",
+  "mode": "check",
+  "sourceVault": "D:\\0CODE\\douluo-life-source-vault\\5ba6453\\apk-analysis\\E4FB340E",
+  "packs": [
+    {
+      "id": "douluo1",
+      "summary": {
+        "flows": 914,
+        "pools": 758,
+        "options": 6456,
+        "actions": 47,
+        "resolvers": 11,
+        "customHandlers": 53,
+        "effectTypes": 48,
+        "effectOccurrences": 3104,
+        "untypedEffects": 0
+      }
+    },
+    {
+      "id": "douluo2",
+      "summary": {
+        "flows": 783,
+        "pools": 693,
+        "options": 6060,
+        "actions": 23,
+        "resolvers": 6,
+        "customHandlers": 31,
+        "effectTypes": 50,
+        "effectOccurrences": 5857,
+        "untypedEffects": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "classification": "mechanism-only normal restore control",
+  "phase": "ready",
+  "history": 22,
+  "rng": 22,
+  "claimed": [
+    1
+  ],
+  "seaStage": 2,
+  "completeSnapshotEqual": true,
+  "completeExportEqual": true,
+  "sha256": "95bf3564a7a6539f81a337aeb10a9a7edad728e554b4b072900a1daaffcb501b"
+}

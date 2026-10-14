@@ -1,4 +1,5 @@
 import { V10_GOD_TRIAL_STAGES } from './v10-god-trial-runtime.js';
+import { seaGodMissing } from './v10-sea-god-runtime.js';
 // Match the source UI: pure beast time uses chronologicalAge; transformed humans use age.
 export function actualAge(character) {
     return character.route === 'beast'
@@ -47,19 +48,31 @@ export function createV10Display(gameFields, document = globalThis.document) {
 
     function godTrialProgress(character, packId) {
         const trial = character.godTrial;
-        if (!trial) return null;
+        const sea=character.seaTrial;
+        const seaText=sea ? (sea.tier==='seaGod' ? `海神独立九考 · 已领取${sea.claimedRewardStages?.length??0}/9考奖励 · `+(sea.status==='completed'?'海神已继承，可主动飞升':`第${sea.currentStage}考`+(seaGodMissing(character).length?' · 尚需'+seaGodMissing(character).join('、'):' · 条件已满足，可结算'))
+            : ({yellow:'黄级',purple:'紫级',black:'黑级',top:'顶级'}[sea.tier]??'层级来源未记录')+'海神岛考核 · '
+                +({qualified:'待抽取完成计划',active:'考核中',failed:'考核失败',completed:'考核完成'}[sea.status]??'状态来源未记录')
+                +' · 已领取'+(sea.claimedRewardStages?.length??'—')+'/'+(sea.totalStages??'—')+'考奖励'
+                +(sea.status==='active'&&sea.currentStage<=sea.totalStages ? ' · 下一考'+sea.currentStage+'，本次计划至第'+sea.plannedStages+'考' : '')) : null;
+        if (!trial) return seaText;
         const status = { qualified: "待选择神位", active: "考核中", failed: "神考失败",
             completed: "考核完成", abandoned: "考核已结束" }[trial.status] ?? "考核状态待确认";
-        if (packId === "douluo1" && trial.tier !== "二级") {
+        if (packId === "douluo1" && !V10_GOD_TRIAL_STAGES.some(item => item.tier === trial.tier)) {
             return (trial.tier ?? "未知层级") + "考核 · " + status + " · 奖励流程未完整开放";
         }
         const claimed = trial.claimedRewardStages?.length ?? 0;
         const stage = trial.currentStage > 0 ? " · 第" + trial.currentStage + "考" : "";
         const requirement = packId === "douluo1" && trial.status === "active"
-            ? V10_GOD_TRIAL_STAGES.find(item => item.stage === trial.currentStage) : null;
+            ? V10_GOD_TRIAL_STAGES.find(item => item.tier === trial.tier && item.stage === trial.currentStage) : null;
         const level = requirement ? " · 需" + requirement.minLevel + "级（当前" + character.level + "级）" : "";
-        return (trial.tier ?? "") + "神考" + (trial.deityName ? " · " + trial.deityName : "")
-            + " · " + status + " · 已领取" + claimed + "/" + (trial.totalStages ?? trial.total ?? "—") + "考奖励" + stage + level;
+        const boneParts = { head: "头骨", torso: "躯干骨", leftArm: "左臂骨", rightArm: "右臂骨", leftLeg: "左腿骨", rightLeg: "右腿骨" };
+        const acquiredParts = new Set((character.soulBones ?? []).map(bone => bone.partId ?? bone.part));
+        const missing = Object.entries(boneParts).filter(([part]) => !acquiredParts.has(part)).map(([,name]) => name);
+        const unknownParts=(character.soulBones ?? []).some(bone=>!bone.partId && !bone.part && !bone.external);
+        const bones = packId === 'douluo1' && ['qualified','active'].includes(trial.status)
+            ? ' · 继承需六部位魂骨：' + (unknownParts ? '部分魂骨部位来源未记录，暂不能确认缺失部位' : missing.length ? '还缺' + missing.join('、') : '已齐全，仍须完成考核') : '';
+        return [(trial.tier ?? "") + "神考" + (trial.deityName ? " · " + trial.deityName : "")
+            + " · " + status + " · 已领取" + claimed + "/" + (trial.totalStages ?? trial.total ?? "—") + "考奖励" + stage + level + bones, seaText].filter(Boolean).join('；');
     }
 
     function characterAttributes(character) {
@@ -97,10 +110,12 @@ export function createV10Display(gameFields, document = globalThis.document) {
         const name = character.name ?? (isBeast && species
             ? [...(beast?.namePrefixes ?? []), species, ...(beast?.nameSuffixes ?? [])].map(entryName).join("")
             : (character.martialSouls ?? []).map(entryName).join(" / "));
-        gameFields["character-name"].textContent = name?.split(/[（(]/u)[0].trim() || (isBeast ? "魂兽本体未确定" : "武魂未确定");
+        gameFields["character-name"].textContent = name?.trim() || (isBeast ? "魂兽本体未确定" : "武魂未确定");
         const lines = bloodlineTexts(character);
         gameFields["character-bloodline"].textContent = lines.join(" + ") || "暂无";
         gameFields["character-bloodline"].title = lines.join(" + ") || "暂无";
+        if(gameFields['bloodline-label']) gameFields['bloodline-label'].textContent=isBeast?'血脉':'武魂与魂环';
+        if(!isBeast) gameFields['character-bloodline'].textContent=(character.martialSouls ?? []).map(soul=>`${entryName(soul)} · ${(soul.rings ?? []).length}环`).join('；') || '尚未觉醒';
         const attributes = characterAttributes(character);
         gameFields["character-attributes"].replaceChildren(...(attributes.length
             ? [...new Set(attributes.map(attribute => ATTRIBUTE_NAMES[attribute] ?? attribute))] : ["暂无属性"]).map(attribute => {
@@ -119,8 +134,9 @@ export function createV10Display(gameFields, document = globalThis.document) {
             "修为：" + gameFields["cultivation-value"].textContent,
             "实际年龄：" + gameFields["actual-age-value"].textContent,
             "战力：" + gameFields["combat-power-value"].textContent,
+            "铜灵币：" + (Number.isFinite(character.wallet?.copper ?? character.money) ? (character.wallet?.copper ?? character.money).toLocaleString('zh-CN') : '来源未记录'),
             "性别：" + (character.gender ? entryName(character.gender) : "未确定"),
-            "时代：" + (beast?.period ? entryName(beast.period) : character.entrySelections?.period ? entryName(character.entrySelections.period) : "未确定"),
+            "时代：" + (beast?.period ? entryName(beast.period) : character.entrySelections?.period ? entryName(character.entrySelections.period) : character.timelineEra ? entryName(character.timelineEra) : "来源未记录"),
             "时间线：" + (character.entrySelections?.worldLine ? entryName(character.entrySelections.worldLine) : "未确定"),
             "容貌：" + (character.appearance ? entryName(character.appearance) : "未确定"),
             "初始魂力：" + (Number.isFinite(character.innateSoulPower) ? character.innateSoulPower + "级" : "未确定"),
@@ -144,7 +160,7 @@ export function createV10Display(gameFields, document = globalThis.document) {
         gameFields["human-ability-counts"].textContent = `${(character.soulBones ?? []).length} / ${attributes.length} / ${(character.domains ?? []).length}`;
         renderDetailList("human-attributes", attributes.map(attribute => {
             const id = typeof attribute === "string" ? attribute : entryName(attribute);
-            const name = ATTRIBUTE_NAMES[id] ? `${ATTRIBUTE_NAMES[id]}（${id}）` : id;
+            const name = ATTRIBUTE_NAMES[id] ?? id;
             const stage = progress[id] ?? beastProgress[id];
             return `${name}${Number.isFinite(stage) && stage > 0 ? ` · 进度 ${stage}` : ""}`;
         }));
@@ -161,15 +177,8 @@ export function createV10Display(gameFields, document = globalThis.document) {
         ]);
         const godhoods = character.godhoods?.length ? character.godhoods : character.godhood ? [character.godhood] : [];
         const trialText = godTrialProgress(character, packId);
-        const boneParts = { head: "头骨", torso: "躯干骨", leftArm: "左臂骨", rightArm: "右臂骨", leftLeg: "左腿骨", rightLeg: "右腿骨" };
-        const acquiredParts = new Set((character.soulBones ?? []).map(bone => bone.partId ?? bone.part));
-        const missing = Object.entries(boneParts).filter(([part]) => !acquiredParts.has(part)).map(([,name]) => name);
-        const boneRequirement = packId === "douluo1" && character.godTrial?.tier === "二级"
-            && ["qualified", "active"].includes(character.godTrial.status)
-            ? "神考继承需要六个部位魂骨：" + (missing.length ? "还缺" + missing.join("、") : "已齐全，仍须完成考核") : null;
         renderDetailList("human-godhood", [
             ...(trialText ? [trialText] : []),
-            ...(boneRequirement ? [boneRequirement] : []),
             ...godhoods.map(godhood => `神位：${entryName(godhood)}${godhood.tier ? ` · ${godhood.tier}` : ""}`),
             ...(character.titles ?? []).map(title => `称号：${entryName(title)}`)
         ]);

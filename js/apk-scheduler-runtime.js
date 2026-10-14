@@ -1,4 +1,5 @@
-import { V10_GOD_TRIAL_SEMANTICS, planV10GodTrialReward } from "./v10-god-trial-runtime.js";
+import { V10_GOD_TRIAL_SEMANTICS, planV10GodTrialReward, planV10SeaTrial } from "./v10-god-trial-runtime.js";
+import { hasSeaGod, hasAsuraGod } from './v10-sea-god-runtime.js';
 export const APK_SCHEDULER_RUNTIME_VERSION = "apk-scheduler-runtime/1.0";
 
 const FORMAL_SOURCE_PREFIX = "douluo1:flow.formal-source.";
@@ -393,7 +394,7 @@ export function planFormalStory({ contentIndex, character, allowPost150 = false 
     if (allowPost150 && contentIndex?.pack?.v10GodTrialSemantics === V10_GOD_TRIAL_SEMANTICS
         && Object.hasOwn(flags, V10_ASCENSION_ATTEMPT_AGE)) {
         assertV10AscensionRetryContract(contentIndex, character);
-        if (character.route === "human" && !character.ending && character.storyBranch === 2
+        if (["human","transformed"].includes(character.route) && !character.ending && character.storyBranch === 2
             && flags["formal:d1-story:selected:cdae9943-fb9d-49ba-853c-40d9b78924ae:403ea3"] === true
             && !["qualified", "active"].includes(character.godTrial?.status)
             && character.level >= 100 && character.age > flags[V10_ASCENSION_ATTEMPT_AGE]) {
@@ -650,7 +651,7 @@ export function planFormalHumanScheduler({ contentIndex, session, allowPost150 =
     const availableGodTrialDraw = flagNumber(character, FORMAL_GOD_TRIAL_DRAWS) > 0;
     const canStartGodTrial = availableGodTrialDraw && (
         !character.godTrial || godTrialCompleted
-    );
+    ) && (!hasSeaGod(character)||!hasAsuraGod(character));
     if (canStartGodTrial) {
         effects.push(
             { type: "changeCounter", key: FORMAL_GOD_TRIAL_DRAWS, amount: -1 },
@@ -684,11 +685,20 @@ export function planFormalHumanScheduler({ contentIndex, session, allowPost150 =
         }
     }
 
-    const mode = canStartGodTrial
+    const seaTrial = planV10SeaTrial(contentIndex, session);
+    if(seaTrial) return {...seaTrial,effects:[...effects,...seaTrial.effects]};
+
+    let mode = canStartGodTrial
         ? "godTrial"
         : typeof flags[FORMAL_SCHEDULER_MODE] === "string"
         ? String(flags[FORMAL_SCHEDULER_MODE])
         : "annual";
+    // Source continueHumanSeaTrial returns humanPlan; the former fixed top-tier
+    // reward is superseded by the actual tier/stage dispatcher above.
+    if(mode==='seaTrial') {
+        effects.push(...setSchedulerMode('annual',0));
+        mode='annual';
+    }
     if (mode === "annual") {
         const storyPlan = planFormalStory({ contentIndex, character, allowPost150 });
         if (storyPlan.kind === "terminal") {
@@ -740,14 +750,6 @@ export function planFormalHumanScheduler({ contentIndex, session, allowPost150 =
                 { type: "setFlag", key: FORMAL_GOD_TRIAL_RETURN_STEP, value: FORMAL_SCHEDULER_FLOW }
             ],
             reason: "formal-god-trial-mode"
-        };
-    }
-
-    if (mode === "seaTrial") {
-        return {
-            target: `${FORMAL_SOURCE_PREFIX}e7e646c0-8c53-4f95-b978-5bb661d57fa5`,
-            effects: [...effects, ...setSchedulerMode("annual", 0)],
-            reason: "formal-sea-trial-mode"
         };
     }
 

@@ -40,13 +40,13 @@ if (process.argv.includes('--check-god-trial-source')) {
   const file=new URL('data/v10/source-runtime/douluo1-pack-C6xEgEus.js',root);
   let text=await fs.readFile(file,'utf8');
   text=text.replace(/(["'])(\.\/[^"'\n]+\.js)\1/g,(_,q,p)=>JSON.stringify(new URL(p,file).href));
-  text+='\nexport const auditSecondTier={stages:Bt.filter(s=>s.tier==="二级"),pools:af.filter(p=>Bt.some(s=>s.tier==="二级"&&s.poolId===p.id))};';
+  text+='\nexport const auditOrdinaryTrials={stages:Bt,pools:af};';
   let extracted;
-  try { extracted=(await import('data:text/javascript;base64,'+Buffer.from(text).toString('base64'))).auditSecondTier; }
-  catch(error) { throw new Error('源二级神考读取失败：'+(error.code??error.name)); }
+  try { extracted=(await import('data:text/javascript;base64,'+Buffer.from(text).toString('base64'))).auditOrdinaryTrials; }
+  catch(error) { throw new Error('源普通神考读取失败：'+(error.code??error.name)); }
   const stages=extracted.stages.map(({tier,stage,poolId,stepId,minLevel,final,expectedOptionIds})=>({tier,stage,poolId,stepId,minLevel,final,expectedOptionIds}));
-  if(!isDeepStrictEqual(stages,V10_GOD_TRIAL_STAGES)||!isDeepStrictEqual(JSON.parse(JSON.stringify(extracted.pools)),V10_GOD_TRIAL_POOLS)) throw new Error('二级神考配置与源不一致');
-  console.log(JSON.stringify({sourceMatch:true,stages:8,pools:8,handler:'claimHumanGodTrialReward'}));
+  if(!isDeepStrictEqual(stages,V10_GOD_TRIAL_STAGES)||!isDeepStrictEqual(JSON.parse(JSON.stringify(extracted.pools)),V10_GOD_TRIAL_POOLS)) throw new Error('普通神考配置与源不一致');
+  console.log(JSON.stringify({sourceMatch:true,stages:stages.length,pools:extracted.pools.length,handler:'claimHumanGodTrialReward'}));
   process.exit(0);
 }
 const loader = createV10ContentLoader({ moduleBaseUrl: root.href, fetchImpl: async p => ({ ok: true, json: async () => JSON.parse(await fs.readFile(new URL(p, root), 'utf8')) }) });

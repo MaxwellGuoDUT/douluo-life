@@ -1,0 +1,1843 @@
+{
+  "environment": {
+    "node": "v24.18.1",
+    "platform": "win32",
+    "semantics": "douluo1:god-and-sea-trials/8"
+  },
+  "budget": {
+    "maxMs": 480000,
+    "maxLives": 80,
+    "maxCalls": 24000,
+    "maxCallsPerLife": 1600
+  },
+  "lives": 26,
+  "totalCalls": 13001,
+  "durationMs": 480119.97390000004,
+  "seaGodQualified": 0,
+  "seaGodComplete": 0,
+  "yellowQualified": 0,
+  "yellowComplete": 0,
+  "records": [
+    {
+      "seed": "natural-sea-20261014-human-000",
+      "route": "human",
+      "calls": 1465,
+      "target": false,
+      "checkpoints": [],
+      "entries": [
+        {
+          "call": 107,
+          "tier": "top",
+          "status": "qualified",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 1,
+          "missing": [],
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "4ba221"
+        }
+      ],
+      "progress": [
+        {
+          "call": 107,
+          "tier": "top",
+          "status": "qualified",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 1,
+          "missing": [],
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "4ba221"
+        },
+        {
+          "call": 108,
+          "tier": "top",
+          "status": "active",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 1,
+          "missing": [],
+          "poolId": "e05f293d-e2cd-4e78-ab58-6e15f3271015",
+          "optionId": "a7f3f2"
+        },
+        {
+          "call": 109,
+          "tier": "top",
+          "status": "active",
+          "stage": 2,
+          "claimed": [
+            1
+          ],
+          "age": 20,
+          "level": 6,
+          "missing": [],
+          "poolId": "98ec8151-10be-47bb-a9ba-5d5a21e53a80",
+          "optionId": "af3ea5"
+        },
+        {
+          "call": 110,
+          "tier": "top",
+          "status": "active",
+          "stage": 3,
+          "claimed": [
+            1,
+            2
+          ],
+          "age": 20,
+          "level": 10,
+          "missing": [],
+          "poolId": "b1eaf74a-0bf3-43a0-87e2-9db9fe31ff14",
+          "optionId": "cef68c"
+        },
+        {
+          "call": 111,
+          "tier": "top",
+          "status": "active",
+          "stage": 4,
+          "claimed": [
+            1,
+            2,
+            3
+          ],
+          "age": 20,
+          "level": 13,
+          "missing": [],
+          "poolId": "512a0527-bd6b-4fa1-81b7-b03a280685a2",
+          "optionId": "9e81f5"
+        },
+        {
+          "call": 112,
+          "tier": "top",
+          "status": "active",
+          "stage": 5,
+          "claimed": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "age": 20,
+          "level": 15,
+          "missing": [],
+          "poolId": "e5215068-02ae-4160-9715-e4e31c80ed69",
+          "optionId": "ac9b76"
+        },
+        {
+          "call": 113,
+          "tier": "top",
+          "status": "active",
+          "stage": 6,
+          "claimed": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "age": 20,
+          "level": 15,
+          "missing": [],
+          "poolId": "579a1811-0afd-4311-a2d1-5e6948680b0c",
+          "optionId": "5f7581"
+        },
+        {
+          "call": 134,
+          "tier": "top",
+          "status": "active",
+          "stage": 7,
+          "claimed": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "age": 24,
+          "level": 16,
+          "missing": [],
+          "poolId": "b65b4815-f0fc-4c70-b5c5-24af21a0d939",
+          "optionId": "26376d"
+        },
+        {
+          "call": 135,
+          "tier": "top",
+          "status": "completed",
+          "stage": 7,
+          "claimed": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "age": 25,
+          "level": 16,
+          "missing": [],
+          "poolId": "5fc640cc-8030-4f30-8e77-ed41c3bf6ab0",
+          "optionId": "1461e6"
+        }
+      ],
+      "entryDraws": [
+        {
+          "call": 107,
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "4ba221",
+          "age": 20,
+          "level": 1,
+          "seaGodEligibleBefore": true,
+          "existingGods": []
+        }
+      ],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 1464,
+      "rng": 1464,
+      "age": 391,
+      "level": 99,
+      "seaTrial": {
+        "tier": "top",
+        "selection": {
+          "optionId": "4ba221",
+          "text": "顶级六考"
+        },
+        "totalStages": 6,
+        "plannedStages": 6,
+        "currentStage": 7,
+        "completedStages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "claimedRewardStages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "claimedRewardOptionIds": [
+          "af3ea5",
+          "cef68c",
+          "9e81f5",
+          "ac9b76",
+          "5f7581",
+          "26376d"
+        ],
+        "status": "completed",
+        "startedAtAge": 20,
+        "completedAtAge": 24
+      },
+      "missing": [],
+      "ending": {
+        "id": "douluo1:v10-human-natural-lifespan",
+        "title": "寿终",
+        "kind": "death",
+        "text": "享年391岁；最高修为99级。",
+        "finalStatus": "dead",
+        "finalLevel": 99,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "6272805ca36da2cc3df15d3519797266595da52cd1fba03576366b3f4e586739",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-001",
+      "route": "human",
+      "calls": 610,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 610,
+      "rng": 610,
+      "age": 161,
+      "level": 119,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "formal-special:4faca5d5-24c2-4b2a-9cf2-a09ada2f1e11:33d630",
+        "title": "命运结算",
+        "kind": "neutral",
+        "text": "选项3：你感受到神界的召唤，于是选择立即飞升，该存档在此结局，进入战力结算",
+        "finalStatus": "god",
+        "finalLevel": 119,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": {
+          "id": "16ed12",
+          "name": "食神",
+          "tier": "二级",
+          "levelCap": 119,
+          "levelBeforeAscension": 102,
+          "grantedAtAge": 141
+        }
+      },
+      "gods": [
+        {
+          "id": "16ed12",
+          "name": "食神"
+        },
+        {
+          "id": "16ed12",
+          "name": "食神"
+        }
+      ],
+      "finalSha256": "3a7411f63e90afa0a81f390269f1e7d87b3b5154a3d9220a1f83b4cceb0acf3b",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-002",
+      "route": "human",
+      "calls": 738,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 738,
+      "rng": 738,
+      "age": 201,
+      "level": 108,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "formal-special:506a6d84-5c59-4acd-b7bf-282cc4eede55:b312e5",
+        "title": "异界命运",
+        "kind": "neutral",
+        "text": "选项6：进入骑士王座的神域战斗，你的对手是超神机械师黑星（直接判定战败，达成穿越宇宙星海的结局）",
+        "finalStatus": "god",
+        "finalLevel": 108,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": {
+          "id": "d30217",
+          "name": "虎神",
+          "tier": "二级",
+          "levelCap": 119,
+          "levelBeforeAscension": 105,
+          "grantedAtAge": 200
+        }
+      },
+      "gods": [
+        {
+          "id": "d30217",
+          "name": "虎神"
+        },
+        {
+          "id": "d30217",
+          "name": "虎神"
+        }
+      ],
+      "finalSha256": "f9a02057237fc0d935658fd9f901793b6a0a2b7349719ec055a07e2529b3efe3",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-003",
+      "route": "human",
+      "calls": 113,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 113,
+      "rng": 113,
+      "age": 20,
+      "level": 3,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 3,
+        "finalBeastYears": 0,
+        "deathCause": "formal:20084e12-0625-4bb3-9d72-310e5c04af8c:dc4ef8",
+        "cause": "formal:20084e12-0625-4bb3-9d72-310e5c04af8c:dc4ef8",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "6db7c6bfe57de6b253d094a8048c30ff80cf8baab65e923184b5d47437ae5f5d",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-beast-004",
+      "route": "beast",
+      "calls": 1454,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "error": {
+        "code": "APK_POOL_HAS_NO_ELIGIBLE_OPTIONS",
+        "message": "APK pool \"ce286ca9-296f-471c-8f4f-701b9c7f6169\" has no eligible options.",
+        "details": {
+          "unresolved": []
+        }
+      },
+      "rollbackExact": true,
+      "phase": "boundary",
+      "finalRoute": "beast",
+      "history": 1453,
+      "rng": 1453,
+      "age": 383,
+      "level": 4,
+      "seaTrial": null,
+      "missing": [],
+      "ending": null,
+      "gods": [],
+      "finalSha256": "449da7ae345d93eecbc9b45131e52de391686cbff0d280fc858176584a0c26e2",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "typed-interruption"
+    },
+    {
+      "seed": "natural-sea-20261014-human-005",
+      "route": "human",
+      "calls": 767,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [
+        {
+          "call": 470,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "fd8ee6",
+          "age": 117,
+          "level": 109,
+          "seaGodEligibleBefore": false,
+          "existingGods": [
+            "a4290c",
+            "a4290c"
+          ]
+        },
+        {
+          "call": 510,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "c0156e",
+          "age": 125,
+          "level": 124,
+          "seaGodEligibleBefore": false,
+          "existingGods": [
+            "a4290c",
+            "fd8ee6",
+            "fd8ee6"
+          ]
+        },
+        {
+          "call": 707,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "d20e9c",
+          "age": 171,
+          "level": 166,
+          "seaGodEligibleBefore": false,
+          "existingGods": [
+            "a4290c",
+            "fd8ee6",
+            "c0156e",
+            "fcac00",
+            "1b35d8",
+            "1b35d8"
+          ]
+        }
+      ],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 767,
+      "rng": 767,
+      "age": 186,
+      "level": 170,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "formal-special:4faca5d5-24c2-4b2a-9cf2-a09ada2f1e11:33d630",
+        "title": "命运结算",
+        "kind": "neutral",
+        "text": "选项3：你感受到神界的召唤，于是选择立即飞升，该存档在此结局，进入战力结算",
+        "finalStatus": "god",
+        "finalLevel": 170,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": {
+          "id": "d20e9c",
+          "name": "枪神",
+          "tier": "一级",
+          "levelCap": 139,
+          "levelBeforeAscension": 170,
+          "grantedAtAge": 171
+        }
+      },
+      "gods": [
+        {
+          "id": "a4290c",
+          "name": "枯木之神"
+        },
+        {
+          "id": "fd8ee6",
+          "name": "罗刹神"
+        },
+        {
+          "id": "c0156e",
+          "name": "日轮神"
+        },
+        {
+          "id": "fcac00",
+          "name": "修罗神位考核"
+        },
+        {
+          "id": "1b35d8",
+          "name": "凤凰神"
+        },
+        {
+          "id": "d20e9c",
+          "name": "枪神"
+        },
+        {
+          "id": "d20e9c",
+          "name": "枪神"
+        }
+      ],
+      "finalSha256": "d85eb4b11debd0a55687c5582816a2c674e3d0bb9f4f698a96d77073f7b617d3",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-006",
+      "route": "human",
+      "calls": 757,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [
+        {
+          "call": 446,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "c04b5f",
+          "age": 109,
+          "level": 119,
+          "seaGodEligibleBefore": false,
+          "existingGods": [
+            "386bdf",
+            "386bdf"
+          ]
+        },
+        {
+          "call": 475,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "dfd4b4",
+          "age": 114,
+          "level": 130,
+          "seaGodEligibleBefore": false,
+          "existingGods": [
+            "386bdf",
+            "c04b5f",
+            "c04b5f"
+          ]
+        }
+      ],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 757,
+      "rng": 757,
+      "age": 188,
+      "level": 142,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "formal-special:4faca5d5-24c2-4b2a-9cf2-a09ada2f1e11:33d630",
+        "title": "命运结算",
+        "kind": "neutral",
+        "text": "选项3：你感受到神界的召唤，于是选择立即飞升，该存档在此结局，进入战力结算",
+        "finalStatus": "god",
+        "finalLevel": 142,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": {
+          "id": "bd75ea",
+          "name": "速度之神",
+          "tier": "二级",
+          "levelCap": 119,
+          "levelBeforeAscension": 142,
+          "grantedAtAge": 125
+        }
+      },
+      "gods": [
+        {
+          "id": "386bdf",
+          "name": "九彩神女"
+        },
+        {
+          "id": "c04b5f",
+          "name": "恶魔神"
+        },
+        {
+          "id": "dfd4b4",
+          "name": "火神"
+        },
+        {
+          "id": "bd75ea",
+          "name": "速度之神"
+        },
+        {
+          "id": "bd75ea",
+          "name": "速度之神"
+        }
+      ],
+      "finalSha256": "b1fb16be2488efc10cfe5bc745991e3c4e0d26bed53d438d06e9978563870236",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-007",
+      "route": "human",
+      "calls": 141,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 141,
+      "rng": 141,
+      "age": 24,
+      "level": 88,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 88,
+        "finalBeastYears": 0,
+        "deathCause": "formal:bbd711e9-fa95-47c1-856c-362dc34c0531:f3b2da",
+        "cause": "formal:bbd711e9-fa95-47c1-856c-362dc34c0531:f3b2da",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "51a0c8a4233fc6753adcce17929a98d721381a1fc5c839a4761eaa1c8aaba9a5",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-008",
+      "route": "human",
+      "calls": 91,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 91,
+      "rng": 91,
+      "age": 19,
+      "level": 16,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 16,
+        "finalBeastYears": 0,
+        "deathCause": "formal:d3b4c11b-9695-4601-8ff7-caf3fba5d7c9:e5e894",
+        "cause": "formal:d3b4c11b-9695-4601-8ff7-caf3fba5d7c9:e5e894",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "392acf773f6f2cf7ce37b02dcaf5c49600802446d964e6fe126bb52d5c356a43",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-beast-009",
+      "route": "beast",
+      "calls": 231,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "beast",
+      "history": 231,
+      "rng": 233,
+      "age": 0,
+      "level": 0,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "finalStatus": "dead",
+        "finalLevel": 0,
+        "finalBeastYears": 815000,
+        "deathCause": "突破80万年雷劫失败",
+        "cause": "突破80万年雷劫失败",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "67749ed92c84b261ff1a1be8aecad394c0d56d66f780abc4bab3924f7b44ba0c",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-010",
+      "route": "human",
+      "calls": 1282,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 1281,
+      "rng": 1281,
+      "age": 348,
+      "level": 99,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "douluo1:v10-human-natural-lifespan",
+        "title": "寿终",
+        "kind": "death",
+        "text": "享年348岁；最高修为99级。",
+        "finalStatus": "dead",
+        "finalLevel": 99,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "7483251d21ac83897a795ab2422634ca93d5f5d3b17fa633b1f83f28c933a50b",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-011",
+      "route": "human",
+      "calls": 90,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 90,
+      "rng": 90,
+      "age": 19,
+      "level": 14,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 14,
+        "finalBeastYears": 0,
+        "deathCause": "formal:20084e12-0625-4bb3-9d72-310e5c04af8c:2266ed",
+        "cause": "formal:20084e12-0625-4bb3-9d72-310e5c04af8c:2266ed",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "7ec087b3ec7f993dd37c2c5cd7f6f0db8fa8c47b70720872e8fc7cab84f62c76",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-012",
+      "route": "human",
+      "calls": 119,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [
+        {
+          "call": 95,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "dfd4b4",
+          "age": 16,
+          "level": 44,
+          "seaGodEligibleBefore": true,
+          "existingGods": []
+        }
+      ],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 119,
+      "rng": 119,
+      "age": 20,
+      "level": 55,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 55,
+        "finalBeastYears": 0,
+        "deathCause": "formal:20084e12-0625-4bb3-9d72-310e5c04af8c:c0fa0d",
+        "cause": "formal:20084e12-0625-4bb3-9d72-310e5c04af8c:c0fa0d",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "c3d58777671e7b2f75d82f991d75edc2dfa7785e4a719a3bdf7a2c4ca77dedf5",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-013",
+      "route": "human",
+      "calls": 188,
+      "target": false,
+      "checkpoints": [],
+      "entries": [
+        {
+          "call": 135,
+          "tier": "top",
+          "status": "qualified",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 88,
+          "missing": [],
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "63645f"
+        }
+      ],
+      "progress": [
+        {
+          "call": 135,
+          "tier": "top",
+          "status": "qualified",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 88,
+          "missing": [],
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "63645f"
+        },
+        {
+          "call": 136,
+          "tier": "top",
+          "status": "active",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 88,
+          "missing": [],
+          "poolId": "e05f293d-e2cd-4e78-ab58-6e15f3271015",
+          "optionId": "e1c989"
+        },
+        {
+          "call": 137,
+          "tier": "top",
+          "status": "active",
+          "stage": 2,
+          "claimed": [
+            1
+          ],
+          "age": 20,
+          "level": 88,
+          "missing": [],
+          "poolId": "98ec8151-10be-47bb-a9ba-5d5a21e53a80",
+          "optionId": "fea5eb"
+        },
+        {
+          "call": 162,
+          "tier": "top",
+          "status": "active",
+          "stage": 3,
+          "claimed": [
+            1,
+            2
+          ],
+          "age": 25,
+          "level": 93,
+          "missing": [],
+          "poolId": "b1eaf74a-0bf3-43a0-87e2-9db9fe31ff14",
+          "optionId": "2d5121"
+        },
+        {
+          "call": 163,
+          "tier": "top",
+          "status": "active",
+          "stage": 4,
+          "claimed": [
+            1,
+            2,
+            3
+          ],
+          "age": 25,
+          "level": 93,
+          "missing": [],
+          "poolId": "512a0527-bd6b-4fa1-81b7-b03a280685a2",
+          "optionId": "e6ddf9"
+        },
+        {
+          "call": 164,
+          "tier": "top",
+          "status": "active",
+          "stage": 5,
+          "claimed": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "age": 25,
+          "level": 93,
+          "missing": [],
+          "poolId": "e5215068-02ae-4160-9715-e4e31c80ed69",
+          "optionId": "de9732"
+        },
+        {
+          "call": 165,
+          "tier": "top",
+          "status": "active",
+          "stage": 6,
+          "claimed": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "age": 25,
+          "level": 95,
+          "missing": [],
+          "poolId": "579a1811-0afd-4311-a2d1-5e6948680b0c",
+          "optionId": "33609c"
+        },
+        {
+          "call": 166,
+          "tier": "top",
+          "status": "completed",
+          "stage": 6,
+          "claimed": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "age": 25,
+          "level": 95,
+          "missing": [],
+          "poolId": "61b6f2eb-f2d0-45fa-8638-aee05bf56201",
+          "optionId": "fc8b56"
+        }
+      ],
+      "entryDraws": [
+        {
+          "call": 135,
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "63645f",
+          "age": 20,
+          "level": 88,
+          "seaGodEligibleBefore": true,
+          "existingGods": []
+        }
+      ],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 188,
+      "rng": 188,
+      "age": 31,
+      "level": 101,
+      "seaTrial": {
+        "tier": "top",
+        "selection": {
+          "optionId": "63645f",
+          "text": "顶级五考"
+        },
+        "totalStages": 5,
+        "plannedStages": 5,
+        "currentStage": 6,
+        "completedStages": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "claimedRewardStages": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "claimedRewardOptionIds": [
+          "fea5eb",
+          "2d5121",
+          "e6ddf9",
+          "de9732",
+          "33609c"
+        ],
+        "status": "completed",
+        "startedAtAge": 20,
+        "completedAtAge": 25
+      },
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 101,
+        "finalBeastYears": 0,
+        "deathCause": "特殊成长结果",
+        "cause": "特殊成长结果",
+        "godhoodAtEnding": {
+          "id": "a4ffe7",
+          "name": "生命神位考核",
+          "tier": "神王",
+          "levelCap": 159,
+          "levelBeforeAscension": 99,
+          "grantedAtAge": 27
+        }
+      },
+      "gods": [
+        {
+          "id": "a4ffe7",
+          "name": "生命神位考核"
+        },
+        {
+          "id": "a4ffe7",
+          "name": "生命神位考核"
+        }
+      ],
+      "finalSha256": "6445610dc6d6653cef5be51077f4f411cb3c9a98c1b2d5809b8a9441e852e05b",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-beast-014",
+      "route": "beast",
+      "calls": 121,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "beast",
+      "history": 121,
+      "rng": 121,
+      "age": 0,
+      "level": 0,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "finalStatus": "dead",
+        "finalLevel": 0,
+        "finalBeastYears": 500040,
+        "deathCause": "突破50万年雷劫失败",
+        "cause": "突破50万年雷劫失败",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "8a606993d3c4d2720ae7bdbae9a3b55f846688fa3cfa0a3b8d3fe726aee263c2",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-015",
+      "route": "human",
+      "calls": 90,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 90,
+      "rng": 90,
+      "age": 19,
+      "level": 26,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 26,
+        "finalBeastYears": 0,
+        "deathCause": "formal:a4e873c1-9c2c-4d02-98cb-20bcd4bf6572:b8c88d",
+        "cause": "formal:a4e873c1-9c2c-4d02-98cb-20bcd4bf6572:b8c88d",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "9c5f39b3cc45cfb0673fb5373f14a9361fecf20bebb050681a4e44871171c872",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-016",
+      "route": "human",
+      "calls": 1091,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 1091,
+      "rng": 1091,
+      "age": 297,
+      "level": 109,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "formal-special:4faca5d5-24c2-4b2a-9cf2-a09ada2f1e11:33d630",
+        "title": "命运结算",
+        "kind": "neutral",
+        "text": "选项3：你感受到神界的召唤，于是选择立即飞升，该存档在此结局，进入战力结算",
+        "finalStatus": "god",
+        "finalLevel": 109,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": {
+          "id": "1382b6",
+          "name": "风暴之神",
+          "tier": "三级",
+          "levelCap": 109,
+          "levelBeforeAscension": 99,
+          "grantedAtAge": 283
+        }
+      },
+      "gods": [
+        {
+          "id": "1382b6",
+          "name": "风暴之神"
+        },
+        {
+          "id": "1382b6",
+          "name": "风暴之神"
+        }
+      ],
+      "finalSha256": "31ea4e1eee60a6f00a8677bc9d95a8ce2382165d9fa362a2a4301fec11d46715",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-017",
+      "route": "human",
+      "calls": 115,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 115,
+      "rng": 115,
+      "age": 17,
+      "level": 69,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 69,
+        "finalBeastYears": 0,
+        "deathCause": "formal:d3b4c11b-9695-4601-8ff7-caf3fba5d7c9:663933",
+        "cause": "formal:d3b4c11b-9695-4601-8ff7-caf3fba5d7c9:663933",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "6a58ed1f3e5523c8972b64c3cb134774b5bddea2ab0bef4ea45ebf68ba46878c",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-018",
+      "route": "human",
+      "calls": 591,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 591,
+      "rng": 591,
+      "age": 151,
+      "level": 168,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "formal-special:4faca5d5-24c2-4b2a-9cf2-a09ada2f1e11:33d630",
+        "title": "命运结算",
+        "kind": "neutral",
+        "text": "选项3：你感受到神界的召唤，于是选择立即飞升，该存档在此结局，进入战力结算",
+        "finalStatus": "god",
+        "finalLevel": 168,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": {
+          "id": "30ed89",
+          "name": "地龙神",
+          "tier": "二级",
+          "levelCap": 119,
+          "levelBeforeAscension": 168,
+          "grantedAtAge": 143
+        }
+      },
+      "gods": [
+        {
+          "id": "25823d",
+          "name": "星宿神位考核"
+        },
+        {
+          "id": "922669",
+          "name": "泉水之神"
+        },
+        {
+          "id": "30ed89",
+          "name": "地龙神"
+        },
+        {
+          "id": "30ed89",
+          "name": "地龙神"
+        }
+      ],
+      "finalSha256": "e7e70e3a1cd17fb8185945199dc73904a539cecc66da616606d855f979322311",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-beast-019",
+      "route": "beast",
+      "calls": 141,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "beast",
+      "history": 141,
+      "rng": 141,
+      "age": 0,
+      "level": 0,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "finalStatus": "dead",
+        "finalLevel": 0,
+        "finalBeastYears": 430120,
+        "deathCause": "突破40万年雷劫失败",
+        "cause": "突破40万年雷劫失败",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "74fe14855568c05905c52eed3f839e32b8b4b2860214a728abaec60e2ec5afb5",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-020",
+      "route": "human",
+      "calls": 654,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [
+        {
+          "call": 264,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "e58ec3",
+          "age": 66,
+          "level": 45,
+          "seaGodEligibleBefore": true,
+          "existingGods": []
+        },
+        {
+          "call": 620,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "ddb29f",
+          "age": 158,
+          "level": 129,
+          "seaGodEligibleBefore": false,
+          "existingGods": [
+            "e58ec3",
+            "e7aa95",
+            "e7aa95"
+          ]
+        }
+      ],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 654,
+      "rng": 654,
+      "age": 165,
+      "level": 139,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "formal-special:4faca5d5-24c2-4b2a-9cf2-a09ada2f1e11:33d630",
+        "title": "命运结算",
+        "kind": "neutral",
+        "text": "选项3：你感受到神界的召唤，于是选择立即飞升，该存档在此结局，进入战力结算",
+        "finalStatus": "god",
+        "finalLevel": 139,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": {
+          "id": "e7aa95",
+          "name": "防御之神",
+          "tier": "二级",
+          "levelCap": 119,
+          "levelBeforeAscension": 109,
+          "grantedAtAge": 128
+        }
+      },
+      "gods": [
+        {
+          "id": "e58ec3",
+          "name": "光明神"
+        },
+        {
+          "id": "e7aa95",
+          "name": "防御之神"
+        },
+        {
+          "id": "e7aa95",
+          "name": "防御之神"
+        }
+      ],
+      "finalSha256": "569e1ae7472bbd46afc3bc7c51dd99bd2c3566b393249ee77fcfaa3cd6dc8272",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-021",
+      "route": "human",
+      "calls": 226,
+      "target": false,
+      "checkpoints": [],
+      "entries": [
+        {
+          "call": 129,
+          "tier": "black",
+          "status": "qualified",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 82,
+          "missing": [],
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "0526f3"
+        }
+      ],
+      "progress": [
+        {
+          "call": 129,
+          "tier": "black",
+          "status": "qualified",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 82,
+          "missing": [],
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "0526f3"
+        },
+        {
+          "call": 130,
+          "tier": "black",
+          "status": "active",
+          "stage": 1,
+          "claimed": [],
+          "age": 20,
+          "level": 82,
+          "missing": [],
+          "poolId": "e05f293d-e2cd-4e78-ab58-6e15f3271015",
+          "optionId": "a7f3f2"
+        },
+        {
+          "call": 131,
+          "tier": "black",
+          "status": "active",
+          "stage": 2,
+          "claimed": [
+            1
+          ],
+          "age": 20,
+          "level": 82,
+          "missing": [],
+          "poolId": "a9d17a49-7539-4152-a420-600bcdae9b81",
+          "optionId": "b61166"
+        },
+        {
+          "call": 133,
+          "tier": "black",
+          "status": "active",
+          "stage": 3,
+          "claimed": [
+            1,
+            2
+          ],
+          "age": 20,
+          "level": 87,
+          "missing": [],
+          "poolId": "b8162c49-4a39-416e-959e-956abbc303ec",
+          "optionId": "c67792"
+        },
+        {
+          "call": 134,
+          "tier": "black",
+          "status": "active",
+          "stage": 4,
+          "claimed": [
+            1,
+            2,
+            3
+          ],
+          "age": 20,
+          "level": 91,
+          "missing": [],
+          "poolId": "934dfed7-15be-468d-9338-edcd6eae73ab",
+          "optionId": "b2bcce"
+        },
+        {
+          "call": 135,
+          "tier": "black",
+          "status": "active",
+          "stage": 5,
+          "claimed": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "age": 20,
+          "level": 91,
+          "missing": [],
+          "poolId": "234eae00-fa3a-4f57-ac34-6e2dc68d0770",
+          "optionId": "fda1f1"
+        },
+        {
+          "call": 136,
+          "tier": "black",
+          "status": "completed",
+          "stage": 5,
+          "claimed": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "age": 20,
+          "level": 91,
+          "missing": [],
+          "poolId": "4c0d5357-421f-4e34-a878-18c8562587e1",
+          "optionId": "005bed"
+        }
+      ],
+      "entryDraws": [
+        {
+          "call": 129,
+          "poolId": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+          "optionId": "0526f3",
+          "age": 20,
+          "level": 82,
+          "seaGodEligibleBefore": true,
+          "existingGods": []
+        }
+      ],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 226,
+      "rng": 226,
+      "age": 43,
+      "level": 99,
+      "seaTrial": {
+        "tier": "black",
+        "selection": {
+          "optionId": "0526f3",
+          "text": "黑级四考"
+        },
+        "totalStages": 4,
+        "plannedStages": 4,
+        "currentStage": 5,
+        "completedStages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "claimedRewardStages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "claimedRewardOptionIds": [
+          "b61166",
+          "c67792",
+          "b2bcce",
+          "fda1f1"
+        ],
+        "status": "completed",
+        "startedAtAge": 20,
+        "completedAtAge": 20
+      },
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 99,
+        "finalBeastYears": 0,
+        "deathCause": "特殊成长结果",
+        "cause": "特殊成长结果",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "ee1072fb382f3b7b805e5ba9e8473477ddcf0195e9a3f4b86aaefb955ab3d5c7",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-022",
+      "route": "human",
+      "calls": 78,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 78,
+      "rng": 78,
+      "age": 19,
+      "level": 16,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "text": null,
+        "finalStatus": "dead",
+        "finalLevel": 16,
+        "finalBeastYears": 0,
+        "deathCause": "formal:a4e873c1-9c2c-4d02-98cb-20bcd4bf6572:b8c88d",
+        "cause": "formal:a4e873c1-9c2c-4d02-98cb-20bcd4bf6572:b8c88d",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "cbc983187ccb58da678d2af9721e8a1072e20a20a37bed18aee1e39c11ec0745",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-023",
+      "route": "human",
+      "calls": 571,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "human",
+      "history": 570,
+      "rng": 570,
+      "age": 158,
+      "level": 7,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "douluo1:v10-human-natural-lifespan",
+        "title": "寿终",
+        "kind": "death",
+        "text": "享年158岁；最高修为13级。",
+        "finalStatus": "dead",
+        "finalLevel": 7,
+        "finalBeastYears": 0,
+        "deathCause": null,
+        "cause": null,
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "0b131e692e8569c09c1acff8e02974630c1685caecbc1b7e4b5bb93b1e843410",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-beast-024",
+      "route": "beast",
+      "calls": 98,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [],
+      "transformedAt": null,
+      "phase": "completed",
+      "finalRoute": "beast",
+      "history": 98,
+      "rng": 98,
+      "age": 0,
+      "level": 0,
+      "seaTrial": null,
+      "missing": [],
+      "ending": {
+        "id": "death",
+        "title": "陨落",
+        "kind": "death",
+        "finalStatus": "dead",
+        "finalLevel": 0,
+        "finalBeastYears": 330710,
+        "deathCause": "你被唐三猎杀，成为昊天锤的魂环（四十万年魂兽可以逃走，4万年以下没资格则重抽，若在事件一中救下阿银，则无事发生，并获得唐三赠予的海神印记，可以抵挡一次死劫）",
+        "cause": "你被唐三猎杀，成为昊天锤的魂环（四十万年魂兽可以逃走，4万年以下没资格则重抽，若在事件一中救下阿银，则无事发生，并获得唐三赠予的海神印记，可以抵挡一次死劫）",
+        "godhoodAtEnding": null
+      },
+      "gods": [],
+      "finalSha256": "e41cab6db139a7443c081faaf45075f45e513403bcaef0e5c8ebca34d857a2b6",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "real-ending"
+    },
+    {
+      "seed": "natural-sea-20261014-human-025",
+      "route": "human",
+      "calls": 1179,
+      "target": false,
+      "checkpoints": [],
+      "entries": [],
+      "progress": [],
+      "entryDraws": [
+        {
+          "call": 1024,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "dfd4b4",
+          "age": 278,
+          "level": 96,
+          "seaGodEligibleBefore": true,
+          "existingGods": []
+        },
+        {
+          "call": 1074,
+          "poolId": "0025071b-4c37-4013-b2b7-43750819e528",
+          "optionId": "a84362",
+          "age": 286,
+          "level": 101,
+          "seaGodEligibleBefore": false,
+          "existingGods": [
+            "dfd4b4",
+            "399ea2",
+            "399ea2"
+          ]
+        }
+      ],
+      "transformedAt": null,
+      "phase": "ready",
+      "finalRoute": "human",
+      "history": 1179,
+      "rng": 1179,
+      "age": 312,
+      "level": 149,
+      "seaTrial": null,
+      "missing": [],
+      "ending": null,
+      "gods": [
+        {
+          "id": "dfd4b4",
+          "name": "火神"
+        },
+        {
+          "id": "399ea2",
+          "name": "雀神"
+        },
+        {
+          "id": "a84362",
+          "name": "剑神（剑类武魂限定，否则重抽）"
+        },
+        {
+          "id": "a84362",
+          "name": "剑神（剑类武魂限定，否则重抽）"
+        }
+      ],
+      "finalSha256": "140ea0ebf69fc29755ffde0b67269aa005af4fd72b652a5a21c55dda743ba339",
+      "seaGodQualified": false,
+      "seaGodComplete": false,
+      "yellowQualified": false,
+      "yellowComplete": false,
+      "stopReason": "global-budget"
+    }
+  ]
+}

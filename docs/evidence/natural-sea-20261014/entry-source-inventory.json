@@ -1,0 +1,251 @@
+{
+  "note": "Read-only source inventory, not natural or effective candidate coverage.",
+  "pools": [
+    {
+      "id": "0025071b-4c37-4013-b2b7-43750819e528",
+      "name": "一级神考抽取池（一级神一共9考）",
+      "totalRawWeight": 17,
+      "options": [
+        {
+          "id": "ddb29f",
+          "text": "雷神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "94cc96",
+          "text": "海神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "dfd4b4",
+          "text": "火神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "c2b5d3",
+          "text": "天使神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "fd8ee6",
+          "text": "罗刹神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "029dc0",
+          "text": "情绪之神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "bc69a4",
+          "text": "死神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "b0336d",
+          "text": "自然女神（女性限定，否则重抽）",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "a84362",
+          "text": "剑神（剑类武魂限定，否则重抽）",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "9ea458",
+          "text": "斗神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "05491f",
+          "text": "月神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "c0156e",
+          "text": "日轮神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "c04b5f",
+          "text": "恶魔神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "e58ec3",
+          "text": "光明神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "69af6a",
+          "text": "刀神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "d20e9c",
+          "text": "枪神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "398866",
+          "text": "弓神",
+          "weight": 1,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        }
+      ]
+    },
+    {
+      "id": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+      "name": "（唐三20岁限定）剧情24:在海神岛获得的考核是（选择完后请去抽取剧情25后，再抽取对应的考核奖励）",
+      "totalRawWeight": 150,
+      "options": [
+        {
+          "id": "5d05d2",
+          "text": "黑级五考",
+          "weight": 15,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "5ba6b5",
+          "text": "顶级七考",
+          "weight": 10,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "ce73f6",
+          "text": "顶级八考",
+          "weight": 10,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "d58e35",
+          "text": "海神九考（请移步去旁边的标签“神考获取池”，按照一级神考的奖励完成神考）",
+          "weight": 5,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "be71d9",
+          "text": "黑级六考",
+          "weight": 15,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "0526f3",
+          "text": "黑级四考",
+          "weight": 15,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "ed9a24",
+          "text": "顶级四考",
+          "weight": 15,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "63645f",
+          "text": "顶级五考",
+          "weight": 20,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "4ba221",
+          "text": "顶级六考",
+          "weight": 20,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "55f1a1",
+          "text": "紫级五考",
+          "weight": 10,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "5ad644",
+          "text": "黄级四考",
+          "weight": 5,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        },
+        {
+          "id": "b80195",
+          "text": "紫级四考",
+          "weight": 10,
+          "enabled": true,
+          "requirements": [],
+          "rerollWhen": []
+        }
+      ]
+    }
+  ]
+}

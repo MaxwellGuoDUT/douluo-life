@@ -4,23 +4,17 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { pathToFileURL } from "node:url";
+import { resolveSourceVault } from './source-vault.mjs';
 
 const ROOT = process.cwd();
 const OUTPUT_ROOT = path.join(ROOT, "data", "v10");
 const CHECK_ONLY = process.argv.includes("--check");
 const VAULT_ARG_INDEX = process.argv.indexOf("--vault");
-const DEFAULT_VAULT = path.join(
-    path.dirname(ROOT),
-    "douluo-life-source-vault",
-    "5ba6453",
-    "apk-analysis",
-    "E4FB340E"
-);
-const VAULT_ROOT = path.resolve(
-    VAULT_ARG_INDEX >= 0 ? process.argv[VAULT_ARG_INDEX + 1] : (
-        process.env.DOULUO_SOURCE_VAULT || DEFAULT_VAULT
-    )
-);
+if (VAULT_ARG_INDEX >= 0 && (!process.argv[VAULT_ARG_INDEX + 1] || process.argv[VAULT_ARG_INDEX + 1].startsWith('--'))) {
+    throw new Error('--vault requires a path');
+}
+const VAULT_ROOT = resolveSourceVault({ root: ROOT,
+    configured: VAULT_ARG_INDEX >= 0 ? process.argv[VAULT_ARG_INDEX + 1] : process.env.DOULUO_SOURCE_VAULT }).path;
 const SOURCE_ROOT = path.join(VAULT_ROOT, "derived", "pretty");
 const PACKS = Object.freeze([
     Object.freeze({ id: "douluo1", module: "douluo1-pack-C6xEgEus.js" }),

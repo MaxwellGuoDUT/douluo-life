@@ -1,5 +1,7 @@
 import { V10_GOD_TRIAL_CONTENT } from "./v10-god-trial-runtime.js";
 import { createApkCharacterState } from "./apk-rule-runtime.js";
+import { packName, routeName } from './v10-experience.js';
+import { actualAgeText } from './v10-display.js';
 // One atomic localStorage value per slot. No migration or writes on startup.
 export const SAVE_PREFIX = "douluo-life:v10:manual:1:";
 export const MAX_SAVE_BYTES = 4 * 1024 * 1024;
@@ -74,18 +76,19 @@ function validateShape(envelope) {
 
 export function saveSummary(snapshot) {
     const { character, history } = snapshot.session;
-    return `${snapshot.packId} · ${character.route} · ${character.route === "beast" ? `${character.beastYears}年` : `${character.age}岁`} · 等级${character.level} · ${history.length}次提交 · ${character.ending?.title ?? (snapshot.session.finished ? "终局" : "进行中")}`;
+    const identity = character.route==='beast' ? character.beast?.species?.text : (character.martialSouls ?? []).map(s=>s.name ?? s.text).filter(Boolean).join(' / ');
+    return `${packName(snapshot.packId)} · ${routeName(character.route)} · ${actualAgeText(character)} · ${character.route === 'beast' ? `修为${character.beastYears}年` : `等级${character.level}`} · ${identity || '身份未记录'} · ${history.length}次提交 · ${character.ending?.title ?? (snapshot.session.finished ? "终局" : "进行中")} · seed ${snapshot.seed}`;
 }
 
 export function createV10SaveStore({ contentLoader, runner, storage = () => globalThis.localStorage }) {
     const identities = new Map();
     async function identity(packId, route) {
-        const identityKey = packId === "douluo1" && route === "human" ? `${packId}:human:second-tier` : packId;
+        const identityKey = packId;
         if (!identities.has(identityKey)) {
             const graph = await contentLoader.getRouteGraph(packId);
             const human = packId === "douluo1" ? await contentLoader.getHumanRuntimeContent() : null;
             const content = [SCHEMA, graph, human];
-            if (packId === "douluo1" && route === "human") content.push(V10_GOD_TRIAL_CONTENT);
+            if (packId === "douluo1") content.push(V10_GOD_TRIAL_CONTENT);
             const bytes = new TextEncoder().encode(JSON.stringify(content));
             const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
             identities.set(identityKey, Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join(""));
@@ -135,20 +138,22 @@ export function createV10SaveStore({ contentLoader, runner, storage = () => glob
             if (text === null) reject("SAVE_EMPTY", "该槽位为空。");
             return (await validate(text)).restored;
         },
-        async exportSlot(slot) {
+        async exportSlot(slot, { rawBackup = false } = {}) {
             const text = raw(slot);
             if (text === null) reject("SAVE_EMPTY", "该槽位为空。");
-            await validate(text);
+            // Recovery export preserves the stored text even when it cannot be loaded.
+            if (!rawBackup) await validate(text);
             return text;
         },
         async write(slot, text, { expected = null, overwrite = false } = {}) {
             const name = key(slot);
-            await validate(text);
+            const {snapshot} = await validate(text);
             const before = raw(slot);
             if (before !== expected) reject("SAVE_SLOT_CHANGED", "槽位内容已变化，请重新选择并确认。");
             if (before !== null && !overwrite) reject("SAVE_OVERWRITE_REQUIRED", "该槽已有存档，必须明确确认覆盖。");
             try { storage().setItem(name, text); }
             catch (error) { reject("SAVE_WRITE_FAILED", `保存失败（${error.name ?? "存储错误"}）；原槽位保持不变。`); }
+            return {slot,summary:saveSummary(snapshot)};
         }
     });
 }
