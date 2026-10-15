@@ -1,0 +1,25 @@
+diff --git a/docs/evidence/V10_ASCENSION_CLOSURE_2026-09-30.md b/docs/evidence/V10_ASCENSION_CLOSURE_2026-09-30.md
+index 40576d2..8efa4dc 100644
+--- a/docs/evidence/V10_ASCENSION_CLOSURE_2026-09-30.md
++++ b/docs/evidence/V10_ASCENSION_CLOSURE_2026-09-30.md
+@@ -1829,3 +1829,20 @@ npm.cmd test -- --test-reporter=spec：退出0；306个测试，306通过，0失
+ 负责人在第38节精确候选、更新说明和发布前检查完成后，明确回复“授权”，允许按已审查19条路径执行提交、推送、PR/新候选CI、合并main、Pages及v1.0.1 tag/Release。该明确后续授权解除此前针对这些操作的禁止边界；不解除D盘实施、混合材料覆盖、玩法/搜索扩展或无关路径限制。
+ 
+ 开始现场再次核对同一W/branch/HEAD，12条tracked及原untracked集合保持，暂存区为空，适用AGENTS为空。远端main仍为15ff8ee42e27785b7de87760d2ebe55cb6e373b1；当前分支无既有PR；tag列表中无v1.0.1。复用第38节刚完成的306/306完整回归，不重复全量测试或主人生验收。实际发布结果以随后候选SHA、PR、新CI、合并SHA、Pages和Release独立回执为准，本段不预写成功。
++
++### 39.1 实际正式发布回执
++
++正式发布已完成。候选提交1e6805fde64eaa6cfeb0b6a0da2f74a13cba8b63仅含授权19条路径；PR #14（https://github.com/MaxwellGuoDUT/douluo-life/pull/14）已挂接当前任务并于2026-10-02T20:17:40Z合并。main合并提交195025c33c22c46ea818252d3dc5ea54589150c6，tree=247b62beacf920f8df841ff4c4649121ac48e26d，与候选tree完全相等。保留原分支，没有切换/清理owner工作树。
++
++- PR CI 37059062092：success，候选SHA1e6805f；日志306测试/306通过/0失败。
++- main CI 37059643265：success，合并SHA195025c；日志306测试/306通过/0失败。watcher一次unexpected EOF仅是查询连接中断，读取原运行最终成功，没有重跑CI或本地套件。
++- Pages 37059642492：success，同合并SHA；build、report-build-status和deploy通过。Pages builds/latest为built、commit195025c；deployment6817432444最后status=success，environment=github-pages。
++- 公开文件验证：v10.html、css/v10.css、js/v10-app.js、js/v10-god-trial-runtime.js、js/v10-life-runner.js、js/v10-human-runner.js、js/v10-save-store.js、js/apk-route-runtime.js、js/apk-rule-runtime.js、js/apk-scheduler-runtime.js全部HTTP200，响应字节与195025c Git blob的SHA256相等。此为新部署身份/文件证据，不用HTTP200代替玩法验收。
++- Browser公开首页：独立新标签打开https://maxwellguodut.github.io/douluo-life/v10.html，斗罗大陆标题、顶部入口及斗一/斗二的人类/魂兽四个选择入口正常加载，status显示双包内容就绪，error日志为空。保留为交付标签；没有操作负责人8791会话、写存档或重复主人生。负责人UI验收仍为本轮发布前已通过的独立证据，不代签新的全路线公开验收。
++- tag v1.0.1直接指向195025c33c22c46ea818252d3dc5ea54589150c6；正式Release非draft、非prerelease，标题“斗罗人生模拟器 V1.0.1：界面与人生流程修复”，publishedAt=2026-10-02T20:22:28Z，URL=https://github.com/MaxwellGuoDUT/douluo-life/releases/tag/v1.0.1。旧v1.0.0仍指向15ff8ee42e27785b7de87760d2ebe55cb6e373b1，未覆盖。
++
++正式游戏地址：https://maxwellguodut.github.io/douluo-life/v10.html。根index旧入口不在本轮修改范围，发布说明明确使用/v10.html。
++
++消融收尾：除候选与本回执外无新实现、框架、包或版本元数据修改；未重跑本地306套件、vault、1359步、seed/神考搜索或下载/截图回执。PR/main两次自动CI是既有发布工作流，不增加新的测试层。源vault条件检查未执行、未完整神考范围和旧斗一人类存档可能拒绝等限制继续保留在Release说明，不把绿CI或Pages说成全源闭环。
++
++本回执在发布后仅追加本地唯一报告，未为收尾再生成文档提交/新PR/重复CI；因此本地仅该报告有追加未提交差异，暂存区为空。其余原未跟踪审计输入和四份任务书原地保留，不进入发布或删除。远端生产内容、tag/Release与上述已验证SHA保持一致。

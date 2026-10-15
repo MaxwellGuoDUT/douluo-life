@@ -1,3 +1,4 @@
+import { playerTraitName } from './v10-player-names.js';
 import { V10_GOD_TRIAL_STAGES } from './v10-god-trial-runtime.js';
 import { seaGodMissing } from './v10-sea-god-runtime.js';
 // Match the source UI: pure beast time uses chronologicalAge; transformed humans use age.
@@ -169,7 +170,7 @@ export function createV10Display(gameFields, document = globalThis.document) {
         renderDetailList("human-talents", [
             ...(character.talents ?? []).map(talent => `天赋：${entryName(talent)}`),
             ...(character.martialSoulTalents ?? []).map(talent => `武魂天赋：${entryName(talent)}`),
-            ...(character.traits ?? []).map(trait => `特质：${entryName(trait)}`)
+            ...(character.traits ?? []).map(trait => `特质：${playerTraitName(trait)}`)
         ]);
         renderDetailList("human-skills", [
             ...(character.skills ?? []).map(skill => `技能：${entryName(skill)}${Number.isFinite(skill?.level) ? ` · ${skill.level}级` : ""}`),

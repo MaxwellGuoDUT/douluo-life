@@ -1,0 +1,7 @@
+warning: in the working copy of 'docs/evidence/V10_ASCENSION_CLOSURE_2026-09-30.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'css/v10.css', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'docs/evidence/V10_ASCENSION_CLOSURE_2026-09-30.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'js/apk-scheduler-runtime.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test/v10-sea-god.test.js', CRLF will be replaced by LF the next time Git touches it
+{"browserSnapshots":14,"bytePreservationPairs":7,"naturalCountedCalls":53500,"naturalComplete":1,"yellowComplete":0,"ownerDiffPreserved":true,"stageEmpty":true,"freshStarts":246,"startBudgetExceededBy":6}

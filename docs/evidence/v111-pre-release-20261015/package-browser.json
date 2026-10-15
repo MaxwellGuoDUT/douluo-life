@@ -1,0 +1,295 @@
+{
+  "url": "http://127.0.0.1:8771/",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "width": 691,
+  "height": 635,
+  "scrollWidth": 676,
+  "sourceStyleIntegrity": "sha384-ficGWIaaFhkKEKTpH/w4Fjw8xdfaWXfIPctaZVBdJMRJiRxQm+iHXlZ3ZLpkwFup",
+  "resources": [
+    {
+      "url": "http://127.0.0.1:8771/css/v10.css?v=e67b5fab619cc6085805",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/source-runtime/App-B4anXMNi.css",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-app.js?v=c1dbea567bb864abe5b1",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-content-loader.js?v=e0f27ba5e1ec9813bd59",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-life-runner.js?v=fdad9da26734adb7a111",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-save-store.js?v=95c7ec7b1fe791169138",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-display.js?v=6d3477200b04ef7877c2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-history-view.js?v=012bc06e1253efd791aa",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-experience.js?v=e89c84a9ab922e1f8515",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-asset-fetch.js?v=17fd2592506a402ef8eb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/production-content-loader.js?v=9c048432a1cf633e59ae",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-god-trial-runtime.js?v=56e4705e64b201132c1b",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-human-runner.js?v=596f120158d06ed5f4cd",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/apk-rule-runtime.js?v=4d61ad9dcb9c2ae24b14",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-sea-god-runtime.js?v=9122caab788b0ae8766c",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-player-names.js?v=2b08f93889b69c387750",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/apk-content-adapter.js?v=369c66c28f59435b7b5c",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-god-trial-data.js?v=a54cc0cbd35549a624a5",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v10-sea-trial-data.js?v=3ee5d0156b568855795b",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/player-v2.js?v=205ca0fe0b31a2b3dfc7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v05-demo.js?v=3ed05b571fd56ab46315",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/apk-route-runtime.js?v=a8ad6ef0a22fd7f992b8",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/apk-combat-power-runtime.js?v=22798b659d906fbc0e23",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/apk-scheduler-runtime.js?v=1c21ad45349e2fa2c013",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v05-wheel-view.js?v=748bd327de28df7825bc",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v05-life-presentation.js?v=ac87bff55f9916e1fcf1",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/v05-destiny-cohort.js?v=b146d82f98ab0683602e",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/js/apk-special-growth-runtime.js?v=eb8cd5c0a1955ed48b29",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/source-manifest.json?v=acd7c34e309a0a3ed725",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/route-graph.douluo1.json?v=40274c86f01e22874772",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/production-entry.json?v=6afc0a117dd7471fd4dd",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/package-index.json?v=364ab624a626a3be7aa1",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/package-policy.json?v=7428f26dba268ecf5eb7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/route-graph.douluo1.json?v=4542b167b5647e728faa",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json?v=f8f24dafed6828c17633",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json?v=195adada8df45eb9fbd7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json?v=4c507dbdc868cc8fb77c",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json?v=0a7964894ee7b2a5c06d",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/combat-power-runtime-evidence.json?v=a6b281065e8045c4df3d",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json?v=1b691d59a3ed8621f966",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/supported-destinies.json?v=2a8072c6287bed320043",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/production-entry.json?v=6afc0a117dd7471fd4dd",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/source-runtime/douluo1-pack-C6xEgEus.js?v=cbcfb0805bb389c44473",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/package-index.json?v=364ab624a626a3be7aa1",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/package-policy.json?v=7428f26dba268ecf5eb7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/route-graph.douluo1.json?v=4542b167b5647e728faa",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/source-runtime/App-qyLEl8t4.js?v=7521dc1921b464f5ac90",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/source-runtime/human-foundation-CduvzjjO.js?v=95ba0e26cb96debc77d7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/source-runtime/index-C02WUcAm.js?v=92a7d3ce21e7e6d301cb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json?v=f8f24dafed6828c17633",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v10/source-runtime/App-qyLEl8t4.js",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json?v=195adada8df45eb9fbd7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json?v=4c507dbdc868cc8fb77c",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json?v=0a7964894ee7b2a5c06d",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/combat-power-runtime-evidence.json?v=a6b281065e8045c4df3d",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json?v=1b691d59a3ed8621f966",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/supported-destinies.json?v=2a8072c6287bed320043",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/production-entry.json?v=6afc0a117dd7471fd4dd",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/package-index.json?v=364ab624a626a3be7aa1",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/package-policy.json?v=7428f26dba268ecf5eb7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/route-graph.douluo1.json?v=4542b167b5647e728faa",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json?v=f8f24dafed6828c17633",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json?v=195adada8df45eb9fbd7",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json?v=4c507dbdc868cc8fb77c",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json?v=0a7964894ee7b2a5c06d",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/combat-power-runtime-evidence.json?v=a6b281065e8045c4df3d",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json?v=1b691d59a3ed8621f966",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8771/data/v05-rc/supported-destinies.json?v=2a8072c6287bed320043",
+      "status": 200
+    }
+  ],
+  "traits": "武魂天赋：器武魂特质：十万年魂兽化形特质：冰元素 · 极致属性特质：生命元素 · 极致属性特质：火元素 · 极致属性",
+  "allObservedResourcesCovered": true,
+  "originalFile": "mobile-long-before.json",
+  "history": 201,
+  "rawExportBytesEqual": true,
+  "rawSha256": "741a32457766c7e55581ff434c5a8c3785c2b915805cb1ca5c3e1ff30ceb6d0f",
+  "refreshDidNotAutoRestore": true,
+  "explicitReadRestored": true,
+  "cssMismatchStoppedStartup": true,
+  "cssFaultState": "- main:\n  - heading \"斗罗大陆\" [level=1]\n  - paragraph: 当前人生种子 尚未开始\n  - navigation \"人生操作\":\n    - button \"新命运\"\n    - button \"角色\"\n    - button \"记事\"\n    - button \"存档\"\n  - generic \"种子与路线\"\n  - status: 资源版本不一致或加载失败，已停止启动。原槽位保留；请重新打开页面后备份原始存档。\n  - status: 开局前请了解：只有手动保存或导出才会保留人生；刷新后需主动读档。部分内容遇到运行时边界会中断。\n  - region \"内容包\"\n  - generic \"可玩范围与说明\"\n  - paragraph: 纯前端版本 · 手动本地8槽 · 请主动导出备份\n  - button \"复制问题信息\"\n  - status\n  - generic \"查看问题信息（最近5条，不含完整存档）\"",
+  "targetFreshStarts": 0,
+  "productionAdvanceCalls": 0,
+  "consoleErrors": []
+}

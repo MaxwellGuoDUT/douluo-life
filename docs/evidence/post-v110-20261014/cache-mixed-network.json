@@ -1,0 +1,1849 @@
+{
+  "cursor": 192,
+  "events": [
+    {
+      "sequence": 33,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": true,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "1B833341E1B606C2343BFFAD22F535EB",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 20300,
+          "connectionReused": true,
+          "encodedDataLength": 209,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "Content-Length": "14246",
+            "Content-Type": "text/html",
+            "Date": "Wed, 14 Oct 2026 12:20:43 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "local-current"
+          },
+          "mimeType": "text/html",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980443759.511,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 2.658,
+            "receiveHeadersStart": 2.487,
+            "requestTime": 14043.721201,
+            "sendEnd": 0.766,
+            "sendStart": 0.677,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/"
+        },
+        "timestamp": 14043.726161,
+        "type": "Document"
+      }
+    },
+    {
+      "sequence": 41,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.76"
+      }
+    },
+    {
+      "sequence": 42,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.76",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19939,
+          "connectionReused": true,
+          "encodedDataLength": 8311,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "8099",
+            "Content-Type": "text/css",
+            "Date": "Wed, 14 Oct 2026 12:20:07 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/css",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408024.014,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 98.765,
+            "receiveHeadersStart": 98.565,
+            "requestTime": 14007.889627,
+            "sendEnd": 0.66,
+            "sendStart": 0.574,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/css/v10.css"
+        },
+        "timestamp": 14043.73263,
+        "type": "Stylesheet"
+      }
+    },
+    {
+      "sequence": 46,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.77"
+      }
+    },
+    {
+      "sequence": 47,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.77",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19953,
+          "connectionReused": false,
+          "encodedDataLength": 39105,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "38885",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408101.096,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": 8.548,
+            "connectStart": 7.716,
+            "dnsEnd": 7.716,
+            "dnsStart": 7.694,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 175.693,
+            "receiveHeadersStart": 175.473,
+            "requestTime": 14007.8898,
+            "sendEnd": 8.686,
+            "sendStart": 8.636,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v10-app.js"
+        },
+        "timestamp": 14043.732694,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 57,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.80"
+      }
+    },
+    {
+      "sequence": 58,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.80",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19953,
+          "connectionReused": true,
+          "encodedDataLength": 5862,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "5643",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408181.163,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 77.171,
+            "receiveHeadersStart": 76.959,
+            "requestTime": 14008.068381,
+            "sendEnd": 1.662,
+            "sendStart": 1.617,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v10-content-loader.js"
+        },
+        "timestamp": 14043.765897,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 62,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.81"
+      }
+    },
+    {
+      "sequence": 63,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.81",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19939,
+          "connectionReused": true,
+          "encodedDataLength": 2947,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "2728",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408258.659,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 154.227,
+            "receiveHeadersStart": 154.058,
+            "requestTime": 14008.068779,
+            "sendEnd": 1.332,
+            "sendStart": 1.302,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v10-life-runner.js"
+        },
+        "timestamp": 14043.765968,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 67,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.82"
+      }
+    },
+    {
+      "sequence": 68,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.82",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19969,
+          "connectionReused": false,
+          "encodedDataLength": 9792,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "9573",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408334.668,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": 1.598,
+            "connectStart": 0.395,
+            "dnsEnd": 0.395,
+            "dnsStart": 0.383,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 230.103,
+            "receiveHeadersStart": 229.903,
+            "requestTime": 14008.068942,
+            "sendEnd": 1.688,
+            "sendStart": 1.666,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v10-save-store.js"
+        },
+        "timestamp": 14043.766031,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 72,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.83"
+      }
+    },
+    {
+      "sequence": 73,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.83",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19973,
+          "connectionReused": false,
+          "encodedDataLength": 36086,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "35866",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408426.476,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": 1.517,
+            "connectStart": 1.102,
+            "dnsEnd": 1.102,
+            "dnsStart": 1.095,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 321.777,
+            "receiveHeadersStart": 321.597,
+            "requestTime": 14008.069056,
+            "sendEnd": 1.617,
+            "sendStart": 1.598,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v10-god-trial-runtime.js"
+        },
+        "timestamp": 14043.766071,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 77,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.84"
+      }
+    },
+    {
+      "sequence": 78,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.84",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19953,
+          "connectionReused": true,
+          "encodedDataLength": 9124,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "8905",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408509.053,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 325.989,
+            "receiveHeadersStart": 325.76,
+            "requestTime": 14008.14747,
+            "sendEnd": 0.322,
+            "sendStart": 0.276,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/production-content-loader.js"
+        },
+        "timestamp": 14043.76632,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 82,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.85"
+      }
+    },
+    {
+      "sequence": 83,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.85",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19939,
+          "connectionReused": true,
+          "encodedDataLength": 32100,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "31880",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408597.301,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 337.008,
+            "receiveHeadersStart": 336.747,
+            "requestTime": 14008.224731,
+            "sendEnd": 0.505,
+            "sendStart": 0.416,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v10-human-runner.js"
+        },
+        "timestamp": 14043.766427,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 87,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.86"
+      }
+    },
+    {
+      "sequence": 88,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.86",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19969,
+          "connectionReused": true,
+          "encodedDataLength": 60506,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "60286",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408683.533,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 346.955,
+            "receiveHeadersStart": 346.78,
+            "requestTime": 14008.30093,
+            "sendEnd": 0.328,
+            "sendStart": 0.286,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/apk-rule-runtime.js"
+        },
+        "timestamp": 14043.76654,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 92,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.87"
+      }
+    },
+    {
+      "sequence": 93,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.87",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19953,
+          "connectionReused": true,
+          "encodedDataLength": 25771,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "25551",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408760.357,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 250.023,
+            "receiveHeadersStart": 249.223,
+            "requestTime": 14008.475312,
+            "sendEnd": 0.352,
+            "sendStart": 0.305,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/apk-content-adapter.js"
+        },
+        "timestamp": 14043.772437,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 97,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.88"
+      }
+    },
+    {
+      "sequence": 98,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.88",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19939,
+          "connectionReused": true,
+          "encodedDataLength": 16598,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "16378",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408844.133,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 244.182,
+            "receiveHeadersStart": 243.991,
+            "requestTime": 14008.56432,
+            "sendEnd": 0.481,
+            "sendStart": 0.43,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v05-demo.js"
+        },
+        "timestamp": 14043.772643,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 102,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.89"
+      }
+    },
+    {
+      "sequence": 103,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.89",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19973,
+          "connectionReused": true,
+          "encodedDataLength": 102423,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "102202",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980408934.531,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 334.404,
+            "receiveHeadersStart": 334.201,
+            "requestTime": 14008.564507,
+            "sendEnd": 0.863,
+            "sendStart": 0.831,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/apk-route-runtime.js"
+        },
+        "timestamp": 14043.772718,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 107,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.90"
+      }
+    },
+    {
+      "sequence": 108,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.90",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 20004,
+          "connectionReused": false,
+          "encodedDataLength": 30646,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "30426",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409026.925,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": 1.221,
+            "connectStart": 0.783,
+            "dnsEnd": 0.783,
+            "dnsStart": 0.775,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 426.71,
+            "receiveHeadersStart": 426.477,
+            "requestTime": 14008.564625,
+            "sendEnd": 1.273,
+            "sendStart": 1.252,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/apk-scheduler-runtime.js"
+        },
+        "timestamp": 14043.772766,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 112,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.91"
+      }
+    },
+    {
+      "sequence": 113,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.91",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 20009,
+          "connectionReused": false,
+          "encodedDataLength": 7550,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "7331",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:08 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409111.716,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": 1.146,
+            "connectStart": 0.871,
+            "dnsEnd": 0.871,
+            "dnsStart": 0.867,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 510.968,
+            "receiveHeadersStart": 510.749,
+            "requestTime": 14008.565144,
+            "sendEnd": 1.197,
+            "sendStart": 1.175,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v05-wheel-view.js"
+        },
+        "timestamp": 14043.772833,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 117,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.92"
+      }
+    },
+    {
+      "sequence": 118,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.92",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19969,
+          "connectionReused": true,
+          "encodedDataLength": 29209,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "28989",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:09 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409187.547,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 501.525,
+            "receiveHeadersStart": 501.301,
+            "requestTime": 14008.650423,
+            "sendEnd": 0.395,
+            "sendStart": 0.343,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/player-v2.js"
+        },
+        "timestamp": 14043.773087,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 122,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.93"
+      }
+    },
+    {
+      "sequence": 123,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.93",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19939,
+          "connectionReused": true,
+          "encodedDataLength": 7451,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "7232",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:09 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409255.868,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 409.614,
+            "receiveHeadersStart": 409.333,
+            "requestTime": 14008.810713,
+            "sendEnd": 0.533,
+            "sendStart": 0.453,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v05-life-presentation.js"
+        },
+        "timestamp": 14043.773617,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 127,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.94"
+      }
+    },
+    {
+      "sequence": 128,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.94",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19953,
+          "connectionReused": true,
+          "encodedDataLength": 6617,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "6398",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:09 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409331.581,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 485.093,
+            "receiveHeadersStart": 484.914,
+            "requestTime": 14008.810844,
+            "sendEnd": 0.557,
+            "sendStart": 0.519,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v05-destiny-cohort.js"
+        },
+        "timestamp": 14043.773687,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 132,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.95"
+      }
+    },
+    {
+      "sequence": 133,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.95",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 19973,
+          "connectionReused": true,
+          "encodedDataLength": 10865,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "10645",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:09 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409399.187,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 460.615,
+            "receiveHeadersStart": 460.44,
+            "requestTime": 14008.902924,
+            "sendEnd": 0.562,
+            "sendStart": 0.483,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/apk-special-growth-runtime.js"
+        },
+        "timestamp": 14043.773798,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 137,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.requestServedFromCache",
+      "params": {
+        "requestId": "21560.96"
+      }
+    },
+    {
+      "sequence": 138,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.96",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 20004,
+          "connectionReused": true,
+          "encodedDataLength": 31286,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "31066",
+            "Content-Type": "text/javascript",
+            "Date": "Wed, 14 Oct 2026 12:20:09 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "text/javascript",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409470.642,
+          "securityState": "unknown",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 531.897,
+            "receiveHeadersStart": 531.736,
+            "requestTime": 14008.903083,
+            "sendEnd": 88.882,
+            "sendStart": 88.827,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/apk-combat-power-runtime.js"
+        },
+        "timestamp": 14043.773838,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 144,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.97",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 0,
+          "connectionReused": false,
+          "encodedDataLength": 0,
+          "fromDiskCache": true,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Content-Length": "1675",
+            "Content-Type": "application/json",
+            "Date": "Wed, 14 Oct 2026 12:20:09 GMT",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "application/json",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980409565.127,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 0.36,
+            "receiveHeadersStart": 0.329,
+            "requestTime": 14043.776275,
+            "sendEnd": 0.138,
+            "sendStart": 0.138,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/data/v10/source-manifest.json"
+        },
+        "timestamp": 14043.790773,
+        "type": "Fetch"
+      }
+    },
+    {
+      "sequence": 155,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.98",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 0,
+          "connectionReused": false,
+          "encodedDataLength": 0,
+          "fromDiskCache": true,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Content-Length": "11897874",
+            "Content-Type": "application/json",
+            "Date": "Wed, 14 Oct 2026 12:20:17 GMT",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "application/json",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980417358.766,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 2.285,
+            "receiveHeadersStart": 2.223,
+            "requestTime": 14043.799492,
+            "sendEnd": 0.269,
+            "sendStart": 0.269,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/data/v10/route-graph.douluo1.json"
+        },
+        "timestamp": 14043.809479,
+        "type": "Fetch"
+      }
+    },
+    {
+      "sequence": 168,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.99",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 0,
+          "connectionReused": false,
+          "encodedDataLength": 0,
+          "fromDiskCache": true,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Content-Length": "1798",
+            "Content-Type": "application/json",
+            "Date": "Wed, 14 Oct 2026 12:20:17 GMT",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "application/json",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980417141.103,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 0.313,
+            "receiveHeadersStart": 0.285,
+            "requestTime": 14043.969884,
+            "sendEnd": 0.105,
+            "sendStart": 0.105,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/data/v05-rc/production-entry.json"
+        },
+        "timestamp": 14043.970986,
+        "type": "Fetch"
+      }
+    },
+    {
+      "sequence": 172,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.100",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 0,
+          "connectionReused": false,
+          "encodedDataLength": 0,
+          "fromDiskCache": true,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Content-Length": "4200",
+            "Content-Type": "application/json",
+            "Date": "Wed, 14 Oct 2026 12:20:17 GMT",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "application/json",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980417448.787,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 0.352,
+            "receiveHeadersStart": 0.324,
+            "requestTime": 14043.972187,
+            "sendEnd": 0.121,
+            "sendStart": 0.121,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/data/v05-rc/package-index.json"
+        },
+        "timestamp": 14043.973619,
+        "type": "Fetch"
+      }
+    },
+    {
+      "sequence": 176,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.101",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 0,
+          "connectionReused": false,
+          "encodedDataLength": 0,
+          "fromDiskCache": true,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Content-Length": "728",
+            "Content-Type": "application/json",
+            "Date": "Wed, 14 Oct 2026 12:20:17 GMT",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "application/json",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980417825.223,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 0.363,
+            "receiveHeadersStart": 0.337,
+            "requestTime": 14043.978256,
+            "sendEnd": 0.127,
+            "sendStart": 0.127,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/data/v05-rc/package-policy.json"
+        },
+        "timestamp": 14043.979278,
+        "type": "Fetch"
+      }
+    },
+    {
+      "sequence": 180,
+      "source": {
+        "tabId": 3
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "7052529D3B81F25EA5F1A3B353E52610",
+        "hasExtraInfo": false,
+        "loaderId": "1B833341E1B606C2343BFFAD22F535EB",
+        "requestId": "21560.102",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 0,
+          "connectionReused": false,
+          "encodedDataLength": 0,
+          "fromDiskCache": true,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Content-Length": "14268485",
+            "Content-Type": "application/json",
+            "Date": "Wed, 14 Oct 2026 12:20:17 GMT",
+            "X-Probe-Revision": "c3d883a"
+          },
+          "mimeType": "application/json",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1791980418061.734,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 0.306,
+            "receiveHeadersStart": 0.278,
+            "requestTime": 14043.980537,
+            "sendEnd": 0.101,
+            "sendStart": 0.101,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/data/apk-canonical/catalogs/route-graph.douluo1.json"
+        },
+        "timestamp": 14043.981293,
+        "type": "Fetch"
+      }
+    }
+  ],
+  "hasMore": false,
+  "truncated": false
+}

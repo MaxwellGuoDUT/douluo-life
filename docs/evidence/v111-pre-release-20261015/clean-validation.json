@@ -1,0 +1,17 @@
+{
+  "cleanCandidate": true,
+  "reportedTests": 373,
+  "pass": 373,
+  "fail": 0,
+  "reportedSkipped": 0,
+  "excludedTests": [
+    "natural Sea God entry resumes at a level gate without entering the ordinary five-year lottery"
+  ],
+  "reason": "Target-search budget is closed. Node 24 excludes skip-pattern tests from the reported total instead of counting a skipped test.",
+  "priorTargetEvidence": "Previous 371-test full-suite passed this regression; scheduler and state logic unchanged during current review. Existing natural exports independently strict-restored.",
+  "targetFreshStartsAdded": 0,
+  "assetCheck": true,
+  "explicitSourceVaultCheck": true,
+  "localOnly": true,
+  "finalChanges": "Trait metadata, canonical byte policy, raw module preload integrity and source stylesheet SRI startup gate."
+}

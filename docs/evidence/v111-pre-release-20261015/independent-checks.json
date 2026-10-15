@@ -1,0 +1,165 @@
+{
+  "assets": 110,
+  "modules": 56,
+  "relativeModuleReferences": 106,
+  "existingLocalReferencesPinned": true,
+  "inheritedMissingDynamicReferences": [
+    {
+      "module": "data/v10/source-runtime/App-qyLEl8t4.js",
+      "reference": "./web-o1RBLk9_.js",
+      "baselineUnchanged": true,
+      "kind": "inherited lazy native plugin; not claimed covered by the current game entry"
+    },
+    {
+      "module": "data/v10/source-runtime/App-qyLEl8t4.js",
+      "reference": "./web-Cj-s7K4J.js",
+      "baselineUnchanged": true,
+      "kind": "inherited lazy native plugin; not claimed covered by the current game entry"
+    },
+    {
+      "module": "data/v10/source-runtime/App-qyLEl8t4.js",
+      "reference": "./web-BFkHZPEz.js",
+      "baselineUnchanged": true,
+      "kind": "inherited lazy native plugin; not claimed covered by the current game entry"
+    },
+    {
+      "module": "data/v10/source-runtime/App-qyLEl8t4.js",
+      "reference": "./web-BlS0Pskc.js",
+      "baselineUnchanged": true,
+      "kind": "inherited lazy native plugin; not claimed covered by the current game entry"
+    }
+  ],
+  "restored": [
+    {
+      "file": "followup-d1-human-before.json",
+      "sha256": "d28c81c5e73678ee9a4ae13989e8125e2bdc5433ec621ee0f4ab0f44554f6ce3",
+      "history": 10,
+      "rng": 10,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-slot5-original11.json",
+      "sha256": "821efc94719bc4b1051bc7ab534cf10b522e130a240d9f744278d9b791dcd3c7",
+      "history": 11,
+      "rng": 11,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-slot5-after-cancel.json",
+      "sha256": "821efc94719bc4b1051bc7ab534cf10b522e130a240d9f744278d9b791dcd3c7",
+      "history": 11,
+      "rng": 11,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-current-after-cancel.json",
+      "sha256": "7923412ccf3632095689e00656c8db497eaa93f8fab805afebc41227111a5bc5",
+      "history": 12,
+      "rng": 12,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-slot5-confirmed12.json",
+      "sha256": "7923412ccf3632095689e00656c8db497eaa93f8fab805afebc41227111a5bc5",
+      "history": 12,
+      "rng": 12,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-d1-beast10.json",
+      "sha256": "ab01903caf7485457a65ce13a9886175477e62188067f6a3c8d207254aea9a49",
+      "history": 10,
+      "rng": 10,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-d2-human10.json",
+      "sha256": "21ab15a14170982b3b11cb2f05539fe4ff81be604fcaf0dafef02368a88b5487",
+      "history": 10,
+      "rng": 10,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-d2-beast-controls.json",
+      "sha256": "6e6ffc1d45713bc3c9ee282a7d7cac8fe1014f63b454b5c4128d91db90f6ed52",
+      "history": 50,
+      "rng": 50,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-d2-beast-after-narrow-fix.json",
+      "sha256": "c57072837ab73d27e751f6935fa137d3e519ec576fdcd7431edbee549075bed7",
+      "history": 51,
+      "rng": 51,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-current-after-file-import.json",
+      "sha256": "c57072837ab73d27e751f6935fa137d3e519ec576fdcd7431edbee549075bed7",
+      "history": 51,
+      "rng": 51,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-read-slot8-after-file-import.json",
+      "sha256": "6e6ffc1d45713bc3c9ee282a7d7cac8fe1014f63b454b5c4128d91db90f6ed52",
+      "history": 50,
+      "rng": 50,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-background-current.json",
+      "sha256": "7f9a4f2b4d8a692a2f3c1f67de629bb7e6f3767424e75c47a2141265395c85da",
+      "history": 59,
+      "rng": 59,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-route-switch-no-residual.json",
+      "sha256": "4a9136761eeabd3ce0799c69361d78dd78947a0d8faee95ec02b41d0d6d909cf",
+      "history": 0,
+      "rng": 0,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "followup-animation-validated-final.json",
+      "sha256": "fe6638a6c94061d1eca19a0f72cfa54d7468aa1ef240b7a4f2524d69c52374d4",
+      "history": 60,
+      "rng": 60,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "natural-browser-inherited.json",
+      "sha256": "475d0fab3ef767275d6b4444edcec39a06837af9b29842c6efe8f8497a73af20",
+      "history": 232,
+      "rng": 232,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "natural-browser-continued.json",
+      "sha256": "bd118c273c7cf3ec80b91c7b9a3c55ea4fae53306bd4d804641bf39dfb578414",
+      "history": 233,
+      "rng": 233,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "natural-browser-ascended-after-continue.json",
+      "sha256": "c3926b8db0c7bbd069d5ba1f7f22fa84e6adff629ce5ddfed11f7b26a2457b57",
+      "history": 233,
+      "rng": 233,
+      "strictRestoreAndRawBytesEqual": true
+    },
+    {
+      "file": "natural-ascended-direct-node.json",
+      "sha256": "964459b2175810421276cce0abf14bbe77f1633ac03f775e4bd09c861198ba51",
+      "history": 232,
+      "rng": 232,
+      "strictRestoreAndRawBytesEqual": true
+    }
+  ],
+  "preservationPairs": 7,
+  "allPreserved": true,
+  "naturalTargetFreshStarts": 0,
+  "productionAdvanceCalls": 0,
+  "method": "Hash and graph verification plus strict restore only; no target run or replay from seed."
+}

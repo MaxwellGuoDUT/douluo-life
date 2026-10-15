@@ -1,0 +1,32 @@
+{
+  "version": "1.1.0",
+  "pack": "douluo1",
+  "route": "transformed",
+  "seed": "v10-beast-probe-001",
+  "phase": "ready",
+  "flow": "douluo1:flow.after-formal-special-result",
+  "pool": null,
+  "code": null,
+  "recent": [
+    {
+      "kind": "result",
+      "text": "机遇池（进入《平民、自由魂师特殊成长》【6.4】）"
+    },
+    {
+      "kind": "result",
+      "text": "选项5：你偶遇了一个会说话的猫，它自称是招财猫，它表明你能遇到它就说明你有财运，在它的要求下你念叨了一句“财神爷吉祥”，你获得了8枚银灵币"
+    },
+    {
+      "kind": "result",
+      "text": "等级+2，稳步提升，根基扎实"
+    },
+    {
+      "kind": "result",
+      "text": "遭遇池（进入《平民、自由魂师特殊成长》【6.1】）"
+    },
+    {
+      "kind": "result",
+      "text": "选项5：你天赋不好的亲传弟子堕落为邪魂师，她选择背刺你加入邪魂师势力，获得【重伤】状态，等级-3级（战力大于280点判定战斗胜利，无需接受惩罚，进入遭遇奖励池）"
+    }
+  ]
+}

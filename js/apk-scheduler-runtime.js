@@ -432,6 +432,14 @@ export function planFormalStory({ contentIndex, character, allowPost150 = false 
             return { kind: "not-ready", effects };
         }
 
+        // Independent Sea God tests never use the ordinary five-year completion lottery.
+        // Its source handler would replace the owner-approved nine-stage ledger.
+        if (character.seaTrial?.tier === 'seaGod'
+            && entry.poolId === 'e05f293d-e2cd-4e78-ab58-6e15f3271015') {
+            effects.push({ type: 'setFlag', key: skippedKey, value: true });
+            continue;
+        }
+
         if (!storyPoolEnabled(contentIndex, entry.poolId)) {
             effects.push({ type: "setFlag", key: skippedKey, value: true });
             continue;

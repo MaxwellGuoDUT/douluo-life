@@ -1,0 +1,338 @@
+[
+  {
+    "size": [
+      320,
+      568
+    ],
+    "frames": [
+      {
+        "spinning": true,
+        "viewport": [
+          320,
+          568
+        ],
+        "width": 305
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          320,
+          568
+        ],
+        "width": 305
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          320,
+          568
+        ],
+        "width": 305
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          320,
+          568
+        ],
+        "width": 305
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          320,
+          568
+        ],
+        "width": 305
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          320,
+          568
+        ],
+        "width": 305
+      }
+    ]
+  },
+  {
+    "size": [
+      360,
+      800
+    ],
+    "frames": [
+      {
+        "spinning": true,
+        "viewport": [
+          360,
+          800
+        ],
+        "width": 345
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          360,
+          800
+        ],
+        "width": 345
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          360,
+          800
+        ],
+        "width": 345
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          360,
+          800
+        ],
+        "width": 345
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          360,
+          800
+        ],
+        "width": 345
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          360,
+          800
+        ],
+        "width": 345
+      }
+    ]
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "frames": [
+      {
+        "spinning": true,
+        "viewport": [
+          390,
+          844
+        ],
+        "width": 375
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          390,
+          844
+        ],
+        "width": 375
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          390,
+          844
+        ],
+        "width": 375
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          390,
+          844
+        ],
+        "width": 375
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          390,
+          844
+        ],
+        "width": 375
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          390,
+          844
+        ],
+        "width": 375
+      }
+    ]
+  },
+  {
+    "size": [
+      412,
+      915
+    ],
+    "frames": [
+      {
+        "spinning": true,
+        "viewport": [
+          412,
+          915
+        ],
+        "width": 397
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          412,
+          915
+        ],
+        "width": 397
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          412,
+          915
+        ],
+        "width": 397
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          412,
+          915
+        ],
+        "width": 397
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          412,
+          915
+        ],
+        "width": 397
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          412,
+          915
+        ],
+        "width": 397
+      }
+    ]
+  },
+  {
+    "size": [
+      844,
+      390
+    ],
+    "frames": [
+      {
+        "spinning": true,
+        "viewport": [
+          844,
+          390
+        ],
+        "width": 829
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          844,
+          390
+        ],
+        "width": 829
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          844,
+          390
+        ],
+        "width": 829
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          844,
+          390
+        ],
+        "width": 829
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          844,
+          390
+        ],
+        "width": 829
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          844,
+          390
+        ],
+        "width": 829
+      }
+    ]
+  },
+  {
+    "size": [
+      1280,
+      720
+    ],
+    "frames": [
+      {
+        "spinning": true,
+        "viewport": [
+          1280,
+          720
+        ],
+        "width": 1265
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          1280,
+          720
+        ],
+        "width": 1265
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          1280,
+          720
+        ],
+        "width": 1265
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          1280,
+          720
+        ],
+        "width": 1265
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          1280,
+          720
+        ],
+        "width": 1265
+      },
+      {
+        "spinning": true,
+        "viewport": [
+          1280,
+          720
+        ],
+        "width": 1265
+      }
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "pinnedAssets": 110,
+  "gitCleanFilterMatchesRawBytes": true,
+  "sourceModulesAndGeneratedDataValuesUnchanged": true,
+  "normalizedReviewToolAndTestFiles": [
+    "test/v10-sea-god.test.js",
+    "test/v10-asset-versions.test.js",
+    "test/v10-player-names.test.js",
+    "tools/v10/audit-post110-natural.mjs",
+    "tools/v10/generate-asset-versions.mjs",
+    "tools/v10/probe-post110.mjs",
+    "tools/v10/replay-post110-sea-fix.mjs",
+    "tools/v10/serve-post110.mjs",
+    "tools/v10/verify-post110-evidence.mjs"
+  ],
+  "evidencePathsUseNoTextConversion": true,
+  "noGitObjectsWritten": true,
+  "noStaging": true
+}
