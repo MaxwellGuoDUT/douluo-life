@@ -4,11 +4,11 @@
 
 斗罗大陆题材的纯前端人生转盘游戏，使用 HTML、CSS、原生 JavaScript 和 JSON 构建。
 
-**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.1.0 更新说明](https://github.com/MaxwellGuoDUT/douluo-life/releases/tag/v1.1.0) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
+**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.1.1 更新说明](docs/V1.1.1_RELEASE_NOTES.md) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
 
-## 仓库候选：V1.1.1（未发布）
+## 当前线上：V1.1.1
 
-线上已发布 V1.1.0。本地候选修复九考调度、元素特质名称、窄屏动画溢出及资源版本绑定，见 [V1.1.1 候选说明](docs/V1.1.1_RELEASE_NOTES.md)。候选不代表线上已更新。
+2026-10-17，V1.1.1 修复已通过 [PR #18](https://github.com/MaxwellGuoDUT/douluo-life/pull/18) 合并并部署到 Pages，修复九考调度、元素特质名称、窄屏动画溢出及资源版本绑定。见 [V1.1.1 更新说明](docs/V1.1.1_RELEASE_NOTES.md)和[线上验收](docs/evidence/V111_PAGES_ACCEPTANCE_2026-10-17.md)；正式版本归档以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
 
 站点根首页直接运行当前游戏。旧的 [`v10.html`](https://maxwellguodut.github.io/douluo-life/v10.html) 链接会返回根首页，继续有效。
 
@@ -21,7 +21,7 @@
 
 ## 可玩范围与已知限制
 
-- 普通神考四层级33阶段、海神岛23奖励阶段及独立海神九考已接入，九考采用项目确认规则。本候选取得自然完整九考证据，黄级自然完成仍缺，不宣称全部随机路线均已验证。
+- 普通神考四层级33阶段、海神岛23奖励阶段及独立海神九考已接入，九考采用项目确认规则。V1.1.1 取得自然完整九考证据，黄级自然完成仍缺，不宣称全部随机路线均已验证。
 - 部分来源内容仍有安全中断边界；魂骨部位全部占满后的待奖励可保存、恢复和导出，但后续结算规则尚未明确，推进会停止。
 - 成神与飞升是少数人生的终极成就，不保证发生。人类寿命按当前规则结算；魂兽修为年限与实际年龄分别显示。
 - 旧版斗一存档可能因内容语义不兼容被明确拒绝，不自动迁移或覆盖。请保留原导出文件。
@@ -55,7 +55,7 @@ python -m http.server 8000
 
 打开 [http://localhost:8000/](http://localhost:8000/)。无需框架或后端服务。修改 JS、JSON 或 css/v10.css 后，需运行 `npm run generate:v10-assets` 更新入口的资源版本绑定；`npm run check:v10-assets` 检查生成结果。
 
-浏览器兼容：完整模块完整性校验的来源支持门槛为 Chrome/Edge 127+、Firefox 138+、Safari 18+。本候选仅有桌面 Chromium 实测，新增修复真机及 Pages 验收待补。
+浏览器兼容：完整模块完整性校验的来源支持门槛为 Chrome/Edge 127+、Firefox 138+、Safari 18+。V1.1.1 已完成桌面 Chromium / Pages 资源及恢复检查，用户协助回报 Android 15 Chrome 新版正常；无 iOS 实测，旧页跨版本续跑未验。
 
 ## 验证
 

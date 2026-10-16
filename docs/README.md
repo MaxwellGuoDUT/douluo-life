@@ -2,7 +2,7 @@
 
 最新产品状态以 [仓库首页](../README.MD)为准。本文区分现行维护入口、验证记录和历史设计，避免旧文件里的“当前”被误用。
 
-当前有 [V1.1.1 本地发布候选](V1.1.1_RELEASE_NOTES.md)与[发布前复核](evidence/v111-pre-release-20261015/REVIEW.md)，尚未发布。
+当前线上为 [V1.1.1](V1.1.1_RELEASE_NOTES.md)，2026-10-17 已合并并部署。见[发布前复核](evidence/v111-pre-release-20261015/REVIEW.md)与[Pages / Android 验收](evidence/V111_PAGES_ACCEPTANCE_2026-10-17.md)；正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
 
 ## 现行入口
 

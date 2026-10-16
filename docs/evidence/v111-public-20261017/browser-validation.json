@@ -1,0 +1,70 @@
+{
+  "url": "https://maxwellguodut.github.io/douluo-life/",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "routeSmoke": [
+    {
+      "pack": "douluo1",
+      "route": "human",
+      "title": "设定3你的身份是？",
+      "startOnly": true
+    },
+    {
+      "pack": "douluo1",
+      "route": "beast",
+      "title": "当前命运转盘",
+      "startOnly": true
+    },
+    {
+      "pack": "douluo2",
+      "route": "human",
+      "title": "设定4你是哪国人《绝世唐门》",
+      "startOnly": true
+    },
+    {
+      "pack": "douluo2",
+      "route": "beast",
+      "title": "基础设定1:魂兽穿越时期",
+      "startOnly": true
+    }
+  ],
+  "narrowPortrait": {
+    "clientWidth": 375,
+    "height": 844,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  "narrowLandscape": {
+    "clientWidth": 829,
+    "height": 390,
+    "scrollWidth": 829,
+    "width": 844
+  },
+  "refreshDidNotAutoRestore": true,
+  "explicitReadRestored201": true,
+  "traits": "冰元素 · 极致属性；生命元素 · 极致属性；火元素 · 极致属性",
+  "originalKeysPreserved": true,
+  "addedKeys": [
+    "douluo-life:v10:manual:1:3"
+  ],
+  "compatibilityRedirect": true,
+  "continuation": "201-step settlement showed reward +800 copper; following New Life operation encountered browser-control timeout. Completion of that continuation is not asserted.",
+  "androidUserReport": "新版均正常",
+  "androidScope": "Android 15 Chrome approximate latest; user-reported V1.1.1 reopening, traits, wheel/drawers, keyboard/rotation, background return, JSON roundtrip and cancellation. Model/exact Chrome version not supplied.",
+  "notVerified": [
+    "retained V1.1.0 page across deployment",
+    "iOS",
+    "new natural Yellow trials"
+  ],
+  "desktopDefault": {
+    "clientWidth": 1265,
+    "height": 720,
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  "restored201Portrait": {
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 375,
+    "clientWidth": 375
+  }
+}
