@@ -1,0 +1,17 @@
+- main:
+  - heading "斗罗大陆" [level=1]
+  - paragraph: 当前人生种子 尚未开始
+  - navigation "人生操作":
+    - button "新命运"
+    - button "角色"
+    - button "记事"
+    - button "存档"
+  - generic "种子与路线"
+  - status: 资源版本不一致或加载失败，已停止启动。原槽位保留；请重新打开页面后备份原始存档。
+  - status: 开局前请了解：只有手动保存或导出才会保留人生；刷新后需主动读档。部分内容遇到运行时边界会中断。
+  - region "内容包"
+  - generic "可玩范围与说明"
+  - paragraph: 纯前端版本 · 手动本地8槽 · 请主动导出备份
+  - button "复制问题信息"
+  - status
+  - generic "查看问题信息（最近5条，不含完整存档）"

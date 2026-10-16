@@ -1,3 +1,4 @@
+import { playerTraitName } from './v10-player-names.js';
 import { actualAge, actualAgeText } from './v10-display.js';
 export const packName = id => ({douluo1:'斗罗大陆 · 唐三时代',douluo2:'绝世唐门 · 霍雨浩时代'}[id] ?? '时代未记录');
 export const routeName = route => ({human:'人类',beast:'魂兽',transformed:'化形后人类'}[route] ?? '路线未记录');
@@ -17,11 +18,11 @@ export function growthFacts(c) {
         facts.set(label,trial ? `${tier} · ${status} · 已领取${trial.claimedRewardStages?.length??'来源未记录'}/${trial.totalStages??trial.total??'来源未记录'}考奖励` : '');
     }
     facts.set('铜灵币',c.wallet?.copper ?? c.money);
-    const describe = item => name(item) + (Number.isFinite(item?.years) ? ` · ${number(item.years)}年` : '')
+    const describe = (item, label = name(item)) => label + (Number.isFinite(item?.years) ? ` · ${number(item.years)}年` : '')
         + (Number.isFinite(item?.level) ? ` · ${item.level}级` : '') + (Number.isFinite(item?.rank) ? ` · 阶${item.rank}` : '') + (item?.quality ? ` · ${item.quality}` : '');
-    facts.set('武魂与魂环',(c.martialSouls ?? []).map(s => `${name(s)}：${(s.rings ?? []).map(describe).join('、') || '尚无魂环'}`).join('；'));
+    facts.set('武魂与魂环',(c.martialSouls ?? []).map(s => `${name(s)}：${(s.rings ?? []).map(item=>describe(item)).join('、') || '尚无魂环'}`).join('；'));
     for(const [label,key] of [['魂骨','soulBones'],['天赋','talents'],['特质','traits'],['技能','skills'],['领域','domains'],['神器','artifacts'],['神位','godhoods'],['属性','attributes'],['血脉','bloodlines']]) {
-        facts.set(label,(c[key] ?? []).map(describe).join('；'));
+        facts.set(label,(c[key] ?? []).map(item=>describe(item,key==='traits'?playerTraitName(item):name(item))).join('；'));
     }
     facts.set('血脉融合',(c.beast?.bloodlines ?? []).map(line=>{
         const selection=line.selection ?? line,component=c.beast?.bloodlineComponents?.find(part=>part.bloodlineId===selection.optionId);

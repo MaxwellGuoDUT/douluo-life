@@ -1,0 +1,211 @@
+{
+  "generatedOn": "2026-10-15",
+  "results": [
+    {
+      "file": "followup-d1-human-before.json",
+      "pack": "douluo1",
+      "route": "human",
+      "seed": "v10-save-human",
+      "history": 10,
+      "rng": 10,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "d28c81c5e73678ee9a4ae13989e8125e2bdc5433ec621ee0f4ab0f44554f6ce3"
+    },
+    {
+      "file": "followup-slot5-original11.json",
+      "pack": "douluo1",
+      "route": "human",
+      "seed": "v10-save-human",
+      "history": 11,
+      "rng": 11,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "821efc94719bc4b1051bc7ab534cf10b522e130a240d9f744278d9b791dcd3c7"
+    },
+    {
+      "file": "followup-slot5-after-cancel.json",
+      "pack": "douluo1",
+      "route": "human",
+      "seed": "v10-save-human",
+      "history": 11,
+      "rng": 11,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "821efc94719bc4b1051bc7ab534cf10b522e130a240d9f744278d9b791dcd3c7"
+    },
+    {
+      "file": "followup-current-after-cancel.json",
+      "pack": "douluo1",
+      "route": "human",
+      "seed": "v10-save-human",
+      "history": 12,
+      "rng": 12,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "7923412ccf3632095689e00656c8db497eaa93f8fab805afebc41227111a5bc5"
+    },
+    {
+      "file": "followup-slot5-confirmed12.json",
+      "pack": "douluo1",
+      "route": "human",
+      "seed": "v10-save-human",
+      "history": 12,
+      "rng": 12,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "7923412ccf3632095689e00656c8db497eaa93f8fab805afebc41227111a5bc5"
+    },
+    {
+      "file": "followup-d1-beast10.json",
+      "pack": "douluo1",
+      "route": "beast",
+      "seed": "day24-beast-1",
+      "history": 10,
+      "rng": 10,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "ab01903caf7485457a65ce13a9886175477e62188067f6a3c8d207254aea9a49"
+    },
+    {
+      "file": "followup-d2-human10.json",
+      "pack": "douluo2",
+      "route": "human",
+      "seed": "day27-human-1",
+      "history": 10,
+      "rng": 10,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "21ab15a14170982b3b11cb2f05539fe4ff81be604fcaf0dafef02368a88b5487"
+    },
+    {
+      "file": "followup-d2-beast-controls.json",
+      "pack": "douluo2",
+      "route": "beast",
+      "seed": "audit-20261010-douluo2-beast-1",
+      "history": 50,
+      "rng": 50,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "6e6ffc1d45713bc3c9ee282a7d7cac8fe1014f63b454b5c4128d91db90f6ed52"
+    },
+    {
+      "file": "followup-d2-beast-after-narrow-fix.json",
+      "pack": "douluo2",
+      "route": "beast",
+      "seed": "audit-20261010-douluo2-beast-1",
+      "history": 51,
+      "rng": 51,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "c57072837ab73d27e751f6935fa137d3e519ec576fdcd7431edbee549075bed7"
+    },
+    {
+      "file": "followup-current-after-file-import.json",
+      "pack": "douluo2",
+      "route": "beast",
+      "seed": "audit-20261010-douluo2-beast-1",
+      "history": 51,
+      "rng": 51,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "c57072837ab73d27e751f6935fa137d3e519ec576fdcd7431edbee549075bed7"
+    },
+    {
+      "file": "followup-read-slot8-after-file-import.json",
+      "pack": "douluo2",
+      "route": "beast",
+      "seed": "audit-20261010-douluo2-beast-1",
+      "history": 50,
+      "rng": 50,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "6e6ffc1d45713bc3c9ee282a7d7cac8fe1014f63b454b5c4128d91db90f6ed52"
+    },
+    {
+      "file": "followup-background-current.json",
+      "pack": "douluo2",
+      "route": "beast",
+      "seed": "audit-20261010-douluo2-beast-1",
+      "history": 59,
+      "rng": 59,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "7f9a4f2b4d8a692a2f3c1f67de629bb7e6f3767424e75c47a2141265395c85da"
+    },
+    {
+      "file": "followup-route-switch-no-residual.json",
+      "pack": "douluo1",
+      "route": "human",
+      "seed": "post110-route-cancel-human",
+      "history": 0,
+      "rng": 0,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "4a9136761eeabd3ce0799c69361d78dd78947a0d8faee95ec02b41d0d6d909cf"
+    },
+    {
+      "file": "followup-animation-validated-final.json",
+      "pack": "douluo2",
+      "route": "beast",
+      "seed": "audit-20261010-douluo2-beast-1",
+      "history": 60,
+      "rng": 60,
+      "fullNodeReplayEqual": true,
+      "strictRestoreEqual": true,
+      "rawBytesEqual": true,
+      "sha256": "fe6638a6c94061d1eca19a0f72cfa54d7468aa1ef240b7a4f2524d69c52374d4"
+    }
+  ],
+  "pairs": [
+    {
+      "a": "mobile-long-before.json",
+      "b": "followup-slot4-after-invalid-import.json",
+      "rawBytesEqual": true
+    },
+    {
+      "a": "followup-slot5-original11.json",
+      "b": "followup-slot5-after-cancel.json",
+      "rawBytesEqual": true
+    },
+    {
+      "a": "followup-current-after-cancel.json",
+      "b": "followup-slot5-confirmed12.json",
+      "rawBytesEqual": true
+    },
+    {
+      "a": "followup-d2-beast-after-narrow-fix.json",
+      "b": "followup-current-after-file-import.json",
+      "rawBytesEqual": true
+    },
+    {
+      "a": "followup-d2-beast-controls.json",
+      "b": "followup-read-slot8-after-file-import.json",
+      "rawBytesEqual": true
+    },
+    {
+      "a": "followup-d2-beast-controls.json",
+      "b": "followup-cache-data-raw-slot8.json",
+      "rawBytesEqual": true
+    },
+    {
+      "a": "natural-browser-ascended-after-continue.json",
+      "b": "natural-ascended-after-continue-node.json",
+      "rawBytesEqual": true
+    }
+  ],
+  "note": "These four-route checks are package B browser acceptance, not new target-search seeds or a performance comparison."
+}

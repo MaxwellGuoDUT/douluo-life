@@ -1,6 +1,6 @@
 {
   "name": "douluo-life",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "type": "module",
   "engines": { "node": "24.x" },
@@ -13,6 +13,8 @@
     "check:v05-day22": "npm run check:v05-evidence && npm run check:v05-destinies && npm run check:v05-package",
     "check:v05-day23": "npm run check:v05-day23-evidence && npm run check:v05-destinies && npm run check:v05-package && npm test",
     "generate:v10-source": "node tools/v10/generate-source-inventory.mjs",
-    "check:v10-source": "node tools/v10/generate-source-inventory.mjs --check"
+    "check:v10-source": "node tools/v10/generate-source-inventory.mjs --check",
+    "generate:v10-assets": "node tools/v10/generate-asset-versions.mjs",
+    "check:v10-assets": "node tools/v10/generate-asset-versions.mjs --check"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "seed": "post110-sea-human-080",
+  "inheritance": {
+    "naturalBrowserCalls": 232,
+    "fullSnapshotHistoryRngEqual": true,
+    "rawExportBytesEqual": true
+  },
+  "continue": {
+    "browserCalls": 1,
+    "nodeCalls": 1,
+    "fullSnapshotHistoryRngEqual": true,
+    "rawExportBytesEqual": true
+  },
+  "directAscend": {
+    "node": true,
+    "rngHistoryUnchanged": true
+  },
+  "ascendAfterContinue": {
+    "node": true,
+    "browserUi": true,
+    "browserExportPending": false,
+    "rngHistoryUnchanged": true,
+    "browserRawExportBytesEqual": true
+  }
+}

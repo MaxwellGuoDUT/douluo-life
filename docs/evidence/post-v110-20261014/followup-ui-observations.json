@@ -1,0 +1,402 @@
+[
+  {
+    "label": "d1-human-character-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "正在结算当前阶段…",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "请选择槽位。导入只保存文件，读取后才切换当前人生。",
+    "seed": "v10-save-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d1-human-history-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "下一步将结算当前阶段，不是新的随机抽取。",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "请选择槽位。导入只保存文件，读取后才切换当前人生。",
+    "seed": "v10-save-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d1-human-save5",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "下一步将结算当前阶段，不是新的随机抽取。",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "v10-save-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "overwrite-cancel-at-native-dialog",
+    "auto": "自动推进",
+    "cursor": "11 / 11",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "下一步将结算当前阶段，不是新的随机抽取。",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "已取消覆盖；原槽位保持不变。",
+    "seed": "v10-save-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "overwrite-cancel-distinct-A11-B12",
+    "auto": "自动推进",
+    "cursor": "12 / 12",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "可抽取下一次命运 · 你吸收的第一魂环是什么类型的魂兽（抽完该池后去魂兽初始抽取池进行抽取对应的魂兽）",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "已取消覆盖；原槽位保持不变。",
+    "seed": "v10-save-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "overwrite-confirm-B12",
+    "auto": "自动推进",
+    "cursor": "12 / 12",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "可抽取下一次命运 · 你吸收的第一魂环是什么类型的魂兽（抽完该池后去魂兽初始抽取池进行抽取对应的魂兽）",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "正在校验存档…",
+    "seed": "v10-save-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "refresh-no-auto-restore",
+    "auto": "自动推进",
+    "cursor": "—",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "等待开始",
+    "route": "尚未开始",
+    "save": "请选择槽位。导入只保存文件，读取后才切换当前人生。",
+    "seed": "尚未开始",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "manual-restore-slot5-B12",
+    "auto": "自动推进",
+    "cursor": "12 / 12",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "可抽取下一次命运 · 你吸收的第一魂环是什么类型的魂兽（抽完该池后去魂兽初始抽取池进行抽取对应的魂兽）",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "已读取5号槽；可继续当前人生。",
+    "seed": "v10-save-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d1-beast-character-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "正在提交抽取…",
+    "route": "斗罗大陆 · 唐三时代 · 魂兽",
+    "save": "已读取5号槽；可继续当前人生。",
+    "seed": "day24-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d1-beast-history-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "可抽取下一次命运 · 2.7、特殊成长经历",
+    "route": "斗罗大陆 · 唐三时代 · 魂兽",
+    "save": "已读取5号槽；可继续当前人生。",
+    "seed": "day24-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d2-human-character-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "正在结算当前阶段…",
+    "route": "绝世唐门 · 霍雨浩时代 · 人类",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "day27-human-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d2-human-history-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "下一步将结算当前阶段，不是新的随机抽取。",
+    "route": "绝世唐门 · 霍雨浩时代 · 人类",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "day27-human-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d2-beast-character-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "正在提交抽取…",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d2-beast-history-10",
+    "auto": "自动推进",
+    "cursor": "10 / 10",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "可抽取下一次命运 · 1、十年魂兽特殊遭遇池（每次经过时间跳跃则进入该池）",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d2-beast-auto-running",
+    "auto": "暂停推进",
+    "cursor": "11 / 11",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "正在提交抽取…",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 417
+  },
+  {
+    "label": "d2-beast-auto-paused",
+    "auto": "自动推进",
+    "cursor": "11 / 11",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "正在提交抽取…",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 394
+  },
+  {
+    "label": "d2-beast-fast-running",
+    "auto": "自动推进",
+    "cursor": "11 / 11",
+    "fast": "暂停极速",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "极速推进中…",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "d2-beast-fast-cancelled",
+    "auto": "自动推进",
+    "cursor": "50 / 50",
+    "fast": "极速推进",
+    "history": "记录 1–10 / 10 · 匹配 10 / 完整 10 条",
+    "progress": "本批极速推进已取消，已完成的抽取保留。",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "narrow-animation-after-fix",
+    "auto": "自动推进",
+    "cursor": "51 / 51",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "自动推进已暂停。",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已读取8号槽；可继续当前人生。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "390-file-import-preserves-current51",
+    "auto": "自动推进",
+    "cursor": "51 / 51",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "可抽取下一次命运 · 2、百年魂兽特殊遭遇池（每次经过时间跳跃则进入该池）",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导入到2号槽。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "390-file-roundtrip-restore50",
+    "auto": "自动推进",
+    "cursor": "50 / 50",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "下一步将结算当前阶段，不是新的随机抽取。",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "background-emulation-unavailable-paused-manually",
+    "auto": "自动推进",
+    "cursor": "59 / 59",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "正在提交抽取…",
+    "route": "绝世唐门 · 霍雨浩时代 · 魂兽",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "audit-20261010-douluo2-beast-1",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "switch-route-during-auto-new-human",
+    "auto": "自动推进",
+    "cursor": "0 / 0",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "可抽取下一次命运 · 设定3你的身份是？",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "post110-route-cancel-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "switch-route-stays-at-zero",
+    "auto": "自动推进",
+    "cursor": "0 / 0",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "可抽取下一次命运 · 设定3你的身份是？",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "已导出当前人生；槽位保持不变，请保管下载文件。",
+    "seed": "post110-route-cancel-human",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 375
+  },
+  {
+    "label": "natural-legal-continued-checkpoint-ascend",
+    "auto": "自动推进",
+    "cursor": "233 / 233",
+    "fast": "极速推进",
+    "history": "",
+    "progress": "人生已结束，可保存或导出这段旅程。",
+    "route": "斗罗大陆 · 唐三时代 · 人类",
+    "save": "已读取2号槽；可继续当前人生。",
+    "seed": "post110-sea-human-080",
+    "viewport": [
+      1280,
+      720
+    ],
+    "width": 1265
+  }
+]

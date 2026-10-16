@@ -1,0 +1,210 @@
+{
+  "cursor": 498,
+  "events": [
+    {
+      "sequence": 465,
+      "source": {
+        "tabId": 2
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "06EF4A24FC77451B3C3399A0694BAD1D",
+        "hasExtraInfo": true,
+        "loaderId": "E22CC9DB0BF28AA96CCDD57F45A061AB",
+        "requestId": "E22CC9DB0BF28AA96CCDD57F45A061AB",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 9676,
+          "connectionReused": true,
+          "encodedDataLength": 209,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "Content-Length": "43968",
+            "Content-Type": "text/html",
+            "Date": "Wed, 14 Oct 2026 20:58:40 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "local-current"
+          },
+          "mimeType": "text/html",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1792011520269.951,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 2.367,
+            "receiveHeadersStart": 2.284,
+            "requestTime": 45120.258894,
+            "sendEnd": 1.268,
+            "sendStart": 1.216,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/"
+        },
+        "timestamp": 45120.263336,
+        "type": "Document"
+      }
+    },
+    {
+      "sequence": 480,
+      "source": {
+        "tabId": 2
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "06EF4A24FC77451B3C3399A0694BAD1D",
+        "hasExtraInfo": true,
+        "loaderId": "E22CC9DB0BF28AA96CCDD57F45A061AB",
+        "requestId": "67612.72",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 9676,
+          "connectionReused": true,
+          "encodedDataLength": 218,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Cache-Control": "public, max-age=600",
+            "Connection": "keep-alive",
+            "Content-Length": "9519",
+            "Content-Type": "text/css",
+            "Date": "Wed, 14 Oct 2026 20:58:40 GMT",
+            "Keep-Alive": "timeout=5",
+            "X-Probe-Revision": "local-current"
+          },
+          "mimeType": "text/css",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1792011520286.241,
+          "securityState": "secure",
+          "status": 200,
+          "statusText": "OK",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 1.899,
+            "receiveHeadersStart": 1.824,
+            "requestTime": 45120.275644,
+            "sendEnd": 0.743,
+            "sendStart": 0.675,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/css/v10.css?v=fb7de0442ef15dcfa681"
+        },
+        "timestamp": 45120.286918,
+        "type": "Stylesheet"
+      }
+    },
+    {
+      "sequence": 490,
+      "source": {
+        "tabId": 2
+      },
+      "method": "Network.responseReceived",
+      "params": {
+        "frameId": "06EF4A24FC77451B3C3399A0694BAD1D",
+        "hasExtraInfo": true,
+        "loaderId": "E22CC9DB0BF28AA96CCDD57F45A061AB",
+        "requestId": "67612.74",
+        "response": {
+          "alternateProtocolUsage": "unspecifiedReason",
+          "charset": "",
+          "connectionId": 9676,
+          "connectionReused": true,
+          "encodedDataLength": 130,
+          "fromDiskCache": false,
+          "fromPrefetchCache": false,
+          "fromServiceWorker": false,
+          "headers": {
+            "Connection": "keep-alive",
+            "Content-Length": "23",
+            "Date": "Wed, 14 Oct 2026 20:58:40 GMT",
+            "Keep-Alive": "timeout=5"
+          },
+          "mimeType": "text/plain",
+          "protocol": "http/1.1",
+          "remoteIPAddress": "127.0.0.1",
+          "remotePort": 8766,
+          "responseTime": 1792011520303.437,
+          "securityState": "secure",
+          "status": 404,
+          "statusText": "Not Found",
+          "timing": {
+            "connectEnd": -1,
+            "connectStart": -1,
+            "dnsEnd": -1,
+            "dnsStart": -1,
+            "proxyEnd": -1,
+            "proxyStart": -1,
+            "pushEnd": 0,
+            "pushStart": 0,
+            "receiveHeadersEnd": 2.357,
+            "receiveHeadersStart": 2.284,
+            "requestTime": 45120.29238,
+            "sendEnd": 1.216,
+            "sendStart": 1.153,
+            "sslEnd": -1,
+            "sslStart": -1,
+            "workerFetchStart": -1,
+            "workerReady": -1,
+            "workerRespondWithSettled": -1,
+            "workerStart": -1
+          },
+          "url": "http://127.0.0.1:8766/probe/js/v10-app.js?v=c1dbea567bb864abe5b1"
+        },
+        "timestamp": 45120.30236,
+        "type": "Script"
+      }
+    },
+    {
+      "sequence": 491,
+      "source": {
+        "tabId": 2
+      },
+      "method": "Network.loadingFailed",
+      "params": {
+        "canceled": true,
+        "errorText": "net::ERR_ABORTED",
+        "requestId": "67612.74",
+        "timestamp": 45120.302409,
+        "type": "Script"
+      }
+    }
+  ],
+  "hasMore": false,
+  "truncated": false
+}

@@ -1,0 +1,17 @@
+✔ page-pinned fetch retains the build hash and integrity at a project subpath (1.8129ms)
+✔ unregistered and external data cannot silently enter a page version (0.5412ms)
+✔ Node and injected loaders retain their explicit fetch without a page manifest (0.1263ms)
+✔ committed HTML version pins and SRI match every current asset (296.8505ms)
+✔ V1 loader fetches the manifest once and loads pack details lazily (2.3334ms)
+✔ V1 loader rejects unknown packs with a typed error (0.5802ms)
+✔ V1 loader imports the Douluo I source runtime and foundation lazily (0.4168ms)
+✔ Douluo II rejects a route absent from its own source manifest (0.4038ms)
+✔ V1 HTML is a static Pages entry with no cloud or account dependency (4.4741ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 415.046

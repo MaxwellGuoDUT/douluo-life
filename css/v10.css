@@ -112,3 +112,6 @@ button { min-height: 44px; }
     .vital-stats div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
     .vital-stats div + div { border: 0; }
 }
+
+/* Rotating square bounds must not widen the page; keep the pointer visible above. */
+.wheel-wrap { overflow-x: clip; }

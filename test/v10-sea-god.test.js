@@ -153,3 +153,11 @@ test('/7 saves are rejected without migration and remain exact raw backups',asyn
     const raw=JSON.stringify({schemaVersion:'v10-local-save/1.0',packId:'douluo1',contentIdentity:'previous',snapshot:s}),map=new Map([[SAVE_PREFIX+1,raw]]),store=createV10SaveStore({contentLoader:loader,runner,storage:()=>({getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v)})});
     assert.equal(await store.exportSlot(1,{rawBackup:true}),raw);await assert.rejects(store.read(1),{code:'SAVE_CONTENT_MISMATCH'});assert.equal(map.get(SAVE_PREFIX+1),raw);assert.equal(V10_GOD_TRIAL_SEMANTICS,'douluo1:god-and-sea-trials/8');
 });
+
+test('natural Sea God entry resumes at a level gate without entering the ordinary five-year lottery',async()=>{
+ const life=await runner.start('douluo1',{route:'human',seed:'post110-sea-human-080'});
+ for(let i=0;i<129;i++)assert.equal(life.step().error,null,'natural input '+(i+1));
+ const before=life.exportSnapshot();assert.equal(before.session.character.seaTrial.currentStage,3);assert.equal(before.session.character.level,53);assert.match(seaGodMissing(before.session.character).join(' '),/60级/);
+ const restored=await start(before),result=life.step();assert.equal(result.error,null);assert.equal(restored.step().error,null);assert.deepEqual(restored.exportSnapshot(),life.exportSnapshot());
+ assert.notEqual(result.spin?.poolId,'e05f293d-e2cd-4e78-ab58-6e15f3271015');assert.equal(life.session.character.flags['formal:d1-story:skipped:e05f293d-e2cd-4e78-ab58-6e15f3271015'],true);assert.deepEqual(life.session.character.seaTrial,before.session.character.seaTrial);assert.deepEqual(life.session.history.slice(0,129),before.session.history);
+});

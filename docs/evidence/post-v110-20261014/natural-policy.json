@@ -1,0 +1,26 @@
+{
+  "budget": {
+    "maxMs": 1800000,
+    "maxLives": 240,
+    "maxCalls": 90000,
+    "prefixMs": 1080000,
+    "prefixCalls": 54000,
+    "prefixPerLife": 200,
+    "perLife": 4800,
+    "continuationCallLimit": 76000,
+    "continuationMs": 1500000
+  },
+  "count": "Every production step() attempt, including failed attempts and replay; initialization/restore/serialize are not advancement calls. No rerolls; pending inheritance selects continue/ascend only on post-journey branches.",
+  "strategy": "240 new seeds alternating 4 human to 1 beast; 200-step prefixes. Continue target-qualified first, then eligible high-level lives with pool draws, then eligible level. All prefixes retained in ledger. No global probability estimate.",
+  "semantics": "douluo1:god-and-sea-trials/8",
+  "pools": [
+    {
+      "id": "0025071b-4c37-4013-b2b7-43750819e528",
+      "name": "一级神考抽取池（一级神一共9考）"
+    },
+    {
+      "id": "8c4f9874-bda6-4751-97d7-ae73a6c0cd58",
+      "name": "（唐三20岁限定）剧情24:在海神岛获得的考核是（选择完后请去抽取剧情25后，再抽取对应的考核奖励）"
+    }
+  ]
+}

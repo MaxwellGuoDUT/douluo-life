@@ -8,3 +8,13 @@ test/v10-*.test.js text eol=lf
 v10.html text eol=lf
 css/v10.css text eol=lf
 data/v10/source-runtime/* -text
+
+# Page-pinned text bytes must survive Windows and Linux checkouts unchanged.
+js/*.js text eol=lf
+data/**/*.json text eol=lf
+index.html text eol=lf
+tools/v10/*.py text eol=lf
+
+# Evidence hashes refer to exact captured bytes, including log line endings.
+docs/evidence/post-v110-20261014/** -text
+docs/evidence/v111-pre-release-20261015/** -text

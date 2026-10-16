@@ -1,0 +1,86 @@
+{
+  "round": "2026-10-14 to 2026-10-15",
+  "newSeeds": 240,
+  "routes": {
+    "human": 192,
+    "beast": 48
+  },
+  "prefixCalls": 31470,
+  "prefixDurationMs": 351423.1335,
+  "continuations": 36,
+  "initialLedger": {
+    "calls": 52540,
+    "replayCalls": 130,
+    "durationMs": 1502364.8942,
+    "stops": {
+      "real-ending": 183,
+      "prefix-filter-stop": 55,
+      "global-budget-stop": 1,
+      "advance-error": 1
+    }
+  },
+  "repairReplay": {
+    "calls": 232,
+    "replayCalls": 232,
+    "durationMs": 11992.5877
+  },
+  "browserReplay": {
+    "calls": 232,
+    "durationMs": 64900,
+    "branches": {
+      "browserContinueSteps": 1,
+      "nodeContinueSteps": 1,
+      "ascentSteps": 0
+    }
+  },
+  "regression": {
+    "calls": 262,
+    "durationMs": 13414.6447
+  },
+  "countedTotalCalls": 53500,
+  "measuredSearchAndReplayMs": 1592672.1266,
+  "branchVerificationWallUpperBoundMs": 33209,
+  "authorizedBudgetExpanded": false,
+  "freshStarts": {
+    "distinctSeeds": 240,
+    "failedReplay": 1,
+    "repairAndReplay": 2,
+    "browserReplay": 1,
+    "regressionReplays": 2,
+    "total": 246,
+    "limit": 240,
+    "exceededBy": 6
+  },
+  "budgetCompliant": false,
+  "searchStop": "240 distinct natural starts reached; continuation phase stopped at the predeclared 25-minute cutoff, preserving replay budget. No new search on continuation turn.",
+  "results": {
+    "nineQualified": 1,
+    "nineComplete": 1,
+    "yellowQualified": 0,
+    "yellowComplete": 0
+  },
+  "postRepairCohortStops": {
+    "real-ending": 183,
+    "prefix-filter-stop": 55,
+    "global-budget-stop": 1,
+    "nine-inheritance": 1
+  },
+  "transformed": 7,
+  "poolCounts": {
+    "8c4f9874-bda6-4751-97d7-ae73a6c0cd58": {
+      "observedDraws": 9,
+      "seaGodEligible": 8,
+      "existingForeignGodFiltered": 1
+    },
+    "0025071b-4c37-4013-b2b7-43750819e528": {
+      "observedDraws": 17,
+      "seaGodEligible": 7,
+      "existingForeignGodFiltered": 10
+    }
+  },
+  "opportunityCountIsLowerBound": true,
+  "generatedPoolDirectCounter": "not recorded in initial run",
+  "sourceSelectionInference": "All nine recorded sea qualifications have formal-island selection IDs; this is not a replacement for a direct third-pool counter.",
+  "bias": "4 human to 1 beast; 200-call prefixes; continuation favors target/eligible/high-level lives. No exhaustive coverage or whole-life probability claim.",
+  "otherTrialArchival": "Natural winning journey had no existing ordinary trial. Archival/coexistence covered by mechanism tests, not this natural sample."
+}

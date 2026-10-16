@@ -1,0 +1,20 @@
+✔ changes are based on committed data, preserve zero, route, rings, bones and ability upgrades (21.883ms)
+✔ history categories reject prose guesses and pagination/search retain the complete history (5.5263ms)
+✔ system notes do not shift result categories; committed Sea stages filter and review without prose guesses (1.1601ms)
+✔ goals distinguish missing source, recorded requirements, and unsupported runtime (0.937ms)
+✔ real ending metadata and limited diagnostics do not invent death or upload a save (0.8319ms)
+✔ both element trait namespaces display source stage names without mutating IDs (2.3747ms)
+✔ real Douluo II beast source names, time effects, DOM, RNG and JSON restore agree (1168.3645ms)
+✔ checkpoint ablation: four real openings retain all fields and isolate saved pre-draw history (8332.2939ms)
+✔ rejected effect retains session and does not publish a checkpoint; batch publishes latest pre-draw (1014.0224ms)
+✔ history view fixture renders <=50 nodes, anchors old pages, and reset follows latest without losing entries (1.0536ms)
+✔ combat display matches each pack runtime, restores and never consumes RNG or changes state (5771.5465ms)
+✔ real fast cancellation stops before next transaction and retains latest reroll checkpoint (2167.8126ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18784.0081

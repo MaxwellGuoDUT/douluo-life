@@ -1,3 +1,4 @@
+import { createAssetFetch, pageAssets } from "./v10-asset-fetch.js";
 import { loadProductionEntry } from "./production-content-loader.js";
 
 export class V10ContentError extends Error {
@@ -42,6 +43,7 @@ export function createV10ContentLoader({
         "FETCH_UNAVAILABLE",
         "当前环境没有可用的 fetch。"
     );
+    fetchImpl = createAssetFetch(fetchImpl, { assets: pageAssets(), baseUrl: moduleBaseUrl });
     const cache = new Map();
     const load = async (path) => {
         if (!cache.has(path)) {
