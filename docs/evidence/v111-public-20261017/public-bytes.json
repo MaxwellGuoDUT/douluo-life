@@ -1,0 +1,4231 @@
+{
+  "checkedAt": "2026-10-16T16:55:09.519Z",
+  "base": "https://maxwellguodut.github.io/douluo-life/",
+  "head": "7b178a58c4214881021a77d9a1951b949c765164",
+  "merged": "41b27b508e1f147ed41244455a766b6aebb60a7e",
+  "resourceFiles": 112,
+  "httpChecks": 222,
+  "matched": 222,
+  "allMatch": true,
+  "note": "Read-only HTTP byte comparison to committed candidate. Query and bare URLs both checked. No CDN fault injection, no old-page continuation claim.",
+  "records": [
+    {
+      "path": "css/v10.css",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/css/v10.css",
+      "status": 200,
+      "bytes": 9518,
+      "sha256": "e67b5fab619cc6085805fb81b5953a7c5367c8d1bf4c848402a6706dff21e633",
+      "expectedSha256": "e67b5fab619cc6085805fb81b5953a7c5367c8d1bf4c848402a6706dff21e633",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-252e\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "text/css; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "css/v10.css",
+      "suffix": "?v=e67b5fab619cc6085805",
+      "url": "https://maxwellguodut.github.io/douluo-life/css/v10.css?v=e67b5fab619cc6085805",
+      "status": 200,
+      "bytes": 9518,
+      "sha256": "e67b5fab619cc6085805fb81b5953a7c5367c8d1bf4c848402a6706dff21e633",
+      "expectedSha256": "e67b5fab619cc6085805fb81b5953a7c5367c8d1bf4c848402a6706dff21e633",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-252e\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "text/css; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+      "status": 200,
+      "bytes": 18442,
+      "sha256": "a6b281065e8045c4df3dfc542ac8c698b1e2c5989994281d475aa3458798e962",
+      "expectedSha256": "a6b281065e8045c4df3dfc542ac8c698b1e2c5989994281d475aa3458798e962",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-480a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/combat-power-runtime-evidence.json",
+      "suffix": "?v=a6b281065e8045c4df3d",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/combat-power-runtime-evidence.json?v=a6b281065e8045c4df3d",
+      "status": 200,
+      "bytes": 18442,
+      "sha256": "a6b281065e8045c4df3dfc542ac8c698b1e2c5989994281d475aa3458798e962",
+      "expectedSha256": "a6b281065e8045c4df3dfc542ac8c698b1e2c5989994281d475aa3458798e962",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-480a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
+      "status": 200,
+      "bytes": 106988,
+      "sha256": "4c507dbdc868cc8fb77c54fd7a60a196e2f3123dd8e301f1f57fb7e779e88da1",
+      "expectedSha256": "4c507dbdc868cc8fb77c54fd7a60a196e2f3123dd8e301f1f57fb7e779e88da1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1a1ec\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json",
+      "suffix": "?v=4c507dbdc868cc8fb77c",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/followup-prepare-runtime-evidence.json?v=4c507dbdc868cc8fb77c",
+      "status": 200,
+      "bytes": 106988,
+      "sha256": "4c507dbdc868cc8fb77c54fd7a60a196e2f3123dd8e301f1f57fb7e779e88da1",
+      "expectedSha256": "4c507dbdc868cc8fb77c54fd7a60a196e2f3123dd8e301f1f57fb7e779e88da1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1a1ec\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
+      "status": 200,
+      "bytes": 1367755,
+      "sha256": "f8f24dafed6828c1763359c4be9ca6ed0a3e1b63d71f1d6c5b8e98285a3479e8",
+      "expectedSha256": "f8f24dafed6828c1763359c4be9ca6ed0a3e1b63d71f1d6c5b8e98285a3479e8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-14decb\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json",
+      "suffix": "?v=f8f24dafed6828c17633",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/formal-special-result-runtime-evidence.json?v=f8f24dafed6828c17633",
+      "status": 200,
+      "bytes": 1367755,
+      "sha256": "f8f24dafed6828c1763359c4be9ca6ed0a3e1b63d71f1d6c5b8e98285a3479e8",
+      "expectedSha256": "f8f24dafed6828c1763359c4be9ca6ed0a3e1b63d71f1d6c5b8e98285a3479e8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-14decb\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+      "status": 200,
+      "bytes": 136357,
+      "sha256": "195adada8df45eb9fbd72d76238b82b76a71ada2f1eee78ee21093c8b11165ca",
+      "expectedSha256": "195adada8df45eb9fbd72d76238b82b76a71ada2f1eee78ee21093c8b11165ca",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-214a5\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json",
+      "suffix": "?v=195adada8df45eb9fbd7",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/human-soul-ring-runtime-evidence.json?v=195adada8df45eb9fbd7",
+      "status": 200,
+      "bytes": 136357,
+      "sha256": "195adada8df45eb9fbd72d76238b82b76a71ada2f1eee78ee21093c8b11165ca",
+      "expectedSha256": "195adada8df45eb9fbd72d76238b82b76a71ada2f1eee78ee21093c8b11165ca",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-214a5\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
+      "status": 200,
+      "bytes": 192999,
+      "sha256": "0a7964894ee7b2a5c06dce2a888f519a58180ecff6801baaac1f1134222f529e",
+      "expectedSha256": "0a7964894ee7b2a5c06dce2a888f519a58180ecff6801baaac1f1134222f529e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2f1e7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json",
+      "suffix": "?v=0a7964894ee7b2a5c06d",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/human-soul-ring-species-runtime-evidence.json?v=0a7964894ee7b2a5c06d",
+      "status": 200,
+      "bytes": 192999,
+      "sha256": "0a7964894ee7b2a5c06dce2a888f519a58180ecff6801baaac1f1134222f529e",
+      "expectedSha256": "0a7964894ee7b2a5c06dce2a888f519a58180ecff6801baaac1f1134222f529e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2f1e7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/martial-soul-runtime-evidence.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/martial-soul-runtime-evidence.json",
+      "status": 200,
+      "bytes": 601854,
+      "sha256": "a72bca46affeb11dceb4c2aad96b79c82cdcc6f00ab53709c558c7eb2214e2e6",
+      "expectedSha256": "a72bca46affeb11dceb4c2aad96b79c82cdcc6f00ab53709c558c7eb2214e2e6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-92efe\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/martial-soul-runtime-evidence.json",
+      "suffix": "?v=a72bca46affeb11dceb4",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/martial-soul-runtime-evidence.json?v=a72bca46affeb11dceb4",
+      "status": 200,
+      "bytes": 601854,
+      "sha256": "a72bca46affeb11dceb4c2aad96b79c82cdcc6f00ab53709c558c7eb2214e2e6",
+      "expectedSha256": "a72bca46affeb11dceb4c2aad96b79c82cdcc6f00ab53709c558c7eb2214e2e6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-92efe\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+      "status": 200,
+      "bytes": 58441,
+      "sha256": "1b691d59a3ed8621f96613cfb98e4cdd2143df1cd4f7d3182a60579523ecbab6",
+      "expectedSha256": "1b691d59a3ed8621f96613cfb98e4cdd2143df1cd4f7d3182a60579523ecbab6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-e449\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json",
+      "suffix": "?v=1b691d59a3ed8621f966",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/official-beast-element-runtime-evidence.json?v=1b691d59a3ed8621f966",
+      "status": 200,
+      "bytes": 58441,
+      "sha256": "1b691d59a3ed8621f96613cfb98e4cdd2143df1cd4f7d3182a60579523ecbab6",
+      "expectedSha256": "1b691d59a3ed8621f96613cfb98e4cdd2143df1cd4f7d3182a60579523ecbab6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-e449\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/route-graph.douluo1.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/route-graph.douluo1.json",
+      "status": 200,
+      "bytes": 14268485,
+      "sha256": "4542b167b5647e728faa0a1b7e5328705204eb7b56602b86a6f0b1ff796f7f09",
+      "expectedSha256": "4542b167b5647e728faa0a1b7e5328705204eb7b56602b86a6f0b1ff796f7f09",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-d9b845\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/apk-canonical/catalogs/route-graph.douluo1.json",
+      "suffix": "?v=4542b167b5647e728faa",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/apk-canonical/catalogs/route-graph.douluo1.json?v=4542b167b5647e728faa",
+      "status": 200,
+      "bytes": 14268485,
+      "sha256": "4542b167b5647e728faa0a1b7e5328705204eb7b56602b86a6f0b1ff796f7f09",
+      "expectedSha256": "4542b167b5647e728faa0a1b7e5328705204eb7b56602b86a6f0b1ff796f7f09",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-d9b845\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/combat-power.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/combat-power.json",
+      "status": 200,
+      "bytes": 6178,
+      "sha256": "42c99f9420a46d3435aa54d331a24fe49811c9a0346896b346bfc7d7430df9c6",
+      "expectedSha256": "42c99f9420a46d3435aa54d331a24fe49811c9a0346896b346bfc7d7430df9c6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1822\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/combat-power.json",
+      "suffix": "?v=42c99f9420a46d3435aa",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/combat-power.json?v=42c99f9420a46d3435aa",
+      "status": 200,
+      "bytes": 6178,
+      "sha256": "42c99f9420a46d3435aa54d331a24fe49811c9a0346896b346bfc7d7430df9c6",
+      "expectedSha256": "42c99f9420a46d3435aa54d331a24fe49811c9a0346896b346bfc7d7430df9c6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1822\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/constants.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/constants.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/constants.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/constants.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/game.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/game.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/game.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/game.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/probability.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/probability.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/config/probability.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/config/probability.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/items.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/items.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/items.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/items.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/martial_souls.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/martial_souls.json",
+      "status": 200,
+      "bytes": 387,
+      "sha256": "d9a7c30f96b8e1ada1ab003362b4211f1afc84bebf9044acb66c3e4e245d9c20",
+      "expectedSha256": "d9a7c30f96b8e1ada1ab003362b4211f1afc84bebf9044acb66c3e4e245d9c20",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-183\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/martial_souls.json",
+      "suffix": "?v=d9a7c30f96b8e1ada1ab",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/martial_souls.json?v=d9a7c30f96b8e1ada1ab",
+      "status": 200,
+      "bytes": 387,
+      "sha256": "d9a7c30f96b8e1ada1ab003362b4211f1afc84bebf9044acb66c3e4e245d9c20",
+      "expectedSha256": "d9a7c30f96b8e1ada1ab003362b4211f1afc84bebf9044acb66c3e4e245d9c20",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-183\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/npc.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/npc.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/npc.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/npc.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/sects.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/sects.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/entities/sects.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/entities/sects.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/academy.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/academy.json",
+      "status": 200,
+      "bytes": 2316,
+      "sha256": "6c4ead78d5db4907f31a4eb61ccc022cfb8a25d6a7232a5d164a16720e0f1ac1",
+      "expectedSha256": "6c4ead78d5db4907f31a4eb61ccc022cfb8a25d6a7232a5d164a16720e0f1ac1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-90c\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/academy.json",
+      "suffix": "?v=6c4ead78d5db4907f31a",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/academy.json?v=6c4ead78d5db4907f31a",
+      "status": 200,
+      "bytes": 2316,
+      "sha256": "6c4ead78d5db4907f31a4eb61ccc022cfb8a25d6a7232a5d164a16720e0f1ac1",
+      "expectedSha256": "6c4ead78d5db4907f31a4eb61ccc022cfb8a25d6a7232a5d164a16720e0f1ac1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-90c\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/battle.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/battle.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/battle.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/battle.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/birth.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/birth.json",
+      "status": 200,
+      "bytes": 287,
+      "sha256": "1173a879bafce8d3f93ff7b741d08236f630e14a99747dd581516e974270005c",
+      "expectedSha256": "1173a879bafce8d3f93ff7b741d08236f630e14a99747dd581516e974270005c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-11f\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/birth.json",
+      "suffix": "?v=1173a879bafce8d3f93f",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/birth.json?v=1173a879bafce8d3f93f",
+      "status": 200,
+      "bytes": 287,
+      "sha256": "1173a879bafce8d3f93ff7b741d08236f630e14a99747dd581516e974270005c",
+      "expectedSha256": "1173a879bafce8d3f93ff7b741d08236f630e14a99747dd581516e974270005c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-11f\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/cultivation.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/cultivation.json",
+      "status": 200,
+      "bytes": 2475,
+      "sha256": "405a519b787063c0d1421dc32cb1d9d99cfb879edb2920985fe5798187a3bdfd",
+      "expectedSha256": "405a519b787063c0d1421dc32cb1d9d99cfb879edb2920985fe5798187a3bdfd",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-9ab\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/cultivation.json",
+      "suffix": "?v=405a519b787063c0d142",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/cultivation.json?v=405a519b787063c0d142",
+      "status": 200,
+      "bytes": 2475,
+      "sha256": "405a519b787063c0d1421dc32cb1d9d99cfb879edb2920985fe5798187a3bdfd",
+      "expectedSha256": "405a519b787063c0d1421dc32cb1d9d99cfb879edb2920985fe5798187a3bdfd",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-9ab\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/default.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/default.json",
+      "status": 200,
+      "bytes": 249,
+      "sha256": "3b7c8a1ee9d6e2725be184ef309a026d1303ab7d5ee09701b653f2a5f3793e1a",
+      "expectedSha256": "3b7c8a1ee9d6e2725be184ef309a026d1303ab7d5ee09701b653f2a5f3793e1a",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-f9\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/default.json",
+      "suffix": "?v=3b7c8a1ee9d6e2725be1",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/default.json?v=3b7c8a1ee9d6e2725be1",
+      "status": 200,
+      "bytes": 249,
+      "sha256": "3b7c8a1ee9d6e2725be184ef309a026d1303ab7d5ee09701b653f2a5f3793e1a",
+      "expectedSha256": "3b7c8a1ee9d6e2725be184ef309a026d1303ab7d5ee09701b653f2a5f3793e1a",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-f9\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/ending.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/ending.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/ending.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/ending.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/growth.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/growth.json",
+      "status": 200,
+      "bytes": 1399,
+      "sha256": "940b84a33fd391fd356077f4767cc1751493e2c53f7ffd4c1a78ecab9e0e2ecd",
+      "expectedSha256": "940b84a33fd391fd356077f4767cc1751493e2c53f7ffd4c1a78ecab9e0e2ecd",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-577\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/growth.json",
+      "suffix": "?v=940b84a33fd391fd3560",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/growth.json?v=940b84a33fd391fd3560",
+      "status": 200,
+      "bytes": 1399,
+      "sha256": "940b84a33fd391fd356077f4767cc1751493e2c53f7ffd4c1a78ecab9e0e2ecd",
+      "expectedSha256": "940b84a33fd391fd356077f4767cc1751493e2c53f7ffd4c1a78ecab9e0e2ecd",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-577\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/spirit.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/spirit.json",
+      "status": 200,
+      "bytes": 2166,
+      "sha256": "aa62e5e4365aa6bdc720666c8a16b19de93960258c141a02c20cfdf3b2b4a205",
+      "expectedSha256": "aa62e5e4365aa6bdc720666c8a16b19de93960258c141a02c20cfdf3b2b4a205",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-876\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/events/spirit.json",
+      "suffix": "?v=aa62e5e4365aa6bdc720",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/events/spirit.json?v=aa62e5e4365aa6bdc720",
+      "status": 200,
+      "bytes": 2166,
+      "sha256": "aa62e5e4365aa6bdc720666c8a16b19de93960258c141a02c20cfdf3b2b4a205",
+      "expectedSha256": "aa62e5e4365aa6bdc720666c8a16b19de93960258c141a02c20cfdf3b2b4a205",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-876\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/conversion_report.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/conversion_report.json",
+      "status": 200,
+      "bytes": 5450,
+      "sha256": "e6c065f6f0d77bd998bb26a2bbd26e6e06069a72c4188a20b4b8c36c1559d81e",
+      "expectedSha256": "e6c065f6f0d77bd998bb26a2bbd26e6e06069a72c4188a20b4b8c36c1559d81e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-154a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/conversion_report.json",
+      "suffix": "?v=e6c065f6f0d77bd998bb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/conversion_report.json?v=e6c065f6f0d77bd998bb",
+      "status": 200,
+      "bytes": 5450,
+      "sha256": "e6c065f6f0d77bd998bb26a2bbd26e6e06069a72c4188a20b4b8c36c1559d81e",
+      "expectedSha256": "e6c065f6f0d77bd998bb26a2bbd26e6e06069a72c4188a20b4b8c36c1559d81e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-154a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/flows.inferred.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/flows.inferred.json",
+      "status": 200,
+      "bytes": 6920,
+      "sha256": "28f61c2d74f2199dbaf2e477184d01d8070e064127c224e3559cbd0c90d2d737",
+      "expectedSha256": "28f61c2d74f2199dbaf2e477184d01d8070e064127c224e3559cbd0c90d2d737",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1b08\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/flows.inferred.json",
+      "suffix": "?v=28f61c2d74f2199dbaf2",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/flows.inferred.json?v=28f61c2d74f2199dbaf2",
+      "status": 200,
+      "bytes": 6920,
+      "sha256": "28f61c2d74f2199dbaf2e477184d01d8070e064127c224e3559cbd0c90d2d737",
+      "expectedSha256": "28f61c2d74f2199dbaf2e477184d01d8070e064127c224e3559cbd0c90d2d737",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1b08\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/legacy_rows.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/legacy_rows.json",
+      "status": 200,
+      "bytes": 507751,
+      "sha256": "51ab0ceb724aaadbc77caec7be07b962d3bfb590efda5988dfde1c2d25d08787",
+      "expectedSha256": "51ab0ceb724aaadbc77caec7be07b962d3bfb590efda5988dfde1c2d25d08787",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-7bf67\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/legacy_rows.json",
+      "suffix": "?v=51ab0ceb724aaadbc77c",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/legacy_rows.json?v=51ab0ceb724aaadbc77c",
+      "status": 200,
+      "bytes": 507751,
+      "sha256": "51ab0ceb724aaadbc77caec7be07b962d3bfb590efda5988dfde1c2d25d08787",
+      "expectedSha256": "51ab0ceb724aaadbc77caec7be07b962d3bfb590efda5988dfde1c2d25d08787",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-7bf67\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/routes.inferred.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/routes.inferred.json",
+      "status": 200,
+      "bytes": 19202,
+      "sha256": "c69fcf2a8cdb8f10ec8dab945c0444d446a2700f0f3ce3aeb179ee28a193931f",
+      "expectedSha256": "c69fcf2a8cdb8f10ec8dab945c0444d446a2700f0f3ce3aeb179ee28a193931f",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-4b02\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/routes.inferred.json",
+      "suffix": "?v=c69fcf2a8cdb8f10ec8d",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/routes.inferred.json?v=c69fcf2a8cdb8f10ec8d",
+      "status": 200,
+      "bytes": 19202,
+      "sha256": "c69fcf2a8cdb8f10ec8dab945c0444d446a2700f0f3ce3aeb179ee28a193931f",
+      "expectedSha256": "c69fcf2a8cdb8f10ec8dab945c0444d446a2700f0f3ce3aeb179ee28a193931f",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-4b02\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/wheels.normalized.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/wheels.normalized.json",
+      "status": 200,
+      "bytes": 1075419,
+      "sha256": "e1e6999427cfc56b666bf7271100dd9b7536d68565c5c6b8d5e2be7dd12099f5",
+      "expectedSha256": "e1e6999427cfc56b666bf7271100dd9b7536d68565c5c6b8d5e2be7dd12099f5",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1068db\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/reference/legacy-wheel/wheels.normalized.json",
+      "suffix": "?v=e1e6999427cfc56b666b",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/reference/legacy-wheel/wheels.normalized.json?v=e1e6999427cfc56b666b",
+      "status": 200,
+      "bytes": 1075419,
+      "sha256": "e1e6999427cfc56b666bf7271100dd9b7536d68565c5c6b8d5e2be7dd12099f5",
+      "expectedSha256": "e1e6999427cfc56b666bf7271100dd9b7536d68565c5c6b8d5e2be7dd12099f5",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1068db\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/rules/attributes.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/rules/attributes.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/rules/attributes.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/rules/attributes.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/rules/combat.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/rules/combat.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/rules/combat.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/rules/combat.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/rules/cultivation.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/rules/cultivation.json",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/rules/cultivation.json",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/rules/cultivation.json?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/package-index.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/package-index.json",
+      "status": 200,
+      "bytes": 4200,
+      "sha256": "364ab624a626a3be7aa10ad256943307a9d456b89f15585bb24f0b141fb45d76",
+      "expectedSha256": "364ab624a626a3be7aa10ad256943307a9d456b89f15585bb24f0b141fb45d76",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1068\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/package-index.json",
+      "suffix": "?v=364ab624a626a3be7aa1",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/package-index.json?v=364ab624a626a3be7aa1",
+      "status": 200,
+      "bytes": 4200,
+      "sha256": "364ab624a626a3be7aa10ad256943307a9d456b89f15585bb24f0b141fb45d76",
+      "expectedSha256": "364ab624a626a3be7aa10ad256943307a9d456b89f15585bb24f0b141fb45d76",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1068\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/package-policy.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/package-policy.json",
+      "status": 200,
+      "bytes": 728,
+      "sha256": "7428f26dba268ecf5eb74cabe6ecee3e52071d0c3c5f51bfdd1498dbb5ae2afb",
+      "expectedSha256": "7428f26dba268ecf5eb74cabe6ecee3e52071d0c3c5f51bfdd1498dbb5ae2afb",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2d8\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/package-policy.json",
+      "suffix": "?v=7428f26dba268ecf5eb7",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/package-policy.json?v=7428f26dba268ecf5eb7",
+      "status": 200,
+      "bytes": 728,
+      "sha256": "7428f26dba268ecf5eb74cabe6ecee3e52071d0c3c5f51bfdd1498dbb5ae2afb",
+      "expectedSha256": "7428f26dba268ecf5eb74cabe6ecee3e52071d0c3c5f51bfdd1498dbb5ae2afb",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2d8\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/production-entry.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/production-entry.json",
+      "status": 200,
+      "bytes": 1798,
+      "sha256": "6afc0a117dd7471fd4dd1a82cda99e3bd0fabdca9243b21f1c8953e7cdf8ebd3",
+      "expectedSha256": "6afc0a117dd7471fd4dd1a82cda99e3bd0fabdca9243b21f1c8953e7cdf8ebd3",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-706\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/production-entry.json",
+      "suffix": "?v=6afc0a117dd7471fd4dd",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/production-entry.json?v=6afc0a117dd7471fd4dd",
+      "status": 200,
+      "bytes": 1798,
+      "sha256": "6afc0a117dd7471fd4dd1a82cda99e3bd0fabdca9243b21f1c8953e7cdf8ebd3",
+      "expectedSha256": "6afc0a117dd7471fd4dd1a82cda99e3bd0fabdca9243b21f1c8953e7cdf8ebd3",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-706\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/supported-destinies.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/supported-destinies.json",
+      "status": 200,
+      "bytes": 2694705,
+      "sha256": "2a8072c6287bed32004378f9118b583e2aa6a676790fbbb47e5a240c210c24db",
+      "expectedSha256": "2a8072c6287bed32004378f9118b583e2aa6a676790fbbb47e5a240c210c24db",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-291e31\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v05-rc/supported-destinies.json",
+      "suffix": "?v=2a8072c6287bed320043",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v05-rc/supported-destinies.json?v=2a8072c6287bed320043",
+      "status": 200,
+      "bytes": 2694705,
+      "sha256": "2a8072c6287bed32004378f9118b583e2aa6a676790fbbb47e5a240c210c24db",
+      "expectedSha256": "2a8072c6287bed32004378f9118b583e2aa6a676790fbbb47e5a240c210c24db",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-291e31\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/dynamic-inventory.douluo1.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/dynamic-inventory.douluo1.json",
+      "status": 200,
+      "bytes": 664886,
+      "sha256": "00d74b5dc70d68840709b615d5052e5e707da1dac8e032a054fa487a9e9362a1",
+      "expectedSha256": "00d74b5dc70d68840709b615d5052e5e707da1dac8e032a054fa487a9e9362a1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-a2536\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/dynamic-inventory.douluo1.json",
+      "suffix": "?v=00d74b5dc70d68840709",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/dynamic-inventory.douluo1.json?v=00d74b5dc70d68840709",
+      "status": 200,
+      "bytes": 664886,
+      "sha256": "00d74b5dc70d68840709b615d5052e5e707da1dac8e032a054fa487a9e9362a1",
+      "expectedSha256": "00d74b5dc70d68840709b615d5052e5e707da1dac8e032a054fa487a9e9362a1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-a2536\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/dynamic-inventory.douluo2.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/dynamic-inventory.douluo2.json",
+      "status": 200,
+      "bytes": 890704,
+      "sha256": "1d813d4eb1b1a55788d9c2b3004fb382c878f195cfb8d43b2998eb6712105b0e",
+      "expectedSha256": "1d813d4eb1b1a55788d9c2b3004fb382c878f195cfb8d43b2998eb6712105b0e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-d9750\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/dynamic-inventory.douluo2.json",
+      "suffix": "?v=1d813d4eb1b1a55788d9",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/dynamic-inventory.douluo2.json?v=1d813d4eb1b1a55788d9",
+      "status": 200,
+      "bytes": 890704,
+      "sha256": "1d813d4eb1b1a55788d9c2b3004fb382c878f195cfb8d43b2998eb6712105b0e",
+      "expectedSha256": "1d813d4eb1b1a55788d9c2b3004fb382c878f195cfb8d43b2998eb6712105b0e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-d9750\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/route-graph.douluo1.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/route-graph.douluo1.json",
+      "status": 200,
+      "bytes": 11897874,
+      "sha256": "40274c86f01e22874772b362156acde390caee5951c7aada5f4d7b85080b4d9d",
+      "expectedSha256": "40274c86f01e22874772b362156acde390caee5951c7aada5f4d7b85080b4d9d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-b58c12\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/route-graph.douluo1.json",
+      "suffix": "?v=40274c86f01e22874772",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/route-graph.douluo1.json?v=40274c86f01e22874772",
+      "status": 200,
+      "bytes": 11897874,
+      "sha256": "40274c86f01e22874772b362156acde390caee5951c7aada5f4d7b85080b4d9d",
+      "expectedSha256": "40274c86f01e22874772b362156acde390caee5951c7aada5f4d7b85080b4d9d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-b58c12\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/route-graph.douluo2.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/route-graph.douluo2.json",
+      "status": 200,
+      "bytes": 13069585,
+      "sha256": "79412b415ff0909f669ddeb14e7ce26a6b6de6a40d8cf1d59a916c33680ecb6c",
+      "expectedSha256": "79412b415ff0909f669ddeb14e7ce26a6b6de6a40d8cf1d59a916c33680ecb6c",
+      "matches": true,
+      "headers": {
+        "age": "3",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-c76d11\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/route-graph.douluo2.json",
+      "suffix": "?v=79412b415ff0909f669d",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/route-graph.douluo2.json?v=79412b415ff0909f669d",
+      "status": 200,
+      "bytes": 13069585,
+      "sha256": "79412b415ff0909f669ddeb14e7ce26a6b6de6a40d8cf1d59a916c33680ecb6c",
+      "expectedSha256": "79412b415ff0909f669ddeb14e7ce26a6b6de6a40d8cf1d59a916c33680ecb6c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-c76d11\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-manifest.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-manifest.json",
+      "status": 200,
+      "bytes": 1675,
+      "sha256": "acd7c34e309a0a3ed72511a72da76c9a879904d3237850a1417db0f39a078e3c",
+      "expectedSha256": "acd7c34e309a0a3ed72511a72da76c9a879904d3237850a1417db0f39a078e3c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-68b\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-manifest.json",
+      "suffix": "?v=acd7c34e309a0a3ed725",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-manifest.json?v=acd7c34e309a0a3ed725",
+      "status": 200,
+      "bytes": 1675,
+      "sha256": "acd7c34e309a0a3ed72511a72da76c9a879904d3237850a1417db0f39a078e3c",
+      "expectedSha256": "acd7c34e309a0a3ed72511a72da76c9a879904d3237850a1417db0f39a078e3c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-68b\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/App-B4anXMNi.css",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/App-B4anXMNi.css",
+      "status": 200,
+      "bytes": 13865,
+      "sha256": "f97d327ce76a73228ca92ef7bf180a47d69c143058e024b649084006a99d3499",
+      "expectedSha256": "f97d327ce76a73228ca92ef7bf180a47d69c143058e024b649084006a99d3499",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3629\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "text/css; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/App-B4anXMNi.css",
+      "suffix": "?v=f97d327ce76a73228ca9",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/App-B4anXMNi.css?v=f97d327ce76a73228ca9",
+      "status": 200,
+      "bytes": 13865,
+      "sha256": "f97d327ce76a73228ca92ef7bf180a47d69c143058e024b649084006a99d3499",
+      "expectedSha256": "f97d327ce76a73228ca92ef7bf180a47d69c143058e024b649084006a99d3499",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3629\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "text/css; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/App-qyLEl8t4.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/App-qyLEl8t4.js",
+      "status": 200,
+      "bytes": 543797,
+      "sha256": "7521dc1921b464f5ac902405fd84202718c73a9618cc1c2d1069743e6b7bd99e",
+      "expectedSha256": "7521dc1921b464f5ac902405fd84202718c73a9618cc1c2d1069743e6b7bd99e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-84c35\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/App-qyLEl8t4.js",
+      "suffix": "?v=7521dc1921b464f5ac90",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/App-qyLEl8t4.js?v=7521dc1921b464f5ac90",
+      "status": 200,
+      "bytes": 543797,
+      "sha256": "7521dc1921b464f5ac902405fd84202718c73a9618cc1c2d1069743e6b7bd99e",
+      "expectedSha256": "7521dc1921b464f5ac902405fd84202718c73a9618cc1c2d1069743e6b7bd99e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-84c35\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/author-revision-aliases-DpeVpXl5.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/author-revision-aliases-DpeVpXl5.js",
+      "status": 200,
+      "bytes": 2990,
+      "sha256": "53307703e7b4f0e6c5d1cc1b31d981692c425552ba06dfb48592809fff1a3ca9",
+      "expectedSha256": "53307703e7b4f0e6c5d1cc1b31d981692c425552ba06dfb48592809fff1a3ca9",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-bae\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/author-revision-aliases-DpeVpXl5.js",
+      "suffix": "?v=53307703e7b4f0e6c5d1",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/author-revision-aliases-DpeVpXl5.js?v=53307703e7b4f0e6c5d1",
+      "status": 200,
+      "bytes": 2990,
+      "sha256": "53307703e7b4f0e6c5d1cc1b31d981692c425552ba06dfb48592809fff1a3ca9",
+      "expectedSha256": "53307703e7b4f0e6c5d1cc1b31d981692c425552ba06dfb48592809fff1a3ca9",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-bae\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/douluo1-pack-C6xEgEus.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/douluo1-pack-C6xEgEus.js",
+      "status": 200,
+      "bytes": 2525514,
+      "sha256": "cbcfb0805bb389c4447322ecfac8d10f786e4f98ffe60a653927484c60421013",
+      "expectedSha256": "cbcfb0805bb389c4447322ecfac8d10f786e4f98ffe60a653927484c60421013",
+      "matches": true,
+      "headers": {
+        "age": "1",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-26894a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/douluo1-pack-C6xEgEus.js",
+      "suffix": "?v=cbcfb0805bb389c44473",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/douluo1-pack-C6xEgEus.js?v=cbcfb0805bb389c44473",
+      "status": 200,
+      "bytes": 2525514,
+      "sha256": "cbcfb0805bb389c4447322ecfac8d10f786e4f98ffe60a653927484c60421013",
+      "expectedSha256": "cbcfb0805bb389c4447322ecfac8d10f786e4f98ffe60a653927484c60421013",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-26894a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/douluo2-pack-BsEUb2l9.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/douluo2-pack-BsEUb2l9.js",
+      "status": 200,
+      "bytes": 1792716,
+      "sha256": "291db0c9e6f0d271bd7ef382db6ec18c241858b075e88b117b1724b09dffe237",
+      "expectedSha256": "291db0c9e6f0d271bd7ef382db6ec18c241858b075e88b117b1724b09dffe237",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1b5acc\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/douluo2-pack-BsEUb2l9.js",
+      "suffix": "?v=291db0c9e6f0d271bd7e",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/douluo2-pack-BsEUb2l9.js?v=291db0c9e6f0d271bd7e",
+      "status": 200,
+      "bytes": 1792716,
+      "sha256": "291db0c9e6f0d271bd7ef382db6ec18c241858b075e88b117b1724b09dffe237",
+      "expectedSha256": "291db0c9e6f0d271bd7ef382db6ec18c241858b075e88b117b1724b09dffe237",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1b5acc\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/human-foundation-CduvzjjO.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/human-foundation-CduvzjjO.js",
+      "status": 200,
+      "bytes": 4038047,
+      "sha256": "95ba0e26cb96debc77d78d10b20ef87da06cdc9283ee09227b874247f483a653",
+      "expectedSha256": "95ba0e26cb96debc77d78d10b20ef87da06cdc9283ee09227b874247f483a653",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3d9d9f\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/human-foundation-CduvzjjO.js",
+      "suffix": "?v=95ba0e26cb96debc77d7",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/human-foundation-CduvzjjO.js?v=95ba0e26cb96debc77d7",
+      "status": 200,
+      "bytes": 4038047,
+      "sha256": "95ba0e26cb96debc77d78d10b20ef87da06cdc9283ee09227b874247f483a653",
+      "expectedSha256": "95ba0e26cb96debc77d78d10b20ef87da06cdc9283ee09227b874247f483a653",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3d9d9f\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/index-C02WUcAm.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/index-C02WUcAm.js",
+      "status": 200,
+      "bytes": 133959,
+      "sha256": "92a7d3ce21e7e6d301cb85dbd67086bd6ccf6b7e5f39d96f7517f3424d9b4571",
+      "expectedSha256": "92a7d3ce21e7e6d301cb85dbd67086bd6ccf6b7e5f39d96f7517f3424d9b4571",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-20b47\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/index-C02WUcAm.js",
+      "suffix": "?v=92a7d3ce21e7e6d301cb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/index-C02WUcAm.js?v=92a7d3ce21e7e6d301cb",
+      "status": 200,
+      "bytes": 133959,
+      "sha256": "92a7d3ce21e7e6d301cb85dbd67086bd6ccf6b7e5f39d96f7517f3424d9b4571",
+      "expectedSha256": "92a7d3ce21e7e6d301cb85dbd67086bd6ccf6b7e5f39d96f7517f3424d9b4571",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-20b47\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/index-CfLpLgGT.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/index-CfLpLgGT.js",
+      "status": 200,
+      "bytes": 13522,
+      "sha256": "10a24b5299f5095f6751cfc76c49846319a801d124e521bb2e7806b569c79700",
+      "expectedSha256": "10a24b5299f5095f6751cfc76c49846319a801d124e521bb2e7806b569c79700",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-34d2\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/source-runtime/index-CfLpLgGT.js",
+      "suffix": "?v=10a24b5299f5095f6751",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/source-runtime/index-CfLpLgGT.js?v=10a24b5299f5095f6751",
+      "status": 200,
+      "bytes": 13522,
+      "sha256": "10a24b5299f5095f6751cfc76c49846319a801d124e521bb2e7806b569c79700",
+      "expectedSha256": "10a24b5299f5095f6751cfc76c49846319a801d124e521bb2e7806b569c79700",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-34d2\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/terminal-inventory.douluo1.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/terminal-inventory.douluo1.json",
+      "status": 200,
+      "bytes": 1904,
+      "sha256": "000e4f3bd4bcf52c03010bf3fb88c00c02b36d0c8608247f2fa6cf29a1579b33",
+      "expectedSha256": "000e4f3bd4bcf52c03010bf3fb88c00c02b36d0c8608247f2fa6cf29a1579b33",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-770\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/terminal-inventory.douluo1.json",
+      "suffix": "?v=000e4f3bd4bcf52c0301",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/terminal-inventory.douluo1.json?v=000e4f3bd4bcf52c0301",
+      "status": 200,
+      "bytes": 1904,
+      "sha256": "000e4f3bd4bcf52c03010bf3fb88c00c02b36d0c8608247f2fa6cf29a1579b33",
+      "expectedSha256": "000e4f3bd4bcf52c03010bf3fb88c00c02b36d0c8608247f2fa6cf29a1579b33",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-770\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/terminal-inventory.douluo2.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/terminal-inventory.douluo2.json",
+      "status": 200,
+      "bytes": 1567,
+      "sha256": "dc06c2cf44b360502c0f27a684f9cffdf527c062df224b186a31f2d98a96ab24",
+      "expectedSha256": "dc06c2cf44b360502c0f27a684f9cffdf527c062df224b186a31f2d98a96ab24",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-61f\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v10/terminal-inventory.douluo2.json",
+      "suffix": "?v=dc06c2cf44b360502c0f",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v10/terminal-inventory.douluo2.json?v=dc06c2cf44b360502c0f",
+      "status": 200,
+      "bytes": 1567,
+      "sha256": "dc06c2cf44b360502c0f27a684f9cffdf527c062df224b186a31f2d98a96ab24",
+      "expectedSha256": "dc06c2cf44b360502c0f27a684f9cffdf527c062df224b186a31f2d98a96ab24",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-61f\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/catalogs/martial-souls.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/catalogs/martial-souls.json",
+      "status": 200,
+      "bytes": 86986,
+      "sha256": "b0ea9e9bde6545fcc919db0657a132f35e332c7288089429afe15db7cc77810d",
+      "expectedSha256": "b0ea9e9bde6545fcc919db0657a132f35e332c7288089429afe15db7cc77810d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-153ca\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/catalogs/martial-souls.json",
+      "suffix": "?v=b0ea9e9bde6545fcc919",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/catalogs/martial-souls.json?v=b0ea9e9bde6545fcc919",
+      "status": 200,
+      "bytes": 86986,
+      "sha256": "b0ea9e9bde6545fcc919db0657a132f35e332c7288089429afe15db7cc77810d",
+      "expectedSha256": "b0ea9e9bde6545fcc919db0657a132f35e332c7288089429afe15db7cc77810d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-153ca\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/config/awakening-probabilities.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/config/awakening-probabilities.json",
+      "status": 200,
+      "bytes": 12749,
+      "sha256": "6d6ddd4f5f478d1384713b94318c92ed604a903d2dfe7d25188b24122414440e",
+      "expectedSha256": "6d6ddd4f5f478d1384713b94318c92ed604a903d2dfe7d25188b24122414440e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-31cd\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/config/awakening-probabilities.json",
+      "suffix": "?v=6d6ddd4f5f478d138471",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/config/awakening-probabilities.json?v=6d6ddd4f5f478d138471",
+      "status": 200,
+      "bytes": 12749,
+      "sha256": "6d6ddd4f5f478d1384713b94318c92ed604a903d2dfe7d25188b24122414440e",
+      "expectedSha256": "6d6ddd4f5f478d1384713b94318c92ed604a903d2dfe7d25188b24122414440e",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-31cd\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/content/age-6-awakening.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/content/age-6-awakening.json",
+      "status": 200,
+      "bytes": 4775,
+      "sha256": "eb022ee5cee219e6776db4a4abba24b09c9882dedd5d92df87641c95a38bc0b8",
+      "expectedSha256": "eb022ee5cee219e6776db4a4abba24b09c9882dedd5d92df87641c95a38bc0b8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-12a7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/content/age-6-awakening.json",
+      "suffix": "?v=eb022ee5cee219e6776d",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/content/age-6-awakening.json?v=eb022ee5cee219e6776d",
+      "status": 200,
+      "bytes": 4775,
+      "sha256": "eb022ee5cee219e6776db4a4abba24b09c9882dedd5d92df87641c95a38bc0b8",
+      "expectedSha256": "eb022ee5cee219e6776db4a4abba24b09c9882dedd5d92df87641c95a38bc0b8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-12a7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/manifest.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/manifest.json",
+      "status": 200,
+      "bytes": 1197,
+      "sha256": "bcb5dc4e91a34957cffba532c54f31b61f077e4e58e6b9a91822053db91e1b3d",
+      "expectedSha256": "bcb5dc4e91a34957cffba532c54f31b61f077e4e58e6b9a91822053db91e1b3d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-4ad\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/archive/apk-replaced-2026-08-16/manifest.json",
+      "suffix": "?v=bcb5dc4e91a34957cffb",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/archive/apk-replaced-2026-08-16/manifest.json?v=bcb5dc4e91a34957cffb",
+      "status": 200,
+      "bytes": 1197,
+      "sha256": "bcb5dc4e91a34957cffba532c54f31b61f077e4e58e6b9a91822053db91e1b3d",
+      "expectedSha256": "bcb5dc4e91a34957cffba532c54f31b61f077e4e58e6b9a91822053db91e1b3d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-4ad\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/content/age-6-awakening.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/content/age-6-awakening.json",
+      "status": 200,
+      "bytes": 5682,
+      "sha256": "795118329c2d940863231acbf9b46a1fbc941f23f31a4d8113adaf61bcdad323",
+      "expectedSha256": "795118329c2d940863231acbf9b46a1fbc941f23f31a4d8113adaf61bcdad323",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1632\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/content/age-6-awakening.json",
+      "suffix": "?v=795118329c2d94086323",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/content/age-6-awakening.json?v=795118329c2d94086323",
+      "status": 200,
+      "bytes": 5682,
+      "sha256": "795118329c2d940863231acbf9b46a1fbc941f23f31a4d8113adaf61bcdad323",
+      "expectedSha256": "795118329c2d940863231acbf9b46a1fbc941f23f31a4d8113adaf61bcdad323",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1632\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/flows.minimal.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/flows.minimal.json",
+      "status": 200,
+      "bytes": 708,
+      "sha256": "989570af4f9b9ccc0f754e266aa63b546c5372193a93689828f428e0bbe80691",
+      "expectedSha256": "989570af4f9b9ccc0f754e266aa63b546c5372193a93689828f428e0bbe80691",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2c4\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/flows.minimal.json",
+      "suffix": "?v=989570af4f9b9ccc0f75",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/flows.minimal.json?v=989570af4f9b9ccc0f75",
+      "status": 200,
+      "bytes": 708,
+      "sha256": "989570af4f9b9ccc0f754e266aa63b546c5372193a93689828f428e0bbe80691",
+      "expectedSha256": "989570af4f9b9ccc0f754e266aa63b546c5372193a93689828f428e0bbe80691",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2c4\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/routes.minimal.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/routes.minimal.json",
+      "status": 200,
+      "bytes": 373,
+      "sha256": "79bc13ae7667f30b50252aaf57186b9c8660f4749af53056a52ebb957409844d",
+      "expectedSha256": "79bc13ae7667f30b50252aaf57186b9c8660f4749af53056a52ebb957409844d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-175\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/routes.minimal.json",
+      "suffix": "?v=79bc13ae7667f30b5025",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/routes.minimal.json?v=79bc13ae7667f30b5025",
+      "status": 200,
+      "bytes": 373,
+      "sha256": "79bc13ae7667f30b50252aaf57186b9c8660f4749af53056a52ebb957409844d",
+      "expectedSha256": "79bc13ae7667f30b50252aaf57186b9c8660f4749af53056a52ebb957409844d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-175\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/vertical-slice.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/vertical-slice.json",
+      "status": 200,
+      "bytes": 1901,
+      "sha256": "ff1c4a0609f446aa800fbe3aeebf3c8e956baa160c4a338e80dfc74b53b14195",
+      "expectedSha256": "ff1c4a0609f446aa800fbe3aeebf3c8e956baa160c4a338e80dfc74b53b14195",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-76d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/vertical-slice.json",
+      "suffix": "?v=ff1c4a0609f446aa800f",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/vertical-slice.json?v=ff1c4a0609f446aa800f",
+      "status": 200,
+      "bytes": 1901,
+      "sha256": "ff1c4a0609f446aa800fbe3aeebf3c8e956baa160c4a338e80dfc74b53b14195",
+      "expectedSha256": "ff1c4a0609f446aa800fbe3aeebf3c8e956baa160c4a338e80dfc74b53b14195",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-76d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/wheels.minimal.json",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/wheels.minimal.json",
+      "status": 200,
+      "bytes": 545,
+      "sha256": "290c6a226966f48b5e950bdeadb311898cb232f2ad281f722aef9af5794a9176",
+      "expectedSha256": "290c6a226966f48b5e950bdeadb311898cb232f2ad281f722aef9af5794a9176",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-221\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "data/v2/examples/wheels.minimal.json",
+      "suffix": "?v=290c6a226966f48b5e95",
+      "url": "https://maxwellguodut.github.io/douluo-life/data/v2/examples/wheels.minimal.json?v=290c6a226966f48b5e95",
+      "status": 200,
+      "bytes": 545,
+      "sha256": "290c6a226966f48b5e950bdeadb311898cb232f2ad281f722aef9af5794a9176",
+      "expectedSha256": "290c6a226966f48b5e950bdeadb311898cb232f2ad281f722aef9af5794a9176",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-221\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "index.html",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/index.html",
+      "status": 200,
+      "bytes": 50238,
+      "sha256": "d11d6dbd9dc629ff647f74c48ff00cfe576193ec23941d8819144e7840c3fee2",
+      "expectedSha256": "d11d6dbd9dc629ff647f74c48ff00cfe576193ec23941d8819144e7840c3fee2",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-c43e\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "text/html; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/annual-session.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/annual-session.js",
+      "status": 200,
+      "bytes": 8861,
+      "sha256": "db8caa0502d593e3e8bc9e978992eae1b52e4fc7ab7a9dc67ee43aa4ddf2f94d",
+      "expectedSha256": "db8caa0502d593e3e8bc9e978992eae1b52e4fc7ab7a9dc67ee43aa4ddf2f94d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-229d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/annual-session.js",
+      "suffix": "?v=db8caa0502d593e3e8bc",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/annual-session.js?v=db8caa0502d593e3e8bc",
+      "status": 200,
+      "bytes": 8861,
+      "sha256": "db8caa0502d593e3e8bc9e978992eae1b52e4fc7ab7a9dc67ee43aa4ddf2f94d",
+      "expectedSha256": "db8caa0502d593e3e8bc9e978992eae1b52e4fc7ab7a9dc67ee43aa4ddf2f94d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-229d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-combat-power-runtime.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-combat-power-runtime.js",
+      "status": 200,
+      "bytes": 31066,
+      "sha256": "22798b659d906fbc0e235771306c4960a3ae0af82d94acf1a43b33b74fcce433",
+      "expectedSha256": "22798b659d906fbc0e235771306c4960a3ae0af82d94acf1a43b33b74fcce433",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-795a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-combat-power-runtime.js",
+      "suffix": "?v=22798b659d906fbc0e23",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-combat-power-runtime.js?v=22798b659d906fbc0e23",
+      "status": 200,
+      "bytes": 31066,
+      "sha256": "22798b659d906fbc0e235771306c4960a3ae0af82d94acf1a43b33b74fcce433",
+      "expectedSha256": "22798b659d906fbc0e235771306c4960a3ae0af82d94acf1a43b33b74fcce433",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-795a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-content-adapter.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-content-adapter.js",
+      "status": 200,
+      "bytes": 25551,
+      "sha256": "369c66c28f59435b7b5c8d3f58f3b007e3ac8478bebe4041a98c2eaee46d7f6b",
+      "expectedSha256": "369c66c28f59435b7b5c8d3f58f3b007e3ac8478bebe4041a98c2eaee46d7f6b",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-63cf\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-content-adapter.js",
+      "suffix": "?v=369c66c28f59435b7b5c",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-content-adapter.js?v=369c66c28f59435b7b5c",
+      "status": 200,
+      "bytes": 25551,
+      "sha256": "369c66c28f59435b7b5c8d3f58f3b007e3ac8478bebe4041a98c2eaee46d7f6b",
+      "expectedSha256": "369c66c28f59435b7b5c8d3f58f3b007e3ac8478bebe4041a98c2eaee46d7f6b",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-63cf\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-route-runtime.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-route-runtime.js",
+      "status": 200,
+      "bytes": 102700,
+      "sha256": "a8ad6ef0a22fd7f992b88724678d57813a0fb3bc37a9d52a22ea8530a2cf4062",
+      "expectedSha256": "a8ad6ef0a22fd7f992b88724678d57813a0fb3bc37a9d52a22ea8530a2cf4062",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1912c\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-route-runtime.js",
+      "suffix": "?v=a8ad6ef0a22fd7f992b8",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-route-runtime.js?v=a8ad6ef0a22fd7f992b8",
+      "status": 200,
+      "bytes": 102700,
+      "sha256": "a8ad6ef0a22fd7f992b88724678d57813a0fb3bc37a9d52a22ea8530a2cf4062",
+      "expectedSha256": "a8ad6ef0a22fd7f992b88724678d57813a0fb3bc37a9d52a22ea8530a2cf4062",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1912c\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-rule-runtime.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-rule-runtime.js",
+      "status": 200,
+      "bytes": 60825,
+      "sha256": "4d61ad9dcb9c2ae24b144fbd3f7548f838b6b461fd2e43163fc55692cd9ed3b5",
+      "expectedSha256": "4d61ad9dcb9c2ae24b144fbd3f7548f838b6b461fd2e43163fc55692cd9ed3b5",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-ed99\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-rule-runtime.js",
+      "suffix": "?v=4d61ad9dcb9c2ae24b14",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-rule-runtime.js?v=4d61ad9dcb9c2ae24b14",
+      "status": 200,
+      "bytes": 60825,
+      "sha256": "4d61ad9dcb9c2ae24b144fbd3f7548f838b6b461fd2e43163fc55692cd9ed3b5",
+      "expectedSha256": "4d61ad9dcb9c2ae24b144fbd3f7548f838b6b461fd2e43163fc55692cd9ed3b5",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-ed99\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-scheduler-runtime.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-scheduler-runtime.js",
+      "status": 200,
+      "bytes": 31132,
+      "sha256": "1c21ad45349e2fa2c013e3f7c66b7252789fb2989b15ae52eeae725028393d36",
+      "expectedSha256": "1c21ad45349e2fa2c013e3f7c66b7252789fb2989b15ae52eeae725028393d36",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-799c\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-scheduler-runtime.js",
+      "suffix": "?v=1c21ad45349e2fa2c013",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-scheduler-runtime.js?v=1c21ad45349e2fa2c013",
+      "status": 200,
+      "bytes": 31132,
+      "sha256": "1c21ad45349e2fa2c013e3f7c66b7252789fb2989b15ae52eeae725028393d36",
+      "expectedSha256": "1c21ad45349e2fa2c013e3f7c66b7252789fb2989b15ae52eeae725028393d36",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-799c\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-special-growth-runtime.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-special-growth-runtime.js",
+      "status": 200,
+      "bytes": 10645,
+      "sha256": "eb8cd5c0a1955ed48b291e9d26c2a7fbf0742e04c81699f9011236a9e47017af",
+      "expectedSha256": "eb8cd5c0a1955ed48b291e9d26c2a7fbf0742e04c81699f9011236a9e47017af",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2995\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/apk-special-growth-runtime.js",
+      "suffix": "?v=eb8cd5c0a1955ed48b29",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/apk-special-growth-runtime.js?v=eb8cd5c0a1955ed48b29",
+      "status": 200,
+      "bytes": 10645,
+      "sha256": "eb8cd5c0a1955ed48b291e9d26c2a7fbf0742e04c81699f9011236a9e47017af",
+      "expectedSha256": "eb8cd5c0a1955ed48b291e9d26c2a7fbf0742e04c81699f9011236a9e47017af",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2995\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/app-v2-demo.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/app-v2-demo.js",
+      "status": 200,
+      "bytes": 2869,
+      "sha256": "f16dbd07fd0e34e10fca06d28786e77462ff3ab1eee422fedfc63733f8c0a79d",
+      "expectedSha256": "f16dbd07fd0e34e10fca06d28786e77462ff3ab1eee422fedfc63733f8c0a79d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-b35\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/app-v2-demo.js",
+      "suffix": "?v=f16dbd07fd0e34e10fca",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/app-v2-demo.js?v=f16dbd07fd0e34e10fca",
+      "status": 200,
+      "bytes": 2869,
+      "sha256": "f16dbd07fd0e34e10fca06d28786e77462ff3ab1eee422fedfc63733f8c0a79d",
+      "expectedSha256": "f16dbd07fd0e34e10fca06d28786e77462ff3ab1eee422fedfc63733f8c0a79d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-b35\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/app.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/app.js",
+      "status": 200,
+      "bytes": 638,
+      "sha256": "be2f5daecdd591334dafb369baf0d0e70c7d347f657914edf6b4d8dc79461ed3",
+      "expectedSha256": "be2f5daecdd591334dafb369baf0d0e70c7d347f657914edf6b4d8dc79461ed3",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-27e\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/app.js",
+      "suffix": "?v=be2f5daecdd591334daf",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/app.js?v=be2f5daecdd591334daf",
+      "status": 200,
+      "bytes": 638,
+      "sha256": "be2f5daecdd591334dafb369baf0d0e70c7d347f657914edf6b4d8dc79461ed3",
+      "expectedSha256": "be2f5daecdd591334dafb369baf0d0e70c7d347f657914edf6b4d8dc79461ed3",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-27e\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/combat-power.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/combat-power.js",
+      "status": 200,
+      "bytes": 48771,
+      "sha256": "939148844e2f3046edfe7138f1bfce66833d7e7565c2d44f38a438188a5b1812",
+      "expectedSha256": "939148844e2f3046edfe7138f1bfce66833d7e7565c2d44f38a438188a5b1812",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-be83\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/combat-power.js",
+      "suffix": "?v=939148844e2f3046edfe",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/combat-power.js?v=939148844e2f3046edfe",
+      "status": 200,
+      "bytes": 48771,
+      "sha256": "939148844e2f3046edfe7138f1bfce66833d7e7565c2d44f38a438188a5b1812",
+      "expectedSha256": "939148844e2f3046edfe7138f1bfce66833d7e7565c2d44f38a438188a5b1812",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-be83\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/event-schema-v2-validator.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/event-schema-v2-validator.js",
+      "status": 200,
+      "bytes": 55832,
+      "sha256": "6290cf3d5b33771984359a9e314b1b056b07f59b9ae683f9b365454f3c01faab",
+      "expectedSha256": "6290cf3d5b33771984359a9e314b1b056b07f59b9ae683f9b365454f3c01faab",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-da18\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/event-schema-v2-validator.js",
+      "suffix": "?v=6290cf3d5b3377198435",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/event-schema-v2-validator.js?v=6290cf3d5b3377198435",
+      "status": 200,
+      "bytes": 55832,
+      "sha256": "6290cf3d5b33771984359a9e314b1b056b07f59b9ae683f9b365454f3c01faab",
+      "expectedSha256": "6290cf3d5b33771984359a9e314b1b056b07f59b9ae683f9b365454f3c01faab",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-da18\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/event.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/event.js",
+      "status": 200,
+      "bytes": 7399,
+      "sha256": "985fbb8c863054919031d17b4a94b87b56200adf15c4cbe0da58b9da1f959638",
+      "expectedSha256": "985fbb8c863054919031d17b4a94b87b56200adf15c4cbe0da58b9da1f959638",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1ce7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/event.js",
+      "suffix": "?v=985fbb8c863054919031",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/event.js?v=985fbb8c863054919031",
+      "status": 200,
+      "bytes": 7399,
+      "sha256": "985fbb8c863054919031d17b4a94b87b56200adf15c4cbe0da58b9da1f959638",
+      "expectedSha256": "985fbb8c863054919031d17b4a94b87b56200adf15c4cbe0da58b9da1f959638",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1ce7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/game.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/game.js",
+      "status": 200,
+      "bytes": 3978,
+      "sha256": "9db0ecb89efa4894b66b4e3571f5cd7bd7a49eb06a1b3f131e40a311de39c7f7",
+      "expectedSha256": "9db0ecb89efa4894b66b4e3571f5cd7bd7a49eb06a1b3f131e40a311de39c7f7",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-f8a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/game.js",
+      "suffix": "?v=9db0ecb89efa4894b66b",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/game.js?v=9db0ecb89efa4894b66b",
+      "status": 200,
+      "bytes": 3978,
+      "sha256": "9db0ecb89efa4894b66b4e3571f5cd7bd7a49eb06a1b3f131e40a311de39c7f7",
+      "expectedSha256": "9db0ecb89efa4894b66b4e3571f5cd7bd7a49eb06a1b3f131e40a311de39c7f7",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-f8a\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player-selectors.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player-selectors.js",
+      "status": 200,
+      "bytes": 3218,
+      "sha256": "b97ad0d8f13bdbe714eb6bc439959ce5de5d86bf3f4ef45274c068d97677d083",
+      "expectedSha256": "b97ad0d8f13bdbe714eb6bc439959ce5de5d86bf3f4ef45274c068d97677d083",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-c92\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player-selectors.js",
+      "suffix": "?v=b97ad0d8f13bdbe714eb",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player-selectors.js?v=b97ad0d8f13bdbe714eb",
+      "status": 200,
+      "bytes": 3218,
+      "sha256": "b97ad0d8f13bdbe714eb6bc439959ce5de5d86bf3f4ef45274c068d97677d083",
+      "expectedSha256": "b97ad0d8f13bdbe714eb6bc439959ce5de5d86bf3f4ef45274c068d97677d083",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-c92\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player-state-migration.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player-state-migration.js",
+      "status": 200,
+      "bytes": 12000,
+      "sha256": "3bd939c5ab9a6267181df4bb6f3e5deacb07fb0411152094228001d34cd22b46",
+      "expectedSha256": "3bd939c5ab9a6267181df4bb6f3e5deacb07fb0411152094228001d34cd22b46",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2ee0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player-state-migration.js",
+      "suffix": "?v=3bd939c5ab9a6267181d",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player-state-migration.js?v=3bd939c5ab9a6267181d",
+      "status": 200,
+      "bytes": 12000,
+      "sha256": "3bd939c5ab9a6267181df4bb6f3e5deacb07fb0411152094228001d34cd22b46",
+      "expectedSha256": "3bd939c5ab9a6267181df4bb6f3e5deacb07fb0411152094228001d34cd22b46",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2ee0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player-v2.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player-v2.js",
+      "status": 200,
+      "bytes": 28989,
+      "sha256": "205ca0fe0b31a2b3dfc7d8ac07a0eff7d16232f3065e8bbfa55522789c4c5bb9",
+      "expectedSha256": "205ca0fe0b31a2b3dfc7d8ac07a0eff7d16232f3065e8bbfa55522789c4c5bb9",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-713d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player-v2.js",
+      "suffix": "?v=205ca0fe0b31a2b3dfc7",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player-v2.js?v=205ca0fe0b31a2b3dfc7",
+      "status": 200,
+      "bytes": 28989,
+      "sha256": "205ca0fe0b31a2b3dfc7d8ac07a0eff7d16232f3065e8bbfa55522789c4c5bb9",
+      "expectedSha256": "205ca0fe0b31a2b3dfc7d8ac07a0eff7d16232f3065e8bbfa55522789c4c5bb9",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-713d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player.js",
+      "status": 200,
+      "bytes": 612,
+      "sha256": "6def9a3ac3421178b400c221d5f77d0bc2d2a8c8a3750ce5271d6f45ec000c35",
+      "expectedSha256": "6def9a3ac3421178b400c221d5f77d0bc2d2a8c8a3750ce5271d6f45ec000c35",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-264\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/player.js",
+      "suffix": "?v=6def9a3ac3421178b400",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/player.js?v=6def9a3ac3421178b400",
+      "status": 200,
+      "bytes": 612,
+      "sha256": "6def9a3ac3421178b400c221d5f77d0bc2d2a8c8a3750ce5271d6f45ec000c35",
+      "expectedSha256": "6def9a3ac3421178b400c221d5f77d0bc2d2a8c8a3750ce5271d6f45ec000c35",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-264\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/production-content-loader.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/production-content-loader.js",
+      "status": 200,
+      "bytes": 8905,
+      "sha256": "9c048432a1cf633e59aee72de7f772d317546c1dbddcec24db3a60768360029c",
+      "expectedSha256": "9c048432a1cf633e59aee72de7f772d317546c1dbddcec24db3a60768360029c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-22c9\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/production-content-loader.js",
+      "suffix": "?v=9c048432a1cf633e59ae",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/production-content-loader.js?v=9c048432a1cf633e59ae",
+      "status": 200,
+      "bytes": 8905,
+      "sha256": "9c048432a1cf633e59aee72de7f772d317546c1dbddcec24db3a60768360029c",
+      "expectedSha256": "9c048432a1cf633e59aee72de7f772d317546c1dbddcec24db3a60768360029c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-22c9\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/route-state.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/route-state.js",
+      "status": 200,
+      "bytes": 16146,
+      "sha256": "8a956d7cb2f78fe751722841075837f14690a1d72014b9c0752594a644326921",
+      "expectedSha256": "8a956d7cb2f78fe751722841075837f14690a1d72014b9c0752594a644326921",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3f12\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/route-state.js",
+      "suffix": "?v=8a956d7cb2f78fe75172",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/route-state.js?v=8a956d7cb2f78fe75172",
+      "status": 200,
+      "bytes": 16146,
+      "sha256": "8a956d7cb2f78fe751722841075837f14690a1d72014b9c0752594a644326921",
+      "expectedSha256": "8a956d7cb2f78fe751722841075837f14690a1d72014b9c0752594a644326921",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3f12\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/save.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/save.js",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/save.js",
+      "suffix": "?v=e3b0c44298fc1c149afb",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/save.js?v=e3b0c44298fc1c149afb",
+      "status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "\"6ad256a4-0\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/ui-v2-demo.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/ui-v2-demo.js",
+      "status": 200,
+      "bytes": 5089,
+      "sha256": "497f3f02708caed009b5b3b00bf5d34342714f7bf16c63d8797a511ab0ac3615",
+      "expectedSha256": "497f3f02708caed009b5b3b00bf5d34342714f7bf16c63d8797a511ab0ac3615",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-13e1\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/ui-v2-demo.js",
+      "suffix": "?v=497f3f02708caed009b5",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/ui-v2-demo.js?v=497f3f02708caed009b5",
+      "status": 200,
+      "bytes": 5089,
+      "sha256": "497f3f02708caed009b5b3b00bf5d34342714f7bf16c63d8797a511ab0ac3615",
+      "expectedSha256": "497f3f02708caed009b5b3b00bf5d34342714f7bf16c63d8797a511ab0ac3615",
+      "matches": true,
+      "headers": {
+        "age": "1",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-13e1\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/ui.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/ui.js",
+      "status": 200,
+      "bytes": 2790,
+      "sha256": "3738f757d2478f8cb9fbaf995bbef249a1189b98942aa5ec4fb88a113c2da4c6",
+      "expectedSha256": "3738f757d2478f8cb9fbaf995bbef249a1189b98942aa5ec4fb88a113c2da4c6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-ae6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/ui.js",
+      "suffix": "?v=3738f757d2478f8cb9fb",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/ui.js?v=3738f757d2478f8cb9fb",
+      "status": 200,
+      "bytes": 2790,
+      "sha256": "3738f757d2478f8cb9fbaf995bbef249a1189b98942aa5ec4fb88a113c2da4c6",
+      "expectedSha256": "3738f757d2478f8cb9fbaf995bbef249a1189b98942aa5ec4fb88a113c2da4c6",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-ae6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-demo-app.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-demo-app.js",
+      "status": 200,
+      "bytes": 38630,
+      "sha256": "46af3f738ef5b9418cf8f3c5a9a9d6d32d3b3440fa4c15bb8934a988de59df68",
+      "expectedSha256": "46af3f738ef5b9418cf8f3c5a9a9d6d32d3b3440fa4c15bb8934a988de59df68",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-96e6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-demo-app.js",
+      "suffix": "?v=46af3f738ef5b9418cf8",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-demo-app.js?v=46af3f738ef5b9418cf8",
+      "status": 200,
+      "bytes": 38630,
+      "sha256": "46af3f738ef5b9418cf8f3c5a9a9d6d32d3b3440fa4c15bb8934a988de59df68",
+      "expectedSha256": "46af3f738ef5b9418cf8f3c5a9a9d6d32d3b3440fa4c15bb8934a988de59df68",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-96e6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-demo.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-demo.js",
+      "status": 200,
+      "bytes": 16378,
+      "sha256": "3ed05b571fd56ab4631587995820c49647a6cc7ea4d34dfc7c9cb7ce5d6b6a0f",
+      "expectedSha256": "3ed05b571fd56ab4631587995820c49647a6cc7ea4d34dfc7c9cb7ce5d6b6a0f",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3ffa\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-demo.js",
+      "suffix": "?v=3ed05b571fd56ab46315",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-demo.js?v=3ed05b571fd56ab46315",
+      "status": 200,
+      "bytes": 16378,
+      "sha256": "3ed05b571fd56ab4631587995820c49647a6cc7ea4d34dfc7c9cb7ce5d6b6a0f",
+      "expectedSha256": "3ed05b571fd56ab4631587995820c49647a6cc7ea4d34dfc7c9cb7ce5d6b6a0f",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3ffa\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-destiny-cohort.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-destiny-cohort.js",
+      "status": 200,
+      "bytes": 6398,
+      "sha256": "b146d82f98ab0683602ef80ae6f9f3ffe7b0b9e1544eb5cc67157e4b857c742d",
+      "expectedSha256": "b146d82f98ab0683602ef80ae6f9f3ffe7b0b9e1544eb5cc67157e4b857c742d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-18fe\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-destiny-cohort.js",
+      "suffix": "?v=b146d82f98ab0683602e",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-destiny-cohort.js?v=b146d82f98ab0683602e",
+      "status": 200,
+      "bytes": 6398,
+      "sha256": "b146d82f98ab0683602ef80ae6f9f3ffe7b0b9e1544eb5cc67157e4b857c742d",
+      "expectedSha256": "b146d82f98ab0683602ef80ae6f9f3ffe7b0b9e1544eb5cc67157e4b857c742d",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-18fe\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-destiny-explorer.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-destiny-explorer.js",
+      "status": 200,
+      "bytes": 3303,
+      "sha256": "c04a1e1f205cf5c1138b96d69764d127b459348a28e70f33c96f605c5e3ce050",
+      "expectedSha256": "c04a1e1f205cf5c1138b96d69764d127b459348a28e70f33c96f605c5e3ce050",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-ce7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-destiny-explorer.js",
+      "suffix": "?v=c04a1e1f205cf5c1138b",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-destiny-explorer.js?v=c04a1e1f205cf5c1138b",
+      "status": 200,
+      "bytes": 3303,
+      "sha256": "c04a1e1f205cf5c1138b96d69764d127b459348a28e70f33c96f605c5e3ce050",
+      "expectedSha256": "c04a1e1f205cf5c1138b96d69764d127b459348a28e70f33c96f605c5e3ce050",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-ce7\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-life-archive.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-life-archive.js",
+      "status": 200,
+      "bytes": 10546,
+      "sha256": "09e0569dfe7ae51ddc3e7a13601e7658e1f3474106ba7aaa17df25def6db5371",
+      "expectedSha256": "09e0569dfe7ae51ddc3e7a13601e7658e1f3474106ba7aaa17df25def6db5371",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2932\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-life-archive.js",
+      "suffix": "?v=09e0569dfe7ae51ddc3e",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-life-archive.js?v=09e0569dfe7ae51ddc3e",
+      "status": 200,
+      "bytes": 10546,
+      "sha256": "09e0569dfe7ae51ddc3e7a13601e7658e1f3474106ba7aaa17df25def6db5371",
+      "expectedSha256": "09e0569dfe7ae51ddc3e7a13601e7658e1f3474106ba7aaa17df25def6db5371",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2932\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-life-presentation.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-life-presentation.js",
+      "status": 200,
+      "bytes": 7232,
+      "sha256": "ac87bff55f9916e1fcf198307ed9866f290965ccfb134971735d0e7f88020a4a",
+      "expectedSha256": "ac87bff55f9916e1fcf198307ed9866f290965ccfb134971735d0e7f88020a4a",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1c40\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-life-presentation.js",
+      "suffix": "?v=ac87bff55f9916e1fcf1",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-life-presentation.js?v=ac87bff55f9916e1fcf1",
+      "status": 200,
+      "bytes": 7232,
+      "sha256": "ac87bff55f9916e1fcf198307ed9866f290965ccfb134971735d0e7f88020a4a",
+      "expectedSha256": "ac87bff55f9916e1fcf198307ed9866f290965ccfb134971735d0e7f88020a4a",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1c40\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-path-atlas.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-path-atlas.js",
+      "status": 200,
+      "bytes": 4198,
+      "sha256": "fdfd3e5ca45ec30eaa7e13d3741195738f96ef581ca034b6b44cde5360c68b0c",
+      "expectedSha256": "fdfd3e5ca45ec30eaa7e13d3741195738f96ef581ca034b6b44cde5360c68b0c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1066\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-path-atlas.js",
+      "suffix": "?v=fdfd3e5ca45ec30eaa7e",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-path-atlas.js?v=fdfd3e5ca45ec30eaa7e",
+      "status": 200,
+      "bytes": 4198,
+      "sha256": "fdfd3e5ca45ec30eaa7e13d3741195738f96ef581ca034b6b44cde5360c68b0c",
+      "expectedSha256": "fdfd3e5ca45ec30eaa7e13d3741195738f96ef581ca034b6b44cde5360c68b0c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1066\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-save-store.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-save-store.js",
+      "status": 200,
+      "bytes": 11845,
+      "sha256": "19584f5b3f9699c3c6b728ca6c5b8cad43ac66964a6fcd868d60a519ff1491b3",
+      "expectedSha256": "19584f5b3f9699c3c6b728ca6c5b8cad43ac66964a6fcd868d60a519ff1491b3",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2e45\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-save-store.js",
+      "suffix": "?v=19584f5b3f9699c3c6b7",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-save-store.js?v=19584f5b3f9699c3c6b7",
+      "status": 200,
+      "bytes": 11845,
+      "sha256": "19584f5b3f9699c3c6b728ca6c5b8cad43ac66964a6fcd868d60a519ff1491b3",
+      "expectedSha256": "19584f5b3f9699c3c6b728ca6c5b8cad43ac66964a6fcd868d60a519ff1491b3",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2e45\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-wheel-view.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-wheel-view.js",
+      "status": 200,
+      "bytes": 7608,
+      "sha256": "748bd327de28df7825bca587a68613a1229e6c6774b91806d2c3a16dab339aa0",
+      "expectedSha256": "748bd327de28df7825bca587a68613a1229e6c6774b91806d2c3a16dab339aa0",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1db8\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v05-wheel-view.js",
+      "suffix": "?v=748bd327de28df7825bc",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v05-wheel-view.js?v=748bd327de28df7825bc",
+      "status": 200,
+      "bytes": 7608,
+      "sha256": "748bd327de28df7825bca587a68613a1229e6c6774b91806d2c3a16dab339aa0",
+      "expectedSha256": "748bd327de28df7825bca587a68613a1229e6c6774b91806d2c3a16dab339aa0",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1db8\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-app.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-app.js",
+      "status": 200,
+      "bytes": 39086,
+      "sha256": "c1dbea567bb864abe5b1876b94fac082b8f8f37810471629a0356659ee16079c",
+      "expectedSha256": "c1dbea567bb864abe5b1876b94fac082b8f8f37810471629a0356659ee16079c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-98ae\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-app.js",
+      "suffix": "?v=c1dbea567bb864abe5b1",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-app.js?v=c1dbea567bb864abe5b1",
+      "status": 200,
+      "bytes": 39086,
+      "sha256": "c1dbea567bb864abe5b1876b94fac082b8f8f37810471629a0356659ee16079c",
+      "expectedSha256": "c1dbea567bb864abe5b1876b94fac082b8f8f37810471629a0356659ee16079c",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-98ae\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-asset-fetch.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-asset-fetch.js",
+      "status": 200,
+      "bytes": 990,
+      "sha256": "17fd2592506a402ef8ebd5401adb414b7981f971eb0443932916a5ef9e626147",
+      "expectedSha256": "17fd2592506a402ef8ebd5401adb414b7981f971eb0443932916a5ef9e626147",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3de\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-asset-fetch.js",
+      "suffix": "?v=17fd2592506a402ef8eb",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-asset-fetch.js?v=17fd2592506a402ef8eb",
+      "status": 200,
+      "bytes": 990,
+      "sha256": "17fd2592506a402ef8ebd5401adb414b7981f971eb0443932916a5ef9e626147",
+      "expectedSha256": "17fd2592506a402ef8ebd5401adb414b7981f971eb0443932916a5ef9e626147",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3de\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-content-loader.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-content-loader.js",
+      "status": 200,
+      "bytes": 5807,
+      "sha256": "e0f27ba5e1ec9813bd5964d157e98da696f619f873ee8ef2a26fe21f53f88c40",
+      "expectedSha256": "e0f27ba5e1ec9813bd5964d157e98da696f619f873ee8ef2a26fe21f53f88c40",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-16af\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-content-loader.js",
+      "suffix": "?v=e0f27ba5e1ec9813bd59",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-content-loader.js?v=e0f27ba5e1ec9813bd59",
+      "status": 200,
+      "bytes": 5807,
+      "sha256": "e0f27ba5e1ec9813bd5964d157e98da696f619f873ee8ef2a26fe21f53f88c40",
+      "expectedSha256": "e0f27ba5e1ec9813bd5964d157e98da696f619f873ee8ef2a26fe21f53f88c40",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-16af\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-display.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-display.js",
+      "status": 200,
+      "bytes": 16052,
+      "sha256": "6d3477200b04ef7877c252cc48a3bb0dc8ff7faf3cca03668e31b907f30dbb72",
+      "expectedSha256": "6d3477200b04ef7877c252cc48a3bb0dc8ff7faf3cca03668e31b907f30dbb72",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3eb4\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-display.js",
+      "suffix": "?v=6d3477200b04ef7877c2",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-display.js?v=6d3477200b04ef7877c2",
+      "status": 200,
+      "bytes": 16052,
+      "sha256": "6d3477200b04ef7877c252cc48a3bb0dc8ff7faf3cca03668e31b907f30dbb72",
+      "expectedSha256": "6d3477200b04ef7877c252cc48a3bb0dc8ff7faf3cca03668e31b907f30dbb72",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-3eb4\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-experience.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-experience.js",
+      "status": 200,
+      "bytes": 6582,
+      "sha256": "e89c84a9ab922e1f851586f94498121ee4671f9f571502ac2b8cb0a4a426c6dd",
+      "expectedSha256": "e89c84a9ab922e1f851586f94498121ee4671f9f571502ac2b8cb0a4a426c6dd",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-19b6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-experience.js",
+      "suffix": "?v=e89c84a9ab922e1f8515",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-experience.js?v=e89c84a9ab922e1f8515",
+      "status": 200,
+      "bytes": 6582,
+      "sha256": "e89c84a9ab922e1f851586f94498121ee4671f9f571502ac2b8cb0a4a426c6dd",
+      "expectedSha256": "e89c84a9ab922e1f851586f94498121ee4671f9f571502ac2b8cb0a4a426c6dd",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-19b6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-god-trial-data.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-god-trial-data.js",
+      "status": 200,
+      "bytes": 137715,
+      "sha256": "a54cc0cbd35549a624a5e7d47c4ba2cc4379427288c3f3e7c4b4534a8b020bf7",
+      "expectedSha256": "a54cc0cbd35549a624a5e7d47c4ba2cc4379427288c3f3e7c4b4534a8b020bf7",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-219f3\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-god-trial-data.js",
+      "suffix": "?v=a54cc0cbd35549a624a5",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-god-trial-data.js?v=a54cc0cbd35549a624a5",
+      "status": 200,
+      "bytes": 137715,
+      "sha256": "a54cc0cbd35549a624a5e7d47c4ba2cc4379427288c3f3e7c4b4534a8b020bf7",
+      "expectedSha256": "a54cc0cbd35549a624a5e7d47c4ba2cc4379427288c3f3e7c4b4534a8b020bf7",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-219f3\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-god-trial-runtime.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-god-trial-runtime.js",
+      "status": 200,
+      "bytes": 9646,
+      "sha256": "56e4705e64b201132c1bc03dea2f43a5bd81ddbdda2fed537f9b2402e74938a2",
+      "expectedSha256": "56e4705e64b201132c1bc03dea2f43a5bd81ddbdda2fed537f9b2402e74938a2",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-25ae\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-god-trial-runtime.js",
+      "suffix": "?v=56e4705e64b201132c1b",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-god-trial-runtime.js?v=56e4705e64b201132c1b",
+      "status": 200,
+      "bytes": 9646,
+      "sha256": "56e4705e64b201132c1bc03dea2f43a5bd81ddbdda2fed537f9b2402e74938a2",
+      "expectedSha256": "56e4705e64b201132c1bc03dea2f43a5bd81ddbdda2fed537f9b2402e74938a2",
+      "matches": true,
+      "headers": {
+        "age": "1",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-25ae\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-history-view.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-history-view.js",
+      "status": 200,
+      "bytes": 6070,
+      "sha256": "012bc06e1253efd791aa43809af4fbf3ce67b3f69c785eaaa620234da38bd99b",
+      "expectedSha256": "012bc06e1253efd791aa43809af4fbf3ce67b3f69c785eaaa620234da38bd99b",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-17b6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-history-view.js",
+      "suffix": "?v=012bc06e1253efd791aa",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-history-view.js?v=012bc06e1253efd791aa",
+      "status": 200,
+      "bytes": 6070,
+      "sha256": "012bc06e1253efd791aa43809af4fbf3ce67b3f69c785eaaa620234da38bd99b",
+      "expectedSha256": "012bc06e1253efd791aa43809af4fbf3ce67b3f69c785eaaa620234da38bd99b",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-17b6\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-human-runner.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-human-runner.js",
+      "status": 200,
+      "bytes": 40003,
+      "sha256": "596f120158d06ed5f4cd8f1a13821f5e1c7d21959b2b1f46304537de2bc940a8",
+      "expectedSha256": "596f120158d06ed5f4cd8f1a13821f5e1c7d21959b2b1f46304537de2bc940a8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-9c43\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-human-runner.js",
+      "suffix": "?v=596f120158d06ed5f4cd",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-human-runner.js?v=596f120158d06ed5f4cd",
+      "status": 200,
+      "bytes": 40003,
+      "sha256": "596f120158d06ed5f4cd8f1a13821f5e1c7d21959b2b1f46304537de2bc940a8",
+      "expectedSha256": "596f120158d06ed5f4cd8f1a13821f5e1c7d21959b2b1f46304537de2bc940a8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-9c43\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-life-runner.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-life-runner.js",
+      "status": 200,
+      "bytes": 2728,
+      "sha256": "fdad9da26734adb7a111c1c2dee94f06b714952118607f38213be4d29c966c1b",
+      "expectedSha256": "fdad9da26734adb7a111c1c2dee94f06b714952118607f38213be4d29c966c1b",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-aa8\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-life-runner.js",
+      "suffix": "?v=fdad9da26734adb7a111",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-life-runner.js?v=fdad9da26734adb7a111",
+      "status": 200,
+      "bytes": 2728,
+      "sha256": "fdad9da26734adb7a111c1c2dee94f06b714952118607f38213be4d29c966c1b",
+      "expectedSha256": "fdad9da26734adb7a111c1c2dee94f06b714952118607f38213be4d29c966c1b",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-aa8\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-player-names.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-player-names.js",
+      "status": 200,
+      "bytes": 877,
+      "sha256": "2b08f93889b69c387750e479c0b7985368c59e9e6f9c12f8f4d949d76b0cb818",
+      "expectedSha256": "2b08f93889b69c387750e479c0b7985368c59e9e6f9c12f8f4d949d76b0cb818",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-36d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-player-names.js",
+      "suffix": "?v=2b08f93889b69c387750",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-player-names.js?v=2b08f93889b69c387750",
+      "status": 200,
+      "bytes": 877,
+      "sha256": "2b08f93889b69c387750e479c0b7985368c59e9e6f9c12f8f4d949d76b0cb818",
+      "expectedSha256": "2b08f93889b69c387750e479c0b7985368c59e9e6f9c12f8f4d949d76b0cb818",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-36d\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-save-store.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-save-store.js",
+      "status": 200,
+      "bytes": 10056,
+      "sha256": "95c7ec7b1fe7911691381fc7689dfc8658e9e32ce2d12545840e921584a0b6b8",
+      "expectedSha256": "95c7ec7b1fe7911691381fc7689dfc8658e9e32ce2d12545840e921584a0b6b8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2748\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-save-store.js",
+      "suffix": "?v=95c7ec7b1fe791169138",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-save-store.js?v=95c7ec7b1fe791169138",
+      "status": 200,
+      "bytes": 10056,
+      "sha256": "95c7ec7b1fe7911691381fc7689dfc8658e9e32ce2d12545840e921584a0b6b8",
+      "expectedSha256": "95c7ec7b1fe7911691381fc7689dfc8658e9e32ce2d12545840e921584a0b6b8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2748\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-sea-god-runtime.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-sea-god-runtime.js",
+      "status": 200,
+      "bytes": 8445,
+      "sha256": "9122caab788b0ae8766c12c7662e389120aa5c9108760b456b5addea6b92a5b8",
+      "expectedSha256": "9122caab788b0ae8766c12c7662e389120aa5c9108760b456b5addea6b92a5b8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-20fd\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-sea-god-runtime.js",
+      "suffix": "?v=9122caab788b0ae8766c",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-sea-god-runtime.js?v=9122caab788b0ae8766c",
+      "status": 200,
+      "bytes": 8445,
+      "sha256": "9122caab788b0ae8766c12c7662e389120aa5c9108760b456b5addea6b92a5b8",
+      "expectedSha256": "9122caab788b0ae8766c12c7662e389120aa5c9108760b456b5addea6b92a5b8",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-20fd\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-sea-trial-data.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-sea-trial-data.js",
+      "status": 200,
+      "bytes": 75267,
+      "sha256": "3ee5d0156b568855795b7c72186a5667948a68f71427b7aebab91138a58eba31",
+      "expectedSha256": "3ee5d0156b568855795b7c72186a5667948a68f71427b7aebab91138a58eba31",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-12603\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v10-sea-trial-data.js",
+      "suffix": "?v=3ee5d0156b568855795b",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v10-sea-trial-data.js?v=3ee5d0156b568855795b",
+      "status": 200,
+      "bytes": 75267,
+      "sha256": "3ee5d0156b568855795b7c72186a5667948a68f71427b7aebab91138a58eba31",
+      "expectedSha256": "3ee5d0156b568855795b7c72186a5667948a68f71427b7aebab91138a58eba31",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-12603\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v2-annual-flow-resolver.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v2-annual-flow-resolver.js",
+      "status": 200,
+      "bytes": 2813,
+      "sha256": "4dca2f81f28f9ca9b53f42689e4a5dad72c26a77b112f74ded201a4c849521b1",
+      "expectedSha256": "4dca2f81f28f9ca9b53f42689e4a5dad72c26a77b112f74ded201a4c849521b1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-afd\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v2-annual-flow-resolver.js",
+      "suffix": "?v=4dca2f81f28f9ca9b53f",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v2-annual-flow-resolver.js?v=4dca2f81f28f9ca9b53f",
+      "status": 200,
+      "bytes": 2813,
+      "sha256": "4dca2f81f28f9ca9b53f42689e4a5dad72c26a77b112f74ded201a4c849521b1",
+      "expectedSha256": "4dca2f81f28f9ca9b53f42689e4a5dad72c26a77b112f74ded201a4c849521b1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-afd\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v2-production-playtest.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v2-production-playtest.js",
+      "status": 200,
+      "bytes": 7612,
+      "sha256": "0702cb65a207eb72b73d5e36b3ce88b281661bb50da7f6f264a99dbccfd89af1",
+      "expectedSha256": "0702cb65a207eb72b73d5e36b3ce88b281661bb50da7f6f264a99dbccfd89af1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1dbc\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v2-production-playtest.js",
+      "suffix": "?v=0702cb65a207eb72b73d",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v2-production-playtest.js?v=0702cb65a207eb72b73d",
+      "status": 200,
+      "bytes": 7612,
+      "sha256": "0702cb65a207eb72b73d5e36b3ce88b281661bb50da7f6f264a99dbccfd89af1",
+      "expectedSha256": "0702cb65a207eb72b73d5e36b3ce88b281661bb50da7f6f264a99dbccfd89af1",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-1dbc\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v2-session-runner.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v2-session-runner.js",
+      "status": 200,
+      "bytes": 8296,
+      "sha256": "b2c81d791f32c9575ed7a8afe6c2608867506ae44b8b6190167b8275e35d95a0",
+      "expectedSha256": "b2c81d791f32c9575ed7a8afe6c2608867506ae44b8b6190167b8275e35d95a0",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2068\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/v2-session-runner.js",
+      "suffix": "?v=b2c81d791f32c9575ed7",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/v2-session-runner.js?v=b2c81d791f32c9575ed7",
+      "status": 200,
+      "bytes": 8296,
+      "sha256": "b2c81d791f32c9575ed7a8afe6c2608867506ae44b8b6190167b8275e35d95a0",
+      "expectedSha256": "b2c81d791f32c9575ed7a8afe6c2608867506ae44b8b6190167b8275e35d95a0",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-2068\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/wheel-flow-engine.js",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/wheel-flow-engine.js",
+      "status": 200,
+      "bytes": 24135,
+      "sha256": "f2a70e3add9cdd5fedb6c4c045181b5fcce030b7a7b9f805c0195f595c680b99",
+      "expectedSha256": "f2a70e3add9cdd5fedb6c4c045181b5fcce030b7a7b9f805c0195f595c680b99",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-5e47\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "HIT",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "js/wheel-flow-engine.js",
+      "suffix": "?v=f2a70e3add9cdd5fedb6",
+      "url": "https://maxwellguodut.github.io/douluo-life/js/wheel-flow-engine.js?v=f2a70e3add9cdd5fedb6",
+      "status": 200,
+      "bytes": 24135,
+      "sha256": "f2a70e3add9cdd5fedb6c4c045181b5fcce030b7a7b9f805c0195f595c680b99",
+      "expectedSha256": "f2a70e3add9cdd5fedb6c4c045181b5fcce030b7a7b9f805c0195f595c680b99",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-5e47\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "application/javascript; charset=utf-8"
+      },
+      "attempt": 1
+    },
+    {
+      "path": "v10.html",
+      "suffix": "",
+      "url": "https://maxwellguodut.github.io/douluo-life/v10.html",
+      "status": 200,
+      "bytes": 390,
+      "sha256": "b4d0e0b6b0f6010104a4f6f3267b5b15ece8293e2775894f4b5cc34b36602436",
+      "expectedSha256": "b4d0e0b6b0f6010104a4f6f3267b5b15ece8293e2775894f4b5cc34b36602436",
+      "matches": true,
+      "headers": {
+        "age": "0",
+        "cache-control": "max-age=600",
+        "etag": "W/\"6ad256a4-186\"",
+        "last-modified": "Fri, 16 Oct 2026 16:53:56 GMT",
+        "x-cache": "MISS",
+        "content-type": "text/html; charset=utf-8"
+      },
+      "attempt": 1
+    }
+  ]
+}
