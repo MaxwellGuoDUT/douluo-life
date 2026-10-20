@@ -16,7 +16,8 @@ import {
     createApkSession,
     drawApkPool,
     nextApkRandom,
-    selectApkPoolOptions
+    selectApkPoolOptions,
+    withApkRouteTransaction
 } from "../js/apk-rule-runtime.js";
 
 function syntheticContent() {
@@ -267,4 +268,99 @@ test("every extracted APK effect type has a runtime classification or an explici
     assert.equal(APK_EFFECT_TYPES.length, 48);
     assert.ok(APK_EFFECT_TYPES.every(type => APK_RUNTIME_EFFECT_TYPES.includes(type)));
     assert.ok(contentIndex.getPool("pool-1"));
+});
+
+
+test("standalone rule keeps rollback and removes newly added keys", () => {
+    const contentIndex = syntheticContent();
+    const session = createApkSession({ seed: "standalone-rollback" });
+    const before = structuredClone(session);
+    assert.throws(() => commitApkOption({ session, contentIndex, poolId: "pool-1",
+        option: { id: "option-enabled" },
+        effectApplier() {
+            session.added = { mutable: true };
+            session.random.cursor++;
+            session.timeline.push({ text: "probe" });
+            throw Error("standalone-failure");
+        }
+    }), /standalone-failure/);
+    assert.deepEqual(session, before);
+});
+
+for (const misuse of ["wrong-session", "second-commit", "caught-error", "async-body", "async-continuation"]) {
+    test("route transaction capability rejects " + misuse + " and rolls back", () => {
+        const contentIndex = syntheticContent();
+        const session = createApkSession({ seed: "scope-guard" });
+        const before = structuredClone(session);
+        const options = { contentIndex, session, poolId: "pool-1", option: { id: "option-enabled" } };
+        const other = structuredClone(session);
+        const otherBefore = structuredClone(other);
+        let leaked;
+        assert.throws(() => withApkRouteTransaction(session, commit => {
+            leaked = commit;
+            session.newKey = true;
+            if (misuse === "wrong-session") return commit({ ...options, session: other }, x => x);
+            if (misuse === "caught-error") {
+                try { commit({ ...options, effectApplier() { throw Error("caught-probe"); } }, x => x); }
+                catch { /* Catching cannot turn a failed transaction into success. */ }
+                return "success";
+            }
+            if (misuse === "async-body") return Promise.resolve();
+            if (misuse === "async-continuation") return commit(options, () => Promise.resolve());
+            commit(options, x => x);
+            return commit(options, x => x);
+        }), misuse === "caught-error" ? /caught-probe/ : {
+            code: misuse.startsWith("async") ? "APK_ROUTE_TRANSACTION_ASYNC" : "APK_ROUTE_TRANSACTION_SCOPE"
+        });
+        assert.deepEqual(session, before);
+        assert.deepEqual(other, otherBefore);
+        assert.throws(() => leaked(options, x => x), { code: "APK_ROUTE_TRANSACTION_SCOPE" });
+        assert.deepEqual(session, before);
+    });
+}
+
+test("successful route transaction revokes retained commit capability", () => {
+    const session = createApkSession({ seed: "scope-success" });
+    const options = { session, contentIndex: syntheticContent(), poolId: "pool-1", option: { id: "option-enabled" } };
+    let leaked;
+    withApkRouteTransaction(session, commit => { leaked = commit; return commit(options, x => x); });
+    const committed = structuredClone(session);
+    assert.equal(session.history.length, 1);
+    assert.throws(() => leaked(options, x => x), { code: "APK_ROUTE_TRANSACTION_SCOPE" });
+    assert.deepEqual(session, committed);
+});
+
+test("caught non-Error throws poison the route transaction, including falsy values", () => {
+    for (const value of [undefined, null, false, 0, ""]) {
+        const session = createApkSession({ seed: "falsy-failure" });
+        const before = structuredClone(session);
+        let caught = false;
+        try {
+            withApkRouteTransaction(session, commit => {
+                try {
+                    commit({ session, contentIndex: syntheticContent(), poolId: "pool-1",
+                        option: { id: "option-enabled" }, effectApplier() {
+                            session.added = true; throw value;
+                        }
+                    }, x => x);
+                } catch { /* The owner must still restore and rethrow this exact value. */ }
+                return "success";
+            });
+        } catch (error) { caught = true; assert.equal(error, value); }
+        assert.equal(caught, true);
+        assert.deepEqual(session, before);
+    }
+});
+
+test("route commit preparation stays bound if an options getter changes its session", () => {
+    const session = createApkSession({ seed: "bound-options" });
+    const other = createApkSession({ seed: "other-session" });
+    const beforeOther = structuredClone(other);
+    let reads = 0;
+    withApkRouteTransaction(session, commit => commit({
+        get session() { return ++reads === 1 ? session : other; },
+        contentIndex: syntheticContent(), poolId: "pool-1", option: { id: "option-enabled" }
+    }, x => x));
+    assert.equal(session.history.length, 1);
+    assert.deepEqual(other, beforeOther);
 });

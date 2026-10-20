@@ -374,3 +374,28 @@ test("V0.5 rejects a route graph that is not the single douluo1 shard", () => {
     );
     assert.equal(V05_PACK_ID, "douluo1");
 });
+
+for (const typed of [false, true]) {
+    test("V05 catches route failure only after atomic pre-draw restoration (typed=" + typed + ")", () => {
+        let runner;
+        runner = createV05DemoRunner({ ...runtime, seed: V05_DEFAULT_SEED,
+            dynamicHandlers: { effectApplier() {
+                const session = runner.session;
+                session.addedByFailure = true;
+                session.random.cursor += 7;
+                session.timeline.push({ text: "failure" });
+                const error = Error("runner-injected-failure");
+                if (typed) error.code = "RUNNER_INJECTED_BOUNDARY";
+                throw error;
+            } }
+        });
+        const before = structuredClone(runner.session);
+        const result = runner.step();
+        assert.equal(result.committed, false);
+        assert.equal(result.status, typed ? "boundary" : "error");
+        assert.equal(result.error.code, typed ? "RUNNER_INJECTED_BOUNDARY" : "UNEXPECTED_ERROR");
+        assert.deepEqual(runner.session, before);
+        assert.equal(runner.step().committed, false);
+        assert.deepEqual(runner.session, before);
+    });
+}

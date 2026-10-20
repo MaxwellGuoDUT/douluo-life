@@ -10,8 +10,11 @@ import {
     createApkRouteSession,
     drawApkRouteStep,
     resolveApkRoutePool,
-    runApkRouteStep
+    runApkRouteStep,
+    runApkRouteStepTransaction
 } from "../js/apk-route-runtime.js";
+
+import { applyApkEffects } from "../js/apk-rule-runtime.js";
 
 let realRouteGraph;
 let realFormalSpecialResultEvidence;
@@ -1675,4 +1678,181 @@ test("APK early growth bonus handler prepares a separate hundred-thousand-year s
     assert.equal(session.pendingSoulBone, null);
     assert.equal(session.character.soulBones.length, 1);
     assert.equal(session.character.soulBones[0].years, 100000);
+});
+
+
+for (const stage of ["eligibility", "effect", "custom", "follow-up", "next-flow", "terminal"]) {
+    test("shared route rollback restores all fields and new keys after " + stage + " failure", () => {
+        const routeGraph = syntheticRouteGraph();
+        const entry = routeGraph.packs[0].pools[0].options[0];
+        if (stage === "eligibility") entry.route.requirements = [{ type: "probe" }];
+        if (stage === "custom") {
+            entry.source.customHandler = "failureProbe";
+            entry.route.customHandler = exact("failureProbe", ["handler"]);
+        }
+        if (stage === "follow-up") {
+            entry.source.followUps = [{ targetPoolId: "pool.next", count: 1, requirements: [{ type: "probe" }] }];
+            entry.route.followUps = entry.source.followUps;
+        }
+        if (stage === "next-flow") entry.route.next = exact("flow.missing");
+        const contentIndex = createApkRouteContentIndex({ routeGraph });
+        const session = createApkRouteSession({ routeGraph, seed: "shared-rollback" });
+        const spin = drawApkRouteStep({ contentIndex, session,
+            requirementEvaluator: () => ({ status: "met" }) });
+        const before = structuredClone(session);
+        const failInjected = () => {
+            session.injectedKey = { nested: true };
+            session.character.flags.injected = true;
+            session.history.push({ injected: true });
+            session.timeline.push({ text: "injected" });
+            session.routeHistory.push({ injected: true });
+            session.pendingFollowUps.push({ injected: true });
+            session.random.cursor += 17;
+            throw new Error("failure-probe");
+        };
+        const args = { contentIndex, session, spin };
+        if (["eligibility", "follow-up"].includes(stage)) args.requirementEvaluator = failInjected;
+        if (stage === "effect") args.effectApplier = failInjected;
+        if (stage === "custom") args.dynamicOption = failInjected;
+        if (stage === "terminal") args.effectApplier = () => {
+            const character = structuredClone(session.character);
+            Object.defineProperty(character, "ending", { get: failInjected });
+            return { character };
+        };
+        assert.throws(() => commitApkRouteOption(args), stage === "next-flow"
+            ? { code: "APK_ROUTE_FLOW_NOT_FOUND" } : /failure-probe/);
+        assert.deepEqual(session, before);
+        assert.equal(Object.hasOwn(session, "injectedKey"), false);
+    });
+}
+
+test("nested route still rejects invalid JSON data before effects", () => {
+    for (const invalid of [NaN, Infinity, undefined, new Date(), () => {}]) {
+        const routeGraph = syntheticRouteGraph();
+        const contentIndex = createApkRouteContentIndex({ routeGraph });
+        const session = createApkRouteSession({ routeGraph, seed: "strict-data" });
+        const spin = drawApkRouteStep({ contentIndex, session });
+        const cursor = session.random.cursor;
+        session.invalidProbe = invalid;
+        let effects = 0;
+        assert.throws(() => commitApkRouteOption({ contentIndex, session, spin,
+            effectApplier() { effects++; throw Error("must not run"); }
+        }), TypeError);
+        assert.equal(effects, 0);
+        assert.equal(session.history.length, 0);
+        assert.equal(session.random.cursor, cursor);
+    }
+});
+
+for (const stage of ["draw-action", "draw-eligibility", "observer", "commit-eligibility",
+    "effect", "custom", "follow-up", "next-flow", "terminal"]) {
+    test("atomic route draw+commit restores the pre-draw session after " + stage, () => {
+        const routeGraph = syntheticRouteGraph({ dynamicEntry: stage === "draw-action" });
+        const entry = routeGraph.packs[0].pools[0].options[0];
+        if (stage.endsWith("eligibility")) entry.route.requirements = [{ type: "probe" }];
+        if (stage === "custom") {
+            entry.source.customHandler = "failureProbe";
+            entry.route.customHandler = exact("failureProbe", ["handler"]);
+        }
+        if (stage === "follow-up") {
+            entry.source.followUps = [{ targetPoolId: "pool.next", count: 1, requirements: [{ type: "probe" }] }];
+            entry.route.followUps = entry.source.followUps;
+        }
+        if (stage === "next-flow") entry.route.next = exact("flow.missing");
+        const contentIndex = createApkRouteContentIndex({ routeGraph });
+        const session = createApkRouteSession({ routeGraph, seed: "atomic-route-rollback" });
+        const before = structuredClone(session);
+        const mutate = () => {
+            session.injectedKey = { nested: true };
+            session.character.flags.injected = true;
+            session.history.push({ injected: true });
+            session.timeline.push({ text: "injected" });
+            session.routeHistory.push({ injected: true });
+            session.dynamicHistory.push({ injected: true });
+            session.pendingFollowUps.push({ injected: true });
+            session.pendingDynamic = { injected: true };
+            session.random.cursor += 17;
+        };
+        const failInjected = () => { mutate(); throw Error("atomic-failure"); };
+        const args = { contentIndex, session };
+        if (stage === "draw-action") args.dynamicAction = failInjected;
+        if (stage === "draw-eligibility" || stage === "follow-up") args.requirementEvaluator = failInjected;
+        if (stage === "commit-eligibility") {
+            let calls = 0;
+            args.requirementEvaluator = () => {
+                if (++calls > 1) {
+                    assert.ok(session.random.cursor > before.random.cursor);
+                    failInjected();
+                }
+                return { status: "met" };
+            };
+        }
+        if (stage === "observer") args.onDraw = failInjected;
+        if (stage === "effect") args.effectApplier = failInjected;
+        if (stage === "custom") args.dynamicOption = failInjected;
+        if (stage === "next-flow") args.effectApplier = (...effectArgs) => {
+            mutate(); return applyApkEffects(...effectArgs);
+        };
+        if (stage === "terminal") args.effectApplier = () => {
+            const character = structuredClone(session.character);
+            Object.defineProperty(character, "ending", { get: failInjected });
+            return { character };
+        };
+        assert.throws(() => runApkRouteStepTransaction(args), stage === "next-flow"
+            ? { code: "APK_ROUTE_FLOW_NOT_FOUND" } : /atomic-failure/);
+        assert.deepEqual(session, before);
+        assert.equal(Object.hasOwn(session, "injectedKey"), false);
+    });
+}
+
+test("atomic route success matches standalone draw/commit including observer order and terminal", () => {
+    const routeGraph = syntheticRouteGraph();
+    const contentIndex = createApkRouteContentIndex({ routeGraph });
+    const a = createApkRouteSession({ routeGraph, seed: "atomic-equivalence" });
+    const b = structuredClone(a);
+    for (let step = 0; step < 2; step++) {
+        const spin = drawApkRouteStep({ contentIndex, session: a });
+        const drawn = structuredClone(a);
+        const commit = commitApkRouteOption({ contentIndex, session: a, spin });
+        let observed = 0;
+        const result = runApkRouteStepTransaction({ contentIndex, session: b,
+            onDraw(value) { observed++; assert.deepEqual(b, drawn); assert.deepEqual(value, spin); }
+        });
+        assert.equal(observed, 1);
+        assert.deepEqual(result, { spin, commit });
+        assert.deepEqual(a, b);
+    }
+    let observed = false;
+    const cursor = b.random.cursor;
+    const terminal = runApkRouteStepTransaction({ contentIndex, session: b,
+        onDraw() { observed = true; }
+    });
+    assert.equal(terminal.spin.status, "terminal");
+    assert.equal(terminal.commit, null);
+    assert.equal(observed, false);
+    assert.equal(b.random.cursor, cursor);
+});
+
+test("atomic route retains full data validation after draw and rejects async observers", () => {
+    for (const value of [NaN, Infinity, undefined, new Date(), () => {}, Promise.resolve()]) {
+        const routeGraph = syntheticRouteGraph();
+        const contentIndex = createApkRouteContentIndex({ routeGraph });
+        const session = createApkRouteSession({ routeGraph, seed: "atomic-validation" });
+        const before = structuredClone(session);
+        let effects = 0;
+        assert.throws(() => runApkRouteStepTransaction({ contentIndex, session,
+            onDraw() { session.invalidProbe = value; },
+            effectApplier() { effects++; throw Error("must not execute"); }
+        }), TypeError);
+        assert.equal(effects, 0);
+        assert.deepEqual(session, before);
+    }
+    const routeGraph = syntheticRouteGraph();
+    const contentIndex = createApkRouteContentIndex({ routeGraph });
+    const session = createApkRouteSession({ routeGraph, seed: "async-observer" });
+    const before = structuredClone(session);
+    assert.throws(() => runApkRouteStepTransaction({ contentIndex, session,
+        onDraw: () => Promise.resolve()
+    }), { code: "APK_ROUTE_TRANSACTION_ASYNC" });
+    assert.deepEqual(session, before);
 });

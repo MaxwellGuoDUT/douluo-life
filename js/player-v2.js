@@ -66,35 +66,40 @@ function isPlainObject(value) {
     return prototype === Object.prototype || prototype === null;
 }
 
+// Both paths accept the same plain JSON data. Validation avoids allocating
+// another detached tree when the route bridge already owns a rollback snapshot.
+export function validatePlayerStateValue(value) {
+    visitPlayerStateValue(value, false);
+}
+
 export function clonePlayerStateValue(value) {
-    if (value === null
-        || typeof value === "string"
-        || typeof value === "boolean") {
+    return visitPlayerStateValue(value, true);
+}
+
+function visitPlayerStateValue(value, copy) {
+    if (value === null || typeof value === "string" || typeof value === "boolean") {
         return value;
     }
-
     if (typeof value === "number") {
         if (!Number.isFinite(value)) {
-            throw new TypeError(
-                "Player state numbers must be finite for JSON compatibility."
-            );
+            throw new TypeError("Player state numbers must be finite for JSON compatibility.");
         }
-
         return value;
     }
-
     if (Array.isArray(value)) {
-        return value.map(clonePlayerStateValue);
+        if (copy) return value.map(entry => visitPlayerStateValue(entry, true));
+        value.forEach(entry => visitPlayerStateValue(entry, false));
+        return;
     }
-
     if (isPlainObject(value)) {
-        return Object.fromEntries(
-            Object.entries(value).map(([key, entry]) => {
-                return [key, clonePlayerStateValue(entry)];
-            })
-        );
+        if (copy) {
+            return Object.fromEntries(Object.entries(value).map(([key, entry]) => (
+                [key, visitPlayerStateValue(entry, true)]
+            )));
+        }
+        for (const [, entry] of Object.entries(value)) visitPlayerStateValue(entry, false);
+        return;
     }
-
     throw new TypeError("Player state values must be JSON-compatible plain data.");
 }
 
