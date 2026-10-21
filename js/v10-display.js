@@ -104,7 +104,7 @@ export function createV10Display(gameFields, document = globalThis.document) {
         field.title = power?.message ?? "当前角色总战力";
     }
 
-    function renderCharacterSummary(character, profile) {
+    function renderCharacterSummary(character, profile, { includeIdentity = true } = {}) {
         const isBeast = profile.route === "beast";
         const beast = character.beast ?? character.beastOrigin;
         const species = profile.species ?? beast?.species?.text;
@@ -129,21 +129,23 @@ export function createV10Display(gameFields, document = globalThis.document) {
         gameFields["cultivation-value"].textContent = Number.isFinite(cultivation)
             ? cultivation.toLocaleString("zh-CN") + (isBeast ? " 年" : " 级") : "未确定";
         gameFields["actual-age-value"].textContent = actualAgeText(character);
-        renderDetailList("character-identity", [
-            "名称：" + (name || gameFields["character-name"].textContent),
-            "血脉：" + (lines.join(" + ") || "暂无"),
-            "修为：" + gameFields["cultivation-value"].textContent,
-            "实际年龄：" + gameFields["actual-age-value"].textContent,
-            "战力：" + gameFields["combat-power-value"].textContent,
-            "铜灵币：" + (Number.isFinite(character.wallet?.copper ?? character.money) ? (character.wallet?.copper ?? character.money).toLocaleString('zh-CN') : '来源未记录'),
-            "性别：" + (character.gender ? entryName(character.gender) : "未确定"),
-            "时代：" + (beast?.period ? entryName(beast.period) : character.entrySelections?.period ? entryName(character.entrySelections.period) : character.timelineEra ? entryName(character.timelineEra) : "来源未记录"),
-            "时间线：" + (character.entrySelections?.worldLine ? entryName(character.entrySelections.worldLine) : "未确定"),
-            "容貌：" + (character.appearance ? entryName(character.appearance) : "未确定"),
-            "初始魂力：" + (Number.isFinite(character.innateSoulPower) ? character.innateSoulPower + "级" : "未确定"),
-            "初始势力：" + (character.faction ? entryName(character.faction) : "未确定"),
-            "栖息地：" + (beast?.area ? entryName(beast.area) : "未确定")
-        ]);
+        if (includeIdentity) {
+            renderDetailList("character-identity", [
+                "名称：" + (name || gameFields["character-name"].textContent),
+                "血脉：" + (lines.join(" + ") || "暂无"),
+                "修为：" + gameFields["cultivation-value"].textContent,
+                "实际年龄：" + gameFields["actual-age-value"].textContent,
+                "战力：" + gameFields["combat-power-value"].textContent,
+                "铜灵币：" + (Number.isFinite(character.wallet?.copper ?? character.money) ? (character.wallet?.copper ?? character.money).toLocaleString('zh-CN') : '来源未记录'),
+                "性别：" + (character.gender ? entryName(character.gender) : "未确定"),
+                "时代：" + (beast?.period ? entryName(beast.period) : character.entrySelections?.period ? entryName(character.entrySelections.period) : character.timelineEra ? entryName(character.timelineEra) : "来源未记录"),
+                "时间线：" + (character.entrySelections?.worldLine ? entryName(character.entrySelections.worldLine) : "未确定"),
+                "容貌：" + (character.appearance ? entryName(character.appearance) : "未确定"),
+                "初始魂力：" + (Number.isFinite(character.innateSoulPower) ? character.innateSoulPower + "级" : "未确定"),
+                "初始势力：" + (character.faction ? entryName(character.faction) : "未确定"),
+                "栖息地：" + (beast?.area ? entryName(beast.area) : "未确定")
+            ]);
+        }
     }
 
     function renderCharacterDetails(character, packId) {

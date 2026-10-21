@@ -3,7 +3,7 @@ import {
     APK_EFFECT_TYPES,
     evaluateApkRequirement
 } from "./apk-content-adapter.js";
-import { clonePlayerStateValue } from "./player-v2.js";
+import { clonePlayerStateValue, validatePlayerStateValue } from "./player-v2.js";
 
 export const APK_RULE_RUNTIME_VERSION = "apk-rule-runtime/1.0";
 export const APK_CHARACTER_SCHEMA_VERSION = "apk-character/1.0";
@@ -1551,7 +1551,7 @@ export function applyApkEffects(
     };
 }
 
-export function commitApkOption({
+function prepareApkOptionCommit({
     session,
     contentIndex,
     option,
@@ -1582,56 +1582,123 @@ export function commitApkOption({
             `APK option "${optionId}" is not eligible in pool "${actualPoolId}".`
         );
     }
+    return { session, contentIndex, selected, actualPoolId, optionId, reason,
+        effectsOverride, effectApplier };
+}
+
+function applyApkOptionCommit({ session, contentIndex, selected, actualPoolId,
+    optionId, reason, effectsOverride, effectApplier }) {
+    const effects = Array.isArray(effectsOverride)
+        ? clone(effectsOverride)
+        : getOptionEffects(selected);
+    const result = effectApplier(
+        session.character,
+        effects,
+        {
+            reason,
+            referenceId: `${actualPoolId}:${optionId}`,
+            idempotencyKeyPrefix: `spin:${session.packId}:${actualPoolId}:${optionId}:${session.history.length}`
+        }
+    );
+    session.character = result.character;
+    session.currentPoolId = actualPoolId;
+    session.history.push({
+        poolId: actualPoolId,
+        optionId,
+        text: getOptionText(selected),
+        randomCursor: session.random.cursor,
+        effects: clone(effects)
+    });
+    session.timeline.push({
+        kind: "result",
+        text: getOptionText(selected),
+        poolId: actualPoolId,
+        optionId,
+        source: "normal"
+    });
+    if (session.character.ending) session.finished = true;
+    session.lastResolvedSpin = {
+        poolId: actualPoolId,
+        poolTitle: getNormalized(contentIndex.getPool(actualPoolId))?.pool_name ?? actualPoolId,
+        selectedOption: {
+            optionId,
+            text: getOptionText(selected),
+            weight: getOptionWeight(selected)
+        },
+        result: { optionId, text: getOptionText(selected) },
+        randomCursorAfter: session.random.cursor
+    };
+    return {
+        session,
+        option: clone(selected),
+        effectResult: result
+    };
+}
+
+function restoreOptionSession(session, snapshot) {
+    for (const key of Object.keys(session)) delete session[key];
+    Object.assign(session, snapshot);
+}
+
+export function commitApkOption(options = {}) {
+    const prepared = prepareApkOptionCommit(options);
+    const { session } = prepared;
     const before = clone(session);
     try {
-        const effects = Array.isArray(effectsOverride)
-            ? clone(effectsOverride)
-            : getOptionEffects(selected);
-        const result = effectApplier(
-            session.character,
-            effects,
-            {
-                reason,
-                referenceId: `${actualPoolId}:${optionId}`,
-                idempotencyKeyPrefix: `spin:${session.packId}:${actualPoolId}:${optionId}:${session.history.length}`
-            }
-        );
-        session.character = result.character;
-        session.currentPoolId = actualPoolId;
-        session.history.push({
-            poolId: actualPoolId,
-            optionId,
-            text: getOptionText(selected),
-            randomCursor: session.random.cursor,
-            effects: clone(effects)
-        });
-        session.timeline.push({
-            kind: "result",
-            text: getOptionText(selected),
-            poolId: actualPoolId,
-            optionId,
-            source: "normal"
-        });
-        if (session.character.ending) session.finished = true;
-        session.lastResolvedSpin = {
-            poolId: actualPoolId,
-            poolTitle: getNormalized(contentIndex.getPool(actualPoolId))?.pool_name ?? actualPoolId,
-            selectedOption: {
-                optionId,
-                text: getOptionText(selected),
-                weight: getOptionWeight(selected)
-            },
-            result: { optionId, text: getOptionText(selected) },
-            randomCursorAfter: session.random.cursor
-        };
-        return {
-            session,
-            option: clone(selected),
-            effectResult: result
-        };
+        return applyApkOptionCommit(prepared);
     } catch (error) {
-        Object.assign(session, before);
+        restoreOptionSession(session, before);
         throw error;
+    }
+}
+
+// Internal route bridge: owns the complete detached route snapshot. Eligibility,
+// effects and the synchronous route continuation share this rollback boundary.
+// No snapshot or reusable unprotected commit capability is passed to handlers.
+export function commitApkOptionWithRouteContinuation(options, continueRoute) {
+    return withApkRouteTransaction(options.session,
+        commit => commit(options, continueRoute));
+}
+
+// Internal synchronous composition boundary. The commit capability is bound to
+// this session, usable once and revoked before returning. Handlers never receive
+// the capability or snapshot. Even a caught commit error poisons the transaction.
+export function withApkRouteTransaction(session, runRoute) {
+    const before = JSON.parse(JSON.stringify(session));
+    let active = true;
+    let used = false;
+    let failed = false;
+    let failure;
+    const requireSynchronous = result => {
+        if (result && typeof result.then === "function") {
+            fail("APK_ROUTE_TRANSACTION_ASYNC", "Route transactions must complete synchronously.");
+        }
+        return result;
+    };
+    const commit = (options, continueRoute) => {
+        try {
+            if (!active || used || options?.session !== session) {
+                fail("APK_ROUTE_TRANSACTION_SCOPE", "Route commit requires its active session and a single use.");
+            }
+            used = true;
+            const prepared = prepareApkOptionCommit({ ...options, session });
+            validatePlayerStateValue(session);
+            return requireSynchronous(continueRoute(applyApkOptionCommit(prepared)));
+        } catch (error) {
+            if (!failed) failure = error;
+            failed = true;
+            throw error;
+        }
+    };
+    try {
+        const result = requireSynchronous(runRoute(commit));
+        if (failed) throw failure;
+        return result;
+    } catch (error) {
+        restoreOptionSession(session, before);
+        throw error;
+    } finally {
+        active = false;
     }
 }
 

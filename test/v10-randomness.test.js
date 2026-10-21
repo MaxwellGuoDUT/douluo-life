@@ -318,7 +318,8 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
         titles: ['封号斗罗']
     });
     const beforeDetails = JSON.stringify(currentLife.session);
-    context.testUI.renderGame();
+    nodes.get('#character-toggle').listeners.click();
+    assert.equal(nodes.get('#character-menu-panel').hidden, false);
     assert.equal(nodes.get('#human-ability-counts').textContent, '1 / 2 / 1');
     assert.match(nodes.get('#human-martial-souls').children[0].textContent, /蓝银草 · 1环（1000年）/);
     assert.equal(nodes.get('#human-soul-bones').children[0].textContent, '头骨 · 200000年');
@@ -360,6 +361,8 @@ test('default starts use fresh seeds, while replay and typed seeds stay reproduc
     currentLife.session.character.soulBones = [];
     context.testUI.renderGame();
     assert.equal(nodes.get('#human-soul-bones').children[0].textContent, '暂无');
+    documentListeners.keydown({ key: 'Escape' });
+    assert.equal(nodes.get('#character-menu-panel').hidden, true);
     currentLife.wheelView = { status: 'dynamic', title: '动态转盘', message: '由 runtime 解析', flowId: 'flow-1', segments: [] };
     context.testUI.renderGame();
     assert.equal(nodes.get('#human-options').children.length, 0);
@@ -1109,4 +1112,89 @@ test('current-life recovery export marks oversized files, and cancelled file cho
     await h.ui.saveAction('import');assert.equal(writes,0);assert.match(h.nodes.get('#save-status').textContent,/请先选择/);
     const before=h.life.exportSnapshot();await h.ui.saveAction('export-current');
     assert.equal(writes,0);assert.match(h.nodes.get('#save-status').textContent,/超过4 MiB.*无法导入/);assert.deepEqual(h.life.exportSnapshot(),before);
+});
+
+
+const drawerListIds = ['character-identity','human-martial-souls','human-soul-bones',
+    'human-attributes','human-domains','human-bloodlines','human-talents','human-skills','human-godhood'];
+function observeDrawerWrites(h) {
+    const writes = [];
+    for (const id of drawerListIds) {
+        const node=h.nodes.get('#'+id), original=node.replaceChildren;
+        node.replaceChildren=function(...children){writes.push(id);return original.apply(this,children)};
+    }
+    return writes;
+}
+function drawerText(h,id) {
+    return Array.from(h.nodes.get('#'+id).children ?? [], item=>item.textContent).join(' | ');
+}
+
+test('closed character drawer does no list writes while visible facts stay current and state is untouched', () => {
+    const h=screenshotUIHarness({immediate:true}),writes=observeDrawerWrites(h);
+    Object.assign(h.life.session.character,{name:'新名称',level:31,skills:[{name:'新技能',level:2}],wallet:{copper:77}});
+    h.life.characterProfile.level=31;
+    const before=JSON.stringify(h.life.exportSnapshot());
+    for(let i=0;i<5;i++)h.ui.renderGame();
+    assert.equal(writes.length,0);
+    assert.equal(h.nodes.get('#character-name').textContent,'新名称');
+    assert.equal(h.nodes.get('#cultivation-value').textContent,'31 级');
+    assert.equal(JSON.stringify(h.life.exportSnapshot()),before);
+});
+
+test('character modal receives current same-length replacement, route, terminal and boundary facts before showing', async () => {
+    const h=screenshotUIHarness({immediate:true});
+    h.life.session.history=[{text:'fixed length'}];
+    let caseIndex=0;
+    for(const [route,phase] of [['human','ready'],['beast','ready'],['transformed','ready'],['human','completed'],['human','boundary'],['human','error']]) {
+        caseIndex++;
+        Object.assign(h.life.session.character,{name:'角色'+caseIndex,route,skills:[{name:'技能'+caseIndex}],beastYears:1234});
+        h.life.session.history[0]={text:'replacement '+caseIndex};
+        h.life.characterProfile.route=route;
+        h.life.phase=phase;
+        h.life.error=['boundary','error'].includes(phase)?{code:'FIXTURE_TYPED_STOP',message:'停止'}:null;
+        h.life.summary=phase==='completed'?{ending:{title:'终局',text:'自然终局'},route,age:10,level:19,history:1}:null;
+        const before=JSON.stringify(h.life.exportSnapshot());
+        let shown=false;
+        h.nodes.get('#character-menu-panel').showModal=()=>{
+            shown=true;
+            assert.match(drawerText(h,'character-identity'),new RegExp('名称：角色'+caseIndex));
+            assert.match(drawerText(h,'human-skills'),new RegExp('技能：技能'+caseIndex));
+        };
+        h.ui.togglePanel('character-menu-panel');
+        assert.equal(shown,true);
+        assert.equal(h.life.session.history.length,1);
+        assert.equal(JSON.stringify(h.life.exportSnapshot()),before);
+        await Promise.resolve();
+        h.ui.closePanel('character-menu-panel');
+    }
+});
+
+test('hidden drawer opens with consecutive reroll results even when history length stays unchanged', async () => {
+    const h=screenshotUIHarness({immediate:true});
+    const original=h.life.step;
+    h.life.step=function(options){const result=original.call(this,options);this.session.character.skills=[{name:'抽取'+this.session.random.cursor}];return result};
+    await h.ui.runLife('step','first');
+    for(const expected of [2,3]) {
+        await h.nodes.get('#human-reroll').listeners.click();
+        assert.equal(h.ui.currentLife().session.history.length,1);
+        assert.equal(h.ui.currentLife().session.random.cursor,expected);
+        h.nodes.get('#character-menu-panel').showModal=()=>assert.match(drawerText(h,'human-skills'),new RegExp('抽取'+expected));
+        const before=JSON.stringify(h.ui.currentLife().exportSnapshot());
+        h.ui.togglePanel('character-menu-panel');
+        assert.equal(JSON.stringify(h.ui.currentLife().exportSnapshot()),before);
+        h.ui.closePanel('character-menu-panel');
+    }
+});
+
+test('closing a drawer during an animated step prevents deferred hidden list rebuilds', async () => {
+    const h=screenshotUIHarness(),writes=observeDrawerWrites(h);
+    const pending=h.ui.runLife('step','animated');
+    h.ui.togglePanel('character-menu-panel');
+    assert.ok(writes.length>=9);
+    h.ui.closePanel('character-menu-panel');
+    const atClose=writes.length;
+    await h.flushTimer();await pending;
+    assert.equal(writes.length,atClose);
+    assert.equal(h.life.session.history.length,1);
+    assert.equal(h.nodes.get('#human-step').disabled,false);
 });

@@ -1,9 +1,8 @@
 import {
-    commitApkRouteOption,
     createApkRouteContentIndex,
     createApkRouteDynamicHandlers,
     createApkRouteSession,
-    drawApkRouteStep
+    runApkRouteStepTransaction
 } from "./apk-route-runtime.js";
 import {
     createV05PresentationRecord,
@@ -239,10 +238,14 @@ export function createV05DemoRunner({
         }
         try {
             const beforeCharacter = snapshotV05Character(state.session.character);
-            const spin = drawApkRouteStep({
+            const { spin, commit: committed } = runApkRouteStepTransaction({
                 contentIndex,
                 session: state.session,
-                ...activeDynamicHandlers
+                ...activeDynamicHandlers,
+                onDraw(spin) {
+                    state.lastSpin = spin;
+                    state.lastWheelResult = createV05WheelViewFromSpin(spin);
+                }
             });
             state.lastSpin = spin;
             if (spin.status === "terminal") {
@@ -252,13 +255,6 @@ export function createV05DemoRunner({
                     { age: state.session.character?.age ?? null }
                 ));
             }
-            state.lastWheelResult = createV05WheelViewFromSpin(spin);
-            const committed = commitApkRouteOption({
-                contentIndex,
-                session: state.session,
-                spin,
-                ...activeDynamicHandlers
-            });
             state.lastCommit = committed;
             const presentation = createV05PresentationRecord({
                 index: state.session.history.length,

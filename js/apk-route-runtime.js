@@ -3,7 +3,8 @@ import { V10_GOD_TRIAL_SEMANTICS } from "./v10-god-trial-runtime.js";
 import {
     APK_SESSION_SCHEMA_VERSION,
     applyApkEffects,
-    commitApkOption,
+    commitApkOptionWithRouteContinuation,
+    withApkRouteTransaction,
     createApkCharacterState,
     createApkContentIndex,
     createApkSession,
@@ -2056,54 +2057,59 @@ export function resolveApkRoutePool({
     );
 }
 
-export function drawApkRouteStep({
+export function drawApkRouteStep(options = {}) {
+    const { session } = options;
+    validateSession(session);
+    const snapshot = clone(session);
+    try {
+        return drawApkRouteStepCore(options);
+    } catch (error) {
+        restoreSession(session, snapshot);
+        throw error;
+    }
+}
+
+function drawApkRouteStepCore({
     contentIndex,
     session,
     dynamicResolver = null,
     dynamicAction = null,
     requirementEvaluator = null
 } = {}) {
-    validateSession(session);
-    const snapshot = clone(session);
-    try {
-        const resolved = resolveApkRoutePool({
-            contentIndex,
-            session,
-            dynamicResolver,
-            dynamicAction
-        });
-        if (resolved.status === "terminal") return resolved;
-        const cursorBefore = session.random.cursor;
-        const spin = drawApkPool({
-            contentIndex,
-            character: session.character,
-            poolId: resolved.poolId,
-            random: session.random,
-            requirementEvaluator: requirementEvaluator ?? evaluateApkRequirement
-        });
-        session.currentPoolId = resolved.poolId;
-        session.routeStatus = "drawn";
-        session.pendingDynamic = null;
-        session.lastRouteSpin = {
-            flowId: resolved.flowId,
-            poolId: resolved.poolId,
-            optionId: spin.optionId,
-            cursorBefore,
-            cursorAfter: session.random.cursor,
-            visitedFlowIds: clone(resolved.visitedFlowIds)
-        };
-        return {
-            ...spin,
-            flowId: resolved.flowId,
-            poolId: resolved.poolId,
-            flow: resolved.flow,
-            visitedFlowIds: resolved.visitedFlowIds,
-            routeStatus: session.routeStatus
-        };
-    } catch (error) {
-        restoreSession(session, snapshot);
-        throw error;
-    }
+    const resolved = resolveApkRoutePool({
+        contentIndex,
+        session,
+        dynamicResolver,
+        dynamicAction
+    });
+    if (resolved.status === "terminal") return resolved;
+    const cursorBefore = session.random.cursor;
+    const spin = drawApkPool({
+        contentIndex,
+        character: session.character,
+        poolId: resolved.poolId,
+        random: session.random,
+        requirementEvaluator: requirementEvaluator ?? evaluateApkRequirement
+    });
+    session.currentPoolId = resolved.poolId;
+    session.routeStatus = "drawn";
+    session.pendingDynamic = null;
+    session.lastRouteSpin = {
+        flowId: resolved.flowId,
+        poolId: resolved.poolId,
+        optionId: spin.optionId,
+        cursorBefore,
+        cursorAfter: session.random.cursor,
+        visitedFlowIds: clone(resolved.visitedFlowIds)
+    };
+    return {
+        ...spin,
+        flowId: resolved.flowId,
+        poolId: resolved.poolId,
+        flow: resolved.flow,
+        visitedFlowIds: resolved.visitedFlowIds,
+        routeStatus: session.routeStatus
+    };
 }
 
 function restoreSession(session, snapshot) {
@@ -2597,7 +2603,11 @@ function applyFormalSpecialResultHandler({
     return effectResult;
 }
 
-export function commitApkRouteOption({
+export function commitApkRouteOption(options = {}) {
+    return commitApkRouteOptionCore(options, commitApkOptionWithRouteContinuation);
+}
+
+function commitApkRouteOptionCore({
     contentIndex,
     session,
     spin,
@@ -2606,7 +2616,7 @@ export function commitApkRouteOption({
     dynamicResolver = null,
     dynamicOption = null,
     requirementEvaluator = null
-} = {}) {
+} = {}, commitOption) {
     if (!contentIndex?.getRouteOption) {
         fail("INVALID_APK_ROUTE_INDEX", "APK route option commit requires a route content index.");
     }
@@ -2662,20 +2672,18 @@ export function commitApkRouteOption({
             customHandler
         });
     }
-    const snapshot = clone(session);
-    try {
-        const committed = commitApkOption({
-            session,
-            contentIndex,
-            option,
-            poolId: spin.poolId,
-            reason: "apk-route-option",
-            effectApplier,
-            effectsOverride: operation?.operationId === "formal.specialResult"
-                ? []
-                : null,
-            requirementEvaluator: requirementEvaluator ?? evaluateApkRequirement
-        });
+    return commitOption({
+        session,
+        contentIndex,
+        option,
+        poolId: spin.poolId,
+        reason: "apk-route-option",
+        effectApplier,
+        effectsOverride: operation?.operationId === "formal.specialResult"
+            ? []
+            : null,
+        requirementEvaluator: requirementEvaluator ?? evaluateApkRequirement
+    }, committed => {
         const customEffectResult = operation
             ? operation.execute(operationContext)
             : null;
@@ -2799,10 +2807,26 @@ export function commitApkRouteOption({
             followUpResults,
             routeStatus: session.routeStatus
         };
-    } catch (error) {
-        restoreSession(session, snapshot);
-        throw error;
-    }
+    });
+}
+
+// Atomic draw + commit for the synchronous runner. Public standalone draw and
+// commit keep their own guards; this composition has one detached pre-draw copy.
+export function runApkRouteStepTransaction({ onDraw = null, ...options } = {}) {
+    const { session } = options;
+    validateSession(session);
+    return withApkRouteTransaction(session, commitOption => {
+        const spin = drawApkRouteStepCore(options);
+        if (spin.status === "terminal") return { spin, commit: null };
+        if (onDraw) {
+            const result = onDraw(spin);
+            if (result && typeof result.then === "function") {
+                fail("APK_ROUTE_TRANSACTION_ASYNC", "The draw observer must complete synchronously.");
+            }
+        }
+        const commit = commitApkRouteOptionCore({ ...options, spin }, commitOption);
+        return { spin, commit };
+    });
 }
 
 export function runApkRouteStep({

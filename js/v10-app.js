@@ -168,17 +168,22 @@ function setRouteChoicesVisible(visible) {
 function togglePanel(id) {
     const { panel, toggle } = panels[id];
     if (!panel.hidden) return closePanel(id);
+    const refreshAfterAdvance = Boolean(gameBusy || autoTask || fastTask);
     stopContinuous();
     for (const other of Object.keys(panels)) {
         if (other !== id && !panels[other].panel.hidden) closePanel(other, false);
     }
     panel.hidden = false;
+    // Refresh current facts before showing the drawer, including between batch renders.
+    if (id === "character-menu-panel" && lifeRunner) renderGame();
     panel.showModal?.();
     toggle.setAttribute("aria-expanded", "true");
     if (id === "history-panel" && lifeRunner) renderHistory();
     if (id === 'save-panel') void refreshSlots();
     // Finish the in-flight atomic step before refreshing an opened drawer.
-    void stopAutoAndWait().then(() => { if (!panel.hidden) renderGame(); });
+    void stopAutoAndWait().then(() => {
+        if (!panel.hidden && (id !== "character-menu-panel" || refreshAfterAdvance)) renderGame();
+    });
     panel.querySelector("[data-close-panel]").focus();
 }
 
@@ -345,7 +350,8 @@ function renderGame() {
     gameFields["current-seed"].textContent = lifeRunner.seed ?? session.random.seed ?? '来源未记录';
     gameFields["life-save-state"].textContent = unsaved ? '有未保存进度 · 请手动保存或导出' : '当前无新增未保存抽取 · 手动保存，不会自动恢复';
     renderCombatPower(lifeRunner.combatPower);
-    renderCharacterSummary(session.character, profile);
+    const characterPanelOpen = !characterMenuPanel.hidden;
+    renderCharacterSummary(session.character, profile, { includeIdentity: characterPanelOpen });
     gameFields["human-age-label"].textContent = "实际年龄";
     gameFields["human-age-value"].textContent = actualAgeText(session.character);
     gameFields["human-level-value"].textContent = isBeast ? '魂兽以修为年限成长' : String(profile.level ?? "来源未记录");
@@ -358,7 +364,7 @@ function renderGame() {
     gameFields["human-stage-value"].textContent = completed ? "人生结局"
         : trialText ?? (session.character.flags?.["formal:d1-story:free-mode"] ? "自由修炼" : wheel?.title ?? "人生成长");
     gameFields["human-cursor-value"].textContent = `${session.random.cursor} / ${session.history.length}`;
-    renderCharacterDetails(session.character, session.packId);
+    if (characterPanelOpen) renderCharacterDetails(session.character, session.packId);
     const resultText = (completed
         ? lifeRunner.summary?.ending?.text ?? lifeRunner.lastWheelResult?.recentResult?.text
         : wheel?.recentResult?.text)

@@ -4,6 +4,7 @@ import test from "node:test";
 import { Game } from "../js/game.js";
 import {
     clonePlayerStateValue,
+    validatePlayerStateValue,
     createPlayerV2,
     validatePlayerV2
 } from "../js/player-v2.js";
@@ -300,5 +301,26 @@ test("existing new-game smoke continues to create Player v1", () => {
         assert.equal(typeof event.id, "string");
     } finally {
         console.log = originalLog;
+    }
+});
+
+
+test("validation-only traversal preserves clone acceptance, errors and sparse-array semantics", () => {
+    for (const value of [null, true, "text", 0, -0, [], [,,1],
+        Object.assign(Object.create(null), { nested: [{ n: 42 }] })]) {
+        const before = clonePlayerStateValue(value);
+        validatePlayerStateValue(value);
+        assert.deepEqual(clonePlayerStateValue(value), before);
+    }
+    for (const value of [NaN, Infinity, -Infinity, undefined, 1n, Symbol(),
+        () => {}, new Date(), new Map(), new Set(), /x/, new (class State {})()]) {
+        for (const input of [value, { nested: [value] }]) {
+            let expected;
+            try { clonePlayerStateValue(input); } catch (error) { expected = error; }
+            assert.ok(expected instanceof TypeError);
+            assert.throws(() => validatePlayerStateValue(input), {
+                name: expected.name, message: expected.message
+            });
+        }
     }
 });
