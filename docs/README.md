@@ -2,7 +2,7 @@
 
 最新产品状态以 [仓库首页](../README.MD)为准。本文区分现行维护入口、验证记录和历史设计，避免旧文件里的“当前”被误用。
 
-当前线上为 [V1.1.1](V1.1.1_RELEASE_NOTES.md)，2026-10-17 已合并并部署。见[发布前复核](evidence/v111-pre-release-20261015/REVIEW.md)与[Pages / Android 验收](evidence/V111_PAGES_ACCEPTANCE_2026-10-17.md)；正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
+当前版本为 [V1.1.2](V1.1.2_RELEASE_NOTES.md)，范围是长局重复复制与关闭角色抽屉的显示开销。2026-10-20本地自动化、桌面浏览器及用户人工验收通过；正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。此前 [V1.1.1 线上验收](evidence/V111_PAGES_ACCEPTANCE_2026-10-17.md)保留原有语境。
 
 ## 现行入口
 

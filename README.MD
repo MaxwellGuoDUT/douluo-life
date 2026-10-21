@@ -4,11 +4,11 @@
 
 斗罗大陆题材的纯前端人生转盘游戏，使用 HTML、CSS、原生 JavaScript 和 JSON 构建。
 
-**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.1.1 更新说明](docs/V1.1.1_RELEASE_NOTES.md) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
+**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.1.2 更新说明](docs/V1.1.2_RELEASE_NOTES.md) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
 
-## 当前线上：V1.1.1
+## 当前版本：V1.1.2
 
-2026-10-17，V1.1.1 修复已通过 [PR #18](https://github.com/MaxwellGuoDUT/douluo-life/pull/18) 合并并部署到 Pages，修复九考调度、元素特质名称、窄屏动画溢出及资源版本绑定。见 [V1.1.1 更新说明](docs/V1.1.1_RELEASE_NOTES.md)和[线上验收](docs/evidence/V111_PAGES_ACCEPTANCE_2026-10-17.md)；正式版本归档以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
+V1.1.2 减少长局推进中的重复会话复制，并跳过关闭状态的角色抽屉详情重建。保留游戏规则、完整历史、失败回滚、重抽的随机消耗和手动八槽存档格式。2026-10-20本地自动化、桌面浏览器及用户人工验收通过；测量方法、存档兼容和限制见 [V1.1.2 更新说明](docs/V1.1.2_RELEASE_NOTES.md)。正式发布状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
 
 站点根首页直接运行当前游戏。旧的 [`v10.html`](https://maxwellguodut.github.io/douluo-life/v10.html) 链接会返回根首页，继续有效。
 
