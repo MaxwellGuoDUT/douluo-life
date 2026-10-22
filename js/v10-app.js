@@ -1,3 +1,4 @@
+import { createV10RouteWheel, createV10EraWheel } from "./v10-route-wheel.js";
 import { createV10ContentLoader } from "./v10-content-loader.js";
 import { createV10LifeRunner } from "./v10-life-runner.js";
 import { createV10SaveStore, MAX_SAVE_BYTES } from "./v10-save-store.js";
@@ -34,6 +35,7 @@ const panels = {
     "history-panel": { panel: document.querySelector("#history-panel"), toggle: document.querySelector("#history-toggle") },
     "save-panel": { panel: document.querySelector("#save-panel"), toggle: document.querySelector("#save-toggle") }
 };
+const openingWheels = new Map();
 let lifeRunner = null;
 let gameBusy = false;
 let activeRoute = "human";
@@ -159,6 +161,11 @@ function closeCharacterMenu(returnFocus = true) {
 }
 
 function setRouteChoicesVisible(visible) {
+    if (visible && !gameBusy) for (const wheel of openingWheels.values()) {
+        wheel.disc.style.transform = "";
+        wheel.renderWheel(createV10EraWheel(wheel.packs));
+        wheel.result.textContent = "先抽取年代，再抽取人类／魂兽身份。";
+    }
     packList.hidden = !visible;
     status.hidden = !visible;
     routeToggle.setAttribute("aria-expanded", String(visible));
@@ -213,6 +220,7 @@ async function animateCommittedSpin(view) {
 
 function setGameBusy(value, message = null) {
     gameBusy = value;
+    routeToggle.disabled = value;
     for (const id of ["human-restart", "human-new", "human-step", "human-age", "human-terminal"]) {
         gameFields[id].disabled = (!lifeRunner && id !== "human-new")
             || (value && !(autoRunning && ["human-age", "human-new", "human-restart"].includes(id))
@@ -452,22 +460,50 @@ async function newFate() {
     game.hidden = true;
     setGameBusy(false);
     setRouteChoicesVisible(true);
-    setStatus("请选择斗罗一 / 斗罗二，以及人类 / 魂兽，重新开始命运。", "ready");
+    setStatus("转动命运开局，年代与身份都由转盘决定。", "ready");
     packList.querySelector("[data-start-route]")?.focus();
     packList.scrollIntoView({ block: "start" });
 }
 
-async function startLife(route = activeRoute, packId = activePack, { replay = false, fresh = false } = {}) {
+async function animateOpeningWheel(wheel, view, message) {
+    const disc = wheel.disc;
+    disc.style.transform = "";
+    wheel.renderWheel(view);
+    wheel.result.textContent = message;
+    const selected = view.segments.find(segment => segment.optionId === view.selectedOptionId);
+    const rotation = `${1080 - selected.midpoint}deg`;
+    disc.style.setProperty("--landing-rotation", rotation);
+    disc.getBoundingClientRect?.();
+    if (!globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+        disc.className = "life-wheel has-options is-spinning";
+        await new Promise(resolve => setTimeout(resolve, 720));
+    }
+    disc.className = "life-wheel has-options";
+    disc.style.transform = `rotate(${rotation})`;
+    disc.style.removeProperty("--landing-rotation");
+}
+
+async function startLife(route = activeRoute, packId = activePack, { replay = false, fresh = false, openingWheel = null } = {}) {
     await stopAutoAndWait();
     if (gameBusy) return;
     if (!confirmDiscard()) return;
     const replaySeed = lifeRunner?.seed ?? lifeRunner?.session.random.seed;
     let failure = null;
-    setGameBusy(true, `正在载入${packId === "douluo2" ? "绝世唐门" : "斗罗一"}${route === "beast" ? "魂兽" : "人类"}内容…`);
+    setGameBusy(true, openingWheel ? "正在抽取开局路线…" : `正在载入${packId === "douluo2" ? "绝世唐门" : "斗罗一"}${route === "beast" ? "魂兽" : "人类"}内容…`);
     try {
         const seed = replay && replaySeed ? replaySeed : fresh || (!replay && !manualSeed) || !gameFields["human-seed"].value.trim()
             ? globalThis.crypto.randomUUID()
             : gameFields["human-seed"].value.trim();
+        if (openingWheel) {
+            const era = createV10EraWheel(openingWheel.packs, seed);
+            await animateOpeningWheel(openingWheel, era, "正在抽取年代…");
+            packId = era.selectedOptionId;
+            const pack = openingWheel.packs.find(item => item.id === packId);
+            const identity = createV10RouteWheel(pack, seed);
+            await animateOpeningWheel(openingWheel, identity, `年代：${era.recentResult.text}。正在抽取身份…`);
+            route = identity.selectedOptionId;
+            openingWheel.result.textContent = `${era.recentResult.text} · ${identity.recentResult.text}，正在载入…`;
+        }
         const candidate = await runner.start(packId, {
             seed,
             route
@@ -487,6 +523,7 @@ async function startLife(route = activeRoute, packId = activePack, { replay = fa
     } catch (error) {
         lastError = error;
         failure = `${error.code ?? "START_FAILED"}：${error.message} 开局未切换，原人生保留。`;
+        if (openingWheel) openingWheel.result.textContent = failure;
     } finally {
         setGameBusy(false);
         renderGame();
@@ -582,65 +619,45 @@ async function rerollLast() {
     }
 }
 
-function packCard(pack) {
+function openingCard(packs) {
     const article = document.createElement("article");
     article.className = "pack-card";
-    const routes = pack.supportedRoutes.map(routeName).join(" / ");
-    article.innerHTML = `
-        <p class="eyebrow">${pack.id === 'douluo2' ? '万年之后的魂师世界' : '唐三时代的魂师世界'}</p>
-        <h2>${packName(pack.id)}</h2>
-        <p class="route-label">路线：${routes}</p>
-        <p>人类：觉醒武魂、获取魂环、修炼与经历剧情。魂兽：积累修为、血脉融合与特殊遭遇；化形由事件决定。</p>
-        <p>本地手动8槽，请主动保存；刷新不会自动恢复。${pack.id === 'douluo1' ? '人类及化形后的普通神考、海神岛黄紫黑顶级奖励已接入；海神独立九考使用已确认项目规则，资格即开始、仅与修罗共存，继承后可主动飞升。旧斗一档需原版本继续，可先导出原始备份。' : '部分源路线仍可能中断，可保存和导出当时进度。'}</p>
-        <div class="card-actions"></div>
-        <p class="pack-detail" hidden></p>
-    `;
-    const actions = article.querySelector(".card-actions");
-    if (pack.sourceRuntimeModule) {
-        for (const [route, label] of [["human", "开始人类人生"], ["beast", "开始魂兽人生"]]) {
-            if (!pack.supportedRoutes.includes(route)) continue;
-            const start = document.createElement("button");
-            start.type = "button";
-            start.className = route === "human" ? "primary-action" : "secondary-action";
-            start.textContent = label;
-            start.dataset.startRoute = route;
-            start.addEventListener("click", () => void startLife(route, pack.id));
-            actions.append(start);
-        }
-    } else {
-        const pending = document.createElement("button");
-        pending.type = "button";
-        pending.className = "primary-action";
-        pending.textContent = "运行时待接入";
-        pending.disabled = true;
-        actions.append(pending);
-    }
-    const inspect = document.createElement("button");
-    inspect.type = "button";
-    inspect.className = "secondary-action";
-    inspect.textContent = "查看源清单";
-    inspect.addEventListener("click", async () => {
-        inspect.disabled = true;
-        try {
-            const { dynamicInventory, terminalInventory } = await loader.getPackDetails(pack.id);
-            const detail = article.querySelector(".pack-detail");
-            detail.textContent = `动作 ${dynamicInventory.summary.actions} · 解析器 ${dynamicInventory.summary.resolvers} · 自定义处理 ${dynamicInventory.summary.customHandlers} · 明示终局效果 ${terminalInventory.explicitCount}`;
-            detail.hidden = false;
-            inspect.textContent = "源清单已载入";
-        } catch (error) {
-            setStatus(error.message, "error");
-            inspect.disabled = false;
-        }
-    });
-    actions.append(inspect);
+    article.innerHTML = `<h2>让命运决定你的一生</h2>
+        <p>第一转抽取年代：斗罗一／绝世唐门，各50%。第二转抽取身份：人类／魂兽，各50%。化形仍由人生事件触发。</p>
+        <section class="route-wheel-stage" aria-label="年代与身份转盘">
+            <h3 class="route-wheel-title">年代转盘</h3>
+            <div class="wheel-wrap"><div class="wheel-pointer" aria-hidden="true"></div>
+                <div class="life-wheel" role="img"><div class="wheel-labels" aria-hidden="true"></div><div class="wheel-hub">命运</div></div>
+            </div>
+            <p class="route-wheel-result" role="status" aria-live="polite">先抽取年代，再抽取人类／魂兽身份。</p>
+            <details class="options-details"><summary>当前转盘概率</summary><p class="wheel-note"></p><ol class="wheel-options"></ol></details>
+        </section><div class="card-actions"></div>`;
+    const fields = {
+        "human-wheel": article.querySelector(".life-wheel"),
+        "human-wheel-title": article.querySelector(".route-wheel-title"),
+        "wheel-labels": article.querySelector(".wheel-labels"),
+        "human-wheel-note": article.querySelector(".wheel-note"),
+        "human-options": article.querySelector(".wheel-options")
+    };
+    const openingWheel = { packs, disc: fields["human-wheel"],
+        result: article.querySelector(".route-wheel-result"), renderWheel: createV10Display(fields).renderWheel };
+    openingWheels.set("opening", openingWheel);
+    openingWheel.renderWheel(createV10EraWheel(packs));
+    const start = document.createElement("button");
+    start.type = "button";
+    start.className = "primary-action";
+    start.textContent = "转盘开启人生";
+    start.dataset.startRoute = "random";
+    start.addEventListener("click", () => void startLife(null, null, { openingWheel }));
+    article.querySelector(".card-actions").append(start);
     return article;
 }
 
 async function boot() {
     try {
         const manifest = await loader.getManifest();
-        packList.replaceChildren(...manifest.packs.map(packCard));
-        setStatus("双包内容已就绪，可选择人类或魂兽人生。", "ready");
+        packList.replaceChildren(...(manifest.packs.length ? [openingCard(manifest.packs)] : []));
+        setStatus("年代与身份都由转盘抽取：先抽斗罗一／绝世唐门，再抽人类／魂兽。", "ready");
     } catch (error) {
         setStatus(`LOAD_FAILED：${error.message}`, "error");
     }

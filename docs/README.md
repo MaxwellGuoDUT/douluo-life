@@ -2,7 +2,7 @@
 
 最新产品状态以 [仓库首页](../README.MD)为准。本文区分现行维护入口、验证记录和历史设计，避免旧文件里的“当前”被误用。
 
-当前版本为 [V1.1.2](V1.1.2_RELEASE_NOTES.md)，范围是长局重复复制与关闭角色抽屉的显示开销。2026-10-20本地自动化、桌面浏览器及用户人工验收通过；正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。此前 [V1.1.1 线上验收](evidence/V111_PAGES_ACCEPTANCE_2026-10-17.md)保留原有语境。
+当前版本为 [V1.2.0](V1.2.0_RELEASE_NOTES.md)，开局年代与身份均改为转盘抽取。保留原存档、同种子重播与 /8 存档语义；本地414项通过、四种桌面浏览器开局已验证。正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。既有 [V1.1.2 性能说明](V1.1.2_RELEASE_NOTES.md)和历史线上验收保留原有语境。
 
 ## 现行入口
 
@@ -21,6 +21,7 @@
 
 ```text
 index.html → js/v10-app.js
+                 ├─ v10-route-wheel.js → 年代／身份开局抽取（独立随机域）
                  ├─ v10-display.js → 角色／转盘显示和源年龄投影
                  ├─ v10-history-view.js → 50条窗口和页锚点
                  ├─ v10-content-loader.js → data/v10/source-manifest.json

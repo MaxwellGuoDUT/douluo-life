@@ -115,3 +115,13 @@ button { min-height: 44px; }
 
 /* Rotating square bounds must not widen the page; keep the pointer visible above. */
 .wheel-wrap { overflow-x: clip; }
+
+.route-wheel-stage { text-align: center; }
+.route-wheel-stage .wheel-wrap { width: min(320px, 100%); }
+.route-wheel-title { font-size: 18px; margin-bottom: 8px; }
+.route-wheel-result { min-height: 2.8em; line-height: 1.6; overflow-wrap: anywhere; }
+
+.route-wheel-stage .wheel-hub { width: 22%; font-size: 16px; white-space: nowrap; }
+
+.route-wheel-stage .wheel-label { transform: translateY(-50%) !important; left: 60%; width: 36%; text-align: center; font-size: 16px; }
+.route-wheel-stage .wheel-label:nth-child(2) { left: 4%; }

@@ -4,20 +4,22 @@
 
 斗罗大陆题材的纯前端人生转盘游戏，使用 HTML、CSS、原生 JavaScript 和 JSON 构建。
 
-**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.1.2 更新说明](docs/V1.1.2_RELEASE_NOTES.md) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
+**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.2.0 更新说明](docs/V1.2.0_RELEASE_NOTES.md) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
 
-## 当前版本：V1.1.2
+## 当前版本：V1.2.0
 
-V1.1.2 减少长局推进中的重复会话复制，并跳过关闭状态的角色抽屉详情重建。保留游戏规则、完整历史、失败回滚、重抽的随机消耗和手动八槽存档格式。2026-10-20本地自动化、桌面浏览器及用户人工验收通过；测量方法、存档兼容和限制见 [V1.1.2 更新说明](docs/V1.1.2_RELEASE_NOTES.md)。正式发布状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
+V1.2.0 将年代与身份都交给转盘：第一转等概率抽取斗罗一／绝世唐门，第二转等概率抽取人类／魂兽，不再手动指定。固定种子可复现开局；现有存档和同种子重播沿用原年代与路线。沿用 V1.1.0 的 /8 存档语义及 V1.1.2 长局优化。详见 [V1.2.0 更新说明](docs/V1.2.0_RELEASE_NOTES.md)，正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
 
 站点根首页直接运行当前游戏。旧的 [`v10.html`](https://maxwellguodut.github.io/douluo-life/v10.html) 链接会返回根首页，继续有效。
 
-- **双时代、双路线**：斗罗大陆 I（`douluo1`）与绝世唐门（`douluo2`），均可选择人类或魂兽人生。
+- **双时代、双路线**：斗罗大陆 I（`douluo1`）与绝世唐门（`douluo2`），转盘先等概率抽取时代，再等概率抽取人类或魂兽人生；化形仍由人生事件触发。
 - **真实转盘**：复用当前角色状态、源选项及权重；显示大转盘、抽取结果和选项。魂师以等级、武魂与魂环为核心，魂兽展示物种、血脉、修为年限与实际年龄。
 - **集中角色信息**：白底居中单列，角色、命运记事、本地存档通过抽屉查看。
 - **推进与重抽**：单次转动、可暂停的串行自动推进、每批最多 200 次的极速推进，以及仅撤销最新一次抽取的重抽。重抽仍可能得到相同结果。
-- **新命运**：结束当前人生并回到时代与路线选择，清空当前种子；不会删除已保存槽位。
+- **新命运**：结束当前人生并回到年代与身份转盘，清空当前种子；不会删除已保存槽位。
 - **本地存档**：手动 localStorage 8 槽、JSON 导入与导出、覆盖确认。没有账号、云同步或后端，未手动保存的进度不会自动保留，请主动导出备份。
+
+年代和身份抽取使用独立随机域，不消耗人生事件的随机游标。化形仍由人生事件触发。
 
 ## 可玩范围与已知限制
 
