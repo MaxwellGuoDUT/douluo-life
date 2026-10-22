@@ -1,3 +1,4 @@
+import { createV10RouteWheel, createV10EraWheel } from "../js/v10-route-wheel.js";
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -8,7 +9,7 @@ import { packName, routeName, growthChanges, nextGoal, endingText, problemInfo }
 import { MAX_SAVE_BYTES } from '../js/v10-save-store.js';
 function runUI(source, context) {
     context.window ??= {confirm:()=>true,addEventListener(){}};
-    Object.assign(context, { actualAgeText, playerWheelView, packName, routeName, growthChanges, nextGoal, endingText, problemInfo, MAX_SAVE_BYTES,
+    Object.assign(context, { createV10RouteWheel, createV10EraWheel, actualAgeText, playerWheelView, packName, routeName, growthChanges, nextGoal, endingText, problemInfo, MAX_SAVE_BYTES,
         createV10Display: fields => createV10Display(fields, context.document),
         createV10HistoryView: options => createV10HistoryView({...options, document: context.document}) });
     return runInNewContext(source, context);
@@ -828,7 +829,7 @@ test('screenshot UI reroll targets last fast or terminal draw and clears on new 
     }
 });
 
-function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife = null, restoreFailure = false, rejectReroll = false, saveStore = null, confirm = ()=>true, reducedMotion = false, clipboard = undefined } = {}) {
+function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife = null, restoreFailure = false, rejectReroll = false, saveStore = null, confirm = ()=>true, reducedMotion = false, clipboard = undefined, startFailure = false } = {}) {
     // Explicit UI mechanism fixture, never used as a real gameplay reachability input.
     const nodes = new Map(), listeners = {}, timers = [], starts = [];
     const downloads = [], blobs = [], revoked = [];
@@ -900,6 +901,7 @@ function screenshotUIHarness({ immediate = false, stopPhase = null, actualLife =
         createV10ContentLoader:()=>({getManifest:async()=>({packs:[]})}),
         createV10LifeRunner:()=>({start:async(packId, options)=> {
             starts.push({packId,...options});
+            if(startFailure) throw Object.assign(new Error("fixture load failed"), {code:"FIXTURE_START_FAILED"});
             if (options.snapshot && restoreFailure) throw Object.assign(new Error('fixture restore failure'), {code:'FIXTURE_RESTORE_FAILED'});
             if (actualLife) return runner.start(packId,options);
             const session = structuredClone(options.snapshot?.session ?? initialSession);
@@ -1197,4 +1199,67 @@ test('closing a drawer during an animated step prevents deferred hidden list reb
     assert.equal(writes.length,atClose);
     assert.equal(h.life.session.history.length,1);
     assert.equal(h.nodes.get('#human-step').disabled,false);
+});
+
+function openingWheelFixture() {
+    const styles = new Map();
+    return { packs: ['douluo1','douluo2'].map(id=>({id,supportedRoutes:['human','beast','transformed'],sourceRuntimeModule:'fixture.js'})),
+        views:[], result:{textContent:''},
+        disc:{style:{setProperty(k,v){styles.set(k,v)},removeProperty(k){styles.delete(k)}}},
+        renderWheel(view){this.views.push(view)} };
+}
+
+test('route wheel commits one selected route after animation and blocks competing starts',async()=>{
+    const h=screenshotUIHarness();
+    const wheel=openingWheelFixture('douluo2');
+    const before=h.ui.currentLife().exportSnapshot();
+    const pending=h.ui.startLife(null,'douluo2',{openingWheel:wheel});
+    for(let i=0;i<8;i++)await Promise.resolve();
+    assert.equal(wheel.views.length,1);assert.equal(h.starts.length,0);
+    assert.equal(h.seedCalls(),1);assert.equal(h.nodes.get('#route-toggle').disabled,true);
+    assert.deepEqual(h.ui.currentLife().exportSnapshot(),before);
+    await h.ui.startLife(null,'douluo2',{openingWheel:wheel});
+    assert.equal(h.seedCalls(),1);assert.equal(wheel.views.length,1);
+    await h.flushTimer();
+    assert.equal(wheel.views.length,2);assert.equal(h.starts.length,0);
+    assert.deepEqual(h.ui.currentLife().exportSnapshot(),before);
+    await h.flushTimer();await pending;
+    const view=wheel.views[1];
+    assert.equal(h.starts[0].packId,wheel.views[0].selectedOptionId);
+    assert.equal(h.starts.length,1);assert.equal(h.starts[0].route,view.selectedOptionId);
+    assert.equal(h.starts[0].seed,'new-fixture-1');
+    assert.equal(h.ui.currentLife().session.random.cursor,0);
+    assert.equal(h.nodes.get('#route-toggle').disabled,false);
+    const selected=view.segments.find(s=>s.optionId===view.selectedOptionId);
+    assert.equal(wheel.disc.style.transform,`rotate(${1080-selected.midpoint}deg)`);
+    assert.equal(h.timers.length,0);
+});
+
+test('route wheel cancellation and startup failure preserve current life, history, undo and dirty status',async()=>{
+    for(const mode of ['cancel','failure']) {
+        const h=screenshotUIHarness({reducedMotion:true,confirm:()=>mode!=='cancel',startFailure:mode==='failure'});
+        await h.ui.runLife('step','step');
+        const before=h.ui.currentLife().exportSnapshot(), checkpoint=JSON.stringify(h.ui.checkpoint());
+        const wheel=openingWheelFixture();
+        await h.ui.startLife(null,'douluo1',{openingWheel:wheel});
+        assert.deepEqual(h.ui.currentLife().exportSnapshot(),before);
+        assert.equal(JSON.stringify(h.ui.checkpoint()),checkpoint);assert.equal(h.ui.dirty(),true);
+        assert.equal(h.nodes.get('#human-step').disabled,false);
+        if(mode==='cancel') { assert.equal(h.seedCalls(),0);assert.equal(wheel.views.length,0); }
+        else { assert.match(wheel.result.textContent,/FIXTURE_START_FAILED.*原人生保留/);assert.equal(h.timers.length,0); }
+    }
+});
+
+test('typed seed repeats route selection without timers in reduced motion; replay preserves its chosen route',async()=>{
+    const h=screenshotUIHarness({reducedMotion:true});
+    h.nodes.get('#human-seed').value='route-repeat';h.nodes.get('#human-seed').listeners.input();
+    const a=openingWheelFixture(),b=openingWheelFixture();
+    await h.ui.startLife(null,'douluo1',{openingWheel:a});
+    await h.ui.startLife(null,'douluo1',{openingWheel:b});
+    assert.deepEqual(a.views,b.views);assert.equal(a.views.length,2);
+    const chosen=h.starts.at(-1);
+    await h.ui.startLife(chosen.route,chosen.packId,{replay:true});
+    assert.equal(h.starts.at(-1).packId,chosen.packId);
+    assert.equal(h.starts.at(-1).route,chosen.route);assert.equal(h.starts.at(-1).seed,'route-repeat');
+    assert.equal(h.seedCalls(),0);assert.equal(h.timers.length,0);
 });

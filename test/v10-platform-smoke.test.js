@@ -117,7 +117,8 @@ test("V1 HTML is a static Pages entry with no cloud or account dependency", () =
     assert.match(html, /js\/v10-app\.js/u);
     assert.match(html, /纯前端版本/u);
     assert.match(html, /人类人生/u);
-    assert.match(app, /开始魂兽人生/u);
+    assert.match(app, /转盘开启人生/u);
+    assert.doesNotMatch(app, /开始人类人生|开始魂兽人生/u);
     assert.match(app, /human-result.*等待抽取/u);
     assert.match(html, /物种/u);
     assert.match(html, /极速推进/u);
