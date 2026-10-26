@@ -1,6 +1,7 @@
 import { playerTraitName } from './v10-player-names.js';
 import { V10_GOD_TRIAL_STAGES } from './v10-god-trial-runtime.js';
 import { seaGodMissing } from './v10-sea-god-runtime.js';
+import { prepareResultFeedback, createResultFeedbackDisplay } from './v10-result-feedback.js';
 // Match the source UI: pure beast time uses chronologicalAge; transformed humans use age.
 export function actualAge(character) {
     return character.route === 'beast'
@@ -229,5 +230,6 @@ export function createV10Display(gameFields, document = globalThis.document) {
     }
 
 
-    return {renderCombatPower, renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress};
+    return {renderCombatPower, renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress,
+        prepareResultFeedback, renderResultFeedback: createResultFeedbackDisplay(gameFields, document)};
 }

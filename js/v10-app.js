@@ -28,7 +28,7 @@ const gameFields = Object.fromEntries([
     "human-bloodlines", "human-talents", "human-skills", "human-godhood",
     "current-seed", "character-name", "character-bloodline", "character-attributes",
     "cultivation-label", "cultivation-value", "actual-age-value", "combat-power-value", "human-fast-cancel", "character-identity", "wheel-labels", "runtime-diagnostics",
-    "result-changes", "next-goal", "life-save-state", "problem-details", "problem-status", "human-ending-title", "bloodline-label", "sea-god-choice", "sea-god-ascend", "sea-god-continue"
+    "result-changes", "result-feedback", "result-kind", "result-title", "result-summary", "result-highlights", "result-change-details", "result-source", "next-goal", "life-save-state", "problem-details", "problem-status", "human-ending-title", "bloodline-label", "sea-god-choice", "sea-god-ascend", "sea-god-continue"
 ].map(id => [id, document.querySelector(`#${id}`)]));
 const panels = {
     "character-menu-panel": { panel: characterMenuPanel, toggle: characterToggle },
@@ -52,6 +52,7 @@ let fastControl = null;
 let fastTask = null;
 let unsaved = false;
 let lastChanges = [];
+let lastFeedback = null;
 let lastError = null;
 let slotsEpoch = 0;
 let slotsLoading = false;
@@ -61,6 +62,7 @@ function confirmDiscard() {
 function captureCommit(snapshot) {
     undoCheckpoint = { snapshot, nextCursor: lifeRunner.session.random.cursor };
     lastChanges = growthChanges(snapshot.session.character, lifeRunner.session.character);
+    lastFeedback = prepareResultFeedback(snapshot.session.character, lifeRunner.session.character, lastChanges);
     unsaved = true;
     lastError = null;
 }
@@ -194,7 +196,7 @@ function togglePanel(id) {
     panel.querySelector("[data-close-panel]").focus();
 }
 
-const { renderCombatPower, renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress } = createV10Display(gameFields);
+const { renderCombatPower, renderCharacterSummary, renderCharacterDetails, renderWheel, godTrialProgress, prepareResultFeedback, renderResultFeedback } = createV10Display(gameFields);
 const historyView = createV10HistoryView({
     list: gameFields['human-history'],
     older: document.querySelector('#history-older'), newer: document.querySelector('#history-newer'),
@@ -380,10 +382,13 @@ function renderGame() {
     gameFields["human-result"].textContent = completed
         ? `人生结局：${resultText ?? lifeRunner.summary?.ending?.title ?? "旅程结束"}`
         : resultText ? `已抽取：${resultText}` : "等待抽取";
-    gameFields['result-changes'].textContent = lastChanges.length ? '本次已提交变化：\n' + lastChanges.join('\n') : '暂无新的关键数值变化；条件文字不代表奖励已获得。';
+    gameFields['result-changes'].textContent = lastChanges.join('\n');
     if (!completed && session.character.flags?.["formal:deferred-ending:douluo1:story:independent-ascension"] === true) {
         gameFields["human-result"].textContent += " 已抽到过飞升选项，但尚未形成飞升结局：当前规则在150岁前只记录该选择，后续仍须满足条件并实际结算。";
     }
+    renderResultFeedback({ feedback: lastChanges.length ? lastFeedback : null,
+        phase: lifeRunner.phase, character: session.character, text: resultText,
+        ending: lifeRunner.summary?.ending, changes: lastChanges });
     renderWheel(completed ? { status: "completed", title: "人生结局", segments: [] } : wheel);
     if (!panels["history-panel"].panel.hidden) renderHistory();
     gameFields["human-ending"].hidden = !["completed","boundary","error"].includes(lifeRunner.phase);
@@ -419,6 +424,8 @@ function renderGame() {
 }
 
 function clearLifeView(route = null, packId = null) {
+    lastFeedback = null;
+    renderResultFeedback();
     gameFields['sea-god-choice'].hidden=true;
     undoCheckpoint = null;
     lastChanges = [];
@@ -548,7 +555,6 @@ async function runLife(action, label, automatic = false) {
                 renderGame();
             } else if (result.committed && lifeRunner.lastWheelResult) {
                 renderGame();
-                gameFields["human-result"].textContent = `已抽取：${lifeRunner.lastWheelResult.recentResult?.text ?? result.spin?.optionId ?? "结果已提交"}`;
                 await animateCommittedSpin(lifeRunner.lastWheelResult);
             }
         } else {
@@ -601,6 +607,7 @@ async function rerollLast() {
         lifeRunner = candidate;
         unsaved = true;
         lastChanges = growthChanges(snapshot.session.character, candidate.session.character);
+        lastFeedback = prepareResultFeedback(snapshot.session.character, candidate.session.character, lastChanges);
         lastError = null;
         historyView.reset();
         undoCheckpoint = { snapshot, nextCursor: candidate.session.random.cursor };

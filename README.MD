@@ -4,11 +4,11 @@
 
 斗罗大陆题材的纯前端人生转盘游戏，使用 HTML、CSS、原生 JavaScript 和 JSON 构建。
 
-**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.2.0 更新说明](docs/V1.2.0_RELEASE_NOTES.md) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
+**[开始游戏](https://maxwellguodut.github.io/douluo-life/)** · [V1.2.1 更新说明](docs/V1.2.1_RELEASE_NOTES.md) · [反馈问题](https://github.com/MaxwellGuoDUT/douluo-life/issues)
 
-## 当前版本：V1.2.0
+## 当前版本：V1.2.1
 
-V1.2.0 将年代与身份都交给转盘：第一转等概率抽取斗罗一／绝世唐门，第二转等概率抽取人类／魂兽，不再手动指定。固定种子可复现开局；现有存档和同种子重播沿用原年代与路线。沿用 V1.1.0 的 /8 存档语义及 V1.1.2 长局优化。详见 [V1.2.0 更新说明](docs/V1.2.0_RELEASE_NOTES.md)，正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
+V1.2.1 将抽取结果与成长反馈融入中央转盘：上方突出结果标题及主要变化，觉醒、魂环等重要结果依据角色实际变化展示，原文与全部变化可展开查看。保留 V1.2.0 的年代／身份双转盘开局、既有随机规则及 V1.1.0 的 /8 存档语义。详见 [V1.2.1 更新说明](docs/V1.2.1_RELEASE_NOTES.md)，正式归档状态以 [GitHub Releases](https://github.com/MaxwellGuoDUT/douluo-life/releases) 为准。
 
 站点根首页直接运行当前游戏。旧的 [`v10.html`](https://maxwellguodut.github.io/douluo-life/v10.html) 链接会返回根首页，继续有效。
 
