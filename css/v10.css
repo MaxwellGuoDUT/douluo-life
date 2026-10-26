@@ -44,9 +44,22 @@ input, select { display: block; width: 100%; max-width: 100%; min-width: 0; marg
 .vital-stats dt { color: #758696; font-size: 13px; }
 .vital-stats dd { margin: 4px 0 0; font-size: clamp(18px, 4vw, 25px); font-weight: 850; color: #c82060; overflow-wrap: normal; }
 .wheel-stage { min-width: 0; text-align: center; }
-.wheel-title { margin: 8px 0 22px; padding: 14px 18px; border-radius: 14px; background: #f3f6f7; font-size: 23px; font-weight: 800; color: #18232b; line-height: 1.45; overflow-wrap: anywhere; }
-#human-result { font-size: clamp(26px, 5vw, 32px); font-weight: 900; color: #080d11; margin: 0 0 30px; line-height: 1.5; overflow-wrap: anywhere; }
-.reroll-control { margin: -12px 0 24px; }
+.wheel-title { margin: 8px 0 12px; font-size: 14px; font-weight: 500; color: #536b78; line-height: 1.5; overflow-wrap: anywhere; }
+.current-event { padding: 22px 0 18px; text-align: center; }
+.result-kind { color: #536b78; font-size: 13px; margin-bottom: 10px; }
+#result-title { font-size: clamp(23px, 5vw, 30px); font-weight: 750; color: #172c3c; margin: 0 0 12px; line-height: 1.4; overflow-wrap: anywhere; }
+.result-summary { max-width: 520px; margin: 0 auto 12px; color: #536b78; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.result-highlights { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; padding: 0; margin: 0; list-style: none; font-size: 14px; line-height: 1.7; color: #31566a; font-variant-numeric: tabular-nums; }
+.result-highlights li { max-width: 100%; overflow-wrap: anywhere; }
+.current-event[data-tone="important"] .result-kind { color: #88651e; }
+.current-event[data-tone="important"] #result-title::after { content: ""; display: block; width: 40px; height: 2px; margin: 14px auto 0; background: #b9984a; }
+.current-event[data-tone="setback"] .result-highlights { color: #9b3f50; }
+.result-details { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 20px; text-align: left; margin: 12px 0; }
+.result-details details { min-width: 0; max-width: 100%; font-size: 13px; color: #536b78; }
+.result-details details[open] { flex-basis: 100%; }
+.result-details summary { width: fit-content; margin: 0 auto; }
+#human-result { font-size: 14px; font-weight: 400; color: #31566a; margin: 4px 0 16px; line-height: 1.7; overflow-wrap: anywhere; }
+.reroll-control { margin: 14px 0 24px; }
 .reroll-control button { padding: 9px 16px; font-size: 14px; }
 .reroll-control p { margin: 8px 0 0; }
 .human-ending { padding: 16px; background: #f6f9fa; border-radius: 12px; margin-bottom: 24px; text-align: left; overflow-wrap: anywhere; }
@@ -91,7 +104,7 @@ input, select { display: block; width: 100%; max-width: 100%; min-width: 0; marg
     .advance-bar { gap: 5px; }
     .advance-bar button { font-size: 13px; }
     .side-panel { padding: 18px; }
-    .wheel-title { font-size: 22px; }
+    .wheel-title { font-size: 14px; }
     .vital-stats { grid-template-columns: 1fr; gap: 12px; }
     .vital-stats div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; padding: 0 8px; }
     .vital-stats div + div { border: 0; }
@@ -103,7 +116,7 @@ input, select { display: block; width: 100%; max-width: 100%; min-width: 0; marg
 .history-navigation [role=status] { flex-basis: 100%; }
 .v10-shell { padding-bottom: calc(190px + env(safe-area-inset-bottom)); }
 .result-changes, .life-review { white-space: pre-line; overflow-wrap: anywhere; line-height: 1.7; text-align: left; }
-.result-changes { font-size: 15px; padding: 12px; background: #f3f8fa; border-radius: 10px; }
+.result-changes { font-size: 14px; padding: 4px 0; color: #31566a; }
 .next-goal { text-align: left; line-height: 1.7; padding: 12px; background: #f5f8ef; border-radius: 10px; overflow-wrap: anywhere; }
 pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 button { min-height: 44px; }
